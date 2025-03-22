@@ -1,35 +1,54 @@
 # Introdução
 
-[Aqui a equipe deve criar um texto descritivo com a visão geral do problema abordado, apresentando o ambiente e as situações envolvidas no problema.]
+A educação financeira é essencial para que as pessoas saibam administrar seu dinheiro e evitar dívidas, porém, esse tema não é amplamente ensinado nas escolas. Segundo a assessora de investimentos Camila Fernandes (2024),
+
+> "A educação financeira nunca fez parte do currículo escolar de muitos brasileiros [...] Esse ciclo gera adultos que desconhecem práticas financeiras saudáveis e perpetua um país de endividados."
+
+Esse cenário deixa muitas pessoas despreparadas para lidar com as finanças na vida adulta. Muitos gastam sem planejamento, acumulam dívidas e enfrentam dificuldades para economizar, investir e até iniciar um novo negócio. Isso compromete a estabilidade financeira, reduz as oportunidades e dificulta a realização de planos futuros.
+
+De acordo com uma pesquisa realizada pelos Serviços de Proteção ao Crédito (SPC Brasil) e pela Confederação Nacional de Dirigentes Lojistas (CNDL) (2018):
+
+> "Cerca de 48% dos brasileiros admitem não controlar suas finanças pessoais."
+
+Já nas empresas (principalmente as de pequeno e médio porte), a falta de educação financeira também é um grande desafio. Segundo dados do Serviço Brasileiro de Apoio às Micro e Pequenas Empresas (SEBRAE) (2023):
+
+> "Cerca de 60% das micro e pequenas empresas fecham as portas em até 5 anos de operação, sendo a má gestão financeira um dos principais fatores responsáveis por esse alto índice."
+
+Portanto, para reverter essa situação, é fundamental proporcionar ferramentas para que as pessoas tomem decisões mais conscientes e sustentáveis em relação ao dinheiro. Assim, elas terão uma vida mais equilibrada financeiramente e estarão preparadas para futuros desafios econômicos.
+
 
 ## Problema
-[Aqui a equipe deve fornecer uma descrição detalhada do problema a ser resolvido. Não é o momento adequado para abordar questões técnicas relacionadas ao desenvolvimento da aplicação. O objetivo é compreender e comunicar de maneira precisa qual é o desafio ou necessidade que motiva a criação da aplicação.]
-
-Este link pode ajudar a equipe a entender mais sobre definição do problema: [Objetivos, Problema de pesquisa e Justificativa.](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
+O problema que será tratado ao longo do projeto será a dificuldade que grande parte da população tem em administrar seus recursos financeiros, ficando assim muitas vezes endividados, não conseguindo juntar capital para realizar um investimento, iniciar um novo negócio ou até mesmo adquirir um novo bem. Atualmente, com a falta de ensino nas escolas e a facilidade do acesso à informação, as pessoas encontram diversos conteúdos online, muitas vezes de forma dispersa, desorganizada e pouco confiável. 
 
 
 ## Objetivos
 
-[Aqui a equipe deve realizar uma descrição detalhada dos objetivos do trabalho, ressaltando quais as questões principais do problema a serem resolvidas pelo projeto, não é a hora de apresentar requisitos detalhados.]
- 
-Este link pode ajudar a equipe a entender mais sobre definição dos objetivos: [Objetivos, Problema de pesquisa e Justificativa.](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
+O objetivo principal deste projeto é desenvolver uma aplicação web que seja de fácil entendimento e acessível a jovens e adultos, que contenha conteúdos educativos e informativos sobre gerenciamento de recursos financeiros pessoais. O site oferecerá também ao usuário uma ferramenta para auxilia-lo a gerir sua finanças. 
+
+Alguns dos objetivos específicos:    
+
+- Auxiliar jovens a iniciar a vida financeira de forma consciente e saudável;    
+- Auxiliar adultos a reequilibrar as finanças;    
+- Auxiliar pequenos empreendedores;
+
 
 ## Justificativa
 
-[Aqui a equipe deve descrever a importância ou a motivação para trabalhar com o problema definido. Indique as razões pelas quais a equipe escolheu o problema e definiu os objetivos.
+A falta de educação financeira é um problema significativo no Brasil. De acordo com o Serviço ao Proteção de Crédito (SPC Brasil) (2014),  
 
-Devem ser apresentados dados de fontes relevantes e confiáveis sobre o problema, inserindo-o como alvo de estudo. Sugere-se que a equipe utilize questionários, entrevistas e dados estatísticos, que devem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pela equipe.]
+> "Oito em cada dez brasileiros não sabem como controlar suas próprias despesas[...] Isso vai além de apenas poupar dinheiro, abrangendo também a necessidade de um planejamento financeiro a longo prazo."  
 
-Este link pode ajudar a equipe a formular a justificativa: [Como montar a justificativa.](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Além disso, uma pesquisa da Confederação Nacional de Dirigentes Lojistas (CNDL) (2019) indica que  
+
+> "47% dos jovens entre 18 e 24 anos não realizam controle das finanças pessoais, apontando como principais justificativas 'não saber como fazer' e 'sentir preguiça'."  
+
+É nesse cenário que uma aplicação web se torna essencial, com o objetivo de facilitar o aprendizado e a prática da educação financeira na vida cotidiana dos usuários.
+
 
 ## Público-Alvo
 
-[Aqui é necessário descrever os atores envolvidos no problema, destacando os diferentes perfis de usuários. O propósito é apresentar as características, necessidades, conhecimentos prévios e experiência com a tecnologia do público-alvo.
+Embora a proposta deste projeto seja abrangente em relação ao público-alvo, uma vez que qualquer pessoa pode se interessar em aprender mais sobre gestão financeira e encontrar em um só lugar todas as ferramentas possíveis para isso. Entendemos, portanto, que atrairemos mais a atenção de pessoas que ainda não tiveram contato com a vida financeira ou que estão começando a receber o seu próprio dinheiro agora.  
 
-Sugere-se que a equipe utilize questionários e/ou entrevistas a fim de conhecer os atores que compõem o público alvo.]
+Por isso, o principal público-alvo são pessoas que estão começando a entrar no mercado de trabalho e recebendo seu primeiro salário. Em sua maioria, pessoas que não receberam uma educação financeira durante a escola, o que pode gerar desafios na gestão do dinheiro. Esse público geralmente busca ferramentas práticas e econômicas para ajudar a planejar suas finanças, economizar e investir de forma inteligente.
 
-Os links abaixo podem ajudar a equipe a conhecer um pouco mais sobre o público-alvo. 
-
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
 
