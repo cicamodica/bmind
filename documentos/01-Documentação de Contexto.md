@@ -47,8 +47,8 @@ Além disso, uma pesquisa da Confederação Nacional de Dirigentes Lojistas (CND
 
 ## Público-Alvo
 
-Embora a proposta deste projeto seja abrangente em relação ao público-alvo, uma vez que qualquer pessoa pode se interessar em aprender mais sobre gestão financeira e encontrar em um só lugar todas as ferramentas possíveis para isso. Entendemos, portanto, que atrairemos mais a atenção de pessoas que ainda não tiveram contato com a vida financeira ou que estão começando a receber o seu próprio dinheiro agora.  
+A proposta deste projeto é bastante abrangente em relação ao público-alvo, uma vez que qualquer pessoa pode se interessar em aprender mais sobre gestão financeira e encontrar em um só lugar todas as ferramentas possíveis para isso. Podendo incluir, pessoas que ainda não tiveram contato com a vida financeira, que iniciaram a pouco sua vida financeira, que querem colocar as finanças em ordem, que buscam seu primeiro investimento, que desejam iniciar um novo negócio e/ou que desejam apenas aprender mais sobre finanças para empresas.  
 
-Por isso, o principal público-alvo são pessoas que estão começando a entrar no mercado de trabalho e recebendo seu primeiro salário. Em sua maioria, pessoas que não receberam uma educação financeira durante a escola, o que pode gerar desafios na gestão do dinheiro. Esse público geralmente busca ferramentas práticas e econômicas para ajudar a planejar suas finanças, economizar e investir de forma inteligente.
+Por isso, o público-alvo que esse projeto deseja atingir são pessoas que não possuem vasto conhecimento sobre finanças e que desejam aprimorá-lo. Em sua maioria, pessoas que não receberam uma educação financeira durante a vida escolar, o que pode gerar desafios na gestão do dinheiro. Esse público geralmente busca ferramentas práticas e econômicas para ajudar a planejar suas finanças, economizar e/ou investir de forma inteligente.
 
 
