@@ -91,14 +91,15 @@
 | RF-01 |A aplicação deve permitir que o usuário crie uma conta.                                                                                    |   ALTA     | 
 | RF-02 |A aplicação deve permitir que o usuário faça login em sua conta.                                                                           |   ALTA     |
 | RF-03 |A aplicação deve disponibilizar conteúdos didáticos sobre finanças, como: Orçamento mensal, reserva de emergência, poupança, cartão de crédito, juros, parcelamento, inflação, poder de compra, custo efetivo total (CET) de empréstimos, renda passiva, comparadores financeiros, entre outros.                                                                        |   ALTA     |
-| RF-04 |A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças, além da página voltada para as edições dessa ferramenta.                                                                                                                                                                                        |   ALTA     |
-| RF-05 |A aplicação deve fornecer uma ferramenta de controle financeiro interativo para planejamento de gastos e fluxo de caixa.                   |   ALTA     |
-| RF-06 |A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03).                                                                                                                                                                                                    |   MÉDIA    |
-| RF-07 |A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.                      |   MÉDIA    |
-| RF-08 |Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.                                                                    |   MÉDIA    |
-| RF-09 |A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação                                                                                                                                                                                                         |   MÉDIA    |
-| RF-10 |A aplicação deve permitir o compartilhamento de artigos em redes sociais.                                                                  |   BAIXA    |
-| RF-11 |A aplicação deve ser capaz de salvar todo conteúdo do usuário para oferecer melhores simulações futuras (histórico dos meses retroativos)  |   BAIXA    |
+| RF-04 |A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.                   |   ALTA     |
+| RF-05 |A aplicação deve disponibilizar ao usuário uma ferramenta para o registro de receitas e despesas.                                          |   ALTA     |
+| RF-06 |A aplicação deve permitir a categorização dos registros inseridos pelo usuário.                                                            |   ALTA     |
+| RF-07 |A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03).                                                                                                                                                                                                    |   MÉDIA    |
+| RF-08 |A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.                      |   MÉDIA    |
+| RF-09 |Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.                                                                    |   MÉDIA    |
+| RF-10 |A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação                                                                                                                                                                                                         |   MÉDIA    |
+| RF-11 |A aplicação deve permitir o compartilhamento de artigos em redes sociais.                                                                  |   BAIXA    |
+| RF-12 |A aplicação deve ser capaz de salvar todo conteúdo do usuário para oferecer melhores simulações futuras (histórico dos meses retroativos)  |   BAIXA    |
 
 **Prioridade: Alta / Média / Baixa. 
 
