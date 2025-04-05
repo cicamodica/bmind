@@ -32,7 +32,8 @@ Explicação...
 
 <h3><b>Tela - Tela De Cadastro (NÃO LOGADO)</b></h3>
 
-![image](https://github.com/user-attachments/assets/3f16a036-8545-40d3-a7b9-a16f9a6e928c)
+![image](https://github.com/user-attachments/assets/72035002-0a87-49c4-9dd9-596b880a503a)
+
 
 Explicação...
 
