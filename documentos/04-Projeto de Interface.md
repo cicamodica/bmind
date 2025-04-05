@@ -35,11 +35,33 @@ Explicação...
 
 <h3><b>Tela - Menu (NÃO LOGADO)</b></h3>
 
+A funcionalidade de barra lateral expansível no site permite que usuários naveguem e acessem conteúdos sem a necessidade de criar uma conta. Ao interagir com essa barra, o usuário pode visualizar diversas seções e serviços disponíveis, como:​
+
+- Finanças pessoais
+
+- Finanças corporativas
+
+- Operações bancárias
+
+- Investimentos
+
 ![image](https://github.com/user-attachments/assets/a65cb7c5-6b4e-4e19-8250-4f62927bc057)
 
 Explicação...
 
 <h3><b> Tela - Cadastro (NÃO LOGADO)</b></h3>
+
+- Formulário de cadastro solicitando informações básicas do usuário.
+
+- Campos para preenchimento com nome, e-mail, senha e confirmação de senha.
+
+- Botão de criação de conta para finalizar o cadastro e acessar os serviços.
+  
+- Opção para escolher o tipo de conta: Pessoa Física (PF) ou Pessoa Jurídica (PJ).
+
+- Design intuitivo, garantindo uma experiência simples e rápida.
+
+- Opção de login para usuários que já possuem conta.
 
 ![image](https://github.com/user-attachments/assets/72035002-0a87-49c4-9dd9-596b880a503a)
 
