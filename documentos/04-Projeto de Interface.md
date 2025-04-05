@@ -18,7 +18,16 @@ Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapea
 ## Protótipo
 
 <h3><b>Tela - Home page</b></h3>
-<p> </p>
+<p> 
+A tela home page demonstra a interface inicial do site :
+
+- Mensagem principal sobre decisão financeiras inteligentes.
+
+- Menu de navegação com opções de loguin e cadrastro.
+
+- Seções de finanças pessoais , corporativas, operaçoes bancarias e investimentos.
+
+- Botões para acesso rapído a serviços como cartões , emprestimos e financiamentos </p>
 
 ![image](https://github.com/user-attachments/assets/fbf74b3a-ce97-472d-b5c5-3b9101a3439b)
 
