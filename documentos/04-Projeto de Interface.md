@@ -34,7 +34,6 @@ Explicação...
 
 ![image](https://github.com/user-attachments/assets/3f16a036-8545-40d3-a7b9-a16f9a6e928c)
 
-
 Explicação...
 
 
