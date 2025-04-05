@@ -105,6 +105,32 @@ A tela de perfil é ideal para que o usuário possa visualizar e gerenciar suas 
 
 
 ![image](https://github.com/user-attachments/assets/834857e9-c388-48e8-aec5-21775c88c543)
+
+
+
+<h3><b> Tela - Validação de Dados</b></h3>
+<p>
+
+
+![Tela de Validação de Dados](https://github.com/user-attachments/assets/9fb424ad-78a7-4b6f-9e80-5eddae385e9c)
+
+
+
+<h3><b> Tela - Home Page (Logado)</b></h3>
+<p>
+
+
+![Homepage (Logado)](https://github.com/user-attachments/assets/5f945d36-3805-4a0d-8e66-9f2e02adf0ee)
+
+
+
+<h3><b> Tela - Menu (Logado)</b></h3>
+<p>
+
+
+![Tela de Menu (Logado)](https://github.com/user-attachments/assets/14344081-461b-4277-8807-8b935c226085)
+
+
 <p> 
 <p> 
 <p> 
