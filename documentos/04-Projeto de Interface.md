@@ -68,6 +68,7 @@ Explicação...
 
 Explicação...
 
+
 <h3><b> Tela - Pesquisa</b></h3>
 <p> 
 A tela de pesquisa possuí uma interface simples e intuitiva, permitindo ao usuário acessar suas pesquisas recentes ou encontrar informações relevantes rapidamente.
@@ -82,6 +83,7 @@ A tela de pesquisa possuí uma interface simples e intuitiva, permitindo ao usu�
 ![image](https://github.com/user-attachments/assets/9c0a042c-26ca-4e35-b9ca-13bde21b0699)
 
 
+
 <h3><b> Tela - Resultado de pesquisa</b></h3>
 <p> 
 A tela de resultado de pesquisa foi projetada para exibir informações relevantes com base nos termos pesquisados pelo usuário, facilita a navegação e o acesso rápido às informações fornecendo uma experiência personalizada e mostrando ao usuário os conteúdos mais relevantes.
@@ -94,12 +96,14 @@ A tela de resultado de pesquisa foi projetada para exibir informações relevant
 ![image](https://github.com/user-attachments/assets/7006c4f3-e319-4492-b0e2-4bf324972704)
 
 
+
 <h3><b> Tela - Perfil</b></h3>
 <p> 
 A tela de perfil é ideal para que o usuário possa visualizar e gerenciar suas informações de forma prática, oferece uma visão detalhada das informações pessoais e financeira do usuário, destacando o Dashboard, as receitas, despesas e lucros do último mês. Oferencendo acesso rápido aos conteúdos favoritos do usuário.
 
 
 ![image](https://github.com/user-attachments/assets/834857e9-c388-48e8-aec5-21775c88c543)
+
 
 
 
