@@ -69,6 +69,8 @@ Explicação...
 Explicação...
 
 
+
+
 <h3><b> Tela - Pesquisa</b></h3>
 <p> 
 A tela de pesquisa possuí uma interface simples e intuitiva, permitindo ao usuário acessar suas pesquisas recentes ou encontrar informações relevantes rapidamente.
