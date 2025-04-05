@@ -17,7 +17,7 @@ Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapea
 
 ## Protótipo
 
-<h3><b>Tela - Home page</b></h3>
+<h3><b>Tela - Home page ( Não logado ) </b></h3>
 <p> 
 A tela home page demonstra a interface inicial do site :
 
@@ -33,13 +33,13 @@ A tela home page demonstra a interface inicial do site :
 
 Explicação...
 
-<h3><b>Tela - Tela De Menu (NÃO LOGADO)</b></h3>
+<h3><b>Tela - Menu (NÃO LOGADO)</b></h3>
 
 ![image](https://github.com/user-attachments/assets/a65cb7c5-6b4e-4e19-8250-4f62927bc057)
 
 Explicação...
 
-<h3><b>Tela - Tela De Cadastro (NÃO LOGADO)</b></h3>
+<h3><b> Tela - Cadastro (NÃO LOGADO)</b></h3>
 
 ![image](https://github.com/user-attachments/assets/72035002-0a87-49c4-9dd9-596b880a503a)
 
