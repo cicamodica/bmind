@@ -24,9 +24,18 @@ Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapea
 
 Explicação...
 
+<h3><b>Tela - Tela De Menu (NÃO LOGADO)</b></h3>
+
 ![image](https://github.com/user-attachments/assets/a65cb7c5-6b4e-4e19-8250-4f62927bc057)
 
 Explicação...
+
+<h3><b>Tela - Tela De Cadastro (NÃO LOGADO)</b></h3>
+
+![image](https://github.com/user-attachments/assets/d5978544-bbab-4a39-88f8-4ed7770375e8)
+
+Explicação...
+
 
 
   
