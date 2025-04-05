@@ -110,6 +110,7 @@ A tela de perfil é ideal para que o usuário possa visualizar e gerenciar suas 
 
 <h3><b> Tela - Validação de Dados</b></h3>
 <p>
+A tela de validação de dados foi desenvolvida para permitir que o usuário identifique informações incorretas ou incompletas durante o cadastro, reforçando a segurança do processo.
 
 
 ![Tela de Validação de Dados](https://github.com/user-attachments/assets/9fb424ad-78a7-4b6f-9e80-5eddae385e9c)
@@ -118,6 +119,9 @@ A tela de perfil é ideal para que o usuário possa visualizar e gerenciar suas 
 
 <h3><b> Tela - Home Page (Logado)</b></h3>
 <p>
+Após o login, a Home Page apresenta em um dashboard, as principais informações e metas do usuário, baseando-se em dados personalizados. 
+
+Além disso, são exibidos o histórico de conteúdos consumidos e recomendações de novos conteúdos adaptados ao perfil do usuário
 
 
 ![Homepage (Logado)](https://github.com/user-attachments/assets/5f945d36-3805-4a0d-8e66-9f2e02adf0ee)
@@ -126,6 +130,14 @@ A tela de perfil é ideal para que o usuário possa visualizar e gerenciar suas 
 
 <h3><b> Tela - Menu (Logado)</b></h3>
 <p>
+Após o login do usuário, o menu expansível do site incorpora o recurso do Dashboard, permitindo acesso rápido às opções de:
+  
+- Resumo
+
+- Atualizar
+  
+- Histórico
+
 
 
 ![Tela de Menu (Logado)](https://github.com/user-attachments/assets/14344081-461b-4277-8807-8b935c226085)
