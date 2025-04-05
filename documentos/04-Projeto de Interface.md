@@ -105,10 +105,10 @@ A tela de perfil é ideal para que o usuário possa visualizar e gerenciar suas 
 
 
 ![image](https://github.com/user-attachments/assets/834857e9-c388-48e8-aec5-21775c88c543)
-
-
-
-
+<p> 
+<p> 
+<p> 
+  
 ### Protótipo de baixa fidelidade
 
 Protótipos de baixa fidelidade apresentam de forma simplificada o design da interface e o relacionamento entre suas páginas, permitindo evolução da proposta da solução. Neste projeto, os utilizaremos para apoiar a validação dos requisitos e efetuar mudanças dos mesmos, caso seja necessário, para menor impacto na codificação da aplicação.
