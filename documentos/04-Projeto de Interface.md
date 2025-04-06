@@ -121,7 +121,7 @@ A tela de validação de dados foi desenvolvida para permitir que o usuário ide
 <p>
 Após o login, a Home Page apresenta em um dashboard, as principais informações e metas do usuário, baseando-se em dados personalizados. 
 
-Além disso, são exibidos o histórico de conteúdos consumidos e recomendações de novos conteúdos adaptados ao perfil do usuário
+Além disso, são exibidos o histórico de conteúdos consumidos e recomendações de novos conteúdos adaptados ao perfil do usuário.
 
 
 ![Homepage (Logado)](https://github.com/user-attachments/assets/5f945d36-3805-4a0d-8e66-9f2e02adf0ee)
