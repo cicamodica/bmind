@@ -31,7 +31,6 @@ A tela home page demonstra a interface inicial do site :
 
 ![image](https://github.com/user-attachments/assets/fbf74b3a-ce97-472d-b5c5-3b9101a3439b)
 
-Explicação...
 
 <h3><b>Tela - Menu (NÃO LOGADO)</b></h3>
 
@@ -47,7 +46,6 @@ A funcionalidade de barra lateral expansível no site permite que usuários nave
 
 ![image](https://github.com/user-attachments/assets/a65cb7c5-6b4e-4e19-8250-4f62927bc057)
 
-Explicação... 
 
 </p>
 
@@ -83,9 +81,6 @@ Explicação...
 - Opção de login para usuários que já possuem conta.
 
 ![image](https://github.com/user-attachments/assets/72035002-0a87-49c4-9dd9-596b880a503a)
-
-
-Explicação...
 
 </p> 
 
