@@ -129,6 +129,7 @@ Além disso, são exibidos o histórico de conteúdos consumidos e recomendaçõ
 
 
 <h3><b> Tela - Menu (Logado)</b></h3>
+
 <p>
 Após o login do usuário, o menu expansível do site incorpora o recurso do Dashboard, permitindo acesso rápido às opções de:
   
@@ -137,13 +138,25 @@ Após o login do usuário, o menu expansível do site incorpora o recurso do Das
 - Atualizar
   
 - Histórico
+<p> 
 
+<h3><b> Tela - Esqueceu a senha </b></h3>
 
+<p> 
+  
+  -A tela pergunta ao usuario se esqueceu sua senha
+  
+  -Sugere para digitar o email para receber link de recuperação
+ 
+  -Apresenta espaço para o usario colocar o email e enviar
+  
+  ![Tela de redefinição de senha nov](https://github.com/user-attachments/assets/1441acd5-f6bb-400f-876e-a18b6d91b6ad)
+  
+</p>
 
 ![Tela de Menu (Logado)](https://github.com/user-attachments/assets/14344081-461b-4277-8807-8b935c226085)
 
 
-<p> 
 <h3><b> Tela - Material Didático</b></h3>
 <p>
 Os conteúdos serão exibidos ao usuario em telas com título referente o material escolhido seguido das informaçoes. 
