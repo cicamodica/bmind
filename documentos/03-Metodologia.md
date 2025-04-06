@@ -20,9 +20,9 @@ Para organização e distribuição das tarefas do projeto, a equipe está utili
 - In progress: Quando uma tarefa tiver sido iniciada, ela é movida para cá. 
 - Done: nesta lista são colocadas as tarefas que passaram pelos testes e controle de qualidade e estão prontos para ser entregues ao usuário. Não há mais edições ou revisões necessárias, ele está agendado e pronto para a ação.
 
-O quadro kanban do grupo no GitHub está disponível no link --- e é apresentado, no estado atual, na figura abaixo:
+O quadro kanban do grupo no GitHub está disponível no link (https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/1876/views/1) e é apresentado, no estado atual, na figura abaixo:
 
-
+![image](https://github.com/user-attachments/assets/d8dc5c41-e8ad-47c7-b1fd-e47b0bd55cb1)
 
 Figura 2 - Tela do kanban no GitHub utilizada pelo grupo
 
@@ -54,11 +54,11 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 |-------------------------------------|------------------------------------|----------------------------------------|
 | Repositório de código fonte         | GitHub                             | http://....                            |
 | Documentos do projeto               | GitHub                             | http://....                            |
-| Projeto de Interface                | Canva                              | http://....                            |
+| Projeto de Interface                | Canva                              | [http://.... ](https://www.canva.com/design/DAGj5G4VV9k/LZj1_tkLqIyLEPVMgSnv0A/edit?utm_content=DAGj5G4VV9k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)                           |
 | Gerenciamento do Projeto            | GitHub Projects                    | http://....                            |
 | Hospedagem                          | GitHub Pages                       | http://....                            |
 
 
 ### Estratégia de Organização de Codificação 
 
-Todos os artefatos relacionados a implementação e visualização dos conteúdos do projeto do site deverão ser inseridos na pasta [codigo-fonte](http://https://github.com/ICEI-PUC-Minas-PMV-ADS/WebApplicationProject-Template-v2/tree/main/codigo-fonte). Consulte também a nossa sugestão referente a estratégia de organização de codificação a ser adotada pela equipe de desenvolvimento do projeto.
+Todos os artefatos relacionados a implementação e visualização dos conteúdos do projeto do site deverão ser inseridos na pasta [código-fonte](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/tree/main/codigo-fonte) . Consulte também a nossa sugestão referente a estratégia de organização de codificação a ser adotada pela equipe de desenvolvimento do projeto.
