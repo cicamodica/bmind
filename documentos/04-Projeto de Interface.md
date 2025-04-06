@@ -138,9 +138,25 @@ Após o login do usuário, o menu expansível do site incorpora o recurso do Das
 - Atualizar
   
 - Histórico
+
+![Tela de Menu (Logado)](https://github.com/user-attachments/assets/14344081-461b-4277-8807-8b935c226085)
+
 <p> 
 
-<h3><b> Tela - Esqueceu a senha </b></h3>
+<h3><b> Tela - Redefinição de senha  </b></h3>
+
+<p>  A interface é simples e direta, feita para o usuário atualizarsua senha com facilidade , apresenta :
+
+- Um titulo ( redefinir senha )
+
+- Um para digitar a nova senha
+
+- Outro para confirmar nova senha
+  
+![Tela de redefinição de senha 2](https://github.com/user-attachments/assets/5b46cc03-ee15-4851-87ee-6de51cab4bee)
+
+   </p>
+<h3><b> Tela - esqueceu a  senha </b></h3>
 
 <p> 
   
