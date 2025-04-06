@@ -47,10 +47,29 @@ A funcionalidade de barra lateral expansível no site permite que usuários nave
 
 ![image](https://github.com/user-attachments/assets/a65cb7c5-6b4e-4e19-8250-4f62927bc057)
 
-Explicação...
+Explicação... 
 
-<h3><b> Tela - Cadastro (NÃO LOGADO)</b></h3>
+</p>
 
+<h3><b> Tela - Login (NÃO LOGADO)</b></h3><h3>
+<p>
+
+- Um campo para digitar o email.
+
+- Um campo para digitar a senha   
+
+- Link : ´´ Esqueceu a senha ?`` para quem não lembra da senha .
+
+- Verificação : Uma caixa de seleção ´´ Não sou um robo ``
+
+- Botão : ´´ entrar `` para acessar o sistema.
+
+   ![Tela de login](https://github.com/user-attachments/assets/d244c59c-1377-4678-8dd6-889f7c3768de)
+
+</p>
+
+<h3><b> Tela - Cadastro (NÃO LOGADO)</b></h3> 
+<p> 
 - Formulário de cadastro solicitando informações básicas do usuário.
 
 - Campos para preenchimento com nome, e-mail, senha e confirmação de senha.
@@ -68,7 +87,7 @@ Explicação...
 
 Explicação...
 
-
+</p> 
 
 
 <h3><b> Tela - Pesquisa</b></h3>
@@ -169,8 +188,6 @@ Após o login do usuário, o menu expansível do site incorpora o recurso do Das
   ![Tela de redefinição de senha nov](https://github.com/user-attachments/assets/1441acd5-f6bb-400f-876e-a18b6d91b6ad)
   
 </p>
-
-![Tela de Menu (Logado)](https://github.com/user-attachments/assets/14344081-461b-4277-8807-8b935c226085)
 
 
 <h3><b> Tela - Material Didático</b></h3>
