@@ -144,7 +144,12 @@ Após o login do usuário, o menu expansível do site incorpora o recurso do Das
 
 
 <p> 
-<p> 
+<h3><b> Tela - Material Didático</b></h3>
+<p>
+Os conteúdos serão exibidos ao usuario em telas com título referente o material escolhido seguido das informaçoes. 
+  
+![Tela de conteúdo didático](https://github.com/user-attachments/assets/1031fc55-9fc3-43b3-9f07-8cd7c65ecb4a)
+
 <p> 
   
 ### Protótipo de baixa fidelidade
