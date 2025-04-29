@@ -1,0 +1,107 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #fff;
+}
+
+.top-bar {
+  background: linear-gradient(to right, #48c6ef, #005baa);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.menu-btn {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-container input {
+  width: 60%;
+  max-width: 600px;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: none;
+}
+
+.user-icon {
+  font-size: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.main {
+  padding: 20px;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background: gray;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.tab-content {
+  background: #eee;
+  height: 200px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.list-section {
+  margin-top: 30px;
+}
+
+.list-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.list-items {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.list-item {
+  width: 120px;
+  height: 100px;
+  background: #ccc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.more-content {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 12px;
+}
