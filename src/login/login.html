@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Eixo 1</title>
+    <!-- título: "Pojeto Eixo 1" -->
+    <link rel="stylesheet" href="login.css" />
+    <!-- Link para CSS -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Acesso RECAPTCHA Google (sem verificação de domínio) + defer = O JavaScript só será executado depois que todo o HTML for carregado (ou seja, depois do DOM estar pronto).-->
+    <script
+      src="https://kit.fontawesome.com/1691cc7750.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Acesso ao FONTAWESOME, para adicionar ícones a aplicação + <i class="fa-regular fa-circle-left"></i >-->
+  </head>
+  <body>
+    <!-- HTML nav elements (nav = barra superior da página): https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_nav-->
+    <div class="nav">
+      <!-- Em HTML, a tag <div> (divisão) é um elemento de nível de bloco que serve como um contêiner genérico para agrupar outros elementos 
+        Em resumo, a tag <div> é um elemento fundamental para estruturar e estilizar conteúdo em HTML, permitindo a organização e o controle do layout de uma página web -->
+      <nav>
+        <!--LINK: tag <a> = "anchor"; O atributo href="/src/index.html" define o destino do link; "/src/index.html" é a referência dentro do site.-->
+        <a class="nav-link" href="/src/index.html">
+          <i class="fa-regular fa-circle-left nav-item nav-icon"></i>
+          <!--A tag <i> é usada para marcar conteúdo que tem ênfase ou significado diferenciado, neste caso, um ícone-->
+        </a>
+        <span class="nav-item">Bmind</span>
+        <!-- Elementos do nav = ícone de seta "fa-regular fa-circle-left" (gerado no fontawesome) para voltar e Bmind (logo) -->
+        <!--Em HTML, a tag <span> é um elemento inline usado para agrupar e estilizar partes específicas de um texto dentro de um elemento maior. É como uma "caixa" que permite aplicar
+            estilos CSS ou manipular texto com JavaScript em trechos específicos, sem criar uma nova linha de conteúdo. -->
+      </nav>
+    </div>
+    <!-- HTML form elements (formulário, neste caso formulário de login (form-login)): https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit -->
+    <div class="form">
+      <form id="form-login">
+        <span class="form-title">Login</span>
+        <!-- Título da página (Login) -->
+        <div class="form-input p-top-10">
+          <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
+          <label class="form-input-label" for="name">E-MAIL</label>
+          <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
+          <input id="form-email" class="form-input-textfield" type="email" />
+          <!-- type e-mail = campo para preenchimento de e-mail-->
+        </div>
+
+        <div class="form-input p-top-10">
+          <label class="form-input-label" for="name">SENHA</label>
+          <input
+            id="form-password"
+            class="form-input-textfield"
+            type="password"
+          />
+          <!-- type senha = campo para preenchimento de senha-->
+        </div>
+
+        <div class="form-input p-top-5">
+          <!-- Mensagem de dados incorretos-->
+          <span id="form-input-message" class="form-input-message"
+            >Os dados inseridos estão incorretos, favor tentar novamente</span
+          >
+        </div>
+
+        <div class="form-input">
+          <a class="forget-password" href="/src/index.html">Esqueceu a senha?</a>
+          <!--LINK (redirecionamento de página): tag <a> = "anchor"; O atributo href="/src/index.html" define o destino do link; "/src/index.html" é a referência dentro do site.-->
+        </div>
+
+        <div
+          class="g-recaptcha"
+          data-sitekey="6LeDRyMrAAAAAORZW5Lb5TeH-GGNpdx-g1n0zS-R"
+        ></div>
+        <!--Chave do RECAPTCHA disponibilizada pelo google (sem verificação de domínio)-->
+
+        <div class="form-input center p-top-50">
+          <!-- HMTL Button tag (botão "entrar"): https://www.w3schools.com/tags/tag_button.asp -->
+          <button type="submit" class="form-button">Entrar</button>
+        </div>
+      </form>
+    </div>
+    <!-- Link para JS = Melhor localização do link no final do <body>-->
+    <script src="login.js"></script>
+  </body>
+</html>
