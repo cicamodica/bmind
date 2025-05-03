@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Bmind</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #fff;
+    }
+
+    /* Barra principal */
+    .top-bar {
+      background: linear-gradient(to right, #48c6ef, #005baa);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    /* Barra de pesquisa */
+    .search-container {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 25px;
+      padding: 8px 15px;
+      width: 60%;
+      max-width: 600px;
+      margin: 10px auto;
+      flex: 1;
+    }
+
+    .search-icon {
+      font-size: 18px;
+      margin-right: 10px;
+      color: #333;
+    }
+
+    .search-container input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 14px;
+      border-radius: 25px;
+    }
+
+    .user-icon {
+      font-size: 20px;
+      border: 2px solid white;
+      border-radius: 50%;
+      padding: 5px;
+    }
+
+    .main {
+      padding: 20px;
+    }
+
+    .dashboard-title {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      background: gray;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .tab-content {
+      background: #eee;
+      height: 200px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .list-section {
+      margin-top: 30px;
+    }
+
+    .list-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .list-items {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .list-item {
+      width: 120px;
+      height: 100px;
+      background: #ccc;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .more-content {
+      text-align: right;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra superior com botão de menu, logo, busca e ícone de usuário -->
+  <div class="top-bar">
+    <button class="menu-btn" onclick="toggleMenu()">&#9776;</button>
+    <div class="logo">Bmind</div>
+
+    <div class="search-container">
+      <span class="search-icon">&#128269;</span>
+      <input type="text" placeholder="Pesquisa..." />
+    </div>
+
+    <div class="user-icon">&#128100;</div>
+  </div>
+
+  <div class="main">
+    <div class="dashboard-title">Dashboard de Fulano</div>
+
+    <!-- Botões para trocar entre abas -->
+    <div class="tabs">
+      <button onclick="showTab('principal')">Principal</button>
+      <button onclick="showTab('metas')">Metas</button>
+    </div>
+
+    <!-- Área de conteúdo das abas -->
+    <div class="tab-content" id="tab-content">
+      <!-- Conteúdo dinâmico -->
+    </div>
+
+    <!-- Lista: Vistos recentemente -->
+    <div class="list-section">
+      <div class="list-title">Vistos recentemente</div>
+      <div class="list-items">
+        <div class="list-item" onclick="window.location.href='pagina1.html'">Item 1</div>
+        <div class="list-item" onclick="window.location.href='pagina2.html'">Item 2</div>
+        <div class="list-item" onclick="window.location.href='pagina3.html'">Item 3</div>
+        <div class="list-item" onclick="window.location.href='pagina4.html'">Item 4</div>
+        <div class="list-item" onclick="window.location.href='pagina5.html'">Item 5</div>
+      </div>
+    </div>
+
+    <!-- Lista: Indicados para você -->
+    <div class="list-section">
+      <div class="list-title">Indicados para você</div>
+      <div class="list-items">
+        <div class="list-item" onclick="alert('Conteúdo 1 clicado')">Item</div>
+        <div class="list-item" onclick="alert('Conteúdo 2 clicado')">Item</div>
+        <div class="list-item" onclick="alert('Conteúdo 3 clicado')">Item</div>
+        <div class="list-item" onclick="alert('Conteúdo 4 clicado')">Item</div>
+        <div class="list-item" onclick="alert('Conteúdo 5 clicado')">Item</div>
+      </div>
+      <div class="more-content">MAIS CONTEÚDOS ➜</div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu() {
+      alert("Menu clicado");
+    }
+
+    function showTab(tab) {
+      const content = document.getElementById("tab-content");
+      content.innerHTML = tab === 'principal'
+        ? '<p>Conteúdo da aba Principal</p>'
+        : '<p>Conteúdo da aba Metas</p>';
+    }
+  </script>
+</body>
+</html>
