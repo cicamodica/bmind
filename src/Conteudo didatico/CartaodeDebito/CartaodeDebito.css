@@ -113,7 +113,7 @@ body {  /* Estilo geral do corpo da página */
 
 
 .menu-icon { /* Estilo do item do menu ☰ */
-  font: size 24px;
+  font-size:  24px;
   cursor: pointer;
   margin-right: 15px;
   color: white;
