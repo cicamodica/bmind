@@ -19,13 +19,13 @@
 /*Esses font-face foram colocados para registrar a fonte no css*/
   @font-face {
     font-family: "Poppins"; 
-    src: url("/src/poppins/bold.ttf") format("truetype");
+    src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
     
 }
 
 @font-face {
     font-family: "Poppins"; 
-    src: url("/src/Poppins-Regularttf") format("truetype");
+    src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
     
 }
 
