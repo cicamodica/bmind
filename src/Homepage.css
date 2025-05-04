@@ -106,7 +106,7 @@ body {
   position: absolute;
   right: 20px;
   color: black;
-  pointer-events: none; /* ícone não clicável */
+  pointer-events:visible
 }
 
 /* Login / Cadastro */
@@ -166,6 +166,24 @@ body {
   width: 220px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.submenu-btn-link {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu-btn-link:hover {
+  background-color: #024dae; 
+  color: white;              /* texto branco ao passar o mouse */
 }
 
 * Container principal do carrossel */
