@@ -1,0 +1,204 @@
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// Fechar menu ao clicar fora
+window.addEventListener("click", function (e) {
+  const menu = document.getElementById("dropdownMenu");
+  const icon = document.querySelector(".menu-icon");
+  if (!menu.contains(e.target) && !icon.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+
+const track = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".hero-slide");
+  const btnLeft = document.querySelector(".nav-left");
+  const btnRight = document.querySelector(".nav-right");
+
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  btnRight.addEventListener("click", () => {
+    if (currentIndex < slides.length - 1) {
+      currentIndex++;
+      updateCarousel();
+    }
+  });
+
+  btnLeft.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+    }
+  });
+
+  // Atualiza a posição no redimensionamento da janela
+  window.addEventListener("resize", updateCarousel);
+
+// Alterna entre abas principais
+const tabLinks = document.querySelectorAll(".tab-link");
+const tabContents = document.querySelectorAll(".tab-content");
+
+// Alternância de abas principais (Finanças Pessoais, Corporativas etc)
+tabLinks.forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    const tabId = link.getAttribute("data-tab");
+
+    // Remove classe 'active' de todas as abas e conteúdos
+    tabLinks.forEach(l => l.classList.remove("active"));
+    tabContents.forEach(content => content.classList.remove("active"));
+
+    // Ativa a aba e conteúdo selecionados
+    link.classList.add("active");
+    document.getElementById(tabId).classList.add("active");
+  });
+});
+
+// Controle dos botões de "Finanças Pessoais"
+const btnPlanejamento = document.getElementById("btnPlanejamento");
+const btnOrcamento = document.getElementById("btnOrcamento");
+const btnControle = document.getElementById("btnControle");
+
+const planejamentoConteudo = document.getElementById("planejamentoConteudo");
+const orcamentoConteudo = document.getElementById("orcamentoDomestico");
+const controleConteudo = document.getElementById("controleDividas");
+
+function esconderTodosConteudos() {
+ planejamentoConteudo.style.display = "none";
+  orcamentoConteudo.style.display = "none";
+  controleConteudo.style.display = "none";
+}
+
+btnPlanejamento.addEventListener("click", () => {
+  esconderTodosConteudos();
+  planejamentoConteudo.style.display = "block";
+});
+
+btnOrcamento.addEventListener("click", () => {
+  esconderTodosConteudos();
+  orcamentoConteudo.style.display = "block";
+});
+
+btnControle.addEventListener("click", () => {
+  esconderTodosConteudos();
+  controleConteudo.style.display = "block";
+});
+
+// Botões de Finanças Corporativas
+const btnAnalise = document.getElementById("btnAnaliseBalanco");
+const btnFluxo = document.getElementById("btnFluxoCaixa");
+const btnCaptacao = document.getElementById("btnCaptaçãoRecursos");
+
+const analiseConteudo = document.getElementById("analiseBalanco");
+const fluxoConteudo = document.getElementById("fluxoCaixa");
+const captacaoConteudo = document.getElementById("captacaoRecursos");
+
+function esconderConteudosCorporativos() {
+  analiseConteudo.style.display = "none";
+  fluxoConteudo.style.display = "none";
+  captacaoConteudo.style.display = "none";
+}
+
+btnAnalise.addEventListener("click", () => {
+  esconderConteudosCorporativos();
+  analiseConteudo.style.display = "block";
+});
+
+btnFluxo.addEventListener("click", () => {
+  esconderConteudosCorporativos();
+  fluxoConteudo.style.display = "block";
+});
+
+btnCaptacao.addEventListener("click", () => {
+  esconderConteudosCorporativos();
+  captacaoConteudo.style.display = "block";
+});
+
+//Botões de Operações Bancarias
+const btnCartaoDebito = document.getElementById("btnCartaoDebito");
+const btnCartaoCredito = document.getElementById("btnCartaoCredito");
+const btnEmprestimo = document.getElementById("btnEmprestimo");
+const btnFinanciamento = document.getElementById("btnFinanciamento");
+const btnTaxasTarifas = document.getElementById("btnTaxasTarifas");
+
+const cartaoDebito = document.getElementById("cartaoDebito");
+const cartaoCredito = document.getElementById("cartaoCredito");
+const emprestimos = document.getElementById("emprestimos");
+const financiamento = document.getElementById("financiamento");
+const taxasTarifas = document.getElementById("taxasTarifas");
+
+
+function esconderConteudosOperacoesBancarias(){
+  cartaoDebito.style.display = "none";
+  cartaoCredito.style.display = "none";
+  emprestimos.style.display = "none";
+  financiamento.style.display ="none";
+  taxasTarifas.style.display ="none";
+}
+
+btnCartaoDebito.addEventListener("click", ( )=>{
+  esconderConteudosOperacoesBancarias();
+  cartaoDebito.style.display = "block";
+});
+
+btnCartaoCredito.addEventListener("click", ( )=>{
+  esconderConteudosOperacoesBancarias();
+  cartaoCredito.style.display = "block";
+});
+
+btnEmprestimo.addEventListener("click", ( )=>{
+  esconderConteudosOperacoesBancarias();
+  emprestimos.style.display = "block";
+});
+
+btnFinanciamento.addEventListener("click", ( )=>{
+  esconderConteudosOperacoesBancarias();
+  financiamento.style.display = "block";
+});
+
+btnTaxasTarifas.addEventListener("click", ( )=>{
+  esconderConteudosOperacoesBancarias();
+  taxasTarifas.style.display = "block";
+});
+
+//Botoes Controle Investimentos
+const btnRendaFixa = document.getElementById("btnRendaFixa");
+const btnRendaVariavel = document.getElementById("btnRendaVariavel");
+const btnFundoInvestimento = document.getElementById("btnFundoInvestimento");
+
+const rendaFixa = document.getElementById("rendaFixa");
+const rendaVariavel = document.getElementById("rendaVariavel");
+const fundoInvestimentos = document.getElementById("fundoInvestimentos");
+
+
+function esconderConteudosInvestimentos(){
+  rendaFixa.style.display = "none";
+  rendaVariavel.style.display = "none";
+  fundoInvestimentos.style.display = "none";
+}
+
+btnRendaFixa.addEventListener("click", ( )=>{
+  esconderConteudosInvestimentos();
+  rendaFixa.style.display = "block";
+});
+
+btnRendaVariavel.addEventListener("click", ( )=>{
+  esconderConteudosInvestimentos();
+  rendaVariavel.style.display = "block";
+});
+
+btnFundoInvestimento.addEventListener("click", ( )=>{
+  esconderConteudosInvestimentos();
+  fundoInvestimentos.style.display = "block";
+});
+
+
+
+
