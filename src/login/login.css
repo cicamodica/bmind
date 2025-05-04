@@ -144,6 +144,11 @@ form .form-button {
   cursor: pointer;
 }
 
+form .form-button:hover {
+  /*Estilização da classe .form-button dentro da classe .form (botão de entrar)*/
+background-color:#024dae;
+}
+
 .center {
   /*Estilização da classe .center (botão de entrar)*/
   display: flex;
