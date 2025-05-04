@@ -98,7 +98,7 @@ form {
   display: flex;
   /* align-items: center; */
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 100px;
 }
 
 form .form-title {
@@ -131,6 +131,7 @@ form .form-input-textfield {
 
 form .form-button {
   /*Estilização da classe .form-button dentro da classe .form (botão de entrar)*/
+  font-family: "Poppins";
   background-color: black;
   color: #ffffff;
   text-align: center;
@@ -138,8 +139,9 @@ form .form-button {
   igual inline, mas você também pode definir largura (width) e altura (height), como se fosse block.*/
   width: 140px;
   height: 40px;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 .center {
@@ -169,4 +171,19 @@ form .forget-password {
   font-size: 15px;
   text-decoration: none; /*Remove a linha do hiperlink*/
   color: #37a6d1; /*Altera a cor do hiperlink*/
+}
+
+form .form-input-signup {
+  /*Estilização da classe .forget-input-cadastro (texto esqueceu a senha?)*/
+  font-weight: 400;
+  font-size: 14px;
+  color: black; /*Altera a cor do hiperlink*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form .signup {
+  text-decoration: none; /* Remove a linha do hiperlink */
+  color: #37a6d1; /* Altera a cor do hiperlink */
 }
