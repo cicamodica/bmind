@@ -67,27 +67,34 @@ body {  /* Estilo geral do corpo da página */
     padding: 10px 20px; /* Preenchimento interno */
     background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
  }
- .search-bar { /* Estilo da barra de pesquisa */
+ 
+ .search-conteiner { /* Estilo da barra de pesquisa */
   display:flex;
-  position: center;
-  left: 900px;
+  position: absolute;
   transform: translateX(-50%);
-  /*width: 800px;*/
-  width: 95vw;
-  max-width: 800px;
-  padding: 12px 12px;
-  border-radius: 40px;
-  border: none;
-  outline: none;
+  width: 900px;
   z-index: 1;
+  align-items: center;
+  left: 50%;
+ /* margin-right: -300px;*/
+  
+  
+ }
+ .search-bar { 
+  border-radius: 40px;
+  outline: none; 
+  padding: 12px 40px;
   font-weight: 100;
-  margin-right: -100px;
-
- }
- .search-bar i { /
+  border: none;
+  width: 100%;
   
  }
   
+ .search-icone {
+  position: absolute;
+  right: 20px;
+  color: black;
+ }
 
 /* Menu dropdown */
 .dropdown-menu {
