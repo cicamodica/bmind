@@ -4,13 +4,17 @@
     box-sizing: border-box;
 }
 
-.navbar {
+#cabecalho {
+    
+    font-size: 20px;
+    font-family: "Poppins"; 
+    font-weight: 40;
+    background: linear-gradient(to right, #5bc5cc, #024dae);/*cor do cabeçalho, usando o gradiente de duas cores*/
+    height: 70px;
+    padding: 20px;
     display: flex;
-    align-items: center;
-    background: linear-gradient(to right, #55c3cc, #004aad);
-    padding: 10px 20px;
-   
-  }
+    align-items: center;/*alinhamento vertical dos botão de voltar e do nome Bmind dentro do cabeçalho*/
+}
 
 /*Esses font-face foram colocados para registrar a fonte no css*/
   @font-face {
@@ -37,6 +41,8 @@ i.fa-circle-left {
     color: white; 
     font-size: 35px; 
     margin-right: 10px; 
+    cursor: pointer; /*coloquei o ponteiro de selecionar*/
+    
 
 }
 /*fonte do site e cor de fundo*/
@@ -60,18 +66,6 @@ h3, h4, input {
 }
 
 
-#cabecalho {
-    
-    font-size: 15px;
-    font-family: "Poppins"; 
-    font-weight: 40;
-    background: linear-gradient(to right, #5bc5cc, #024dae);/*cor do cabeçalho, usando o gradiente de duas cores*/
-    height: 50px;
-    padding: 10px, 20px;
-    display: flex;
-    align-items: center;/*alinhamento vertical dos botão de voltar e do nome Bmind dentro do cabeçalho*/
-}
-
 /*Deixei tudo centralizado a partir da tag div que eu usei para marcar o conteudo*/
 #conteudo {
     text-align: center;
@@ -79,12 +73,6 @@ h3, h4, input {
 }
 
 
-#botaovoltar {
-    padding-left: 10px;
-    font-size: 24px; 
-    cursor: pointer; /*coloquei o ponteiro de selecionar*/
-    display: inline-block;
-}
 
 /*A partir daqui, eu editei os títulos separadamente, modificando tamanho da fonte e localização vertical de cada um na tela*/
 h2 {
@@ -124,11 +112,10 @@ h4 {
     border: none;
     margin-top: 40px;
     font-weight: bold;
-    
     transition: background-color 0.5s; /*****Coloquei uma transição para o botão mudar de cor*/
 }
 .input-confirmar:hover {/*****Usei o hover para executar a ação de mudar de cor e coloquei uma cor de fundo pra ele fazer isso*/
-background-color:#024dae;
+    background-color:#024dae;
 }
 
 .mensagem-erro {

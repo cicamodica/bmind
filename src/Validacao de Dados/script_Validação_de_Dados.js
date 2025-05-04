@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {/*Garantir que o cód
 
     if (senhaDigitada === senhaCorreta) {/*Ação pra senha digitada, caso correta */
       mensagemErro.textContent = '';/* limpa a mensagem*/
-      window.location.href = 'src/Main/Main.html';/*próxima página */
+      window.location.href = '/src/main/main.html';/*próxima página */
     } else {/*Caso esteja errado */
       mensagemErro.textContent = 'Código incorreto';/*Mensagem que vai aparecer */
       inputCodigo.value = '';/*Quando o usuário apertar em confirmar a caixa de texto vai limpar o código. 
