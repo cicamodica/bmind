@@ -170,33 +170,35 @@ body {  /* Estilo geral do corpo da página */
 .cabecalho { /* Estilo do cabeçalho */
     background: #003c54; /* Cor de fundo */
     padding: 15px 20px; /* Preenchimento interno */
-    display: flex;
-    width: 100%;
+   /* display: flex;*/
+   /* width: 100%; */
    /* justify-content: space-between;  Espaçamento entre os itens */
   }
 
   
   .seta { /* Estilo do ícone no cabeçalho */
-    display: flex; /* Flexbox para centralizar o conteúdo */
+   
     margin: 20px 0; /* Margem superior e inferior */
     font-size: 35px;
     cursor: pointer;
     color: white; /* Cor do ícone */
-   /* gap: 15px;  Espaçamento entre os itens */;
+   
   }
   
+  .titulo-cabecalho {
+    display: flex;
+    align-items: center; /* Alinhamento vertical */
+    gap: 10px;
+  }
+
   .titulo-cabecalho h1 { /* Estilo do título no cabeçalho */
     display: flex; /* Flexbox para centralizar o conteúdo */
     align-items: center; /* Alinhamento vertical */
-   /* margin: 0;  Remove margens */
     font-size: 35px; /* Tamanho da fonte */
-    width: 100%; /* Largura total */
-    padding-left: 70px;
     color: white;
+    font-weight: 500; /* Peso da fonte */
   } 
   
-  /* Conteudo didatico
-  */
     
  
  

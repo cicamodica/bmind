@@ -27,31 +27,60 @@
 
     <nav class="dropdown-menu" id="dropdownMenu">
       <ul>
-        <li>Finanças pessoais</li>
-        <li>Finanças corporativas</li>
+        <li class="has-submenu">
+          Finanças pessoais
+          <ul class="submenu">
+            <li>Planejamento financeiro</li>
+            <li>Orçamento doméstico</li>
+            <li>Controle de dívidas</li>
+          </ul>
+        </li>
+    
+        <li class="has-submenu">
+          Finanças corporativas
+          <ul class="submenu">
+            <li>Análise de balanço</li>
+            <li>Fluxo de caixa</li>
+            <li>Captação de recursos</li>
+          </ul>
+        </li>
+    
         <li class="has-submenu">
           Operações bancárias
           <ul class="submenu">
-            <li>Cartão de Débito</li>
-            <li>Cartões de Crédito</li>
+            <li>
+              <a href="/src/Conteudo didatico/CartaodeDebito/CartaodeDebito.html" class="submenu-btn-link">Cartão de Débito</a>
+            </li>
+            <li>
+              <a href="/src/Conteudo didatico/Cartaodecredito/CartaodeCredito.html" class="submenu-btn-link">Cartões de Crédito</a>
+            </li>
             <li>Empréstimo</li>
             <li>Financiamento</li>
-            <li>Taxas e tarifas comuns</li>
+            <li>Taxas e Tarifas</li>
           </ul>
         </li>
-        <li>Investimentos</li>
-        <li>Poupança</li>
+    
+        <li class="has-submenu">
+          Investimentos
+          <ul class="submenu">
+            <li>Renda fixa</li>
+            <li>Renda Variável</li>
+            <li>Fundos de investimento</li>
+          </ul>
+        </li>
       </ul>
     </nav>
+    
+  </div>
   
      <!--  parte de baixo    -->
 
     <nav class="cabecalho">
   
       <div class="titulo-cabecalho">
-        <div class="seta" onclick="voltarPagina()"> <!--seta de voltar-->
-          <i class="fa-regular fa-circle-left"></i>
-      
+        <a href="/src/Homepage.html"  class="seta">
+        <i class="fa-regular fa-circle-left "></i> 
+        </a>
         <h1>Cartão de Débito</h1>
     </div>
    
