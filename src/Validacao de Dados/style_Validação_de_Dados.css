@@ -31,7 +31,7 @@
 
 @font-face {
     font-family: "Poppins"; 
-    src: url("src/Poppins-Regular.ttf") format("truetype");
+    src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
     
 }
 
@@ -48,7 +48,7 @@ i.fa-circle-left {
 /*fonte do site e cor de fundo*/
 body { 
     font-family: "Poppins"; 
-    src: url("src/Poppins-Regular.ttf") format("truetype");
+    src: url("/src/Poppins-Regular.ttf") format("truetype");
     background-color: #fff; 
 
 }
@@ -105,7 +105,7 @@ h4 {
     color: white;/*cor da fonte*/
     font-size: 13px;
     font-family: "poppins"; 
-    src: url("src/Poppins-Medium.ttf") format("truetype");/*tive que especificar a fonte novamente*/
+    src: url("/src/Poppins-Medium.ttf") format("truetype");/*tive que especificar a fonte novamente*/
     width: 130px;
     height: 35px;
     cursor: pointer; /*coloquei o ponteiro de selecionar*/
