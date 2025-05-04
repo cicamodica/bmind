@@ -29,7 +29,7 @@ document.getElementById("form-cadastro").addEventListener("submit", function (ev
     }
   
     mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
-    alert("Cadastro validado com sucesso!"); // Exibe mensagem de sucesso
+    window.location.href = "/src/Validacao de Dados/Index_Validação_de_Dados.html";
   });
   
   
