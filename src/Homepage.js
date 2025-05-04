@@ -1,3 +1,4 @@
+//Inicio funcionalidades Menu
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
@@ -12,6 +13,9 @@ window.addEventListener("click", function (e) {
   }
 });
 
+// Fim funcionalidades Menu
+
+// Funcionalidade do carrossel
 const track = document.querySelector(".carousel-track");
   const slides = document.querySelectorAll(".hero-slide");
   const btnLeft = document.querySelector(".nav-left");
@@ -40,7 +44,9 @@ const track = document.querySelector(".carousel-track");
 
   // Atualiza a posição no redimensionamento da janela
   window.addEventListener("resize", updateCarousel);
+//Fim funcionalidade do carrossel
 
+//Funcionalidades das abas de conteudo
 // Alterna entre abas principais
 const tabLinks = document.querySelectorAll(".tab-link");
 const tabContents = document.querySelectorAll(".tab-content");
@@ -199,6 +205,19 @@ btnFundoInvestimento.addEventListener("click", ( )=>{
   fundoInvestimentos.style.display = "block";
 });
 
+// Ativa a primeira aba e seus conteúdos ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  // Ativa a aba principal "Finanças Pessoais"
+  tabLinks[0].click();
+
+  // Ativa o primeiro conteúdo de cada grupo
+  btnPlanejamento.click();     // Finanças Pessoais
+  btnAnalise.click();          // Finanças Corporativas
+  btnCartaoDebito.click();     // Operações Bancárias
+  btnRendaFixa.click();        // Investimentos
+});
+
+//Fim funcionalidades das abas de conteudo
 
 
 

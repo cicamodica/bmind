@@ -22,7 +22,7 @@
         Em resumo, a tag <div> é um elemento fundamental para estruturar e estilizar conteúdo em HTML, permitindo a organização e o controle do layout de uma página web -->
       <nav>
         <!--LINK: tag <a> = "anchor"; O atributo href="/src/index.html" define o destino do link; "/src/index.html" é a referência dentro do site.-->
-        <a class="nav-link" href="/src/index.html">
+        <a class="nav-link" href="/src/Homepage.html">
           <i class="fa-regular fa-circle-left nav-item nav-icon"></i>
           <!--A tag <i> é usada para marcar conteúdo que tem ênfase ou significado diferenciado, neste caso, um ícone-->
         </a>
@@ -77,8 +77,15 @@
           <!-- HMTL Button tag (botão "entrar"): https://www.w3schools.com/tags/tag_button.asp -->
           <button type="submit" class="form-button">Entrar</button>
         </div>
+
+        <div class="form-input-signup p-top-10"> <!--Link para redirecionamento para página de cadastro-->
+          <p> Não possui cadastro? <a class="signup" href="/src/Cadastro/cadastro.html"> Clique aqui! </a></p>
+          <!--LINK (redirecionamento de página): tag <a> = "anchor"; O atributo href="/src/index.html" define o destino do link; "/src/index.html" é a referência dentro do site.-->
+        </div>
+
       </form>
     </div>
+  
     <!-- Link para JS = Melhor localização do link no final do <body>-->
     <script src="login.js"></script>
   </body>

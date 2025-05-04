@@ -14,7 +14,7 @@ formLogin.addEventListener("submit", function (event) {
   ) {
     //Entra nesse bloco ({}) caso os dados inseridos em e-mail e senha forem corretos, ou seja, o e-mail digitado = "ceciliacmodica@gmail.com" e senha = 123456
     document.getElementById("form-input-message").style.display = "none"; //Faz sumir a mensagem de erro (display = "none") enquanto os dados forem colocados forem corretos
-    window.location.href = "wip-page.html"; //Redireciona o usuário para outra página (wip-page.html)
+    window.location.href = "/src/Main/Main.html"; //Redireciona o usuário para outra página (main)
   } else {
     //Entra nesse bloco ({}) caso os dados inseridos em e-mail e senha forem incorretos, ou seja, o e-mail digitado != "ceciliacmodica@gmail.com" e senha != 123456
     document.getElementById("form-input-message").style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão
