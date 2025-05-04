@@ -23,6 +23,7 @@
             <h1>Cadastrar</h1> <!-- Titulo em cima  -->
             <a href="#">Já possui cadastro?</a> <!-- Faz um "link" ou uma Âncora, tipo um botão pra ir pra pagina de login futuramente-->
 
+        <form id="form-cadastro">  
             <div class="form-container"> <!-- Serve pra no CSS, deixar um de cada lado, sem ele ficaria um embaixo do outro. -->
                 <!-- Primeiro o lado esquerdo -->
                   <div class="dados-pessoais">
@@ -56,10 +57,20 @@
                  </div>
             </div>
 
-            <button class="botao-proximo">Próximo</button>
+                 <div
+                 
+                    id="mensagem-erro" style="color: red; margin-top: 20px;"> <!-- Mensagem de erro, que vai aparecer caso o usuário não preencha os campos corretamente -->    
+                
+                </div> 
+
+                <button type="submit" class="botao-proximo">Próximo</button> <!-- Botão de próximo, o type serve pra identificar o tipo do botão, no caso submit, que é pra enviar o formulário -->
+        </form>             
 
 
         </main>
+
+        <script src="/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/Cadastro/cadastro.js"></script> <!-- Script pra ligar o JS, que vai fazer a validação dos campos e outras coisas -->
+
      </body>
 </html> 
 
