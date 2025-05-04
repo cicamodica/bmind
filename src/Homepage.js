@@ -16,34 +16,32 @@ window.addEventListener("click", function (e) {
 // Fim funcionalidades Menu
 
 // Funcionalidade do carrossel
-const track = document.querySelector(".carousel-track");
-  const slides = document.querySelectorAll(".hero-slide");
-  const btnLeft = document.querySelector(".nav-left");
-  const btnRight = document.querySelector(".nav-right");
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".carousel-track");
+  const slides = Array.from(document.querySelectorAll(".hero-slide"));
+  const btnPrev = document.querySelector(".nav-left");
+  const btnNext = document.querySelector(".nav-right");
 
-  let currentIndex = 0;
+  let currentSlide = 0;
 
-  function updateCarousel() {
+  function updateSlidePosition() {
     const slideWidth = slides[0].offsetWidth;
-    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
   }
 
-  btnRight.addEventListener("click", () => {
-    if (currentIndex < slides.length - 1) {
-      currentIndex++;
-      updateCarousel();
-    }
+  btnNext.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length; // Volta ao início
+    updateSlidePosition();
   });
 
-  btnLeft.addEventListener("click", () => {
-    if (currentIndex > 0) {
-      currentIndex--;
-      updateCarousel();
-    }
+  btnPrev.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length; // Vai pro final
+    updateSlidePosition();
   });
 
-  // Atualiza a posição no redimensionamento da janela
-  window.addEventListener("resize", updateCarousel);
+  // Atualiza posição ao redimensionar (responsividade)
+  window.addEventListener("resize", updateSlidePosition);
+});
 //Fim funcionalidade do carrossel
 
 //Funcionalidades das abas de conteudo

@@ -226,15 +226,15 @@ body {
 .nav-left,
 .nav-right {
   position: absolute;
-  top: 50%; /* Centraliza verticalmente em relação à .hero */
+  top: 50%;
   transform: translateY(-50%);
-  background: #f5f5f5;
-  border: 2px solid #aaa;
-  border-radius: 50%;
-  font-size: 24px;
-  padding: 10px;
+  font-size: 32px;
+  background: none;       /* Remove o fundo */
+  border: none;           /* Remove a borda */
+  color: black;           /* Cor da seta */
   cursor: pointer;
   z-index: 2;
+  outline: none;          /* Remove contorno ao focar */
 }
 
 /* Posicionamento horizontal */
@@ -245,6 +245,7 @@ body {
 .nav-right {
   right: 10px;
 }
+
 
 /* Menu de abas */
 .tabs {
