@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Dados</title>
+    <link rel="stylesheet" href="style_Validação_de_Dados.css"> <!--Ligar ao CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--Cria o link com o site da logo-->
+    
+</head>
+<body>
+
+    
+    <!--Cabeçalho-->
+    <navbar>
+      <div id="cabecalho">
+    
+          <i id="botaovoltar"class="fa-regular fa-circle-left"></i>
+        
+           <h1>Bmind</h1>
+      </div>
+    </navbar>
+   
+
+
+    <main class="Validação">
+        <div id="conteudo">
+            <!--O conteúdo do site: criei os titulos e coloquei o conteúdo de cada um-->
+            <h2>Validação de Conta</h2>
+            <h3> Foi encaminhado um e-mail para a confirmação dos dados</h3>
+            <h4>INSIRA ABAIXO O CÓDIGO DE VALIDAÇÃO</h4>
+
+            <form class="formulario-validacao"> <!--Usei o form para criar os formulários-->
+
+                <input 
+                type="text"
+                class="input-codigo" 
+                placeholder="******" 
+                maxlength="6"> 
+                <div id="Código Incorreto"></div>
+                <!--Criei um formulário com *input* e nesssa ordem eu defini como ele funciona: 
+                *type* defini o tipo da informação que posso colocar nele, que é texto
+                *class* criei uma classe para especificar no css
+                *placeholder* é a informação que vai aparecer antes da pessoa digitar o código. No caso 6 asteriscos para indicar que são 6 digitos
+                *maxlength* para limitar a quantidade de digitos no formulário-->
+
+                <!--Quebra de Linha-->
+
+
+                <input
+                type="submit"
+                class="input-confirmar"
+                value="confirmar">
+                
+                <!--Criei um botão usando o input e usei o *type="submit" para enviar o formulário-->
+
+            </form>
+        </div>
+    </main>
+    
+</body>
+<script src="script_Validação_de_Dados.js"> </script> <!--Ligar ao Java Script-->
+</html>

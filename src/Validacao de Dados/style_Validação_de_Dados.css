@@ -1,0 +1,141 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right, #55c3cc, #004aad);
+    padding: 10px 20px;
+   
+  }
+
+/*Esses font-face foram colocados para registrar a fonte no css*/
+  @font-face {
+    font-family: "Poppins"; 
+    src: url("/src/poppins/bold.ttf") format("truetype");
+    
+}
+
+@font-face {
+    font-family: "Poppins"; 
+    src: url("/src/Poppins-Regularttf") format("truetype");
+    
+}
+
+@font-face {
+    font-family: "Poppins"; 
+    src: url("src/Poppins-Regular.ttf") format("truetype");
+    
+}
+
+/*Icone de Seta para voltar para a página anterior*/
+i.fa-circle-left {
+    text-decoration: none; /* remove o sublinhado do link */
+    color: white; 
+    font-size: 35px; 
+    margin-right: 10px; 
+
+}
+/*fonte do site e cor de fundo*/
+body { 
+    font-family: "Poppins"; 
+    src: url("src/Poppins-Regular.ttf") format("truetype");
+    background-color: #fff; 
+
+}
+/*Isso aqui é o Bmind que fica no cabeçalho*/
+h1 {
+    font-weight: 500;
+    font-size: 40;
+    color: white;
+    padding: 10px;
+}
+
+/*A página está deixando tudo em negrito sozinho, então estou especificando o que não deve ficar*/
+h3, h4, input { 
+    font-weight: 400;
+}
+
+
+#cabecalho {
+    
+    font-size: 15px;
+    font-family: "Poppins"; 
+    font-weight: 40;
+    background: linear-gradient(to right, #5bc5cc, #024dae);/*cor do cabeçalho, usando o gradiente de duas cores*/
+    height: 50px;
+    padding: 10px, 20px;
+    display: flex;
+    align-items: center;/*alinhamento vertical dos botão de voltar e do nome Bmind dentro do cabeçalho*/
+}
+
+/*Deixei tudo centralizado a partir da tag div que eu usei para marcar o conteudo*/
+#conteudo {
+    text-align: center;
+    align-items: center;
+}
+
+
+#botaovoltar {
+    padding-left: 10px;
+    font-size: 24px; 
+    cursor: pointer; /*coloquei o ponteiro de selecionar*/
+    display: inline-block;
+}
+
+/*A partir daqui, eu editei os títulos separadamente, modificando tamanho da fonte e localização vertical de cada um na tela*/
+h2 {
+    font-size: 46px;
+    margin-top: 60px;
+    font-weight: 500;
+}
+h3 {
+    font-size: 15px;
+    margin-top: 7px;
+}
+
+h4 {
+    font-size: 17px;
+    margin-top: 80px;
+}
+
+/*Defini o tamanho da caixa de formulário do código de validação e centralizei o texto dentro dele*/
+.input-codigo {
+    width: 380px;
+    height: 40px;
+    text-align: center;
+    margin-top: 7px;
+    font-size: 15px;
+}
+
+/*Botão de Confirmar.*/
+.input-confirmar {
+    background-color: black;/*cor de fundo*/
+    color: white;/*cor da fonte*/
+    font-size: 13px;
+    font-family: "poppins"; 
+    src: url("src/Poppins-Medium.ttf") format("truetype");/*tive que especificar a fonte novamente*/
+    width: 130px;
+    height: 35px;
+    cursor: pointer; /*coloquei o ponteiro de selecionar*/
+    border: none;
+    margin-top: 40px;
+    font-weight: bold;
+    
+    transition: background-color 0.5s; /*****Coloquei uma transição para o botão mudar de cor*/
+}
+.input-confirmar:hover {/*****Usei o hover para executar a ação de mudar de cor e coloquei uma cor de fundo pra ele fazer isso*/
+background-color:#024dae;
+}
+
+.mensagem-erro {
+   
+    position: absolute;/*Coloquei isso para a menssagem quando aparecer não empurrar o botão pra baixo*/
+    left: 45%; /*Deixei assim porquê quando deixa a posição absoluta, a menssagem sai do centro*/
+    color: red; /* Cor do texto */
+    margin-top: 10px; /* Espaçamento inferior */
+    font-size: 15px; /* Tamanho da fonte */
+}
