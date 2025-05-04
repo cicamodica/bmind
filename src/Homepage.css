@@ -68,6 +68,7 @@ body {
   font-size: 24px;
   cursor: pointer;
   margin-right: 15px;
+  color: white;
 }
 
 /* Escrita - Bmind */
@@ -78,21 +79,34 @@ body {
   color: white;
 }
 
-/* Barra de pesquisa */
-.search-bar {
-  display:flex;
+/* Container da barra de pesquisa com posicionamento */
+.search-container {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   width: 800px;
-  padding: 12px 12px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Input da barra de pesquisa */
+.search-bar {
+  width: 100%;
+  padding: 12px 40px 12px 12px; /* espaço à direita para o ícone */
   border-radius: 20px;
   border: none;
   outline: none;
-  z-index: 1;
   font-weight: 100;
   box-sizing: border-box;
-  
+}
+
+/* Ícone de lupa dentro do input */
+.search-icon {
+  position: absolute;
+  right: 20px;
+  color: black;
+  pointer-events: none; /* ícone não clicável */
 }
 
 /* Login / Cadastro */
