@@ -152,11 +152,12 @@ body {  /* Estilo geral do corpo da página */
   display: none;
   position: absolute;
   top: 0;
-  left: 220px;
+  left: 200px;
   background: white;
   width: 220px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 11;
 }
 
 /* Estilo do icone de perfil */
