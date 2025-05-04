@@ -1,0 +1,331 @@
+/*Adicionar fontes na font family = Poppins Thin*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+
+/* Estilo base */
+body {
+
+  margin: 0;
+  font-family: "Poppins" ;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Barra principal */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #55c3cc, #004aad);
+  padding: 10px 20px;
+}
+
+/* Ícone do menu */
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+/* Escrita - Bmind */
+.escrita {
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: auto;
+  color: white;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+  display:flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  padding: 12px 12px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  z-index: 1;
+  font-weight: 100;
+  box-sizing: border-box;
+  
+}
+
+/* Login / Cadastro */
+.user-actions {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+/* Menu dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background: white;
+  color: black;
+  width: 220px;
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-menu li:hover {
+  background: #f0f0f0;
+}
+
+/* Submenu */
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 220px;
+  background: white;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+* Container principal do carrossel */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: #f5f5f5;
+  gap: 30px;
+  height: 400px; /* controla a altura visível do carrossel */
+  overflow: hidden;
+}
+
+/* Faixa com os slides lado a lado */
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+/* Slide individual */
+.hero-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%; /* crucial para ocupar espaço */
+  gap: 30px;
+}
+
+/* Conteúdo de texto */
+.hero-content {
+  max-width: 400px;
+}
+
+/* Estilização de título e texto */
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #444;
+}
+
+/* Imagem */
+.hero-image {
+  width: 300px;
+  height: auto;
+}
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 40px;
+  background-color: #f5f5f5;
+  min-height: 400px;
+}
+
+/* Container principal de texto e imagem */
+.hero-content,
+.hero-image {
+  z-index: 1;
+}
+
+/* Botões do carrossel */
+.nav-left,
+.nav-right {
+  position: absolute;
+  top: 50%; /* Centraliza verticalmente em relação à .hero */
+  transform: translateY(-50%);
+  background: #f5f5f5;
+  border: 2px solid #aaa;
+  border-radius: 50%;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Posicionamento horizontal */
+.nav-left {
+  left: 10px;
+}
+
+.nav-right {
+  right: 10px;
+}
+
+/* Menu de abas */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab-link {
+  text-decoration: none;
+  color: #555;
+  font-weight: bold;
+}
+
+.tab-link.active {
+  border-bottom: 3px solid black;
+}
+
+/* Conteúdo das abas */
+.tab-content {
+  display: none;
+  text-align: center;
+  padding: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Botões dentro das abas */
+.tab-content button {
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 30px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab-content button:hover {
+  background-color: #005999;
+}
+
+/* Estilo do conteúdo de planejamento financeiro */
+#planejamento-conteudo {
+  text-align: left;
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+#planejamento-conteudo h2,
+#planejamento-conteudo h3 {
+  color: #003366;
+}
+
+#planejamento-conteudo p {
+  margin-bottom: 16px;
+  color: #333;
+}
+/* Estilo do conteúdo de orçamento domestico */
+#orçamento-domestico {
+  text-align: left;
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+#orçamento-domestico h2,
+#orçamento-domestico h3 {
+  color: #003366;
+}
+
+
+
+
