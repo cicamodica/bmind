@@ -174,3 +174,26 @@ button {
     cursor: pointer; /* muda o cursor para mãozinha ao passar em cima do botão */
 }
 
+.erro {   
+  border: 2px solid red; /* borda vermelha para inputs com erro */
+  background-color: #f8d7da; /* fundo vermelho claro para inputs com erro */
+  color: #721c24; /* texto vermelho escuro para inputs com erro */
+  padding: 10px; /* espaço interno do input com erro */
+  margin-top: 5px; /* espaço entre o label e o input com erro */
+  font-size: 12px; /* tamanho da fonte do input com erro */
+  font-family: "Poppins";
+  src: url("/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 500;
+}
+
+#mensagem-erro {
+  font-size: 14px;
+  color: red;
+  text-align: center;
+  margin-bottom: 5px;
+  font-family: "Poppins";
+  src: url("/poppins/Poppins-Regular.ttf") format("truetype"); 
+  font-weight: 200;
+}
+
+
