@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projeto Eixo 1</title> <!-- título: "Pojeto Eixo 1" -->
+    <title>Bmind</title> <!--título-->
     <link rel="stylesheet" href="login.css" /> <!-- Link para CSS -->
-    <script defer src="login.js"></script> <!-- Link para JS = Melhor localização do link no final do <body>-->
+    <script defer src="login.js"></script> <!-- Link para JS (defer para colocar no head)-->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!-- Acesso RECAPTCHA Google (sem verificação de domínio) + defer = O JavaScript só será executado depois que todo o HTML for carregado (ou seja, depois do DOM estar pronto).-->
     <script
@@ -62,7 +62,7 @@
         </div>
 
         <div class="form-input">
-          <a class="forget-password" href="/src/index.html">Esqueceu a senha?</a>
+          <a class="forget-password" href="/src/esqueceu_senha/esqueceu_senha.html">Esqueceu a senha?</a>
           <!--LINK (redirecionamento de página): tag <a> = "anchor"; O atributo href="/src/index.html" define o destino do link; "/src/index.html" é a referência dentro do site.-->
         </div>
 
