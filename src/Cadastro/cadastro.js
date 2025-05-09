@@ -1,6 +1,14 @@
 document.getElementById("form-cadastro").addEventListener("submit", function (event) { 
     event.preventDefault(); // Impede o envio do formulário para validação
   
+ 
+    const nome = document.getElementById("nome").value;
+    const email = document.getElementById("email").value; 
+    const novaSenha = document.getElementById("nova-senha").value;
+    const telefoneContato = document.getElementById("telefone-contato").value;
+    const dataNascimento = document.getElementById("data-nascimento").value;
+
+   // Pega os dados do formulário  
     const campos = [ 
       "nome", 
       "email",
@@ -27,9 +35,27 @@ document.getElementById("form-cadastro").addEventListener("submit", function (ev
       mensagemErro.textContent = "Por favor, preencha todos os campos obrigatórios."; // Mensagem de erro se algum campo estiver vazio
       return; // Interrompe a execução se houver erro
     }
+
+    const dadosUsuario = {
+      nome: nome,
+      email: email,
+      novaSenha: novaSenha,
+      telefoneContato: telefoneContato,
+      dataNascimento: dataNascimento
+    };
+    
+    const dados = JSON.parse(localStorage.getItem(email));
+    if (dados==null) {
+    console.log(dados);
+      //Se tudo estiver certo, salva os dados no localStorage
+     localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
+      
   
-    mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
-    window.location.href = "/src/Validacao de Dados/Index_Validação_de_Dados.html";
+     mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
+     window.location.href = "/src/validacao-de-dados/Index_Validação_de_Dados.html"; // Redireciona para a página de validação
+    }
+    mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!"; // Mensagem de erro se o e-mail já estiver cadastrado
+    
+
   });
-  
-  
+
