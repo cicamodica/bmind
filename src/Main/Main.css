@@ -1,18 +1,4 @@
-/*Adicionar fontes na font family = Poppins Thin*/
-@font-face {
-  font-family: "Poppins";
-  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
-  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
-  font-style: normal;
-}
 
-/*Adicionar fontes na font family = Poppins Extra Light*/
-@font-face {
-  font-family: "Poppins";
-  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
-  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
-  font-style: normal;
-}
 
 /*Adicionar fontes na font family = Poppins Light*/
 @font-face {
@@ -120,37 +106,82 @@ body {
   color: white;
   margin: 0 5px;
   text-decoration: none;
+
 }
 
 /* Menu dropdown */
 .dropdown-menu {
-  position: absolute;
-  top: 60px;
-  left: 10px;
-  background: white;
-  color: black;
-  width: 220px;
-  border-radius: 8px;
-  padding: 10px;
-  display: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  z-index: 10;
-}
-
-.dropdown-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown-menu li {
-  padding: 10px;
-  cursor: pointer;
-  position: relative;
+position: absolute;
+top: 60px;
+left: 10px;
+background: white;
+color: black;
+width: 220px;
+border-radius: 8px;
+padding: 10px;
+display: none;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+z-index: 10;
 }
 
 .dropdown-menu li:hover {
   background: #f0f0f0;
+}
+
+/* Estilo do menu dropdown */
+.menu-icon { /* Estilo do item do menu ☰ */
+font-size: 24px;
+cursor: pointer;
+margin-right: 15px;
+color: white;
+}
+
+.escrito{ /* Estilo do texto do menu */
+font-size: 40px;
+font-weight: 500;
+margin-right: auto;
+color: white;
+
+}
+.dropdown-menu ul {  /* Estilo da lista do menu dropdown */
+list-style: none;
+padding: 0;
+margin: 0;
+/*cursor: pointer;*/
+}
+
+.dropdown-menu li { /* Estilo dos itens do menu dropdown */
+padding: 10px;
+cursor: pointer;
+position: relative;
+}
+
+.dropdown-menu li:hover { /* Efeito de hover nos itens do menu dropdown */
+background: #f0f0f0;
+}
+
+/* Submenu */
+.has-submenu:hover .submenu {
+display: block;
+}
+
+.submenu { /* Estilo do submenu */
+display: none;
+position: absolute;
+top: 0;
+left: 200px;
+background: white;
+width: 220px;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+z-index: 11;
+}
+
+/* Estilo do icone de perfil */
+
+.user-actions{
+font-size: 35px;
+color:#f0f0f0;
 }
 
 /* Submenu */
@@ -158,16 +189,7 @@ body {
   display: block;
 }
 
-.submenu {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 220px;
-  background: white;
-  width: 220px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+
 .submenu-btn-link {
   display: block;
   background-color: transparent;
