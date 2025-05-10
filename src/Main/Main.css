@@ -1,113 +1,155 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #fff;
+/*Download da fonte: https://fontmeme.com/fontes/fonte-poppins/#previewtool + Importação: https://cursos.alura.com.br/forum/topico-importacao-de-fontes-409962*/
+
+/*Adicionar fontes na font family = Poppins Thin*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
 }
 
-.top-bar {
-  background: linear-gradient(to right, #48c6ef, #005baa);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
 }
 
-.menu-btn {
-  font-size: 24px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: white;
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  margin-left: 10px;
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
 }
 
-/* Barra de pesquisa */
-.search-container {
-  display: flex;
-  align-items: center;
-  background: white;
-  border-radius: 25px;
-  padding: 8px 15px;
-  width: 60%;
-  max-width: 600px;
-  position: relative;
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+.navbar { 
+   
+  display: flex; /* Use flexbox para alinhar os itens */
+  justify-content: center; /* Espaçamento entre os itens */
+  align-items: center; /* Alinhe os itens verticalmente */
+  padding: 10px 20px; /* Preenchimento interno */
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
+}
+.search-conteiner { /* Estilo da barra de pesquisa */
+display:flex;
+position: absolute;
+transform: translateX(-50%);
+width: 900px;
+z-index: 1;
+align-items: center;
+left: 50%;
+/* margin-right: -300px;*/
+
+
+}
+.search-bar { 
+border-radius: 40px;
+outline: none; 
+padding: 12px 40px;
+font-weight: 100;
+border: none;
+width: 100%;
+
+}
+
+.search-icone {
+position: absolute;
+right: 20px;
+color: black;
+}
+
+/* Menu dropdown */
+.dropdown-menu {
+position: absolute;
+top: 60px;
+left: 10px;
+background: white;
+color: black;
+width: 220px;
+border-radius: 8px;
+padding: 10px;
+display: none;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+z-index: 10;
 }
 
 
-.search-container input {
-  border: none;
-  outline: none;
-  flex: 1;
-  font-size: 14px;
-  border-radius: 25px;
+.menu-icon { /* Estilo do item do menu ☰ */
+font-size: 24px;
+cursor: pointer;
+margin-right: 15px;
+color: white;
 }
 
-.user-icon {
-  font-size: 20px;
-  border: 2px solid white;
-  border-radius: 50%;
-  padding: 5px;
+.escrito{ /* Estilo do texto do menu */
+font-size: 40px;
+font-weight: 500;
+margin-right: auto;
+color: white;
+
+}
+.dropdown-menu ul {  /* Estilo da lista do menu dropdown */
+list-style: none;
+padding: 0;
+margin: 0;
+/*cursor: pointer;*/
 }
 
-.main {
-  padding: 20px;
+.dropdown-menu li { /* Estilo dos itens do menu dropdown */
+padding: 10px;
+cursor: pointer;
+position: relative;
 }
 
-.dashboard-title {
-  font-size: 28px;
-  margin-bottom: 15px;
+.dropdown-menu li:hover { /* Efeito de hover nos itens do menu dropdown */
+background: #f0f0f0;
 }
 
-.tabs button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  background: gray;
-  color: white;
-  border: none;
-  cursor: pointer;
+/* Submenu */
+.has-submenu:hover .submenu {
+display: block;
 }
 
-.tab-content {
-  background: #eee;
-  height: 200px;
-  margin-top: 20px;
-  border-radius: 10px;
+.submenu { /* Estilo do submenu */
+display: none;
+position: absolute;
+top: 0;
+left: 200px;
+background: white;
+width: 220px;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+z-index: 11;
 }
 
-.list-section {
-  margin-top: 30px;
-}
+/* Estilo do icone de perfil */
 
-.list-title {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.list-items {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.list-item {
-  width: 120px;
-  height: 100px;
-  background: #ccc;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.more-content {
-  text-align: right;
-  margin-top: 10px;
-  font-size: 12px;
+.user-actions{
+font-size: 35px;
+color:#f0f0f0;
 }
