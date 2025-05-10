@@ -186,3 +186,40 @@ body {
   background-color: #024dae; 
   color: white;              /* texto branco ao passar o mouse */
 }
+
+.conteudo{
+  padding: 20px;
+}
+
+.vistos-recentemente{
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px px rgba(0,0,0,0.1);
+}
+.vistos-recentemente h2{
+  margin-bottom: 15px;
+  color: #004aad;
+  font-size: 24px;
+  font-weight: 500;
+}
+#lista-vistos-recentemente{
+  list-style: none;
+  padding: 0;
+}
+#lista-vistos-recentemente li{
+  margin-bottom: 10px;
+}
+#lista-vistos-recentemente a{
+  text-decoration: none;
+  color: #004aad;
+  font-weight: 500;
+  font-size: 18px;
+  background: white;
+  padding: 10px 15px;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s ease;
+}
