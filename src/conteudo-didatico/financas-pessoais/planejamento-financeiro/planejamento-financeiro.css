@@ -67,7 +67,7 @@ body {  /* Estilo geral do corpo da página */
     padding: 10px 20px; /* Preenchimento interno */
     background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
  }
- .search-conteiner { /* Estilo da barra de pesquisa */
+ .search-container { /* Estilo da barra de pesquisa */
   display:flex;
   position: absolute;
   transform: translateX(-50%);
@@ -95,21 +95,6 @@ body {  /* Estilo geral do corpo da página */
   color: black;
  }
 
-/* Menu dropdown */
-.dropdown-menu {
-  position: absolute;
-  top: 60px;
-  left: 10px;
-  background: white;
-  color: black;
-  width: 220px;
-  border-radius: 8px;
-  padding: 10px;
-  display: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  z-index: 10;
-}
-
 
 .menu-icon { /* Estilo do item do menu ☰ */
   font-size: 24px;
@@ -124,6 +109,21 @@ body {  /* Estilo geral do corpo da página */
   margin-right: auto;
   color: white;
   
+}
+
+/* Menu dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background: white;
+  color: black;
+  width: 220px;
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 10;
 }
 .dropdown-menu ul {  /* Estilo da lista do menu dropdown */
   list-style: none;
@@ -200,12 +200,6 @@ body {  /* Estilo geral do corpo da página */
     color: white;
     font-weight: 500; /* Peso da fonte */
   } 
-  
-    
- 
- 
-
-
 
   .conteudo-cartao {    /* Estilo do conteúdo do cartão */
     max-width: 1000px;

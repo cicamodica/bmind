@@ -1,20 +1,4 @@
-/*Download da fonte: https://fontmeme.com/fontes/fonte-poppins/#previewtool + Importação: https://cursos.alura.com.br/forum/topico-importacao-de-fontes-409962*/
 
-/*Adicionar fontes na font family = Poppins Thin*/
-@font-face {
-  font-family: "Poppins";
-  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
-  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
-  font-style: normal;
-}
-
-/*Adicionar fontes na font family = Poppins Extra Light*/
-@font-face {
-  font-family: "Poppins";
-  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
-  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
-  font-style: normal;
-}
 
 /*Adicionar fontes na font family = Poppins Light*/
 @font-face {
@@ -47,40 +31,82 @@
   font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
   font-style: normal;
 }
-.navbar { 
-   
-  display: flex; /* Use flexbox para alinhar os itens */
-  justify-content: center; /* Espaçamento entre os itens */
-  align-items: center; /* Alinhe os itens verticalmente */
-  padding: 10px 20px; /* Preenchimento interno */
-  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
-}
-.search-conteiner { /* Estilo da barra de pesquisa */
-display:flex;
-position: absolute;
-transform: translateX(-50%);
-width: 900px;
-z-index: 1;
-align-items: center;
-left: 50%;
-/* margin-right: -300px;*/
 
+/* Estilo base */
+body {
 
-}
-.search-bar { 
-border-radius: 40px;
-outline: none; 
-padding: 12px 40px;
-font-weight: 100;
-border: none;
-width: 100%;
-
+  margin: 0;
+  font-family: "Poppins" ;
+  background-color: #fff;
+  color: #000;
 }
 
-.search-icone {
-position: absolute;
-right: 20px;
-color: black;
+/* Barra principal */
+.navbar {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #55c3cc, #004aad);
+  padding: 10px 20px;
+}
+
+/* Ícone do menu */
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: white;
+}
+
+/* Escrita - Bmind */
+.escrita {
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: auto;
+  color: white;
+}
+
+/* Container da barra de pesquisa com posicionamento */
+.search-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Input da barra de pesquisa */
+.search-bar {
+  width: 100%;
+  padding: 12px 40px 12px 12px; /* espaço à direita para o ícone */
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-weight: 100;
+  box-sizing: border-box;
+}
+
+/* Ícone de lupa dentro do input */
+.search-icon {
+  position: absolute;
+  right: 20px;
+  color: black;
+  pointer-events:visible
+}
+
+/* Perfil*/
+.user-actions {
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
+
 }
 
 /* Menu dropdown */
@@ -98,7 +124,11 @@ box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 z-index: 10;
 }
 
+.dropdown-menu li:hover {
+  background: #f0f0f0;
+}
 
+/* Estilo do menu dropdown */
 .menu-icon { /* Estilo do item do menu ☰ */
 font-size: 24px;
 cursor: pointer;
@@ -152,4 +182,29 @@ z-index: 11;
 .user-actions{
 font-size: 35px;
 color:#f0f0f0;
+}
+
+/* Submenu */
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+
+.submenu-btn-link {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu-btn-link:hover {
+  background-color: #024dae; 
+  color: white;              /* texto branco ao passar o mouse */
 }

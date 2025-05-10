@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <!--título-->
+    <link rel="stylesheet" href="redefinir_senha.css" />
+    <!-- Link para CSS -->
+    <script defer src="redefinir_senha.js"></script>
+    <!-- Link para JS (defer para colocar no head)-->
+    <script
+      src="https://kit.fontawesome.com/1691cc7750.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Acesso ao FONTAWESOME, para adicionar ícones a aplicação + <i class="fa-regular fa-circle-left"></i >-->
+  </head>
+  <body>
+    <!-- HTML nav elements (nav = barra superior da página): https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_nav-->
+    <div class="nav">
+      <!-- Em HTML, a tag <div> (divisão) é um elemento de nível de bloco que serve como um contêiner genérico para agrupar outros elementos 
+        Em resumo, a tag <div> é um elemento fundamental para estruturar e estilizar conteúdo em HTML, permitindo a organização e o controle do layout de uma página web -->
+      <nav>
+        <!--LINK: tag <a> = "anchor"; O atributo href="/src/index.html" define o destino do link; "/src/index.html" é a referência dentro do site.-->
+        <a class="nav-link" href="/src/esqueceu_senha/esqueceu_senha.html">
+          <i class="fa-regular fa-circle-left nav-item nav-icon"></i>
+          <!--A tag <i> é usada para marcar conteúdo que tem ênfase ou significado diferenciado, neste caso, um ícone-->
+        </a>
+        <span class="nav-item">Bmind</span>
+        <!-- Elementos do nav = ícone de seta "fa-regular fa-circle-left" (gerado no fontawesome) para voltar e Bmind (logo) -->
+        <!--Em HTML, a tag <span> é um elemento inline usado para agrupar e estilizar partes específicas de um texto dentro de um elemento maior. É como uma "caixa" que permite aplicar
+            estilos CSS ou manipular texto com JavaScript em trechos específicos, sem criar uma nova linha de conteúdo. -->
+      </nav>
+    </div>
+    <!-- HTML form elements (formulário, neste caso formulário de login (form-forget-password)): https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit -->
+    <div class="form">
+      <form id="form-forget-password">
+        <span class="form-title">Redefinir senha</span
+        ><!-- Título da página -->
+        <div class="form-input p-top-10">
+          <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
+          <label class="form-input-label" for="name">Nova senha </label>
+          <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
+          <input
+            id="form-password"
+            class="form-input-textfield"
+            type="password"
+          /><!-- type password = campo para preenchimento de senha-->
+        </div>
+
+        <div class="form-input p-top-10">
+          <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
+          <label class="form-input-label" for="name"
+            >Confirmação da nova senha
+          </label>
+          <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
+          <input
+            id="form-confirm-password"
+            class="form-input-textfield"
+            type="password"
+          /><!-- type password = campo para preenchimento de senha-->
+        </div>
+
+        <div class="form-input p-top-5">
+          <!-- Mensagem de dados incorretos-->
+          <span id="form-input-message" class="form-input-message"
+            >Favor inserir senhas iguais</span
+          >
+        </div>
+
+        <div class="form-input center p-top-50">
+          <!-- HMTL Button tag (botão "enviar"): https://www.w3schools.com/tags/tag_button.asp -->
+          <a class="send-button" href="/src/login/login.html"
+            ><button type="submit" class="form-button">Redefinir</button></a
+          >
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
