@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bmind</title> <!--título-->
-    <link rel="stylesheet" href="redefinir_senha.css" /> <!-- Link para CSS -->
-    <script defer src="redefinir_senha.js"></script> <!-- Link para JS (defer para colocar no head)-->
+    <title>Bmind</title>
+    <!--título-->
+    <link rel="stylesheet" href="redefinir_senha.css" />
+    <!-- Link para CSS -->
+    <script defer src="redefinir_senha.js"></script>
+    <!-- Link para JS (defer para colocar no head)-->
     <script
       src="https://kit.fontawesome.com/1691cc7750.js"
       crossorigin="anonymous"
@@ -32,26 +35,45 @@
     <!-- HTML form elements (formulário, neste caso formulário de login (form-forget-password)): https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit -->
     <div class="form">
       <form id="form-forget-password">
-        <span class="form-title">Redefinir senha</span><!-- Título da página -->
+        <span class="form-title">Redefinir senha</span
+        ><!-- Título da página -->
         <div class="form-input p-top-10">
           <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
           <label class="form-input-label" for="name">Nova senha </label>
           <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
-          <input id="form-email" class="form-input-textfield" type="password" /><!-- type password = campo para preenchimento de senha-->
+          <input
+            id="form-password"
+            class="form-input-textfield"
+            type="password"
+          /><!-- type password = campo para preenchimento de senha-->
         </div>
 
         <div class="form-input p-top-10">
-            <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
-            <label class="form-input-label" for="name">Confirmação da nova senha </label>
-            <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
-            <input id="form-email" class="form-input-textfield" type="password" /><!-- type password = campo para preenchimento de senha-->
-          </div>
+          <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
+          <label class="form-input-label" for="name"
+            >Confirmação da nova senha
+          </label>
+          <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
+          <input
+            id="form-confirm-password"
+            class="form-input-textfield"
+            type="password"
+          /><!-- type password = campo para preenchimento de senha-->
+        </div>
+
+        <div class="form-input p-top-5">
+          <!-- Mensagem de dados incorretos-->
+          <span id="form-input-message" class="form-input-message"
+            >Favor inserir senhas iguais</span
+          >
+        </div>
 
         <div class="form-input center p-top-50">
           <!-- HMTL Button tag (botão "enviar"): https://www.w3schools.com/tags/tag_button.asp -->
-          <a class="send-button" href="/src/login/login.html"><button type="submit" class="form-button">Redefinir</button></a>
+          <a class="send-button" href="/src/login/login.html"
+            ><button type="submit" class="form-button">Redefinir</button></a
+          >
         </div>
-
       </form>
     </div>
   </body>

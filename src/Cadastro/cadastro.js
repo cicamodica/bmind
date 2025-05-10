@@ -56,6 +56,7 @@ document
       mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
       window.location.href =
         "/src/validacao-de-dados/Index_Validação_de_Dados.html"; // Redireciona para a página de validação
+    } else {
+      mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!"; // Mensagem de erro se o e-mail já estiver cadastrado
     }
-    mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!"; // Mensagem de erro se o e-mail já estiver cadastrado
   });

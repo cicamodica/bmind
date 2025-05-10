@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bmind</title> <!--título-->
-    <link rel="stylesheet" href="esqueceu_senha.css" /> <!-- Link para CSS -->
-    <script defer src="esqueceu_senha.js"></script> <!-- Link para JS (defer para colocar no head)-->
+    <title>Bmind</title>
+    <!--título-->
+    <link rel="stylesheet" href="esqueceu_senha.css" />
+    <!-- Link para CSS -->
+    <script
+      type="text/javascript"
+      defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script defer src="esqueceu_senha.js"></script>
+    <!-- Link para JS (defer para colocar no head)-->
     <script
       src="https://kit.fontawesome.com/1691cc7750.js"
       crossorigin="anonymous"
@@ -32,19 +39,26 @@
     <!-- HTML form elements (formulário, neste caso formulário de login (form-forget-password)): https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_submit -->
     <div class="form">
       <form id="form-forget-password">
-        <span class="form-title">Esqueceu sua senha?</span><!-- Título da página -->
+        <span class="form-title">Esqueceu sua senha?</span
+        ><!-- Título da página -->
         <div class="form-input p-top-10">
           <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
-          <label class="form-input-label" for="name">Para redefinir a senha, informe o e-mail cadastrado para o envio do link </label>
+          <label class="form-input-label" for="name"
+            >Para redefinir a senha, informe o e-mail cadastrado para o envio do
+            link
+          </label>
           <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
-          <input id="form-email" class="form-input-textfield" type="email" /><!-- type e-mail = campo para preenchimento de e-mail-->
+          <input
+            id="form-input-email"
+            class="form-input-textfield"
+            type="email"
+          /><!-- type e-mail = campo para preenchimento de e-mail-->
         </div>
 
         <div class="form-input center p-top-50">
           <!-- HMTL Button tag (botão "enviar"): https://www.w3schools.com/tags/tag_button.asp -->
-        <button type="submit" class="form-button">Enviar</button>
+          <button type="submit" class="form-button">Enviar</button>
         </div>
-
       </form>
     </div>
   </body>

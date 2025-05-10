@@ -2,161 +2,168 @@
 
 /*Adicionar fontes na font family = Poppins Thin*/
 @font-face {
-    font-family: "Poppins";
-    src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
-    font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
-    font-style: normal;
-  }
-  
-  /*Adicionar fontes na font family = Poppins Extra Light*/
-  @font-face {
-    font-family: "Poppins";
-    src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
-    font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
-    font-style: normal;
-  }
-  
-  /*Adicionar fontes na font family = Poppins Light*/
-  @font-face {
-    font-family: "Poppins";
-    src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
-    font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
-    font-style: normal;
-  }
-  
-  /*Adicionar fontes na font family = Poppins Regular*/
-  @font-face {
-    font-family: "Poppins";
-    src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
-    font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
-    font-style: normal;
-  }
-  
-  /*Adicionar fontes na font family = Poppins Medium*/
-  @font-face {
-    font-family: "Poppins";
-    src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
-    font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
-    font-style: normal;
-  }
-  
-  /*Adicionar fontes na font family = Poppins Bold*/
-  @font-face {
-    font-family: "Poppins";
-    src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
-    font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
-    font-style: normal;
-  }
-  
-  body {
-    /*Estilização do pai BODY*/
-    display: flex; /* Display flex: https://www.w3schools.com/cssref/tryit.php?filename=trycss3_align-self + https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_flexible_box_layout/Aligning_items_in_a_flex_container*/
-    margin: 0px;
-    height: 100vh;
-    width: 100vw; /* CSS Viewport Units: vh, vw, vmin, and vmax https://www.sitepoint.com/css-viewport-units-quick-start/#applicationsofvhvwvminandvmax*/
-    flex-direction: column;
-    font-family: "Poppins", sans-serif; /*CSS fonts: https://www.w3schools.com/css/css_font.asp* > É interessante add uma fonte secundária (sans-serif) caso não dê para usar a principal*/
-  }
-  
-  .nav {
-    /*Estilização da classe pai .NAV (barra superior)*/
-    display: flex;
-    align-items: center;
-    background-image: linear-gradient(to right, #5bc5cc, #024dae);
-    padding: 10px 20px;
-    height: 50px;
-  }
-  
-  nav .nav-item {
-    /*Estilização da classe .nav-item, que está dentro de nav pai (Bmind)*/
-    font-weight: 500;
-    padding-left: 20px; /*Aumento da padding à esquerda*/
-    font-size: 40px;
-    color: #ffffff; /*Trocar cor da letra? Preto para branco <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-  }
-  
-  nav .nav-icon {
-    /*Estilização do ícone de seta na classe .nav-icon, que está dentro de nav pai (Seta)*/
-    font-size: 35px;
-  }
-  
-  nav .nav-link {
-    /*Estilização do link ligado ao ícone de seta na classe .nav-link, que está dentro de nav pai (Seta)*/
-    background-color: transparent;
-    border: unset;
-    text-decoration: none;
-  }
-  
-  form {
-    /*Estilização do pai FORM*/
-    width: 600px;
-  }
-  
-  .form {
-    /*Estilização da classe .form (Todo o resto da página que faz parte do formulário)*/
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    padding-top: 200px;
-  }
-  
-  form .form-title {
-    /*Estilização da classe .form-title dentro da classe .form (Título da página > Esqueceu sua senha?)*/
-    display: flex;
-    justify-content: center;
-    font-size: 45px;
-    font-weight: 500;
-  }
-  
-  form .form-input-label {
-    /*Estilização da classe .form-text dentro de form (Nomes do textfield da página: Para redefinir a senha, informe o e-mail cadastrado para o envio do link)*/
-    display: block;
-    font-size: 15px;
-    font-weight: 300;
-    text-align: center;
-  }
-  
-  form .form-input-textfield {
-    /*Estilização da classe .form-input-textfield dentro de form (A caixa de texto em si)*/
-    width: 100%;
-    height: 40px;
-    box-sizing: border-box; /*Comando para fazer um input (campo de texto, no caso) ficar do tamanho da div pai em seu comprimento*/
-    text-align: center;
-  }
-  
-  form .form-button {
-    /*Estilização da classe .form-button dentro da classe .form (botão de enviar)*/
-    font-family: "Poppins";
-    background-color: black;
-    color: #ffffff;
-    text-align: center;
-    display: inline-block; /*Inline block: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_button_css > inline-block permite que o elemento fique lado a lado com outros, 
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+
+body {
+  /*Estilização do pai BODY*/
+  display: flex; /* Display flex: https://www.w3schools.com/cssref/tryit.php?filename=trycss3_align-self + https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_flexible_box_layout/Aligning_items_in_a_flex_container*/
+  margin: 0px;
+  height: 100vh;
+  width: 100vw; /* CSS Viewport Units: vh, vw, vmin, and vmax https://www.sitepoint.com/css-viewport-units-quick-start/#applicationsofvhvwvminandvmax*/
+  flex-direction: column;
+  font-family: "Poppins", sans-serif; /*CSS fonts: https://www.w3schools.com/css/css_font.asp* > É interessante add uma fonte secundária (sans-serif) caso não dê para usar a principal*/
+}
+
+.nav {
+  /*Estilização da classe pai .NAV (barra superior)*/
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(to right, #5bc5cc, #024dae);
+  padding: 10px 20px;
+  height: 50px;
+}
+
+nav .nav-item {
+  /*Estilização da classe .nav-item, que está dentro de nav pai (Bmind)*/
+  font-weight: 500;
+  padding-left: 20px; /*Aumento da padding à esquerda*/
+  font-size: 40px;
+  color: #ffffff; /*Trocar cor da letra? Preto para branco <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+}
+
+nav .nav-icon {
+  /*Estilização do ícone de seta na classe .nav-icon, que está dentro de nav pai (Seta)*/
+  font-size: 35px;
+}
+
+nav .nav-link {
+  /*Estilização do link ligado ao ícone de seta na classe .nav-link, que está dentro de nav pai (Seta)*/
+  background-color: transparent;
+  border: unset;
+  text-decoration: none;
+}
+
+form {
+  /*Estilização do pai FORM*/
+  width: 600px;
+}
+
+.form {
+  /*Estilização da classe .form (Todo o resto da página que faz parte do formulário)*/
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+}
+
+form .form-title {
+  /*Estilização da classe .form-title dentro da classe .form (Título da página > Esqueceu sua senha?)*/
+  display: flex;
+  justify-content: center;
+  font-size: 45px;
+  font-weight: 500;
+}
+
+form .form-input-label {
+  /*Estilização da classe .form-text dentro de form (Nomes do textfield da página: Para redefinir a senha, informe o e-mail cadastrado para o envio do link)*/
+  display: block;
+  font-size: 15px;
+  font-weight: 300;
+  text-align: center;
+}
+
+form .form-input-textfield {
+  /*Estilização da classe .form-input-textfield dentro de form (A caixa de texto em si)*/
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box; /*Comando para fazer um input (campo de texto, no caso) ficar do tamanho da div pai em seu comprimento*/
+  text-align: center;
+}
+
+form .form-button {
+  /*Estilização da classe .form-button dentro da classe .form (botão de enviar)*/
+  font-family: "Poppins";
+  background-color: black;
+  color: #ffffff;
+  text-align: center;
+  display: inline-block; /*Inline block: https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_button_css > inline-block permite que o elemento fique lado a lado com outros, 
     igual inline, mas você também pode definir largura (width) e altura (height), como se fosse block.*/
-    width: 140px;
-    height: 40px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-  
-  form .form-button:hover {
-    /*Estilização da classe .form-button dentro da classe .form (botão de enviar)*/
-  background-color:#024dae;
-  }
-  
-  .center {
-    /*Estilização da classe .center (botão de enviar)*/
-    display: flex;
-    justify-content: center;
-  }
-  
-  .p-top-10 {
-    /*Estilização da classe .p-top-10 (Pai e-mail e pai senha)*/
-    padding-top: 10px;
-  }
-  
-  .p-top-50 {
-    /*Estilização da classe .p-top-50 (botão entrar)*/
-    padding-top: 50px;
-  }
-  
+  width: 140px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+form .form-button:hover {
+  /*Estilização da classe .form-button dentro da classe .form (botão de enviar)*/
+  background-color: #024dae;
+}
+
+.form-input-message {
+  /*Estilização da classe .form-input-message (texto da mensagem dados inválidos) */
+  display: none;
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+.center {
+  /*Estilização da classe .center (botão de enviar)*/
+  display: flex;
+  justify-content: center;
+}
+
+.p-top-10 {
+  /*Estilização da classe .p-top-10 (Pai e-mail e pai senha)*/
+  padding-top: 10px;
+}
+
+.p-top-50 {
+  /*Estilização da classe .p-top-50 (botão entrar)*/
+  padding-top: 50px;
+}
