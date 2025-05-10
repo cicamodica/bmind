@@ -2,140 +2,83 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dashboard Bmind</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
-    /* (estilos iguais aos anteriores para layout flex, chart-container cinza etc.) */
-    body { font-family: Arial, sans-serif; margin: 0; background: #fff; }
-    .top-bar { background: linear-gradient(to right, #48c6ef, #005baa); color: white; display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; }
-    .menu-btn { font-size:24px; background:none; border:none; color:#fff; cursor:pointer; }
-    .logo { font-size:22px; font-weight:bold; }
-    .search-container { flex:1; max-width:600px; margin:0 20px; background:#fff; display:flex; align-items:center; border-radius:25px; padding:5px 15px; }
-    .search-container input { flex:1; border:none; outline:none; }
-    .user-icon { font-size:20px; border:2px solid #fff; border-radius:50%; padding:5px; }
-    .main { padding:20px; }
-    .dashboard-title { font-size:28px; margin-bottom:15px; }
-    .tabs button { padding:10px 20px; margin-right:10px; background:gray; color:#fff; border:none; cursor:pointer; }
-    .tab-content { background:#eee; border-radius:10px; padding:20px; display:flex; align-items:center; justify-content:space-between; min-height:350px; margin-top:20px; }
-    #chart-container { width:45%; max-width:450px; height:300px; background:#ccc; border-radius:10px; display:flex; align-items:center; justify-content:center; }
-    #chart-container canvas { width:100% !important; height:100% !important; }
-    .input-container { width:45%; max-width:300px; display:flex; flex-direction:column; gap:15px; }
-    .input-container input, .input-container select { padding:8px; font-size:16px; width:100%; }
-    .input-container button { padding:10px; font-size:16px; background:#005baa; color:#fff; border:none; cursor:pointer; border-radius:4px; }
-    .list-section { margin-top:30px; }
-    .list-title { font-size:20px; margin-bottom:10px; }
-    .list-items { display:flex; gap:10px; flex-wrap:wrap; }
-    .list-item { width:120px; height:100px; background:#ccc; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
-    .more-content { text-align:right; margin-top:10px; font-size:12px; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bmind</title> <!--Nome que vai aparecer na aba superior-->
+  <!-- Link do CSS -->
+  <link rel="stylesheet" href="Main.css" />
+  <script
+  src="https://kit.fontawesome.com/1691cc7750.js"
+      crossorigin="anonymous"
+    ></script>
+
 </head>
 <body>
-  <div class="top-bar">
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <div class="logo">Bmind</div>
-    <div class="search-container">
-      <input type="text" placeholder="Pesquisa..." />
+
+  <div class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
     </div>
-    <div class="user-icon">👤</div>
+    <div class="escrita">Bmind</div>
+    <!-- Container da barra de pesquisa com ícone -->
+  <div class="search-container">
+    <input type="text" placeholder="Pesquisa..." class="search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
   </div>
+    <div class="user-actions">
+      <a href="#">Perfil</a>
 
-  <div class="main">
-    <div class="dashboard-title">Dashboard de Fulano</div>
-    <div class="tabs">
-      <button onclick="showTab('principal')">Principal</button>
-      <button onclick="showTab('metas')">Metas</button>
     </div>
-
-    <div class="tab-content" id="tab-content"></div>
-
-    <div class="list-section">
-      <div class="list-title">Vistos recentemente</div>
-      <div class="list-items">
-        <div class="list-item">Item 1</div>
-        <div class="list-item">Item 2</div>
-        <div class="list-item">Item 3</div>
-        <div class="list-item">Item 4</div>
-        <div class="list-item">Item 5</div>
-      </div>
-    </div>
-
-    <div class="list-section">
-      <div class="list-title">Indicados para você</div>
-      <div class="list-items">
-        <div class="list-item">Item</div><div class="list-item">Item</div>
-        <div class="list-item">Item</div><div class="list-item">Item</div>
-        <div class="list-item">Item</div>
-      </div>
-      <div class="more-content">MAIS CONTEÚDOS ➜</div>
-    </div>
+  
+    <nav class="dropdown-menu" id="dropdownMenu">
+      <ul>
+        <li class="has-submenu">
+          Finanças pessoais
+          <ul class="submenu">
+            <li>Planejamento financeiro</li>
+            <li>Orçamento doméstico</li>
+            <li>Controle de dívidas</li>
+          </ul>
+        </li>
+    
+        <li class="has-submenu">
+          Finanças corporativas
+          <ul class="submenu">
+            <li>Análise de balanço</li>
+            <li>Fluxo de caixa</li>
+            <li>Captação de recursos</li>
+          </ul>
+        </li>
+    
+        <li class="has-submenu">
+          Operações bancárias
+          <ul class="submenu">
+            <li>
+              <a href="/src/Conteudo didatico/CartaodeDebito/CartaodeDebito.html" class="submenu-btn-link">Cartão de Débito</a>
+            </li>
+            <li>
+              <a href="/src/Conteudo didatico/Cartaodecredito/CartaodeCredito.html" class="submenu-btn-link">Cartões de Crédito</a>
+            </li>
+            <li>Empréstimo</li>
+            <li>Financiamento</li>
+            <li>Taxas e Tarifas</li>
+          </ul>
+        </li>
+    
+        <li class="has-submenu">
+          Investimentos
+          <ul class="submenu">
+            <li>Renda fixa</li>
+            <li>Renda Variável</li>
+            <li>Fundos de investimento</li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    
   </div>
+</div>
 
-  <script>
-    let graficoDonut;
-
-    function toggleMenu() {
-      alert("Menu clicado");
-    }
-
-    function showTab(tab) {
-      const c = document.getElementById("tab-content");
-      if (tab === 'principal') {
-        c.innerHTML = `
-          <div id="chart-container">
-            <canvas id="graficoDonut"></canvas>
-          </div>
-          <div class="input-container">
-            <input type="number" id="valor" placeholder="Digite um valor" />
-            <select id="cor">
-              <option value="#FF0000">Vermelho</option>
-              <option value="#0000FF">Azul</option>
-              <option value="#008000">Verde</option>
-              <option value="#FFA500">Laranja</option>
-              <option value="#FFFF00">Amarelo</option>
-            </select>
-            <button onclick="adicionarValor()">Adicionar</button>
-          </div>`;
-        
-        // Carrega os arrays salvos ou inicializa vazios
-        const labels = JSON.parse(localStorage.getItem('chartLabels') || '[]');
-        const data   = JSON.parse(localStorage.getItem('chartData')   || '[]');
-        const colors = JSON.parse(localStorage.getItem('chartColors') || '[]');
-
-        const ctx = document.getElementById('graficoDonut').getContext('2d');
-        if (graficoDonut) graficoDonut.destroy();
-        graficoDonut = new Chart(ctx, {
-          type: 'doughnut',
-          data: { labels, datasets: [{ data, backgroundColor: colors }] },
-          options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
-        });
-      } else {
-        c.innerHTML = '<p style="text-align:center;">Conteúdo da aba Metas</p>';
-      }
-    }
-
-    function adicionarValor() {
-      const v = parseFloat(document.getElementById("valor").value);
-      const cor = document.getElementById("cor").value;
-      if (v > 0) {
-        // Atualiza gráfico em memória
-        graficoDonut.data.labels.push(`Item ${graficoDonut.data.labels.length + 1}`);
-        graficoDonut.data.datasets[0].data.push(v);
-        graficoDonut.data.datasets[0].backgroundColor.push(cor);
-        graficoDonut.update();
-
-        // Sincroniza com localStorage
-        localStorage.setItem('chartLabels', JSON.stringify(graficoDonut.data.labels));
-        localStorage.setItem('chartData',   JSON.stringify(graficoDonut.data.datasets[0].data));
-        localStorage.setItem('chartColors', JSON.stringify(graficoDonut.data.datasets[0].backgroundColor));
-
-        document.getElementById("valor").value = '';
-      } else {
-        alert("Insira um valor maior que zero");
-      }
-    }
-
-    window.onload = () => showTab('principal');
-  </script>
+<!-- Importa o JavaScript -->
+<script src="Main.js"></script>
 </body>
 </html>
