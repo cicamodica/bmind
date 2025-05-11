@@ -1,39 +1,41 @@
 # Programação de Funcionalidades
 
-Implementação da aplicação descritas por meio dos requisitos codificados. 
+O documento de programação de funcionalidades descreve as características principais de cada página do sistema. Em cada seção, haverá uma imagem representativa da página e serão fornecidas instruções de acesso, requisitos atendidos, artefatos relacionados à funcionalidade, estruturas de dados utilizadas e o/os responsável/responsáveis por cada funcionalidade.
 
-[Utilize a estrutura abaixo para cada funcionalidade entregue na etapa]
+## Login
 
-### Título da funcionalidade
+![Página de login](https://github.com/user-attachments/assets/ff22b149-4d75-43c7-aa2e-5908d6034ec9)
 
-[Adicione imagem da funcionalidade/tela]
+Sua principal função é permitir que os usuários autentiquem suas identidades para obter acesso ao site. Através dessa página, os usuários podem inserir suas informações de login, como nome de usuário e senha, e o sistema verifica se essas informações são válidas para conceder o acesso, além da disponibilização de outros elementos, como botões de acesso ao site, verificação do sistema de reCAPTCHA do google, botão para redirecionamento para a tela de cadastro caso o sistema identifique que o e-mail inserido já está sendo utilizado e  o botão de recuperação de senha.
 
+### Requisito atendido
 
-#### Requisito atendido
-
-[RF-X: adicione a descrição do requisito atendido]
-
-
-#### Artefatos da funcionalidade
-
-[Adicione os nomes dos arquivos relacionados ao desenvolvimento da funcionalidade]
+- |RF-001| fornecer um formulário de cadastro no qual os usuários possam inserir as informações necessárias para criar uma conta.
 
 
-#### Estrutura de Dados
+### Artefatos da funcionalidade
+
+- login.html
+- login.css
+- login.js
+
+### Estrutura de Dados
 
 [Caso exista estrutura de dados, adicione aqui]
 
 
-#### Instruções de acesso
+### Instruções de acesso
 
-[Adicione as orientações de acesso à funcionalidade]
+- Abra um navegador de Internet e informe a seguinte URL: [INSERIR]
+
+- Faça o login em sua conta. Após o login bem-sucedido, você será redirecionado automaticamente para a página inicial da aplicação.
+
+- Caso você tenha se esquecido de sua senha, clique no botão "Esqueceu sua senha?" na própria página de login e você será redirecionado para a página de redefinição de senha, após o processo de redefinição, você voltará para a página de login para efetuar a entrada na aplicação.
 
 
 #### Responsável
 
-[Adicione nome do responsável pelo desenvolvimento da funcionalidade]
-
-
+Maria Cecilia Caruzzo Modica
 
 
 > **Links Úteis**:
