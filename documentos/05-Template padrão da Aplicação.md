@@ -1,12 +1,36 @@
 # Template padrão da Aplicação
 
-Layout padrão do site (HTML e CSS) que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
+O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, em correspondência ao projeto de Interface elaborado anteriormente, conforme imagem abaixo (figura 1) é formado por uma área de cabeçalho e uma área principal central. Foi desenvolvido com ênfase na identidade visual, responsividade e iconografia, proporcionando uma experiência visual agradável em todos os dispositivos.
 
-[Apresente a estrutura padrão da sua aplicação.]
+![Template](https://github.com/user-attachments/assets/9ee886e3-f3a4-47ba-88e1-57e3ae0c930d)
+*Figura 1 - refere-se ao layout do template padrão do site*
 
-> **Links Úteis**:
->
-> - [CSS Website Layout (W3Schools)](https://www.w3schools.com/css/css_website_layout.asp)
-> - [Website Page Layouts](http://www.cellbiol.com/bioinformatics_web_development/chapter-3-your-first-web-page-learning-html-and-css/website-page-layouts/)
-> - [Perfect Liquid Layout](https://matthewjamestaylor.com/perfect-liquid-layouts)
-> - [How and Why Icons Improve Your Web Design](https://usabilla.com/blog/how-and-why-icons-improve-you-web-design/)
+## Logotipo Oficial
+
+<div align="center">
+  <img src="img/Logo oficial.png" alt="Logo Bmind" style="width: 30%; max-width: 800px;">
+</div>
+
+## Variações do logotipo
+
+<div align="center">
+  <img src="img/Logotipos.png" alt="Logo Bmind" style="width: 100%; max-width: 800px;">
+</div>
+
+## Paleta de cores
+
+<div align="center">
+  <img src="img/Peleta de cores.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
+</div>
+
+## Tipografia utilizada
+
+<div align="center">
+  <img src="img/Tipografia.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
+</div>
+
+## Login
+
+<div align="center">
+  <img src="img/Tipografia.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
+</div>
