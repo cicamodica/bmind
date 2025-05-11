@@ -60,12 +60,11 @@ body {  /* Estilo geral do corpo da página */
 
 
  .navbar { 
-   
-    display: flex; /* Use flexbox para alinhar os itens */
-    justify-content: center; /* Espaçamento entre os itens */
-    align-items: center; /* Alinhe os itens verticalmente */
-    padding: 10px 20px; /* Preenchimento interno */
-    background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
+  display: flex; /* Use flexbox para alinhar os itens */
+  justify-content: center; /* Espaçamento entre os itens */
+  align-items: center; /* Alinhe os itens verticalmente */
+  padding: 10px 20px; /* Preenchimento interno */
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
  }
  .search-conteiner { /* Estilo da barra de pesquisa */
   display:flex;
