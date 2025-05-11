@@ -8,29 +8,29 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
 ## Logotipo Oficial
 
 <div align="center">
-  <img src="img/Logo oficial.png" alt="Logo Bmind" style="width: 30%; max-width: 800px;">
+  <img src="img/Logo oficial.png" alt="Logo oficial" style="width: 30%; max-width: 800px;">
 </div>
 
 ## Variações do logotipo
 
 <div align="center">
-  <img src="img/Logotipos.png" alt="Logo Bmind" style="width: 100%; max-width: 800px;">
+  <img src="img/Logotipos.png" alt="Logotipos" style="width: 100%; max-width: 800px;">
 </div>
 
 ## Paleta de cores
 
 <div align="center">
-  <img src="img/Peleta de cores.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
+  <img src="img/Paleta de cores.png" alt="Paleta de cores" style="width: 70%; max-width: 800px;">
 </div>
 
 ## Tipografia utilizada
 
 <div align="center">
-  <img src="img/Tipografia.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
+  <img src="img/Tipografia.png" alt="Tipografia" style="width: 70%; max-width: 800px;">
 </div>
 
 ## Login
 
 <div align="center">
-  <img src="img/Página de login.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
+  <img src="img/Página de login.png" alt="Página de login" style="width: 70%; max-width: 800px;">
 </div>
