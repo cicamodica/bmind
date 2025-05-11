@@ -32,5 +32,5 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
 ## Login
 
 <div align="center">
-  <img src="img/Tipografia.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
+  <img src="img/Página de login.png" alt="Logo Bmind" style="width: 70%; max-width: 800px;">
 </div>
