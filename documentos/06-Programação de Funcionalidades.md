@@ -10,8 +10,7 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 
 ### Requisito atendido
 
-- |RF-001| fornecer um formulário de cadastro no qual os usuários possam inserir as informações necessárias para criar uma conta.
-
+- |RF-02| A aplicação deve permitir que o usuário faça login em sua conta.
 
 ### Artefatos da funcionalidade
 
@@ -26,7 +25,7 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/login/login.html)
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/login/login.html) 
 
 - Faça o login em sua conta. Após o login bem-sucedido, você será redirecionado automaticamente para a página inicial da aplicação.
 
