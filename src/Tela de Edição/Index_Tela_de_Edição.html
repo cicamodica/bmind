@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Validação de Dados</title>
+        <link rel="stylesheet" href="style_Tela_de_Edição.css"> <!--Ligar ao CSS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--Cria o link com o site da logo-->
+        
+    </head>
+    <body>
+
+        
+        <!--Cabeçalho-->
+        <navbar>
+        <div id="cabecalho">
+        
+            <i id="botaovoltar"class="fa-regular fa-circle-left"></i>
+            
+            <h1>Bmind</h1>
+            <div class="search-conteiner"> 
+                <input type="text" placeholder="Pesquisa..." class="search-bar">
+                <i class="fa-solid fa-magnifying-glass search-icone"></i>
+            </div>
+        </div>
+        </navbar>
+
+        <p>Dashboard de Fulano</p>
+
+        <button class="Entradas" onclick="openModal('entradas')">Entradas</button>
+        <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
+        <button class="Economias" onclick="openModal('economias')">Economias</button>
+
+        <div class="overlay" id="overlay" onclick="closeModal()"></div>
+        
+        <!--Botão Entradas-->
+        <div class="modal" id="modal-entradas">
+
+            <h2>Atualização de entrada</h2>
+            <label>DATA</label><br>
+            <input class="data" type="date" name="data"><br>
+            <label>VALOR DE ENTRADA</label><br>
+            <input class="entrada" type="number" name="valor de entrada">
+            <br>
+
+            <!--Caixa de seleção de categoria-->
+            <label for="opcoes">CATEGORIA</label><br>
+                <select id="opcoes" name="opcao">
+                <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
+                <option value="opcao1">Opção 1</option>
+                <option value="opcao2">Opção 2</option>
+                <option value="opcao3">Opção 3</option>
+                <option value="opcao4">Opção 4</option>
+                </select>
+            <br>
+            
+            <label>VALOR RECORRENTE?</label><br>
+            <input type="checkbox" id="opcao1" name="opcoes" value="valor1">
+            <label for="opcao1">SIM</label><br>
+
+            <input type="checkbox" id="opcao2" name="opcoes" value="valor2">
+            <label for="opcao2">NÃO</label><br>
+
+            <!--Agendar para-->
+            <label for="Seleção">AGENDAR PARA</label><br>
+            <input class="agendar1" type="date" name="agendar para"><br> 
+                </select>
+            <imput type="text">
+            <button>Salvar</button>
+        </div>
+        
+        <!--Botão Saídas-->
+        <div class="modal" id="modal-saidas">
+            <h2>Atualização de entrada</h2>
+            <label>DATA</label><br>
+            <input class="data" type="date" name="data"><br>
+            <label>VALOR DE ENTRADA</label><br>
+            <input class="entrada" type="number" name="valor de entrada">
+            <br>
+
+            <!--Caixa de seleção de categoria-->
+            <label for="opcoes">CATEGORIA</label><br>
+                <select id="opcoes" name="opcao">
+                <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
+                <option value="opcao1">Opção 1</option>
+                <option value="opcao2">Opção 2</option>
+                <option value="opcao3">Opção 3</option>
+                <option value="opcao4">Opção 4</option>
+                </select>
+            <br>
+            
+            <label>VALOR RECORRENTE?</label><br>
+            <input type="checkbox" id="opcao1" name="opcoes" value="valor1">
+            <label for="opcao1">SIM</label><br>
+
+            <input type="checkbox" id="opcao2" name="opcoes" value="valor2">
+            <label for="opcao2">NÃO</label><br>
+
+            <!--Agendar para-->
+            <label for="Seleção">AGENDAR PARA</label><br>
+            <input class="agendar1" type="date" name="agendar para"><br> 
+                </select>
+            <imput type="text">
+            <button>Salvar</button>
+        </div>
+
+        <!--Botão Economias-->
+        <div class="modal" id="modal-economias">
+            <h2>Editar Economias</h2>
+            <label>DESCRIÇÃO</label><br>
+            <input class="descrição" type="text"><br>
+            <label>VALOR</label><br>
+            <input class="valor" type="number"><br>
+            <button>Salvar</button>
+        </div>
+        <h3>Atualizar</h3>
+        
+            <input
+                type="submit"
+                class="input-confirmar"
+                value="Salvar alterações">
+    </body>
+    <script src="script_Validação_de_dados.js"></script>
+</html>
