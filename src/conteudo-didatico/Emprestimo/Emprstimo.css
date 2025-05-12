@@ -286,3 +286,9 @@ header {
   left: 50%;
   transform: translate(-50%, -55%);
 }
+.lista-topico-number  {
+  /*Estilização do texto da lista*/
+  margin: 15px;
+  display: flex;
+  align-items: flex-start;
+}
