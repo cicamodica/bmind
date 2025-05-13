@@ -263,6 +263,7 @@ header {
   margin: 15px;
   display: flex;
   align-items: flex-start;
+  
 }
 
 .list-icon {
@@ -285,4 +286,7 @@ header {
   top: 60%;
   left: 50%;
   transform: translate(-50%, -55%);
+}
+lista-topico-number{
+
 }
