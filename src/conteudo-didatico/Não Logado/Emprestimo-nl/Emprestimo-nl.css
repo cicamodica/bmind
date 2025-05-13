@@ -1,0 +1,290 @@
+/*Download da fonte: https://fontmeme.com/fontes/fonte-poppins/#previewtool + Importação: https://cursos.alura.com.br/forum/topico-importacao-de-fontes-409962*/
+
+/*Adicionar fontes na font family = Poppins Thin*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+
+
+
+body {  /* Estilo geral do corpo da página */
+    margin: 0;
+    font-family: "Poppins", sans-serif; /* Fonte padrão */
+    background-color: #f4f6f8;
+    color: #000;
+  }
+    
+/* Estilo do cabeçalho */
+ .navbar { 
+  display: flex; /* Use flexbox para alinhar os itens */
+  justify-content: center; /* Espaçamento entre os itens */
+  align-items: center; /* Alinhe os itens verticalmente */
+  padding: 10px 20px; /* Preenchimento interno */
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
+ }
+ .menu-icon { /* Estilo do item do menu ☰ */
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: white;
+}
+.escrito{ /* Estilo do texto do menu */
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: auto;
+  color: white;
+  
+}
+ .search-conteiner { /* Estilo da barra de pesquisa */
+  display:flex;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 900px;
+  z-index: 1;
+  align-items: center;
+  left: 50%;
+ /* margin-right: -300px;*/
+  
+  
+ }
+ .search-bar { 
+  border-radius: 40px;
+  outline: none; 
+  padding: 12px 40px;
+  font-weight: 100;
+  border: none;
+  width: 100%;
+  
+ }
+  
+ .search-icone {
+  position: absolute;
+  right: 20px;
+  color: black;
+ }
+
+/* Estilo do icone de perfil */
+
+.user-actions{
+  font-size: 35px;
+  color:#f0f0f0;
+}
+
+/* Menu dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background: white;
+  color: black;
+  width: 220px;
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+.dropdown-menu ul {  /* Estilo da lista do menu dropdown */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+ /*cursor: pointer;*/
+}
+
+.dropdown-menu li { /* Estilo dos itens do menu dropdown */
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-menu li:hover { /* Efeito de hover nos itens do menu dropdown */
+  background: #f0f0f0;
+}
+
+/* Submenu */
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+.submenu { /* Estilo do submenu */
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  background: white;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 11;
+}
+.submenu-btn-link {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu-btn-link:hover { 
+  background-color: #024dae; 
+  color: white;              /* texto branco ao passar o mouse */
+}
+
+
+/* Estilo da barra de voltar  */
+
+
+.cabecalho { /* Estilo do cabeçalho */
+    background: #003c54; /* Cor de fundo */
+    padding: 15px 20px; /* Preenchimento interno */
+   /* display: flex;*/
+   /* width: 100%; */
+   /* justify-content: space-between;  Espaçamento entre os itens */
+  }
+
+  
+  .seta { /* Estilo do ícone no cabeçalho */
+   
+    margin: 20px 0; /* Margem superior e inferior */
+    font-size: 35px;
+    cursor: pointer;
+    color: white; /* Cor do ícone */
+   
+  }
+  
+  .titulo-cabecalho {
+    display: flex;
+    align-items: center; /* Alinhamento vertical */
+    gap: 10px;
+  }
+
+  .titulo-cabecalho h1 { /* Estilo do título no cabeçalho */
+    display: flex; /* Flexbox para centralizar o conteúdo */
+    align-items: center; /* Alinhamento vertical */
+    font-size: 35px; /* Tamanho da fonte */
+    color: white;
+    font-weight: 500; /* Peso da fonte */
+  } 
+  
+    
+ 
+ .conteudo-didatico {
+  /*Estilização do conteúdo do cartão*/
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.imagem-controle {
+  /*Estilização da imagem no posicionamento na página*/
+  float: center;
+  margin-top: -30px;
+  margin-right: 60px;
+}
+
+.imagem-controle img {
+  /*Estilização da imagem*/
+  position: relative;
+  height: 510px;
+}
+
+
+
+.introducao, 
+.inicio-artigo,
+.topico-1,
+.topico-2,
+.topico-3,
+.topico-4,
+.topico-5,
+.topico-6,
+.topico-7 {
+  /*Estilização dos corpos de texto*/
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.lista-topico {
+  /*Estilização da lista*/
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-topico li {
+  /*Estilização do texto da lista*/
+  margin: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.list-icon {
+  /*Estilização do ícone da lista*/
+  width: 20px;
+  height: 20px;
+  background-color: #00b4d8;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+
+.list-icon::after {
+  /*Estilização do ícone da lista (adicionar o símbolo de check)*/
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+}
