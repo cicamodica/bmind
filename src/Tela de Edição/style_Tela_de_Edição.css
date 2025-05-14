@@ -203,3 +203,34 @@ h3 {
     font-weight: bold;
     cursor: pointer;
   }
+
+ /* BARRA DATA */
+
+/* Deixa o seletor de mês centralizado visualmente */
+.month-selector {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 0px;
+  gap: 20px;
+}
+
+
+   /*   DASHBOARD (AGUARDANDO)  */
+
+.month-panel {
+  margin: 20px auto;
+  padding: 20px;
+  width: 600px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+    
