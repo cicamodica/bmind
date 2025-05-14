@@ -20,3 +20,34 @@ function openModal(tipo) {
       modal.style.display = 'none';
     });
   }
+/* Função MonthNames */
+
+    document.addEventListener("DOMContentLoaded", function () {
+  const monthDisplay = document.getElementById("month-display");
+  const MonthNameText = document.getElementById("month-name");
+  const monthPanel = document.getElementById("month-info");
+
+  const monthNames = [
+    "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+    "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+  ];
+
+  let currentDate = new Date();
+
+  function updateMonthDisplay() {
+    const month = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+    const fullMonth = `${monthNames[month]} de ${year}`;
+
+    monthDisplay.textContent = fullMonth;
+    MonthNameText.textContent = fullMonth;
+    monthPanel.innerHTML = `Exibindo dados de <strong>${fullMonth}</strong>.`;
+  }
+
+  window.changeMonth = function (direction) {
+    currentDate.setMonth(currentDate.getMonth() + direction);
+    updateMonthDisplay();
+  };
+
+  updateMonthDisplay();
+});
