@@ -225,8 +225,8 @@ h3 {
 
 .month-panel {
   margin: 20px auto;
-  padding: 20px;
-  width: 600px;
+  padding: 250px; /* Aumentar a altura*/
+  width: 2400px; /*Aumentar a largura */
   background-color: #f0f0f0;
   border-radius: 12px;
   font-size: 18px;
