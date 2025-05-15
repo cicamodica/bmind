@@ -4,7 +4,7 @@ O documento de programação de funcionalidades descreve as características pri
 
 ## Login
 
-![Página de login](https://github.com/user-attachments/assets/ff22b149-4d75-43c7-aa2e-5908d6034ec9)
+![Página de login](https://github.com/user-attachments/assets/06be0abd-3a3a-4e9f-935e-5126a4db24ac)
 
 Sua principal função é permitir que os usuários autentiquem suas identidades para obter acesso ao site. Através dessa página, os usuários podem inserir suas informações de login, como nome de usuário e senha, e o sistema verifica se essas informações são válidas para conceder o acesso, além da disponibilização de outros elementos, como botões de acesso ao site, verificação do sistema de reCAPTCHA do google, botão para redirecionamento para a tela de cadastro caso o sistema identifique que o e-mail inserido já está sendo utilizado e  o botão de recuperação de senha.
 
@@ -35,6 +35,77 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 #### Responsável
 
 Maria Cecilia Caruzzo Modica
+
+## Esqueceu a senha?
+
+![Página esqueceu a senha](https://github.com/user-attachments/assets/f3d16e2e-ddf9-4a5a-bdfc-8760099e2a86)
+
+Sua principal função é permitir que os usuários que esqueceram a senha, cadastrada anteriormente, possam redefiní-la e garantir seu acesso à aplicação. Através dessa página, os usuários podem inserir o e-mail que foi cadastrado para a criação de seu conta e receber por ele um link que irá redirecioná-lo diretamente à página de redefinição de senha.
+
+### Requisito atendido
+
+- |RF-02| A aplicação deve permitir que o usuário faça login em sua conta.
+
+### Artefatos da funcionalidade
+
+-esqueceu-senha.html
+-esqueceu-senha.css
+-esqueceu-senha.js
+
+### Estrutura de Dados
+
+[Caso exista estrutura de dados, adicione aqui]
+
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/esqueceu-senha/esqueceu_senha.html)
+
+- Insira o e-mail que foi cadastrado anteriormente. Você receberá em sua caixa de entrada um e-mail com um link de acesso que irá te redirecionar para a página de redefinição de senha.
+
+- Após finalizar a redefinição você terá seu acesso a aplicação garantido.
+
+
+#### Responsável
+
+Kaue 
+Maria Cecilia Caruzzo Modica
+
+## Redefinição de senha
+
+![Página redefinir senha](https://github.com/user-attachments/assets/e3ba09f7-fcfb-4e67-bb17-17fdcc8a18de)
+
+Sua principal função é permitir que os usuários que esqueceram a senha, cadastrada anteriormente, possam redefiní-la e garantir seu acesso à aplicação. Através dessa página, o usuário poderá inserir a nova senha e salvá-la para garantir seu acesso á página.
+
+### Requisito atendido
+
+- |RF-02| A aplicação deve permitir que o usuário faça login em sua conta.
+
+### Artefatos da funcionalidade
+
+-redefinir-senha.html
+-redefinir-senha.css
+-redefinir-senha.js
+
+### Estrutura de Dados
+
+[Caso exista estrutura de dados, adicione aqui]
+
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL:(https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/redefinir-senha/redefinir_senha.html)
+
+- Essa página você acessa ao clicar no link de acesso encaminhado via e-mail. 
+
+- Após acessar o link, insira a sua nova senha e confirme. Ao finalizar a redefinição você terá seu acesso a aplicação garantido.
+
+
+#### Responsável
+
+Kaue 
+Maria Cecilia Caruzzo Modica
+
 
 
 > **Links Úteis**:
