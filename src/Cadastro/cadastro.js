@@ -39,12 +39,19 @@ document
       return; // Interrompe a execução se houver erro
     }
 
+    const checkboxes = document.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+
+    const selecionados = Array.from(checkboxes).map((cb) => cb.value);
+
     const dadosUsuario = {
       nome: nome,
       email: email,
       senha: novaSenha,
       telefoneContato: telefoneContato,
       dataNascimento: dataNascimento,
+      preferenciaDeConteudos: selecionados,
     };
     // Verifica se o e-mail já está cadastrado no localStorage
     const dados = JSON.parse(localStorage.getItem(email));
