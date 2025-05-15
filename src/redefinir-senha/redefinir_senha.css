@@ -58,7 +58,7 @@ body {
   font-family: "Poppins", sans-serif; /*CSS fonts: https://www.w3schools.com/css/css_font.asp* > É interessante add uma fonte secundária (sans-serif) caso não dê para usar a principal*/
 }
 
-.nav {
+.nav nav {
   /*Estilização da classe pai .NAV (barra superior)*/
   display: flex;
   align-items: center;
@@ -67,17 +67,16 @@ body {
   height: 50px;
 }
 
-nav .nav-item {
+.nav-item .logo {
   /*Estilização da classe .nav-item, que está dentro de nav pai (Bmind)*/
-  font-weight: 500;
-  padding-left: 20px; /*Aumento da padding à esquerda*/
-  font-size: 40px;
-  color: #ffffff; /*Trocar cor da letra? Preto para branco <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+  height: 55px;
+  margin-left: 20px;
 }
 
 nav .nav-icon {
   /*Estilização do ícone de seta na classe .nav-icon, que está dentro de nav pai (Seta)*/
   font-size: 35px;
+  color: #ffffff;
 }
 
 nav .nav-link {
