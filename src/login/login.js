@@ -34,3 +34,8 @@ inputPassword.addEventListener("input", function () {
   //.addEventListener adiciona um ouvinte para o elemento HTML (form, input...) quando um evento do tipo input for disparado, ou seja, quando o usuário começar a digitar no campo senha, a função sera executada
   formInputMessage.style.display = "none"; //Isso faz com que a mensagem de erro suma (display = none)
 });
+
+function togglePassword() {
+  const input = document.getElementById("form-password");
+  input.type = input.type === "password" ? "text" : "password";
+}
