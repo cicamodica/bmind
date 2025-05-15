@@ -17,61 +17,55 @@ window.addEventListener("click", function (e) {
 //Recupera o usuario logado
 const usuarioLogado = localStorage.getItem('currentUser');
 
-// Verifica se o usuário está logado
-//if (usuarioLogado) {
-   //Se o usuário estiver logado, exibe uma mensagem de boas-vindas
-  //const usuario = JSON.parse(usuarioLogado);
-  //const boasVindas = document.getElementById('boasVindas');
-  //boasVindas.innerHTML = `Bem-vindo(a), ${usuario.nome}!`;
-//}
-// Caso contrário, redireciona para a página de login
-//else {
-  //window.location.href = 'login.html';
-//}
+// Aguarda o carregamento completo da página
+window.addEventListener("DOMContentLoaded", function () {
+  const boasVindas = document.getElementById("boas-vindas");
+  const emailUsuario = localStorage.getItem("usuarioLogado");
 
-//Exibe os ultimos conteudos vistos
-function exibirVistosRecentemente() {
-    if(!usuarioLogado) return;
-    
-    const historico = JSON.parse(localStorage.getItem('usuarioLogado')) || [];
-    const listaVistosRecentemente = document.getElementById('lista-vistos-recentemente');
-    listaVistosRecentemente.innerHTML = ''; // Limpa a lista antes de adicionar novos itens
-    
-    historico.forEach(item => {
-        const li = document.createElement('li');
-        const link = document.createElement('a');
-        link.href = item.link; // Define o link do item
-        link.textContent = item.titulo; // Define o texto do link
-        li.appendChild(link); // Adiciona o link ao item da lista
-        listaVistosRecentemente.appendChild(li);
-    });
-}
-
-//Registra uma visualização de conteudo
-function registrarVisualizacao(titulo, link) {
-    if(!usuarioLogado) return;
-    
-    let historico = JSON.parse(localStorage.getItem('usuarioLogado')) || [];
-
-    // Verifica se o item já existe no histórico
-    const itemExistente = historico.find(item => item.titulo === titulo);
-    if (itemExistente) {
-        // Se o item já existe, remove-o do histórico
-        historico = historico.filter(item => item.titulo !== titulo);
+  if (emailUsuario) {
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+    if (dadosUsuario && dadosUsuario.nome) {
+      boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+    } else {
+      boasVindas.textContent = "Olá!";
     }
-    // Adiciona o novo item ao início do histórico
-    historico.unshift({ titulo, link, timestamp: Date.now});
-
-    // Limita o histórico a 5 itens
-    if (historico.length > 5) {
-        historico.pop(); // Remove o item mais antigo
-    }
-    localStorage.setItem('usuarioLogado', JSON.stringify(historico))
-
-}
-//Atualiza a lista de vistos recentemente
-document.addEventListener('DOMContentLoaded', () => {
-    exibirVistosRecentemente();
+  } else {
+    // Se ninguém estiver logado, mostra mensagem genérica ou redireciona
+    boasVindas.textContent = "Bem-vindo!";
+    // Opcional: redirecionar para a página de login
+    // window.location.href = "/src/login/login.html";
+  }
 });
 
 
+// Função para registrar um conteúdo como recentemente visto
+function registrarConteudoVisto(nomeConteudo) {
+  let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
+
+  // Remove se já existe (para evitar duplicata), e depois adiciona ao topo
+  vistos = vistos.filter((item) => item !== nomeConteudo);
+  vistos.unshift(nomeConteudo);
+
+  // Mantém só os 3 mais recentes
+  if (vistos.length > 3) {
+    vistos = vistos.slice(0, 3);
+  }
+
+  localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
+}
+
+// Função para exibir os conteúdos vistos recentemente
+function exibirVistosRecentemente() {
+  const lista = document.getElementById("lista-vistos-recentemente");
+  const vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
+
+  lista.innerHTML = "";
+
+  vistos.forEach((conteudo) => {
+    const li = document.createElement("li");
+    li.textContent = conteudo;
+    lista.appendChild(li);
+  });
+}
+
+exibirVistosRecentemente();

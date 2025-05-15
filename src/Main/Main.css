@@ -109,6 +109,7 @@ body {
 
 }
 
+
 /* Menu dropdown principal */
 .dropdown-menu {
   position: absolute;
@@ -215,6 +216,13 @@ background: #f0f0f0;
 .user-actions{
 font-size: 35px;
 color:#f0f0f0;
+}
+
+.boas-vindas{
+   margin-bottom: 15px;
+  color: #004aad;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .conteudo{

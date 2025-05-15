@@ -46,17 +46,17 @@
              Finanças pessoais
               <ul class="submenu">
                 <li>
-                 <a href="/src/conteudo-didatico/Logado/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html" class="submenu-btn-link">
+                 <a href="/src/conteudo-didatico/Logado/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html" class="submenu-btn-link" onclick="registrarConteudoVisto('Planejamento financeiro')">
                    Planejamento financeiro
                  </a>
                </li>
                <li>
-                 <a href="/src/conteudo-didatico/Logado/financas-pessoais/orcamento-domestico/orcamento-domestico.html" class="submenu-btn-link">
+                 <a href="/src/conteudo-didatico/Logado/financas-pessoais/orcamento-domestico/orcamento-domestico.html" class="submenu-btn-link" onclick="registrarConteudoVisto('Orçamento doméstico')">
                    Orçamento doméstico
                  </a>
                </li>
                <li>
-                 <a href="/src/conteudo-didatico/Logado/financas-pessoais/controle-de-dividas/controle-de-dividas.html" class="submenu-btn-link">
+                 <a href="/src/conteudo-didatico/Logado/financas-pessoais/controle-de-dividas/controle-de-dividas.html" class="submenu-btn-link" onclick="registrarConteudoVisto('Controle de dívidas')">
                    Controle de dívidas
                 </a>
                </li>
@@ -76,12 +76,12 @@
              Operações bancárias
              <ul class="submenu">
                <li>
-                 <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html" class="submenu-btn-link">
+                 <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html" class="submenu-btn-link" onclick="registrarConteudoVisto('Cartão de Débito')">
                   Cartão de Débito
                 </a>
                </li>
                <li>
-                 <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html" class="submenu-btn-link">
+                 <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html" class="submenu-btn-link" onclick="registrarConteudoVisto('Cartão de Crédito')">
                   Cartões de Crédito
                 </a>
                </li>
@@ -107,12 +107,18 @@
     </ul>
   </nav>
 </div>
-    
+
+<body>
+</div>
+  <div class="boas-vindas">
+    <h1 id = "boas-vindas"></h1>
+  </div>
+
   </div>
    <main class="conteudo-principal">
     <section class="vistos-recentemente">
       <h2>Vistos recentemente</h2>
-      <ul id="lista-vistos"></ul>
+      <ul id="lista-vistos-recentemente"></ul>
     </section>
   </main>
   </div>
