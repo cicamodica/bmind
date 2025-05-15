@@ -15,7 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentDate = new Date();
 
   // =================== Onde fica salvo os dados do dash ===========
-  const dadosPorMes = {
+  const dadosPorMes = {  "0": [300, 150, 200, 100, 50],
+  "1": [280, 130, 220, 120, 80],
+  "2": [320, 140, 210, 90, 60],
+  "3": [310, 180, 190, 110, 70],
+  "4": [500, 200, 300, 150, 100],
+  "5": [270, 160, 250, 140, 90],
+  "6": [290, 150, 230, 130, 60],
+  "7": [310, 170, 220, 120, 80],
+  "8": [330, 180, 210, 110, 70],
+  "9": [350, 190, 240, 130, 90],
+  "10": [370, 200, 230, 120, 100],
+  "11": [360, 210, 220, 110, 95]
   };
   const cores = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'];
   const labelsCategorias = ['Entrada', 'Saida', 'Investimento', 'Emergência', 'Outros'];

@@ -126,3 +126,9 @@ h4 {
     margin-top: 10px; /* Espaçamento inferior */
     font-size: 15px; /* Tamanho da fonte */
 }
+
+@media (max-width: 768px)
+ {
+  .content {
+    flex-direction: column;
+  }}
