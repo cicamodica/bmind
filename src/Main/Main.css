@@ -136,7 +136,7 @@ margin-right: 15px;
 color: white;
 }
 
-.escrito{ /* Estilo do texto do menu */
+.escrita{ /* Estilo do texto do menu */
 font-size: 40px;
 font-weight: 500;
 margin-right: auto;
@@ -160,53 +160,12 @@ position: relative;
 background: #f0f0f0;
 }
 
-/* Submenu */
-.has-submenu:hover .submenu {
-display: block;
-}
-
-.submenu { /* Estilo do submenu */
-display: none;
-position: absolute;
-top: 0;
-left: 200px;
-background: white;
-width: 220px;
-border-radius: 8px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-z-index: 11;
-}
 
 /* Estilo do icone de perfil */
 
 .user-actions{
 font-size: 35px;
 color:#f0f0f0;
-}
-
-/* Submenu */
-.has-submenu:hover .submenu {
-  display: block;
-}
-
-
-.submenu-btn-link {
-  display: block;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  padding: 8px 12px;
-  text-align: left;
-  width: 100%;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.submenu-btn-link:hover {
-  background-color: #024dae; 
-  color: white;              /* texto branco ao passar o mouse */
 }
 
 .conteudo{

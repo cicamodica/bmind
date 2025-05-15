@@ -1,3 +1,19 @@
+//Inicio funcionalidades Menu
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// Fechar menu ao clicar fora
+window.addEventListener("click", function (e) {
+  const menu = document.getElementById("dropdownMenu");
+  const icon = document.querySelector(".menu-icon");
+  if (!menu.contains(e.target) && !icon.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+
+// Fim funcionalidades Menu
 //Recupera o usuario logado
 const usuarioLogado = localStorage.getItem('currentUser');
 

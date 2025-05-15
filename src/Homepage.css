@@ -181,7 +181,7 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.submenu-btn-link:hover {
+.submenu-btn-link:hover { 
   background-color: #024dae; 
   color: white;              /* texto branco ao passar o mouse */
 }
