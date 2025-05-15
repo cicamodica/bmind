@@ -1,53 +1,89 @@
-/*icone de voltar*/
-document.addEventListener('DOMContentLoaded', function () {/*Garantir que o código seja ececutado depois da página estiver completamente carregado */
-    const voltar = document.getElementById('botaovoltar');
-  
-    if (voltar) {
-      voltar.addEventListener('click', function () {/*Função de clicar */
-        history.back(); /*Volta para a pag anterior */
-      });
-    }
-  });
-
-function openModal(tipo) {
-    document.getElementById('overlay').style.display = 'block';
-    document.getElementById(`modal-${tipo}`).style.display = 'block';
-  }
-  
-  function closeModal() {
-    document.getElementById('overlay').style.display = 'none';
-    document.querySelectorAll('.modal').forEach(modal => {
-      modal.style.display = 'none';
+document.addEventListener("DOMContentLoaded", function () {
+  // =================== ICONE DE VOLTAR ===================
+  const voltar = document.getElementById("botaovoltar");
+  if (voltar) {
+    voltar.addEventListener("click", function () {
+      history.back();
     });
   }
-/* Função MonthNames */
 
-    document.addEventListener("DOMContentLoaded", function () {
-  const monthDisplay = document.getElementById("month-display");
-  const MonthNameText = document.getElementById("month-name");
-  const monthPanel = document.getElementById("month-info");
-
+  // =================== VARIÁVEIS E CONFIGS ===================
   const monthNames = [
     "janeiro", "fevereiro", "março", "abril", "maio", "junho",
     "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
   ];
-
   let currentDate = new Date();
 
-  function updateMonthDisplay() {
-    const month = currentDate.getMonth();
-    const year = currentDate.getFullYear();
-    const fullMonth = `${monthNames[month]} de ${year}`;
+  // =================== Onde fica salvo os dados do dash ===========
+  const dadosPorMes = {
+  };
+  const cores = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'];
+  const labelsCategorias = ['Entrada', 'Saida', 'Investimento', 'Emergência', 'Outros'];
 
-    monthDisplay.textContent = fullMonth;
-    MonthNameText.textContent = fullMonth;
-    monthPanel.innerHTML = `Exibindo dados de <strong>${fullMonth}</strong>.`;
+  // =================== FUNÇÕES DE INTERFACE ===================
+  function updateMonthDisplay() {
+    const mes = currentDate.getMonth();
+    const ano = currentDate.getFullYear();
+    const texto = `${monthNames[mes]} de ${ano}`;
+    document.getElementById("month-display").textContent = texto;
+    document.getElementById("month-name").textContent = texto;
   }
 
   window.changeMonth = function (direction) {
     currentDate.setMonth(currentDate.getMonth() + direction);
     updateMonthDisplay();
+    updateChart();
   };
 
+  // =================== GRÁFICO DE PIZZA ===================
+  const ctx = document.getElementById("graficoPizza").getContext("2d");
+  let graficoPizza = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: labelsCategorias,
+      datasets: [{
+        data: dadosPorMes[currentDate.getMonth()],
+        backgroundColor: cores,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        },
+        tooltip: {
+          enabled: true
+        }
+      }
+    }
+  });
+
+  function updateChart() {
+    const mes = currentDate.getMonth();
+    graficoPizza.data.datasets[0].data = dadosPorMes[mes];
+    graficoPizza.update();
+  }
+
+  // =================== MODAIS ===================
+  window.openModal = function (tipo) {
+    closeAllModals();
+    document.getElementById(`modal-${tipo}`).style.display = 'block';
+    document.getElementById("overlay").style.display = 'block';
+  };
+
+  window.closeModal = function () {
+    closeAllModals();
+    document.getElementById("overlay").style.display = 'none';
+  };
+
+  function closeAllModals() {
+    document.querySelectorAll(".modal").forEach(modal => {
+      modal.style.display = "none";
+    });
+  }
+
+  // =================== INICIALIZAÇÃO ===================
   updateMonthDisplay();
 });
