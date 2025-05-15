@@ -1,134 +1,140 @@
-*{
-    margin: 0; 
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Cabeçalho com gradiente e alinhamento */
 #cabecalho {
-    
-    font-size: 20px;
-    font-family: "Poppins"; 
-    font-weight: 40;
-    background: linear-gradient(to right, #5bc5cc, #024dae);/*cor do cabeçalho, usando o gradiente de duas cores*/
-    height: 70px;
-    padding: 20px;
-    display: flex;
-    align-items: center;/*alinhamento vertical dos botão de voltar e do nome Bmind dentro do cabeçalho*/
+  font-size: 20px;
+  font-family: "Poppins";
+  font-weight: 400; /* Corrigido de 40 para 400 */
+  background: linear-gradient(to right, #5bc5cc, #024dae);
+  height: 70px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
-/*Esses font-face foram colocados para registrar a fonte no css*/
-  @font-face {
-    font-family: "Poppins"; 
-    src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
-    
+/* Fontes registradas */
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: bold;
 }
 
 @font-face {
-    font-family: "Poppins"; 
-    src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
-    
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
 }
 
-@font-face {
-    font-family: "Poppins"; 
-    src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
-    
-}
-
-/*Icone de Seta para voltar para a página anterior*/
+/* Ícone de seta para voltar */
 i.fa-circle-left {
-    text-decoration: none; /* remove o sublinhado do link */
-    color: white; 
-    font-size: 35px; 
-    margin-right: 10px; 
-    cursor: pointer; /*coloquei o ponteiro de selecionar*/
-    
-
+  color: white;
+  font-size: 35px;
+  margin-right: 10px;
+  cursor: pointer;
+  text-decoration: none;
 }
-/*fonte do site e cor de fundo*/
-body { 
-    font-family: "Poppins"; 
-    src: url("/src/Poppins-Regular.ttf") format("truetype");
-    background-color: #fff; 
 
+/* Configuração global do body */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
 }
-/*Isso aqui é o Bmind que fica no cabeçalho*/
+
+/* Título principal (Bmind) */
 h1 {
-    font-weight: 500;
-    font-size: 40;
-    color: white;
-    padding: 10px;
+  font-weight: 500;
+  font-size: 40px; /* Adicionado 'px' que faltava */
+  color: white;
+  padding: 10px;
 }
 
-/*A página está deixando tudo em negrito sozinho, então estou especificando o que não deve ficar*/
-h3, h4, input { 
-    font-weight: 400;
+/* Corrigindo pesos de fonte em elementos específicos */
+h3, h4, input {
+  font-weight: 400;
 }
 
-
-/*Deixei tudo centralizado a partir da tag div que eu usei para marcar o conteudo*/
+/* Centralização de conteúdo */
 #conteudo {
-    text-align: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-
-
-/*A partir daqui, eu editei os títulos separadamente, modificando tamanho da fonte e localização vertical de cada um na tela*/
+/* Estilização dos subtítulos */
 h2 {
-    font-size: 46px;
-    margin-top: 60px;
-    font-weight: 500;
+  font-size: 46px;
+  margin-top: 60px;
+  font-weight: 500;
 }
+
 h3 {
-    font-size: 15px;
-    margin-top: 7px;
+  font-size: 15px;
+  margin-top: 7px;
 }
 
 h4 {
-    font-size: 17px;
-    margin-top: 80px;
+  font-size: 17px;
+  margin-top: 80px;
 }
 
-/*Defini o tamanho da caixa de formulário do código de validação e centralizei o texto dentro dele*/
+/* Campo de entrada do código de validação */
 .input-codigo {
-    width: 380px;
-    height: 40px;
-    text-align: center;
-    margin-top: 7px;
-    font-size: 15px;
+  width: 90%;
+  max-width: 380px;
+  height: 40px;
+  text-align: center;
+  margin-top: 7px;
+  font-size: 15px;
 }
 
-/*Botão de Confirmar.*/
+/* Botão confirmar */
 .input-confirmar {
-    background-color: black;/*cor de fundo*/
-    color: white;/*cor da fonte*/
-    font-size: 13px;
-    font-family: "poppins"; 
-    src: url("/src/Poppins-Medium.ttf") format("truetype");/*tive que especificar a fonte novamente*/
-    width: 130px;
-    height: 35px;
-    cursor: pointer; /*coloquei o ponteiro de selecionar*/
-    border: none;
-    margin-top: 40px;
-    font-weight: bold;
-    transition: background-color 0.5s; /*****Coloquei uma transição para o botão mudar de cor*/
-}
-.input-confirmar:hover {/*****Usei o hover para executar a ação de mudar de cor e coloquei uma cor de fundo pra ele fazer isso*/
-    background-color:#024dae;
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  width: 130px;
+  height: 35px;
+  cursor: pointer;
+  border: none;
+  margin-top: 40px;
+  font-weight: bold;
+  transition: background-color 0.5s;
 }
 
+.input-confirmar:hover {
+  background-color: #024dae;
+}
+
+/* Mensagem de erro */
 .mensagem-erro {
-   
-    position: absolute;/*Coloquei isso para a menssagem quando aparecer não empurrar o botão pra baixo*/
-    left: 45%; /*Deixei assim porquê quando deixa a posição absoluta, a menssagem sai do centro*/
-    color: red; /* Cor do texto */
-    margin-top: 10px; /* Espaçamento inferior */
-    font-size: 15px; /* Tamanho da fonte */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: red;
+  margin-top: 10px;
+  font-size: 15px;
 }
 
-@media (max-width: 768px)
- {
-  .content {
+/* Responsividade básica */
+@media (max-width: 768px) {
+  #cabecalho {
     flex-direction: column;
-  }}
+    height: auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .input-codigo {
+    width: 95%;
+  }
+
+  .mensagem-erro {
+    font-size: 14px;
+  }
+}
