@@ -108,6 +108,12 @@ form .form-title {
   font-weight: 500;
 }
 
+.form-input {
+  /*Estilização da caixa de texto para receber o ícone de vizualização de senha*/
+  position: relative;
+  width: 600px;
+}
+
 form .form-input-label {
   /*Estilização da classe .form-text dentro de form (Nomes do textfield da página: Para redefinir a senha, informe o e-mail cadastrado para o envio do link)*/
   display: block;
@@ -120,8 +126,18 @@ form .form-input-textfield {
   /*Estilização da classe .form-input-textfield dentro de form (A caixa de texto em si)*/
   width: 100%;
   height: 40px;
-  box-sizing: border-box; /*Comando para fazer um input (campo de texto, no caso) ficar do tamanho da div pai em seu comprimento*/
   text-align: center;
+}
+
+.toggle-password {
+  /*Estilização do botão para ver a senha (olho)*/
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  bottom: 8px; /*Alinhar olho com a caixa de texto*/
 }
 
 form .form-button {
