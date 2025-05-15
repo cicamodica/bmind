@@ -20,7 +20,17 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 
 ### Estrutura de Dados
 
-[Caso exista estrutura de dados, adicione aqui]
+    const dados = JSON.parse(localStorage.getItem(inputEmail.value));
+      if (
+        dados &&
+        inputEmail.value == dados.email && 
+        inputPassword.value == dados.senha
+          ) {
+      formInputMessage.style.display = "none"; 
+      window.location.href = "/src/Main/Main.html";
+        } else {
+      formInputMessage.style.display = "block"; 
+        }
 
 
 ### Instruções de acesso
@@ -44,17 +54,43 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 ### Requisito atendido
 
-- |RF-02| A aplicação deve permitir que o usuário faça login em sua conta.
+[Adicionar novo?]
 
 ### Artefatos da funcionalidade
 
--esqueceu-senha.html
--esqueceu-senha.css
--esqueceu-senha.js
+- esqueceu-senha.html
+- esqueceu-senha.css
+- esqueceu-senha.js
 
 ### Estrutura de Dados
 
-[Caso exista estrutura de dados, adicione aqui]
+    const dados = JSON.parse(localStorage.getItem(inputEmail.value));
+
+    if (dados == null) {
+      alert("Usuário não encontrado");
+    } else {
+      emailjs
+        .send(
+          "service_ct2hayr",
+          "template_je09365",
+          {
+            link:
+              "http://127.0.0.1:5501/src/redefinir-senha/redefinir_senha.html?email=" +
+              inputEmail.value,
+            email: inputEmail.value,
+          },
+          null
+        )
+        .then(
+          (response) => {
+            alert("E-mail enviado! Verifique sua caixa de entrada", response.status, response.text);
+    
+          },
+          (error) => {
+           alert("E-mail não enviado", error);
+          }
+        );
+    }
 
 
 ### Instruções de acesso
@@ -66,10 +102,10 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 - Após finalizar a redefinição você terá seu acesso a aplicação garantido.
 
 
-#### Responsável
+#### Responsáveis
 
-Kaue 
-Maria Cecilia Caruzzo Modica
+- Kauê Alves dos Reis 
+- Maria Cecilia Caruzzo Modica
 
 ## Redefinição de senha
 
@@ -79,18 +115,21 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 ### Requisito atendido
 
-- |RF-02| A aplicação deve permitir que o usuário faça login em sua conta.
+[Adicionar novo?]
 
 ### Artefatos da funcionalidade
 
--redefinir-senha.html
--redefinir-senha.css
--redefinir-senha.js
+- redefinir-senha.html
+- redefinir-senha.css
+- redefinir-senha.js
 
 ### Estrutura de Dados
 
-[Caso exista estrutura de dados, adicione aqui]
+    const dados = JSON.parse(localStorage.getItem(email));
 
+    if (dados == null) {
+      window.location.href = "/src/cadastro/cadastro.html";
+    }
 
 ### Instruções de acesso
 
@@ -103,9 +142,8 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 #### Responsável
 
-Kaue 
-Maria Cecilia Caruzzo Modica
-
+- Kauê Alves dos Reis 
+- Maria Cecilia Caruzzo Modica
 
 
 > **Links Úteis**:
