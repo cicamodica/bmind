@@ -1,79 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <script src="https://kit.fontawesome.com/1691cc7750.js" crossorigin="anonymous"></script>
-     <head>
-        <meta charset="UTF-8">  <!-- Define o tipo de codificação do arquivo -->                                
-        <title>Cadastrar - Bmind</title>
-        <link rel="stylesheet" href="cadastro.css"> <!-- Para ligar ao CSS -->
+  <script
+    src="https://kit.fontawesome.com/1691cc7750.js"
+    crossorigin="anonymous"
+  ></script>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Define o tipo de codificação do arquivo -->
+    <title>Cadastrar - Bmind</title>
+    <link rel="stylesheet" href="cadastro.css" />
+    <!-- Para ligar ao CSS -->
+  </head>
+  <body>
+    <!--Cabeçalho-->
+    <header>
+      <div class="logo">
+        <i class="fa-regular fa-circle-left"></i>
+        <span>Bmind</span>
+        <!-- Logo -->
+      </div>
+    </header>
 
-     </head> 
-     <body>
+    <!-- Parte do "Cadastrar" -->
 
-        <!--Cabeçalho-->
-        <header>
-            <div class="logo">
-            <i class="fa-regular fa-circle-left"></i>
-            <span>Bmind</span> <!-- Logo -->
+    <main class="cadastro">
+      <h1>Cadastrar</h1>
+      <!-- Titulo em cima  -->
+      <a href="/src/login/login.html">Já possui cadastro?</a>
+      <!-- Faz um "link" ou uma Âncora, tipo um botão pra ir pra pagina de login futuramente-->
+      <form id="form-cadastro">
+        <div class="form-container">
+          <!-- Serve pra no CSS, deixar um de cada lado, sem ele ficaria um embaixo do outro. -->
+          <!-- Primeiro o lado esquerdo -->
+          <div class="dados-pessoais">
+            <h2>Dados pessoais</h2>
+            <label for="nome">Nome completo</label>
+            <!-- Label serve pra identificar o que é cada campo, e o for serve pra identificar o campo que vai ser preenchido -->
+            <input type="text" id="nome" name="nome" />
+            <!-- Input serve pra criar o campo de preenchimento, o id serve pra identificar o campo e o name serve pra identificar o que vai ser preenchido -->
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" />
+
+            <label for="nova-senha">Nova senha</label>
+            <input type="password" id="nova-senha" name="nova-senha" />
+
+            <label for="celular">Telefone de contato</label>
+            <input type="text" id="telefone-contato" name="telefone-contato" />
+            <label for="data-nascimento">Data de nascimento</label>
+            <input type="date" id="data-nascimento" name="data-nascimento" />
+            <!-- Campo de data, o id e name serve pra identificar o campo -->
+          </div>
+
+          <!-- Lado direito -->
+          <div class="perfil-usuario">
+            <h2>Perfil de usuário</h2>
+            <button type="button" class="botao-perfil">Pessoa Física</button>
+            <button type="button" class="botao-perfil">Pessoa Jurídica</button>
+            <!-- Botão para clicar -->
+
+            <h3>O que você gostaria de ver primeiro?</h3>
+            <div class="checkbox-preferencias">
+              <input type="checkbox" id="financas" value="Finanças Pessoais" />
+              <label for="financas" class="custom-checkbox"
+                >Finanças Pessoais</label
+              >
+              <input type="checkbox" id="investimentos" value="Investimentos" />
+              <label for="investimentos" class="custom-checkbox"
+                >Investimentos</label
+              >
+              <input
+                type="checkbox"
+                id="operacoes-bancarias"
+                value="Operações Bancárias"
+              />
+              <label for="operacoes-bancarias" class="custom-checkbox"
+                >Operações Bancárias</label
+              >
             </div>
-        </header>
+          </div>
+        </div>
 
-        <!-- Parte do "Cadastrar" -->
+        <div id="mensagem-erro" style="color: red; margin-top: 20px">
+          <!-- Mensagem de erro, que vai aparecer caso o usuário não preencha os campos corretamente -->
+        </div>
 
-        <main class="cadastro">
-            <h1>Cadastrar</h1> <!-- Titulo em cima  -->
-            <a href="/src/login/login.html">Já possui cadastro?</a> <!-- Faz um "link" ou uma Âncora, tipo um botão pra ir pra pagina de login futuramente-->
-        <form id="form-cadastro">  
-            <div class="form-container"> <!-- Serve pra no CSS, deixar um de cada lado, sem ele ficaria um embaixo do outro. -->
-                <!-- Primeiro o lado esquerdo -->
-                  <div class="dados-pessoais">
-                    <h2>Dados pessoais</h2>  
-                    <label for="nome">Nome completo</label> <!-- Label serve pra identificar o que é cada campo, e o for serve pra identificar o campo que vai ser preenchido -->
-                    <input type="text" id="nome" name="nome"> <!-- Input serve pra criar o campo de preenchimento, o id serve pra identificar o campo e o name serve pra identificar o que vai ser preenchido -->
-            
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email">    
-            
-                    <label for="nova-senha">Nova senha</label>
-                    <input type="password" id="nova-senha" name="nova-senha">
-            
-            
-                    <label for="celular">Telefone de contato</label>
-                    <input type="text" id="telefone-contato" name="telefone-contato">
-                    <label for="data-nascimento">Data de nascimento</label>
-                    <input type="date" id="data-nascimento" name="data-nascimento"> <!-- Campo de data, o id e name serve pra identificar o campo --> 
-                </div>
+        <button type="submit" class="botao-proximo">Próximo</button>
+        <!-- Botão de próximo, o type serve pra identificar o tipo do botão, no caso submit, que é pra enviar o formulário -->
+      </form>
+    </main>
 
-                <!-- Lado direito -->
-                 <div class="perfil-usuario">
-                    <h2>Perfil de usuário</h2>
-                    <button>Pessoa Física</button>
-                    <button>Pessoa Jurídica</button> <!-- Botão para clicar -->
-
-                    <h3>O que você gostaria de ver primeiro?</h3>
-                    <button>Finanças pessoais</button>
-                    <button>Investimentos</button>
-                    <button>Operações bancárias</button>
-                 </div>
-            </div>
-
-                 <div
-                 
-                    id="mensagem-erro" style="color: red; margin-top: 20px;"> <!-- Mensagem de erro, que vai aparecer caso o usuário não preencha os campos corretamente -->    
-                
-                </div> 
-
-                <button type="submit" class="botao-proximo">Próximo</button> <!-- Botão de próximo, o type serve pra identificar o tipo do botão, no caso submit, que é pra enviar o formulário -->
-        </form>             
-
-
-        </main>
-
-        <script src="cadastro.js"></script> <!-- Script pra ligar o JS, que vai fazer a validação dos campos e outras coisas -->
-
-     </body>
-</html> 
-
-
-
-
-        
+    <script src="cadastro.js"></script>
+    <!-- Script pra ligar o JS, que vai fazer a validação dos campos e outras coisas -->
+  </body>
+</html>
