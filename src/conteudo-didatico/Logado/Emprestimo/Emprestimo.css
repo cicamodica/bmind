@@ -50,7 +50,7 @@
 
 
 
-body {  /* Estilo geral do corpo da página */
+body {   /*Estilo geral do corpo da página */
     margin: 0;
     font-family: "Poppins", sans-serif; /* Fonte padrão */
     background-color: #f4f6f8;
@@ -86,7 +86,8 @@ body {  /* Estilo geral do corpo da página */
   z-index: 1;
   align-items: center;
   left: 50%;
- /* margin-right: -300px;*/
+ 
+ 
   
   
  }
@@ -96,7 +97,7 @@ body {  /* Estilo geral do corpo da página */
   padding: 12px 40px;
   font-weight: 100;
   border: none;
-  width: 100%;
+  width: 100%
   
  }
   
@@ -107,7 +108,6 @@ body {  /* Estilo geral do corpo da página */
  }
 
 /* Estilo do icone de perfil */
-
 .user-actions{
   font-size: 35px;
   color:#f0f0f0;
@@ -131,7 +131,7 @@ body {  /* Estilo geral do corpo da página */
   list-style: none;
   padding: 0;
   margin: 0;
- /*cursor: pointer;*/
+ cursor: pointer;
 }
 
 .dropdown-menu li { /* Estilo dos itens do menu dropdown */
@@ -182,7 +182,6 @@ body {  /* Estilo geral do corpo da página */
 
 /* Estilo da barra de voltar  */
 
-
 .cabecalho { /* Estilo do cabeçalho */
     background: #003c54; /* Cor de fundo */
     padding: 15px 20px; /* Preenchimento interno */
@@ -198,8 +197,7 @@ body {  /* Estilo geral do corpo da página */
     font-size: 35px;
     cursor: pointer;
     color: white; /* Cor do ícone */
-   
-  }
+}
   
   .titulo-cabecalho {
     display: flex;
@@ -213,7 +211,7 @@ body {  /* Estilo geral do corpo da página */
     font-size: 35px; /* Tamanho da fonte */
     color: white;
     font-weight: 500; /* Peso da fonte */
-  } 
+}
   
     
  
@@ -225,7 +223,7 @@ body {  /* Estilo geral do corpo da página */
 }
 
 .imagem-controle {
-  /*Estilização da imagem no posicionamento na página*/
+  /*Estilização da imagem no posicionamento na página */
   float: center;
   margin-top: -30px;
   margin-right: 60px;
@@ -255,7 +253,7 @@ body {  /* Estilo geral do corpo da página */
 }
 
 .lista-topico {
-  /*Estilização da lista*/
+  /*Estilização da lista */
   list-style: none;
   padding-left: 0;
 }
@@ -268,7 +266,7 @@ body {  /* Estilo geral do corpo da página */
 }
 
 .list-icon {
-  /*Estilização do ícone da lista*/
+  /*Estilização do ícone da lista */
   width: 20px;
   height: 20px;
   background-color: #00b4d8;
@@ -279,7 +277,7 @@ body {  /* Estilo geral do corpo da página */
 }
 
 .list-icon::after {
-  /*Estilização do ícone da lista (adicionar o símbolo de check)*/
+ /*Estilização do ícone da lista (adicionar o símbolo de check)*/
   content: "✓";
   position: absolute;
   color: white;
@@ -287,4 +285,74 @@ body {  /* Estilo geral do corpo da página */
   top: 60%;
   left: 50%;
   transform: translate(-50%, -55%);
+} 
+
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .escrito {
+    font-size: 28px;
+  }
+
+  .menu-icon {
+    font-size: 20px;
+  }
+
+  .user-actions {
+    font-size: 28px;
+  }
+
+  .titulo-cabecalho h1 {
+    font-size: 28px;
+  }
+
+  .imagem-controle img {
+    max-height: 350px;
+  }
+
+  .search-conteiner {
+    width: 90%;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .escrito {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .menu-icon {
+    font-size: 20px;
+  }
+
+  .user-actions {
+    font-size: 24px;
+  }
+
+  .titulo-cabecalho h1 {
+    font-size: 22px;
+  }
+
+  .imagem-controle img {
+    max-height: 250px;
+  }
+
+  .search-bar {
+    padding: 10px 30px;
+  }
+
+  .dropdown-menu,
+  .submenu {
+    width: 180px;
+  }
 }
