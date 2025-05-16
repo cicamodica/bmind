@@ -1,0 +1,280 @@
+/*Download da fonte: https://fontmeme.com/fontes/fonte-poppins/#previewtool + Importação: https://cursos.alura.com.br/forum/topico-importacao-de-fontes-409962*/
+
+/*Adicionar fontes na font family = Poppins Thin*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+
+body {
+  /*Estilização geral do corpo da página */
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+}
+
+header {
+  /*Estilização da classe pai .NAV (barra superior)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+}
+
+.left-group {
+  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-group {
+  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-group {
+  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
+  display: flex;
+  align-items: center;
+}
+
+.user-actions {
+  /*Estilização do ícone de perfil*/
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.search-container {
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  display: flex;
+  width: 900px;
+  align-items: center;
+  z-index: 1;
+}
+
+.search-bar {
+  /*Estilização da barra de pesquisa*/
+  font-family: "Poppins";
+  border-radius: 40px;
+  outline: none;
+  padding: 12px 40px;
+  font-weight: 100;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+}
+
+.search-icon {
+  /*Estilização do ícone de pesquisa */
+  position: absolute;
+  right: 20px;
+  color: black;
+}
+
+.menu-button {
+  /*Estilização do ícone de menu ☰*/
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: white;
+}
+
+.header-item .logo {
+  /*Estilização do logo*/
+  height: 55px;
+  margin-right: auto;
+}
+
+/*Menu dropdown:*/
+
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background: white;
+  color: black;
+  width: 220px;
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown-menu ul {
+  /* Estilização da lista do menu dropdown*/
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  /*Estilização dos itens do menu dropdown*/
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-menu li:hover {
+  /*Efeito de hover nos itens do menu dropdown*/
+  background: #f0f0f0;
+}
+
+/*Submenu:*/
+
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+.submenu {
+  /*Estilização do submenu */
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  background: white;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 11;
+}
+
+.submenu-btn-link {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu-btn-link:hover {
+  background-color: #024dae; 
+  color: white;              /* texto branco ao passar o mouse */
+}
+
+.nav {
+  /*Estilização da nav (barra com nome do conteúdo e seta de voltar)*/
+  background: #003c54;
+  padding: 15px 20px;
+}
+
+.nav-icon {
+  /*Estilização do ícone da nav (seta de voltar)*/
+  margin: 20px 0;
+  font-size: 35px;
+  cursor: pointer;
+  color: white;
+}
+
+.feedback-container {
+  max-width: 600px;
+  margin: 60px auto; 
+  padding: 20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.stars {
+margin: 20px 0;    
+}
+
+.star {
+  font-size: 40px;
+  color: #ccc; 
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+textarea {
+    /*Estilização da caixa de texto*/
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.buttons button {
+  width: 115px; /* Largura fixa */
+  height: 40px; /* Altura fixa */
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;   
+}
+
+
+.cancel {
+    background-color: white;
+    border: 2px solid black
+}
+
+.submit {
+    background-color: blue;
+    color: white;
+    border: 2px solid blue;
+    
+}

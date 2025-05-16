@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <!-- Define o tipo de codificação do arquivo -->
+    <meta charset="UTF-8" />
+     <!-- Para ligar ao CSS -->
+    <title>Feedback - Bmind</title>
+    <link rel="stylesheet" href="feedback.css" />
+     <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+
+                                                               <!--CABEÇALHO-->  
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i
+            ><!-- ícone do menu -->
+          </div>
+          <div class="header-item">
+            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
+        </div>
+        <div class="center-group">
+          <div class="search-container">
+            <input type="text" placeholder="Pesquisa..." class="search-bar" />
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <!-- ícone da lupa -->
+          </div>
+        </div>
+        <div class="right-group">
+          <div class="user-actions">
+            <i class="fa-regular fa-circle-user"></i>
+          </div>
+        </div>
+                                                                <!-- MENU -->
+
+        <div class="dropdown-menu" id="dropdownMenu"> 
+          <ul>
+            <li class="has-submenu">
+              Finanças pessoais
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                    class="submenu-btn-link" onclick="registrarConteudoVisto('Planejamento financeiro')"
+                    >Planejamento financeiro</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                    class="submenu-btn-link" onclick="registrarConteudoVisto('Orçamento doméstico')"
+                    >Orçamento doméstico</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                    class="submenu-btn-link" onclick="registrarConteudoVisto('Controle de dívidas')"
+                    >Controle de dívidas</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Finanças corporativas
+              <ul class="submenu">
+                <li>Análise de balanço</li>
+                <li>Fluxo de caixa</li>
+                <li>Captação de recursos</li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Operações bancárias
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html"
+                    class="submenu-btn-link" onclick="registrarConteudoVisto('Cartão de Débito')"
+                    >Cartão de Débito</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html"
+                    class="submenu-btn-link" onclick="registrarConteudoVisto('Cartão de Crédito')"
+                    >Cartões de Crédito</a
+                  >
+                </li>
+                <li>Empréstimo</li>
+                <li>Financiamento</li>
+                <li>Taxas e Tarifas</li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Investimentos
+              <ul class="submenu">
+                <li>Renda fixa</li>
+                <li>Renda Variável</li>
+                <li>Fundos de investimento</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+    </div>
+
+
+                                                              <!-- INÍCIO -->
+
+
+ <main class="feedback-container">
+  
+  <h1>Bmind</h1>
+  <p>Qual foi a sua experiência?</p>
+
+  <div class="stars">
+
+    <span class="star" data-value="1">&#9733;</span>
+    <span class="star" data-value="2">&#9733;</span>
+    <span class="star" data-value="3">&#9733;</span>
+    <span class="star" data-value="4">&#9733;</span>
+    <span class="star" data-value="5">&#9733;</span>
+
+  </div>  
+
+  <textarea placeholder="Deixe um feedback!"></textarea>
+
+  <div class="buttons">
+
+    <button class="cancel">Cancelar</button>
+    <button class="submit">Enviar</button>
+
+  </div>
+</main>               
+
+<script src="feedback.js"></script>
+    
