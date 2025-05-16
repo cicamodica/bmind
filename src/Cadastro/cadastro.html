@@ -13,16 +13,19 @@
   </head>
   <body>
     <!--Cabeçalho-->
-    <header>
-      <div class="logo">
-        <i class="fa-regular fa-circle-left"></i>
-        <span>Bmind</span>
-        <!-- Logo -->
-      </div>
-    </header>
+    <div class="header">
+      <header>
+        <a class="header-link" href="/src/Homepage.html">
+          <i class="fa-regular fa-circle-left"></i>
+        </a>
+        <div class="header-item">
+          <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+          <!-- Logo -->
+        </div>
+      </header>
+    </div>
 
     <!-- Parte do "Cadastrar" -->
-
     <main class="cadastro">
       <h1>Cadastrar</h1>
       <!-- Titulo em cima  -->
@@ -42,10 +45,22 @@
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" />
 
-            <label for="nova-senha">Nova senha</label>
-            <input type="password" id="nova-senha" name="nova-senha" />
+            <div class="password-button">
+              <!--Div criada pra edição do botão para ver a senha (ícone olho)-->
+              <label for="nova-senha">Nova senha</label>
+              <input type="password" id="nova-senha" name="nova-senha" />
+              <!--Botão para vizualizar a senha-->
+              <button
+                class="toggle-password"
+                type="button"
+                onclick="togglePassword()"
+              >
+                <i class="fa-solid fa-eye"></i>
+                <!--Ícone de olho do fontAwesome-->
+              </button>
+            </div>
 
-            <label for="celular">Telefone de contato</label>
+            <label for="telefone-contato">Telefone de contato</label>
             <input type="text" id="telefone-contato" name="telefone-contato" />
             <label for="data-nascimento">Data de nascimento</label>
             <input type="date" id="data-nascimento" name="data-nascimento" />
@@ -55,12 +70,27 @@
           <!-- Lado direito -->
           <div class="perfil-usuario">
             <h2>Perfil de usuário</h2>
-            <button type="button" class="botao-perfil">Pessoa Física</button>
-            <button type="button" class="botao-perfil">Pessoa Jurídica</button>
+            <button
+              type="button"
+              class="botao-perfil"
+              data-perfil="Pessoa Física"
+            >
+              <!-- Botão para clicar -->
+              Pessoa Física
+            </button>
+            <button
+              type="button"
+              class="botao-perfil"
+              data-perfil="Pessoa Jurídica"
+            >
+              Pessoa Jurídica
+            </button>
             <!-- Botão para clicar -->
 
             <h3>O que você gostaria de ver primeiro?</h3>
-            <div class="checkbox-preferencias">
+            <div class="checkbox-preferencias" id="checkbox-preferencias">
+              <!--Serão inseridos dinamicamente pelo JS ao clicar no perfil-->
+              <!--Estes botões mantém as preferências visíveis ao acessar a página-->
               <input type="checkbox" id="financas" value="Finanças Pessoais" />
               <label for="financas" class="custom-checkbox"
                 >Finanças Pessoais</label

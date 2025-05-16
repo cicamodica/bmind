@@ -1,3 +1,4 @@
+// Evento de envio do formulário
 document
   .getElementById("form-cadastro")
   .addEventListener("submit", function (event) {
@@ -43,7 +44,7 @@ document
       'input[type="checkbox"]:checked'
     );
 
-    const selecionados = Array.from(checkboxes).map((cb) => cb.value);
+    const selecionados = Array.from(checkboxes).map((cb) => cb.value); //Cria um array com as preferências selecionadas no localStorage
 
     const dadosUsuario = {
       nome: nome,
@@ -52,6 +53,7 @@ document
       telefoneContato: telefoneContato,
       dataNascimento: dataNascimento,
       preferenciaDeConteudos: selecionados,
+      perfil: perfilSelecionado,
     };
     // Verifica se o e-mail já está cadastrado no localStorage
     const dados = JSON.parse(localStorage.getItem(email));
@@ -67,3 +69,56 @@ document
       mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!"; // Mensagem de erro se o e-mail já estiver cadastrado
     }
   });
+
+let perfilSelecionado = null; // fora do submit, para ser acessado lá dentro
+
+const preferenciasPorPerfil = {
+  "Pessoa Física": [
+    { id: "financas", label: "Finanças Pessoais" },
+    { id: "investimentos", label: "Investimentos" },
+    { id: "operacoes", label: "Operações Bancárias" },
+  ],
+  "Pessoa Jurídica": [
+    { id: "financas-corp", label: "Finanças Corporativas" },
+    { id: "investimentos", label: "Investimentos" },
+    { id: "emprestimos", label: "Empréstimos" },
+  ],
+};
+
+const botoesPerfil = document.querySelectorAll(".botao-perfil"); // Evento de clique nos botões de perfil
+const checkboxContainer = document.getElementById("checkbox-preferencias");
+
+botoesPerfil.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    // Armazena no localStorage e numa variável temporária
+    perfilSelecionado = botao.dataset.perfil;
+
+    // Remove destaque dos outros botões
+    botoesPerfil.forEach((b) => b.classList.remove("selecionado"));
+    botao.classList.add("selecionado"); // Adiciona destaque ao selecionado
+
+    // Gera as preferências dinamicamente
+    const opcoes = preferenciasPorPerfil[perfilSelecionado] || [];
+    checkboxContainer.innerHTML = ""; // limpa conteúdo atual
+
+    opcoes.forEach(({ id, label }) => {
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.id = id;
+      checkbox.value = label;
+
+      const labelElem = document.createElement("label");
+      labelElem.setAttribute("for", id);
+      labelElem.classList.add("custom-checkbox");
+      labelElem.textContent = label;
+
+      checkboxContainer.appendChild(checkbox);
+      checkboxContainer.appendChild(labelElem);
+    });
+  });
+});
+
+function togglePassword() {
+  const input = document.getElementById("nova-senha");
+  input.type = input.type === "password" ? "text" : "password";
+}
