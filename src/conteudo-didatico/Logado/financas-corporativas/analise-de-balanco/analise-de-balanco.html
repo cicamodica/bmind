@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <link
+      rel="stylesheet"
+      href="/src/conteudo-didatico/Logado/financas-corporativas/analise-de-balanco/analise-de-balanco.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i
+            ><!-- ícone do menu -->
+          </div>
+          <div class="header-item">
+            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
+        </div>
+        <div class="center-group">
+          <div class="search-container">
+            <input type="text" placeholder="Pesquisa..." class="search-bar" />
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <!-- ícone da lupa -->
+          </div>
+        </div>
+        <div class="right-group">
+          <div class="user-actions">
+            <i class="fa-regular fa-circle-user"></i>
+          </div>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <!-- menu -->
+          <ul>
+            <li class="has-submenu">
+              Finanças pessoais
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Planejamento financeiro')"
+                    >Planejamento financeiro</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Orçamento doméstico')"
+                    >Orçamento doméstico</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Controle de dívidas')"
+                    >Controle de dívidas</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Finanças corporativas
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Análise de balanços')"
+                    >Análise de balanços</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Fluxo de Caixa')"
+                    >Fluxo de Caixa</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Captação de Recursos')"
+                    >Captação de Recursos</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/dre/dre.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('DRE')"
+                    >DRE</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Operações bancárias
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Cartão de Débito')"
+                    >Cartão de Débito</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Cartão de Crédito')"
+                    >Cartões de Crédito</a
+                  >
+                </li>
+                <li>Empréstimo</li>
+                <li>Financiamento</li>
+                <li>Taxas e Tarifas</li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Investimentos
+              <ul class="submenu">
+                <li>Renda fixa</li>
+                <li>Renda Variável</li>
+                <li>Fundos de investimento</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a href="/src/Main/Main.html" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
+          </a>
+          <h1>Análise de balanços</h1>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <section class="conteudo-didatico">
+        <div class="imagem-balanco">
+          <img src="/src/imagens/AnaliseDeBalancos.jpg" alt="Imagem" />
+        </div>
+        <div class="texto-conteudo-didatico">
+          <p class="introducao">
+            Se você já ouviu falar em balanço patrimonial, demonstrativo de
+            resultados ou fluxo de caixa, mas não entendeu muito bem o que tudo
+            isso significa, não se preocupe. Neste artigo, vamos te mostrar de
+            forma simples e didática como funciona a análise de balanços
+            financeiros — uma ferramenta essencial para entender a saúde
+            financeira de uma empresa.
+          </p>
+
+          <h2>O que é um Balanço Financeiro?</h2>
+
+          <p class="topico-1">
+            O balanço financeiro (ou mais corretamente, balanço patrimonial) é
+            como uma fotografia da empresa em um determinado momento. Ele mostra
+            tudo que a empresa possui (ativos), tudo que ela deve (passivos) e
+            quanto realmente pertence aos sócios ou acionistas (o patrimônio
+            líquido).
+          </p>
+
+          <h3>Exemplo simples</h3>
+
+          <p class="topico-1">imagine que você tem:</p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> R$ 10.000 guardados no banco
+              (ativo)
+            </li>
+            <li>
+              <span class="list-icon"></span> Uma dívida de R$ 4.000 no cartão
+              (passivo)
+            </li>
+            <li>
+              <span class="list-icon"></span> Isso significa que seu patrimônio
+              líquido é de R$ 6.000 (o que sobra pra você de verdade)
+            </li>
+          </ul>
+          <p class="topico-1">
+            É isso que o balanço patrimonial mostra para uma empresa, mas com
+            mais detalhes.
+          </p>
+
+          <h2>Para que serve a Análise de Balanço?</h2>
+
+          <p class="topico-2">
+            A análise de balanços serve para avaliar a saúde financeira de uma
+            empresa. Com ela, é possível saber se a empresa:
+          </p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> Tem dinheiro suficiente para pagar
+              suas dívidas
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Está crescendo ou encolhendo
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Está tendo lucro ou prejuízo
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Usa bem os seus recursos
+            </li>
+          </ul>
+
+          <p class="topico-2">
+            Ou seja, ajuda investidores, sócios, gestores e até clientes a
+            entender se a empresa é segura e eficiente.
+          </p>
+
+          <h2>Quais são as principais partes do Balanço Patrimonial?</h2>
+          <p class="topico-3">
+            O balanço patrimonial é dividido em três grandes grupos:
+          </p>
+
+          <h3>1. Ativo (o que a empresa tem)</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              <strong>Ativo Circulante:</strong> dinheiro em caixa, contas a
+              receber, estoques.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Ativo Não Circulante:</strong> imóveis, máquinas,
+              investimentos de longo prazo.
+            </li>
+          </ul>
+
+          <h3>2. Passivo (o que a empresa deve)</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              <strong>Passivo Circulante:</strong> contas a pagar, dívidas de
+              curto prazo.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Passivo Não Circulante:</strong> empréstimos de longo
+              prazo, financiamentos
+            </li>
+          </ul>
+
+          <h3>3. Patrimônio líquido</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> Capital dos sócios, lucros
+              acumulados, reservas.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Fórmula=</strong> Passivo + Patrimônio líquido
+            </li>
+          </ul>
+
+          <p class="topico-3">
+            Ou seja, tudo o que a empresa tem foi financiado com dinheiro
+            próprio ou de terceiros.
+          </p>
+
+          <h2>Principais Indicadores para Análise</h2>
+
+          <h3>1. Liquidez Corrente</h3>
+
+          <p class="topico-4">
+            Mostra se a empresa consegue pagar suas dívidas de curto prazo.
+          </p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              <strong>Fórmula da Liquidez Corrente =</strong> Ativo Circulante /
+              Passivo Circulante
+            </li>
+          </ul>
+          <p class="topico-4">
+            Se o resultado for maior que 1, é sinal de que a empresa consegue
+            pagar suas obrigações imediatas.
+          </p>
+
+          <h3>2. Endividamento</h3>
+
+          <p class="topico-4">
+            Mostra quanto da empresa está financiado por dívidas.
+          </p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              <strong>Fórmula Endividamento =</strong> Passivo Total /
+              Patrimônio Líquido
+            </li>
+          </ul>
+          <p class="topico-4">
+            Quanto menor, melhor. Endividamento muito alto pode indicar risco.
+          </p>
+
+          <h3>3. Rentabilidade (ROE)</h3>
+
+          <p class="topico-4">
+            Mostra quanto a empresa gera de lucro em relação ao que foi
+            investido pelos sócios.
+          </p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              <strong>Fórmula ROE =</strong> Lucro Líquido / Patromônio Líquido
+            </li>
+          </ul>
+          <p class="topico-4">
+            Ajuda a entender se o negócio é lucrativo e eficiente.
+          </p>
+
+          <h3>4. Margem de Lucro</h3>
+
+          <p class="topico-4">
+            Mostra qual a porcentagem de lucro sobre as vendas.
+          </p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span
+              ><strong>Fórmula Margem de Lucro =</strong> Lucro Líquido /
+              Receita Total
+            </li>
+          </ul>
+          <p class="topico-4">
+            Uma boa margem mostra que a empresa vende bem e gasta com
+            eficiência.
+          </p>
+
+          <h2>Dicas para quem está começando</h2>
+
+          <p class="topico-5">
+            <strong>1. Comece pelos conceitos básicos: </strong> entenda o que é
+            ativo, passivo e lucro.
+          </p>
+          <p class="topico-5">
+            <strong>2. Use exemplos simples:</strong> pense na sua própria vida
+            financeira como uma empresa.
+          </p>
+          <p class="topico-5">
+            <strong>3. Use exemplos simples:</strong> pense na sua própria vida
+            financeira como uma empresa.
+          </p>
+          <p class="topico-5">
+            <strong>4. Compare dados:</strong> olhe como a empresa evoluiu ao
+            longo dos meses ou anos.
+          </p>
+
+          <h2>Conclusão: Por que aprender isso?</h2>
+
+          <p class="topico-6">
+            Saber analisar um balanço financeiro é uma habilidade valiosa, seja
+            você:
+          </p>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Um pequeno empreendedor
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Um investidor iniciante
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Um estudante de finanças
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Ou apenas alguém querendo entender melhor como as empresas
+              funcionam
+            </li>
+          </ul>
+
+          <p class="topico-6">
+            Com esse conhecimento, você toma decisões mais seguras e
+            inteligentes. Afinal, números não mentem — se bem analisados.
+          </p>
+
+          <h2>Outras Demonstrações Importantes</h2>
+          <p class="topico-7">
+            Além do balanço patrimonial, a análise financeira também olha outros
+            relatórios:
+          </p>
+          <h3>Demonstrativo de Resultado do Exercício (DRE)</h3>
+
+          <p class="topico-7">
+            Mostra quanto a empresa vendeu, gastou e lucrou em um período. É
+            como ver um "filme" das finanças.
+            <a
+              class="signup"
+              href="/src/conteudo-didatico/Logado/financas-corporativas/dre/dre.html"
+            >
+              Clique aqui para saber mais!
+            </a>
+          </p>
+
+          <h3>Fluxo de Caixa</h3>
+
+          <p class="topico-7">
+            Mostra o dinheiro entrando e saindo da empresa. Ajuda a entender se
+            a empresa tem fôlego financeiro, mesmo quando o lucro parece bom.
+            <a
+              class="signup"
+              href="/src/conteudo-didatico/Logado/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+            >
+              Clique aqui para saber mais!
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="/src/conteudo-didatico/Logado/financas-corporativas/analise-de-balanco/analise-de-balanco.js"></script>
+  </body>
+</html>

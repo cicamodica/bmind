@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <link
+      rel="stylesheet"
+      href="/src/conteudo-didatico/Logado/financas-corporativas/dre/dre.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i
+            ><!-- ícone do menu -->
+          </div>
+          <div class="header-item">
+            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
+        </div>
+        <div class="center-group">
+          <div class="search-container">
+            <input type="text" placeholder="Pesquisa..." class="search-bar" />
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <!-- ícone da lupa -->
+          </div>
+        </div>
+        <div class="right-group">
+          <div class="user-actions">
+            <i class="fa-regular fa-circle-user"></i>
+          </div>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <!-- menu -->
+          <ul>
+            <li class="has-submenu">
+              Finanças pessoais
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Planejamento financeiro')"
+                    >Planejamento financeiro</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Orçamento doméstico')"
+                    >Orçamento doméstico</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Controle de dívidas')"
+                    >Controle de dívidas</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Finanças corporativas
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Análise de balanços')"
+                    >Análise de balanços</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Fluxo de Caixa')"
+                    >Fluxo de Caixa</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Captação de Recursos')"
+                    >Captação de Recursos</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/financas-corporativas/dre/dre.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('DRE')"
+                    >DRE</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Operações bancárias
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Cartão de Débito')"
+                    >Cartão de Débito</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html"
+                    class="submenu-btn-link"
+                    onclick="registrarConteudoVisto('Cartão de Crédito')"
+                    >Cartões de Crédito</a
+                  >
+                </li>
+                <li>Empréstimo</li>
+                <li>Financiamento</li>
+                <li>Taxas e Tarifas</li>
+              </ul>
+            </li>
+
+            <li class="has-submenu">
+              Investimentos
+              <ul class="submenu">
+                <li>Renda fixa</li>
+                <li>Renda Variável</li>
+                <li>Fundos de investimento</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a href="/src/Main/Main.html" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
+          </a>
+          <h1>Demonstração de Resultados de uma Empresa</h1>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <section class="conteudo-didatico">
+        <div class="imagem-dre">
+          <img src="/src/imagens/DRE.jpg" alt="Imagem" />
+        </div>
+        <div class="texto-conteudo-didatico">
+          <p class="introducao">
+            Você já se perguntou quanto lucro uma empresa realmente teve no ano?
+            Ou por que às vezes o faturamento é alto, mas o resultado é
+            negativo? A resposta para essas perguntas está na DRE — Demonstração
+            do Resultado do Exercício. Neste artigo, vamos explicar de forma
+            simples o que é a DRE, para que ela serve, quais são seus principais
+            itens e como interpretá-la, mesmo que você nunca tenha estudado
+            contabilidade.
+          </p>
+
+          <h2>O que é a DRE?</h2>
+
+          <p class="topico-1">
+            A DRE (Demonstração do Resultado do Exercício) é um relatório
+            contábil obrigatório que mostra se a empresa teve lucro ou prejuízo
+            em um determinado período — geralmente mensal, trimestral ou anual.
+            Ela funciona como um “filme financeiro”, ao contrário do balanço
+            patrimonial, que é uma “fotografia” de um momento específico.
+          </p>
+
+          <h2>Para que serve a DRE?</h2>
+
+          <p class="topico-2">A DRE ajuda a entender:</p>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> Se a empresa está sendo lucrativa
+            </li>
+            <li>
+              <span class="list-icon"></span> Onde estão os maiores gastos
+            </li>
+            <li>
+              <span class="list-icon"></span> Quanto sobra (ou falta) no fim do
+              mês ou do ano
+            </li>
+            <li>
+              <span class="list-icon"></span> Se a operação é saudável e
+              sustentável
+            </li>
+          </ul>
+          <p class="topico-1">É uma ferramenta fundamental para:</p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> Empreendedores tomarem decisões
+              mais seguras
+            </li>
+            <li>
+              <span class="list-icon"></span> Investidores avaliarem a
+              performance da empresa
+            </li>
+            <li><span class="list-icon"></span> Bancos analisarem crédito</li>
+            <li>
+              <span class="list-icon"></span> Contadores elaborarem relatórios e
+              impostos
+            </li>
+          </ul>
+
+          <h2>Quais são os principais itens da DRE?</h2>
+          <p class="topico-2">
+            A DRE é organizada de cima para baixo, mostrando o caminho do
+            faturamento até o lucro final. Veja os principais blocos:
+          </p>
+
+          <h3>1. Receita Bruta de Vendas</h3>
+          <p class="topico-2">
+            É o valor total das vendas feitas no período, antes de qualquer
+            desconto ou imposto.
+          </p>
+
+          <h3>2. (-) Deduções da Receita</h3>
+          <p class="topico-2">
+            Descontos concedidos, impostos sobre vendas (como ICMS, ISS) e
+            devoluções de produtos. Resultado: Receita Líquida de Vendas
+          </p>
+
+          <h3>3. (-) Custo das Mercadorias Vendidas (CMV)</h3>
+          <p class="topico-2">
+            Representa quanto a empresa gastou para produzir ou comprar o que
+            vendeu. Resultado: Lucro Bruto
+          </p>
+
+          <h3>4. (-) Despesas Operacionais</h3>
+          <p class="topico-2">
+            Custos relacionados ao funcionamento da empresa, como:
+          </p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> Despesas comerciais (marketing,
+              comissões)
+            </li>
+            <li>
+              <span class="list-icon"></span> Despesas administrativas
+              (salários, aluguel)
+            </li>
+            <li>
+              <span class="list-icon"></span> Despesas com tecnologia,
+              logística, etc.
+            </li>
+          </ul>
+          <p class="topico-2">Resultado: Lucro Operacional</p>
+
+          <h3>5. (-/+) Outras Receitas e Despesas</h3>
+          <p class="topico-2">
+            Itens não recorrentes, como venda de bens, multas, ganhos ou perdas
+            eventuais.
+          </p>
+
+          <h3>6. (-) Despesas financeiras / (+) Receitas financeiras</h3>
+          <p class="topico-2">
+            Juros pagos (empréstimos) e juros recebidos (aplicações, descontos à
+            vista). Resultado: Lucro Antes do IR e CSLL
+          </p>
+
+          <h3>7. (-) Impostos sobre o lucro</h3>
+          <p class="topico-2">
+            Como o Imposto de Renda e a Contribuição Social sobre o Lucro
+            Líquido (CSLL). Resultado Final: Lucro Líquido do Exercício
+          </p>
+
+          <h2>Exemplo simples de uma DRE</h2>
+
+          <p class="topico-3">
+            Receita Bruta de Vendas R$ 100.000 (-) Deduções R$ 10.000 = Receita
+          Líquida (R$ 90.000)
+          </p>
+            <p class="topico-3">
+            R$ 90.000 (-) Custo das Vendas R$ 40.000 = Lucro Bruto (R$ 50.000)
+          </p>
+            </p>
+            <p class="topico-3">
+            R$ 50.000 (-) Despesas Operacionais R$ 30.000 = Lucro Operacional (R$ 20.000)
+          </p>
+            <p class="topico-3">
+           R$ 20.000 (-) Despesas Financeiras R$ 3.000 = Lucro Antes do IR (R$ 17.000)
+          </p>
+          <p class="topico-3">
+           R$ 17.000 (-) IR e CSLL R$ 5.000 = Lucro Líquido R$ 12.000
+          </p>
+
+          <p class="topico-3">
+            Esse é o valor que realmente "sobrou" para a empresa, depois de todas as despesas, custos e impostos.
+          </p>
+
+          <h2> Dicas para interpretar a DRE</h2>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Não confunda faturamento com lucro: a empresa pode vender muito e ainda assim ter prejuízo.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+             Olhe a evolução ao longo dos meses: veja se os lucros estão crescendo ou diminuindo.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+               Analise as margens:
+            </li>
+            <ul class="lista-topico-disc">
+            <li>
+             <strong>Margem Bruta =</strong> Lucro Bruto / Receita Líquida
+            </li>
+            <li>
+             <strong>Margem Líquida =</strong> Lucro Líquido / Receita Líquida
+            </li>
+          </ul>
+            <li>
+              <span class="list-icon"></span>
+              Compare com outras empresas do setor: isso ajuda a entender se sua estrutura de custos está competitiva.
+            </li>
+          </ul>
+
+          <h2>Erros comuns que você deve evitar</h2>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Ignorar os impostos nas deduções
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Não separar custos de despesas
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Desconsiderar receitas e despesas financeiras
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Avaliar o lucro apenas pelo saldo em caixa (isso é papel do fluxo de caixa)
+            </li>
+          </ul>
+
+          <h2>Conclusão</h2>
+
+          <p class="topico-6">
+            A DRE é uma das ferramentas mais importantes da gestão financeira. Ela mostra com clareza se o negócio está dando lucro ou 
+            não — e ajuda a identificar exatamente onde estão os gargalos ou as oportunidades de melhoria.Com uma leitura atenta da DRE, 
+            é possível tomar decisões mais seguras, controlar os gastos e garantir um crescimento mais saudável para sua empresa.
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="/src/conteudo-didatico/Logado/financas-corporativas/dre/dre.js"></script>
+  </body>
+</html>
