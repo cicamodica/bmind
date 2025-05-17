@@ -42,14 +42,16 @@ function updateStars(rating) {
   });
 }
 
+ // INICIO BOTÕES E FUNÇÕES DO FEEDBACK
+ // Adiciona evento de clique ao botão de enviar
+ 
   document.querySelector('.submit').addEventListener('click', function () {
   const feedback = document.getElementById('feedbackText').value.trim(); 
 
-  if (feedback !== "") {  
-    // Corrigido: pega a lista atual ou cria uma nova vazia
+   if (feedback !== "") {  
     let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
 
-    feedbacks.push(feedback);  // Adiciona o novo feedback à lista
+    feedbacks.push(feedback);  // Adiciona o novo feedback lista
 
     // Salva no localStorage
     localStorage.setItem('feedbacks', JSON.stringify(feedbacks));  
