@@ -48,7 +48,6 @@
 
 /* Estilo base */
 body {
-
   margin: 0;
   font-family: "Poppins";
   background-color: #fff;
@@ -106,7 +105,15 @@ body {
   position: absolute;
   right: 20px;
   color: black;
-  pointer-events:visible
+  pointer-events: visible;
+  bottom: 11px;
+}
+
+.search-link {
+  /*Estilização do link ligado ao ícone de lupa*/
+  background-color: transparent;
+  border: unset;
+  text-decoration: none;
 }
 
 /* Login / Cadastro */
@@ -132,7 +139,7 @@ body {
   border-radius: 8px;
   padding: 10px;
   display: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
 
@@ -165,7 +172,7 @@ body {
   background: white;
   width: 220px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .submenu-btn-link {
   display: block;
@@ -181,13 +188,12 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.submenu-btn-link:hover { 
-  background-color: #024dae; 
-  color: white;              /* texto branco ao passar o mouse */
+.submenu-btn-link:hover {
+  background-color: #024dae;
+  color: white; /* texto branco ao passar o mouse */
 }
 
-* Container principal do carrossel */
-.hero {
+* Container principal do carrossel */ .hero {
   position: relative;
   display: flex;
   align-items: center;
@@ -261,12 +267,12 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 32px;
-  background: none;       /* Remove o fundo */
-  border: none;           /* Remove a borda */
-  color: black;           /* Cor da seta */
+  background: none; /* Remove o fundo */
+  border: none; /* Remove a borda */
+  color: black; /* Cor da seta */
   cursor: pointer;
   z-index: 2;
-  outline: none;          /* Remove contorno ao focar */
+  outline: none; /* Remove contorno ao focar */
 }
 
 /* Posicionamento horizontal */
@@ -277,7 +283,6 @@ body {
 .nav-right {
   right: 10px;
 }
-
 
 /* Menu de abas */
 .tabs {
@@ -358,7 +363,3 @@ body {
 #orçamento-domestico h3 {
   color: #003366;
 }
-
-
-
-

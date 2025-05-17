@@ -119,170 +119,93 @@ header {
   color: black;
 }
 
-.menu-button {
-  /*Estilização do ícone de menu ☰*/
-  font-size: 24px;
-  cursor: pointer;
-  margin-right: 15px;
-  color: white;
-}
-
 .header-item .logo {
   /*Estilização do logo*/
   height: 55px;
   margin-right: auto;
 }
 
-/*Menu dropdown:*/
-
-.dropdown-menu {
-  position: absolute;
-  top: 60px;
-  left: 10px;
-  background: white;
-  color: black;
-  width: 220px;
-  border-radius: 8px;
-  padding: 10px;
-  display: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-}
-
-.dropdown-menu ul {
-  /* Estilização da lista do menu dropdown*/
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.dropdown-menu li {
-  /*Estilização dos itens do menu dropdown*/
-  padding: 10px;
-  cursor: pointer;
-  position: relative;
-}
-
-.dropdown-menu li:hover {
-  /*Efeito de hover nos itens do menu dropdown*/
-  background: #f0f0f0;
-}
-
-/*Submenu:*/
-
-.has-submenu:hover .submenu {
-  display: block;
-}
-
-.submenu {
-  /*Estilização do submenu */
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 200px;
-  background: white;
-  width: 220px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 11;
-}
-
-.nav {
-  /*Estilização da nav (barra com nome do conteúdo e seta de voltar)*/
-  background: #003c54;
-  padding: 15px 20px;
-}
-
-.nav-icon {
-  /*Estilização do ícone da nav (seta de voltar)*/
-  margin: 20px 0;
+.header-icon {
+  /*Estilização do ícone de seta na classe .nav-icon, que está dentro de nav pai (Seta)*/
   font-size: 35px;
-  cursor: pointer;
-  color: white;
+  color: #ffffff;
 }
 
-.titulo-nav {
-  /*Estilização do título da página*/
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.header-link {
+  /*Estilização do link ligado ao ícone de seta na classe .nav-link, que está dentro de nav pai (Seta)*/
+  background-color: transparent;
+  border: unset;
+  text-decoration: none;
 }
 
-.titulo-nav h1 {
-  /*Estilização do título da página*/
-  display: flex;
-  align-items: center;
-  font-size: 35px;
-  color: white;
-  font-weight: 500;
-}
-
-.imagem-planejamento {
-  /*Estilização da imagem no posicionamento na página*/
-  float: center;
-  margin-top: -30px;
-  margin-right: 60px;
-}
-
-.imagem-planejamento img {
-  /*Estilização da imagem*/
-  position: relative;
-  height: 500px;
-}
-
-.conteudo-didatico {
-  /*Estilização do conteúdo do cartão*/
-  max-width: 1000px;
-  margin: 40px auto;
+.titulo-results {
+  max-width: 100vw;
   padding: 0 20px;
+  display: flex;
+  justify-content: left;
+  margin-top: 80px;
+  margin-bottom: 30px;
 }
 
-.introducao,
-.inicio-artigo,
-.topico-1,
-.topico-2,
-.topico-3,
-.topico-4,
-.topico-5,
-.topico-6,
-.topico-7 {
-  /*Estilização dos corpos de texto*/
+.container-results {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #ffffff; /* igual ao fundo da imagem que você mandou */
+  width: auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.plan-img {
+  /*Estilização da imagem no posicionamento na página*/
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.plan-img-link img {
+  height: 300px;
+  border-radius: 10px;
+}
+
+.plan-link {
+  text-decoration: none; /* Remove a linha do hiperlink */
+}
+
+.plan-link h2 {
+  color: #37a6d1; /* Altera a cor do hiperlink */
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.plan-descricao {
+  color: #222;
   font-size: 16px;
-  margin-bottom: 30px;
+  line-height: 1.6;
   text-align: justify;
 }
 
-.lista-topico-2 {
-  /*Estilização da lista*/
-  list-style: none;
-  padding-left: 0;
+.card {
+  /* /* Add shadows to create the "card" effect  */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 10px 20px;
+  margin: 0px 0px 20px 0px;
+  width: auto;
 }
 
-.lista-topico-2 li {
-  /*Estilização do texto da lista*/
-  margin: 15px;
-  display: flex;
-  align-items: flex-start;
+/* /* On mouse-over, add a deeper shadow  */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.list-icon {
-  /*Estilização do ícone da lista*/
-  width: 20px;
-  height: 20px;
-  background-color: #00b4d8;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 10px;
-  position: relative;
-}
-
-.list-icon::after {
-  /*Estilização do ícone da lista (adicionar o símbolo de check)*/
-  content: "✓";
-  position: absolute;
-  color: white;
-  font-size: 14px;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -55%);
+/* /* Add some padding inside the card container  */
+.container {
+  padding: 2px 16px;
 }

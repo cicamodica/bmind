@@ -1,3 +1,15 @@
+//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+document
+  .getElementById("search-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // evita o redirecionamento padrão
+    const termo = document.getElementById("search-bar").value.trim();
+    if (termo !== "") {
+      const encodedTermo = encodeURIComponent(termo);
+      window.location.href = `/src/resultado-de-pesquisa/nao-logado/resultado-de-pesquisa-nl.html?q=${encodedTermo}`;
+    }
+  });
+
 //Inicio funcionalidades Menu
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
@@ -50,14 +62,14 @@ const tabLinks = document.querySelectorAll(".tab-link");
 const tabContents = document.querySelectorAll(".tab-content");
 
 // Alternância de abas principais (Finanças Pessoais, Corporativas etc)
-tabLinks.forEach(link => {
-  link.addEventListener("click", event => {
+tabLinks.forEach((link) => {
+  link.addEventListener("click", (event) => {
     event.preventDefault();
     const tabId = link.getAttribute("data-tab");
 
     // Remove classe 'active' de todas as abas e conteúdos
-    tabLinks.forEach(l => l.classList.remove("active"));
-    tabContents.forEach(content => content.classList.remove("active"));
+    tabLinks.forEach((l) => l.classList.remove("active"));
+    tabContents.forEach((content) => content.classList.remove("active"));
 
     // Ativa a aba e conteúdo selecionados
     link.classList.add("active");
@@ -75,7 +87,7 @@ const orcamentoConteudo = document.getElementById("orcamentoDomestico");
 const controleConteudo = document.getElementById("controleDividas");
 
 function esconderTodosConteudos() {
- planejamentoConteudo.style.display = "none";
+  planejamentoConteudo.style.display = "none";
   orcamentoConteudo.style.display = "none";
   controleConteudo.style.display = "none";
 }
@@ -138,36 +150,35 @@ const emprestimos = document.getElementById("emprestimos");
 const financiamento = document.getElementById("financiamento");
 const taxasTarifas = document.getElementById("taxasTarifas");
 
-
-function esconderConteudosOperacoesBancarias(){
+function esconderConteudosOperacoesBancarias() {
   cartaoDebito.style.display = "none";
   cartaoCredito.style.display = "none";
   emprestimos.style.display = "none";
-  financiamento.style.display ="none";
-  taxasTarifas.style.display ="none";
+  financiamento.style.display = "none";
+  taxasTarifas.style.display = "none";
 }
 
-btnCartaoDebito.addEventListener("click", ( )=>{
+btnCartaoDebito.addEventListener("click", () => {
   esconderConteudosOperacoesBancarias();
   cartaoDebito.style.display = "block";
 });
 
-btnCartaoCredito.addEventListener("click", ( )=>{
+btnCartaoCredito.addEventListener("click", () => {
   esconderConteudosOperacoesBancarias();
   cartaoCredito.style.display = "block";
 });
 
-btnEmprestimo.addEventListener("click", ( )=>{
+btnEmprestimo.addEventListener("click", () => {
   esconderConteudosOperacoesBancarias();
   emprestimos.style.display = "block";
 });
 
-btnFinanciamento.addEventListener("click", ( )=>{
+btnFinanciamento.addEventListener("click", () => {
   esconderConteudosOperacoesBancarias();
   financiamento.style.display = "block";
 });
 
-btnTaxasTarifas.addEventListener("click", ( )=>{
+btnTaxasTarifas.addEventListener("click", () => {
   esconderConteudosOperacoesBancarias();
   taxasTarifas.style.display = "block";
 });
@@ -181,24 +192,23 @@ const rendaFixa = document.getElementById("rendaFixa");
 const rendaVariavel = document.getElementById("rendaVariavel");
 const fundoInvestimentos = document.getElementById("fundoInvestimentos");
 
-
-function esconderConteudosInvestimentos(){
+function esconderConteudosInvestimentos() {
   rendaFixa.style.display = "none";
   rendaVariavel.style.display = "none";
   fundoInvestimentos.style.display = "none";
 }
 
-btnRendaFixa.addEventListener("click", ( )=>{
+btnRendaFixa.addEventListener("click", () => {
   esconderConteudosInvestimentos();
   rendaFixa.style.display = "block";
 });
 
-btnRendaVariavel.addEventListener("click", ( )=>{
+btnRendaVariavel.addEventListener("click", () => {
   esconderConteudosInvestimentos();
   rendaVariavel.style.display = "block";
 });
 
-btnFundoInvestimento.addEventListener("click", ( )=>{
+btnFundoInvestimento.addEventListener("click", () => {
   esconderConteudosInvestimentos();
   fundoInvestimentos.style.display = "block";
 });
@@ -209,13 +219,10 @@ document.addEventListener("DOMContentLoaded", () => {
   tabLinks[0].click();
 
   // Ativa o primeiro conteúdo de cada grupo
-  btnPlanejamento.click();     // Finanças Pessoais
-  btnAnalise.click();          // Finanças Corporativas
-  btnCartaoDebito.click();     // Operações Bancárias
-  btnRendaFixa.click();        // Investimentos
+  btnPlanejamento.click(); // Finanças Pessoais
+  btnAnalise.click(); // Finanças Corporativas
+  btnCartaoDebito.click(); // Operações Bancárias
+  btnRendaFixa.click(); // Investimentos
 });
 
 //Fim funcionalidades das abas de conteudo
-
-
-
