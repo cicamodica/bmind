@@ -122,11 +122,13 @@
   
   <img src="/documentos/img/Logo oficial.png" alt="Logo Bmind" class="logo-central" />
 
+
+
   <p>Como foi a sua experiência?</p>
 
   <div class="stars">
 
-    <span class="star" data-value="1">&#9733;</span>
+    <span class="star" data-value="1">&#9733;</span> 
     <span class="star" data-value="2">&#9733;</span>
     <span class="star" data-value="3">&#9733;</span>
     <span class="star" data-value="4">&#9733;</span>
@@ -134,7 +136,7 @@
 
   </div>  
 
-  <textarea placeholder="Deixe um feedback!"></textarea>
+  <textarea id="feedbackText" placeholder="Deixe um feedback!"></textarea>
 
   <div class="buttons">
 
@@ -142,6 +144,10 @@
     <button class="submit">Enviar</button>
 
   </div>
+
+  <p id="mensagemSucesso" class="mensagem-sucesso" style="display: none;">Feedback salvo com sucesso!</p>
+  <p id="mensagemErro" class="mensagem-erro" style="display: none;">Erro ao salvar o feedback. Tente novamente.</p>
+ 
 </main>               
 
 <script src="feedback.js"></script>

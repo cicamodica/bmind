@@ -17,24 +17,61 @@
             }
           });
 
-// INICIO
+// INICIO (FUNCIONALIDA DAS ESTRELAS)
 
-const stars = document.querySelectorAll('.star');
+// Adiciona evento de clique a cada estrela
+const stars = document.querySelectorAll('.star');  // Seleciona todas as estrelas
 let selectedRating = 0;
 
+// Adiciona evento de clique a cada estrela
 stars.forEach((star) => {
-  star.addEventListener('click', () => {
-    selectedRating = star.getAttribute('data-value');
-    updateStars(selectedRating);
+  star.addEventListener('click', () => { // Adiciona evento de clique
+    selectedRating = star.getAttribute('data-value'); // Obtém o valor da estrela clicada
+    updateStars(selectedRating); // Atualiza as estrelas
   });
 });
 
+// Adiciona evento de mouseover a cada estrela por ex. Se clicar de volta na estrela 3, as estrelas 1, 2 e 3 ficam douradas e as outras cinzas
 function updateStars(rating) {
-  stars.forEach((star) => {
-    if (star.getAttribute('data-value') <= rating) {
-      star.style.color = 'gold';
-    } else {
-      star.style.color = '#ccc';
+  stars.forEach((star) => { 
+    if (star.getAttribute('data-value') <= rating) { // Se o valor da estrela for menor ou igual à classificação selecionada
+      star.style.color = 'gold';  // Altera a cor da estrela para dourada
+    } else { 
+      star.style.color = '#ccc'; // Altera a cor da estrela para cinza
     }
   });
 }
+
+  document.querySelector('.submit').addEventListener('click', function () {
+  const feedback = document.getElementById('feedbackText').value.trim(); 
+
+  if (feedback !== "") {  
+    // Corrigido: pega a lista atual ou cria uma nova vazia
+    let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+
+    feedbacks.push(feedback);  // Adiciona o novo feedback à lista
+
+    // Salva no localStorage
+    localStorage.setItem('feedbacks', JSON.stringify(feedbacks));  
+
+    // Limpa o campo
+    document.getElementById('feedbackText').value = "";
+
+    // Mostra a mensagem visual
+    const mensagem = document.getElementById('mensagemSucesso');
+    mensagem.textContent = 'Feedback salvo com sucesso!';
+    mensagem.style.display = 'block';
+
+    // Oculta após 3 segundos
+    setTimeout(() => {
+      mensagem.style.display = 'none';
+    }, 3000);
+  } else {
+    const mensagem = document.getElementById('mensagemErro');
+    mensagem.textContent = 'Por favor, insira um feedback.';
+    mensagem.style.display = 'block';
+    setTimeout(() => {
+      mensagem.style.display = 'none';
+    }, 3000);
+  }
+});
