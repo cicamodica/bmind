@@ -203,7 +203,6 @@ header {
   background-color: #024dae;
   color: white; /* texto branco ao passar o mouse */
 }
-
 .nav {
   /*Estilização da nav (barra com nome do conteúdo e seta de voltar)*/
   background: #003c54;
@@ -234,7 +233,7 @@ header {
   font-weight: 500;
 }
 
-.imagem-dre {
+.imagem-balanco {
   /*Estilização da imagem no posicionamento na página*/
   float: center;
   margin-top: -30px;
@@ -242,10 +241,10 @@ header {
   align-content: center;
 }
 
-.imagem-dre img {
+.imagem-balanco img {
   /*Estilização da imagem*/
   position: relative;
-  height: 610px;
+  height: 550px;
 }
 
 .conteudo-didatico {
@@ -262,8 +261,7 @@ header {
 .topico-4,
 .topico-5,
 .topico-6,
-.topico-7,
-.topico-8 {
+.topico-7 {
   /*Estilização dos corpos de texto*/
   font-size: 16px;
   margin-bottom: 30px;
@@ -281,11 +279,6 @@ header {
   margin: 15px;
   display: flex;
   align-items: flex-start;
-}
-
-.lista-topico-disc ul {
-  list-style-type: disc;
-  padding-left: 20px;
 }
 
 .list-icon {
