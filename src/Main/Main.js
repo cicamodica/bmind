@@ -89,3 +89,57 @@ function exibirVistosRecentemente() {
 
 
 exibirVistosRecentemente();
+
+// Função exibir conteuudo conforme a preferencias selecionadas no cadrastro//
+
+function exibirConteudoRecomendados() {
+  //Recuperação dos dados do usuario//
+  const dados= JSON.parse(localStorage.getItem("currentUser"));
+
+  if (!dados) {
+    console.error("Usuário não encontrado.");
+    return;
+  }
+
+    const { perfil, preferenciaDeConteudos} = dados;
+    const container = document.getElementById("conteudo-recomendados");
+    
+    if (!container) {
+      console.error("Elemento conteudo-recomendados não encontrado.");
+      return;
+    }
+
+    if(!preferenciaDeConteudos || preferenciaDeConteudos.length === 0){
+      container.innerHTML= "<p>Não há conteúdos recomendados para você.</p>";
+      return;
+    }
+
+    // Conteúdos estáticos para recomendações
+    const conteudos = {
+      "Pessoa Física": {
+        "Finanças Pessoais": "Aprenda organizar seu orçamento",
+        "Investimentos": "Descubra como investir seu dinheiro",
+        "Operações Bancárias": "Entenda como funcionam as operações bancárias",
+      },
+      "Pessoa Jurídica": {
+        "Finanças Corporativas": "Aprenda a gerenciar as finanças da sua empresa",
+        "Investimentos": "Descubra como investir o capital da sua empresa",
+        "Operações Bancárias": "Entenda como funcionam as operações bancárias para empresas",
+      },
+    };
+
+      //Percorre as preferências do usuário e exibe os conteúdos recomendados//
+
+      preferenciaDeConteudos.forEach((preferencia) => {
+        const descricao = conteudos[perfil]?.[preferencia]|| "Conteudo não disponível";	
+        const bloco =`
+        <div class="card-conteudo">
+          <h3>${preferencia}</h3>
+          <p>${descricao}</p>
+          </div>
+          `;
+        container.innerHTML += bloco;
+      });
+    }
+// Chama a função para exibir os conteúdos recomendados
+    exibirConteudoRecomendados();
