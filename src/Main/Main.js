@@ -39,12 +39,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
 
 // Função para registrar um conteúdo como recentemente visto
-function registrarConteudoVisto(nomeConteudo) {
+function registrarConteudoVisto(nomeConteudo, url, imagem) {
   let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
 
-  // Remove se já existe (para evitar duplicata), e depois adiciona ao topo
-  vistos = vistos.filter((item) => item !== nomeConteudo);
-  vistos.unshift(nomeConteudo);
+  // Remove se já existe (com base no nome)
+  vistos = vistos.filter((item) => item.nome !== nomeConteudo);
+
+  // Adiciona ao topo da lista
+  vistos.unshift({ nome: nomeConteudo, url: url, imagem: imagem });
 
   // Mantém só os 3 mais recentes
   if (vistos.length > 3) {
@@ -53,6 +55,7 @@ function registrarConteudoVisto(nomeConteudo) {
 
   localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
 }
+
 
 // Função para exibir os conteúdos vistos recentemente
 function exibirVistosRecentemente() {
@@ -63,9 +66,26 @@ function exibirVistosRecentemente() {
 
   vistos.forEach((conteudo) => {
     const li = document.createElement("li");
-    li.textContent = conteudo;
+
+    // Cria a imagem
+    const img = document.createElement("img");
+    img.src = conteudo.imagem;
+    img.alt = conteudo.nome;
+    img.style.width = "60px"; // ou o tamanho desejado
+    img.style.marginRight = "10px";
+
+    // Cria o link
+    const link = document.createElement("a");
+    link.href = conteudo.url;
+    link.textContent = conteudo.nome;
+    link.style.textDecoration = "none";
+    link.style.fontWeight = "bold";
+
+    li.appendChild(img);
+    li.appendChild(link);
     lista.appendChild(li);
   });
 }
+
 
 exibirVistosRecentemente();
