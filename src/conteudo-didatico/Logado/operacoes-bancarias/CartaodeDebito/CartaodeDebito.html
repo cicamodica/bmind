@@ -1,161 +1,245 @@
 <!DOCTYPE html>
-<html lang="en">
-  <script src="https://kit.fontawesome.com/1691cc7750.js" crossorigin="anonymous"></script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bmind</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.css"> <!-- Link para o arquivo CSS externo -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    
-    <div class="navbar">
-      <div class="menu-icon" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars"></i> 
-      </div> <!-- Menu icon -->
-      <div class="escrito">Bmind</div> 
-      <div class="search-conteiner"> 
-        <input type="text" placeholder="Pesquisa..." class="search-bar">
-        <i class="fa-solid fa-magnifying-glass search-icone"></i>
+    <link
+      rel="stylesheet"
+      href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>  
+  <div class="header">
+    <header>
+      <div class="left-group">
+        <div class="menu-icon" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars menu-button"></i> <!-- ícone do menu -->
+        </div>
+        <div class="header-item">
+          <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+        </div>
       </div>
-      <div class="user-actions">
-        <i class="fa-regular fa-circle-user"></i>
+      <div class="center-group">
+        <div class="search-container">
+          <input type="text" placeholder="Pesquisa..." class="search-bar" />
+          <i class="fa-solid fa-magnifying-glass search-icon"></i> <!-- ícone da lupa -->
+        </div>
       </div>
+      <div class="right-group">
+        <div class="user-actions">
+          <i class="fa-regular fa-circle-user"></i>
+        </div>
+      </div>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <ul>
+          <li>Perfil</li>
+          <li>Configurações</li>
+          <li>Edite seu Dashboard</li>
+
+          <li class="has-submenu">
+            Conteúdo Didático
+            <ul class="submenu">
+
+              <!-- Finanças pessoais -->
+              <li class="has-submenu">
+                Finanças pessoais
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Planejamento financeiro')">
+                      Planejamento financeiro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Orçamento doméstico')">
+                      Orçamento doméstico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Controle de dívidas')">
+                      Controle de dívidas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Finanças corporativas -->
+              <li class="has-submenu">
+                Finanças corporativas
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Análise de balanços')">
+                      Análise de balanços
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Fluxo de Caixa')">
+                      Fluxo de Caixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Captação de Recursos')">
+                      Captação de Recursos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Operações bancárias -->
+              <li class="has-submenu">
+                Operações bancárias
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Cartão de Débito')">
+                      Cartão de Débito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Cartão de Crédito')">
+                      Cartão de Crédito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Emprestimo/Emprestimo.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Emprestimo')">
+                      Empréstimo
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Financiamento/Financiamento.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Financiamento')">
+                      Financiamento
+                    </a>
+                  </li>
+                  <li>Taxas e Tarifas</li>
+                </ul>
+              </li>
+
+              <!-- Investimentos corporativos -->
+              <li class="has-submenu">
+                Investimentos Corporativos
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda fixa-PJ')">
+                      Renda fixa PJ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda variável-PJ')">
+                      Renda variável PJ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Fundos de investimento-PJ')">
+                      Fundos de investimento PJ
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Investimentos pessoais -->
+              <li class="has-submenu">
+                Investimentos Pessoais
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda fixa-PF')">
+                      Renda fixa PF
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda variável-PF')">
+                      Renda variável PF
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/investimentos-pessoais/fundos-de-investimento-pf/fundos-de-investimento-pf.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Fundos de investimento-PF')">
+                      Fundos de investimento PF
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+          </li>
+
+          <li>FAQ</li>
+          <li>Sair</li>
+        </ul>
+      </div>
+    </header>
+  </div>
+
+    <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a href="/src/Main/Main.html" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
+          </a>
+          <h1>Cartão de Débito</h1>
+        </div>
+      </nav>
     </div>
 
-    <nav class="dropdown-menu" id="dropdownMenu">
-      <ul>
-        <li class="has-submenu">
-          Finanças pessoais
-          <ul class="submenu">
-             <li>
-              <a href="/src/conteudo-didatico/Logado/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html" 
-                 class="submenu-btn-link" onclick="registrarConteudoVisto('Planejamento financeiro')"
-                 >Planejamento financeiro</a>
-            </li>
-            <li>                  
-              <a
-                href="/src/conteudo-didatico/Logado/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
-                class="submenu-btn-link" onclick="registrarConteudoVisto('Orçamento doméstico')"
-                >Orçamento doméstico</a
-              >
-            </li>
-            <li>
-              <a
-              href="/src/conteudo-didatico/Logado/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
-              class="submenu-btn-link" onclick="registrarConteudoVisto('Controle de dívidas')"
-              >Controle de dívidas</a
-              >
-            </li>
-          </ul>
-        </li>
-    
-        <li class="has-submenu">
-          Finanças corporativas
-          <ul class="submenu">
-            <li><a
-                    href="/src/conteudo-didatico/Logado/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
-                    class="submenu-btn-link"
-                    onclick="registrarConteudoVisto('Análise de balanços')"
-                    >Análise de balanços</a
-                  ></li>
-            <li><a
-                    href="/src/conteudo-didatico/Logado/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
-                    class="submenu-btn-link"
-                    onclick="registrarConteudoVisto('Fluxo de Caixa')"
-                    >Fluxo de Caixa</a
-                  ></li>
-            <li><a
-                    href="/src/conteudo-didatico/Logado/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
-                    class="submenu-btn-link"
-                    onclick="registrarConteudoVisto('Captação de Recursos')"
-                    >Captação de Recursos</a
-                  ></li>
-                <li>
-                  <a
-                    href="/src/conteudo-didatico/Logado/financas-corporativas/dre/dre.html"
-                    class="submenu-btn-link"
-                    onclick="registrarConteudoVisto('DRE')"
-                    >DRE</a
-                  >
-                </li>
-          </ul>
-        </li>
-    
-        <li class="has-submenu">
-          Operações bancárias
-          <ul class="submenu">
-            <li>
-              <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html" 
-                 class="submenu-btn-link" onclick="registrarConteudoVisto('Cartão de Débito')"
-                 >Cartão de Débito</a>
-            </li>
-            <li>
-              <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html" 
-                 class="submenu-btn-link" onclick="registrarConteudoVisto('Cartão de Crédito')"
-                 >Cartões de Crédito</a>
-            </li>
-            <li>Empréstimo</li>
-            <li>Financiamento</li>
-            <li>Taxas e Tarifas</li>
-          </ul>
-        </li>
-    
-        <li class="has-submenu">
-          Investimentos
-          <ul class="submenu">
-            <li>Renda fixa</li>
-            <li>Renda Variável</li>
-            <li>Fundos de investimento</li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    
-  
-  
-     <!--  parte de baixo    -->
-
-    <nav class="cabecalho">
-  
-      <div class="titulo-cabecalho">
-        <a href="/src/Main/Main.html"  class="seta">
-        <i class="fa-regular fa-circle-left "></i> 
-        </a>
-        <h1>Cartão de Débito</h1>
-    </div>
-   
-     </nav> 
-    
-   <main>
-    <section class="conteudo-cartao">
-      <p class="descricao">
-        O cartão de débito é uma ferramenta prática oferecida por instituições financeiras que permite realizar pagamentos e saques diretamente da conta bancária.
-       Ao contrário do cartão de crédito, os valores das compras feitas com o débito são descontados imediatamente do saldo disponível, o que ajuda a manter um controle mais rígido das finanças.
-       Ele é amplamente utilizado para compras à vista, pagamentos em estabelecimentos físicos, saques em caixas eletrônicos e também em compras online, desde que o site aceite essa modalidade. 
-       É uma ótima opção para quem quer evitar dívidas, já que não permite gastar mais do que se tem em conta.
-      </p>
-    
-      <h2>Principais usos do cartão de Débito</h2>
+    <main>
+      <section class="conteudo-didatico">
+        <div class="imagem-conteudo">
+          <img src="/src/imagens/CartaoDeDebito.jpg" alt="Imagem" />
+        </div>
+        <div class="texto-conteudo-didatico">
+          <p class="introducao">
+             O cartão de débito é uma ferramenta prática oferecida por instituições financeiras que permite realizar pagamentos e saques diretamente da conta bancária.
+             Ao contrário do cartão de crédito, os valores das compras feitas com o débito são descontados imediatamente do saldo disponível, o que ajuda a manter um controle mais rígido das finanças.
+             Ele é amplamente utilizado para compras à vista, pagamentos em estabelecimentos físicos, saques em caixas eletrônicos e também em compras online, desde que o site aceite essa modalidade. 
+             É uma ótima opção para quem quer evitar dívidas, já que não permite gastar mais do que se tem em conta.
+          </p>
+           <h2>Principais usos do cartão de Débito</h2>
 
        
 
-      <ul class="beneficios">
-        <li><span class="icone"></span> <strong>Compras à vista</strong> – Pagamento direto em lojas físicas sem gerar fatura...</li>
-        <li><span class="icone"></span> <strong>Saques em caixas eletrônicos</strong> – Acesso rápido ao dinheiro da conta....</li>
-        <li><span class="icone"></span> <strong>Pagamentos online</strong> – Aceito em algumas plataformas digitais e apps...</li>
-        <li><span class="icone"></span> <strong>Controle financeiro</strong> – Ajuda a manter os gastos dentro do que se tem disponível...</li>
-        <li><span class="icone"></span> <strong>Segurança</strong> – Reduz a necessidade de carregar dinheiro em espécie....</li>
-      </ul>
-      
-     <div class="quadrado-conteiner">
-          <img src="/src/imagens/CartaodeDebito1.jpeg"  alt="Teste" >  
-      </div>
-    
-  
-      <h2>Cuidados ao usar o cartão de Débito</h2>
+          <ul class="lista-topico">
+             <li><span class="list-icon"></span> <strong>Compras à vista</strong> – Pagamento direto em lojas físicas sem gerar fatura...</li>
+             <li><span class="list-icon"></span> <strong>Saques em caixas eletrônicos</strong> – Acesso rápido ao dinheiro da conta....</li>
+             <li><span class="list-icon"></span> <strong>Pagamentos online</strong> – Aceito em algumas plataformas digitais e apps...</li>
+             <li><span class="list-icon"></span> <strong>Controle financeiro</strong> – Ajuda a manter os gastos dentro do que se tem disponível...</li>
+             <li><span class="list-icon"></span> <strong>Segurança</strong> – Reduz a necessidade de carregar dinheiro em espécie....</li>
+           </ul>
+
+           <h2>Cuidados ao usar o cartão de Débito</h2>
       <p>
         Apesar de ser mais seguro em termos de endividamento, o cartão de débito exige atenção.
          É essencial acompanhar o saldo da conta para não ficar no negativo, principalmente em contas que permitem saldo devedor.
@@ -178,9 +262,12 @@
         Alguns bancos podem cobrar tarifas por saques fora da rede conveniada, taxas para emissão de segunda via do cartão ou limites diários de transação.
          Conhecer as regras do seu banco ajuda a evitar surpresas e a usar o cartão de forma mais consciente e econômica.
       </p>
-    </section>
-  </main>
-   <script src= "/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-</
+
+          
+        
+        </div>
+      </section>
+    </main>
+    <script src="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.js"></script>
+  </body>
+</html>
