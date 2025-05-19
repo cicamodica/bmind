@@ -106,7 +106,7 @@ function exibirConteudoRecomendados() {
   }
 
     const { perfil, preferenciaDeConteudos} = dados;
-    const container = document.getElementById("conteudo-recomendados");
+    const container = document.getElementById("lista-conteudos-recomendados");
     
     if (!container) {
       console.error("Elemento conteudo-recomendados não encontrado.");

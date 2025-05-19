@@ -322,3 +322,41 @@ color:#f0f0f0;
   font-weight: 500;
   text-align: center;
 }
+
+/* Container dos cards */
+#lista-conteudos-recomendados {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-top: 16px;
+}
+
+/* Card individual */
+.card-conteudo {
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 16px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.card-conteudo:hover {
+  transform: translateY(-4px);
+}
+
+/* Título do card */
+.card-conteudo h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Descrição do card */
+.card-conteudo p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
