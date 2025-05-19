@@ -1,164 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Validação de Dados</title>
-        <link rel="stylesheet" href="style_Tela_de_Edição.css"> <!--Ligar ao CSS-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--Cria o link com o site da logo-->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
-    </head>
-    <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validação de Dados</title>
+  <link rel="stylesheet" href="style_Tela_de_Edição.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
 
-        
-        <!--Cabeçalho-->
-        <navbar>
-        <div id="cabecalho">
-        
-            <i id="botaovoltar"class="fa-regular fa-circle-left"></i>
-            
-            <div class="search-conteiner"> 
-                <input type="text" placeholder="Pesquisa..." class="search-bar">
-                <i class="fa-solid fa-magnifying-glass search-icone"></i>
-            </div>
-            <div class="header-item">
-          <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
-          <!-- Logo -->
-            </div>
-        </div>
-        </navbar>
-
-        <p>Dashboard de Fulano</p>
-
-        <button class="Entradas" onclick="openModal('entradas')">Entradas</button>
-        <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
-        <button class="Economias" onclick="openModal('economias')">Economias</button>
-
-        <div class="overlay" id="overlay" onclick="closeModal()"></div>
-        
-        <!--Botão Entradas-->
-        <div class="modal" id="modal-entradas">
-
-            <h2>Atualização de entrada</h2>
-            <label>DATA</label><br>
-            <input class="data" type="date" name="data"><br>
-            <label>VALOR DE ENTRADA</label><br>
-            <input class="entrada" type="number" name="valor de entrada">
-            <br>
-
-            <!--Caixa de seleção de categoria-->
-            <label for="opcoes">CATEGORIA</label><br>
-                <select id="opcoes" name="opcao">
-                <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
-                <option value="opcao1">Salário</option>
-                <option value="opcao2">Investimentos</option>
-                <option value="opcao3">Lucros</option>
-                <option value="opcao4">Gastos</option>
-                </select>
-            <br>
-            
-           <label>VALOR RECORRENTE?</label><br>
-            <input type="radio" id="entrada-opcao1" name="opcoes" value="valor1">
-            <label for="entrada-opcao1">SIM</label>
-
-            <input type="radio" id="entrada-opcao2" name="opcoes" value="valor2">
-            <label for="entrada-opcao2">NÃO</label><br>
-
-            <div id="opcoes-recorrentes" style="display: none; margin-top: 10px;">
-            <label for="tipoRecorrencia">Tipo de recorrência:</label><br>
-            <select id="tipoRecorrencia">
-                <option value="mensal">Mensal</option>
-                <option value="semanal">Semanal</option>
-                <option value="anual">Anual</option>
-            </select>
-            </div>
-            
-            <button>Salvar</button>
-        </div>
-
-        
-        <!--Botão Saídas-->
-        <div class="modal" id="modal-saidas">
-            <h2>Atualização de entrada</h2>
-            <label>DATA</label><br>
-            <input class="data" type="date" name="data"><br>
-            <label>VALOR DE ENTRADA</label><br>
-            <input class="entrada" type="number" name="valor de entrada">
-            <br>
-
-            <!--Caixa de seleção de categoria-->
-            <label for="opcoes">CATEGORIA</label><br>
-                <select id="opcoes" name="opcao">
-                <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
-                <option value="opcao1">Salário</option>
-                <option value="opcao2">Investimentos</option>
-                <option value="opcao3">Lucros</option>
-                <option value="opcao4">Gastos</option>
-                </select>
-            <br>
-            
-            <label>VALOR RECORRENTE?</label><br>
-            <input type="radio" id="opcao1" name="opcoes" value="valor1">
-            <label for="opcao1">SIM</label>
-
-            <input type="radio" id="opcao2" name="opcoes" value="valor2">
-            <label for="opcao2">NÃO</label><br>
-
-            
-            
-            <button>Salvar</button>
-        </div>
-
-
-
-        <!--Botão Economias-->
-        <div class="modal" id="modal-economias">
-            <h2>Editar Economias</h2>
-            <label>DESCRIÇÃO</label><br>
-            <input class="descrição" type="text"><br>
-            <label>VALOR</label><br>
-            <input class="valor" type="number"><br>
-            <button>Salvar</button>
-        </div>
-        <h3>Atualizar</h3>
-        
-            <input
-                type="submit"
-                class="input-confirmar"
-                value="Salvar alterações">
-        
-
-
-
-
-
-
-    <!--BARRA CALENDARIO-->
-        <div class="dash-header">
-            <div class="month-selector">
-            <button onclick="changeMonth(-1)">&#10094;</button>
-            <span id="month-display"></span>
-            <button onclick="changeMonth(1)">&#10095;</button>
-        </div> 
-    
-
-    <!--PAINEL DASHBOARD(AGUARDANDO)-->
-        <div class="charts-row">
-    <div class="chart-container">
-        <canvas id="grafico1"></canvas>
+  <!-- Cabeçalho -->
+  <div id="cabecalho">
+    <div class="cabecalho-esquerda">
+      <i id="botaovoltar" class="fa-regular fa-circle-left"></i>
+      <h1>Bmind</h1>
     </div>
-    <div class="chart-container">
-        <canvas id="grafico2"></canvas>
+    <div class="search-conteiner">
+      <input type="text" placeholder="Pesquisa..." class="search-bar" />
+      <i class="fa-solid fa-magnifying-glass search-icone"></i>
     </div>
-    <div class="chart-container">
-        <canvas id="grafico3"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="grafico4"></canvas>
-    </div>
-    </div>
+  </div>
 
-    </body>
-    <script src="script_Tela_de_Edição.js"></script>
+  <p>Dashboard de Fulano</p>
+
+  <button class="Entradas" onclick="openModal('entradas')">Entradas</button>
+  <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
+  <button class="Economias" onclick="openModal('economias')">Economias</button>
+
+  <div class="overlay" id="overlay" onclick="closeModal()"></div>
+
+    <!-- Modal Entradas -->
+  <div class="modal" id="modal-entradas">
+    <h2>Atualização de entrada</h2>
+    <label>DATA</label><br />
+    <input class="data" type="date" name="data" /><br />
+    <label>VALOR DE ENTRADA</label><br />
+    <input class="entrada" type="number" name="valor de entrada" /><br />
+    <label for="opcoes-entradas">CATEGORIA</label><br />
+    <select class="opcoes" id="opcoes-entradas" name="opcao">
+      <option value="" disabled selected>Seleção</option>
+      <option value="Entrada">Entrada</option>
+      <option value="Saida">Saída</option>
+      <option value="Investimento">Investimento</option>
+      <option value="Emergência">Emergência</option>
+      <option value="Outros">Outros</option>
+    </select><br />
+    <button onclick="salvarDados('entradas')">Salvar</button>
+  </div>
+
+  <!-- Modal Saídas -->
+  <div class="modal" id="modal-saidas">
+    <h2>Atualização de saída</h2>
+    <label>DATA</label><br />
+    <input class="data" type="date" name="data" /><br />
+    <label>VALOR DE SAÍDA</label><br />
+    <input class="entrada" type="number" name="valor de saída" /><br />
+    <label for="opcoes-saidas">CATEGORIA</label><br />
+    <select class="opcoes" id="opcoes-saidas" name="opcao">
+      <option value="" disabled selected>Seleção</option>
+      <option value="Entrada">Entrada</option>
+      <option value="Saida">Saída</option>
+      <option value="Investimento">Investimento</option>
+      <option value="Emergência">Emergência</option>
+      <option value="Outros">Outros</option>
+    </select><br />
+    <button onclick="salvarDados('saidas')">Salvar</button>
+  </div>
+
+  <!-- Modal Economias -->
+  <div class="modal" id="modal-economias">
+    <h2>Editar Economias</h2>
+    <label>DESCRIÇÃO</label><br />
+    <input class="descrição" type="text" /><br />
+    <label>VALOR</label><br />
+    <input class="valor" type="number" /><br />
+    <button onclick="salvarDados('economias')">Salvar</button>
+  </div>
+
+  <h3>Atualizar</h3>
+  <input type="submit" class="input-confirmar" value="Salvar alterações" />
+
+  <div class="dash-header">
+    <div class="month-selector">
+      <button onclick="changeMonth(-1)">&#10094;</button>
+      <span id="month-display"></span>
+      <button onclick="changeMonth(1)">&#10095;</button>
+    </div>
+  </div>
+
+  <div id="month-info" class="month-panel">
+    <p>Exibindo dados de <strong><span id="month-name">maio de 2025</span></strong>.</p>
+    <div style="max-width: 600px; margin: 40px auto;">
+      <canvas id="graficoPizza"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script_Tela_de_Edição.js"></script>
+</body>
 </html>
