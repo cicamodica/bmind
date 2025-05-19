@@ -1,239 +1,240 @@
-*{
-    margin: 0; 
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.search-conteiner { /* Estilo da barra de pesquisa */
-    display:flex;
-    position: absolute;
-    transform: translateX(-50%);
-    width: 900px;
-    z-index: 1;
-    align-items: center;
-    left: 50%;
-   /* margin-right: -300px;*/
+body {
+  font-family: "Poppins";
+  background-color: #fff;
 }
 
-.search-bar { 
- border-radius: 40px;
- outline: none; 
- padding: 12px 40px;
- font-weight: 100;
- border: none;
- width: 100%;
- 
-}
-.navbar {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(to right, #55c3cc, #004aad);
-    padding: 10px 20px;
-   
+h1 {
+  font-weight: 500;
+  font-size: 24px;
+  color: white;
+  margin-left: 10px;
 }
 
-
-/*Icone de Seta para voltar para a página anterior*/
-i.fa-circle-left {
-    text-decoration: none; /* remove o sublinhado do link */
-    color: white; 
-    font-size: 35px; 
-    margin-right: 10px; 
-    padding-left: 10px;
-    cursor: pointer; /*coloquei o ponteiro de selecionar*/
-    display: inline-block;
-    
-}
-
+/* CABEÇALHO */
 #cabecalho {
-    
-    font-size: 15px;
-    font-family: "Poppins"; 
-    font-weight: 40;
-    background: linear-gradient(to right, #5bc5cc, #024dae);/*cor do cabeçalho, usando o gradiente de duas cores*/
-    height: 50px;
-    padding: 10px, 20px;
-    display: flex;
-    align-items: center;/*alinhamento vertical dos botão de voltar e do nome Bmind dentro do cabeçalho*/
+  background: linear-gradient(to right, #5bc5cc, #024dae);
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 60px;
+  position: relative;
+  text-align: center;
 }
 
-.header-item .logo {
-  /*Estilização do logo (imagem png)*/
-  height: 55px;
-  margin-left: 20px;
+.cabecalho-esquerda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+/* Ícone voltar */
+#botaovoltar {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Barra de pesquisa */
+.search-conteiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto 0 auto;
+}
+
+.search-bar {
+  border-radius: 40px;
+  outline: none;
+  padding: 10px 20px;
+  font-weight: 400;
+  border: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 200px;
+}
+
+.search-icone {
+  margin-left: -35px;
+  color: #555;
+  cursor: pointer;
+}
+
+/* TEXTO PRINCIPAL */
 p {
-    font-size: 34px;
-    margin-top: 20px;
-    font-weight: 400;
-    margin-left: 40px;
+  font-size: 34px;
+  margin-top: 20px;
+  font-weight: 400;
+  margin-left: 40px;
 }
 
-body { 
-    font-family: "Poppins"; 
-    src: url("src/Poppins-Regular.ttf") format("truetype");
-    background-color: #fff; 
-}
-
+/* BOTÕES */
 button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: transparent;
-    transition: background-color 0.3s;
-    color:black;
-    border: none;
-  }
-  
-  button:hover {
-    background-color: #c4c4c4;
-  }
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  color: black;
+  border: none;
+}
 
-  h2 {
-    font-weight: 400;
-  }
-  /*Janla Flutuante*/
-  .modal {
-    display: none; /*Fica escondida até clicar*/
-    position: fixed; /*Fica no meio da tela*/
-    transform: translate(-50%, -50%);/*Fica no meio da tela*/
-    top: 50%; /*Posiciona pela topo*/
-    left: 50%; /*Posiciona pelo lado esquerdo*/
-    width: 380px;
-    background-color: white;
-    border-radius: 5%;
-    z-index: 2000;
-    padding: 20px;
+button:hover {
+  background-color: #c4c4c4;
+}
+
+/* MODAIS */
+.modal {
+  display: none;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  background-color: white;
+  border-radius: 5%;
+  z-index: 1000;
+  padding: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+select,
+.data,
+.entrada {
+  width: 250px;
+  height: 35px;
+  text-align: center;
+  margin-top: 7px;
+  font-size: 15px;
+  border-width: 1px;
+}
+
+/* BOTÕES FLUTUANTES */
+.Entradas, .Saidas, .Economias {
+  position: fixed;
+  width: 180px;
+  height: 40px;
+  left: 20px;
+  text-align: left;
+}
+
+.Entradas { bottom: 180px; }
+.Saidas { bottom: 140px; }
+.Economias { bottom: 100px; }
+
+h3 {
+  position: fixed;
+  bottom: 240px;
+  left: 20px;
+  padding: 10px 20px;
+  font-weight: 400;
+  font-size: 34px;
+}
+
+/* BOTÃO SALVAR */
+.input-confirmar {
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  font-family: "Poppins";
+  width: 130px;
+  height: 35px;
+  right: 50px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  bottom: 100px;
+  position: fixed;
+  transition: background-color 0.5s;
+}
+.input-confirmar:hover {
+  background-color: #024dae;
+}
+
+/* SOBREPOSIÇÃO ESCURA */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* SELETOR DE MÊS */
+.month-selector {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  border-radius: 0px;
+  gap: 20px;
+}
+
+/* PAINEL DE DADOS */
+.month-panel {
+  margin: 20px auto;
+  padding: 40px;
+  width: 650px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  #cabecalho {
+    flex-direction: column;
     align-items: center;
     text-align: center;
-  }
-  
-  select {
-    width: 250px;
-    height: 35px;
-    text-align: center;
-    margin-top: 7px;
-    font-size: 15px;
-    border-width: 1px;
+    padding: 15px;
   }
 
-.agendar1, .data, .entrada, .descrição, .valor {
-    width: 250px;
-    height: 35px;
-    text-align: center;
-    margin-top: 7px;
-    font-size: 15px;
-    border-width: 1px;
-}
+  h1 {
+    margin: 5px 0;
+    font-size: 22px;
+  }
 
-.Entradas {
-    position: fixed;
-    bottom: 180px; /* Distância da parte inferior da janela */
-    left: 20px; /* Distância da parte esquerda da janela */
-    padding: 10px 20px; /* Espaçamento interno do botão */
-    width: 180px;
-    height: 40px;
-    text-align: left;
-}
-.Saidas {
-    position: fixed;
-    bottom: 140px; 
-    left: 20px; 
-    padding: 10px 20px; 
-    width: 180px;
-    height: 40px;
-    text-align: left;
-}
-.Economias {
-    position: fixed;
-    bottom: 100px; 
-    left: 20px; 
-    padding: 10px 20px; 
-    width: 180px;
-    height: 40px;
-    text-align: left;
-}
-h3 {
-    position: fixed;
-    bottom: 240px; 
-    left: 20px; 
-    padding: 10px 20px; 
-    font-weight: 400;
-    font-size: 34px;
-}
+  .search-conteiner {
+    margin-top: 10px;
+    padding: 0 15px;
+    justify-content: center;
+  }
 
-.input-confirmar {
-    background-color: black;/*cor de fundo*/
-    color: white;/*cor da fonte*/
-    font-size: 13px;
-    font-family: "poppins"; 
-    width: 130px;
-    height: 35px;
-    right:50px;
-    cursor: pointer; /*coloquei o ponteiro de selecionar*/
-    border: none;
-    font-weight: bold;
-    bottom: 100px;
-    position: fixed;
-    
-    transition: background-color 0.5s; /*****Coloquei uma transição para o botão mudar de cor*/
-}
-.input-confirmar:hover {/*****Usei o hover para executar a ação de mudar de cor e coloquei uma cor de fundo pra ele fazer isso*/
-    background-color:#024dae;
-    }
-
-  .overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+  .search-bar {
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-  }
-  
-  .close {
-    float: right;
-    font-weight: bold;
-    cursor: pointer;
+    max-width: 100%;
   }
 
-  .dash-header {
-  position: fixed;
-    margin-top: 20px; /* Ajuste a distância do topo conforme necessário */
-    left: 50%; /* Posiciona a borda esquerda no centro da tela */
-    transform: translateX(-50%); /* Desloca o elemento metade da sua largura para a esquerda */
+  p {
     font-size: 24px;
-    font-weight: 400;
-    z-index: 998;
-    padding: 5px; /* Opcional */
+    margin-left: 20px;
+    text-align: center;
   }
+}
 
-  
-
-  @media (max-width: 768px)
- {
+@media (max-width: 300px) {
   .content {
     flex-direction: column;
-  }}
-
-  .charts-row {
-    display: flex; /* Ativa o alinhamento horizontal */
-    justify-content: space-around; /* Espaça os gráficos uniformemente */
-    align-items: center; /* Alinha os gráficos verticalmente */
-    flex-wrap: nowrap; /* Permite que os gráficos se ajustem em telas menores */
-}
-
-.chart-container {
-    width: 200px; /* Define o tamanho dos gráficos */
-    height: 250px;
-    padding: 10px; /* Espaço ao redor */
-}
-canvas {
-    
-    width: 100%;
-    height: 100%;
+  }
 }
