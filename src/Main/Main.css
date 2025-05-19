@@ -1,5 +1,3 @@
-
-
 /*Adicionar fontes na font family = Poppins Light*/
 @font-face {
   font-family: "Poppins";
@@ -34,9 +32,8 @@
 
 /* Estilo base */
 body {
-
   margin: 0;
-  font-family: "Poppins" ;
+  font-family: "Poppins";
   background-color: #fff;
   color: #000;
 }
@@ -67,32 +64,41 @@ body {
 
 /* Container da barra de pesquisa com posicionamento */
 .search-container {
+  /*Estilização da barra de pesquisa*/
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
   display: flex;
-  align-items: center;
+  left: 600px;
+  width: 900px;
   z-index: 1;
+  align-items: cen;
 }
 
-/* Input da barra de pesquisa */
 .search-bar {
-  width: 100%;
-  padding: 12px 40px 12px 12px; /* espaço à direita para o ícone */
-  border-radius: 20px;
-  border: none;
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  font-family: "Poppins";
+  border-radius: 40px;
   outline: none;
+  padding: 12px 40px;
   font-weight: 100;
-  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+  justify-content: center;
 }
 
-/* Ícone de lupa dentro do input */
 .search-icon {
+  /*Estilização do ícone de pesquisa */
   position: absolute;
   right: 20px;
   color: black;
-  pointer-events:visible
+  bottom: 16px;
+}
+
+/* Login / Cadastro */
+.user-actions {
+  margin-left: 20px;
+  font-size: 14px;
 }
 
 /* Perfil*/
@@ -106,9 +112,7 @@ body {
   color: white;
   margin: 0 5px;
   text-decoration: none;
-
 }
-
 
 /* Menu dropdown principal */
 .dropdown-menu {
@@ -185,47 +189,48 @@ body {
   color: white;
 }
 
-
-.escrita{ /* Estilo do texto do menu */
-font-size: 40px;
-font-weight: 500;
-margin-right: auto;
-color: white;
-
+.escrita {
+  /* Estilo do texto do menu */
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: auto;
+  color: white;
 }
-.dropdown-menu ul {  /* Estilo da lista do menu dropdown */
-list-style: none;
-padding: 0;
-margin: 0;
-/*cursor: pointer;*/
-}
-
-.dropdown-menu li { /* Estilo dos itens do menu dropdown */
-padding: 10px;
-cursor: pointer;
-position: relative;
+.dropdown-menu ul {
+  /* Estilo da lista do menu dropdown */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /*cursor: pointer;*/
 }
 
-.dropdown-menu li:hover { /* Efeito de hover nos itens do menu dropdown */
-background: #f0f0f0;
+.dropdown-menu li {
+  /* Estilo dos itens do menu dropdown */
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
 }
 
+.dropdown-menu li:hover {
+  /* Efeito de hover nos itens do menu dropdown */
+  background: #f0f0f0;
+}
 
 /* Estilo do icone de perfil */
 
-.user-actions{
-font-size: 35px;
-color:#f0f0f0;
+.user-actions {
+  font-size: 35px;
+  color: #f0f0f0;
 }
 
-.boas-vindas{
-   margin-bottom: 15px;
+.boas-vindas {
+  margin-bottom: 15px;
   color: #004aad;
   font-size: 24px;
   font-weight: 500;
 }
 
-.conteudo{
+.conteudo {
   padding: 20px;
 }
 

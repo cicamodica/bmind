@@ -117,6 +117,7 @@ header {
   position: absolute;
   right: 20px;
   color: black;
+  bottom: 16px;
 }
 
 .menu-button {
@@ -202,67 +203,51 @@ header {
 }
 
 .submenu-btn-link:hover {
-  background-color: #024dae; 
-  color: white;              /* texto branco ao passar o mouse */
-}
-
-.nav {
-  /*Estilização da nav (barra com nome do conteúdo e seta de voltar)*/
-  background: #003c54;
-  padding: 15px 20px;
-}
-
-.nav-icon {
-  /*Estilização do ícone da nav (seta de voltar)*/
-  margin: 20px 0;
-  font-size: 35px;
-  cursor: pointer;
-  color: white;
+  background-color: #024dae;
+  color: white; /* texto branco ao passar o mouse */
 }
 
 .feedback-container {
   max-width: 600px; /* Largura máxima da caixa de feedback */
-  margin: 60px auto;  
+  margin: 60px auto;
   padding: 65px; /* Espaçamento interno */
   text-align: center;
   background-color: #ffffff;
-    
 }
 
 .logo-central {
   width: 250px; /* Largura do logo */
   margin: 0 auto 20px; /* Margem inferior */
-  display: block; 
-} 
+  display: block;
+}
 
 p {
   font-size: 30px;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
-    color: #333;
-    margin: 15px 0;
-    
+  color: #333;
+  margin: 15px 0;
 }
 
 .stars {
-margin: 15px 0;  
+  margin: 15px 0;
 }
 
 .star {
   font-size: 55px;
-  color: #ccc; 
+  color: #ccc;
   cursor: pointer;
   transition: color 0.2s;
 }
 
 textarea {
-    /*Estilização da caixa de texto*/
-    width: 300px;
-    height: 150px;
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 10px;
-    resize: none;
+  /*Estilização da caixa de texto*/
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+  resize: none;
 }
 
 .buttons button {
@@ -272,7 +257,7 @@ textarea {
   border-radius: 10px;
   font-weight: 500;
   font-size: 16px;
-  font-family: "Poppins", sans-serif;   
+  font-family: "Poppins", sans-serif;
 }
 
 .mensagem-sucesso {
@@ -296,13 +281,12 @@ textarea {
 }
 
 .cancel {
-    background-color: white;
-    border: 2px solid black
+  background-color: white;
+  border: 2px solid black;
 }
 
 .submit {
-    background-color: blue;
-    color: white;
-    border: 2px solid blue;
-
+  background-color: blue;
+  color: white;
+  border: 2px solid blue;
 }

@@ -137,3 +137,78 @@ header {
   border: unset;
   text-decoration: none;
 }
+
+.titulo-results {
+  max-width: 100vw;
+  padding: 0 20px;
+  display: flex;
+  justify-content: left;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.container-results {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #ffffff; /* igual ao fundo da imagem que você mandou */
+  width: auto;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.plan-img {
+  /*Estilização da imagem no posicionamento na página*/
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+img {
+  max-height: 546px;
+  max-width: 546px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.plan-link {
+  text-decoration: none; /* Remove a linha do hiperlink */
+}
+
+.plan-link h2 {
+  color: #37a6d1; /* Altera a cor do hiperlink */
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.plan-descricao {
+  color: #222;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+  width: auto;
+}
+
+.card {
+  /* /* Add shadows to create the "card" effect  */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 20px 40px;
+  margin: 0px 0px 20px 0px;
+  width: 93vw;
+}
+
+/* /* On mouse-over, add a deeper shadow  */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* /* Add some padding inside the card container  */
+.container {
+  padding: 2px 16px;
+}

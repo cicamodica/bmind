@@ -1,3 +1,15 @@
+//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+document
+  .getElementById("search-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // evita o redirecionamento padrão
+    const termo = document.getElementById("search-bar").value.trim();
+    if (termo !== "") {
+      const encodedTermo = encodeURIComponent(termo);
+      window.location.href = `/src/resultado-de-pesquisa/logado/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    }
+  });
+
 //Inicio funcionalidades Menu
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
@@ -15,7 +27,7 @@ window.addEventListener("click", function (e) {
 
 // Fim funcionalidades Menu
 //Recupera o usuario logado
-const usuarioLogado = localStorage.getItem('currentUser');
+const usuarioLogado = localStorage.getItem("currentUser");
 
 // Aguarda o carregamento completo da página
 window.addEventListener("DOMContentLoaded", function () {
@@ -37,7 +49,6 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 // Função para registrar um conteúdo como recentemente visto
 function registrarConteudoVisto(nomeConteudo, url, imagem) {
   let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
@@ -55,7 +66,6 @@ function registrarConteudoVisto(nomeConteudo, url, imagem) {
 
   localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
 }
-
 
 // Função para exibir os conteúdos vistos recentemente
 function exibirVistosRecentemente() {
@@ -98,7 +108,7 @@ exibirVistosRecentemente();
 
 function exibirConteudoRecomendados() {
   //Recuperação dos dados do usuario//
-  const dados= JSON.parse(localStorage.getItem("currentUser"));
+  const dados = JSON.parse(localStorage.getItem("currentUser"));
 
   if (!dados) {
     console.error("Usuário não encontrado.");
@@ -113,37 +123,39 @@ function exibirConteudoRecomendados() {
       return;
     }
 
-    if(!preferenciaDeConteudos || preferenciaDeConteudos.length === 0){
-      container.innerHTML= "<p>Não há conteúdos recomendados para você.</p>";
-      return;
-    }
+  if (!preferenciaDeConteudos || preferenciaDeConteudos.length === 0) {
+    container.innerHTML = "<p>Não há conteúdos recomendados para você.</p>";
+    return;
+  }
 
-    // Conteúdos estáticos para recomendações
-    const conteudos = {
-      "Pessoa Física": {
-        "Finanças Pessoais": "Aprenda organizar seu orçamento",
-        "Investimentos": "Descubra como investir seu dinheiro",
-        "Operações Bancárias": "Entenda como funcionam as operações bancárias",
-      },
-      "Pessoa Jurídica": {
-        "Finanças Corporativas": "Aprenda a gerenciar as finanças da sua empresa",
-        "Investimentos": "Descubra como investir o capital da sua empresa",
-        "Operações Bancárias": "Entenda como funcionam as operações bancárias para empresas",
-      },
-    };
+  // Conteúdos estáticos para recomendações
+  const conteudos = {
+    "Pessoa Física": {
+      "Finanças Pessoais": "Aprenda organizar seu orçamento",
+      Investimentos: "Descubra como investir seu dinheiro",
+      "Operações Bancárias": "Entenda como funcionam as operações bancárias",
+    },
+    "Pessoa Jurídica": {
+      "Finanças Corporativas": "Aprenda a gerenciar as finanças da sua empresa",
+      Investimentos: "Descubra como investir o capital da sua empresa",
+      "Operações Bancárias":
+        "Entenda como funcionam as operações bancárias para empresas",
+    },
+  };
 
-      //Percorre as preferências do usuário e exibe os conteúdos recomendados//
+  //Percorre as preferências do usuário e exibe os conteúdos recomendados//
 
-      preferenciaDeConteudos.forEach((preferencia) => {
-        const descricao = conteudos[perfil]?.[preferencia]|| "Conteudo não disponível";	
-        const bloco =`
+  preferenciaDeConteudos.forEach((preferencia) => {
+    const descricao =
+      conteudos[perfil]?.[preferencia] || "Conteudo não disponível";
+    const bloco = `
         <div class="card-conteudo">
           <h3>${preferencia}</h3>
           <p>${descricao}</p>
           </div>
           `;
-        container.innerHTML += bloco;
-      });
-    }
+    container.innerHTML += bloco;
+  });
+}
 // Chama a função para exibir os conteúdos recomendados
-    exibirConteudoRecomendados();
+exibirConteudoRecomendados();
