@@ -196,3 +196,5 @@ new Chart(document.getElementById('grafico1'), savedData.grafico1);
 new Chart(document.getElementById('grafico2'), savedData.grafico2);
 new Chart(document.getElementById('grafico3'), savedData.grafico3);
 new Chart(document.getElementById('grafico4'), savedData.grafico4);
+
+
