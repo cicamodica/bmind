@@ -37,5 +37,5 @@ function registrarConteudoVisto(nomeConteudo, url, imagem) {
 registrarConteudoVisto(
   "Fundos de Investimento PF",
   "/src/conteudo-didatico/Logado/Logado-pf/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html",
-  "/src/imagens/AnaliseDeBalancos.jpg"
+  "/src/imagens/FundoInvetsimentosPF.jpg"
 );

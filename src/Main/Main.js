@@ -66,26 +66,30 @@ function exibirVistosRecentemente() {
 
   vistos.forEach((conteudo) => {
     const li = document.createElement("li");
+    li.classList.add("item-visto"); // classe para estilizar via CSS
+
+    // Cria o link como container da imagem e texto
+    const link = document.createElement("a");
+    link.href = conteudo.url;
+    link.classList.add("link-visto");
 
     // Cria a imagem
     const img = document.createElement("img");
     img.src = conteudo.imagem;
     img.alt = conteudo.nome;
-    img.style.width = "60px"; // ou o tamanho desejado
-    img.style.marginRight = "10px";
 
-    // Cria o link
-    const link = document.createElement("a");
-    link.href = conteudo.url;
-    link.textContent = conteudo.nome;
-    link.style.textDecoration = "none";
-    link.style.fontWeight = "bold";
+    // Cria o texto
+    const texto = document.createElement("p");
+    texto.textContent = conteudo.nome;
 
-    li.appendChild(img);
+    // Monta os elementos
+    link.appendChild(img);
+    link.appendChild(texto);
     li.appendChild(link);
     lista.appendChild(li);
   });
 }
+
 
 
 exibirVistosRecentemente();
