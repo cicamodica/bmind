@@ -1,199 +1,230 @@
 <!DOCTYPE html>
-<html lang="en">
-  <script src="https://kit.fontawesome.com/1691cc7750.js" crossorigin="anonymous"></script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bmind</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="/src/conteudo-didatico/Logado/operacoes-bancarias/Financiamento/Financiamento.css"> <!-- Link para o arquivo CSS externo -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-  <body>
-    
-    <div class="navbar">
-      <div class="menu-icon" onclick="toggleMenu()">
-        <i class="fa-solid fa-bars"></i>
-      </div> <!-- Menu icon -->
-      <div class="escrito">Bmind</div> 
-      <div class="search-conteiner">
-      <input type="text" placeholder="Pesquisa..." class="search-bar">
-      <i class="fa-solid fa-magnifying-glass search-icone"></i>
-    </div>
-      <div class="user-actions">
-        <i class="fa-regular fa-circle-user"></i>
+    <link
+      rel="stylesheet"
+      href="/src/conteudo-didatico/Logado/operacoes-bancarias/Financiamento/Financiamento.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>  
+  <div class="header">
+    <header>
+      <div class="left-group">
+        <div class="menu-icon" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars menu-button"></i> <!-- ícone do menu -->
+        </div>
+        <div class="header-item">
+          <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+        </div>
       </div>
-    </div>
+      <div class="center-group">
+        <div class="search-container">
+          <input type="text" placeholder="Pesquisa..." class="search-bar" />
+          <i class="fa-solid fa-magnifying-glass search-icon"></i> <!-- ícone da lupa -->
+        </div>
+      </div>
+      <div class="right-group">
+        <div class="user-actions">
+          <i class="fa-regular fa-circle-user"></i>
+        </div>
+      </div>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <ul>
+          <li>Perfil</li>
+          <li>Configurações</li>
+          <li>Edite seu Dashboard</li>
 
-    <nav class="dropdown-menu" id="dropdownMenu">
-      <ul>
-        <li class="has-submenu">
-          Finanças pessoais
-          <ul class="submenu">
-             <li>
-              <a href="/src/conteudo-didatico//Logado/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html" 
-              class="submenu-btn-link"
-              onclick="registrarConteudoVisto('Planejamento financeiro')"
-              >Planejamento financeiro</a>
-            </li>
-            <li>                  
-              <a
-                href="/src/conteudo-didatico/Logado/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
-                class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Orçamento doméstico')"
-                >Orçamento doméstico</a
-              >
-            </li>
-            <li>
-              <a
-              href="/src/conteudo-didatico/Logado/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
-             onclick="registrarConteudoVisto('Controle de dívidas')"
-              class="submenu-btn-link"
-              >Controle de dívidas</a
-              >
-            </li>
-          </ul>
-        </li>
-    
-        <li class="has-submenu">
-          Finanças corporativas
-          <ul class="submenu">
-            <li><a
-              href="/src/conteudo-didatico/Logado/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
-              class="submenu-btn-link"
-              onclick="registrarConteudoVisto('Análise de balanços')"
-              >Análise de balanços</a
-            ></li>
-            <li><a
-                    href="/src/conteudo-didatico/Logado/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
-                    class="submenu-btn-link"
-                    onclick="registrarConteudoVisto('Fluxo de Caixa')"
-                    >Fluxo de Caixa</a
-                  ></li>
-            <li>
-              <a
-                href="/src/conteudo-didatico/Logado/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
-                class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Análise de balanços')"
-                >Captação de Recursos</a
-              ></li>
-            <li>
-                <a
-                  href="/src/conteudo-didatico/Logado/financas-corporativas/dre/dre.html"
-                  class="submenu-btn-link"
-                  onclick="registrarConteudoVisto('DRE')"
-                  >DRE</a
-                >
-            </li>
-          </ul>
-        </li>
-    
-        <li class="has-submenu">
-          Operações bancárias
-          <ul class="submenu">
-            <li>
-              <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html" 
-              class="submenu-btn-link"
-              onclick="registrarConteudoVisto('Cartão de Débito')"
-              >Cartão de Débito</a>
-            </li>
-            <li>
-              <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html"
-               class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Cartão de Crédito')"
-               >Cartões de Crédito</a>
-            </li>
-            <li>
-               <a href="/src/conteudo-didatico/Logado/Emprestimo/Emprestimo.html"
-                class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Empréstimo')"
-                >Emprestimo</a>
-            </li>
+          <li class="has-submenu">
+            Conteúdo Didático
+            <ul class="submenu">
 
-            <li>
-              <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Financiamento/Financiamento.html" 
-              class="submenu-btn-link"
-              onclick="registrarConteudoVisto('Financiamento')"
-              >Financiamento</a>
-            </li>
-            <li>
-               <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/TaxaseTarifas/TaxaseTarifas.html"
-                class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Taxas e Tarifas')"
-                >Taxas e Tarifas</a>
-            </li>
-          </ul>
-        </li>
-    
-        <li class="has-submenu">
-          Investimentos pessoais
-          <ul class="submenu">
-            <li>
-               <a href="/src/conteudo-didatico/Logado/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
-               class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Fundo de Investimentos')"
-               >Fundo de Investimentos</a>
-            </li>
-            <li>
-               <a href="/src/conteudo-didatico/Logado/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html" 
-               class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Renda Fixa')"
-               >Renda Fixa</a>
-            </li>
-            <li>
-                <a href="/src/conteudo-didatico/Logado/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
-                 class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Renda Variável')"
-                 >Renda Variavel</a>
-            </li>
-          </ul>
-        </li>
-      
-         <li class="has-submenu">
-          Investimentos Corporativos
-          <ul class="submenu">
-            <li>
-               <a href="/src/conteudo-didatico/Logado/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
-                class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Fundo de Investimentos')"
-                >Fundo de Investimentos</a>
-            </li>
-            <li>
-               <a href="/src/conteudo-didatico/Logado/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html" 
-               class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Renda Fixa')"
-               >Renda Fixa</a>
-            </li>
-            <li>
-                <a href="/src/conteudo-didatico/Logado/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
-                 class="submenu-btn-link"
-                onclick="registrarConteudoVisto('Renda Variável')"
-                 >Renda Variavel</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    
-    
-  
-     <!--  parte de baixo    -->
+              <!-- Finanças pessoais -->
+              <li class="has-submenu">
+                Finanças pessoais
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Planejamento financeiro')">
+                      Planejamento financeiro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Orçamento doméstico')">
+                      Orçamento doméstico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Controle de dívidas')">
+                      Controle de dívidas
+                    </a>
+                  </li>
+                </ul>
+              </li>
 
-    <div class="cabecalho">
-  
-      <div class="titulo-cabecalho">
-          <a href="/src/Homepage.html"  class="seta">
-          <i class="fa-regular fa-circle-left "></i> 
+              <!-- Finanças corporativas -->
+              <li class="has-submenu">
+                Finanças corporativas
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Análise de balanços')">
+                      Análise de balanços
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Fluxo de Caixa')">
+                      Fluxo de Caixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Captação de Recursos')">
+                      Captação de Recursos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Operações bancárias -->
+              <li class="has-submenu">
+                Operações bancárias
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Cartão de Débito')">
+                      Cartão de Débito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Cartão de Crédito')">
+                      Cartão de Crédito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Emprestimo/Emprestimo.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Emprestimo')">
+                      Empréstimo
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/Financiamento/Financiamento.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Financiamento')">
+                      Financiamento
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/TaxaseTarifas/TaxaseTarifas.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Taxas e Tarifas')">
+                      Taxas e Tarifas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Investimentos corporativos -->
+              <li class="has-submenu">
+                Investimentos Corporativos
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda fixa-PJ')">
+                      Renda fixa PJ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda variável-PJ')">
+                      Renda variável PJ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Fundos de investimento-PJ')">
+                      Fundos de investimento PJ
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- Investimentos pessoais -->
+              <li class="has-submenu">
+                Investimentos Pessoais
+                <ul class="submenu">
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda fixa-PF')">
+                      Renda fixa PF
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Renda variável-PF')">
+                      Renda variável PF
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/src/conteudo-didatico/Logado/Logado-pf/investimentos-pessoais/fundos-de-investimento-pf/fundos-de-investimento-pf.html"
+                       class="submenu-btn-link"
+                       onclick="registrarConteudoVisto('Fundos de investimento-PF')">
+                      Fundos de investimento PF
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+          </li>
+
+          <li>FAQ</li>
+          <li>Sair</li>
+        </ul>
+      </div>
+    </header>
+  </div>
+
+    <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a href="/src/Main/Main.html" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
           </a>
-        <h1>Financiamento</h1>
+          <h1>Financiamento</h1>
+        </div>
+      </nav>
     </div>
-   
-     </div> 
-    
-   <main>
+
+    <main>
       <section class="conteudo-didatico">
-        <div class="imagem-controle">
-          <img src="/src/imagens/Investimento.webp" alt="Imagem" />
+        <div class="imagem-conteudo">
+          <img src="/src/imagens/Financiamento.webp" alt="Imagem" />
         </div>
         <div class="texto-conteudo-didatico">
           <p class="introducao">
@@ -327,6 +358,8 @@
             <li><span class="list-icon"></span> Ferramentas de planejamento financeiro a longo prazo </li>
             <li><span class="list-icon"></span> Aplicativos de controle de gastos e receitas </li>
            </ul>
+          
+
           
 
         </div>

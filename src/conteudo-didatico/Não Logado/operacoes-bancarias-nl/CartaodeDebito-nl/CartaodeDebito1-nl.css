@@ -234,18 +234,17 @@ header {
   font-weight: 500;
 }
 
-.imagem-balanco {
+.imagem-controle {
   /*Estilização da imagem no posicionamento na página*/
   float: center;
   margin-top: -30px;
   margin-right: 60px;
-  align-content: center;
 }
 
-.imagem-balanco img {
+.imagem-controle img {
   /*Estilização da imagem*/
   position: relative;
-  height: 550px;
+  height: 510px;
 }
 
 .conteudo-didatico {
@@ -256,6 +255,7 @@ header {
 }
 
 .introducao,
+.inicio-artigo,
 .topico-1,
 .topico-2,
 .topico-3,
@@ -302,9 +302,4 @@ header {
   top: 60%;
   left: 50%;
   transform: translate(-50%, -55%);
-}
-
-.signup {
-  text-decoration: none; /* Remove a linha do hiperlink */
-  color: #37a6d1; /* Altera a cor do hiperlink */
 }

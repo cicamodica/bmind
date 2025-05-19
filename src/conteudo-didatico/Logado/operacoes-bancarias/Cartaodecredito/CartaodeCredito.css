@@ -48,69 +48,93 @@
   font-style: normal;
 }
 
+body {
+  /*Estilização geral do corpo da página */
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f6f8;
+}
 
-
-body {  /* Estilo geral do corpo da página */
-    margin: 0;
-    font-family: "Poppins", sans-serif; /* Fonte padrão */
-    background-color: #f4f6f8;
-    color: #000;
-  }
-    
-
-
- .navbar { 
-  display: flex; /* Use flexbox para alinhar os itens */
-  justify-content: center; /* Espaçamento entre os itens */
-  align-items: center; /* Alinhe os itens verticalmente */
-  padding: 10px 20px; /* Preenchimento interno */
-  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%)
- }
- .search-conteiner { /* Estilo da barra de pesquisa */
-  display:flex;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 900px;
-  z-index: 1;
+header {
+  /*Estilização da classe pai .NAV (barra superior)*/
+  display: flex;
+  justify-content: center;
   align-items: center;
-  left: 50%;
- /* margin-right: -300px;*/
-  
-  
- }
- .search-bar { 
+  padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+}
+
+.left-group {
+  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-group {
+  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-group {
+  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
+  display: flex;
+  align-items: center;
+}
+
+.user-actions {
+  /*Estilização do ícone de perfil*/
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.search-container {
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  display: flex;
+  width: 900px;
+  align-items: center;
+  z-index: 1;
+}
+
+.search-bar {
+  /*Estilização da barra de pesquisa*/
+  font-family: "Poppins";
   border-radius: 40px;
-  outline: none; 
+  outline: none;
   padding: 12px 40px;
   font-weight: 100;
   border: none;
   width: 100%;
-  
- }
-  
- .search-icone {
+  font-size: 18px;
+}
+
+.search-icon {
+  /*Estilização do ícone de pesquisa */
   position: absolute;
   right: 20px;
   color: black;
- }
+}
 
-
-.menu-icon { /* Estilo do item do menu ☰ */
+.menu-button {
+  /*Estilização do ícone de menu ☰*/
   font-size: 24px;
   cursor: pointer;
   margin-right: 15px;
   color: white;
 }
 
-.escrito{ /* Estilo do texto do menu */
-  font-size: 40px;
-  font-weight: 500;
+.header-item .logo {
+  /*Estilização do logo*/
+  height: 55px;
   margin-right: auto;
-  color: white;
-  
 }
 
-/* Menu dropdown */
+/*Menu dropdown:*/
+
 .dropdown-menu {
   position: absolute;
   top: 60px;
@@ -121,32 +145,37 @@ body {  /* Estilo geral do corpo da página */
   border-radius: 8px;
   padding: 10px;
   display: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
-.dropdown-menu ul {  /* Estilo da lista do menu dropdown */
+
+.dropdown-menu ul {
+  /* Estilização da lista do menu dropdown*/
   list-style: none;
   padding: 0;
   margin: 0;
- /*cursor: pointer;*/
 }
 
-.dropdown-menu li { /* Estilo dos itens do menu dropdown */
+.dropdown-menu li {
+  /*Estilização dos itens do menu dropdown*/
   padding: 10px;
   cursor: pointer;
   position: relative;
 }
 
-.dropdown-menu li:hover { /* Efeito de hover nos itens do menu dropdown */
+.dropdown-menu li:hover {
+  /*Efeito de hover nos itens do menu dropdown*/
   background: #f0f0f0;
 }
 
-/* Submenu */
+/*Submenu:*/
+
 .has-submenu:hover .submenu {
   display: block;
 }
 
-.submenu { /* Estilo do submenu */
+.submenu {
+  /*Estilização do submenu */
   display: none;
   position: absolute;
   top: 0;
@@ -154,126 +183,131 @@ body {  /* Estilo geral do corpo da página */
   background: white;
   width: 220px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 11;
 }
 
-/* Estilo do icone de perfil */
+.submenu-btn-link {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
 
-.user-actions{
+.submenu-btn-link:hover {
+  background-color: #024dae;
+  color: white; /* texto branco ao passar o mouse */
+}
+
+.nav {
+  /*Estilização da nav (barra com nome do conteúdo e seta de voltar)*/
+  background: #003c54;
+  padding: 15px 20px;
+}
+
+.nav-icon {
+  /*Estilização do ícone da nav (seta de voltar)*/
+  margin: 20px 0;
   font-size: 35px;
-  color:#f0f0f0;
+  cursor: pointer;
+  color: white;
 }
 
-/* Estilo da barra de voltar  */
-
-
-.cabecalho { /* Estilo do cabeçalho */
-    background: #003c54; /* Cor de fundo */
-    padding: 15px 20px; /* Preenchimento interno */
-   /* display: flex;*/
-   /* width: 100%; */
-   /* justify-content: space-between;  Espaçamento entre os itens */
-  }
-
-  
-  .seta { /* Estilo do ícone no cabeçalho */
-   
-    margin: 20px 0; /* Margem superior e inferior */
-    font-size: 35px;
-    cursor: pointer;
-    color: white; /* Cor do ícone */
-   
-  }
-  
-  .titulo-cabecalho {
-    display: flex;
-    align-items: center; /* Alinhamento vertical */
-    gap: 10px;
-  }
-
-  .titulo-cabecalho h1 { /* Estilo do título no cabeçalho */
-    display: flex; /* Flexbox para centralizar o conteúdo */
-    align-items: center; /* Alinhamento vertical */
-    font-size: 35px; /* Tamanho da fonte */
-    color: white;
-    font-weight: 500; /* Peso da fonte */
-  } 
-  
-    
- 
- 
-
-
-
-  .conteudo-cartao {    /* Estilo do conteúdo do cartão */
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-  
-  .descricao {  /* Estilo da descrição */   
-    font-size: 18px;
-    margin-bottom: 30px;
-  }
-  
-  .conteudo-cartao h2 {     /* Estilo do título */
-    font-size: 22px;
-    color: #12203f;
-    margin-top: 40px;
-  }
-  
-  .beneficios { /* Estilo da lista de benefícios */
-    list-style: none;
-    padding-left: 0;
-    width: 1100px;
-  }
-  
-  .beneficios li { /* Estilo dos itens da lista de benefícios */
-    margin: 15px 0;
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  .icone {  /* Estilo do ícone */
-    width: 20px;
-    height: 20px;
-    background-color: #00b4d8;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
-  }
-  
-  .icone::after {     /* Adiciona o símbolo de check */
-    content: '✓';
-    position: absolute;
-    color: white;
-    font-size: 14px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -55%);
-  }
-  
- /*.imagem */
- .cartao-imagem {
+.titulo-nav {
+  /*Estilização do título da página*/
   display: flex;
-  justify-content: flex-end; /* Alinha a imagem à direita */
-   background-color: aqua;
- }
-.quadrado-conteiner{
-  position: relative;
-  width: 300px;
-  height: 190px;
-  margin-left: auto;
-  margin-right: 0px ;
-  margin-top: -195px;
-  z-index: 10;
+  align-items: center;
+  gap: 10px;
 }
-.quadrado-conteiner img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain !important;
-  
-  
+
+.titulo-nav h1 {
+  /*Estilização do título da página*/
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  color: white;
+  font-weight: 500;
+}
+
+.imagem-conteudo {
+  /*Estilização da imagem no posicionamento na página*/
+  float: center;
+  margin-top: -30px;
+  margin-right: 60px;
+  align-content: center;
+}
+
+.imagem-conteudo img {
+  /*Estilização da imagem*/
+  position: relative;
+  height: 480px;
+}
+
+.conteudo-didatico {
+  /*Estilização do conteúdo do cartão*/
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.introducao,
+.topico-1,
+.topico-2,
+.topico-3,
+.topico-4,
+.topico-5,
+.topico-6,
+.topico-7,
+.topico-8 {
+  /*Estilização dos corpos de texto*/
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.lista-topico {
+  /*Estilização da lista*/
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-topico li {
+  /*Estilização do texto da lista*/
+  margin: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.list-icon {
+  /*Estilização do ícone da lista*/
+  width: 20px;
+  height: 20px;
+  background-color: #00b4d8;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+}
+
+.list-icon::after {
+  /*Estilização do ícone da lista (adicionar o símbolo de check)*/
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+}
+
+.signup {
+  text-decoration: none; /* Remove a linha do hiperlink */
+  color: #37a6d1; /* Altera a cor do hiperlink */
 }

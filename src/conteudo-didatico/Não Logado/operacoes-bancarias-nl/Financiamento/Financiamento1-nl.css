@@ -85,10 +85,16 @@ header {
   align-items: center;
 }
 
+/* Login / Cadastro */
 .user-actions {
-  /*Estilização do ícone de perfil*/
-  font-size: 35px;
-  color: #ffffff;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
 }
 
 .search-container {
@@ -133,8 +139,7 @@ header {
   margin-right: auto;
 }
 
-/*Menu dropdown:*/
-
+/* Menu dropdown */
 .dropdown-menu {
   position: absolute;
   top: 60px;
@@ -150,43 +155,36 @@ header {
 }
 
 .dropdown-menu ul {
-  /* Estilização da lista do menu dropdown*/
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .dropdown-menu li {
-  /*Estilização dos itens do menu dropdown*/
   padding: 10px;
   cursor: pointer;
   position: relative;
 }
 
 .dropdown-menu li:hover {
-  /*Efeito de hover nos itens do menu dropdown*/
   background: #f0f0f0;
 }
 
-/*Submenu:*/
-
+/* Submenu */
 .has-submenu:hover .submenu {
   display: block;
 }
 
 .submenu {
-  /*Estilização do submenu */
   display: none;
   position: absolute;
   top: 0;
-  left: 200px;
+  left: 220px;
   background: white;
   width: 220px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 11;
 }
-
 .submenu-btn-link {
   display: block;
   background-color: transparent;
@@ -236,18 +234,17 @@ header {
   font-weight: 500;
 }
 
-.imagem-conteudo {
+.imagem-controle {
   /*Estilização da imagem no posicionamento na página*/
   float: center;
   margin-top: -30px;
   margin-right: 60px;
-  align-content: center;
 }
 
-.imagem-conteudo img {
+.imagem-controle img {
   /*Estilização da imagem*/
   position: relative;
-  height: 550px;
+  height: 510px;
 }
 
 .conteudo-didatico {
@@ -258,6 +255,7 @@ header {
 }
 
 .introducao,
+.inicio-artigo,
 .topico-1,
 .topico-2,
 .topico-3,
@@ -304,9 +302,4 @@ header {
   top: 60%;
   left: 50%;
   transform: translate(-50%, -55%);
-}
-
-.signup {
-  text-decoration: none; /* Remove a linha do hiperlink */
-  color: #37a6d1; /* Altera a cor do hiperlink */
 }

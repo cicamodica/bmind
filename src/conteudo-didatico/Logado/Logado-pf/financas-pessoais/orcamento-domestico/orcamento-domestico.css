@@ -237,14 +237,14 @@ header {
   font-weight: 500;
 }
 
-.imagem-orcamento {
+.imagem-conteudo {
   /*Estilização da imagem no posicionamento na página*/
   float: center;
   margin-top: -30px;
   margin-right: 60px;
 }
 
-.imagem-orcamento img {
+.imagem-conteudo img {
   /*Estilização da imagem*/
   position: relative;
   height: 485px;

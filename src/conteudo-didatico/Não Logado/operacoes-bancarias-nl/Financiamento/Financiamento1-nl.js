@@ -1,12 +1,8 @@
-
         document.querySelector('.menu-icon').addEventListener('click', function() {
             const navMenu = document.querySelector('.nav-menu');
             navMenu.classList.toggle('hidden');
         });
         
-        function goBack() { // Função para voltar à página anterior
-          window.history.back();
-        }
         function toggleMenu() { // Função para alternar o menu dropdown
             const menu = document.getElementById("dropdownMenu");
             menu.style.display = menu.style.display === "block" ? "none" : "block";
