@@ -229,35 +229,96 @@ color:#f0f0f0;
   padding: 20px;
 }
 
-.vistos-recentemente{
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  box-shadow: 0 2px px rgba(0,0,0,0.1);
-}
-.vistos-recentemente h2{
-  margin-bottom: 15px;
-  color: #004aad;
-  font-size: 24px;
-  font-weight: 500;
-}
-#lista-vistos-recentemente{
+
+/* Container da lista */
+.vistos-recentemente ul {
+  display: flex;
+  gap: 20px;
   list-style: none;
   padding: 0;
+  margin: 0;
+  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
 }
-#lista-vistos-recentemente li{
-  margin-bottom: 10px;
+
+/* Cada item da lista */
+.item-visto {
+  width: 120px;
+  text-align: center;
 }
-#lista-vistos-recentemente a{
+
+/* Link que envolve a imagem e o texto */
+.link-visto {
   text-decoration: none;
-  color: #004aad;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estiliza a imagem */
+.link-visto img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.link-visto img:hover {
+  transform: scale(1.05);
+}
+
+/* Texto abaixo da imagem */
+.link-visto p {
+  margin-top: 8px;
+  font-size: 14px;
   font-weight: 500;
-  font-size: 18px;
-  background: white;
-  padding: 10px 15px;
-  display: block;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-  transition: background-color 0.2s ease;
+  text-align: center;
+}
+/* Container da lista */
+.vistos-recentemente ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
+}
+
+/* Cada item da lista */
+.item-visto {
+  width: 120px;
+  text-align: center;
+}
+
+/* Link que envolve a imagem e o texto */
+.link-visto {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estiliza a imagem */
+.link-visto img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.link-visto img:hover {
+  transform: scale(1.05);
+}
+
+/* Texto abaixo da imagem */
+.link-visto p {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
 }
