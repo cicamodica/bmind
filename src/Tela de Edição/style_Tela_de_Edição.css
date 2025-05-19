@@ -4,12 +4,6 @@
     box-sizing: border-box;
 }
 
-h1 {
-    font-weight: 500;
-    font-size: 40;
-    color: white;
-    padding: 10px;
-}
 .search-conteiner { /* Estilo da barra de pesquisa */
     display:flex;
     position: absolute;
@@ -38,12 +32,6 @@ h1 {
    
 }
 
-#botaovoltar {
-    padding-left: 10px;
-    font-size: 24px; 
-    cursor: pointer; /*coloquei o ponteiro de selecionar*/
-    display: inline-block;
-}
 
 /*Icone de Seta para voltar para a página anterior*/
 i.fa-circle-left {
@@ -51,6 +39,10 @@ i.fa-circle-left {
     color: white; 
     font-size: 35px; 
     margin-right: 10px; 
+    padding-left: 10px;
+    cursor: pointer; /*coloquei o ponteiro de selecionar*/
+    display: inline-block;
+    
 }
 
 #cabecalho {
@@ -65,12 +57,17 @@ i.fa-circle-left {
     align-items: center;/*alinhamento vertical dos botão de voltar e do nome Bmind dentro do cabeçalho*/
 }
 
+.header-item .logo {
+  /*Estilização do logo (imagem png)*/
+  height: 55px;
+  margin-left: 20px;
+}
+
 p {
     font-size: 34px;
     margin-top: 20px;
     font-weight: 400;
     margin-left: 40px;
-    ;
 }
 
 body { 
@@ -107,7 +104,7 @@ button {
     width: 380px;
     background-color: white;
     border-radius: 5%;
-    z-index: 1000;
+    z-index: 2000;
     padding: 20px;
     align-items: center;
     text-align: center;
@@ -204,33 +201,39 @@ h3 {
     cursor: pointer;
   }
 
- /* BARRA DATA */
+  .dash-header {
+  position: fixed;
+    margin-top: 20px; /* Ajuste a distância do topo conforme necessário */
+    left: 50%; /* Posiciona a borda esquerda no centro da tela */
+    transform: translateX(-50%); /* Desloca o elemento metade da sua largura para a esquerda */
+    font-size: 24px;
+    font-weight: 400;
+    z-index: 998;
+    padding: 5px; /* Opcional */
+  }
 
-/* Deixa o seletor de mês centralizado visualmente */
-.month-selector {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
-  font-size: 1.5rem;
-  padding: 10px 20px;
-  border-radius: 0px;
-  gap: 20px;
+  
+
+  @media (max-width: 768px)
+ {
+  .content {
+    flex-direction: column;
+  }}
+
+  .charts-row {
+    display: flex; /* Ativa o alinhamento horizontal */
+    justify-content: space-around; /* Espaça os gráficos uniformemente */
+    align-items: center; /* Alinha os gráficos verticalmente */
+    flex-wrap: nowrap; /* Permite que os gráficos se ajustem em telas menores */
 }
 
-
-   /*   DASHBOARD (AGUARDANDO)  */
-
-.month-panel {
-  margin: 20px auto;
-  padding: 250px; /* Aumentar a altura*/
-  width: 2400px; /*Aumentar a largura */
-  background-color: #f0f0f0;
-  border-radius: 12px;
-  font-size: 18px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.chart-container {
+    width: 200px; /* Define o tamanho dos gráficos */
+    height: 250px;
+    padding: 10px; /* Espaço ao redor */
 }
+canvas {
     
+    width: 100%;
+    height: 100%;
+}

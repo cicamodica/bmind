@@ -6,6 +6,7 @@
         <title>Validação de Dados</title>
         <link rel="stylesheet" href="style_Tela_de_Edição.css"> <!--Ligar ao CSS-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--Cria o link com o site da logo-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         
     </head>
     <body>
@@ -17,10 +18,13 @@
         
             <i id="botaovoltar"class="fa-regular fa-circle-left"></i>
             
-            <h1>Bmind</h1>
             <div class="search-conteiner"> 
                 <input type="text" placeholder="Pesquisa..." class="search-bar">
                 <i class="fa-solid fa-magnifying-glass search-icone"></i>
+            </div>
+            <div class="header-item">
+          <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+          <!-- Logo -->
             </div>
         </div>
         </navbar>
@@ -47,27 +51,32 @@
             <label for="opcoes">CATEGORIA</label><br>
                 <select id="opcoes" name="opcao">
                 <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
-                <option value="opcao1">Opção 1</option>
-                <option value="opcao2">Opção 2</option>
-                <option value="opcao3">Opção 3</option>
-                <option value="opcao4">Opção 4</option>
+                <option value="opcao1">Salário</option>
+                <option value="opcao2">Investimentos</option>
+                <option value="opcao3">Lucros</option>
+                <option value="opcao4">Gastos</option>
                 </select>
             <br>
             
-            <label>VALOR RECORRENTE?</label><br>
-            <input type="checkbox" id="opcao1" name="opcoes" value="valor1">
-            <label for="opcao1">SIM</label><br>
+           <label>VALOR RECORRENTE?</label><br>
+            <input type="radio" id="entrada-opcao1" name="opcoes" value="valor1">
+            <label for="entrada-opcao1">SIM</label>
 
-            <input type="checkbox" id="opcao2" name="opcoes" value="valor2">
-            <label for="opcao2">NÃO</label><br>
+            <input type="radio" id="entrada-opcao2" name="opcoes" value="valor2">
+            <label for="entrada-opcao2">NÃO</label><br>
 
-            <!--Agendar para-->
-            <label for="Seleção">AGENDAR PARA</label><br>
-            <input class="agendar1" type="date" name="agendar para"><br> 
-                </select>
-            <imput type="text">
+            <div id="opcoes-recorrentes" style="display: none; margin-top: 10px;">
+            <label for="tipoRecorrencia">Tipo de recorrência:</label><br>
+            <select id="tipoRecorrencia">
+                <option value="mensal">Mensal</option>
+                <option value="semanal">Semanal</option>
+                <option value="anual">Anual</option>
+            </select>
+            </div>
+            
             <button>Salvar</button>
         </div>
+
         
         <!--Botão Saídas-->
         <div class="modal" id="modal-saidas">
@@ -82,27 +91,26 @@
             <label for="opcoes">CATEGORIA</label><br>
                 <select id="opcoes" name="opcao">
                 <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
-                <option value="opcao1">Opção 1</option>
-                <option value="opcao2">Opção 2</option>
-                <option value="opcao3">Opção 3</option>
-                <option value="opcao4">Opção 4</option>
+                <option value="opcao1">Salário</option>
+                <option value="opcao2">Investimentos</option>
+                <option value="opcao3">Lucros</option>
+                <option value="opcao4">Gastos</option>
                 </select>
             <br>
             
             <label>VALOR RECORRENTE?</label><br>
-            <input type="checkbox" id="opcao1" name="opcoes" value="valor1">
-            <label for="opcao1">SIM</label><br>
+            <input type="radio" id="opcao1" name="opcoes" value="valor1">
+            <label for="opcao1">SIM</label>
 
-            <input type="checkbox" id="opcao2" name="opcoes" value="valor2">
+            <input type="radio" id="opcao2" name="opcoes" value="valor2">
             <label for="opcao2">NÃO</label><br>
 
-            <!--Agendar para-->
-            <label for="Seleção">AGENDAR PARA</label><br>
-            <input class="agendar1" type="date" name="agendar para"><br> 
-                </select>
-            <imput type="text">
+            
+            
             <button>Salvar</button>
         </div>
+
+
 
         <!--Botão Economias-->
         <div class="modal" id="modal-economias">
@@ -120,6 +128,12 @@
                 class="input-confirmar"
                 value="Salvar alterações">
         
+
+
+
+
+
+
     <!--BARRA CALENDARIO-->
         <div class="dash-header">
             <div class="month-selector">
@@ -129,12 +143,22 @@
         </div> 
     
 
-<!--PAINEL DASHBOARD(AGUARDANDO)-->
+    <!--PAINEL DASHBOARD(AGUARDANDO)-->
+        <div class="charts-row">
+    <div class="chart-container">
+        <canvas id="grafico1"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="grafico2"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="grafico3"></canvas>
+    </div>
+    <div class="chart-container">
+        <canvas id="grafico4"></canvas>
+    </div>
+    </div>
 
-        <div id="month-info" class="month-panel">
-            Carregando dados de <strong><span id="month-name">maio de 2025</span></strong>...
-        </div>
-        
     </body>
     <script src="script_Tela_de_Edição.js"></script>
 </html>
