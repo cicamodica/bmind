@@ -236,7 +236,7 @@ header {
   font-weight: 500;
 }
 
-.imagem-balanco {
+.imagem-conteudo {
   /*Estilização da imagem no posicionamento na página*/
   float: center;
   margin-top: -30px;
@@ -244,7 +244,7 @@ header {
   align-content: center;
 }
 
-.imagem-balanco img {
+.imagem-conteudo img {
   /*Estilização da imagem*/
   position: relative;
   height: 550px;

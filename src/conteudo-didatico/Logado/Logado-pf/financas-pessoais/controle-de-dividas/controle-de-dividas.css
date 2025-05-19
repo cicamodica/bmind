@@ -236,14 +236,14 @@ header {
   font-weight: 500;
 }
 
-.imagem-controle {
+.imagem-conteudo {
   /*Estilização da imagem no posicionamento na página*/
   float: center;
   margin-top: -30px;
   margin-right: 60px;
 }
 
-.imagem-controle img {
+.imagem-conteudo img {
   /*Estilização da imagem*/
   position: relative;
   height: 510px;
