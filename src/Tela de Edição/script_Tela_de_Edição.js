@@ -1,198 +1,172 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // =================== ICONE DE VOLTAR ===================
-    const voltar = document.getElementById("botaovoltar");
-    if (voltar) {
-        voltar.addEventListener("click", function () {
-            history.back();
-        });
-    }
-
-    
-    // Opções no dashboard //
-    function updateOptionDisplay(opcao) {
-        const displayElement = document.getElementById("month-display");
-        const nameElement = document.getElementById("month-name");
-        const optionsText = {
-            1: "Salário",
-            2: "Gastos",
-            3: "Investimentos",
-            4: "Lucros"
-        };
-        const displayText = optionsText[opcao] || `Opção ${opcao}`;
-
-        if (displayElement) {
-            displayElement.textContent = displayText;
-        }
-        if (nameElement) {
-            nameElement.textContent = displayText;
-        }
-    }
-
-    window.changeMonth = function (direction) {
-        const displayElement = document.getElementById("month-display");
-        if (!displayElement) return;
-
-        let currentOptionText = displayElement.textContent;
-        let currentOption;
-        const reverseOptionsText = {
-            "Salário": 1,
-            "Gastos": 2,
-            "Investimentos": 3,
-            "Lucros": 4
-        };
-
-        currentOption = reverseOptionsText[currentOptionText];
-
-        if (isNaN(currentOption)) {
-            currentOption = 1;
-        }
-
-        currentOption += direction;
-
-        if (currentOption < 1) {
-            currentOption = 4;
-        } else if (currentOption > 4) {
-            currentOption = 1;
-        }
-        updateOptionDisplay(currentOption);
-    };
-
-    updateOptionDisplay(1); // Inicializa a exibição com "Salário"
-
-    // =================== MODAIS ===================
-    function openModal(tipo) {
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById(`modal-${tipo}`).style.display = 'block';
-        
-    }
-
-    window.openModal = openModal; // Tornar a função openModal acessível globalmente
-  window.closeModal = closeModal; 
-    function closeModal() {
-        document.getElementById('overlay').style.display = 'none';
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.style.display = 'none';
-        });
-    }
-});
-
-document.querySelectorAll("input[type='radio'][value='valor1']").forEach(radio => {
-    radio.addEventListener("change", function () {
-        const modal = radio.closest(".modal");
-        const recorrenteDiv = modal.querySelector(".opcoes-recorrentes");
-        if (recorrenteDiv) {
-            recorrenteDiv.style.display = "block";
-        }
-    });
-});
-
-// Esconder opções recorrentes ao selecionar "NÃO"
-document.querySelectorAll("input[type='radio'][value='valor2']").forEach(radio => {
-    radio.addEventListener("change", function () {
-        const modal = radio.closest(".modal");
-        const recorrenteDiv = modal.querySelector(".opcoes-recorrentes");
-        if (recorrenteDiv) {
-            recorrenteDiv.style.display = "none";
-        }
-    });
-});
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const botaoSalvar = document.querySelector("#modal-entradas button"); // Botão de salvar
-    const inputData = document.querySelector("#modal-entradas .data"); // Campo de data
-    const inputValor = document.querySelector("#modal-entradas .entrada"); // Campo de valor de entrada
-    const selectCategoria = document.querySelector("#modal-entradas #opcoes"); // Categoria selecionada
-
-    if (botaoSalvar) {
-        botaoSalvar.addEventListener("click", function () {
-            const dadosEntrada = {
-                data: inputData.value,
-                valor: inputValor.value,
-                categoria: selectCategoria.value
-            };
-
-            localStorage.setItem("entradaDados", JSON.stringify(dadosEntrada)); // Armazena os dados
-
-            alert("Dados salvos com sucesso!"); // Confirmação ao usuário
-        });
-    }
-
-    // Recupera os dados no dashboard
-    const dadosRecuperados = localStorage.getItem("entradaDados");
-    if (dadosRecuperados) {
-        const dados = JSON.parse(dadosRecuperados);
-        console.log("Dados carregados:", dados); // Apenas para teste, pode exibir no dashboard
-    }
-});
-
-
-
-
-
-
-const defaultData = {
-  grafico1: {
-    type: 'bar',
-    data: {
-      labels: ['Janeiro', 'Fevereiro', 'Março'],
-      datasets: [{
-        label: 'Entradas',
-        data: [1000, 1200, 900],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)'
-      }]
-    }
-  },
-  grafico2: {
-    type: 'line',
-    data: {
-      labels: ['Abril', 'Maio', 'Junho'],
-      datasets: [{
-        label: 'Saídas',
-        data: [800, 950, 700],
-        borderColor: 'rgba(255, 99, 132, 1)',
-        fill: false
-      }]
-    }
-  },
-  grafico3: {
-    type: 'pie',
-    data: {
-      labels: ['Aluguel', 'Comida', 'Transporte'],
-      datasets: [{
-        label: 'Gastos',
-        data: [400, 300, 300],
-        backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
-      }]
-    }
-  },
-  grafico4: {
-    type: 'radar',
-    data: {
-      labels: ['Planejamento', 'Gastos Fixos', 'Investimentos', 'Extras'],
-      datasets: [{
-        label: 'Distribuição',
-        data: [3, 4, 2, 5],
-        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-        borderColor: 'rgba(153, 102, 255, 1)'
-      }]
-    }
+  const voltar = document.getElementById("botaovoltar");
+  if (voltar) {
+    voltar.addEventListener("click", () => history.back());
   }
-};
 
-// Salvar no localStorage se ainda não tiver
-if (!localStorage.getItem('graficos')) {
-  localStorage.setItem('graficos', JSON.stringify(defaultData));
+  window.openModal = function (tipo) {
+    closeAllModals();
+    const modal = document.getElementById(`modal-${tipo}`);
+    modal.style.display = 'block';
+    document.getElementById("overlay").style.display = 'block';
+
+    // Atualiza o input data para o currentDate no formato yyyy-mm-dd
+    const inputData = modal.querySelector("input.data");
+    if (inputData) {
+      inputData.value = currentDate.toISOString().slice(0, 10);
+    }
+  };
+
+  window.closeModal = function () {
+    closeAllModals();
+    document.getElementById("overlay").style.display = 'none';
+  };
+
+  function closeAllModals() {
+    document.querySelectorAll(".modal").forEach(modal => modal.style.display = "none");
+  }
+
+  updateMonthDisplay();
+
+  // Evento para atualizar currentDate e gráfico ao mudar a data pelo input calendar
+  document.querySelectorAll('input.data').forEach(inputData => {
+    inputData.addEventListener('change', (event) => {
+      const novaData = new Date(event.target.value);
+      if (!isNaN(novaData)) {
+        currentDate = novaData;
+        updateMonthDisplay();
+        updateChart();
+      }
+    });
+  });
+});
+
+// Nome dos meses em português
+const monthNames = [
+  "janeiro", "fevereiro", "março", "abril", "maio", "junho",
+  "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"
+];
+
+let currentDate = new Date();
+
+// Recuperar dados do localStorage ou iniciar vazio
+const dadosPorMes = JSON.parse(localStorage.getItem("dadosPorMes")) || {};
+
+// Categorias e cores fixas
+const cores = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'];
+const labelsCategorias = ['Entrada', 'Saida', 'Investimento', 'Emergência', 'Outros'];
+
+function updateMonthDisplay() {
+  const mes = currentDate.getMonth();
+  const ano = currentDate.getFullYear();
+  const texto = `${monthNames[mes]} de ${ano}`;
+  document.getElementById("month-display").textContent = texto;
+  document.getElementById("month-name").textContent = texto;
 }
 
-// Carrega os dados salvos
-const savedData = JSON.parse(localStorage.getItem('graficos'));
+window.changeMonth = function (direction) {
+  currentDate.setMonth(currentDate.getMonth() + direction);
+  updateMonthDisplay();
+  updateChart();
+};
 
-// Cria os 4 gráficos
-new Chart(document.getElementById('grafico1'), savedData.grafico1);
-new Chart(document.getElementById('grafico2'), savedData.grafico2);
-new Chart(document.getElementById('grafico3'), savedData.grafico3);
-new Chart(document.getElementById('grafico4'), savedData.grafico4);
+// Inicializa gráfico
+const ctx = document.getElementById("graficoPizza").getContext("2d");
+let graficoPizza = new Chart(ctx, {
+  type: "doughnut",
+  data: {
+    labels: labelsCategorias,
+    datasets: [{
+      data: [0, 0, 0, 0, 0],
+      backgroundColor: cores,
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom'
+      },
+      tooltip: {
+        enabled: true
+      }
+    }
+  }
+});
+
+function updateChart() {
+  const mesAnoKey = getMesAnoKey(currentDate);
+  const dadosMes = dadosPorMes[mesAnoKey] || [0, 0, 0, 0, 0];
+  graficoPizza.data.datasets[0].data = dadosMes;
+  graficoPizza.update();
+}
+
+// Função helper para gerar chave mês-ano para salvar dados
+function getMesAnoKey(date) {
+  return `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}`;
+}
+
+// Salvar dados no localStorage e atualizar gráfico
+window.salvarDados = function (tipo) {
+  const modal = document.getElementById(`modal-${tipo}`);
+
+  let valorInput, selectCategoria, valor, categoria;
+
+  if (tipo === 'economias') {
+    valorInput = modal.querySelector("input.valor");
+    valor = parseFloat(valorInput.value) || 0;
+    categoria = 'Outros';
+  } else {
+    valorInput = modal.querySelector("input.entrada, input[type='number']");
+    selectCategoria = modal.querySelector("select");
+    valor = parseFloat(valorInput.value) || 0;
+    categoria = selectCategoria.value;
+  }
+
+  if (!categoria || valor <= 0) {
+    alert("Por favor, selecione uma categoria válida e informe um valor maior que zero.");
+    return;
+  }
+
+  const mesAnoKey = getMesAnoKey(currentDate);
+  if (!dadosPorMes[mesAnoKey]) dadosPorMes[mesAnoKey] = [0, 0, 0, 0, 0];
+
+  const indexCategoria = labelsCategorias.indexOf(categoria);
+  if (indexCategoria < 0) {
+    alert("Categoria inválida.");
+    return;
+  }
+
+  if (tipo === 'saidas') {
+    const indexEntrada = labelsCategorias.indexOf('Entrada');
+    // Diminui Entrada, mas nunca fica negativo
+    const saldoAtual = dadosPorMes[mesAnoKey][indexEntrada];
+    const valorParaDiminuir = Math.min(valor, saldoAtual);
+    dadosPorMes[mesAnoKey][indexEntrada] = saldoAtual - valorParaDiminuir;
+
+    dadosPorMes[mesAnoKey][indexCategoria] += valor;
+  } else if (tipo === 'entradas') {
+    const indexSaida = labelsCategorias.indexOf('Saida');
+    // Diminui Saída, mas nunca fica negativo
+    const saldoAtual = dadosPorMes[mesAnoKey][indexSaida];
+    const valorParaDiminuir = Math.min(valor, saldoAtual);
+    dadosPorMes[mesAnoKey][indexSaida] = saldoAtual - valorParaDiminuir;
+
+    dadosPorMes[mesAnoKey][indexCategoria] += valor;
+  } else {
+    dadosPorMes[mesAnoKey][indexCategoria] += valor;
+  }
+
+  localStorage.setItem("dadosPorMes", JSON.stringify(dadosPorMes));
+  updateChart();
+
+  if (valorInput) valorInput.value = "";
+  if (selectCategoria) selectCategoria.selectedIndex = 0;
+  window.closeModal();
+};
+
+
+
+// Inicializa gráfico ao carregar a página
+updateChart();
