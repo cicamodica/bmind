@@ -85,10 +85,17 @@ header {
   align-items: center;
 }
 
+/* Estilo do icone de perfil */
+
 .user-actions {
-  /*Estilização do ícone de perfil*/
   font-size: 35px;
-  color: #ffffff;
+  color: #f0f0f0;
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
 }
 
 .search-container {
@@ -134,8 +141,7 @@ header {
   margin-right: auto;
 }
 
-/*Menu dropdown:*/
-
+/* Menu dropdown principal */
 .dropdown-menu {
   position: absolute;
   top: 60px;
@@ -151,43 +157,46 @@ header {
 }
 
 .dropdown-menu ul {
-  /* Estilização da lista do menu dropdown*/
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .dropdown-menu li {
-  /*Estilização dos itens do menu dropdown*/
   padding: 10px;
   cursor: pointer;
   position: relative;
+  white-space: nowrap;
 }
 
 .dropdown-menu li:hover {
-  /*Efeito de hover nos itens do menu dropdown*/
   background: #f0f0f0;
 }
 
-/*Submenu:*/
-
-.has-submenu:hover .submenu {
-  display: block;
-}
-
-.submenu {
-  /*Estilização do submenu */
+/* Submenus de primeiro e segundo nível */
+.has-submenu > .submenu {
   display: none;
   position: absolute;
   top: 0;
-  left: 200px;
+  left: 100%;
   background: white;
   width: 220px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 11;
+  z-index: 20;
 }
 
+.has-submenu:hover > .submenu {
+  display: block;
+}
+
+/* Submenu dentro do menu principal */
+.dropdown-menu > ul > .has-submenu > .submenu {
+  top: 0;
+  left: 220px;
+}
+
+/* Submenu link */
 .submenu-btn-link {
   display: block;
   background-color: transparent;
@@ -204,7 +213,63 @@ header {
 
 .submenu-btn-link:hover {
   background-color: #024dae;
-  color: white; /* texto branco ao passar o mouse */
+  color: white;
+}
+
+.FAQ {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.Sair {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.perfil {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.editar-dashboard {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .nav {
@@ -248,7 +313,7 @@ header {
 .imagem-conteudo img {
   /*Estilização da imagem*/
   position: relative;
-  height: 480px;
+  height: 620px;
 }
 
 .conteudo-didatico {
