@@ -87,7 +87,7 @@ header {
 
 .user-actions {
   /*Estilização do ícone de perfil*/
-  font-size: px;
+  font-size: 35px;
   color: #ffffff;
 }
 
@@ -212,16 +212,4 @@ img {
 /* /* Add some padding inside the card container  */
 .container {
   padding: 2px 16px;
-}
-
-/* Login / Cadastro */
-.user-actions {
-  margin-left: 20px;
-  font-size: 14px;
-}
-
-.user-actions a {
-  color: white;
-  margin: 0 5px;
-  text-decoration: none;
 }

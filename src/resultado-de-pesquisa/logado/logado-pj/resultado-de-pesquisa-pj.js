@@ -6,14 +6,15 @@ document
     const termo = document.getElementById("search-bar").value.trim();
     if (termo !== "") {
       const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/nao-logado/resultado-de-pesquisa-nl.html?q=${encodedTermo}`;
+      window.location.href = `/src/resultado-de-pesquisa/logado/logado-pj/resultado-de-pesquisa-pj.html?q=${encodedTermo}`;
     }
   });
-  
+
+
 const conteudos = [
   {
     titulo: "Planejamento Financeiro",
-    link: "/src/conteudo-didatico/Não Logado/financas-pessoais-nl/planejamento-financeiro-nl/planejamento-financeiro-nl.html",
+    link: "/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html",
     imagem: "/src/imagens/PlanejamentoFinanceiro.jpg",
     palavrasChave: [
       "planejamento",
@@ -30,7 +31,7 @@ const conteudos = [
   },
   {
     titulo: "Orçamento Doméstico",
-    link: "/src/conteudo-didatico/Não Logado/financas-pessoais-nl/orcamento-domestico-nl/orcamento-domestico-nl.html",
+    link: "/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/orcamento-domestico/orcamento-domestico.html",
     imagem: "/src/imagens/OrcamentoDomestico.jpg",
     palavrasChave: [
       "orçamento",
@@ -48,7 +49,7 @@ const conteudos = [
   },
   {
     titulo: "Controle de Dívidas",
-    link: "/src/conteudo-didatico/Não Logado/financas-pessoais-nl/controle-de-dividas-nl/controle-de-dividas-nl.html",
+    link: "/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/controle-de-dividas/controle-de-dividas.html",
     imagem: "/src/imagens/Controlededividas.jpg",
     palavrasChave: [
       "controle",
@@ -66,7 +67,7 @@ const conteudos = [
   },
   {
     titulo: "Análise de Balanço",
-    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/analise-de-balanco-nl/analise-de-balanco-nl.html",
+    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
     imagem: "/src/imagens/AnaliseDeBalancos.jpg",
     palavrasChave: [
       "análise",
@@ -86,7 +87,7 @@ const conteudos = [
   },
   {
     titulo: "Fluxo de Caixa",
-    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/fluxo-de-caixa-nl/fluxo-de-caixa-nl.html",
+    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
     imagem: "/src/imagens/FluxoDeCaixa.jpg",
     palavrasChave: [
       "fluxo",
@@ -106,7 +107,7 @@ const conteudos = [
   },
   {
     titulo: "Captação de Recursos",
-    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/captacao-de-recursos-nl/captacao-de-recursos-nl.html",
+    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html",
     imagem: "/src/imagens/CaptacaoDeRecursos.jpg",
     palavrasChave: [
       "captação",
@@ -126,7 +127,7 @@ const conteudos = [
   },
   {
     titulo: "DRE",
-    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/dre-nl/dre-nl.html",
+    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/dre/dre.html",
     imagem: "/src/imagens/DRE.jpg",
     palavrasChave: [
       "dre",
@@ -149,7 +150,7 @@ const conteudos = [
   },
   {
     titulo: "Cartão de Débito",
-    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/CartaodeDebito-nl/CartaodeDebito-nl.html",
+    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html",
     imagem: "/src/imagens/CartaoDeDebito.jpg",
     palavrasChave: [
       "cartão",
@@ -173,8 +174,8 @@ const conteudos = [
   },
   {
     titulo: "Cartão de Crédito",
-    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/Cartaodecredito-nl/CartaodeCredito-nl.html",
-    imagem: "/src/imagens/CartaoDeCredito.jpg",
+    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html",
+    imagem: "/src/imagens/CartaodeCredito.webp",
     palavrasChave: [
       "cartão",
       "crédito",
@@ -197,8 +198,8 @@ const conteudos = [
   },
   {
     titulo: "Empréstimo",
-    link: "/src/conteudo-didatico/Não Logado/Emprestimo-nl/Emprestimo-nl.html",
-    imagem: "/src/imagens/Emprestimo.jpg",
+    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/Emprestimo/Emprestimo.html",
+    imagem: "/src/imagens/Emprestimo2.jpg",
     palavrasChave: [
       "empréstimo",
       "operações",
@@ -220,8 +221,8 @@ const conteudos = [
   },
   {
     titulo: "Financiamento",
-    link: "/src/conteudo-didatico/Não Logado",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/Financiamento/Financiamento.html",
+    imagem: "/src/imagens/Financiamento.webp",
     palavrasChave: [
       "financiamento",
       "operações",
@@ -238,12 +239,12 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: " O financiamento é uma operação de crédito em que uma instituição financeira paga, total ou parcialmente, por um bem ou serviço em seu nome. Em troca, você assume o compromisso de pagar esse valor em parcelas mensais, com acréscimo de juros e encargos, ao longo de um período definido em contrato.",
   },
   {
     titulo: "Taxas e Tarifas",
-    link: "/src/conteudo-didatico/Não Logado",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/TaxaseTarifas/TaxaseTarifas.html",
+    imagem: "/src/imagens/Tarifasetaxas.webp",
     palavrasChave: [
       "taxas",
       "tarifas",
@@ -261,11 +262,11 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: "Taxas e tarifas são valores cobrados por instituições financeiras como contrapartida por produtos ou serviços prestados. Elas estão presentes em quase todas as operações bancárias e financeiras: contas, empréstimos, financiamentos, cartões, consórcios, investimentos e muito mais.",
   },
   {
     titulo: "Renda Fixa",
-    link: "/src/conteudo-didatico/Não Logado",
+    link: "/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html",
     imagem: "/src/imagens/SemImagemNoMomento.jpg",
     palavrasChave: [
       "renda",
@@ -283,11 +284,11 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: " A renda fixa é uma forma de investimento que oferece mais segurança  e previsibilidade. Ideal para quem está começando ou busca proteger seu dinheiro da inflação. Neste conteúdo, vamos explicar de forma simples como funciona e quais são as opções disponíveis para pessoa física.",
   },
   {
     titulo: "Renda Variável",
-    link: "/src/conteudo-didatico/Não Logado",
+    link: "/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
     imagem: "/src/imagens/SemImagemNoMomento.jpg",
     palavrasChave: [
       "renda",
@@ -305,11 +306,11 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: " A renda variável é um tipo de investimento em que os ganhos não são garantidos, pois dependem do desempenho de ativos como ações, fundos e moedas. Apesar do risco maior, oferece grande potencial de retorno.",
   },
   {
-    titulo: "Fundos de Investimento",
-    link: "/src/conteudo-didatico/Não Logado",
+    titulo: "Fundos de Investimentos",
+    link: "/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html",
     imagem: "/src/imagens/SemImagemNoMomento.jpg",
     palavrasChave: [
       "fundos",
@@ -327,7 +328,7 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: "Os fundos de investimento são uma forma prática e acessível de aplicar seu dinheiro com a gestão de profissionais especializados. Eles reúnem recursos de diversos investidores para aplicar em uma carteira diversificada de ativos.",
   },
 ];
 
