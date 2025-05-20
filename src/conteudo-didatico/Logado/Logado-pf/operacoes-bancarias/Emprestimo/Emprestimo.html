@@ -6,7 +6,7 @@
     <title>Bmind</title>
     <link
       rel="stylesheet"
-      href="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.css"
+      href="/src/conteudo-didatico/Logado/operacoes-bancarias/Emprestimo/Emprestimo.css"
     />
     <!-- Link para o arquivo CSS externo -->
     <link
@@ -27,9 +27,15 @@
       </div>
       <div class="center-group">
         <div class="search-container">
-          <input type="text" placeholder="Pesquisa..." class="search-bar" />
-          <i class="fa-solid fa-magnifying-glass search-icon"></i> <!-- ícone da lupa -->
-        </div>
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            /><a class="search-button" id="search-button" href="#"
+              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
       </div>
       <div class="right-group">
         <div class="user-actions">
@@ -135,7 +141,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/TaxaseTarifas/TaxaseTarifas.html"
+                    <a href="/src/conteudo-didatico/Logado/operacoes-bancarias/TaxaseTarifas/TaxaseTarifas.html
                        class="submenu-btn-link"
                        onclick="registrarConteudoVisto('Taxas e Tarifas')">
                       Taxas e Tarifas
@@ -216,7 +222,7 @@
           <a href="/src/Main/Main.html" class="nav-icon">
             <i class="fa-regular fa-circle-left"></i>
           </a>
-          <h1>Cartão de Débito</h1>
+          <h1>Emprestimo</h1>
         </div>
       </nav>
     </div>
@@ -228,52 +234,109 @@
         </div>
         <div class="texto-conteudo-didatico">
           <p class="introducao">
-             O cartão de débito é uma ferramenta prática oferecida por instituições financeiras que permite realizar pagamentos e saques diretamente da conta bancária.
-             Ao contrário do cartão de crédito, os valores das compras feitas com o débito são descontados imediatamente do saldo disponível, o que ajuda a manter um controle mais rígido das finanças.
-             Ele é amplamente utilizado para compras à vista, pagamentos em estabelecimentos físicos, saques em caixas eletrônicos e também em compras online, desde que o site aceite essa modalidade. 
-             É uma ótima opção para quem quer evitar dívidas, já que não permite gastar mais do que se tem em conta.
-          </p>
-           <h2>Principais usos do cartão de Débito</h2>
+           
+           <h1>O que é Empréstimo? </h1> 
 
-       
+            O empréstimo é uma operação financeira onde uma instituição (como um banco ou financeira)
+            disponibiliza uma quantia em dinheiro para uma pessoa física ou jurídica, mediante o compromisso 
+            de devolução desse valor acrescido de juros, dentro de um prazo estipulado em contrato. 
+            É uma forma de antecipar recursos para necessidades imediatas, investimentos ou pagamento de dívidas.
+
+           
+          </p>
+          <p class="inicio-artigo">
+           No entanto, é essencial compreender como ele funciona, quais são os tipos existentes e como usá-lo de forma 
+            consciente para evitar o endividamento excessivo.
+          </p>
+
+          <h2>Tipos de Empréstimo</h2>
+
+          <h3>1. Empréstimo Pessoal</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Feito diretamente com o banco ou instituição financeira</li>
+            <li><span class="list-icon"></span> Pode ser com garantia ou sem garantia </li>
+            <li><span class="list-icon"></span> Juros variáveis conforme perfil e instituição</li>
+          </ul>
+
+            <h3>2. Empréstimo Consignado</h3>
 
           <ul class="lista-topico">
-             <li><span class="list-icon"></span> <strong>Compras à vista</strong> – Pagamento direto em lojas físicas sem gerar fatura...</li>
-             <li><span class="list-icon"></span> <strong>Saques em caixas eletrônicos</strong> – Acesso rápido ao dinheiro da conta....</li>
-             <li><span class="list-icon"></span> <strong>Pagamentos online</strong> – Aceito em algumas plataformas digitais e apps...</li>
-             <li><span class="list-icon"></span> <strong>Controle financeiro</strong> – Ajuda a manter os gastos dentro do que se tem disponível...</li>
-             <li><span class="list-icon"></span> <strong>Segurança</strong> – Reduz a necessidade de carregar dinheiro em espécie....</li>
+            <li><span class="list-icon"></span> Descontado diretamente da folha de pagamento</li>
+            <li><span class="list-icon"></span> Juros mais baixos </li>
+            <li><span class="list-icon"></span> Reservado para aposentados, pensionistas, servidores públicos
+            e alguns trabalhadores CLT</li>
+          </ul>
+
+           <h3>3. Crédito Rotavivo do Cartão</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Utilizado quando o valor da farura não é pago integralmente</li>
+            <li><span class="list-icon"></span> Juros altos </li>
+            <li><span class="list-icon"></span> Recomendado evitar sempre que possível</li>
+          </ul>
+
+          <h3>4. Cheque Especial</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Limite pré-aprovado atrelado á conta corrente </li>
+            <li><span class="list-icon"></span> Fácil acesso, mas com juros muito elevados</li>
+           </ul>
+             
+           <h3>5. Empréstimo com Garantia</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Pode ser com imóvel, veículo ou investimentos como garantia </li>
+            <li><span class="list-icon"></span> Taxas mais baixas devido ao menor risco para o credor</li>
            </ul>
 
-           <h2>Cuidados ao usar o cartão de Débito</h2>
-      <p>
-        Apesar de ser mais seguro em termos de endividamento, o cartão de débito exige atenção.
-         É essencial acompanhar o saldo da conta para não ficar no negativo, principalmente em contas que permitem saldo devedor.
-          Além disso, é importante proteger seus dados e a senha (PIN), evitando o uso em sites ou terminais suspeitos.
-      </p>
-  
-      <h2>Cartão de débito não tem juros rotativo</h2>
-      <p>
-        O cartão de débito funciona com base no saldo que você já tem na conta.
-         Ou seja, ao fazer uma compra ou saque, o valor é descontado imediatamente do seu saldo disponível.
-          Como não existe “empréstimo” ou crédito envolvido, não há como parcelar, atrasar ou gerar fatura, então não se aplicam juros rotativo nesse tipo de cartão
-      </p>
-      <h2>Mas atenção</h2>
-      <p>
-        Se o seu banco permitir que sua conta entre no cheque especial (limite negativo), e você usar o cartão de débito mesmo sem saldo suficiente, aí sim você pode pagar juros — mas são os juros do cheque especial, não do cartão de débito em si.
-         Portanto, é importante entender as regras do seu banco e como funciona o limite de crédito associado à sua conta.
-      </p>
-      <h2>Anuidade e Taxas</h2>
-      <p>
-        Alguns bancos podem cobrar tarifas por saques fora da rede conveniada, taxas para emissão de segunda via do cartão ou limites diários de transação.
-         Conhecer as regras do seu banco ajuda a evitar surpresas e a usar o cartão de forma mais consciente e econômica.
-      </p>
+          <h2> Quando Vale a Pena Fazer um Empréstimo ?</h2>
+            <p> <strong> Vale a pena considerar um empréstimo quando</strong> :</p>
 
-          
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> É usado para quitar dívidas com juros maiores (ex: cartão de crédito) </li>
+            <li><span class="list-icon"></span> Serve para investir em algo que trará retorno (ex:negócio próprio ou educação)</li>
+            <li><span class="list-icon"></span> Há um planejamento para pagamentos das parcelas dentro do orçamento</li>
+           </ul>
+
+         <h2> Risco e Cuidados </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cuidado com juros abusivos </li>
+            <li><span class="list-icon"></span> Leioa sempre o contrato completo</li>
+            <li><span class="list-icon"></span> Evite parcelar por muitos anos </li>
+            <li><span class="list-icon"></span> Faça simulações antes de contratar</li>
+            <li><span class="list-icon"></span> Prefira empréstimos com garantia apenas se tiver total segurança de pagamento </li>
+           </ul>
         
+         <h2> Como Saber  se Você Pode fazer um Emprestimo </h2>
+          <ul class="lista-topico">
+            <li><span class="#"></span> 1. Avalie sua renda mensal líquida  </li>
+            <li><span class="#"></span> 2. Calcule suas despesas fixas </li>
+            <li><span class="#"></span> 3. Veja se aparcela do empréstimo comprometerá mais de 30% da renda </li>
+            <li><span class="#"></span> 4.Considere se realmente é necessário </li>
+            <li><span class="#"></span> 5.Faça uma simulação online em diferentes instituições </li>
+           </ul>
+
+         <h2> Dicas para Controlar Dívidas   </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Monte um orçamento mensal </li>
+            <li><span class="list-icon"></span> Anote todos os gastos </li>
+            <li><span class="list-icon"></span> Crie um fundo de emergência </li>
+            <li><span class="list-icon"></span> Negocie dívidas antigas </li>
+            <li><span class="list-icon"></span> Ultilize o crédito de forma planejada </li>
+           </ul>
+
+          <h2> Ferramentas Úteis   </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Calculadoras de empréstimo online </li>
+            <li><span class="list-icon"></span> Aplicativos de controle financeiro </li>
+            <li><span class="list-icon"></span> Planilhas de orçamento ( Google Sheets, Excell) </li>
+            <li><span class="list-icon"></span> Simuladores de crédito de bancos confiáveis </li>
+           </ul>
+          
+
         </div>
       </section>
     </main>
-    <script src="/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.js"></script>
+    <script src="/src/conteudo-didatico/Logado/operacoes-bancarias/Emprestimo/Emprestimo.js"></script>
   </body>
 </html>
