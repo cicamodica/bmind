@@ -51,20 +51,60 @@
   padding: 0;
   box-sizing: border-box;
 }
+header {
+  /*Estilização da classe pai .NAV (barra superior)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+}
+
+.left-group {
+  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-group {
+  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-group {
+  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo do icone de perfil */
+
+.user-actions {
+  font-size: 35px;
+  color: #f0f0f0;
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
+}
 
 .search-container {
   /*Estilização da barra de pesquisa*/
-  position: absolute;
+  position: relative;
   display: flex;
-  left: 600px;
   width: 900px;
+  align-items: center;
   z-index: 1;
-  align-items: cen;
 }
 
 .search-bar {
   /*Estilização da barra de pesquisa*/
-  position: relative;
   font-family: "Poppins";
   border-radius: 40px;
   outline: none;
@@ -73,7 +113,6 @@
   border: none;
   width: 100%;
   font-size: 18px;
-  justify-content: center;
 }
 
 .search-icon {
@@ -83,43 +122,122 @@
   color: black;
   bottom: 16px;
 }
-.navbar {
-  display: flex;
-  align-items: center;
-  background: linear-gradient(to right, #55c3cc, #004aad);
-  padding: 10px 20px;
-  height: 50px;
-}
 
-/*Icone de Seta para voltar para a página anterior*/
-i.fa-circle-left {
-  text-decoration: none; /* remove o sublinhado do link */
+.menu-button {
+  /*Estilização do ícone de menu ☰*/
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
   color: white;
-  font-size: 35px;
-  margin-right: 10px;
-  padding-left: 10px;
-  cursor: pointer; /*coloquei o ponteiro de selecionar*/
-  display: inline-block;
-}
-
-#cabecalho {
-  font-size: 15px;
-  font-family: "Poppins";
-  background: linear-gradient(
-    to right,
-    #5bc5cc,
-    #024dae
-  ); /*cor do cabeçalho, usando o gradiente de duas cores*/
-  height: 50px;
-  padding: 10px, 20px;
-  display: flex;
-  align-items: center; /*alinhamento vertical dos botão de voltar e do nome Bmind dentro do cabeçalho*/
 }
 
 .header-item .logo {
-  /*Estilização do logo (imagem png)*/
+  /*Estilização do logo*/
   height: 55px;
-  margin-left: 20px;
+  margin-right: auto;
+}
+
+/* Menu dropdown principal */
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  background: white;
+  color: black;
+  width: 220px;
+  border-radius: 8px;
+  padding: 10px;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+}
+
+.dropdown-menu li:hover {
+  background: #f0f0f0;
+}
+
+/* Submenus de primeiro e segundo nível */
+.has-submenu > .submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: white;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.has-submenu:hover > .submenu {
+  display: block;
+}
+
+/* Submenu dentro do menu principal */
+.dropdown-menu > ul > .has-submenu > .submenu {
+  top: 0;
+  left: 220px;
+}
+
+/* Submenu link */
+.submenu-btn-link {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.submenu-btn-link:hover {
+  background-color: #024dae;
+  color: white;
+}
+
+.FAQ{
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.Sair{
+    display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 p {
