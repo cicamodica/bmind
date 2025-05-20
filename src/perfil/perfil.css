@@ -1,3 +1,21 @@
+/*Download da fonte: https://fontmeme.com/fontes/fonte-poppins/#previewtool + Importação: https://cursos.alura.com.br/forum/topico-importacao-de-fontes-409962*/
+
+/*Adicionar fontes na font family = Poppins Thin*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
+}
+
 /*Adicionar fontes na font family = Poppins Light*/
 @font-face {
   font-family: "Poppins";
@@ -30,52 +48,60 @@
   font-style: normal;
 }
 
-/* Estilo base */
 body {
+  /*Estilização geral do corpo da página */
   margin: 0;
-  font-family: "Poppins";
-  background-color: #fff;
-  color: #000;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
 }
 
-/* Barra principal */
-.navbar {
+header {
+  /*Estilização da classe pai .NAV (barra superior)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+}
+
+.left-group {
+  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #55c3cc, #004aad);
-  padding: 10px 20px;
+  gap: 10px;
 }
 
-/* Ícone do menu */
-.menu-icon {
-  font-size: 24px;
-  cursor: pointer;
-  margin-right: 15px;
-  color: white;
+.center-group {
+  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
-/* Escrita - Bmind */
-.escrita {
-  font-size: 40px;
-  font-weight: 500;
-  margin-right: auto;
-  color: white;
+.right-group {
+  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
+  display: flex;
+  align-items: center;
 }
 
-/* Container da barra de pesquisa com posicionamento */
+.user-actions {
+  /*Estilização do ícone de perfil*/
+  font-size: 35px;
+  color: #ffffff;
+}
+
 .search-container {
   /*Estilização da barra de pesquisa*/
-  position: absolute;
+  position: relative;
   display: flex;
-  left: 600px;
   width: 900px;
+  align-items: center;
   z-index: 1;
-  align-items: cen;
 }
 
 .search-bar {
   /*Estilização da barra de pesquisa*/
-  position: relative;
   font-family: "Poppins";
   border-radius: 40px;
   outline: none;
@@ -84,7 +110,6 @@ body {
   border: none;
   width: 100%;
   font-size: 18px;
-  justify-content: center;
 }
 
 .search-icon {
@@ -95,11 +120,21 @@ body {
   bottom: 16px;
 }
 
-.user-actions a {
+.menu-button {
+  /*Estilização do ícone de menu ☰*/
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
   color: white;
-  margin: 0 5px;
-  text-decoration: none;
 }
+
+.header-item .logo {
+  /*Estilização do logo*/
+  height: 55px;
+  margin-right: auto;
+}
+
+/*Menu dropdown:*/
 
 /* Menu dropdown principal */
 .dropdown-menu {
@@ -203,161 +238,3 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-
-.escrita {
-  /* Estilo do texto do menu */
-  font-size: 40px;
-  font-weight: 500;
-  margin-right: auto;
-  color: white;
-}
-
-/* Estilo do icone de perfil */
-
-.user-actions {
-  font-size: 35px;
-  color: #f0f0f0;
-}
-
-.boas-vindas {
-  margin-bottom: 15px;
-  color: #004aad;
-  font-size: 24px;
-  font-weight: 500;
-}
-
-.conteudo {
-  padding: 20px;
-}
-
-
-/* Container da lista */
-.vistos-recentemente ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
-}
-
-/* Cada item da lista */
-.item-visto {
-  width: 120px;
-  text-align: center;
-}
-
-/* Link que envolve a imagem e o texto */
-.link-visto {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Estiliza a imagem */
-.link-visto img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.link-visto img:hover {
-  transform: scale(1.05);
-}
-
-/* Texto abaixo da imagem */
-.link-visto p {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-}
-/* Container da lista */
-.vistos-recentemente ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
-}
-
-/* Cada item da lista */
-.item-visto {
-  width: 120px;
-  text-align: center;
-}
-
-/* Link que envolve a imagem e o texto */
-.link-visto {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Estiliza a imagem */
-.link-visto img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.link-visto img:hover {
-  transform: scale(1.05);
-}
-
-/* Texto abaixo da imagem */
-.link-visto p {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-}
-
-/* Container dos cards */
-#lista-conteudos-recomendados {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 0;
-  margin-top: 16px;
-}
-
-/* Card individual */
-.card-conteudo {
-  background-color: #f9f9f9;
-  border-radius: 16px;
-  padding: 16px;
-  width: 220px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-}
-
-.card-conteudo:hover {
-  transform: translateY(-4px);
-}
-
-/* Título do card */
-.card-conteudo h3 {
-  margin: 0 0 8px 0;
-  font-size: 16px;
-  color: #333;
-}
-
-/* Descrição do card */
-.card-conteudo p {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-}
-
