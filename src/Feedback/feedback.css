@@ -243,6 +243,35 @@ header {
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+.perfil {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.editar-dashboard {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
 .feedback-container {
   max-width: 600px; /* Largura máxima da caixa de feedback */
   margin: 60px auto;
@@ -322,7 +351,7 @@ textarea {
 }
 
 .submit {
-  background-color: blue;
+  background-color: #024dae;
   color: white;
-  border: 2px solid blue;
+  border: 2px solid #024dae;
 }
