@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <!-- Para ligar ao CSS -->
     <title>Feedback - Bmind</title>
-    <link rel="stylesheet" href="/src/perfil/perfil.css" />
+    <link rel="stylesheet" href="/src/perfil/perfil-pf/perfil-pf.css" />
     <!-- Link para o arquivo CSS externo -->
     <link
       rel="stylesheet"
@@ -88,37 +88,6 @@
                   </ul>
                 </li>
 
-                <!-- Finanças corporativas -->
-                <li class="has-submenu">
-                  Finanças corporativas
-                  <ul class="submenu">
-                    <li>
-                      <a
-                        class="submenu-btn-link"
-                        href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
-                        onclick="registrarConteudoVisto('Análise de balanços')"
-                        >Análise de balanços</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="submenu-btn-link"
-                        href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
-                        onclick="registrarConteudoVisto('Fluxo de Caixa')"
-                        >Fluxo de Caixa</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="submenu-btn-link"
-                        href="/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
-                        onclick="registrarConteudoVisto('Captação de Recursos')"
-                        >Captação de Recursos</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-
                 <!-- Operações bancárias -->
                 <li class="has-submenu">
                   Operações bancárias
@@ -166,37 +135,6 @@
                   </ul>
                 </li>
 
-                <!-- Investimentos corporativos -->
-                <li class="has-submenu">
-                  Investimentos Corporativos
-                  <ul class="submenu">
-                    <li>
-                      <a
-                        class="submenu-btn-link"
-                        href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
-                        onclick="registrarConteudoVisto('Renda fixa-PJ')"
-                        >Renda fixa PJ</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="submenu-btn-link"
-                        href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
-                        onclick="registrarConteudoVisto('Renda variável-PJ')"
-                        >Renda variável PJ</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        class="submenu-btn-link"
-                        href="/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
-                        onclick="registrarConteudoVisto('Fundos de investimento-PJ')"
-                        >Fundos de investimento PJ</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-
                 <!-- Investimentos pessoais -->
                 <li class="has-submenu">
                   Investimentos Pessoais
@@ -235,6 +173,16 @@
         </nav>
       </header>
     </div>
-    <script src="/src/perfil/perfil.js"></script>
+    <script src="/src/perfil/perfil-pf/perfil-pf.js"></script>
   </body>
 </html>
+
+<main>
+   <!-- Conteúdo principal -->
+    <main class="conteudo-principal">
+      <!-- Seção de vistos recentemente -->
+      <section class="vistos-recentemente">
+        <h2>Vistos recentemente</h2>
+        <ul id="lista-vistos-recentemente"></ul>
+      </section>
+</main>
