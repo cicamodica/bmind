@@ -13,61 +13,8 @@ document
 
 const conteudos = [
   {
-    titulo: "Planejamento Financeiro",
-    link: "/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html",
-    imagem: "/src/imagens/PlanejamentoFinanceiro.jpg",
-    palavrasChave: [
-      "planejamento",
-      "financeiro",
-      "metas",
-      "organização",
-      "finanças",
-      "pessoal",
-      "pessoa",
-      "física",
-    ],
-    descricao:
-      "Você já sentiu que o dinheiro simplesmente desaparece no fim do mês? Ou tem a sensação de que, por mais que ganhe, nunca sobra? Se a resposta for sim, talvez o que falte não seja mais dinheiro, mas sim planejamento financeiro. Planejar suas finanças não é sobre cortar tudo que dá prazer, mas sim sobre equilibrar o presente com o futuro, garantindo tranquilidade, segurança e liberdade para realizar seus sonhos.",
-  },
-  {
-    titulo: "Orçamento Doméstico",
-    link: "/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/orcamento-domestico/orcamento-domestico.html",
-    imagem: "/src/imagens/OrcamentoDomestico.jpg",
-    palavrasChave: [
-      "orçamento",
-      "doméstico",
-      "metas",
-      "organização",
-      "planejamento",
-      "finanças",
-      "pessoal",
-      "pessoa",
-      "física",
-    ],
-    descricao:
-      "Manter a saúde financeira da família é um desafio para muitas pessoas. Entre contas fixas, imprevistos, desejos e compromissos, fica fácil se perder e acabar gastando mais do que deveria. É aí que entra o orçamento doméstico, uma ferramenta fundamental para ter controle, segurança e planejamento no dia a dia. Neste artigo, você vai entender como montar um orçamento doméstico eficiente, evitar dívidas e ainda encontrar espaço para economizar e realizar sonhos.",
-  },
-  {
-    titulo: "Controle de Dívidas",
-    link: "/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/controle-de-dividas/controle-de-dividas.html",
-    imagem: "/src/imagens/Controlededividas.jpg",
-    palavrasChave: [
-      "controle",
-      "dívidas",
-      "metas",
-      "organização",
-      "planejamento",
-      "finanças",
-      "pessoal",
-      "pessoa",
-      "física",
-    ],
-    descricao:
-      "Ficar endividado é uma realidade para milhões de brasileiros. Com o custo de vida cada vez mais alto e o fácil acesso ao crédito, muitas famílias acabam perdendo o controle e comprometendo parte — ou até a totalidade — de sua renda com parcelas, empréstimos e financiamentos. Mas a boa notícia é que existe saída. Com organização, disciplina e um plano bem estruturado, é possível retomar o controle da vida financeira e sair do vermelho.",
-  },
-  {
     titulo: "Análise de Balanço",
-    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
+    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/analise-de-balanco-nl/analise-de-balanco-nl.html",
     imagem: "/src/imagens/AnaliseDeBalancos.jpg",
     palavrasChave: [
       "análise",
@@ -87,7 +34,7 @@ const conteudos = [
   },
   {
     titulo: "Fluxo de Caixa",
-    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
+    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/fluxo-de-caixa-nl/fluxo-de-caixa-nl.html",
     imagem: "/src/imagens/FluxoDeCaixa.jpg",
     palavrasChave: [
       "fluxo",
@@ -107,7 +54,7 @@ const conteudos = [
   },
   {
     titulo: "Captação de Recursos",
-    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html",
+    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/captacao-de-recursos-nl/captacao-de-recursos-nl.html",
     imagem: "/src/imagens/CaptacaoDeRecursos.jpg",
     palavrasChave: [
       "captação",
@@ -127,7 +74,7 @@ const conteudos = [
   },
   {
     titulo: "DRE",
-    link: "/src/conteudo-didatico/Logado/Logado-pj/financas-corporativas/dre/dre.html",
+    link: "/src/conteudo-didatico/Não Logado/financas-corporativas-nl/dre-nl/dre-nl.html",
     imagem: "/src/imagens/DRE.jpg",
     palavrasChave: [
       "dre",
@@ -150,7 +97,7 @@ const conteudos = [
   },
   {
     titulo: "Cartão de Débito",
-    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/CartaodeDebito/CartaodeDebito.html",
+    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/CartaodeDebito-nl/CartaodeDebito-nl.html",
     imagem: "/src/imagens/CartaoDeDebito.jpg",
     palavrasChave: [
       "cartão",
@@ -174,7 +121,7 @@ const conteudos = [
   },
   {
     titulo: "Cartão de Crédito",
-    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/Cartaodecredito/CartaodeCredito.html",
+    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/Cartaodecredito-nl/CartaodeCredito-nl.html",
     imagem: "/src/imagens/CartaodeCredito.webp",
     palavrasChave: [
       "cartão",
@@ -198,7 +145,7 @@ const conteudos = [
   },
   {
     titulo: "Empréstimo",
-    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/Emprestimo/Emprestimo.html",
+    link: "/src/conteudo-didatico/Não Logado/Emprestimo-nl/Emprestimo-nl.html",
     imagem: "/src/imagens/Emprestimo2.jpg",
     palavrasChave: [
       "empréstimo",
@@ -221,7 +168,7 @@ const conteudos = [
   },
   {
     titulo: "Financiamento",
-    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/Financiamento/Financiamento.html",
+    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/Financiamento/Financiamento1-nl.html",
     imagem: "/src/imagens/Financiamento.webp",
     palavrasChave: [
       "financiamento",
@@ -239,11 +186,11 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " O financiamento é uma operação de crédito em que uma instituição financeira paga, total ou parcialmente, por um bem ou serviço em seu nome. Em troca, você assume o compromisso de pagar esse valor em parcelas mensais, com acréscimo de juros e encargos, ao longo de um período definido em contrato.",
+    descricao: "O financiamento é uma operação de crédito em que uma instituição financeira paga, total ou parcialmente, por um bem ou serviço em seu nome. Em troca, você assume o compromisso de pagar esse valor em parcelas mensais, com acréscimo de juros e encargos, ao longo de um período definido em contrato.",
   },
   {
     titulo: "Taxas e Tarifas",
-    link: "/src/conteudo-didatico/Logado/operacoes-bancarias/TaxaseTarifas/TaxaseTarifas.html",
+    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/TaxaseTarifas/TaxaseTarifas1-nl.html",
     imagem: "/src/imagens/Tarifasetaxas.webp",
     palavrasChave: [
       "taxas",
@@ -265,9 +212,9 @@ const conteudos = [
     descricao: "Taxas e tarifas são valores cobrados por instituições financeiras como contrapartida por produtos ou serviços prestados. Elas estão presentes em quase todas as operações bancárias e financeiras: contas, empréstimos, financiamentos, cartões, consórcios, investimentos e muito mais.",
   },
   {
-    titulo: "Renda Fixa",
-    link: "/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    titulo: "Renda Fixa PJ",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-corporativos-nl/renda-fixa-pj-nl/renda-fixa-pj-nl.html",
+    imagem: "/src/imagens/RendaFixaPJ.jpg",
     palavrasChave: [
       "renda",
       "fixa",
@@ -284,12 +231,12 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " A renda fixa é uma forma de investimento que oferece mais segurança  e previsibilidade. Ideal para quem está começando ou busca proteger seu dinheiro da inflação. Neste conteúdo, vamos explicar de forma simples como funciona e quais são as opções disponíveis para pessoa física.",
+    descricao: "A renda fixa para empresas é uma excelente forma de aplicar recursos excedentes de maneira segura e previsível. É ideal para a gestão de caixa e para objetivos de curto a médio prazo.",
   },
   {
-    titulo: "Renda Variável",
-    link: "/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    titulo: "Renda Variável PJ",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-corporativos-nl/renda-variavel-pj/renda-variavel-pj-nl.html",
+    imagem: "/src/imagens/RendaVariavelPJ.jpg",
     palavrasChave: [
       "renda",
       "variável",
@@ -306,12 +253,12 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " A renda variável é um tipo de investimento em que os ganhos não são garantidos, pois dependem do desempenho de ativos como ações, fundos e moedas. Apesar do risco maior, oferece grande potencial de retorno.",
+    descricao: "A renda variável pode ser uma excelente alternativa para empresas que buscam maior retorno sobre seu capital. Neste conteúdo, você vai entender como sua empresa pode aproveitar o mercado de ações, FIIs e outros ativos para diversificar e ampliar seus lucros.",
   },
   {
-    titulo: "Fundos de Investimentos",
-    link: "/src/conteudo-didatico/Logado/Logado-pj/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    titulo: "Fundos de Investimento PJ",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-corporativos-nl/fundo-de-investimentos-pj-nl/fundo-de-investimentos-pj-nl.html",
+    imagem: "/src/imagens/FundosDeInvestimento.jpg",
     palavrasChave: [
       "fundos",
       "investimento",
@@ -328,7 +275,7 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: "Os fundos de investimento são uma forma prática e acessível de aplicar seu dinheiro com a gestão de profissionais especializados. Eles reúnem recursos de diversos investidores para aplicar em uma carteira diversificada de ativos.",
+    descricao: " Fundos de investimento oferecem uma maneira prática e diversificada de aplicar recursos corporativos. São ideais para empresas que buscam rentabilidade com gestão profissional.",
   },
 ];
 

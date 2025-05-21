@@ -85,10 +85,17 @@ header {
   align-items: center;
 }
 
+/* Estilo do icone de perfil */
+
 .user-actions {
-  /*Estilização do ícone de perfil*/
   font-size: 35px;
-  color: #ffffff;
+  color: #f0f0f0;
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
 }
 
 .search-container {
