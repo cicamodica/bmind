@@ -57,9 +57,11 @@ body {
 /* Barra principal */
 .navbar {
   display: flex;
+  justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #55c3cc, #004aad);
   padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
 }
 
 /* Ícone do menu */
@@ -78,42 +80,36 @@ body {
   color: white;
 }
 
-/* Container da barra de pesquisa com posicionamento */
 .search-container {
+  /*Estilização da barra de pesquisa*/
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
   display: flex;
-  align-items: center;
+  left: 600px;
+  width: 900px;
   z-index: 1;
+  align-items: cen;
 }
 
-/* Input da barra de pesquisa */
 .search-bar {
-  width: 100%;
-  padding: 12px 40px 12px 12px; /* espaço à direita para o ícone */
-  border-radius: 20px;
-  border: none;
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  font-family: "Poppins";
+  border-radius: 40px;
   outline: none;
+  padding: 12px 40px;
   font-weight: 100;
-  box-sizing: border-box;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+  justify-content: center;
 }
 
-/* Ícone de lupa dentro do input */
 .search-icon {
+  /*Estilização do ícone de pesquisa */
   position: absolute;
   right: 20px;
   color: black;
-  pointer-events: visible;
-  bottom: 11px;
-}
-
-.search-link {
-  /*Estilização do link ligado ao ícone de lupa*/
-  background-color: transparent;
-  border: unset;
-  text-decoration: none;
+  bottom: 16px;
 }
 
 /* Login / Cadastro */

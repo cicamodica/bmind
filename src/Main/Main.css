@@ -1,5 +1,3 @@
-
-
 /*Adicionar fontes na font family = Poppins Light*/
 @font-face {
   font-family: "Poppins";
@@ -34,82 +32,97 @@
 
 /* Estilo base */
 body {
-
   margin: 0;
-  font-family: "Poppins" ;
+  font-family: "Poppins";
   background-color: #fff;
   color: #000;
 }
 
-/* Barra principal */
-.navbar {
+header {
+  /*Estilização da classe pai .NAV (barra superior)*/
   display: flex;
+  justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #55c3cc, #004aad);
   padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
 }
 
-/* Ícone do menu */
-.menu-icon {
-  font-size: 24px;
-  cursor: pointer;
-  margin-right: 15px;
-  color: white;
-}
-
-/* Escrita - Bmind */
-.escrita {
-  font-size: 40px;
-  font-weight: 500;
-  margin-right: auto;
-  color: white;
-}
-
-/* Container da barra de pesquisa com posicionamento */
-.search-container {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
+.left-group {
+  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
   display: flex;
   align-items: center;
-  z-index: 1;
+  gap: 10px;
 }
 
-/* Input da barra de pesquisa */
-.search-bar {
-  width: 100%;
-  padding: 12px 40px 12px 12px; /* espaço à direita para o ícone */
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  font-weight: 100;
-  box-sizing: border-box;
+.center-group {
+  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
-/* Ícone de lupa dentro do input */
-.search-icon {
-  position: absolute;
-  right: 20px;
-  color: black;
-  pointer-events:visible
+.right-group {
+  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
+  display: flex;
+  align-items: center;
 }
 
-/* Perfil*/
+/* Estilo do icone de perfil */
+
 .user-actions {
-  margin-left: 20px;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 35px;
+  color: #f0f0f0;
 }
 
 .user-actions a {
   color: white;
   margin: 0 5px;
   text-decoration: none;
-
 }
 
+.search-container {
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  display: flex;
+  width: 900px;
+  align-items: center;
+  z-index: 1;
+}
 
+.search-bar {
+  /*Estilização da barra de pesquisa*/
+  font-family: "Poppins";
+  border-radius: 40px;
+  outline: none;
+  padding: 12px 40px;
+  font-weight: 100;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+}
+
+.search-icon {
+  /*Estilização do ícone de pesquisa */
+  position: absolute;
+  right: 20px;
+  color: black;
+  bottom: 16px;
+}
+
+.menu-button {
+  /*Estilização do ícone de menu ☰*/
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: white;
+}
+
+.header-item .logo {
+  /*Estilização do logo*/
+  height: 55px;
+  margin-right: auto;
+}
 /* Menu dropdown principal */
 .dropdown-menu {
   position: absolute;
@@ -185,47 +198,78 @@ body {
   color: white;
 }
 
-
-.escrita{ /* Estilo do texto do menu */
-font-size: 40px;
-font-weight: 500;
-margin-right: auto;
-color: white;
-
-}
-.dropdown-menu ul {  /* Estilo da lista do menu dropdown */
-list-style: none;
-padding: 0;
-margin: 0;
-/*cursor: pointer;*/
-}
-
-.dropdown-menu li { /* Estilo dos itens do menu dropdown */
-padding: 10px;
-cursor: pointer;
-position: relative;
+.FAQ{
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.dropdown-menu li:hover { /* Efeito de hover nos itens do menu dropdown */
-background: #f0f0f0;
+.Sair{
+    display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-
-/* Estilo do icone de perfil */
-
-.user-actions{
-font-size: 35px;
-color:#f0f0f0;
+.perfil {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.boas-vindas{
-   margin-bottom: 15px;
+.editar-dashboard {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.escrita {
+  /* Estilo do texto do menu */
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: auto;
+  color: white;
+}
+
+.boas-vindas {
+  margin-bottom: 15px;
   color: #004aad;
   font-size: 24px;
   font-weight: 500;
 }
 
-.conteudo{
+.conteudo {
   padding: 20px;
 }
 

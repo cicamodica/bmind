@@ -1,3 +1,15 @@
+//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+document
+  .getElementById("search-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // evita o redirecionamento padrão
+    const termo = document.getElementById("search-bar").value.trim();
+    if (termo !== "") {
+      const encodedTermo = encodeURIComponent(termo);
+      window.location.href = `/src/resultado-de-pesquisa/nao-logado/resultado-de-pesquisa-nl.html?q=${encodedTermo}`;
+    }
+  });
+  
 const conteudos = [
   {
     titulo: "Planejamento Financeiro",
@@ -162,7 +174,7 @@ const conteudos = [
   {
     titulo: "Cartão de Crédito",
     link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/Cartaodecredito-nl/CartaodeCredito-nl.html",
-    imagem: "/src/imagens/CartaoDeCredito.jpg",
+    imagem: "/src/imagens/CartaodeCredito.webp",
     palavrasChave: [
       "cartão",
       "crédito",
@@ -186,7 +198,7 @@ const conteudos = [
   {
     titulo: "Empréstimo",
     link: "/src/conteudo-didatico/Não Logado/Emprestimo-nl/Emprestimo-nl.html",
-    imagem: "/src/imagens/Emprestimo.jpg",
+    imagem: "/src/imagens/Emprestimo2.jpg",
     palavrasChave: [
       "empréstimo",
       "operações",
@@ -208,8 +220,8 @@ const conteudos = [
   },
   {
     titulo: "Financiamento",
-    link: "/src/conteudo-didatico/Não Logado",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/Financiamento/Financiamento1-nl.html",
+    imagem: "/src/imagens/Financiamento.webp",
     palavrasChave: [
       "financiamento",
       "operações",
@@ -226,12 +238,12 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: "O financiamento é uma operação de crédito em que uma instituição financeira paga, total ou parcialmente, por um bem ou serviço em seu nome. Em troca, você assume o compromisso de pagar esse valor em parcelas mensais, com acréscimo de juros e encargos, ao longo de um período definido em contrato.",
   },
   {
     titulo: "Taxas e Tarifas",
-    link: "/src/conteudo-didatico/Não Logado",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/TaxaseTarifas/TaxaseTarifas1-nl.html",
+    imagem: "/src/imagens/Tarifasetaxas.webp",
     palavrasChave: [
       "taxas",
       "tarifas",
@@ -249,12 +261,12 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: "Taxas e tarifas são valores cobrados por instituições financeiras como contrapartida por produtos ou serviços prestados. Elas estão presentes em quase todas as operações bancárias e financeiras: contas, empréstimos, financiamentos, cartões, consórcios, investimentos e muito mais.",
   },
   {
-    titulo: "Renda Fixa",
-    link: "/src/conteudo-didatico/Não Logado",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    titulo: "Renda Fixa PF",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-pessoais-nl/renda-fixa-pf-nl/renda-fixa-pf-nl.html",
+    imagem: "/src/imagens/RendaFixaPJ.jpg",
     palavrasChave: [
       "renda",
       "fixa",
@@ -271,12 +283,34 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: "A renda fixa é uma forma de investimento que oferece mais segurança e previsibilidade. Ideal para quem está começando ou busca proteger seu dinheiro da inflação. Neste conteúdo, vamos explicar de forma simples como funciona e quais são as opções disponíveis para pessoa física.",
   },
   {
-    titulo: "Renda Variável",
-    link: "/src/conteudo-didatico/Não Logado",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    titulo: "Renda Fixa PJ",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-corporativos-nl/renda-fixa-pj-nl/renda-fixa-pj-nl.html",
+    imagem: "/src/imagens/RendaFixaPJ.jpg",
+    palavrasChave: [
+      "renda",
+      "fixa",
+      "investimentos",
+      "empreendimento",
+      "empresa",
+      "metas",
+      "organização",
+      "planejamento",
+      "finanças",
+      "corporativo",
+      "pessoal",
+      "pessoa",
+      "jurídica",
+      "física",
+    ],
+    descricao: "A renda fixa para empresas é uma excelente forma de aplicar recursos excedentes de maneira segura e previsível. É ideal para a gestão de caixa e para objetivos de curto a médio prazo.",
+  },
+  {
+    titulo: "Renda Variável PF",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-pessoais-nl/renda-variavel-pf-nl/renda-variavel-pf-nl.html",
+    imagem: "/src/imagens/RendaVariavelPJ.jpg",
     palavrasChave: [
       "renda",
       "variável",
@@ -293,12 +327,34 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: "A renda variável é um tipo de investimento em que os ganhos não são garantidos, pois dependem do desempenho de ativos como ações, fundos e moedas. Apesar do risco maior, oferece grande potencial de retorno.",
   },
   {
-    titulo: "Fundos de Investimento",
-    link: "/src/conteudo-didatico/Não Logado",
-    imagem: "/src/imagens/SemImagemNoMomento.jpg",
+    titulo: "Renda Variável PJ",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-corporativos-nl/renda-variavel-pj/renda-variavel-pj-nl.html",
+    imagem: "/src/imagens/RendaVariavelPJ.jpg",
+    palavrasChave: [
+      "renda",
+      "variável",
+      "investimentos",
+      "empreendimento",
+      "empresa",
+      "metas",
+      "organização",
+      "planejamento",
+      "finanças",
+      "corporativo",
+      "pessoal",
+      "pessoa",
+      "jurídica",
+      "física",
+    ],
+    descricao: "A renda variável pode ser uma excelente alternativa para empresas que buscam maior retorno sobre seu capital. Neste conteúdo, você vai entender como sua empresa pode aproveitar o mercado de ações, FIIs e outros ativos para diversificar e ampliar seus lucros.",
+  },
+  {
+    titulo: "Fundos de Investimento PF",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-pessoais-nl/fundo-de-investimentos-pf-nl/fundo-de-investimentos-pf-nl.html",
+    imagem: "/src/imagens/FundosDeInvestimento.jpg",
     palavrasChave: [
       "fundos",
       "investimento",
@@ -315,7 +371,29 @@ const conteudos = [
       "jurídica",
       "física",
     ],
-    descricao: " Adicionar descrição.",
+    descricao: "Os fundos de investimento são uma forma prática e acessível de aplicar seu dinheiro com a gestão de profissionais especializados. Eles reúnem recursos de diversos investidores para aplicar em uma carteira diversificada de ativos.",
+  },
+  {
+    titulo: "Fundos de Investimento PJ",
+    link: "/src/conteudo-didatico/Não Logado/investimentos-corporativos-nl/fundo-de-investimentos-pj-nl/fundo-de-investimentos-pj-nl.html",
+    imagem: "/src/imagens/FundosDeInvestimento.jpg",
+    palavrasChave: [
+      "fundos",
+      "investimento",
+      "investimentos",
+      "empreendimento",
+      "empresa",
+      "metas",
+      "organização",
+      "planejamento",
+      "finanças",
+      "corporativo",
+      "pessoal",
+      "pessoa",
+      "jurídica",
+      "física",
+    ],
+    descricao: " Fundos de investimento oferecem uma maneira prática e diversificada de aplicar recursos corporativos. São ideais para empresas que buscam rentabilidade com gestão profissional.",
   },
 ];
 

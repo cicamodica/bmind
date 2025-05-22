@@ -1,3 +1,35 @@
+//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+document
+  .getElementById("search-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // evita o redirecionamento padrão
+    const termo = document.getElementById("search-bar").value.trim();
+    if (termo !== "") {
+      const encodedTermo = encodeURIComponent(termo);
+      window.location.href = `/src/resultado-de-pesquisa/logado/logado-pf/resultado-de-pesquisa-pf.html?q=${encodedTermo}`;
+    }
+  });
+
+document.querySelector(".menu-icon").addEventListener("click", function () {
+  const navMenu = document.querySelector(".nav-menu");
+  navMenu.classList.toggle("hidden");
+});
+
+function toggleMenu() {
+  // Função para alternar o menu dropdown
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// Fechar menu ao clicar fora
+window.addEventListener("click", function (e) {
+  const menu = document.getElementById("dropdownMenu");
+  const icon = document.querySelector(".menu-icon");
+  if (!menu.contains(e.target) && !icon.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
     // =================== ICONE DE VOLTAR ===================
     const voltar = document.getElementById("botaovoltar");
@@ -7,11 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    
-    // Opções no dashboard //
+    // =================== Funções do Dashboard (opções de mês/categoria) ===================
     function updateOptionDisplay(opcao) {
         const displayElement = document.getElementById("month-display");
-        const nameElement = document.getElementById("month-name");
         const optionsText = {
             1: "Salário",
             2: "Gastos",
@@ -23,9 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (displayElement) {
             displayElement.textContent = displayText;
         }
-        if (nameElement) {
-            nameElement.textContent = displayText;
-        }
+        // Não há month-name no HTML, então essa parte não é necessária
     }
 
     window.changeMonth = function (direction) {
@@ -44,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentOption = reverseOptionsText[currentOptionText];
 
         if (isNaN(currentOption)) {
-            currentOption = 1;
+            currentOption = 1; // Default to Salário if not recognized
         }
 
         currentOption += direction;
@@ -55,146 +83,273 @@ document.addEventListener("DOMContentLoaded", function () {
             currentOption = 1;
         }
         updateOptionDisplay(currentOption);
+        updateChartsBasedOnOption(currentOption); // Chama a função para atualizar os gráficos
     };
 
     updateOptionDisplay(1); // Inicializa a exibição com "Salário"
 
     // =================== MODAIS ===================
-    function openModal(tipo) {
+    window.openModal = function (tipo) {
         document.getElementById('overlay').style.display = 'block';
         document.getElementById(`modal-${tipo}`).style.display = 'block';
-        
-    }
+    };
 
-    window.openModal = openModal; // Tornar a função openModal acessível globalmente
-  window.closeModal = closeModal; 
-    function closeModal() {
+    window.closeModal = function () {
         document.getElementById('overlay').style.display = 'none';
         document.querySelectorAll('.modal').forEach(modal => {
             modal.style.display = 'none';
         });
+    };
+
+    // Lógica para mostrar/esconder opções recorrentes
+    document.querySelectorAll("input[type='radio'][name='opcoes']").forEach(radio => {
+        radio.addEventListener("change", function () {
+            const modal = radio.closest(".modal");
+            // Usar o ID correto para a div de recorrência específica de entradas
+            const recorrenteDiv = modal.querySelector("#opcoes-recorrentes");
+            if (recorrenteDiv) {
+                if (radio.value === "valor1") { // SIM
+                    recorrenteDiv.style.display = "block";
+                } else { // NÃO
+                    recorrenteDiv.style.display = "none";
+                }
+            }
+        });
+    });
+
+    // =================== SALVAR DADOS E ATUALIZAR GRÁFICOS ===================
+
+    // Inicializa dados dos gráficos se não existirem
+    function getChartDataFromLocalStorage() {
+        let savedData = localStorage.getItem('appFinanceData');
+        if (savedData) {
+            return JSON.parse(savedData);
+        }
+        return {
+            entradas: [],
+            saidas: [],
+            economias: []
+        };
     }
-});
 
-document.querySelectorAll("input[type='radio'][value='valor1']").forEach(radio => {
-    radio.addEventListener("change", function () {
-        const modal = radio.closest(".modal");
-        const recorrenteDiv = modal.querySelector(".opcoes-recorrentes");
-        if (recorrenteDiv) {
-            recorrenteDiv.style.display = "block";
-        }
-    });
-});
+    // Salvar dados no localStorage
+    function saveChartDataToLocalStorage(data) {
+        localStorage.setItem('appFinanceData', JSON.stringify(data));
+    }
 
-// Esconder opções recorrentes ao selecionar "NÃO"
-document.querySelectorAll("input[type='radio'][value='valor2']").forEach(radio => {
-    radio.addEventListener("change", function () {
-        const modal = radio.closest(".modal");
-        const recorrenteDiv = modal.querySelector(".opcoes-recorrentes");
-        if (recorrenteDiv) {
-            recorrenteDiv.style.display = "none";
-        }
-    });
-});
+    // Adicionar nova entrada/saída/economia aos dados
+    function addTransaction(type, transaction) {
+        let appData = getChartDataFromLocalStorage();
+        appData[type].push(transaction);
+        saveChartDataToLocalStorage(appData);
+        renderCharts(); // Redesenha os gráficos após adicionar a transação
+    }
 
+    // Botão Salvar para Entradas
+    const botaoSalvarEntradas = document.querySelector("#modal-entradas button");
+    if (botaoSalvarEntradas) {
+        botaoSalvarEntradas.addEventListener("click", function () {
+            const inputData = document.querySelector("#modal-entradas .data");
+            const inputValor = document.querySelector("#modal-entradas .entrada");
+            const selectCategoria = document.querySelector("#modal-entradas #opcoes");
+            const isRecorrente = document.querySelector("#entrada-opcao1").checked;
+            const tipoRecorrencia = document.querySelector("#tipoRecorrencia") ? document.querySelector("#tipoRecorrencia").value : '';
 
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const botaoSalvar = document.querySelector("#modal-entradas button"); // Botão de salvar
-    const inputData = document.querySelector("#modal-entradas .data"); // Campo de data
-    const inputValor = document.querySelector("#modal-entradas .entrada"); // Campo de valor de entrada
-    const selectCategoria = document.querySelector("#modal-entradas #opcoes"); // Categoria selecionada
-
-    if (botaoSalvar) {
-        botaoSalvar.addEventListener("click", function () {
             const dadosEntrada = {
                 data: inputData.value,
-                valor: inputValor.value,
-                categoria: selectCategoria.value
+                valor: parseFloat(inputValor.value), // Converter para número
+                categoria: selectCategoria.value,
+                recorrente: isRecorrente,
+                tipoRecorrencia: tipoRecorrencia
             };
 
-            localStorage.setItem("entradaDados", JSON.stringify(dadosEntrada)); // Armazena os dados
-
-            alert("Dados salvos com sucesso!"); // Confirmação ao usuário
+            addTransaction('entradas', dadosEntrada);
+            closeModal(); // Fechar o modal após salvar
+            alert("Entrada salva com sucesso!");
         });
     }
 
-    // Recupera os dados no dashboard
-    const dadosRecuperados = localStorage.getItem("entradaDados");
-    if (dadosRecuperados) {
-        const dados = JSON.parse(dadosRecuperados);
-        console.log("Dados carregados:", dados); // Apenas para teste, pode exibir no dashboard
+    // Botão Salvar para Saídas (você precisará adaptar isso)
+    const botaoSalvarSaidas = document.querySelector("#modal-saidas button");
+    if (botaoSalvarSaidas) {
+        botaoSalvarSaidas.addEventListener("click", function () {
+            const inputData = document.querySelector("#modal-saidas .data");
+            const inputValor = document.querySelector("#modal-saidas .entrada"); // O nome da classe no HTML é 'entrada' para saídas também
+            const selectCategoria = document.querySelector("#modal-saidas #opcoes");
+            // Adapte para a lógica de recorrência das saídas se houver
+            // const isRecorrente = document.querySelector("#saida-opcao1").checked;
+            // const tipoRecorrencia = document.querySelector("#saida-tipoRecorrencia") ? document.querySelector("#saida-tipoRecorrencia").value : '';
+
+            const dadosSaida = {
+                data: inputData.value,
+                valor: parseFloat(inputValor.value),
+                categoria: selectCategoria.value,
+                // recorrente: isRecorrente,
+                // tipoRecorrencia: tipoRecorrencia
+            };
+
+            addTransaction('saidas', dadosSaida);
+            closeModal();
+            alert("Saída salva com sucesso!");
+        });
+    }
+
+    // Botão Salvar para Economias (você precisará adaptar isso)
+    const botaoSalvarEconomias = document.querySelector("#modal-economias button");
+    if (botaoSalvarEconomias) {
+        botaoSalvarEconomias.addEventListener("click", function () {
+            const inputDescricao = document.querySelector("#modal-economias .descrição");
+            const inputValor = document.querySelector("#modal-economias .valor");
+
+            const dadosEconomia = {
+                descricao: inputDescricao.value,
+                valor: parseFloat(inputValor.value)
+            };
+
+            addTransaction('economias', dadosEconomia);
+            closeModal();
+            alert("Economia salva com sucesso!");
+        });
+    }
+
+    // =================== GRÁFICOS CHART.JS ===================
+
+    // Variável global para armazenar as instâncias dos gráficos
+    let myCharts = {};
+
+    function renderCharts() {
+        let appData = getChartDataFromLocalStorage();
+
+        // Dados para o gráfico de Entradas (exemplo)
+        const entradasData = appData.entradas.reduce((acc, entry) => {
+            const month = new Date(entry.data).toLocaleString('pt-BR', { month: 'long' });
+            acc[month] = (acc[month] || 0) + entry.valor;
+            return acc;
+        }, {});
+
+        const entradasLabels = Object.keys(entradasData);
+        const entradasValues = Object.values(entradasData);
+
+        // Destruir gráficos existentes antes de criar novos
+        for (const chartId in myCharts) {
+            if (myCharts[chartId]) {
+                myCharts[chartId].destroy();
+            }
+        }
+
+        // Gráfico 1: Entradas por Mês (Exemplo de gráfico de barras)
+        myCharts.grafico1 = new Chart(document.getElementById('grafico1'), {
+            type: 'bar',
+            data: {
+                labels: entradasLabels,
+                datasets: [{
+                    label: 'Entradas por Mês',
+                    data: entradasValues,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico 2: Saídas por Mês (Exemplo de gráfico de linha)
+        const saidasData = appData.saidas.reduce((acc, entry) => {
+            const month = new Date(entry.data).toLocaleString('pt-BR', { month: 'long' });
+            acc[month] = (acc[month] || 0) + entry.valor;
+            return acc;
+        }, {});
+
+        const saidasLabels = Object.keys(saidasData);
+        const saidasValues = Object.values(saidasData);
+
+        myCharts.grafico2 = new Chart(document.getElementById('grafico2'), {
+            type: 'line',
+            data: {
+                labels: saidasLabels,
+                datasets: [{
+                    label: 'Saídas por Mês',
+                    data: saidasValues,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico 3: Economias (exemplo de gráfico de pizza)
+        const economiasLabels = appData.economias.map(e => e.descricao);
+        const economiasValues = appData.economias.map(e => e.valor);
+
+        myCharts.grafico3 = new Chart(document.getElementById('grafico3'), {
+            type: 'pie',
+            data: {
+                labels: economiasLabels,
+                datasets: [{
+                    label: 'Economias',
+                    data: economiasValues,
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff']
+                }]
+            },
+            options: {
+                responsive: true,
+            }
+        });
+
+
+        // Gráfico 4: Balanço Geral (Exemplo de gráfico de radar)
+        // Isso é mais complexo e pode exigir mais lógica para agregar entradas e saídas
+        // Por enquanto, vou usar um exemplo estático similar ao seu, mas o ideal seria calcular
+        // o balanço mensal ou por categoria.
+        const totalEntradas = appData.entradas.reduce((sum, entry) => sum + entry.valor, 0);
+        const totalSaidas = appData.saidas.reduce((sum, entry) => sum + entry.valor, 0);
+        const totalEconomias = appData.economias.reduce((sum, entry) => sum + entry.valor, 0);
+        const balancoGeral = totalEntradas - totalSaidas - totalEconomias;
+
+        myCharts.grafico4 = new Chart(document.getElementById('grafico4'), {
+            type: 'radar',
+            data: {
+                labels: ['Entradas', 'Saídas', 'Economias', 'Balanço Atual'],
+                datasets: [{
+                    label: 'Visão Geral Financeira',
+                    data: [totalEntradas, totalSaidas, totalEconomias, balancoGeral > 0 ? balancoGeral : 0], // Evita valores negativos para balanço na exibição de radar
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    // Chamada inicial para renderizar os gráficos quando a página carrega
+    renderCharts();
+
+    // Função para atualizar os gráficos com base na opção selecionada (Salário, Gastos, etc.)
+    function updateChartsBasedOnOption(option) {
+        // Esta função precisaria de mais lógica se os gráficos precisarem mudar
+        // drasticamente com base na opção do "mês". Por exemplo, se "Gastos"
+        // significa que você quer um detalhe de gastos por categoria, etc.
+        // Por enquanto, vamos apenas renderizar os gráficos novamente,
+        // mas você pode filtrar os dados aqui.
+        renderCharts();
     }
 });
-
-
-
-
-
-
-const defaultData = {
-  grafico1: {
-    type: 'bar',
-    data: {
-      labels: ['Janeiro', 'Fevereiro', 'Março'],
-      datasets: [{
-        label: 'Entradas',
-        data: [1000, 1200, 900],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)'
-      }]
-    }
-  },
-  grafico2: {
-    type: 'line',
-    data: {
-      labels: ['Abril', 'Maio', 'Junho'],
-      datasets: [{
-        label: 'Saídas',
-        data: [800, 950, 700],
-        borderColor: 'rgba(255, 99, 132, 1)',
-        fill: false
-      }]
-    }
-  },
-  grafico3: {
-    type: 'pie',
-    data: {
-      labels: ['Aluguel', 'Comida', 'Transporte'],
-      datasets: [{
-        label: 'Gastos',
-        data: [400, 300, 300],
-        backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
-      }]
-    }
-  },
-  grafico4: {
-    type: 'radar',
-    data: {
-      labels: ['Planejamento', 'Gastos Fixos', 'Investimentos', 'Extras'],
-      datasets: [{
-        label: 'Distribuição',
-        data: [3, 4, 2, 5],
-        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-        borderColor: 'rgba(153, 102, 255, 1)'
-      }]
-    }
-  }
-};
-
-// Salvar no localStorage se ainda não tiver
-if (!localStorage.getItem('graficos')) {
-  localStorage.setItem('graficos', JSON.stringify(defaultData));
-}
-
-// Carrega os dados salvos
-const savedData = JSON.parse(localStorage.getItem('graficos'));
-
-// Cria os 4 gráficos
-new Chart(document.getElementById('grafico1'), savedData.grafico1);
-new Chart(document.getElementById('grafico2'), savedData.grafico2);
-new Chart(document.getElementById('grafico3'), savedData.grafico3);
-new Chart(document.getElementById('grafico4'), savedData.grafico4);
-
-
