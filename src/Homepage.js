@@ -1,3 +1,31 @@
+//ESCONDER DADOS DE ACORDO COM O LOGIN:
+// Tenta recuperar o nome do usuário logado
+const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+// Seleciona os elementos da DOM
+const userActionsLogado = document.getElementById("perfil-logado");
+const userActionsNaoLogado = document.getElementById("login-nao-logado");
+
+// Esconde tudo inicialmente, depois mostra o certo
+userActionsLogado.style.display = "none";
+userActionsNaoLogado.style.display = "none";
+
+if (usuarioLogado) {
+  const dadosDoUsuario = JSON.parse(localStorage.getItem(usuarioLogado));
+
+  if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
+    // Exibe ícone de perfil se usuário estiver logado corretamente
+    userActionsLogado.style.display = "flex"; // ou "block" conforme seu CSS
+  } else {
+    // Caso dados inválidos no localStorage
+    userActionsNaoLogado.style.display = "flex";
+  }
+} else {
+  // Usuário não logado
+  userActionsNaoLogado.style.display = "flex";
+}
+
+    
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
 document
   .getElementById("search-button")
