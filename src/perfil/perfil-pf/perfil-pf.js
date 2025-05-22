@@ -1,3 +1,21 @@
+//Recupera o usuario logado
+const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+
+// Redireciona para o login caso o usuario não esteja logado
+if (usuarioLogado == null) {
+  window.location.href = `/src/login/login.html`;
+}
+
+console.log(usuarioLogado.perfil);
+const spanPerfil = document.getElementById("perfil");
+spanPerfil.textContent = usuarioLogado.perfil;
+
+// Escondendo um elemento caso seja de outro perfil
+if (usuarioLogado.perfil == "Pessoa Jurídica") {
+  const liFinancasPessoais = document.getElementById("financas-pessoais");
+  liFinancasPessoais.style.display = "none";
+}
+
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
 document
   .getElementById("search-button")
@@ -30,10 +48,6 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
-
-
-//Recupera o usuario logado
-const usuarioLogado = localStorage.getItem("currentUser");
 
 // Aguarda o carregamento completo da página
 window.addEventListener("DOMContentLoaded", function () {
@@ -119,13 +133,13 @@ function exibirConteudoRecomendados() {
     return;
   }
 
-    const { perfil, preferenciaDeConteudos} = dados;
-    const container = document.getElementById("lista-conteudos-recomendados");
-    
-    if (!container) {
-      console.error("Elemento conteudo-recomendados não encontrado.");
-      return;
-    }
+  const { perfil, preferenciaDeConteudos } = dados;
+  const container = document.getElementById("lista-conteudos-recomendados");
+
+  if (!container) {
+    console.error("Elemento conteudo-recomendados não encontrado.");
+    return;
+  }
 
   if (!preferenciaDeConteudos || preferenciaDeConteudos.length === 0) {
     container.innerHTML = "<p>Não há conteúdos recomendados para você.</p>";
@@ -163,3 +177,10 @@ function exibirConteudoRecomendados() {
 }
 // Chama a função para exibir os conteúdos recomendados
 exibirConteudoRecomendados();
+
+// AO SAIR DEVE REMOVER O USUARIO LOGADO DO LOCALSTORAGE PQ ELE NAO TA MAIS LOGADO NE!!!!
+function sair() {
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "/src/Homepage.html";
+}

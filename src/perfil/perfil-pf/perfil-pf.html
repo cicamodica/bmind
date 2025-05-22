@@ -56,7 +56,7 @@
               Conteúdo Didático
               <ul class="submenu">
                 <!-- Finanças pessoais -->
-                <li class="has-submenu">
+                <li class="has-submenu" id="financas-pessoais">
                   Finanças pessoais
                   <ul class="submenu">
                     <li>
@@ -168,21 +168,20 @@
               </ul>
             </li>
             <li><a class="FAQ" href="/src/Feedback/feedback.html">FAQ</a></li>
-            <li><a class="Sair" href="/src/Homepage.html">Sair</a></li>
+            <li><a class="Sair" onclick="sair()">Sair</a></li>
           </ul>
         </nav>
       </header>
     </div>
-    <script src="/src/perfil/perfil-pf/perfil-pf.js"></script>
-  </body>
-</html>
-
-<main>
-   <!-- Conteúdo principal -->
+    <!-- Conteúdo principal -->
     <main class="conteudo-principal">
       <!-- Seção de vistos recentemente -->
       <section class="vistos-recentemente">
         <h2>Vistos recentemente</h2>
         <ul id="lista-vistos-recentemente"></ul>
+        <span id="perfil"></span>
       </section>
-</main>
+    </main>
+    <script src="/src/perfil/perfil-pf/perfil-pf.js"></script>
+  </body>
+</html>
