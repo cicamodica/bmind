@@ -56,8 +56,9 @@ body {
 
 /* Barra principal */
 .navbar {
+  position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   align-items: center;
   padding: 10px 20px;
   height: 50px;
@@ -84,10 +85,13 @@ body {
   /*Estilização da barra de pesquisa*/
   position: absolute;
   display: flex;
-  left: 600px;
+  left: 60%; /* Centraliza horizontalmente */
+  transform: translateX(-50%); /* Centraliza horizontalmente */
   width: 900px;
   z-index: 1;
-  align-items: cen;
+  align-items: center;
+  
+  
 }
 
 .search-bar {
@@ -102,6 +106,7 @@ body {
   width: 70%;
   font-size: 18px;
   justify-content: center;
+ 
 }
 
 .search-icon {
@@ -123,15 +128,36 @@ body {
 
 /* Login / Cadastro */
 .user-actions {
+   display: flex;
+  align-items: center;
+  gap: 10px;
   margin-left: 20px;
   font-size: 14px;
+ 
+}
+#perfil-logado{ 
+  display: flex;
+  align-items: center;
+ 
 }
 
-.user-actions a {
+ .user-actions a { /*Estilização do icone de perfil , acho que tambem do de login e cadrastre-se */
   color: white;
   margin: 0 5px;
   text-decoration: none;
+  font-size: 20px;
+  margin-left: 20px;
+  
 }
+ .minha-area-botao{
+  margin-left: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: yellow;
+ }
+ 
+
+
 
 /* Menu dropdown */
 .dropdown-menu {
