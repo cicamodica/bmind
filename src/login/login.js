@@ -11,18 +11,31 @@ formLogin.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const dados = JSON.parse(localStorage.getItem(inputEmail.value));
-  if (
-    dados &&
-    inputEmail.value == dados.email && //Verifica se o e-mail e a senha digitados estão corretos (.value é o que o usuário digitou no campo)
-    inputPassword.value == dados.senha
-  ) {
-    formInputMessage.style.display = "none"; //Faz sumir a mensagem de erro (display = "none") enquanto os dados forem colocados forem corretos
-    localStorage.setItem("usuarioLogado", inputEmail.value); //Armazena o e-mail do usuário logado no localStorage
-    localStorage.setItem("currentUser", JSON.stringify(dados)); //Armazena os dados do usuário logado no localStorage
-    window.location.href = "/src/Main/Main.html"; //Redireciona o usuário para outra página (main)
+  if (!dados) {
+    formInputMessage.textContent = "Não possui cadastro no sistema";
+    formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão} else {
   } else {
-    //Entra nesse bloco ({}) caso os dados inseridos em e-mail e senha forem incorretos, ou seja, o e-mail digitado != "ceciliacmodica@gmail.com" e senha != 123456
-    formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão
+    if (!dados.validada) {
+      formInputMessage.textContent =
+        "Se o email nao estiver validado com o código de verificacao";
+      formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão
+    } else {
+      if (
+        //Verifica se o e-mail e a senha digitados estão corretos (.value é o que o usuário digitou no campo)
+        inputEmail.value == dados.email &&
+        inputPassword.value == dados.senha
+      ) {
+        formInputMessage.style.display = "none"; //Faz sumir a mensagem de erro (display = "none") enquanto os dados forem colocados forem corretos
+        localStorage.setItem("usuarioLogado", inputEmail.value); //Armazena o e-mail do usuário logado no localStorage
+        localStorage.setItem("currentUser", JSON.stringify(dados)); //Armazena os dados do usuário logado no localStorage
+        window.location.href = "/src/Main/Main.html"; //Redireciona o usuário para outra página (main)
+      } else {
+        //Entra nesse bloco ({}) caso os dados inseridos em e-mail e senha forem incorretos, ou seja, o e-mail digitado != "ceciliacmodica@gmail.com" e senha != 123456
+        formInputMessage.textContent =
+          "Os dados inseridos estão incorretos, favor tentar novamente";
+        formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão
+      }
+    }
   }
 });
 

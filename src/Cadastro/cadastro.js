@@ -52,6 +52,7 @@ document
       return;
     }
 
+
     const dadosUsuario = {
       nome: nome,
       email: email,
@@ -60,7 +61,7 @@ document
       dataNascimento: dataNascimento,
       preferenciaDeConteudos: selecionados,
       perfil: perfilSelecionado,
-      
+      validada: false,
     };
 
     //Se tudo estiver certo, salva os dados no localStorage
@@ -68,20 +69,23 @@ document
     mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
 
     (function () {
-    emailjs.init("OskDlznicgvWwaEPN"); // sua publicKey correta
+      emailjs.init("OskDlznicgvWwaEPN"); // sua publicKey correta
     })();
 
     const codigoDeValidacao = Math.floor(100000 + Math.random() * 900000);
-    localStorage.setItem("codigoDeValidacao", codigoDeValidacao.toString());
+    localStorage.setItem(codigoDeValidacao.toString(), email);
 
     emailjs
       .send("service_ct2hayr", "template_oklmcbi", {
         email: email,
         passcode: codigoDeValidacao,
+        link: "http://127.0.0.1:5501/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html"
       })
       .then(
         () => {
-          alert("Um e-mail foi enviado com o código de verificação de dados! Verifique sua caixa de entrada.");
+          alert(
+            "Um e-mail foi enviado com o código de verificação de dados! Verifique sua caixa de entrada."
+          );
           window.location.href =
             "/src/validacao-de-dados/Index_Validação_de_Dados.html";
         },

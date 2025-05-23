@@ -25,10 +25,14 @@ formValidacao.addEventListener("submit", function (event) {
   //.addEventListener adiciona um ouvinte para o elemento HTML (form, input...) quando um evento for disparado (submit), ou seja, quando o usuário apertar o botão (Confirmar) que possui o type = submit, a função sera executada
   event.preventDefault();
 
-  const codigoSalvo = localStorage.getItem("codigoDeValidacao");
   const codigoDigitado = inputCodigo.value.trim();
+  const emailCadastrado = localStorage.getItem(codigoDigitado);
 
-  if (codigoDigitado === codigoSalvo) {
+  if (emailCadastrado != null) {
+    const dados = JSON.parse(localStorage.getItem(emailCadastrado));
+    dados.validada = true;
+    localStorage.setItem(emailCadastrado, JSON.stringify(dados)); // Salva no localStorage como JSON string
+
     mensagemErro.style.display = "none";
     alert("Código validado com sucesso!");
     window.location.href = "/src/login/login.html";
@@ -41,7 +45,6 @@ inputCodigo.addEventListener("input", function () {
   //.addEventListener adiciona um ouvinte para o elemento HTML (form, input...) quando um evento do tipo input for disparado, ou seja, quando o usuário começar a digitar no campo e-mail, a função sera executada
   mensagemErro.style.display = "none"; //Isso faz com que a mensagem de erro suma (display = none)
 });
-
 
 //INÍCIO DA FUNÇÃO DE APARECER A SENHA
 
