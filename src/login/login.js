@@ -16,7 +16,6 @@ formLogin.addEventListener("submit", function (event) {
     inputEmail.value == dados.email && //Verifica se o e-mail e a senha digitados estão corretos (.value é o que o usuário digitou no campo)
     inputPassword.value == dados.senha
   ) {
-    //Entra nesse bloco ({}) caso os dados inseridos em e-mail e senha forem corretos, ou seja, o e-mail digitado = "ceciliacmodica@gmail.com" e senha = 123456
     formInputMessage.style.display = "none"; //Faz sumir a mensagem de erro (display = "none") enquanto os dados forem colocados forem corretos
     localStorage.setItem("usuarioLogado", inputEmail.value); //Armazena o e-mail do usuário logado no localStorage
     localStorage.setItem("currentUser", JSON.stringify(dados)); //Armazena os dados do usuário logado no localStorage

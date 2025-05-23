@@ -1,63 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validação de Dados</title>
-    <link rel="stylesheet" href="style_Validação_de_Dados.css"> <!--Ligar ao CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--Cria o link com o site da logo-->
-    
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
 
-    
+    <!--Ligar ao CSS-->
+    <link rel="stylesheet" href="style_Validação_de_Dados.css" />
+
+    <!-- Link para JS (defer para colocar no head)-->
+    <script defer src="script_Validação_de_Dados.js"></script>
+
+    <!-- Acesso ao FONTAWESOME, para adicionar ícones a aplicação + <i class="fa-regular fa-circle-left"></i >-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <!--Cabeçalho-->
-    <navbar>
-      <div id="cabecalho">
-    
-          <i id="botaovoltar"class="fa-regular fa-circle-left"></i>
-        
-           <h1>Bmind</h1>
-      </div>
-    </navbar>
-   
-
-
-    <main class="Validação">
-        <div id="conteudo">
-            <!--O conteúdo do site: criei os titulos e coloquei o conteúdo de cada um-->
-            <h2>Validação de Conta</h2>
-            <h3> Foi encaminhado um e-mail para a confirmação dos dados</h3>
-            <h4>INSIRA ABAIXO O CÓDIGO DE VALIDAÇÃO</h4>
-
-            <form class="formulario-validacao"> <!--Usei o form para criar os formulários-->
-
-                <input 
-                type="text"
-                class="input-codigo" 
-                placeholder="******" 
-                maxlength="6"> 
-                <div id="Código Incorreto"></div>
-                <!--Criei um formulário com *input* e nesssa ordem eu defini como ele funciona: 
-                *type* defini o tipo da informação que posso colocar nele, que é texto
-                *class* criei uma classe para especificar no css
-                *placeholder* é a informação que vai aparecer antes da pessoa digitar o código. No caso 6 asteriscos para indicar que são 6 digitos
-                *maxlength* para limitar a quantidade de digitos no formulário-->
-
-                <!--Quebra de Linha-->
-
-
-                <input
-                type="submit"
-                class="input-confirmar"
-                value="confirmar">
-                
-                <!--Criei um botão usando o input e usei o *type="submit" para enviar o formulário-->
-
-            </form>
+    <div class="nav">
+      <nav>
+        <a class="nav-link" href="#" id="botaovoltar">
+          <i class="fa-regular fa-circle-left nav-item nav-icon"></i>
+          <!--Seta para voltar para a página anterior-->
+        </a>
+        <div class="nav-item">
+          <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
         </div>
-    </main>
-    
-</body>
-<script src="script_Validação_de_Dados.js"> </script> <!--Ligar ao Java Script-->
+      </nav>
+    </div>
+
+    <div class="form">
+      <form id="form-validacao">
+        <span class="form-title">Validação de Dados</span
+        ><!-- Título da página -->
+        <div class="form-input p-top-10">
+          <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
+          <label class="form-input-label" for="name"
+            >Informe abaixo o código que foi enviado para o seu e-mail
+          </label>
+          <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
+          <div class="password-button">
+            <input
+              id="form-input-codigo"
+              class="form-input-textfield"
+              type="password"
+            />
+            <!--Botão para vizualizar a senha-->
+            <button
+              class="toggle-password"
+              type="button"
+              onclick="togglePassword()"
+            >
+              <i class="fa-solid fa-eye"></i>
+              <!--Ícone de olho do fontAwesome-->
+            </button>
+          </div>
+        </div>
+        <div id="mensagem-erro">
+          <!-- Mensagem de erro, que vai aparecer caso o usuário não preencha os campos corretamente -->
+           <span id="form-input-message" class="form-input-message"
+            >Os dados inseridos estão incorretos, favor tentar novamente</span
+          >
+        </div>
+
+        <div class="form-input center p-top-50">
+          <!-- HMTL Button tag (botão "enviar"): https://www.w3schools.com/tags/tag_button.asp -->
+          <button type="submit" class="form-button">Confirmar</button>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>

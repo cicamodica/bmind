@@ -46,6 +46,12 @@ document
 
     const selecionados = Array.from(checkboxes).map((cb) => cb.value); //Cria um array com as preferências selecionadas no localStorage
 
+    const dados = JSON.parse(localStorage.getItem(email));
+    if (dados !== null) {
+      mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!";
+      return;
+    }
+
     const dadosUsuario = {
       nome: nome,
       email: email,
@@ -54,20 +60,35 @@ document
       dataNascimento: dataNascimento,
       preferenciaDeConteudos: selecionados,
       perfil: perfilSelecionado,
+      
     };
-    // Verifica se o e-mail já está cadastrado no localStorage
-    const dados = JSON.parse(localStorage.getItem(email));
-    if (dados == null) {
-      console.log(dados);
-      //Se tudo estiver certo, salva os dados no localStorage
-      localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
 
-      mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
-      window.location.href =
-        "/src/validacao-de-dados/Index_Validação_de_Dados.html"; // Redireciona para a página de validação
-    } else {
-      mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!"; // Mensagem de erro se o e-mail já estiver cadastrado
-    }
+    //Se tudo estiver certo, salva os dados no localStorage
+    localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
+    mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
+
+    (function () {
+    emailjs.init("OskDlznicgvWwaEPN"); // sua publicKey correta
+    })();
+
+    const codigoDeValidacao = Math.floor(100000 + Math.random() * 900000);
+    localStorage.setItem("codigoDeValidacao", codigoDeValidacao.toString());
+
+    emailjs
+      .send("service_ct2hayr", "template_oklmcbi", {
+        email: email,
+        passcode: codigoDeValidacao,
+      })
+      .then(
+        () => {
+          alert("Um e-mail foi enviado com o código de verificação de dados! Verifique sua caixa de entrada.");
+          window.location.href =
+            "/src/validacao-de-dados/Index_Validação_de_Dados.html";
+        },
+        (error) => {
+          alert("E-mail não enviado: " + error.text);
+        }
+      );
   });
 
 let perfilSelecionado = null; // fora do submit, para ser acessado lá dentro
