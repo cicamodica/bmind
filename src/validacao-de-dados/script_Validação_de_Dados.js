@@ -31,7 +31,7 @@ formValidacao.addEventListener("submit", function (event) {
   if (codigoDigitado === codigoSalvo) {
     mensagemErro.style.display = "none";
     alert("Código validado com sucesso!");
-    window.location.href = "/src/Homepage.html";
+    window.location.href = "/src/login/login.html";
   } else {
     mensagemErro.style.display = "inline";
   }
