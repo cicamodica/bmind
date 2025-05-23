@@ -49,6 +49,23 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// Função para delogar o usuário
+function sair() {
+window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
+}
+  document.addEventListener("DOMContentLoaded",() => {
+    const botaoSair = document.getElementById("botao-sair");
+
+    if (botaoSair) {
+      botaoSair.addEventListener("click",(e) => {
+        e.preventDefault();
+        sair() // Evita o redirecionamento padrão
+      })
+    }
+  });
+  
+
+
 // Função para registrar um conteúdo como recentemente visto
 function registrarConteudoVisto(nomeConteudo, url, imagem) {
   let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
