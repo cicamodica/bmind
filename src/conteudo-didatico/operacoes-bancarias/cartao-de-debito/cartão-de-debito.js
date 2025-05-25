@@ -103,3 +103,26 @@ registrarConteudoVisto(
   "/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html",
   "/src/imagens/CartaoDeDebito.jpg"
 );
+
+// Função para delogar o usuário
+function sair() {
+
+ // Limpa os dados (ajuste conforme sua lógica de autenticação)
+  localStorage.removeItem("usuarioLogado");
+  localStorage.removeItem("currentUser");
+
+  window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
+}
+
+ //Registra o evento de clique no botão "sair"
+  document.addEventListener("DOMContentLoaded",() => {
+    const botaoSair = document.getElementById("botao-sair");
+
+    if (botaoSair) {
+      botaoSair.addEventListener("click",(e) => {
+        e.preventDefault();
+        sair() // Evita o redirecionamento padrão
+      });
+    }
+  });
+
