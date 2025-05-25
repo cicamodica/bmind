@@ -99,5 +99,5 @@ function registrarConteudoVisto(nome, url, imagem) {
 registrarConteudoVisto(
   "Financiamento",
   "/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html",
-  "/src/imagens/Financiamento.webpg"
+  "/src/imagens/Financiamento.webp"
 );
