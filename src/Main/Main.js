@@ -32,7 +32,7 @@ function atualizarInterfaceUsuario() {
   const itensLogado = document.querySelectorAll('.item-logged');
   const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-  const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
+  
 
   // Esconde tudo inicialmente
   userActionsLogado.style.display = "none";
@@ -45,10 +45,9 @@ function atualizarInterfaceUsuario() {
   if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
 
     
-    // Só mostra o botão "perfil-logado" se não estiver na própria página de "Minha Área"
-    if (!estaNaPaginaMinhaArea && userActionsLogado) {
+    
       userActionsLogado.style.display = "flex";
-    }
+    
 
     // Exibe itens de logado
     itensLogado.forEach(el => el.style.display = 'block');
