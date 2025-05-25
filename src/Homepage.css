@@ -49,117 +49,92 @@
 /* Estilo base */
 body {
   margin: 0;
-  font-family: "Poppins";
+  font-family: "Poppins", sans-serif;
   background-color: #fff;
   color: #000;
 }
 
-/* Barra principal */
-.navbar {
-  position: relative;
+/* Header (barra superior) */
+header {
   display: flex;
-  justify-content: center; 
+  justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  height: 50px;
+  height: 60px;
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
 }
 
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-group {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-group {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+.header-item .logo {
+  height: 55px;
+}
+
 /* Ícone do menu */
-.menu-icon {
+.menu-button {
   font-size: 24px;
   cursor: pointer;
   margin-right: 15px;
   color: white;
 }
 
-/* Escrita - Bmind */
-.escrita {
-  font-size: 40px;
-  font-weight: 500;
-  margin-right: auto;
-  color: white;
-}
-
-.search-container {
-  /*Estilização da barra de pesquisa*/
-  position: absolute;
-  display: flex;
-  left: 60%; /* Centraliza horizontalmente */
-  transform: translateX(-50%); /* Centraliza horizontalmente */
-  width: 900px;
-  z-index: 1;
-  align-items: center;
-  
-  
-}
-
-.search-bar {
-  /*Estilização da barra de pesquisa*/
-  position: relative;
-  font-family: "Poppins";
-  border-radius: 40px;
-  outline: none;
-  padding: 12px 40px;
-  font-weight: 100;
-  border: none;
-  width: 70%;
-  font-size: 18px;
-  justify-content: center;
- 
-}
-
-.search-icon {
-  /*Estilização do ícone de pesquisa */
-  position: absolute;
-  right: 20px;
-  color: black;
-  bottom: 16px;
-  top: 50%;/* Centraliza verticalmente */
-  transform: translateY(-50%); /* Centraliza verticalmente */
-  
-}
-.search-button { /* Estilização do botão de pesquisa */
-  position: relative; /* Torna a âncora referência para o ícone absoluto */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Login / Cadastro */
+/* Ícone de perfil */
 .user-actions {
-   display: flex;
+  display: flex;
   align-items: center;
   gap: 10px;
   margin-left: 20px;
-  font-size: 14px;
- 
-}
-#perfil-logado{ 
-  display: flex;
-  align-items: center;
- 
-}
-
- .user-actions a { /*Estilização do icone de perfil , acho que tambem do de login e cadrastre-se */
-  color: white;
-  margin: 0 5px;
-  text-decoration: none;
   font-size: 20px;
-  margin-left: 20px;
-  
 }
- .minha-area-botao{
-  margin-left: 10px;
-  padding: 6px 12px;
-  font-size: 13px;
-  color: yellow;
- }
- 
 
+.user-actions a {
+  color: white;
+  text-decoration: none;
+}
 
+/* Barra de pesquisa */
+.search-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  align-items: center;
+}
 
-/* Menu dropdown */
+.search-bar {
+  font-family: "Poppins", sans-serif;
+  border-radius: 40px;
+  outline: none;
+  padding: 12px 40px;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  bottom: 16px;
+  color: black;
+}
+
+/* Menu Dropdown */
 .dropdown-menu {
   position: absolute;
   top: 60px;
@@ -184,28 +159,51 @@ body {
   padding: 10px;
   cursor: pointer;
   position: relative;
+  white-space: nowrap;
 }
 
 .dropdown-menu li:hover {
   background: #f0f0f0;
 }
 
-/* Submenu */
-.has-submenu:hover .submenu {
+.dropdown-menu a {
+  text-decoration: none;
+  color: #333;
   display: block;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.submenu {
+.dropdown-menu a:hover {
+  background-color: #024dae;
+  color: white;
+  border-radius: 4px;
+}
+
+/* Submenus */
+.has-submenu > .submenu {
   display: none;
   position: absolute;
   top: 0;
-  left: 220px;
+  left: 100%;
   background: white;
   width: 220px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 20;
 }
-.submenu-btn-link {
+
+.has-submenu:hover > .submenu {
+  display: block;
+}
+
+/* Ajuste de posição submenu de primeiro nível */
+.dropdown-menu > ul > .has-submenu > .submenu {
+  top: 0;
+  left: 220px;
+}
+
+/* Links de submenus */
+.submenu-btn-link, .submenu a {
   display: block;
   background-color: transparent;
   border: none;
@@ -219,10 +217,29 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.submenu-btn-link:hover {
+.submenu-btn-link:hover, .submenu a:hover {
   background-color: #024dae;
-  color: white; /* texto branco ao passar o mouse */
+  color: white;
 }
+
+/* Estilo específico para Perfil, FAQ e Sair */
+.item-logged > a {
+  font-weight: 500;
+}
+
+.item-logged > a:hover {
+  background-color: #024dae;
+  color: white;
+}
+
+/* Botão 'Minha Área' */
+.minha-area-botao {
+  margin-left: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  color: yellow;
+}
+
 
 * Container principal do carrossel */ .hero {
   position: relative;

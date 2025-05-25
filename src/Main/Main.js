@@ -1,22 +1,9 @@
-
-
-// Fechar menu ao clicar fora
-window.addEventListener("click", function (e) {
-  const menu = document.getElementById("dropdownMenu");
-  const icon = document.querySelector(".menu-icon");
-  if (!menu.contains(e.target) && !icon.contains(e.target)) {
-    menu.style.display = "none";
-  }
-});
-
-// Fim funcionalidades Menu
-//Recupera o usuario logado
-const usuarioLogado = localStorage.getItem("currentUser");
+// Recupera o identificador do usuário logado (e-mail, por exemplo)
+const emailUsuario = localStorage.getItem("usuarioLogado");
 
 // Aguarda o carregamento completo da página
 window.addEventListener("DOMContentLoaded", function () {
   const boasVindas = document.getElementById("boas-vindas");
-  const emailUsuario = localStorage.getItem("usuarioLogado");
 
   if (emailUsuario) {
     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
@@ -26,55 +13,61 @@ window.addEventListener("DOMContentLoaded", function () {
       boasVindas.textContent = "Olá!";
     }
   } else {
-    // Se ninguém estiver logado, mostra mensagem genérica ou redireciona
+    // Se ninguém estiver logado, mostra mensagem genérica
     boasVindas.textContent = "Bem-vindo!";
     // Opcional: redirecionar para a página de login
     // window.location.href = "/src/login/login.html";
   }
 });
 
-// Função para mostrar/ocultar itens do menu conforme o perfil do usuário
-// Esta função verifica o perfil do usuário armazenado no localStorage e exibe os itens do menu correspondentes
-function mostrarMenuConformePerfil() {
-  const currentUserData = localStorage.getItem("currentUser");
+function atualizarInterfaceUsuario() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+  const userActionsLogado = document.getElementById("perfil-logado");
+  const userActionsNaoLogado = document.getElementById("login-nao-logado");
 
   const itensPF = document.querySelectorAll('.item-pf');
   const itensPJ = document.querySelectorAll('.item-pj');
   const itensLogado = document.querySelectorAll('.item-logged');
   const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-  if (!currentUserData) {
-    // Não logado: mostra itens "não logado", esconde outros
-    itensPF.forEach(el => el.style.display = 'none');
-    itensPJ.forEach(el => el.style.display = 'none');
-    itensLogado.forEach(el => el.style.display = 'none');
-    itensNaoLogado.forEach(el => el.style.display = 'block');
-    return;
-  }
+  const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
 
-  const user = JSON.parse(currentUserData);
-
-  // Usuário logado: esconde itens de não logado
+  // Esconde tudo inicialmente
+  userActionsLogado.style.display = "none";
+  userActionsNaoLogado.style.display = "none";
+  itensPF.forEach(el => el.style.display = 'none');
+  itensPJ.forEach(el => el.style.display = 'none');
+  itensLogado.forEach(el => el.style.display = 'none');
   itensNaoLogado.forEach(el => el.style.display = 'none');
 
-  // Mostra itens comuns a todos os logados
-  itensLogado.forEach(el => el.style.display = 'block');
+  if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
 
-  if (user.perfil === "Pessoa Física") {
-    itensPF.forEach(el => el.style.display = 'block');
-    itensPJ.forEach(el => el.style.display = 'none');
-  } else if (user.perfil === "Pessoa Jurídica") {
-    itensPF.forEach(el => el.style.display = 'none');
-    itensPJ.forEach(el => el.style.display = 'block');
+    
+    // Só mostra o botão "perfil-logado" se não estiver na própria página de "Minha Área"
+    if (!estaNaPaginaMinhaArea && userActionsLogado) {
+      userActionsLogado.style.display = "flex";
+    }
+
+    // Exibe itens de logado
+    itensLogado.forEach(el => el.style.display = 'block');
+
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      itensPF.forEach(el => el.style.display = 'block');
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      itensPJ.forEach(el => el.style.display = 'block');
+    }
   } else {
-    // Caso o perfil não esteja definido, esconde ambos
-    itensPF.forEach(el => el.style.display = 'none');
-    itensPJ.forEach(el => el.style.display = 'none');
+    // Usuário não logado ou com dados inválidos
+    userActionsNaoLogado.style.display = "flex";
+    itensNaoLogado.forEach(el => el.style.display = 'block');
   }
 }
 
 // Executa quando a página terminar de carregar
-document.addEventListener('DOMContentLoaded', mostrarMenuConformePerfil);
+document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
+
 
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
 document

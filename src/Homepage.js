@@ -1,29 +1,51 @@
-//ESCONDER DADOS DE ACORDO COM O LOGIN:
-// Tenta recuperar o nome do usuário logado
-const usuarioLogado = localStorage.getItem("usuarioLogado");
+function atualizarInterfaceUsuario() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
-// Seleciona os elementos da DOM
-const userActionsLogado = document.getElementById("perfil-logado");
-const userActionsNaoLogado = document.getElementById("login-nao-logado");
+  const userActionsLogado = document.getElementById("perfil-logado");
+  const userActionsNaoLogado = document.getElementById("login-nao-logado");
 
-// Esconde tudo inicialmente, depois mostra o certo
-userActionsLogado.style.display = "none";
-userActionsNaoLogado.style.display = "none";
+  const itensPF = document.querySelectorAll('.item-pf');
+  const itensPJ = document.querySelectorAll('.item-pj');
+  const itensLogado = document.querySelectorAll('.item-logged');
+  const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-if (usuarioLogado) {
-  const dadosDoUsuario = JSON.parse(localStorage.getItem(usuarioLogado));
+  const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
+
+  // Esconde tudo inicialmente
+  userActionsLogado.style.display = "none";
+  userActionsNaoLogado.style.display = "none";
+  itensPF.forEach(el => el.style.display = 'none');
+  itensPJ.forEach(el => el.style.display = 'none');
+  itensLogado.forEach(el => el.style.display = 'none');
+  itensNaoLogado.forEach(el => el.style.display = 'none');
 
   if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
-    // Exibe ícone de perfil se usuário estiver logado corretamente
-    userActionsLogado.style.display = "flex"; // ou "block" conforme seu CSS
+
+    
+    // Só mostra o botão "perfil-logado" se não estiver na própria página de "Minha Área"
+    if (!estaNaPaginaMinhaArea && userActionsLogado) {
+      userActionsLogado.style.display = "flex";
+    }
+
+    // Exibe itens de logado
+    itensLogado.forEach(el => el.style.display = 'block');
+
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      itensPF.forEach(el => el.style.display = 'block');
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      itensPJ.forEach(el => el.style.display = 'block');
+    }
   } else {
-    // Caso dados inválidos no localStorage
+    // Usuário não logado ou com dados inválidos
     userActionsNaoLogado.style.display = "flex";
+    itensNaoLogado.forEach(el => el.style.display = 'block');
   }
-} else {
-  // Usuário não logado
-  userActionsNaoLogado.style.display = "flex";
 }
+
+// Executa quando a página terminar de carregar
+document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
+
 
     
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
@@ -52,6 +74,22 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+
+// Função para delogar o usuário
+function sair() {
+window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
+
+  document.addEventListener("DOMContentLoaded",() => {
+    const botaoSair = document.getElementById("botao-sair");
+
+    if (botaoSair) {
+      botaoSair.addEventListener("click",(e) => {
+        e.preventDefault();
+        sair() // Evita o redirecionamento padrão
+      })
+    }
+  });
+}
 
 // Fim funcionalidades Menu
 
