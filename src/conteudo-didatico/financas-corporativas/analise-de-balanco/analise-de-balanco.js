@@ -78,6 +78,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Análise de Balanço",
-  window.location.href,
+   "src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
   "/src/imagens/AnaliseDeBalancos.jpg"
 );

@@ -80,7 +80,7 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Captação de Recursos",
-  window.location.href,
+  "src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html",
   "/src/imagens/CaptacaoDeRecursos.jpg"
 );
 

@@ -78,6 +78,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Cartão de Crédito",
-  window.location.href,
+  "src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html",
   "/src/imagens/CartaodeCredito.webp"
 );

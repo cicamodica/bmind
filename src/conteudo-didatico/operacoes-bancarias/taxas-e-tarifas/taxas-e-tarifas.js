@@ -99,6 +99,6 @@ function registrarConteudoVisto(nome, url, imagem) {
 
 registrarConteudoVisto(
   "Taxas e Tarifas",
-  window.location.href,
+  "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html",
   "/src/imagens/Tarifasetaxas.webp"
 );

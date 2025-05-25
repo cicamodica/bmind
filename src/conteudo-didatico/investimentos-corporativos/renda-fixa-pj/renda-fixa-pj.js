@@ -78,6 +78,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Renda Fixa",
-  window.location.href,
+   "/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html",
   "/src/imagens/RendaFixaPJ.jpg"
 );

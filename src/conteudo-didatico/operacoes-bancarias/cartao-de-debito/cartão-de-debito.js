@@ -79,6 +79,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Cartão de Débito",
-  window.location.href,
-  "/src/imagens/CartaoDeDebito.jpg"
+   "/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html",
+  "/src/imagens/CartaoDeDebitos.jpg"
 );

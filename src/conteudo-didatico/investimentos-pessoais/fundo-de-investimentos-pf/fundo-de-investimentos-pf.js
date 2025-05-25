@@ -79,7 +79,7 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Fundo de Investimentos",
-  window.location.href,
+  "/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html",
   "/src/imagens/FundoInvestimentosPF.jpg"
 );
 

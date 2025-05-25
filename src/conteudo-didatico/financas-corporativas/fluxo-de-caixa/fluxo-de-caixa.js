@@ -78,6 +78,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Fluxo de Caixa",
-  window.location.href,
+  "src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
   "/src/imagens/FluxoDeCaixa.jpgg"
 );

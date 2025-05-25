@@ -78,6 +78,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "D.R.E.",
-  window.location.href,
+  "/src/conteudo-didatico/financas-corporativas/dre/dre.html",
   "/src/imagens/DRE.jpg"
 );
