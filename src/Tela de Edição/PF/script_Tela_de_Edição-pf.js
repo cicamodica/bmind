@@ -96,13 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Função para obter dados financeiros do localStorage
   function getFinancialData() {
-    const storedData = localStorage.getItem("financialDashboardData");
+    const storedData = localStorage.getItem("financialDashboardDataPF"); // Changed key
     return storedData ? JSON.parse(storedData) : { entradas: [], saidas: [] };
   }
 
   // Função para salvar dados financeiros no localStorage e renderizar o dashboard
   function saveFinancialData(data) {
-    localStorage.setItem("financialDashboardData", JSON.stringify(data));
+    localStorage.setItem("financialDashboardDataPF", JSON.stringify(data)); // Changed key
     renderDashboard();
   }
 
