@@ -46,7 +46,8 @@ function registrarConteudoVisto(nomeConteudo, url, imagem) {
   localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
 }
 registrarConteudoVisto(
-  "Fundos de Investimento PF",
-  "/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/controle-de-dividas/controle-de-dividas.html",
-  "/src/imagens/Controlededividas.jpg"
+  "Controle de Dívidas",
+  window.location.href,
+  "/src/imagens/ControleDeDividas.jpg"
 );
+

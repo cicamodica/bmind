@@ -122,17 +122,18 @@ window.location.href = "/src/login/login.html"; // ou qualquer outra página que
   
 
 
-// Função para registrar um conteúdo como recentemente visto
-function registrarConteudoVisto(nomeConteudo, url, imagem) {
+/// Função para registrar um conteúdo como recentemente visto
+function registrarConteudoVisto(nome, url, imagem) {
   let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
 
-  // Remove se já existe (com base no nome)
-  vistos = vistos.filter((item) => item.nome !== nomeConteudo);
+  // Remove se já existir (baseado na URL para garantir unicidade)
+  vistos = vistos.filter(item => item.url !== url);
 
-  // Adiciona ao topo da lista
-  vistos.unshift({ nome: nomeConteudo, url: url, imagem: imagem });
+  // Adiciona no topo da lista
+  const conteudo = { nome, url, imagem };
+  vistos.unshift(conteudo);
 
-  // Mantém só os 3 mais recentes
+  // Mantém apenas os 3 mais recentes
   if (vistos.length > 3) {
     vistos = vistos.slice(0, 3);
   }
@@ -143,29 +144,26 @@ function registrarConteudoVisto(nomeConteudo, url, imagem) {
 // Função para exibir os conteúdos vistos recentemente
 function exibirVistosRecentemente() {
   const lista = document.getElementById("lista-vistos-recentemente");
-  const vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
+  if (!lista) return;  // Evita erro se o elemento não existir na página
 
+  const vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
   lista.innerHTML = "";
 
-  vistos.forEach((conteudo) => {
+  vistos.forEach(conteudo => {
     const li = document.createElement("li");
-    li.classList.add("item-visto"); // classe para estilizar via CSS
+    li.classList.add("item-visto");
 
-    // Cria o link como container da imagem e texto
     const link = document.createElement("a");
     link.href = conteudo.url;
     link.classList.add("link-visto");
 
-    // Cria a imagem
     const img = document.createElement("img");
     img.src = conteudo.imagem;
     img.alt = conteudo.nome;
 
-    // Cria o texto
     const texto = document.createElement("p");
     texto.textContent = conteudo.nome;
 
-    // Monta os elementos
     link.appendChild(img);
     link.appendChild(texto);
     li.appendChild(link);
@@ -173,9 +171,9 @@ function exibirVistosRecentemente() {
   });
 }
 
-
-
+// Executa sempre para exibir
 exibirVistosRecentemente();
+
 
 // Função exibir conteuudo conforme a preferencias selecionadas no cadrastro//
 

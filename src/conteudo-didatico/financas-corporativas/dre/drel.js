@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "D.R.E.",
+  window.location.href,
+  "/src/imagens/DRE.jpg"
+);

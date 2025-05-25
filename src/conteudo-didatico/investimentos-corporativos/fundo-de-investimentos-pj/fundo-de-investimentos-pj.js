@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Fundo de Investimentos",
+  window.location.href,
+  "/src/imagens/FundoInvestimentosPF.jpg"
+);

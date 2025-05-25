@@ -30,3 +30,9 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Captação de Recursos",
+  window.location.href,
+  "/src/imagens/CaptacaoDeRecursos.jpg"
+);
+

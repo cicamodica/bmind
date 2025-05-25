@@ -29,3 +29,9 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+
+registrarConteudoVisto(
+  "Planejamento Financeiro",
+  window.location.href,
+  "/src/imagens/PlanejamentoFinanceiro.jpg"
+);

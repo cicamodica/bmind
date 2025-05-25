@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Fluxo de Caixa",
+  window.location.href,
+  "/src/imagens/FluxoDeCaixa.jpgg"
+);

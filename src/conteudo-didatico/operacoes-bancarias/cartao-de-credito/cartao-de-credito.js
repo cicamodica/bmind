@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Cartão de Crédito",
+  window.location.href,
+  "/src/imagens/CartaodeCredito.webp"
+);

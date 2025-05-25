@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Financiamento",
+  window.location.href,
+  "/src/imagens/Financiamento.webpg"
+);

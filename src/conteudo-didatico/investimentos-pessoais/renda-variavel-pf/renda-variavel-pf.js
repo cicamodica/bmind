@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Renda Variavel",
+  window.location.href,
+  "/src/imagens/RendaVariavelPF.jpg"
+);

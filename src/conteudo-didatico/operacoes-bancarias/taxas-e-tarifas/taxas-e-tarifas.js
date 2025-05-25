@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Taxas e Tarifas",
+  window.location.href,
+  "/src/imagens/Tarifasetaxas.webp"
+);

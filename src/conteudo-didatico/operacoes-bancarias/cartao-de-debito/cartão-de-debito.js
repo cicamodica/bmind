@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Cartão de Débito",
+  window.location.href,
+  "/src/imagens/CartaoDeDebito.jpg"
+);

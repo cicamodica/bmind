@@ -30,3 +30,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Renda Fixa",
+  window.location.href,
+  "/src/imagens/RendaFixaPF.jpg.jpg"
+);

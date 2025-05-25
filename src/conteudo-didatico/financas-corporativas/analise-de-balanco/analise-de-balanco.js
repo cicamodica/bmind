@@ -29,3 +29,8 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+registrarConteudoVisto(
+  "Análise de Balanço",
+  window.location.href,
+  "/src/imagens/AnaliseDeBalancos.jpg"
+);

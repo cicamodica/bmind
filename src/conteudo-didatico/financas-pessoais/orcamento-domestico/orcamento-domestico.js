@@ -29,3 +29,10 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+
+registrarConteudoVisto(
+  "Orçamento Doméstico",
+  window.location.href,
+  "/src/imagens/OrcamentoDomestico.jpg"
+);
+
