@@ -79,6 +79,6 @@ window.addEventListener("click", function (e) {
 
 registrarConteudoVisto(
   "Renda Variavel",
-  window.location.href,
+  "/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html",
   "/src/imagens/RendaVariavelPF.jpg"
 );

@@ -78,6 +78,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Renda Variavel",
-  window.location.href,
+   "src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
   "/src/imagens/RendaVariavelPJ.jpg"
 );

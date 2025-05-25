@@ -79,6 +79,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Renda Fixa",
-  window.location.href,
+  "/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html",
   "/src/imagens/RendaFixaPF.jpg.jpg"
 );

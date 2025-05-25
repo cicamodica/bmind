@@ -79,7 +79,7 @@ window.addEventListener("click", function (e) {
 
 registrarConteudoVisto(
   "Orçamento Doméstico",
-  window.location.href,
+   "/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html",
   "/src/imagens/OrcamentoDomestico.jpg"
 );
 

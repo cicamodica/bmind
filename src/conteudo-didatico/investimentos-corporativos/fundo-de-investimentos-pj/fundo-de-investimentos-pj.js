@@ -78,6 +78,6 @@ window.addEventListener("click", function (e) {
 });
 registrarConteudoVisto(
   "Fundo de Investimentos",
-  window.location.href,
+  "src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html",
   "/src/imagens/FundoInvestimentosPF.jpg"
 );

@@ -80,6 +80,6 @@ window.addEventListener("click", function (e) {
 
 registrarConteudoVisto(
   "Planejamento Financeiro",
-  window.location.href,
+   "/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html",
   "/src/imagens/PlanejamentoFinanceiro.jpg"
 );
