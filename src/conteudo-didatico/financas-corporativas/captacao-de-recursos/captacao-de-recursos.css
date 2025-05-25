@@ -304,3 +304,7 @@ header {
   left: 50%;
   transform: translate(-50%, -55%);
 }
+.signup {
+  text-decoration: none; /* Remove a linha do hiperlink */
+  color: #37a6d1; /* Altera a cor do hiperlink */
+}
