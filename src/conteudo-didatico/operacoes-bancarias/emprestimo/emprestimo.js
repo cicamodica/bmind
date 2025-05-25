@@ -76,8 +76,9 @@ window.addEventListener("click", function (e) {
     menu.style.display = "none";
   }
 });
+
 registrarConteudoVisto(
   "Emprestimo",
   window.location.href,
-  "/src/imagens/Emprestimo2.jpg"
+  "/src/imagens/Emprestimo.jpg"
 );
