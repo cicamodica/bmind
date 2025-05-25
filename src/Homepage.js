@@ -46,6 +46,26 @@ function atualizarInterfaceUsuario() {
 // Executa quando a página terminar de carregar
 document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
 
+/// Função para registrar um conteúdo como recentemente visto
+function registrarConteudoVisto(nome, url, imagem) {
+  let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
+
+  // Remove se já existir (baseado na URL para garantir unicidade)
+  vistos = vistos.filter(item => item.url !== url);
+
+  // Adiciona no topo da lista
+  const conteudo = { nome, url, imagem };
+  vistos.unshift(conteudo);
+
+  // Mantém apenas os 3 mais recentes
+  if (vistos.length > 3) {
+    vistos = vistos.slice(0, 3);
+  }
+
+  localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
+}
+
+
 
     
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
