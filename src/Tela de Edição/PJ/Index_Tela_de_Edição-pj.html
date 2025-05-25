@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard do Usuário</title>
-    <link rel="stylesheet" href="style_Tela_de_Edição-pf.css" />
+    <link rel="stylesheet" href="/src/Tela de Edição/PJ/style_Tela_de_Edição-pj.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="script_Tela_de_Edição-pf.js" defer></script>
+    <script src="/src/Tela de Edição/PJ/script_Tela_de_Edição-pj.js" defer></script>
   </head>
   <body>
     <div class="header">
@@ -39,7 +39,7 @@
 
         <div class="right-group">
           <div class="user-actions">
-            <a href="/src/perfil/perfil.html">
+            <a href="/src/perfil/perfil-pj/perfil-pj.html">
               <i class="fa-regular fa-circle-user"></i>
             </a>
           </div>
@@ -48,13 +48,13 @@
         <nav class="dropdown-menu" id="dropdownMenu">
           <ul>
             <li>
-              <a class="perfil" href="/src/perfil/perfil-pf/perfil-pf.html">Perfil</a>
+              <a class="perfil" href="/src/perfil/perfil-pj/perfil-pj.html">Perfil</a>
             </li>
 
             <li>
               <a
                 class="editar-dashboard"
-                href="/src/Tela de Edição/Index_Tela_de_Edição-pf.html"
+                href="/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html"
                 >Edite seu Dashboard</a
               >
             </li>
@@ -68,7 +68,7 @@
                       <a
                         class="submenu-btn-link"
                         href="/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
-                        onclick="registrarConteudoVisto('Planejamento financeiro', '/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html', '/src/imagens/PlanejamentoFinanceiro.jpg')"
+                        onclick="registrarConteudoVisto('Planejamento financeiro', '/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html', '/src/imagens/PlanejamentoFinanceiro.jpg')"
                         >Planejamento financeiro</a
                       >
                     </li>
@@ -242,7 +242,7 @@
     </div>
 
     <main class="main-content">
-      <p id="dashboard-titulo">Dashboard de Fulano</p>
+      <p id="dashboard-titulo">Dashboard da Empresa</p>
 
       <div class="filtros-dashboard">
         <div class="seletor-filtro">
@@ -325,10 +325,11 @@
       <label>CATEGORIA</label><br />
       <select id="entrada-categoria">
         <option value="" disabled selected>Seleção</option>
-        <option value="salario">Salário</option>
-        <option value="investimentos">Investimentos</option>
-        <option value="lucros">Lucros</option>
-        <option value="outros_entrada">Outros</option>
+        <option value="vendas_servicos">Vendas de Produtos/Serviços</option>
+        <option value="recebimentos_clientes">Recebimentos de Clientes</option>
+        <option value="investimentos_pj">Investimentos (PJ)</option>
+
+        <option value="outras_entradas_pj">Outras Entradas</option>
       </select><br />
       <label>DESCRIÇÃO (Opcional)</label><br />
       <input class="descricao" type="text" id="entrada-descricao" /><br />
@@ -375,14 +376,13 @@
       <label>CATEGORIA</label><br />
       <select id="saida-categoria">
         <option value="" disabled selected>Seleção</option>
-        <option value="alimentacao">Alimentação</option>
-        <option value="transporte">Transporte</option>
-        <option value="lazer">Lazer</option>
-        <option value="moradia">Moradia</option>
-        <option value="educacao">Educação</option>
-        <option value="saude">Saúde</option>
-        <option value="contas">Contas</option>
-        <option value="outros_saida">Outros</option>
+        <option value="folha_pagamento">Folha de Pagamento</option>
+        <option value="aluguel_despesas_operacionais">Aluguel e Despesas</option>
+        <option value="impostos_taxas">Impostos e Taxas</option>
+        <option value="compras_fornecedores">Compras de Fornecedores</option>
+        <option value="marketing_publicidade">Marketing e Publicidade</option>
+        <option value="servicos_terceirizados">Serviços Terceirizados</option>
+        <option value="outras_saidas_pj">Outras Saídas</option>
       </select><br />
       <label>DESCRIÇÃO (Opcional)</label><br />
       <input class="descricao" type="text" id="saida-descricao" /><br />
@@ -428,9 +428,9 @@
         <option value="entradas">Entrada</option>
         <option value="saidas">Saída</option>
       </select><br /><br />
-      <div id="lista-transacoes-remocao" class="lista-transacoes-remocao">
+      <div id="lista-transacoes-remocao">
         </div>
-      <button onclick="confirmRemoveSelected()">Remover</button>
+      <button onclick="confirmRemoveSelected()">Remover Selecionados</button>
     </div>
 
     <div class="modal" id="modal-historico">

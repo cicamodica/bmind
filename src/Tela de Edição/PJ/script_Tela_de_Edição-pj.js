@@ -76,13 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const removeModal = document.getElementById("modal-remover");
     if (removeModal) {
       document.getElementById("tipo-remocao").selectedIndex = 0;
-      // Corrigido para limpar o conteúdo, não o innerHTML diretamente
-      const listaTransacoesRemocao = document.getElementById(
-        "lista-transacoes-remocao"
-      );
-      if (listaTransacoesRemocao) {
-        listaTransacoesRemocao.innerHTML = "";
-      }
+      document.getElementById("lista-transacoes-remocao").innerHTML = "";
     }
   };
 
@@ -102,13 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Função para obter dados financeiros do localStorage
   function getFinancialData() {
-    const storedData = localStorage.getItem("financialDashboardData");
+    const storedData = localStorage.getItem("financialDashboardDataPJ"); // Changed key
     return storedData ? JSON.parse(storedData) : { entradas: [], saidas: [] };
   }
 
   // Função para salvar dados financeiros no localStorage e renderizar o dashboard
   function saveFinancialData(data) {
-    localStorage.setItem("financialDashboardData", JSON.stringify(data));
+    localStorage.setItem("financialDashboardDataPJ", JSON.stringify(data)); // Changed key
     renderDashboard();
   }
 
@@ -186,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.loadTransactionsForRemoval = function () {
     const tipoRemocao = document.getElementById("tipo-remocao").value;
     const listaDiv = document.getElementById("lista-transacoes-remocao");
-    listaDiv.innerHTML = "";
+    listaDiv.innerHTML = ""; // Limpa a lista existente
 
     const allData = getFinancialData();
     let transactionsToDisplay = [];
@@ -202,21 +196,27 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Ordena as transações da mais recente para a mais antiga
+    transactionsToDisplay.sort((a, b) => new Date(b.data) - new Date(a.data));
+
     transactionsToDisplay.forEach((item) => {
       const itemDiv = document.createElement("div");
       itemDiv.className = "transaction-item-remocao";
+
       const valueDisplay =
         item.tipo === "saida"
           ? `- R$ ${item.valor.toFixed(2)}`
           : `+ R$ ${item.valor.toFixed(2)}`;
       const description = item.descricao ? ` - ${item.descricao}` : "";
       const category = item.categoria ? ` (${item.categoria})` : "";
+      const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
 
       itemDiv.innerHTML = `
                 <input type="checkbox" id="remove-${item.id}" value="${item.id}" data-type="${item.tipo}">
                 <label for="remove-${item.id}">
-                    ${new Date(item.data).toLocaleDateString()} - ${valueDisplay}${category}${description}
-                </label>`;
+                    ${formattedDate} ${valueDisplay}${category}${description}
+                </label>
+            `;
       listaDiv.appendChild(itemDiv);
     });
   };
@@ -303,7 +303,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Tenta manter o ano atual selecionado, ou define para o ano mais recente do filtro se não houver seleção
-    anoFiltroSelect.value = currentAnoFilter || new Date().getFullYear().toString();
+    anoFiltroSelect.value =
+      currentAnoFilter || new Date().getFullYear().toString();
 
     mesFiltroSelect.value = currentMesFilter;
   }
@@ -485,7 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (filteredEntradas.length === 0) {
-      listaEntradas.innerHTML = "<p>Nenhuma entrada encontrada.</p>";
+      listaEntradas.innerHTML = `<p>Nenhuma entrada encontrada para este período.</p>`;
     } else {
       filteredEntradas.forEach((item) => {
         listaEntradas.appendChild(createListItem(item, "Entrada"));
@@ -493,7 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (filteredSaidas.length === 0) {
-      listaSaidas.innerHTML = "<p>Nenhuma saída encontrada.</p>";
+      listaSaidas.innerHTML = `<p>Nenhuma saída encontrada para este período.</p>`;
     } else {
       filteredSaidas.forEach((item) => {
         listaSaidas.appendChild(createListItem(item, "Saída"));
