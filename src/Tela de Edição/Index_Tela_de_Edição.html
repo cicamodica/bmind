@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Validação de Dados</title>
-        <link rel="stylesheet" href="style_Tela_de_Edição.css"> <!--Ligar ao CSS-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"><!--Cria o link com o site da logo-->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
-    </head>
-    <body>
-
-        
-           <!--CABEÇALHO-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard do Usuário</title>
+    <link rel="stylesheet" href="style_Tela_de_Edição.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script_Tela_de_Edição.js" defer></script>
+  </head>
+  <body>
     <div class="header">
       <header>
         <div class="left-group">
           <div class="menu-icon" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars menu-button"></i
-            ><!-- ícone do menu -->
+            <i class="fa-solid fa-bars menu-button"></i>
           </div>
           <div class="header-item">
             <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
           </div>
         </div>
+
         <div class="center-group">
-          <!-- Container da barra de pesquisa com ícone -->
           <div class="search-container">
             <input
               type="text"
@@ -33,24 +32,25 @@
               placeholder="Pesquisar..."
               class="search-bar"
             /><a class="search-button" id="search-button" href="#"
-              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
-            </a>
+              ><i class="fa-solid fa-magnifying-glass search-icon"></i
+            ></a>
           </div>
         </div>
+
         <div class="right-group">
-          <!-- Ícone de usuário -->
           <div class="user-actions">
             <a href="/src/perfil/perfil.html">
               <i class="fa-regular fa-circle-user"></i>
             </a>
           </div>
         </div>
-        <!-- Menu dropdown -->
+
         <nav class="dropdown-menu" id="dropdownMenu">
           <ul>
             <li>
               <a class="perfil" href="/src/perfil/perfil.html">Perfil</a>
             </li>
+
             <li>
               <a
                 class="editar-dashboard"
@@ -61,7 +61,6 @@
             <li class="has-submenu">
               Conteúdo Didático
               <ul class="submenu">
-                <!-- Finanças pessoais -->
                 <li class="has-submenu">
                   Finanças pessoais
                   <ul class="submenu">
@@ -69,9 +68,7 @@
                       <a
                         class="submenu-btn-link"
                         href="/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
-                        onclick="registrarConteudoVisto('Planejamento financeiro',
-                      '/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html',
-                      '/src/imagens/PlanejamentoFinanceiro.jpg')"
+                        onclick="registrarConteudoVisto('Planejamento financeiro', '/src/conteudo-didatico/Logado/Logado-pf/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html', '/src/imagens/PlanejamentoFinanceiro.jpg')"
                         >Planejamento financeiro</a
                       >
                     </li>
@@ -94,7 +91,6 @@
                   </ul>
                 </li>
 
-                <!-- Finanças corporativas -->
                 <li class="has-submenu">
                   Finanças corporativas
                   <ul class="submenu">
@@ -125,7 +121,6 @@
                   </ul>
                 </li>
 
-                <!-- Operações bancárias -->
                 <li class="has-submenu">
                   Operações bancárias
                   <ul class="submenu">
@@ -153,6 +148,7 @@
                         >Empréstimo</a
                       >
                     </li>
+
                     <li>
                       <a
                         class="submenu-btn-link"
@@ -161,6 +157,7 @@
                         >Financiamento</a
                       >
                     </li>
+
                     <li>
                       <a
                         class="submenu-btn-link"
@@ -172,7 +169,6 @@
                   </ul>
                 </li>
 
-                <!-- Investimentos corporativos -->
                 <li class="has-submenu">
                   Investimentos Corporativos
                   <ul class="submenu">
@@ -203,7 +199,6 @@
                   </ul>
                 </li>
 
-                <!-- Investimentos pessoais -->
                 <li class="has-submenu">
                   Investimentos Pessoais
                   <ul class="submenu">
@@ -235,141 +230,251 @@
                 </li>
               </ul>
             </li>
-            <li><a class="FAQ" href="/src/Feedback/feedback.html">FAQ</a></li>
-            <li><a class="Sair" href="/src/Homepage.html">Sair</a></li>
+            <li>
+              <a class="FAQ" href="/src/Feedback/feedback.html">FAQ</a>
+            </li>
+            <li>
+              <a class="Sair" href="/src/Homepage.html">Sair</a>
+            </li>
           </ul>
         </nav>
       </header>
-        <p>Dashboard de Fulano</p>
+    </div>
 
-        <button class="Entradas" onclick="openModal('entradas')">Entradas</button>
-        <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
-        <button class="Economias" onclick="openModal('economias')">Economias</button>
+    <main class="main-content">
+      <p id="dashboard-titulo">Dashboard de Fulano</p>
 
-        <div class="overlay" id="overlay" onclick="closeModal()"></div>
-        
-        <!--Botão Entradas-->
-        <div class="modal" id="modal-entradas">
+      <div class="dash-header">
+        <div class="seletor-filtro">
+          <label for="ano-filtro">Filtrar por Ano:</label>
+          <select id="ano-filtro" onchange="atualizarFiltros()"></select>
 
-            <h2>Atualização de entrada</h2>
-            <label>DATA</label><br>
-            <input class="data" type="date" name="data"><br>
-            <label>VALOR DE ENTRADA</label><br>
-            <input class="entrada" type="number" name="valor de entrada">
-            <br>
+          <label for="mes-filtro">Filtrar por Mês:</label>
+          <select id="mes-filtro" onchange="atualizarFiltros()">
+            <option value="">Todos os Meses</option>
+            <option value="01">Janeiro</option>
+            <option value="02">Fevereiro</option>
+            <option value="03">Março</option>
+            <option value="04">Abril</option>
+            <option value="05">Maio</option>
+            <option value="06">Junho</option>
+            <option value="07">Julho</option>
+            <option value="08">Agosto</option>
+            <option value="09">Setembro</option>
+            <option value="10">Outubro</option>
+            <option value="11">Novembro</option>
+            <option value="12">Dezembro</option>
+          </select>
 
-            <!--Caixa de seleção de categoria-->
-            <label for="opcoes">CATEGORIA</label><br>
-                <select id="opcoes" name="opcao">
-                <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
-                <option value="opcao1">Salário</option>
-                <option value="opcao2">Investimentos</option>
-                <option value="opcao3">Lucros</option>
-                <option value="opcao4">Gastos</option>
-                </select>
-            <br>
-            
-           <label>VALOR RECORRENTE?</label><br>
-            <input type="radio" id="entrada-opcao1" name="opcoes" value="valor1">
-            <label for="entrada-opcao1">SIM</label>
+          <button class="Historico" onclick="openModal('historico')">
+            Histórico
+          </button>
+        </div>
+      </div>
 
-            <input type="radio" id="entrada-opcao2" name="opcoes" value="valor2">
-            <label for="entrada-opcao2">NÃO</label><br>
-
-            <div id="opcoes-recorrentes" style="display: none; margin-top: 10px;">
-            <label for="tipoRecorrencia">Tipo de recorrência:</label><br>
-            <select id="tipoRecorrencia">
-                <option value="mensal">Mensal</option>
-                <option value="semanal">Semanal</option>
-                <option value="anual">Anual</option>
-            </select>
-            </div>
-            
-            <button>Salvar</button>
+      <div class="charts-grid">
+        <div class="chart-container">
+          <canvas id="pieChart"></canvas>
+          <h3>Entradas vs Saídas</h3>
         </div>
 
-        
-        <!--Botão Saídas-->
-        <div class="modal" id="modal-saidas">
-            <h2>Atualização de entrada</h2>
-            <label>DATA</label><br>
-            <input class="data" type="date" name="data"><br>
-            <label>VALOR DE ENTRADA</label><br>
-            <input class="entrada" type="number" name="valor de entrada">
-            <br>
-
-            <!--Caixa de seleção de categoria-->
-            <label for="opcoes">CATEGORIA</label><br>
-                <select id="opcoes" name="opcao">
-                <option value="" disabled selected>Seleção</option><!--Aparecer e não ficar selecionavel-->
-                <option value="opcao1">Salário</option>
-                <option value="opcao2">Investimentos</option>
-                <option value="opcao3">Lucros</option>
-                <option value="opcao4">Gastos</option>
-                </select>
-            <br>
-            
-            <label>VALOR RECORRENTE?</label><br>
-            <input type="radio" id="opcao1" name="opcoes" value="valor1">
-            <label for="opcao1">SIM</label>
-
-            <input type="radio" id="opcao2" name="opcoes" value="valor2">
-            <label for="opcao2">NÃO</label><br>
-
-            
-            
-            <button>Salvar</button>
+        <div class="chart-container">
+          <canvas id="lineChart"></canvas>
+          <h3>Evolução do Saldo</h3>
         </div>
 
-
-
-        <!--Botão Economias-->
-        <div class="modal" id="modal-economias">
-            <h2>Editar Economias</h2>
-            <label>DESCRIÇÃO</label><br>
-            <input class="descrição" type="text"><br>
-            <label>VALOR</label><br>
-            <input class="valor" type="number"><br>
-            <button>Salvar</button>
+        <div class="chart-container">
+          <canvas id="comparativeBarChart"></canvas>
+          <h3>Comparação Mensal</h3>
         </div>
+      </div>
+
+      <div class="atualizar">
         <h3>Atualizar</h3>
-        
-            <input
-                type="submit"
-                class="input-confirmar"
-                value="Salvar alterações">
-        
 
+        <div class="botoes-acao">
+          <button class="Entradas" onclick="openModal('entradas')">
+            Entradas
+          </button>
 
+          <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
 
+          <button class="Remover" onclick="openRemoveModal()">
+            Remover Dados
+          </button>
+          <input
+            type="submit"
+            class="input-confirmar"
+            value="Salvar alterações"
+            onclick="renderDashboard()"
+          />
+        </div>
+      </div>
+    </main>
 
+    <div class="overlay" id="overlay" onclick="closeModal()"></div>
 
+    <div class="modal" id="modal-entradas">
+      <h2>Atualização de Entrada</h2>
+      <label>DATA</label><br />
+      <input class="data" type="date" id="entrada-data" /><br />
+      <label>VALOR DE ENTRADA</label><br />
+      <input class="entrada" type="number" id="entrada-valor" /><br />
 
-    <!--BARRA CALENDARIO-->
-        <div class="dash-header">
-            <div class="month-selector">
-            <button onclick="changeMonth(-1)">&#10094;</button>
-            <span id="month-display"></span>
-            <button onclick="changeMonth(1)">&#10095;</button>
-        </div> 
-    
+      <label>CATEGORIA</label><br />
+      <select id="entrada-categoria">
+        <option value="" disabled selected>Seleção</option>
+        <option value="salario">Salário</option>
+        <option value="investimentos">Investimentos</option>
+        <option value="lucros">Lucros</option>
+        <option value="outros_entrada">Outros</option>
+      </select><br />
+      <label>DESCRIÇÃO (Opcional)</label><br />
+      <input class="descricao" type="text" id="entrada-descricao" /><br />
+      <label>É RECORRENTE?</label><br />
+      <input
+        type="radio"
+        id="entrada-recorrente-sim"
+        name="entrada-recorrente"
+        value="sim"
+      />
+      <label for="entrada-recorrente-sim">SIM</label>
+      <input
+        type="radio"
+        id="entrada-recorrente-nao"
+        name="entrada-recorrente"
+        value="nao"
+        checked
+      />
+      <label for="entrada-recorrente-nao">NÃO</label><br />
 
-    <!--PAINEL DASHBOARD(AGUARDANDO)-->
-        <div class="charts-row">
-    <div class="chart-container">
-        <canvas id="grafico1"></canvas>
+      <div
+        id="entrada-opcoes-recorrentes"
+        style="display: none; margin-top: 10px"
+      >
+        <label for="entrada-frequencia">Frequência:</label><br />
+        <select id="entrada-frequencia">
+          <option value="mensal">Mensal</option>
+          <option value="semanal">Semanal</option>
+          <option value="diaria">Diária</option>
+          <option value="personalizada">Personalizada</option>
+        </select>
+      </div>
+
+      <button onclick="salvarEntrada()">Salvar</button>
     </div>
-    <div class="chart-container">
-        <canvas id="grafico2"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="grafico3"></canvas>
-    </div>
-    <div class="chart-container">
-        <canvas id="grafico4"></canvas>
-    </div>
+
+    <div class="modal" id="modal-saidas">
+      <h2>Atualização de Saída</h2>
+      <label>DATA</label><br />
+      <input class="data" type="date" id="saida-data" /><br />
+      <label>VALOR DE SAÍDA</label><br />
+      <input class="saida" type="number" id="saida-valor" /><br />
+
+      <label>CATEGORIA</label><br />
+      <select id="saida-categoria">
+        <option value="" disabled selected>Seleção</option>
+        <option value="alimentacao">Alimentação</option>
+        <option value="transporte">Transporte</option>
+        <option value="lazer">Lazer</option>
+        <option value="moradia">Moradia</option>
+        <option value="educacao">Educação</option>
+        <option value="saude">Saúde</option>
+        <option value="contas">Contas</option>
+        <option value="outros_saida">Outros</option>
+      </select><br />
+      <label>DESCRIÇÃO (Opcional)</label><br />
+      <input class="descricao" type="text" id="saida-descricao" /><br />
+
+      <label>É RECORRENTE?</label><br />
+      <input
+        type="radio"
+        id="saida-recorrente-sim"
+        name="saida-recorrente"
+        value="sim"
+      />
+      <label for="saida-recorrente-sim">SIM</label>
+      <input
+        type="radio"
+        id="saida-recorrente-nao"
+        name="saida-recorrente"
+        value="nao"
+        checked
+      />
+      <label for="saida-recorrente-nao">NÃO</label><br />
+
+      <div
+        id="saida-opcoes-recorrentes"
+        style="display: none; margin-top: 10px"
+      >
+        <label for="saida-frequencia">Frequência:</label><br />
+        <select id="saida-frequencia">
+          <option value="mensal">Mensal</option>
+          <option value="semanal">Semanal</option>
+          <option value="diaria">Diária</option>
+          <option value="personalizada">Personalizada</option>
+        </select>
+      </div>
+
+      <button onclick="salvarSaida()">Salvar</button>
     </div>
 
-    </body>
-    <script src="script_Tela_de_Edição.js"></script>
+    <div class="modal" id="modal-remover">
+      <h2>Remover Dados</h2>
+      <label for="tipo-remocao">Tipo de Dados:</label><br />
+      <select id="tipo-remocao" onchange="loadTransactionsForRemoval()">
+        <option value="" disabled selected>Selecione</option>
+        <option value="entradas">Entrada</option>
+        <option value="saidas">Saída</option>
+      </select><br /><br />
+
+      <button onclick="confirmRemoveSelected()">Remover Selecionados</button>
+    </div>
+
+    <div class="modal" id="modal-historico">
+      <h2>Histórico de Transações</h2>
+      <div class="seletor-filtro">
+        <label for="historico-ano-filtro">Filtrar por Ano:</label>
+        <select
+          id="historico-ano-filtro"
+          onchange="populateHistoricoModal()"
+        ></select>
+        <label for="historico-mes-filtro">Filtrar por Mês:</label>
+        <select
+          id="historico-mes-filtro"
+          onchange="populateHistoricoModal()"
+        >
+          <option value="">Todos os Meses</option>
+          <option value="01">Janeiro</option>
+          <option value="02">Fevereiro</option>
+          <option value="03">Março</option>
+          <option value="04">Abril</option>
+          <option value="05">Maio</option>
+          <option value="06">Junho</option>
+          <option value="07">Julho</option>
+          <option value="08">Agosto</option>
+          <option value="09">Setembro</option>
+          <option value="10">Outubro</option>
+          <option value="11">Novembro</option>
+          <option value="12">Dezembro</option>
+        </select>
+      </div>
+      <div id="historico-lista" class="historico-lista">
+        <div class="historico-colunas">
+          <div class="coluna-entradas">
+            <h3>Entradas</h3>
+            <ul id="lista-entradas">
+              <p>Carregando histórico de entradas...</p>
+            </ul>
+          </div>
+          <div class="coluna-saidas">
+            <h3>Saídas</h3>
+            <ul id="lista-saidas">
+              <p>Carregando histórico de saídas...</p>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

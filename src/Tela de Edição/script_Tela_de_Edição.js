@@ -1,355 +1,724 @@
-//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
-document
-  .getElementById("search-button")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // evita o redirecionamento padrão
-    const termo = document.getElementById("search-bar").value.trim();
-    if (termo !== "") {
-      const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/logado/logado-pf/resultado-de-pesquisa-pf.html?q=${encodedTermo}`;
+document.addEventListener("DOMContentLoaded", function () {
+  // Função para carregar o nome do usuário e atualizar o título
+  function loadUserName() {
+    const userName = localStorage.getItem("userName"); // Assumindo que o nome do usuário é salvo no localStorage como 'userName'
+    const dashboardTitle = document.getElementById("dashboard-titulo");
+    if (userName && dashboardTitle) {
+      dashboardTitle.textContent = `Dashboard de ${userName}`;
+    } else if (dashboardTitle) {
+      dashboardTitle.textContent = "Dashboard de Fulano"; // Fallback se o nome não for encontrado
+    }
+  }
+
+  // Chamar a função para carregar o nome do usuário ao carregar a página
+  loadUserName();
+
+  // Função para alternar a visibilidade do menu dropdown
+  window.toggleMenu = function () {
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    dropdownMenu.style.display =
+      dropdownMenu.style.display === "block" ? "none" : "block";
+  };
+
+  // Função para fechar o menu dropdown ao clicar fora dele
+  document.addEventListener("click", function (event) {
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const menuIcon = document.querySelector(".menu-icon");
+
+    if (
+      dropdownMenu &&
+      menuIcon &&
+      !dropdownMenu.contains(event.target) &&
+      !menuIcon.contains(event.target)
+    ) {
+      dropdownMenu.style.display = "none";
     }
   });
 
-document.querySelector(".menu-icon").addEventListener("click", function () {
-  const navMenu = document.querySelector(".nav-menu");
-  navMenu.classList.toggle("hidden");
-});
+  // Função para abrir modais (histórico, entrada, saída, etc.)
+  window.openModal = function (tipo) {
+    document.getElementById("overlay").style.display = "block";
+    const modal = document.getElementById(`modal-${tipo}`);
+    modal.style.display = "block";
 
-function toggleMenu() {
-  // Função para alternar o menu dropdown
-  const menu = document.getElementById("dropdownMenu");
-  menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
-
-// Fechar menu ao clicar fora
-window.addEventListener("click", function (e) {
-  const menu = document.getElementById("dropdownMenu");
-  const icon = document.querySelector(".menu-icon");
-  if (!menu.contains(e.target) && !icon.contains(e.target)) {
-    menu.style.display = "none";
-  }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    // =================== ICONE DE VOLTAR ===================
-    const voltar = document.getElementById("botaovoltar");
-    if (voltar) {
-        voltar.addEventListener("click", function () {
-            history.back();
-        });
+    if (tipo === "historico") {
+      // Garante que os filtros do histórico sejam populados antes de carregar as transações
+      populateHistoricoFilters();
+      populateHistoricoModal();
     }
+  };
 
-    // =================== Funções do Dashboard (opções de mês/categoria) ===================
-    function updateOptionDisplay(opcao) {
-        const displayElement = document.getElementById("month-display");
-        const optionsText = {
-            1: "Salário",
-            2: "Gastos",
-            3: "Investimentos",
-            4: "Lucros"
-        };
-        const displayText = optionsText[opcao] || `Opção ${opcao}`;
-
-        if (displayElement) {
-            displayElement.textContent = displayText;
-        }
-        // Não há month-name no HTML, então essa parte não é necessária
-    }
-
-    window.changeMonth = function (direction) {
-        const displayElement = document.getElementById("month-display");
-        if (!displayElement) return;
-
-        let currentOptionText = displayElement.textContent;
-        let currentOption;
-        const reverseOptionsText = {
-            "Salário": 1,
-            "Gastos": 2,
-            "Investimentos": 3,
-            "Lucros": 4
-        };
-
-        currentOption = reverseOptionsText[currentOptionText];
-
-        if (isNaN(currentOption)) {
-            currentOption = 1; // Default to Salário if not recognized
-        }
-
-        currentOption += direction;
-
-        if (currentOption < 1) {
-            currentOption = 4;
-        } else if (currentOption > 4) {
-            currentOption = 1;
-        }
-        updateOptionDisplay(currentOption);
-        updateChartsBasedOnOption(currentOption); // Chama a função para atualizar os gráficos
-    };
-
-    updateOptionDisplay(1); // Inicializa a exibição com "Salário"
-
-    // =================== MODAIS ===================
-    window.openModal = function (tipo) {
-        document.getElementById('overlay').style.display = 'block';
-        document.getElementById(`modal-${tipo}`).style.display = 'block';
-    };
-
-    window.closeModal = function () {
-        document.getElementById('overlay').style.display = 'none';
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.style.display = 'none';
-        });
-    };
-
-    // Lógica para mostrar/esconder opções recorrentes
-    document.querySelectorAll("input[type='radio'][name='opcoes']").forEach(radio => {
-        radio.addEventListener("change", function () {
-            const modal = radio.closest(".modal");
-            // Usar o ID correto para a div de recorrência específica de entradas
-            const recorrenteDiv = modal.querySelector("#opcoes-recorrentes");
-            if (recorrenteDiv) {
-                if (radio.value === "valor1") { // SIM
-                    recorrenteDiv.style.display = "block";
-                } else { // NÃO
-                    recorrenteDiv.style.display = "none";
-                }
-            }
-        });
+  // Função para fechar todos os modais e resetar seus campos
+  window.closeModal = function () {
+    document.getElementById("overlay").style.display = "none";
+    document.querySelectorAll(".modal").forEach((modal) => {
+      modal.style.display = "none";
+      modal
+        .querySelectorAll(
+          'input[type="date"], input[type="number"], input[type="text"]'
+        )
+        .forEach((input) => (input.value = ""));
+      modal
+        .querySelectorAll("select")
+        .forEach((select) => (select.selectedIndex = 0));
+      const recorrenteNao = modal.querySelector(
+        'input[type="radio"][value="nao"]'
+      );
+      if (recorrenteNao) {
+        recorrenteNao.checked = true;
+        const recorrenteDiv = modal.querySelector(
+          '[id$="-opcoes-recorrentes"]'
+        );
+        if (recorrenteDiv) recorrenteDiv.style.display = "none";
+      }
     });
 
-    // =================== SALVAR DADOS E ATUALIZAR GRÁFICOS ===================
+    const removeModal = document.getElementById("modal-remover");
+    if (removeModal) {
+      document.getElementById("tipo-remocao").selectedIndex = 0;
+      document.getElementById("lista-transacoes-remocao").innerHTML = "";
+    }
+  };
 
-    // Inicializa dados dos gráficos se não existirem
-    function getChartDataFromLocalStorage() {
-        let savedData = localStorage.getItem('appFinanceData');
-        if (savedData) {
-            return JSON.parse(savedData);
+  // Listener para mostrar/esconder opções de recorrência com base no radio button
+  document.querySelectorAll("input[name$='-recorrente']").forEach((radio) => {
+    radio.addEventListener("change", function () {
+      const modalId = this.name.split("-")[0];
+      const recorrenteDiv = document.getElementById(
+        `${modalId}-opcoes-recorrentes`
+      );
+
+      if (recorrenteDiv) {
+        recorrenteDiv.style.display = this.value === "sim" ? "block" : "none";
+      }
+    });
+  });
+
+  // Função para obter dados financeiros do localStorage
+  function getFinancialData() {
+    const storedData = localStorage.getItem("financialDashboardData");
+    return storedData ? JSON.parse(storedData) : { entradas: [], saidas: [] };
+  }
+
+  // Função para salvar dados financeiros no localStorage e renderizar o dashboard
+  function saveFinancialData(data) {
+    localStorage.setItem("financialDashboardData", JSON.stringify(data));
+    renderDashboard();
+  }
+
+  // Função para salvar uma nova entrada
+  window.salvarEntrada = function () {
+    const dataInput = document.getElementById("entrada-data");
+    const valorInput = document.getElementById("entrada-valor");
+    const categoriaSelect = document.getElementById("entrada-categoria");
+    const descricaoInput = document.getElementById("entrada-descricao");
+    const recorrenteSim =
+      document.getElementById("entrada-recorrente-sim").checked;
+    const frequenciaSelect = document.getElementById("entrada-frequencia");
+
+    if (!dataInput.value || !valorInput.value) {
+      alert("Data e Valor são obrigatórios para entradas.");
+      return;
+    }
+
+    const novaEntrada = {
+      id: Date.now(),
+      tipo: "entrada",
+      data: dataInput.value,
+      valor: parseFloat(valorInput.value),
+      categoria: categoriaSelect.value,
+      descricao: descricaoInput.value,
+      recorrente: recorrenteSim,
+      frequencia: recorrenteSim ? frequenciaSelect.value : null,
+    };
+
+    const data = getFinancialData();
+    data.entradas.push(novaEntrada);
+    saveFinancialData(data);
+    closeModal();
+  };
+
+  // Função para salvar uma nova saída
+  window.salvarSaida = function () {
+    const dataInput = document.getElementById("saida-data");
+    const valorInput = document.getElementById("saida-valor");
+    const categoriaSelect = document.getElementById("saida-categoria");
+    const descricaoInput = document.getElementById("saida-descricao");
+    const recorrenteSim =
+      document.getElementById("saida-recorrente-sim").checked;
+    const frequenciaSelect = document.getElementById("saida-frequencia");
+
+    if (!dataInput.value || !valorInput.value) {
+      alert("Data e Valor são obrigatórios para saídas.");
+      return;
+    }
+
+    const novaSaida = {
+      id: Date.now(),
+      tipo: "saida",
+      data: dataInput.value,
+      valor: parseFloat(valorInput.value),
+      categoria: categoriaSelect.value,
+      descricao: descricaoInput.value,
+      recorrente: recorrenteSim,
+      frequencia: recorrenteSim ? frequenciaSelect.value : null,
+    };
+
+    const data = getFinancialData();
+    data.saidas.push(novaSaida);
+    saveFinancialData(data);
+
+    closeModal();
+  };
+
+  // Função para abrir o modal de remoção
+  window.openRemoveModal = function () {
+    openModal("remover");
+  };
+
+  // Função para carregar transações para remoção no modal de remoção
+  window.loadTransactionsForRemoval = function () {
+    const tipoRemocao = document.getElementById("tipo-remocao").value;
+    const listaDiv = document.getElementById("lista-transacoes-remocao");
+    listaDiv.innerHTML = "";
+
+    const allData = getFinancialData();
+    let transactionsToDisplay = [];
+
+    if (tipoRemocao === "entradas") {
+      transactionsToDisplay = allData.entradas;
+    } else if (tipoRemocao === "saidas") {
+      transactionsToDisplay = allData.saidas; // Correção: era 'allData.saida'
+    }
+
+    if (transactionsToDisplay.length === 0) {
+      listaDiv.innerHTML = `<p>Nenhum registro encontrado para remover.</p>`;
+      return;
+    }
+
+    transactionsToDisplay.forEach((item) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.className = "transaction-item-remocao";
+      const valueDisplay =
+        item.tipo === "saida"
+          ? `- R$ ${item.valor.toFixed(2)}`
+          : `+ R$ ${item.valor.toFixed(2)}`;
+      const description = item.descricao ? ` - ${item.descricao}` : "";
+      const category = item.categoria ? ` (${item.categoria})` : "";
+
+      itemDiv.innerHTML = `
+                <input type="checkbox" id="remove-${item.id}" value="${item.id}" data-type="${item.tipo}">
+                <label for="remove-${item.id}">
+                    ${new Date(item.data).toLocaleDateString()} - ${valueDisplay}${category}${description}
+                </label>
+            `;
+      listaDiv.appendChild(itemDiv);
+    });
+  };
+
+  // Função para confirmar a remoção das transações selecionadas
+  window.confirmRemoveSelected = function () {
+    const checkboxes = document.querySelectorAll(
+      '#lista-transacoes-remocao input[type="checkbox"]:checked'
+    );
+
+    if (checkboxes.length === 0) {
+      alert("Nenhum registro selecionado para remover.");
+      return;
+    }
+
+    if (
+      !confirm(
+        `Tem certeza que deseja remover ${checkboxes.length} registro(s)?`
+      )
+    ) {
+      return;
+    }
+
+    const data = getFinancialData();
+
+    checkboxes.forEach((checkbox) => {
+      const idToRemove = parseInt(checkbox.value);
+      const typeOfTransaction = checkbox.dataset.type;
+
+      if (typeOfTransaction === "entrada") {
+        data.entradas = data.entradas.filter((item) => item.id !== idToRemove);
+      } else if (typeOfTransaction === "saida") {
+        data.saidas = data.saidas.filter((item) => item.id !== idToRemove); // Correção: era 'data.saidas'
+      }
+    });
+
+    saveFinancialData(data);
+    closeModal();
+    alert("Registro(s) Removido");
+  };
+
+  // Função para obter anos únicos das transações (e anos relevantes para o futuro)
+  function getUniqueYears(data) {
+    const years = new Set();
+    const currentYear = new Date().getFullYear(); // Ano atual
+
+    // Adiciona anos a partir de 2023 até o ano atual + 2 para garantir que filtros futuros existam
+    const startDisplayYear = 2023; // Mudei para 2023, caso haja dados antigos
+    const maxYear = currentYear + 2;
+
+    for (let year = startDisplayYear; year <= maxYear; year++) {
+      years.add(year.toString());
+    }
+
+    // Adiciona anos das transações existentes para garantir que todos apareçam
+    data.entradas.forEach((item) =>
+      years.add(new Date(item.data).getFullYear().toString())
+    );
+    data.saidas.forEach((item) =>
+      years.add(new Date(item.data).getFullYear().toString())
+    );
+
+    return Array.from(years).sort((a, b) => parseInt(a) - parseInt(b));
+  }
+
+  // Popula os filtros da dashboard principal
+  function populateMainFilters() {
+    const data = getFinancialData();
+    const sortedYears = getUniqueYears(data);
+
+    const anoFiltroSelect = document.getElementById("ano-filtro");
+    const mesFiltroSelect = document.getElementById("mes-filtro");
+
+    const currentAnoFilter = anoFiltroSelect.value;
+    const currentMesFilter = mesFiltroSelect.value;
+
+    // Popula anos
+    anoFiltroSelect.innerHTML = '<option value="">Todos os Anos</option>';
+    sortedYears.forEach((year) => {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      anoFiltroSelect.appendChild(option);
+    });
+
+    // Tenta manter o ano atual selecionado, ou define para o ano mais recente do filtro se não houver seleção
+    anoFiltroSelect.value = currentAnoFilter || new Date().getFullYear().toString();
+
+    mesFiltroSelect.value = currentMesFilter;
+  }
+
+  // Popula os filtros do modal de histórico
+  function populateHistoricoFilters() {
+    const data = getFinancialData();
+    const sortedYears = getUniqueYears(data);
+
+    const historicoAnoFiltroSelect = document.getElementById(
+      "historico-ano-filtro"
+    );
+    const historicoMesFiltroSelect = document.getElementById(
+      "historico-mes-filtro"
+    );
+
+    const currentAnoFilter = historicoAnoFiltroSelect.value;
+    const currentMesFilter = historicoMesFiltroSelect.value;
+
+    historicoAnoFiltroSelect.innerHTML = '<option value="">Todos os Anos</option>';
+    sortedYears.forEach((year) => {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      historicoAnoFiltroSelect.appendChild(option);
+    });
+
+    historicoAnoFiltroSelect.value = currentAnoFilter || "";
+    historicoMesFiltroSelect.value = currentMesFilter || "";
+  }
+
+  // Função para atualizar os filtros e renderizar o dashboard novamente
+  window.atualizarFiltros = function () {
+    renderDashboard();
+  };
+
+  // Função para filtrar transações por ano e mês
+  function filterTransactions(transactions, ano, mes) {
+    return transactions.filter((item) => {
+      const itemDate = new Date(item.data + "T00:00:00");
+      const itemYear = itemDate.getFullYear().toString();
+      const itemMonth = (itemDate.getMonth() + 1).toString().padStart(2, "0");
+
+      const anoMatch = !ano || itemYear === ano;
+      const mesMatch = !mes || itemMonth === mes;
+
+      return anoMatch && mesMatch;
+    });
+  }
+
+  // Objeto para armazenar instâncias de gráficos
+  let chartInstances = {};
+
+  // Função para destruir as instâncias de gráficos existentes
+  function destroyCharts() {
+    for (const chartId in chartInstances) {
+      if (chartInstances[chartId]) {
+        chartInstances[chartId].destroy();
+        chartInstances[chartId] = null;
+      }
+    }
+  }
+
+  // Função para expandir transações recorrentes
+  function expandRecurringTransactions(transactions) {
+    const expandedTransactions = [];
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    // Para o histórico e gráficos, podemos expandir um intervalo maior de anos
+    const startDisplayYear = 2023; // Começa a partir do ano anterior ao atual, para capturar dados antigos
+    const endDisplayYear = currentYear + 2; // Ex: até o próximo ano para recorrências futuras
+
+    transactions.forEach((item) => {
+      if (item.recorrente) {
+        const originalDate = new Date(item.data + "T00:00:00");
+
+        let currentDate = new Date(originalDate);
+
+        // Ajusta o ano de início para que o loop comece no ano correto, sem duplicar transações passadas
+        // e garantindo que transações antigas ainda apareçam se forem recorrentes
+        while (currentDate.getFullYear() < startDisplayYear) {
+          if (item.frequencia === "mensal") {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+          } else if (item.frequencia === "semanal") {
+            currentDate.setDate(currentDate.getDate() + 7);
+          } else if (item.frequencia === "diaria") {
+            currentDate.setDate(currentDate.getDate() + 1);
+          } else {
+            break; // Para frequências não suportadas
+          }
         }
-        return {
-            entradas: [],
-            saidas: [],
-            economias: []
-        };
-    }
 
-    // Salvar dados no localStorage
-    function saveChartDataToLocalStorage(data) {
-        localStorage.setItem('appFinanceData', JSON.stringify(data));
-    }
+        while (currentDate.getFullYear() <= endDisplayYear) {
+          // Adiciona a transação expandida
+          expandedTransactions.push({
+            ...item,
+            data: currentDate.toISOString().split("T")[0],
+          });
 
-    // Adicionar nova entrada/saída/economia aos dados
-    function addTransaction(type, transaction) {
-        let appData = getChartDataFromLocalStorage();
-        appData[type].push(transaction);
-        saveChartDataToLocalStorage(appData);
-        renderCharts(); // Redesenha os gráficos após adicionar a transação
-    }
+          // Avança para a próxima data com base na frequência
+          if (item.frequencia === "mensal") {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+          } else if (item.frequencia === "semanal") {
+            currentDate.setDate(currentDate.getDate() + 7);
+          } else if (item.frequencia === "diaria") {
+            currentDate.setDate(currentDate.getDate() + 1);
+          } else {
+            break;
+          }
+          // Reseta o dia do mês para evitar pular meses em caso de datas como 31 de janeiro para fevereiro
+          if (
+            currentDate.getDate() !== originalDate.getDate() &&
+            item.frequencia === "mensal"
+          ) {
+            currentDate.setDate(originalDate.getDate());
+          }
 
-    // Botão Salvar para Entradas
-    const botaoSalvarEntradas = document.querySelector("#modal-entradas button");
-    if (botaoSalvarEntradas) {
-        botaoSalvarEntradas.addEventListener("click", function () {
-            const inputData = document.querySelector("#modal-entradas .data");
-            const inputValor = document.querySelector("#modal-entradas .entrada");
-            const selectCategoria = document.querySelector("#modal-entradas #opcoes");
-            const isRecorrente = document.querySelector("#entrada-opcao1").checked;
-            const tipoRecorrencia = document.querySelector("#tipoRecorrencia") ? document.querySelector("#tipoRecorrencia").value : '';
-
-            const dadosEntrada = {
-                data: inputData.value,
-                valor: parseFloat(inputValor.value), // Converter para número
-                categoria: selectCategoria.value,
-                recorrente: isRecorrente,
-                tipoRecorrencia: tipoRecorrencia
-            };
-
-            addTransaction('entradas', dadosEntrada);
-            closeModal(); // Fechar o modal após salvar
-            alert("Entrada salva com sucesso!");
-        });
-    }
-
-    // Botão Salvar para Saídas (você precisará adaptar isso)
-    const botaoSalvarSaidas = document.querySelector("#modal-saidas button");
-    if (botaoSalvarSaidas) {
-        botaoSalvarSaidas.addEventListener("click", function () {
-            const inputData = document.querySelector("#modal-saidas .data");
-            const inputValor = document.querySelector("#modal-saidas .entrada"); // O nome da classe no HTML é 'entrada' para saídas também
-            const selectCategoria = document.querySelector("#modal-saidas #opcoes");
-            // Adapte para a lógica de recorrência das saídas se houver
-            // const isRecorrente = document.querySelector("#saida-opcao1").checked;
-            // const tipoRecorrencia = document.querySelector("#saida-tipoRecorrencia") ? document.querySelector("#saida-tipoRecorrencia").value : '';
-
-            const dadosSaida = {
-                data: inputData.value,
-                valor: parseFloat(inputValor.value),
-                categoria: selectCategoria.value,
-                // recorrente: isRecorrente,
-                // tipoRecorrencia: tipoRecorrencia
-            };
-
-            addTransaction('saidas', dadosSaida);
-            closeModal();
-            alert("Saída salva com sucesso!");
-        });
-    }
-
-    // Botão Salvar para Economias (você precisará adaptar isso)
-    const botaoSalvarEconomias = document.querySelector("#modal-economias button");
-    if (botaoSalvarEconomias) {
-        botaoSalvarEconomias.addEventListener("click", function () {
-            const inputDescricao = document.querySelector("#modal-economias .descrição");
-            const inputValor = document.querySelector("#modal-economias .valor");
-
-            const dadosEconomia = {
-                descricao: inputDescricao.value,
-                valor: parseFloat(inputValor.value)
-            };
-
-            addTransaction('economias', dadosEconomia);
-            closeModal();
-            alert("Economia salva com sucesso!");
-        });
-    }
-
-    // =================== GRÁFICOS CHART.JS ===================
-
-    // Variável global para armazenar as instâncias dos gráficos
-    let myCharts = {};
-
-    function renderCharts() {
-        let appData = getChartDataFromLocalStorage();
-
-        // Dados para o gráfico de Entradas (exemplo)
-        const entradasData = appData.entradas.reduce((acc, entry) => {
-            const month = new Date(entry.data).toLocaleString('pt-BR', { month: 'long' });
-            acc[month] = (acc[month] || 0) + entry.valor;
-            return acc;
-        }, {});
-
-        const entradasLabels = Object.keys(entradasData);
-        const entradasValues = Object.values(entradasData);
-
-        // Destruir gráficos existentes antes de criar novos
-        for (const chartId in myCharts) {
-            if (myCharts[chartId]) {
-                myCharts[chartId].destroy();
-            }
+          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break; // Previne loops infinitos
         }
+      } else {
+        expandedTransactions.push(item);
+      }
+    });
 
-        // Gráfico 1: Entradas por Mês (Exemplo de gráfico de barras)
-        myCharts.grafico1 = new Chart(document.getElementById('grafico1'), {
-            type: 'bar',
-            data: {
-                labels: entradasLabels,
-                datasets: [{
-                    label: 'Entradas por Mês',
-                    data: entradasValues,
-                    backgroundColor: 'rgba(75, 192, 192, 0.6)'
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+    return expandedTransactions;
+  }
 
-        // Gráfico 2: Saídas por Mês (Exemplo de gráfico de linha)
-        const saidasData = appData.saidas.reduce((acc, entry) => {
-            const month = new Date(entry.data).toLocaleString('pt-BR', { month: 'long' });
-            acc[month] = (acc[month] || 0) + entry.valor;
-            return acc;
-        }, {});
+  // Função para popular o modal de histórico
+  window.populateHistoricoModal = function () {
+    const listaEntradas = document.getElementById("lista-entradas");
+    const listaSaidas = document.getElementById("lista-saidas");
+    const historicoAnoFiltro = document.getElementById(
+      "historico-ano-filtro"
+    ).value;
+    const historicoMesFiltro = document.getElementById(
+      "historico-mes-filtro"
+    ).value;
 
-        const saidasLabels = Object.keys(saidasData);
-        const saidasValues = Object.values(saidasData);
+    listaEntradas.innerHTML = "";
+    listaSaidas.innerHTML = "";
 
-        myCharts.grafico2 = new Chart(document.getElementById('grafico2'), {
-            type: 'line',
-            data: {
-                labels: saidasLabels,
-                datasets: [{
-                    label: 'Saídas por Mês',
-                    data: saidasValues,
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    fill: false
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+    const allData = getFinancialData();
+    const expandedEntradas = expandRecurringTransactions(allData.entradas);
+    const expandedSaidas = expandRecurringTransactions(allData.saidas);
 
-        // Gráfico 3: Economias (exemplo de gráfico de pizza)
-        const economiasLabels = appData.economias.map(e => e.descricao);
-        const economiasValues = appData.economias.map(e => e.valor);
+    const filteredEntradas = filterTransactions(
+      expandedEntradas,
+      historicoAnoFiltro,
+      historicoMesFiltro
+    );
+    const filteredSaidas = filterTransactions(
+      expandedSaidas,
+      historicoAnoFiltro,
+      historicoMesFiltro
+    );
 
-        myCharts.grafico3 = new Chart(document.getElementById('grafico3'), {
-            type: 'pie',
-            data: {
-                labels: economiasLabels,
-                datasets: [{
-                    label: 'Economias',
-                    data: economiasValues,
-                    backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff']
-                }]
-            },
-            options: {
-                responsive: true,
-            }
-        });
+    filteredEntradas.sort((a, b) => new Date(b.data) - new Date(a.data));
+    filteredSaidas.sort((a, b) => new Date(b.data) - new Date(a.data));
 
+    function createListItem(item, displayType) {
+      const listItem = document.createElement("li");
+      listItem.className = item.tipo;
+      const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
+      const formattedValue = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }).format(item.valor);
+      const description = item.descricao ? ` - ${item.descricao}` : "";
+      const category = item.categoria ? item.categoria : "Sem Categoria";
 
-        // Gráfico 4: Balanço Geral (Exemplo de gráfico de radar)
-        // Isso é mais complexo e pode exigir mais lógica para agregar entradas e saídas
-        // Por enquanto, vou usar um exemplo estático similar ao seu, mas o ideal seria calcular
-        // o balanço mensal ou por categoria.
-        const totalEntradas = appData.entradas.reduce((sum, entry) => sum + entry.valor, 0);
-        const totalSaidas = appData.saidas.reduce((sum, entry) => sum + entry.valor, 0);
-        const totalEconomias = appData.economias.reduce((sum, entry) => sum + entry.valor, 0);
-        const balancoGeral = totalEntradas - totalSaidas - totalEconomias;
-
-        myCharts.grafico4 = new Chart(document.getElementById('grafico4'), {
-            type: 'radar',
-            data: {
-                labels: ['Entradas', 'Saídas', 'Economias', 'Balanço Atual'],
-                datasets: [{
-                    label: 'Visão Geral Financeira',
-                    data: [totalEntradas, totalSaidas, totalEconomias, balancoGeral > 0 ? balancoGeral : 0], // Evita valores negativos para balanço na exibição de radar
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderColor: 'rgba(153, 102, 255, 1)'
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    r: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+      listItem.innerHTML = `
+                <span class="transaction-type">${displayType}:</span>
+                <span class="transaction-date">${formattedDate}</span>
+                <span class="transaction-description">${category}${description}</span>
+                <span class="transaction-value">${formattedValue}</span>
+            `;
+      return listItem;
     }
 
-    // Chamada inicial para renderizar os gráficos quando a página carrega
-    renderCharts();
+    if (filteredEntradas.length === 0) {
 
-    // Função para atualizar os gráficos com base na opção selecionada (Salário, Gastos, etc.)
-    function updateChartsBasedOnOption(option) {
-        // Esta função precisaria de mais lógica se os gráficos precisarem mudar
-        // drasticamente com base na opção do "mês". Por exemplo, se "Gastos"
-        // significa que você quer um detalhe de gastos por categoria, etc.
-        // Por enquanto, vamos apenas renderizar os gráficos novamente,
-        // mas você pode filtrar os dados aqui.
-        renderCharts();
+    } else {
+      filteredEntradas.forEach((item) => {
+        listaEntradas.appendChild(createListItem(item, "Entrada"));
+      });
     }
+
+    if (filteredSaidas.length === 0) {
+
+    } else {
+      filteredSaidas.forEach((item) => {
+        listaSaidas.appendChild(createListItem(item, "Saída"));
+      });
+    }
+  };
+
+  // Função principal para renderizar o dashboard (gráficos e valores)
+  window.renderDashboard = function () {
+    destroyCharts();
+
+    populateMainFilters(); // Popula os filtros da dashboard principal
+
+    const allData = getFinancialData();
+    const anoFiltro = document.getElementById("ano-filtro").value;
+    const mesFiltro = document.getElementById("mes-filtro").value;
+
+    // Ao renderizar o dashboard, expandimos as transações para o período dos gráficos
+    const expandedEntradas = expandRecurringTransactions(allData.entradas);
+    const expandedSaidas = expandRecurringTransactions(allData.saidas);
+
+    const entradasParaGrafico = filterTransactions(
+      expandedEntradas,
+      anoFiltro,
+      mesFiltro
+    );
+    const saidasParaGrafico = filterTransactions(
+      expandedSaidas,
+      anoFiltro,
+      mesFiltro
+    );
+
+    const totalEntradas = entradasParaGrafico.reduce(
+      (sum, item) => sum + item.valor,
+      0
+    );
+    const totalSaidas = saidasParaGrafico.reduce(
+      (sum, item) => sum + item.valor,
+      0
+    );
+
+    chartInstances.pieChart = new Chart(
+      document.getElementById("pieChart").getContext("2d"),
+      {
+        type: "doughnut",
+        data: {
+          labels: ["Entradas", "Saídas"],
+          datasets: [
+            {
+              data: [totalEntradas, totalSaidas],
+              backgroundColor: ["#4CAF50", "#F44336"],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.parsed !== null) {
+                    label += new Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(context.parsed);
+                  }
+                  return label;
+                },
+              },
+            },
+            legend: {
+              display: false,
+            },
+          },
+        },
+      }
+    );
+
+    const transacoesPorMes = {};
+    const allFilteredMonths = new Set();
+
+    entradasParaGrafico.forEach((item) => {
+      const date = new Date(item.data);
+      const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}`;
+      allFilteredMonths.add(monthKey);
+
+      if (!transacoesPorMes[monthKey]) {
+        transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+      }
+      transacoesPorMes[monthKey].entradas += item.valor;
+    });
+
+    saidasParaGrafico.forEach((item) => {
+      const date = new Date(item.data);
+      const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}`;
+      allFilteredMonths.add(monthKey);
+
+      if (!transacoesPorMes[monthKey]) {
+        transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+      }
+      transacoesPorMes[monthKey].saidas += item.valor;
+    });
+
+    const sortedMonthKeys = Array.from(allFilteredMonths).sort();
+
+    let saldoAcumulado = 0;
+    const saldosMensais = [];
+    const entradasMensais = [];
+    const saidasMensais = [];
+    const labelsMeses = [];
+
+    sortedMonthKeys.forEach((monthKey) => {
+      const dataMes = transacoesPorMes[monthKey] || { entradas: 0, saidas: 0 };
+      const saldoMesAtual = dataMes.entradas - dataMes.saidas;
+      saldoAcumulado += saldoMesAtual;
+
+      saldosMensais.push(saldoAcumulado);
+      entradasMensais.push(dataMes.entradas);
+      saidasMensais.push(dataMes.saidas);
+
+      const [year, month] = monthKey.split("-");
+      labelsMeses.push(
+        new Date(year, parseInt(month) - 1).toLocaleString("pt-BR", {
+          month: "short",
+          year: "2-digit",
+        })
+      );
+    });
+
+    chartInstances.lineChart = new Chart(
+      document.getElementById("lineChart").getContext("2d"),
+      {
+        type: "line",
+        data: {
+          labels: labelsMeses,
+          datasets: [
+            {
+              label: "Saldo Acumulado",
+              data: saldosMensais,
+              borderColor: "#024dae",
+              backgroundColor: "rgba(2, 77, 174, 0.2)",
+              fill: true,
+              tension: 0.1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          legend: {
+            display: false,
+          },
+        },
+      }
+    );
+
+    chartInstances.comparativeBarChart = new Chart(
+      document.getElementById("comparativeBarChart").getContext("2d"),
+      {
+        type: "bar",
+        data: {
+          labels: labelsMeses,
+          datasets: [
+            {
+              label: "Entradas",
+              data: entradasMensais,
+              backgroundColor: "#4CAF50",
+            },
+            {
+              label: "Saídas",
+              data: saidasMensais,
+              backgroundColor: "#F44336",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          legend: {
+            display: false,
+          },
+        },
+      }
+    );
+  };
+
+  renderDashboard(); // Renderiza o dashboard inicial
 });
+
+// Função para alternar a visibilidade do menu (fora do DOMContentLoaded, para ser global)
+function toggleMenu() {
+  var dropdownMenu = document.getElementById("dropdownMenu");
+  if (dropdownMenu.style.display === "block") {
+    dropdownMenu.style.display = "none";
+  } else {
+    dropdownMenu.style.display = "block";
+  }
+}
+
+// Função para fechar o menu dropdown ao clicar fora (fora do DOMContentLoaded, para ser global)
+window.onclick = function (event) {
+  if (
+    !event.target.matches(".menu-icon") &&
+    !event.target.matches(".menu-button")
+  ) {
+    var dropdowns = document.getElementsByClassName("dropdown-menu");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.style.display === "block") {
+        openDropdown.style.display = "none";
+      }
+    }
+  }
+};
