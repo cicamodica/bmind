@@ -493,7 +493,6 @@ select,
   margin-bottom: 20px;
   margin-top: -22px;
   padding-left: 42px;
-  
 }
 
 #ano-filtro {
@@ -517,14 +516,12 @@ select,
   margin-left: 15px;
   width: auto;
   padding: 8px 15px;
-
 }
 
 /*
   Estilos dos Rótulos do Seletor de Filtro
 */
 .seletor-filtro label {
-
   font-weight: 500;
 }
 
@@ -721,6 +718,45 @@ select,
   color: #f44336;
 }
 
+/* Estilos para o modal de remoção */
+.lista-transacoes-remocao {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lista-transacoes-remocao .transaction-item-remocao {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 5px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.lista-transacoes-remocao .transaction-item-remocao:last-child {
+  border-bottom: none;
+}
+
+.lista-transacoes-remocao input[type="checkbox"] {
+  margin-right: 10px;
+  min-width: 20px; /* Garante que o checkbox tenha um tamanho mínimo */
+  min-height: 20px;
+  cursor: pointer;
+}
+
+.lista-transacoes-remocao label {
+  flex-grow: 1;
+  font-size: 0.95em;
+  color: #333;
+  cursor: pointer;
+}
+
 /*
   Responsividade - Telas Grandes
 */
@@ -873,6 +909,10 @@ select,
 
   .historico-colunas {
     flex-direction: column;
+  }
+
+  .lista-transacoes-remocao {
+    width: 90%;
   }
 }
 
