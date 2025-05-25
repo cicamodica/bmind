@@ -155,6 +155,20 @@ header {
   background: #f0f0f0;
 }
 
+/* Estilo para links */
+.dropdown-menu a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #024dae;
+  color: white;
+  border-radius: 4px;
+}
+
 /* Submenus de primeiro e segundo nível */
 .has-submenu > .submenu {
   display: none;
@@ -172,13 +186,13 @@ header {
   display: block;
 }
 
-/* Submenu dentro do menu principal */
+/* Ajuste para submenu do primeiro nível dentro do menu principal */
 .dropdown-menu > ul > .has-submenu > .submenu {
   top: 0;
   left: 220px;
 }
 
-/* Submenu link */
+/* Estilo para os botões/links dos submenus */
 .submenu-btn-link {
   display: block;
   background-color: transparent;
@@ -198,60 +212,16 @@ header {
   color: white;
 }
 
-.FAQ{
-  display: block;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  padding: 8px 12px;
-  text-align: left;
-  width: 100%;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+
+
+/* Perfil, FAQ e Sair - estilo específico */
+.item-logged > a {
+  font-weight: 500;
 }
 
-.Sair{
-    display: block;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  padding: 8px 12px;
-  text-align: left;
-  width: 100%;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.perfil {
-  display: block;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  padding: 8px 12px;
-  text-align: left;
-  width: 100%;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.editar-dashboard {
-  display: block;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  padding: 8px 12px;
-  text-align: left;
-  width: 100%;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+.item-logged > a:hover {
+  background-color: #024dae;
+  color: white;
 }
 
 .escrita {

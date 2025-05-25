@@ -1,20 +1,4 @@
-//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
-document
-  .getElementById("search-button")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // evita o redirecionamento padrão
-    const termo = document.getElementById("search-bar").value.trim();
-    if (termo !== "") {
-      const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/logado/logado-pf/resultado-de-pesquisa-pf.html?q=${encodedTermo}`;
-    }
-  });
 
-//Inicio funcionalidades Menu
-function toggleMenu() {
-  const menu = document.getElementById("dropdownMenu");
-  menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
 
 // Fechar menu ao clicar fora
 window.addEventListener("click", function (e) {
@@ -49,10 +33,81 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// Função para mostrar/ocultar itens do menu conforme o perfil do usuário
+// Esta função verifica o perfil do usuário armazenado no localStorage e exibe os itens do menu correspondentes
+function mostrarMenuConformePerfil() {
+  const currentUserData = localStorage.getItem("currentUser");
+
+  const itensPF = document.querySelectorAll('.item-pf');
+  const itensPJ = document.querySelectorAll('.item-pj');
+  const itensLogado = document.querySelectorAll('.item-logged');
+  const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
+
+  if (!currentUserData) {
+    // Não logado: mostra itens "não logado", esconde outros
+    itensPF.forEach(el => el.style.display = 'none');
+    itensPJ.forEach(el => el.style.display = 'none');
+    itensLogado.forEach(el => el.style.display = 'none');
+    itensNaoLogado.forEach(el => el.style.display = 'block');
+    return;
+  }
+
+  const user = JSON.parse(currentUserData);
+
+  // Usuário logado: esconde itens de não logado
+  itensNaoLogado.forEach(el => el.style.display = 'none');
+
+  // Mostra itens comuns a todos os logados
+  itensLogado.forEach(el => el.style.display = 'block');
+
+  if (user.perfil === "Pessoa Física") {
+    itensPF.forEach(el => el.style.display = 'block');
+    itensPJ.forEach(el => el.style.display = 'none');
+  } else if (user.perfil === "Pessoa Jurídica") {
+    itensPF.forEach(el => el.style.display = 'none');
+    itensPJ.forEach(el => el.style.display = 'block');
+  } else {
+    // Caso o perfil não esteja definido, esconde ambos
+    itensPF.forEach(el => el.style.display = 'none');
+    itensPJ.forEach(el => el.style.display = 'none');
+  }
+}
+
+// Executa quando a página terminar de carregar
+document.addEventListener('DOMContentLoaded', mostrarMenuConformePerfil);
+
+//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+document
+  .getElementById("search-button")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // evita o redirecionamento padrão
+    const termo = document.getElementById("search-bar").value.trim();
+    if (termo !== "") {
+      const encodedTermo = encodeURIComponent(termo);
+      window.location.href = `/src/resultado-de-pesquisa/logado/logado-pf/resultado-de-pesquisa-pf.html?q=${encodedTermo}`;
+    }
+  });
+
+//Inicio funcionalidades Menu
+function toggleMenu() {
+  const menu = document.getElementById("dropdownMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// Fechar menu ao clicar fora
+window.addEventListener("click", function (e) {
+  const menu = document.getElementById("dropdownMenu");
+  const icon = document.querySelector(".menu-icon");
+  if (!menu.contains(e.target) && !icon.contains(e.target)) {
+    menu.style.display = "none";
+  }
+});
+
+
 // Função para delogar o usuário
 function sair() {
 window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
-}
+
   document.addEventListener("DOMContentLoaded",() => {
     const botaoSair = document.getElementById("botao-sair");
 
@@ -63,6 +118,7 @@ window.location.href = "/src/login/login.html"; // ou qualquer outra página que
       })
     }
   });
+}
   
 
 
