@@ -28,7 +28,7 @@ formLogin.addEventListener("submit", function (event) {
         formInputMessage.style.display = "none"; //Faz sumir a mensagem de erro (display = "none") enquanto os dados forem colocados forem corretos
         localStorage.setItem("usuarioLogado", inputEmail.value); //Armazena o e-mail do usuário logado no localStorage
         localStorage.setItem("currentUser", JSON.stringify(dados)); //Armazena os dados do usuário logado no localStorage
-        window.location.href = "/src/Main/Main.html"; //Redireciona o usuário para outra página (main)
+        window.location.href = "/src/Homepage.html"; //Redireciona o usuário para outra página (main)
       } else {
         //Entra nesse bloco ({}) caso os dados inseridos em e-mail e senha forem incorretos, ou seja, o e-mail digitado != "ceciliacmodica@gmail.com" e senha != 123456
         formInputMessage.textContent =
