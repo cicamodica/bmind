@@ -104,24 +104,16 @@ registrarConteudoVisto(
 );
 
 
-// Função para delogar o usuário
-function sair() {
 
- // Limpa os dados (ajuste conforme sua lógica de autenticação)
-  localStorage.removeItem("usuarioLogado");
-  localStorage.removeItem("currentUser");
+document.addEventListener('DOMContentLoaded', () => {
+  const botaoMinhaArea = document.querySelector(".minha-area-botao");
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
 
-  window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
-}
-
- //Registra o evento de clique no botão "sair"
-  document.addEventListener("DOMContentLoaded",() => {
-    const botaoSair = document.getElementById("botao-sair");
-
-    if (botaoSair) {
-      botaoSair.addEventListener("click",(e) => {
-        e.preventDefault();
-        sair() // Evita o redirecionamento padrão
-      });
+  if (botaoMinhaArea) {
+    if (usuarioLogado) {
+      botaoMinhaArea.style.display = "inline-block"; 
+    } else {
+      botaoMinhaArea.style.display = "none";
     }
-  });
+  }
+});
