@@ -118,6 +118,9 @@ header {
   font-weight: bold;              /* Deixa o texto mais forte */
   font-size: 10px;
 }
+.minha-area-botao {
+  display: none;
+}
 
 .user-actions a { /* Link para o perfil */
   color: white;
