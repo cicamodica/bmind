@@ -4,8 +4,8 @@
     <!-- Define o tipo de codificação do arquivo -->
     <meta charset="UTF-8" />
     <!-- Para ligar ao CSS -->
-    <title>Feedback - Bmind</title>
-    <link rel="stylesheet" href="/src/perfil/perfil-pf/perfil-pf.css" />
+    <title>Bmind</title>
+    <link rel="stylesheet" href="/src/perfil/perfil.css" />
     <!-- Link para o arquivo CSS externo -->
     <link
       rel="stylesheet"
@@ -174,14 +174,39 @@
       </header>
     </div>
     <!-- Conteúdo principal -->
-    <main class="conteudo-principal">
-      <!-- Seção de vistos recentemente -->
-      <section class="vistos-recentemente">
-        <h2>Vistos recentemente</h2>
-        <ul id="lista-vistos-recentemente"></ul>
-        <span id="perfil"></span>
-      </section>
+    <main >
+ <div class="perfil-container">
+    <h1>Dados do usuário</h1>
+    <p>Adicione ou altere suas informações</p>
+
+    <div class="imagem-perfil">
+    <img id="preview-img" src="/src/imagens/iconeInicialPerfil.png" alt="Imagem de perfil" class="imagem-perfil">
+  
+    <div class="upload-wrapper">
+      <label for="imagem" class="upload-label">Fazer upload de imagem</label>
+      <input type="file" id="imagem" accept="image/*" />
+      <span id="nome-arquivo">Nenhum arquivo selecionado</span>
+    </div>
+    </div>
+
+    <form id="perfil-form">
+      <label>Nome:</label>
+      <input type="text" id="nome" />
+
+      <label>Contato:</label>
+      <input type="text" id="contato" />
+
+      <label>Data de nascimento:</label>
+      <input type="text" id="data" maxlength="60" />
+
+      <label>Perfil</label>
+      <input type="text" id="perfil" maxlength="60" readonly />
+
+
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
     </main>
-    <script src="/src/perfil/perfil-pf/perfil-pf.js"></script>
+    <script src="/src/perfil/perfil.js"></script>
   </body>
 </html>

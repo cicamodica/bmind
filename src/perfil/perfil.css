@@ -267,137 +267,94 @@ header {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.conteudo {
-  padding: 20px;
+.perfil-container {
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
 }
 
-
-/* Container da lista */
-.vistos-recentemente ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
-}
-
-/* Cada item da lista */
-.item-visto {
-  width: 120px;
+h1 {
+  margin-bottom: 5px;
   text-align: center;
 }
 
-/* Link que envolve a imagem e o texto */
-.link-visto {
-  text-decoration: none;
-  color: inherit;
+p {
+text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 95%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.imagem-perfil {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.imagem-perfil img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.upload-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-/* Estiliza a imagem */
-.link-visto img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.link-visto img:hover {
-  transform: scale(1.05);
-}
-
-/* Texto abaixo da imagem */
-.link-visto p {
-  margin-top: 8px;
-  font-size: 14px;
+.upload-label {
+  background-color: #024dae;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
   font-weight: 500;
-  text-align: center;
-}
-/* Container da lista */
-.vistos-recentemente ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
+  transition: background-color 0.3s;
+  display: inline-block;
 }
 
-/* Cada item da lista */
-.item-visto {
-  width: 120px;
-  text-align: center;
+.upload-label:hover {
+  background-color: #024dae;
+  font-family: "Poppins";
 }
 
-/* Link que envolve a imagem e o texto */
-.link-visto {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#imagem {
+  display: none;
 }
 
-/* Estiliza a imagem */
-.link-visto img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-.link-visto img:hover {
-  transform: scale(1.05);
-}
-
-/* Texto abaixo da imagem */
-.link-visto p {
-  margin-top: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-}
-
-/* Container dos cards */
-#lista-conteudos-recomendados {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 0;
-  margin-top: 16px;
-}
-
-/* Card individual */
-.card-conteudo {
-  background-color: #f9f9f9;
-  border-radius: 16px;
-  padding: 16px;
-  width: 220px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
-}
-
-.card-conteudo:hover {
-  transform: translateY(-4px);
-}
-
-/* Título do card */
-.card-conteudo h3 {
-  margin: 0 0 8px 0;
-  font-size: 16px;
+#nome-arquivo {
+  font-size: 0.9rem;
   color: #333;
 }
 
-/* Descrição do card */
-.card-conteudo p {
-  margin: 0;
-  font-size: 14px;
-  color: #555;
-}
