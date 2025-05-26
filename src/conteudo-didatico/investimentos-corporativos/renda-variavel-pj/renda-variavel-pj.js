@@ -43,6 +43,22 @@ function atualizarInterfaceUsuario() {
   }
 }
 
+// verifica  se usuario esta logado para apresentar botao de minha area 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const botaoMinhaArea = document.querySelector(".minha-area-botao");
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  if (botaoMinhaArea) {
+    if (usuarioLogado) {
+      botaoMinhaArea.style.display = "inline-block"; 
+    } else {
+      botaoMinhaArea.style.display = "none";
+    }
+  }
+});
+
+
 // Executa quando a página terminar de carregar
 document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
@@ -101,3 +117,22 @@ registrarConteudoVisto(
    "src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
   "/src/imagens/RendaVariavelPJ.jpg"
 );
+
+// Função para delogar o usuário
+function sair() {
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "/src/login/login.html";
+}
+
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
+
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});
+
