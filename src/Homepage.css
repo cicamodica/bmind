@@ -127,6 +127,15 @@ header {
   text-decoration: none;
 }
 
+#login-nao-logado a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: bold; /* Deixa o texto mais forte */
+ font-size: 15px; /* Tamanho da fonte */
+
+}
+
 /* Barra de pesquisa */
 .search-container {
   position: relative;
