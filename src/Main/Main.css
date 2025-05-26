@@ -71,8 +71,13 @@ header {
 /* Estilo do icone de perfil */
 
 .user-actions {
-  font-size: 15px;
-  color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+  font-size: 29px;
+  color: white;
+ 
 }
 
 .user-actions a {
