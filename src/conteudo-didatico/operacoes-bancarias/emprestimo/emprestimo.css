@@ -87,8 +87,13 @@ header {
 
 /* Login / Cadastro */
 .user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-left: 20px;
-  font-size: 14px;
+  font-size: 29px;
+  color: white;
+ 
 }
 
 .user-actions a {

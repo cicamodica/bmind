@@ -128,15 +128,21 @@ function sair() {
   window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
 }
 
- //Registra o evento de clique no botão "sair"
-  document.addEventListener("DOMContentLoaded",() => {
-    const botaoSair = document.getElementById("botao-sair");
+// Função para delogar o usuário
+function sair() {
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "/src/login/login.html";
+}
 
-    if (botaoSair) {
-      botaoSair.addEventListener("click",(e) => {
-        e.preventDefault();
-        sair() // Evita o redirecionamento padrão
-      });
-    }
-  });
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
+
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});
 

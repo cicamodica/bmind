@@ -122,13 +122,20 @@ registrarConteudoVisto(
 
 // Função para delogar o usuário
 function sair() {
-
- // Limpa os dados (ajuste conforme sua lógica de autenticação)
   localStorage.removeItem("usuarioLogado");
-  localStorage.removeItem("currentUser");
-
-  window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
+  window.location.href = "/src/login/login.html";
 }
 
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
+
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});
 
 
