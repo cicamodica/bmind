@@ -87,14 +87,42 @@ header {
 
 /* Login / Cadastro */
 .user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-left: 20px;
-  font-size: 14px;
+  font-size: 29px;
+  color: white;
+ 
 }
 
 .user-actions a {
   color: white;
   margin: 0 5px;
   text-decoration: none;
+
+}
+
+.minha-area-botao {
+  
+ display: inline-block;           /* Para permitir padding e margin corretamente */
+  margin: 4px;                    /* Espaço externo ao redor do botão */
+  padding: 6px 12px;               /* Espaço interno (em cima/baixo e lados) */
+  background-color: #ffffff22;     /* Cor de fundo (semi-transparente aqui) */
+  color: white;                    /* Cor do texto */
+  border: 1px solid white;        /* Borda branca */
+  border-radius: 6px;             /* Cantos arredondados */
+  text-decoration: none;          /* Tira o sublinhado */
+  font-weight: bold;              /* Deixa o texto mais forte */
+  font-size: 10px;
+}
+#login-nao-logado a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: bold; /* Deixa o texto mais forte */
+ font-size: 15px; /* Tamanho da fonte */
+
 }
 
 .search-container {
