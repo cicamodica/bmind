@@ -43,6 +43,21 @@ function atualizarInterfaceUsuario() {
   }
 }
 
+// verifica  se usuario esta logado para apresentar botao de minha area 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const botaoMinhaArea = document.querySelector(".minha-area-botao");
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  if (botaoMinhaArea) {
+    if (usuarioLogado) {
+      botaoMinhaArea.style.display = "inline-block"; 
+    } else {
+      botaoMinhaArea.style.display = "none";
+    }
+  }
+});
+
 // Executa quando a página terminar de carregar
 document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
@@ -105,23 +120,19 @@ registrarConteudoVisto(
 
 // Função para delogar o usuário
 function sair() {
-
- // Limpa os dados (ajuste conforme sua lógica de autenticação)
   localStorage.removeItem("usuarioLogado");
-  localStorage.removeItem("currentUser");
-
-  window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
+  window.location.href = "/src/login/login.html";
 }
 
- //Registra o evento de clique no botão "sair"
-  document.addEventListener("DOMContentLoaded",() => {
-    const botaoSair = document.getElementById("botao-sair");
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
 
-    if (botaoSair) {
-      botaoSair.addEventListener("click",(e) => {
-        e.preventDefault();
-        sair() // Evita o redirecionamento padrão
-      });
-    }
-  });
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});
 
