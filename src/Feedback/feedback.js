@@ -92,3 +92,20 @@ document.querySelector(".submit").addEventListener("click", function () {
     }, 3000);
   }
 });
+// Função para delogar o usuário
+function sair() {
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "/src/login/login.html";
+}
+
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
+
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});
