@@ -271,6 +271,7 @@ header {
   max-width: 600px;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
   background: white;
   padding: 30px;
   border-radius: 10px;
@@ -284,12 +285,14 @@ h1 {
 
 p {
 text-align: center;
+margin-bottom: 40px;
+margin-top: 0px;
 }
 
 label {
   display: block;
-  margin-top: 15px;
-  font-weight: bold;
+  margin-top: 13px;
+  font-weight: 700;
 }
 
 input, textarea {
@@ -298,9 +301,12 @@ input, textarea {
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-family: "Poppins";
+  font-weight: 300;
+  color:#4e4d4d;
 }
 
-button {
+.save-btn {
   margin-top: 20px;
   padding: 10px 20px;
   background-color: #024dae;
@@ -308,7 +314,32 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Poppins";
   font-weight: 400;
+}
+
+.save-btn:hover {
+  background-color:#ffffff ;
+  color: #024dae;
+  border: 1px solid #024dae;
+}
+
+.cancel-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #979797;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Poppins";
+  font-weight: 400;
+}
+
+.cancel-btn:hover {
+  background-color:#ccc ;
+  color: #ffffff;
+  border: 1px solid #ccc;
 }
 
 .imagem-perfil {
@@ -317,12 +348,12 @@ button {
 }
 
 .imagem-perfil img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ccc;
-  margin-bottom: 10px;
+  border: 5px solid #ccc;
+  margin-bottom: 5px;
 }
 
 .upload-wrapper {
@@ -334,10 +365,11 @@ button {
 }
 
 .upload-label {
-  background-color: #024dae;
-  color: white;
+  background-color:#ffffff ;
+  color: #024dae;
   padding: 10px 16px;
   border-radius: 8px;
+  border: 1px solid #024dae;
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.3s;
@@ -347,6 +379,7 @@ button {
 .upload-label:hover {
   background-color: #024dae;
   font-family: "Poppins";
+  color: #ffffff;
 }
 
 #imagem {
