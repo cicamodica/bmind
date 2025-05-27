@@ -103,7 +103,7 @@ document.getElementById("imagem").addEventListener("change", function () {
   reader.readAsDataURL(this.files[0]);
 });
 
-// Salvar tudo no localStorage
+// Botão de salvar (salva tudo no localStorage)
 document.getElementById("perfil-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -124,4 +124,9 @@ document.getElementById("perfil-form").addEventListener("submit", function (e) {
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 
   alert("Dados atualizados com sucesso!");
+});
+
+  //Botão de cancelar
+  document.getElementById("cancelar").addEventListener("click", function () {
+  window.location.href = "/src/Homepage.html";
 });
