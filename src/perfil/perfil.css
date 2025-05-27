@@ -132,6 +132,7 @@ header {
   /*Estilização do logo*/
   height: 55px;
   margin-right: auto;
+  cursor: pointer;
 }
 
 /*Menu dropdown:*/

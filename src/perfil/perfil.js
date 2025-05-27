@@ -124,6 +124,9 @@ document.getElementById("perfil-form").addEventListener("submit", function (e) {
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 
   alert("Dados atualizados com sucesso!");
+
+   // Redireciona para a homepage
+  window.location.href = "/src/Homepage.html";
 });
 
   //Botão de cancelar
