@@ -98,25 +98,22 @@ window.addEventListener("click", function (e) {
 
 // Função para delogar o usuário
 function sair() {
-
- // Limpa os dados (ajuste conforme sua lógica de autenticação)
-  localStorage.removeItem("usuarioLogado");
-  localStorage.removeItem("currentUser");
-
-  window.location.href = "/src/login/login.html"; // ou qualquer outra página que queira direcionar
+  localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
+  localStorage.removeItem("currentUser"); // Remove o usuário atual
+  window.location.href = "/src/login/login.html";
 }
 
- //Registra o evento de clique no botão "sair"
-  document.addEventListener("DOMContentLoaded",() => {
-    const botaoSair = document.getElementById("botao-sair");
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
 
-    if (botaoSair) {
-      botaoSair.addEventListener("click",(e) => {
-        e.preventDefault();
-        sair() // Evita o redirecionamento padrão
-      });
-    }
-  });
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});
 
 
   
@@ -142,7 +139,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 }
 
 // Função para exibir os conteúdos vistos recentemente
-function exibirVistosRecentemente() {
+ /*function exibirVistosRecentemente() {
   const lista = document.getElementById("lista-vistos-recentemente");
   if (!lista) return;  // Evita erro se o elemento não existir na página
 
@@ -168,8 +165,70 @@ function exibirVistosRecentemente() {
     link.appendChild(texto);
     li.appendChild(link);
     lista.appendChild(li);
+  }); 
+}*/
+
+
+function registrarConteudoVisto(nome, url, imagem) {
+  const emailUsuario = localStorage.getItem("usuarioLogado");
+  if (!emailUsuario) return;
+
+  const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+
+  if (!dadosUsuario.vistosRecentemente) {
+    dadosUsuario.vistosRecentemente = [];
+  }
+
+  // Remove se já existir (baseado na URL para garantir que não repita)
+  dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.filter(item => item.url !== url);
+
+  // Adiciona no topo
+  const conteudo = { nome, url, imagem };
+  dadosUsuario.vistosRecentemente.unshift(conteudo);
+
+  // Mantém só os 3 mais recentes
+  if (dadosUsuario.vistosRecentemente.length > 3) {
+    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 3);
+  }
+
+  // Salva de volta no localStorage
+  localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
+}
+
+function exibirVistosRecentemente() {
+  const emailUsuario = localStorage.getItem("usuarioLogado");
+  if (!emailUsuario) return;
+
+  const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+  const vistos = dadosUsuario.vistosRecentemente || [];
+
+  const lista = document.getElementById("lista-vistos-recentemente");
+  if (!lista) return; 
+
+  lista.innerHTML = "";
+
+  vistos.forEach(conteudo => {
+    const li = document.createElement("li");
+    li.classList.add("item-visto");
+
+    const link = document.createElement("a");
+    link.href = conteudo.url;
+    link.classList.add("link-visto");
+
+    const img = document.createElement("img");
+    img.src = conteudo.imagem;
+    img.alt = conteudo.nome;
+
+    const texto = document.createElement("p");
+    texto.textContent = conteudo.nome;
+
+    link.appendChild(img);
+    link.appendChild(texto);
+    li.appendChild(link);
+    lista.appendChild(li);
   });
 }
+
 
 // Executa sempre para exibir
 exibirVistosRecentemente();
