@@ -35,6 +35,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+
+// verifica  se usuario esta logado para apresentar botao de minha area 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const botaoMinhaArea = document.querySelector(".minha-area-botao");
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  if (botaoMinhaArea) {
+    if (usuarioLogado) {
+      botaoMinhaArea.style.display = "inline-block"; 
+    } else {
+      botaoMinhaArea.style.display = "none";
+    }
+  }
+});
+
+
+
+
+
   // Função para abrir modais (histórico, entrada, saída, etc.)
   window.openModal = function (tipo) {
     document.getElementById("overlay").style.display = "block";
@@ -728,3 +748,21 @@ window.onclick = function (event) {
     }
   }
 };
+// Função para delogar o usuário
+function sair() {
+  localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
+  localStorage.removeItem("currentUser"); // Remove o usuário atual
+  window.location.href = "/src/login/login.html";
+}
+
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
+
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});

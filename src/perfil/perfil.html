@@ -22,8 +22,10 @@
             ><!-- ícone do menu -->
           </div>
           <div class="header-item">
-            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
-          </div>
+  <a href="/src/Homepage.html">
+    <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+  </a>
+</div>
         </div>
         <div class="center-group">
           <!-- Container da barra de pesquisa com ícone -->
@@ -173,39 +175,42 @@
         </nav>
       </header>
     </div>
+
     <!-- Conteúdo principal -->
     <main >
- <div class="perfil-container">
-    <h1>Dados do usuário</h1>
-    <p>Adicione ou altere suas informações</p>
+      <div class="perfil-container">
+          <h1>Dados do usuário</h1>
+          <p>Adicione ou altere suas informações</p>
 
-    <div class="imagem-perfil">
-    <img id="preview-img" src="/src/imagens/iconeInicialPerfil.png" alt="Imagem de perfil" class="imagem-perfil">
+        <div class="imagem-perfil">
+          <img id="preview-img" src="/src/imagens/iconeInicialPerfil.png" alt="Imagem de perfil" 
+          class="imagem-perfil">
   
-    <div class="upload-wrapper">
-      <label for="imagem" class="upload-label">Fazer upload de imagem</label>
-      <input type="file" id="imagem" accept="image/*" />
-      <span id="nome-arquivo">Nenhum arquivo selecionado</span>
-    </div>
-    </div>
+          <div class="upload-wrapper">
+            <label for="imagem" class="upload-label">Fazer upload de imagem</label>
+            <input type="file" id="imagem" accept="image/*" />
+            <span id="nome-arquivo">Nenhum arquivo selecionado</span>
+          </div>
+        </div>
 
-    <form id="perfil-form">
-      <label>Nome:</label>
-      <input type="text" id="nome" />
+        <form id="perfil-form">
+          <label>Nome:</label>
+          <input type="text" id="nome" />
 
-      <label>Contato:</label>
-      <input type="text" id="contato" />
+          <label>Contato:</label>
+          <input type="text" id="contato" />
 
-      <label>Data de nascimento:</label>
-      <input type="text" id="data" maxlength="60" />
+          <label>Data de nascimento:</label>
+          <input type="text" id="data" maxlength="60" />
 
-      <label>Perfil</label>
-      <input type="text" id="perfil" maxlength="60" readonly />
+          <label>Perfil</label>
+          <input type="text" id="perfil" maxlength="60" readonly />
 
+          <button class="save-btn" type="submit">Salvar</button>
+          <button class="cancel-btn" type="button" id="cancelar">Cancelar</button>
+        </form>
 
-      <button type="submit">Salvar</button>
-    </form>
-  </div>
+      </div>
     </main>
     <script src="/src/perfil/perfil.js"></script>
   </body>
