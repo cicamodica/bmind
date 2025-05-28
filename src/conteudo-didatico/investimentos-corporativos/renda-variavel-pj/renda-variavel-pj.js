@@ -114,7 +114,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 
 registrarConteudoVisto(
   "Renda Variavel",
-   "src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
+   "/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
   "/src/imagens/RendaVariavelPJ.jpg"
 );
 

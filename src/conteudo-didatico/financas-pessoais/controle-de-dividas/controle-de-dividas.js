@@ -110,7 +110,7 @@ function registrarConteudoVisto(nomeConteudo, url, imagem) {
 }
 registrarConteudoVisto(
   "Controle de Dívidas",
-   "/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html",
+  "/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html",
   "/src/imagens/ControleDeDividas.jpg"
 );
 

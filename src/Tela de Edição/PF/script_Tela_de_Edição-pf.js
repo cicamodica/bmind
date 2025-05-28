@@ -533,6 +533,14 @@ document.addEventListener("DOMContentLoaded", function () {
             (sum, item) => sum + item.valor,
             0
         );
+        
+        //add para localStorage
+        const chartData = {
+            entradas: totalEntradas,
+            saidas: totalSaidas,
+        };
+
+        localStorage.setItem("chartData",JSON.stringify(chartData));
 
         chartInstances.pieChart = new Chart(
             document.getElementById("pieChart").getContext("2d"),

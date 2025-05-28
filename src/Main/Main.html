@@ -11,6 +11,7 @@
       src="https://kit.fontawesome.com/1691cc7750.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -108,7 +109,7 @@
                      <a href="/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
                         onclick="registrarConteudoVisto('Análise de Balanço',
                         '/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html',
-                        '/src/imagens/AnaliseBalanco.jpg' )">
+                        '/src/imagens/AnaliseDeBalancos.jpg')"> 
                         Análise de Balanços
                       </a>
                    </li>
@@ -116,7 +117,7 @@
                      <a href="/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
                         onclick="registrarConteudoVisto('Fluxo de Caixa',
                         '/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html',
-                        '/src/imagens/FluxoCaixa.jpg' )">
+                        '/src/imagens/FluxoDeCaixa.jpg')">
                         Fluxo de Caixa
                       </a>
                    </li>
@@ -272,6 +273,24 @@
 
     <!-- Conteúdo principal -->
     <main class="conteudo-principal">
+      <!-- Nova seção: Dashboard -->
+     <section class="conteudo-horizontal">
+       <div class="chart-container">
+         <canvas id="pieChart"></canvas>
+       </div>
+
+       <div class="info-container">
+         <div id="resumo-valores"></div>
+       </div>
+       <div id="historico-cadastros" style="margin-top: 2rem;">
+         <!-- Histórico dos cadastros -->
+       </div>
+
+       <div class="error-message" id="error-message"></div>
+     </section>
+
+     
+
       <!-- Seção de vistos recentemente -->
       <section class="vistos-recentemente">
         <h2>Vistos recentemente</h2>
@@ -287,5 +306,6 @@
 
     <!-- Importa o JavaScript -->
     <script src="/src/Main/Main.js"></script>
+    <script src="/src/Tela de Edição/PF/script_Tela_de_Edição-pf.js"></script>
   </body>
 </html>

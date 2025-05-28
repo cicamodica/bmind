@@ -114,7 +114,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 
 registrarConteudoVisto(
   "Fundo de Investimentos",
-  "/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html",
+  "/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
   "/src/imagens/FundoInvestimentosPF.jpg"
 );
 // Função para delogar o usuário

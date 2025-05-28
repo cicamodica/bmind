@@ -32,10 +32,12 @@
 
 /* Estilo base */
 body {
-  margin: 0;
+  margin:0;
   font-family: "Poppins";
   background-color: #fff;
   color: #000;
+  overflow-x: hidden;
+ 
 }
 
 header {
@@ -251,12 +253,74 @@ header {
   color: #004aad;
   font-size: 24px;
   font-weight: 500;
+  margin-left: 10px;
 }
 
-.conteudo {
+.conteudo-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+/* Gráfico */
+.chart-container {
+  width: 400px;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Resumo financeiro */
+.info-container {
+  width: 300px;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+#resumo-valores h3 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #222;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+#resumo-valores p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+#resumo-valores strong {
+  display: inline-block;
+  width: 90px;
+}
+
+.entrada {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.saida {
+  color: #F44336;
+  font-weight: bold;
+}
+
+.vistos-recentemente h2 {
+  /* Estilização do container da lista de conteúdos vistos recentemente */
+  margin-left: 30px;
+  max-width: 100%;
   padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
 
 /* Container da lista */
 .vistos-recentemente ul {
@@ -264,7 +328,7 @@ header {
   gap: 20px;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-left: 30px;
   flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
 }
 
@@ -310,7 +374,7 @@ header {
   gap: 20px;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-left: 30px;
   flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
 }
 
@@ -358,6 +422,7 @@ header {
   flex-wrap: wrap;
   padding: 0;
   margin-top: 16px;
+  margin-left: 30px;
 }
 
 /* Card individual */

@@ -230,3 +230,71 @@ function exibirConteudoRecomendados() {
 }
 // Chama a função para exibir os conteúdos recomendados
 exibirConteudoRecomendados();
+
+const savedData = JSON.parse(localStorage.getItem("chartData"));
+
+        if (savedData) {
+            const totalEntradas = savedData.entradas;
+            const totalSaidas = savedData.saidas;
+
+            new Chart(
+                document.getElementById("pieChart").getContext("2d"),
+                {
+                    type: "doughnut",
+                    data: {
+                        labels: ["Entradas", "Saídas"],
+                        datasets: [
+                            {
+                                data: [totalEntradas, totalSaidas],
+                                backgroundColor: ["#4CAF50", "#F44336"],
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function (context) {
+                                        let label = context.label || "";
+                                        if (label) {
+                                            label += ": ";
+                                        }
+                                        if (context.parsed !== null) {
+                                            label += new Intl.NumberFormat("pt-BR", {
+                                                style: "currency",
+                                                currency: "BRL",
+                                            }).format(context.parsed);
+                                        }
+                                        return label;
+                                    },
+                                },
+                            },
+                            legend: {
+                                display: false,
+                            },
+                        },
+                    }
+                }
+            );
+        } else {
+            document.body.innerHTML += "<p>Sem dados para exibir o gráfico.</p>";
+        }
+
+
+ document.addEventListener("DOMContentLoaded", function () {
+    const savedData = { entradas: 1500, saidas: 800 };
+    exibirResumoEntradasSaidas(savedData.entradas, savedData.saidas);
+  });
+
+  function exibirResumoEntradasSaidas(entradas, saidas) {
+    const resumoContainer = document.getElementById("resumo-valores");
+
+    resumoContainer.innerHTML = `
+      <h3>Resumo Financeiro</h3>
+      <p><strong>Entradas:</strong> <span class="entrada">R$ ${entradas.toFixed(2)}</span></p>
+      <p><strong>Saídas:</strong> <span class="saida">R$ ${saidas.toFixed(2)}</span></p>
+    `;
+  }
+exibirResumoEntradasSaidas(totalEntradas, totalSaidas);

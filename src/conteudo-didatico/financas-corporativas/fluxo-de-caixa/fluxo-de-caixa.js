@@ -114,8 +114,8 @@ function registrarConteudoVisto(nome, url, imagem) {
 
 registrarConteudoVisto(
   "Fluxo de Caixa",
-  "src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
-  "/src/imagens/FluxoDeCaixa.jpgg"
+  "/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
+  "/src/imagens/FluxoDeCaixa.jpg"
 );
 
 // Função para delogar o usuário

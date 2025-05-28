@@ -114,7 +114,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 
 registrarConteudoVisto(
   "Análise de Balanço",
-   "src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
+  "/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
   "/src/imagens/AnaliseDeBalancos.jpg"
 );
 
