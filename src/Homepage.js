@@ -117,8 +117,8 @@ window.addEventListener("click", function (e) {
 
 // Função para delogar o usuário
 function sair() {
-  localStorage.removeItem("usuarioLogado");
-  localStorage.removeItem("currentUser");
+  localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
+  localStorage.removeItem("currentUser"); // Remove o usuário atual
   window.location.href = "/src/login/login.html";
 }
 
