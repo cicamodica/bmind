@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 
-/// Função para registrar um conteúdo como recentemente visto
+/*/// Função para registrar um conteúdo como recentemente visto
 function registrarConteudoVisto(nome, url, imagem) {
   let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
 
@@ -136,7 +136,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   }
 
   localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
-}
+} 
 
 // Função para exibir os conteúdos vistos recentemente
  /*function exibirVistosRecentemente() {
