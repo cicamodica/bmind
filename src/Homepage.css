@@ -52,6 +52,7 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: #fff;
   color: #000;
+  overflow-x: hidden;
 }
 
 /* Header (barra superior) */
