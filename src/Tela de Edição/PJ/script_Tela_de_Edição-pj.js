@@ -10,6 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+  document
+    .getElementById("search-button")
+    .addEventListener("click", function (event) {
+      event.preventDefault(); // evita o redirecionamento padrão
+      const termo = document.getElementById("search-bar").value.trim();
+      if (termo !== "") {
+        const encodedTermo = encodeURIComponent(termo);
+        window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+      }
+    });
+
   // Chamar a função para carregar o nome do usuário ao carregar a página
   loadUserName();
 
@@ -35,25 +47,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // verifica  se usuario esta logado para apresentar botao de minha area
 
-// verifica  se usuario esta logado para apresentar botao de minha area 
+  document.addEventListener("DOMContentLoaded", () => {
+    const botaoMinhaArea = document.querySelector(".minha-area-botao");
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const botaoMinhaArea = document.querySelector(".minha-area-botao");
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
-
-  if (botaoMinhaArea) {
-    if (usuarioLogado) {
-      botaoMinhaArea.style.display = "inline-block"; 
-    } else {
-      botaoMinhaArea.style.display = "none";
+    if (botaoMinhaArea) {
+      if (usuarioLogado) {
+        botaoMinhaArea.style.display = "inline-block";
+      } else {
+        botaoMinhaArea.style.display = "none";
+      }
     }
-  }
-});
-
-
-
-
+  });
 
   // Função para abrir modais (histórico, entrada, saída, etc.)
   window.openModal = function (tipo) {
@@ -132,8 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const valorInput = document.getElementById("entrada-valor");
     const categoriaSelect = document.getElementById("entrada-categoria");
     const descricaoInput = document.getElementById("entrada-descricao");
-    const recorrenteSim =
-      document.getElementById("entrada-recorrente-sim").checked;
+    const recorrenteSim = document.getElementById(
+      "entrada-recorrente-sim"
+    ).checked;
     const frequenciaSelect = document.getElementById("entrada-frequencia");
 
     if (!dataInput.value || !valorInput.value) {
@@ -164,8 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const valorInput = document.getElementById("saida-valor");
     const categoriaSelect = document.getElementById("saida-categoria");
     const descricaoInput = document.getElementById("saida-descricao");
-    const recorrenteSim =
-      document.getElementById("saida-recorrente-sim").checked;
+    const recorrenteSim = document.getElementById(
+      "saida-recorrente-sim"
+    ).checked;
     const frequenciaSelect = document.getElementById("saida-frequencia");
 
     if (!dataInput.value || !valorInput.value) {
@@ -344,7 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentAnoFilter = historicoAnoFiltroSelect.value;
     const currentMesFilter = historicoMesFiltroSelect.value;
 
-    historicoAnoFiltroSelect.innerHTML = '<option value="">Todos os Anos</option>';
+    historicoAnoFiltroSelect.innerHTML =
+      '<option value="">Todos os Anos</option>';
     sortedYears.forEach((year) => {
       const option = document.createElement("option");
       option.value = year;
