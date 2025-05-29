@@ -312,6 +312,21 @@ header {
   font-weight: bold;
 }
 
+#btn-cadastrar {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff; /* azul */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#btn-cadastrar:hover {
+  background-color: #0056b3;
+}
+
 .vistos-recentemente h2 {
   /* Estilização do container da lista de conteúdos vistos recentemente */
   margin-left: 30px;
@@ -416,6 +431,15 @@ header {
 }
 
 /* Container dos cards */
+.conteudo-recomendados{
+  /* Estilização do container da lista de conteúdos vistos recentemente */
+  margin-left: 30px;
+  max-width: 100%;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
 #lista-conteudos-recomendados {
   display: flex;
   gap: 20px;
