@@ -174,7 +174,7 @@ const conteudos = [
   {
     titulo: "Cartão de Crédito",
     link: "/src/conteudo-didatico/Não Logado/operacoes-bancarias-nl/Cartaodecredito-nl/CartaodeCredito-nl.html",
-    imagem: "/src/imagens/CartaodeCredito.webp",
+    imagem: "/src/imagens/CartaodeCredito.png",
     palavrasChave: [
       "cartão",
       "crédito",
@@ -198,7 +198,7 @@ const conteudos = [
   {
     titulo: "Empréstimo",
     link: "/src/conteudo-didatico/Não Logado/Emprestimo-nl/Emprestimo-nl.html",
-    imagem: "/src/imagens/Emprestimo2.jpg",
+    imagem: "/src/imagens/Emprestimos.jpg",
     palavrasChave: [
       "empréstimo",
       "operações",
@@ -310,7 +310,7 @@ const conteudos = [
   {
     titulo: "Renda Variável PF",
     link: "/src/conteudo-didatico/Não Logado/investimentos-pessoais-nl/renda-variavel-pf-nl/renda-variavel-pf-nl.html",
-    imagem: "/src/imagens/RendaVariavelPJ.jpg",
+    imagem: "/src/imagens/RendaVariavelPFsub.jpg",
     palavrasChave: [
       "renda",
       "variável",
@@ -354,7 +354,7 @@ const conteudos = [
   {
     titulo: "Fundos de Investimento PF",
     link: "/src/conteudo-didatico/Não Logado/investimentos-pessoais-nl/fundo-de-investimentos-pf-nl/fundo-de-investimentos-pf-nl.html",
-    imagem: "/src/imagens/FundosDeInvestimento.jpg",
+    imagem: "/src/imagens/FundoInvestimentosPF.jpg",
     palavrasChave: [
       "fundos",
       "investimento",
@@ -376,7 +376,7 @@ const conteudos = [
   {
     titulo: "Fundos de Investimento PJ",
     link: "/src/conteudo-didatico/Não Logado/investimentos-corporativos-nl/fundo-de-investimentos-pj-nl/fundo-de-investimentos-pj-nl.html",
-    imagem: "/src/imagens/FundosDeInvestimento.jpg",
+    imagem: "/src/imagens/FundosDeInvestimentoPJ.jpg",
     palavrasChave: [
       "fundos",
       "investimento",
