@@ -59,10 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
 // Executa quando a página terminar de carregar
 document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
 
@@ -86,8 +82,6 @@ function registrarConteudoVisto(nome, url, imagem) {
 }
 
 
-
-    
 //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
 document
   .getElementById("search-button")
@@ -96,7 +90,7 @@ document
     const termo = document.getElementById("search-bar").value.trim();
     if (termo !== "") {
       const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/nao-logado/resultado-de-pesquisa-nl.html?q=${encodedTermo}`;
+      window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
     }
   });
 

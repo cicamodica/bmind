@@ -68,7 +68,7 @@ document
     const termo = document.getElementById("search-bar").value.trim();
     if (termo !== "") {
       const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/nao-logado/resultado-de-pesquisa-nl.html?q=${encodedTermo}`;
+      window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
     }
   });
 
