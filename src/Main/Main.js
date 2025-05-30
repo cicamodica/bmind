@@ -93,7 +93,7 @@ document
     const termo = document.getElementById("search-bar").value.trim();
     if (termo !== "") {
       const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/logado/logado-pf/resultado-de-pesquisa-pf.html?q=${encodedTermo}`;
+      window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
     }
   });
 
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
 
-/// Função para registrar um conteúdo como recentemente visto
+/*/// Função para registrar um conteúdo como recentemente visto
 function registrarConteudoVisto(nome, url, imagem) {
   let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
 
@@ -153,7 +153,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   }
 
   localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
-}
+} 
 
 // Função para exibir os conteúdos vistos recentemente
  /*function exibirVistosRecentemente() {
