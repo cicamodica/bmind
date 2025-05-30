@@ -556,6 +556,22 @@ document.addEventListener('DOMContentLoaded', () => {
       0
     );
 
+    // Salvar dados do gráfico no localStorage, dentro do objeto do usuário logado
+    const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+
+    if (emailUsuarioLogado) {
+      const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+
+      if (dadosDoUsuario) {
+        dadosDoUsuario.chartData = {
+          entradas: totalEntradas,
+          saidas: totalSaidas
+      };
+
+        localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
+     }  
+    }
+    
     chartInstances.pieChart = new Chart(
       document.getElementById("pieChart").getContext("2d"),
       {

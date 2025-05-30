@@ -276,18 +276,26 @@
       <!-- Nova seção: Dashboard -->
      <section class="conteudo-horizontal">
        <div class="chart-container">
-         <canvas id="pieChart"></canvas>
+         <canvas id="pieChartMain"></canvas>
        </div>
 
-       <div class="info-container">
-         <div id="resumo-valores"></div>
+       <div id="painel-lateral">
+         <div id="resumo-financeiro">
+           <h3>Resumo Financeiro</h3>
+           <p><strong>Total de Entradas:</strong> <span id="resumo-entradas">R$ 0,00</span></p>
+           <p><strong>Total de Saídas:</strong> <span id="resumo-saidas">R$ 0,00</span></p>
+         </div>
+
+         <div id="historico-mensal">
+           <h3>Histórico do Mês</h3>
+           <div id="lista-historico"></div>
+         </div>
        </div>
-       <button id="btn-cadastrar" onclick="window.location.href='/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html'">
-                   Cadastrar Novo Registro
-       </button>
-       <div id="historico-cadastros" style="margin-top: 2rem;">
-         <!-- Histórico dos cadastros -->
-       </div>
+       
+       <button id="btn-cadastrar" onclick="redirecionarCadastro()">
+          Cadastrar Novo Registro
+       </button> 
+
 
        <div class="error-message" id="error-message"></div>
      </section>

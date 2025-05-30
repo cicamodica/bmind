@@ -20,6 +20,23 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+function redirecionarCadastro() {
+        const usuarioLogado = localStorage.getItem("usuarioLogado");
+        const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+        if (dadosDoUsuario && dadosDoUsuario.perfil) {
+            if (dadosDoUsuario.perfil === "Pessoa Física") {
+                window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+            } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+                window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
+            } else {
+                alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
+            }
+        } else {
+            alert("Usuário não logado ou dados do usuário inválidos.");
+          }
+}
+
 function atualizarInterfaceUsuario() {
   const usuarioLogado = localStorage.getItem("usuarioLogado");
   const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
@@ -290,70 +307,123 @@ function exibirConteudoRecomendados() {
 // Chama a função para exibir os conteúdos recomendados
 exibirConteudoRecomendados();
 
-const savedData = JSON.parse(localStorage.getItem("chartData"));
+window.renderMainPieChart = function () {
+    const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
 
-        if (savedData) {
-            const totalEntradas = savedData.entradas;
-            const totalSaidas = savedData.saidas;
+    if (!emailUsuarioLogado) {
+        alert("Usuário não está logado.");
+        return;
+    }
 
-            new Chart(
-                document.getElementById("pieChart").getContext("2d"),
+    const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+
+    if (!dadosDoUsuario || !dadosDoUsuario.perfil) {
+        alert("Dados do usuário inválidos ou incompletos.");
+        return;
+    }
+
+    const chartData = dadosDoUsuario.chartData;
+
+    if (!chartData || typeof chartData.entradas !== "number" || typeof chartData.saidas !== "number") {
+        alert("Dados do gráfico não encontrados para este usuário.");
+        return;
+    }
+
+    // Agora renderiza o gráfico de acordo com o perfil (PF ou PJ)
+    const perfil = dadosDoUsuario.perfil;
+
+    if (perfil !== "Pessoa Física" && perfil !== "Pessoa Jurídica") {
+        alert("Perfil de usuário desconhecido.");
+        return;
+    }
+
+    const ctx = document.getElementById("pieChartMain").getContext("2d");
+
+    new Chart(ctx, {
+        type: "doughnut",
+        data: {
+            labels: ["Entradas", "Saídas"],
+            datasets: [
                 {
-                    type: "doughnut",
-                    data: {
-                        labels: ["Entradas", "Saídas"],
-                        datasets: [
-                            {
-                                data: [totalEntradas, totalSaidas],
-                                backgroundColor: ["#4CAF50", "#F44336"],
-                            },
-                        ],
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            tooltip: {
-                                callbacks: {
-                                    label: function (context) {
-                                        let label = context.label || "";
-                                        if (label) {
-                                            label += ": ";
-                                        }
-                                        if (context.parsed !== null) {
-                                            label += new Intl.NumberFormat("pt-BR", {
-                                                style: "currency",
-                                                currency: "BRL",
-                                            }).format(context.parsed);
-                                        }
-                                        return label;
-                                    },
-                                },
-                            },
-                            legend: {
-                                display: false,
-                            },
+                    data: [chartData.entradas, chartData.saidas],
+                    backgroundColor: ["#4CAF50", "#F44336"],
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            let label = context.label || "";
+                            if (label) label += ": ";
+                            if (context.parsed !== null) {
+                                label += new Intl.NumberFormat("pt-BR", {
+                                    style: "currency",
+                                    currency: "BRL",
+                                }).format(context.parsed);
+                            }
+                            return label;
                         },
-                    }
-                }
-            );
-        } else {
-            document.body.innerHTML += "<p>Sem dados para exibir o gráfico.</p>";
-        }
+                    },
+                },
+                legend: {
+                    display: false,
+                },
+            },
+        },
+    });
+    // Atualiza o resumo financeiro
+    document.getElementById("resumo-entradas").textContent = new Intl.NumberFormat("pt-BR", {
+       style: "currency",
+       currency: "BRL"
+    }).format(chartData.entradas);
+
+    document.getElementById("resumo-saidas").textContent = new Intl.NumberFormat("pt-BR", {
+       style: "currency",
+       currency: "BRL"
+    }).format(chartData.saidas);
+
+    // FILTRAR histórico do mês atual e exibir
+    const now = new Date();
+    const anoAtual = now.getFullYear();
+    const mesAtual = now.getMonth(); // 0-indexado
+
+    const historicoDoMes = [...(dadosDoUsuario.entradas || []), ...(dadosDoUsuario.saidas || [])]
+       .filter(item => {
+         const data = new Date(item.data);
+         return data.getFullYear() === anoAtual && data.getMonth() === mesAtual;
+       })
+       .sort((a, b) => new Date(b.data) - new Date(a.data)); // mais recentes primeiro
+
+    const lista = document.getElementById("lista-historico");
+    lista.innerHTML = ""; // limpar antes
+
+    if (historicoDoMes.length === 0) {
+      lista.innerHTML = "<p>Sem transações neste mês.</p>";
+    } else {
+      historicoDoMes.forEach((item) => {
+        const div = document.createElement("div");
+        div.classList.add("transacao-item");
+        div.classList.add(item.tipo === "entrada" ? "transacao-entrada" : "transacao-saida");
+
+        div.textContent = `${new Date(item.data).toLocaleDateString("pt-BR")} - ${
+         item.tipo === "entrada" ? "Entrada" : "Saída"
+        }: ${new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: "BRL"
+        }).format(item.valor)} - ${item.descricao || "Sem descrição"}`;
+
+        lista.appendChild(div);
+      });
+   }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+   renderMainPieChart();
+});
 
 
- document.addEventListener("DOMContentLoaded", function () {
-    const savedData = { entradas: 1500, saidas: 800 };
-    exibirResumoEntradasSaidas(savedData.entradas, savedData.saidas);
-  });
-
-  function exibirResumoEntradasSaidas(entradas, saidas) {
-    const resumoContainer = document.getElementById("resumo-valores");
-
-    resumoContainer.innerHTML = `
-      <h3>Resumo Financeiro</h3>
-      <p><strong>Entradas:</strong> <span class="entrada">R$ ${entradas.toFixed(2)}</span></p>
-      <p><strong>Saídas:</strong> <span class="saida">R$ ${saidas.toFixed(2)}</span></p>
-    `;
-  }
-exibirResumoEntradasSaidas(totalEntradas, totalSaidas);
+ 

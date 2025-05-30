@@ -549,13 +549,28 @@ document.addEventListener('DOMContentLoaded', () => {
             0
         );
         
-        //add para localStorage
-        const chartData = {
-            entradas: totalEntradas,
-            saidas: totalSaidas,
-        };
+        // Armazena os dados do gráfico + transações no localStorage por usuário logado
+        const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
 
-        localStorage.setItem("chartData",JSON.stringify(chartData));
+        if (emailUsuarioLogado) {
+           const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+
+           if (dadosDoUsuario) {
+               dadosDoUsuario.chartData = {
+                   entradas: totalEntradas,
+                   saidas: totalSaidas
+            };
+
+           // Adiciona as transações detalhadas que serão usadas para o histórico
+           dadosDoUsuario.entradas = entradasParaGrafico;
+           dadosDoUsuario.saidas = saidasParaGrafico;
+
+           localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
+          }
+       }
+
+
+        
 
         chartInstances.pieChart = new Chart(
             document.getElementById("pieChart").getContext("2d"),
@@ -722,7 +737,68 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     renderDashboard();
+    exibirHistoricoDoMesAtual();
 });
+
+
+function exibirHistoricoDoMesAtual() {
+    const listaHistorico = document.getElementById("lista-historico");
+    if (!listaHistorico) return;
+
+    listaHistorico.innerHTML = "";
+
+    const { entradas, saidas } = getFinancialData();
+    const entradasExpandidas = expandRecurringTransactions(entradas);
+    const saidasExpandidas = expandRecurringTransactions(saidas);
+
+    const hoje = new Date();
+    const anoAtual = hoje.getFullYear().toString();
+    const mesAtual = (hoje.getMonth() + 1).toString().padStart(2, "0");
+
+    const entradasMes = filterTransactions(entradasExpandidas, anoAtual, mesAtual);
+    const saidasMes = filterTransactions(saidasExpandidas, anoAtual, mesAtual);
+
+    const todasTransacoes = [
+        ...entradasMes.map(transacao => ({ ...transacao, tipo: "Entrada" })),
+        ...saidasMes.map(transacao => ({ ...transacao, tipo: "Saída" }))
+    ];
+
+    // Ordena tudo junto
+    todasTransacoes.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    function criarItemLista(item) {
+        const li = document.createElement("div");
+        li.className = "item-historico";
+
+        const data = new Date(item.data).toLocaleDateString("pt-BR");
+        const valor = new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(item.valor);
+
+        const cor = item.tipo === "Entrada" ? "green" : "red";
+
+        li.style.borderLeft = `4px solid ${cor}`;
+        li.style.padding = "8px";
+        li.style.marginBottom = "8px";
+        li.style.backgroundColor = "#f9f9f9";
+
+        li.innerHTML = `
+            <span style="color:${cor};">${data} - ${item.tipo}: ${valor} - ${item.categoria}</span>
+        `;
+
+        return li;
+    }
+
+    if (todasTransacoes.length === 0) {
+        const vazio = document.createElement("div");
+        vazio.textContent = "Sem movimentações neste mês.";
+        listaHistorico.appendChild(vazio);
+    } else {
+        todasTransacoes.forEach(item => listaHistorico.appendChild(criarItemLista(item)));
+    }
+}
+
 
 function toggleMenu() {
     var dropdownMenu = document.getElementById("dropdownMenu");
