@@ -284,7 +284,7 @@ header {
   font-weight: 500;
 }
 
-.imagem {
+.imagem-fundo-PJ {
   /*Estilização da imagem no posicionamento na página*/
   float: center;
   margin-top: -30px;
@@ -292,7 +292,7 @@ header {
   align-content: center;
 }
 
-.imagem-balanco img {
+.imagem-fundo-PJ img {
   /*Estilização da imagem*/
   position: relative;
   height: 640px;

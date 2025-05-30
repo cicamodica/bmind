@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const voltar = document.getElementById("botao-voltar");
+  if (voltar) {
+    voltar.addEventListener("click", () => {
+      history.back();
+    });
+  }
+});
+
 function atualizarInterfaceUsuario() {
   const usuarioLogado = localStorage.getItem("usuarioLogado");
   const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;

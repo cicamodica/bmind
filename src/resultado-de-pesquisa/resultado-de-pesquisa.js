@@ -335,7 +335,7 @@ const conteudos = [
     titulo: "Renda Fixa PF",
     perfil: "Pessoa Física",
     link: "/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html",
-    imagem: "/src/imagens/RendaFixaPJ.jpg",
+    imagem: "/src/imagens/RendaFixaPF.jpg",
     palavrasChave: [
       "renda",
       "fixa",

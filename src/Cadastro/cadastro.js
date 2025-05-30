@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const voltar = document.getElementById("botao-voltar");
+  if (voltar) {
+    voltar.addEventListener("click", () => {
+      history.back();
+    });
+  }
+});
+
 // Evento de envio do formulário
 document
   .getElementById("form-cadastro")

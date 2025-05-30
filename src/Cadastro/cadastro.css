@@ -84,6 +84,7 @@ body {
   /* Setinha de voltar */
   font-size: 35px;
   color: #ffffff;
+  cursor: pointer;
 }
 
 .cadastro {
