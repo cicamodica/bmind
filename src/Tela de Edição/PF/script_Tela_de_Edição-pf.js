@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     saveFinancialData(data);
 
     closeModal();
-  };
+    };
 
   // Função para abrir o modal de remoção
   window.openRemoveModal = function () {
@@ -563,13 +563,36 @@ document.addEventListener("DOMContentLoaded", function () {
             0
         );
         
-        //add para localStorage
-        const chartData = {
-            entradas: totalEntradas,
-            saidas: totalSaidas,
-        };
+        
+        // Salvar dados no localStorage, dentro do objeto do usuário logado
+        const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
 
-        localStorage.setItem("chartData",JSON.stringify(chartData));
+        if (emailUsuarioLogado) {
+          const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+
+          if (dadosDoUsuario) {
+             dadosDoUsuario.chartData = {
+                entradas: totalEntradas,
+                saidas: totalSaidas
+           };
+
+           // Salvar também as transações filtradas do mês atual com tipo padronizado
+           dadosDoUsuario.entradas = entradasParaGrafico.map(t => ({
+             ...t,
+             tipo: "entrada",
+             descricao: t.categoria // opcional: manter para exibição posterior
+           }));
+
+           dadosDoUsuario.saidas = saidasParaGrafico.map(t => ({
+           ...t,
+           tipo: "saida",
+           descricao: t.categoria
+       }));
+
+       localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
+       }
+    } 
+
 
     chartInstances.pieChart = new Chart(
       document.getElementById("pieChart").getContext("2d"),
@@ -736,7 +759,18 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
     renderDashboard();
+    exibirHistoricoDoMesAtual();
 });
+
+function filtrarTransacoesValidas(transacoes) {
+  return transacoes.filter(t =>
+    t &&
+    t.id &&
+    t.data &&
+    t.valor > 0 &&
+    t.categoria // pode manter essa se todas têm
+  );
+}
 
 
 function exibirHistoricoDoMesAtual() {
@@ -746,8 +780,12 @@ function exibirHistoricoDoMesAtual() {
     listaHistorico.innerHTML = "";
 
     const { entradas, saidas } = getFinancialData();
-    const entradasExpandidas = expandRecurringTransactions(entradas);
-    const saidasExpandidas = expandRecurringTransactions(saidas);
+
+    const entradasValidas = filtrarTransacoesValidas(entradas);
+    const saidasValidas = filtrarTransacoesValidas(saidas);
+
+    const entradasExpandidas = expandRecurringTransactions(entradasValidas);
+    const saidasExpandidas = expandRecurringTransactions(saidasValidas);
 
     const hoje = new Date();
     const anoAtual = hoje.getFullYear().toString();
