@@ -18,7 +18,7 @@
     <div class="header">
       <header>
         <div class="left-group">
-          <a class="header-link" href="/src/main/Main.html">
+          <a id="botao-voltar" class="header-link">
             <i class="fa-regular fa-circle-left header-icon"></i>
             <!--A tag <i> é usada para marcar conteúdo que tem ênfase ou significado diferenciado, neste caso, um ícone-->
           </a>
@@ -28,20 +28,34 @@
         </div>
         <div class="center-group">
           <!-- Barra de pesquisa -->
-      <div class="search-container">
-        <input
-          type="text"
-          id="search-bar"
-          placeholder="Pesquisar..."
-          class="search-bar"
-        /><a class="search-button" id="search-button" href="#"
-          ><i class="fa-solid fa-magnifying-glass search-icon"></i>
-        </a>
-      </div>
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            /><a class="search-button" id="search-button" href="#"
+              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
         </div>
         <div class="right-group">
+          <!-- botões login e cadastrar -->
+          <div class="user-actions" id="login-nao-logado">
+            <a href="/src/login/login.html">Fazer login</a>
+            <span>|</span>
+            <a href="/src/cadastro/cadastro.html">Cadastrar-se</a>
+          </div>
+
+          <div class="user-area">
+            <!-- Área do usuário -->
+            <a href="/src/Main/Main.html" class="minha-area-botao"
+              >Minha Área</a
+            >
+          </div>
+
           <!-- Ícone de usuário -->
-          <div class="user-actions">
+          <div class="user-actions" id="perfil-logado">
             <a href="/src/perfil/perfil.html">
               <i class="fa-regular fa-circle-user"></i>
             </a>
