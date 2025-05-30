@@ -120,12 +120,6 @@ function registrarConteudoVisto(nome, url, imagem) {
   localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
 } */
 
-registrarConteudoVisto(
-  "Taxas e Tarifas",
-  "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html",
-  "/src/imagens/Tarifasetaxas.webp"
-);
-
 function registrarConteudoVisto(nome, url, imagem) {
   const emailUsuario = localStorage.getItem("usuarioLogado");
   if (!emailUsuario) return;
@@ -151,6 +145,12 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
+
+registrarConteudoVisto(
+  "Taxas e Tarifas",
+  "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html",
+  "/src/imagens/Tarifasetaxas.webp"
+);
 
 
 // Função para delogar o usuário

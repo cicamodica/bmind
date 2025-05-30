@@ -133,9 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-  
-
-
 /*/// Função para registrar um conteúdo como recentemente visto
 function registrarConteudoVisto(nome, url, imagem) {
   let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
