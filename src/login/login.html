@@ -70,9 +70,7 @@
 
         <div class="form-input p-top-5">
           <!-- Mensagem de dados incorretos-->
-          <span id="form-input-message" class="form-input-message"
-            ></span
-          >
+          <span id="form-input-message" class="form-input-message"></span>
         </div>
 
         <div class="form-input">
@@ -84,11 +82,15 @@
           <!--LINK (redirecionamento de página): tag <a> = "anchor"; O atributo href="/src/index.html" define o destino do link; "/src/index.html" é a referência dentro do site.-->
         </div>
 
-        <div
-          class="g-recaptcha"
-          data-sitekey="6LeDRyMrAAAAAORZW5Lb5TeH-GGNpdx-g1n0zS-R"
-        ></div>
-        <!--Chave do RECAPTCHA disponibilizada pelo google (sem verificação de domínio)-->
+        <div class="recaptcha-outer">
+          <div class="recaptcha-container">
+            <div
+              class="g-recaptcha"
+              data-sitekey="6LeDRyMrAAAAAORZW5Lb5TeH-GGNpdx-g1n0zS-R"
+            ></div> <!--Chave do RECAPTCHA disponibilizada pelo google (sem verificação de domínio)-->
+          </div>
+        </div>
+        
 
         <div class="form-input center p-top-50">
           <!-- HMTL Button tag (botão "entrar"): https://www.w3schools.com/tags/tag_button.asp -->

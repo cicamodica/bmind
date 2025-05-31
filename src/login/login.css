@@ -49,13 +49,14 @@
 }
 
 body {
-  /*Estilização do pai BODY*/
-  display: flex; /* Display flex: https://www.w3schools.com/cssref/tryit.php?filename=trycss3_align-self + https://developer.mozilla.org/pt-BR/docs/Web/CSS/CSS_flexible_box_layout/Aligning_items_in_a_flex_container*/
-  margin: 0px;
-  height: 100vh;
-  width: 100vw; /* CSS Viewport Units: vh, vw, vmin, and vmax https://www.sitepoint.com/css-viewport-units-quick-start/#applicationsofvhvwvminandvmax*/
+  display: flex;
   flex-direction: column;
-  font-family: "Poppins", sans-serif; /*CSS fonts: https://www.w3schools.com/css/css_font.asp* > É interessante add uma fonte secundária (sans-serif) caso não dê para usar a principal*/
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden; /* <--- evita barra horizontal */
+  font-family: "Poppins", sans-serif;
 }
 
 .nav nav {
@@ -206,4 +207,77 @@ form .form-input-signup {
 form .signup {
   text-decoration: none; /* Remove a linha do hiperlink */
   color: #37a6d1; /* Altera a cor do hiperlink */
+}
+
+@media (max-width: 480px) {
+  /* Logo não deve estourar o header */
+  .nav nav {
+    padding: 8px 16px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .nav-item .logo {
+    height: 45px;
+    margin-left: 10px;
+  }
+
+  .nav-icon {
+    font-size: 28px;
+  }
+
+  /* Ajustes de largura do formulário */
+  .form {
+    padding-top: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  form {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .form-input {
+    width: 100%;
+  }
+
+  /* Espaçamento mais compacto */
+  .form .form-title {
+    font-size: 36px;
+  }
+
+  .p-top-50 {
+    padding-top: 30px;
+  }
+
+  .p-top-10 {
+    padding-top: 8px;
+  }
+
+  .form-button {
+    width: 100%;
+  }
+}
+
+/* Container externo usado para centralizar com flex */
+.recaptcha-outer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Container interno aplica o scale */
+.recaptcha-container {
+  transform: scale(1);
+  transform-origin: top left;
+  margin-top: 20px;
+}
+
+/* Tela pequena: aumenta e continua centralizado */
+@media (max-width: 480px) {
+  .recaptcha-container {
+    transform: scale(1.05);
+    margin-top: 20px;
+    margin-left: 30px;
+  }
 }
