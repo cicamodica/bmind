@@ -1,266 +1,232 @@
-/*Adicionar fontes na font family = Poppins Thin*/
+/* Fontes Poppins em diferentes pesos */
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
-  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-weight: 100;
   font-style: normal;
 }
-
-/*Adicionar fontes na font family = Poppins Extra Light*/
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
-  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-weight: 200;
   font-style: normal;
 }
-
-/*Adicionar fontes na font family = Poppins Light*/
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
-  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-weight: 300;
   font-style: normal;
 }
-
-/*Adicionar fontes na font family = Poppins Regular*/
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
-  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-weight: 400;
   font-style: normal;
 }
-
-/*Adicionar fontes na font family = Poppins Medium*/
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
-  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-weight: 500;
   font-style: normal;
 }
-
-/*Adicionar fontes na font family = Poppins Bold*/
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
-  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-weight: 700;
   font-style: normal;
 }
 
-/* INÍCIO */
-
+/* Reset básico */
 * {
-  margin: 0; /* zerar margem da tela */
-  padding: 0; /* zerar padding da tela */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: "poppins"; /* fonte do site */
-  background-color: #fff; /* cor de fundo do site */
+  font-family: "Poppins", sans-serif;
+  background-color: #fff;
 }
 
 .header header {
-  /*classe header criada para organizar o código*/
   display: flex;
   align-items: center;
+  justify-content: left; /* ou 'left' se preferir fixar a seta */
   background-image: linear-gradient(to right, #5bc5cc, #024dae);
   padding: 10px 20px;
-  height: 50px;
+  height: 70px; /* Garante espaço mínimo adequado */
 }
 
 .header-item .logo {
-  /*Estilização do logo (imagem png)*/
   height: 55px;
   margin-left: 20px;
 }
 
 .header-link {
-  /*Estilização do link ligado ao ícone de seta (voltar para homepage)*/
   background-color: transparent;
-  border: unset;
+  border: none;
   text-decoration: none;
 }
 
 .fa-circle-left {
-  /* Setinha de voltar */
   font-size: 35px;
   color: #ffffff;
   cursor: pointer;
 }
 
 .cadastro {
-  /* "Cadastrar na página" */
-  text-align: center; /* centralizado "Cadastrar na página */
+  text-align: center;
   margin-top: 30px;
   font-size: 24px;
 }
 
 .cadastro a {
-  /* "Já possui cadastro?" */
-
-  color: #1976d2; /* deixa azul o texto */
-  text-decoration: none; /* remove o sublinhado do texto */
-  display: block; /* Serviu para fazer com que o texto ocupa apenas a largura total dele, e serviu para uma quebra de linha também */
+  color: #1976d2;
+  text-decoration: none;
+  display: block;
   margin-top: 10px;
   font-size: 12px;
-  font-weight: 400; /* negrito */
+  font-weight: 400;
 }
 
 h1 {
-  /* título "Cadastro" */
-  text-align: center; /* centraliza o texto */
+  text-align: center;
   margin-top: 30px;
   font-size: 40px;
-  font-weight: 500; /* negrito */
-}
-
-.form-container {
-  display: flex; /* exibe os itens do formulário em linha */
-  justify-content: center; /* alinha os itens do formulário no centro */
-  margin-top: 30px;
-  gap: 50px; /* espaço entre os itens do formulário */
-}
-
-.password-button {
-  position: relative; /*classe criada para mover separadamente o botão com ícone de olho*/
-}
-
-.toggle-password {
-  /*Estilização do botão para ver a senha (visual do ícone de olho)*/
-  position: absolute;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  bottom: 7px;
-  left: 250px;
-}
-
-.dados-pessoais,
-.perfil-usuario {
-  width: 300px; /* largura do formulário */
   font-weight: 500;
 }
 
 h2 {
-  margin-bottom: 23px;
   font-size: 25px;
   font-weight: 500;
-  font-family: "Poppins";
-  src: url("/poppins/Poppins-Regular.ttf") format("truetype");
+  text-align: center;
+  margin: 23px 0;
 }
 
 h3 {
-  margin-top: 23px;
   font-size: 25px;
   font-weight: 500;
-  font-family: "Poppins";
-  src: url("/poppins/Poppins-Regular.ttf") format("truetype");
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Layout do formulário */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  gap: 50px;
+}
+
+.dados-pessoais,
+.perfil-usuario {
+  width: 90%;
+  max-width: 400px;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 30px;
 }
 
 input,
 select {
-  width: 100%; /* largura do input e select */
-  padding: 10px; /* espaço interno do input */
+  width: 100%;
+  padding: 10px;
   margin-top: 5px;
   font-size: 14px;
-  box-sizing: border-box; /* serve para limitar as margens de uma tela no geral*/
 }
 
 .dados-pessoais label {
-  display: block; /* faz com que o label ocupe toda a largura do formulário */
-  text-align: left; /* alinha o texto à esquerda */
-  margin-top: 14px; /* espaço entre o label e o input */
-  font-size: 12px; /* tamanho da fonte do label */
+  display: block;
+  text-align: left;
+  margin-top: 14px;
+  font-size: 12px;
 }
 
-.botao-perfil {
-  display: inline-block;
-  padding: 10px 20px;
+.password-button {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  bottom: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Botões de perfil e checkboxes unificados */
+.botao-perfil,
+.custom-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 325px;
+  padding: 12px;
+  margin: 10px auto 0 auto;
+  font-size: 14px;
+  font-family: "Poppins";
+  font-weight: 400;
+  text-align: center;
   border: 2px solid;
+  background-color: transparent;
   cursor: pointer;
   user-select: none;
   transition: background 0.3s, color 0.3s;
-  font-family: "Poppins";
-  font-weight: 400;
-  width: 325px;
-  padding: 12px;
-  margin-top: 10px;
-  font-size: 14px;
-  background-color: transparent;
 }
 
-.botao-perfil:hover {
-  /*Estilização quando passa o mouse no botão*/
+.botao-perfil:hover,
+.custom-checkbox:hover {
   background-color: #007bff22;
 }
 
-.botao-perfil.selecionado {
+.botao-perfil.selecionado,
+input[type="checkbox"]:checked + .custom-checkbox {
   background-color: #024dae;
   color: white;
-}
-
-.custom-checkbox {
-  /*Estilização dos botões checkbox de preferência de conteúdos para o usuário*/
-  display: inline-block;
-  padding: 10px 20px;
-  border: 2px solid;
-  cursor: pointer;
-  user-select: none;
-  transition: background 0.3s, color 0.3s;
-  font-family: "Poppins";
-  font-weight: 400;
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  font-size: 14px;
 }
 
 input[type="checkbox"] {
-  /*Estilização para sumir o seletor do checkbox*/
   display: none;
 }
 
-.custom-checkbox:hover {
-  /*Estilização quando passa o mouse no botão*/
-  background-color: #007bff22;
+.checkbox-preferencias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-input[type="checkbox"]:checked + .custom-checkbox {
-  /*Estilização da cor do botão ao selecionar*/
-  background-color: #024dae;
-  color: white;
-}
-
+/* Botão "Próximo" */
 .botao-proximo {
-  /* botão "Próximo" */
-  margin-top: 30px;
-  padding: 10px 20px; /* espaço interno do botão */
-  background-color: black; /* cor de fundo do botão */
-  color: white; /* cor do texto do botão */
-  border: none; /* remove a borda do botão */
+  display: block;
+  margin: 30px auto 50px auto;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
   font-size: 16px;
-  width: 150px; /* largura do botão */
+  width: 150px;
   font-family: "Poppins";
-  src: url("/poppins/Poppins-Regular.ttf") format("truetype");
   font-weight: 500;
-  cursor: pointer; /* muda o cursor para mãozinha ao passar em cima do botão */
+  cursor: pointer;
 }
 
 .botao-proximo:hover {
-  /*Estilização da classe .botao-proximo dentro da classe (botão próximo)*/
   background-color: #024dae;
 }
 
+/* Erros */
 .erro {
-  border: 2px solid red; /* borda vermelha para inputs com erro */
-  background-color: #f8d7da; /* fundo vermelho claro para inputs com erro */
-  color: #721c24; /* texto vermelho escuro para inputs com erro */
-  padding: 10px; /* espaço interno do input com erro */
-  margin-top: 5px; /* espaço entre o label e o input com erro */
-  font-size: 12px; /* tamanho da fonte do input com erro */
+  border: 2px solid red;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 12px;
   font-family: "Poppins";
-  src: url("/poppins/Poppins-Regular.ttf") format("truetype");
   font-weight: 500;
 }
 
@@ -270,6 +236,52 @@ input[type="checkbox"]:checked + .custom-checkbox {
   text-align: center;
   margin-bottom: 5px;
   font-family: "Poppins";
-  src: url("/poppins/Poppins-Regular.ttf") format("truetype");
   font-weight: 200;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .form-container {
+    flex-direction: row;
+    align-items: flex-start; /* <-- garante alinhamento pelo topo */
+    justify-content: center;
+  }
+
+  .dados-pessoais,
+  .perfil-usuario {
+    width: 300px;
+    margin-bottom: 0;
+  }
+
+  .botao-proximo {
+    margin: 30px auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .dados-pessoais {
+    margin-bottom: 10px; /* reduzido de 30px */
+  }
+
+  .perfil-usuario {
+    margin-top: 0; /* remove qualquer espaçamento extra */
+  }
+
+  h2 {
+    margin: 0px; /* títulos mais compactos */
+  }
+
+  h3 {
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+
+  .custom-checkbox,
+  .botao-perfil {
+    margin-top: 10px; /* menos espaço entre os botões */
+  }
+
+  .botao-proximo {
+    margin-top: 15px;
+  }
 }

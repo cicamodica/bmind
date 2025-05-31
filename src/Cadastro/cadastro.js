@@ -52,15 +52,27 @@ document
     const checkboxes = document.querySelectorAll(
       'input[type="checkbox"]:checked'
     );
+    const selecionados = Array.from(checkboxes).map((cb) => cb.value);
 
-    const selecionados = Array.from(checkboxes).map((cb) => cb.value); //Cria um array com as preferências selecionadas no localStorage
+    // Validação extra: perfil selecionado
+    if (!perfilSelecionado) {
+      mensagemErro.textContent = "Por favor, selecione um perfil de usuário.";
+      return;
+    }
 
+    // Validação extra: pelo menos uma preferência marcada
+    if (selecionados.length === 0) {
+      mensagemErro.textContent =
+        "Selecione pelo menos uma preferência de conteúdo.";
+      return;
+    }
+
+    // Verificação de e-mail duplicado
     const dados = JSON.parse(localStorage.getItem(email));
     if (dados !== null) {
       mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!";
       return;
     }
-
 
     const dadosUsuario = {
       nome: nome,
@@ -88,7 +100,7 @@ document
       .send("service_ct2hayr", "template_oklmcbi", {
         email: email,
         passcode: codigoDeValidacao,
-        link: "http://127.0.0.1:5501/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html"
+        link: "http://127.0.0.1:5501/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html",
       })
       .then(
         () => {
