@@ -566,21 +566,34 @@ document.addEventListener("DOMContentLoaded", function () {
       0
     );
 
-    // Salvar dados do gráfico no localStorage, dentro do objeto do usuário logado
-    const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+    // Salvar dados no localStorage, dentro do objeto do usuário logado
+        const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
 
-    if (emailUsuarioLogado) {
-      const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+        if (emailUsuarioLogado) {
+          const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
 
-      if (dadosDoUsuario) {
-        dadosDoUsuario.chartData = {
-          entradas: totalEntradas,
-          saidas: totalSaidas
-      };
+          if (dadosDoUsuario) {
+             dadosDoUsuario.chartData = {
+                entradas: totalEntradas,
+                saidas: totalSaidas
+           };
 
-        localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
-     }  
-    }
+           // Salvar também as transações filtradas do mês atual com tipo padronizado
+           dadosDoUsuario.entradas = entradasParaGrafico.map(t => ({
+             ...t,
+             tipo: "entrada",
+             descricao: t.categoria // opcional: manter para exibição posterior
+           }));
+
+           dadosDoUsuario.saidas = saidasParaGrafico.map(t => ({
+           ...t,
+           tipo: "saida",
+           descricao: t.categoria
+       }));
+
+       localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
+       }
+    } 
     
     chartInstances.pieChart = new Chart(
       document.getElementById("pieChart").getContext("2d"),
@@ -747,7 +760,82 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   renderDashboard(); // Renderiza o dashboard inicial
+  exibirHistoricoDoMesAtual();
 });
+
+function filtrarTransacoesValidas(transacoes) {
+  return transacoes.filter(t =>
+    t &&
+    t.id &&
+    t.data &&
+    t.valor > 0 &&
+    t.categoria // pode manter essa se todas têm
+  );
+}
+
+
+function exibirHistoricoDoMesAtual() {
+    const listaHistorico = document.getElementById("lista-historico");
+    if (!listaHistorico) return;
+
+    listaHistorico.innerHTML = "";
+
+    const { entradas, saidas } = getFinancialData();
+
+    const entradasValidas = filtrarTransacoesValidas(entradas);
+    const saidasValidas = filtrarTransacoesValidas(saidas);
+
+    const entradasExpandidas = expandRecurringTransactions(entradasValidas);
+    const saidasExpandidas = expandRecurringTransactions(saidasValidas);
+
+    const hoje = new Date();
+    const anoAtual = hoje.getFullYear().toString();
+    const mesAtual = (hoje.getMonth() + 1).toString().padStart(2, "0");
+
+    const entradasMes = filterTransactions(entradasExpandidas, anoAtual, mesAtual);
+    const saidasMes = filterTransactions(saidasExpandidas, anoAtual, mesAtual);
+
+    const todasTransacoes = [
+        ...entradasMes.map(transacao => ({ ...transacao, tipo: "Entrada" })),
+        ...saidasMes.map(transacao => ({ ...transacao, tipo: "Saída" }))
+    ];
+
+    // Ordena tudo junto
+    todasTransacoes.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    function criarItemLista(item) {
+        const li = document.createElement("div");
+        li.className = "item-historico";
+
+        const data = new Date(item.data).toLocaleDateString("pt-BR");
+        const valor = new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        }).format(item.valor);
+
+        const cor = item.tipo === "Entrada" ? "green" : "red";
+
+        li.style.borderLeft = `4px solid ${cor}`;
+        li.style.padding = "8px";
+        li.style.marginBottom = "8px";
+        li.style.backgroundColor = "#f9f9f9";
+
+        li.innerHTML = `
+            <span style="color:${cor};">${data} - ${item.tipo}: ${valor} - ${item.categoria}</span>
+        `;
+
+        return li;
+    }
+
+    if (todasTransacoes.length === 0) {
+        const vazio = document.createElement("div");
+        vazio.textContent = "Sem movimentações neste mês.";
+        listaHistorico.appendChild(vazio);
+    } else {
+        todasTransacoes.forEach(item => listaHistorico.appendChild(criarItemLista(item)));
+    }
+}
+
 
 // Função para alternar a visibilidade do menu (fora do DOMContentLoaded, para ser global)
 function toggleMenu() {
