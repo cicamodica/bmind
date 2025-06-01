@@ -54,7 +54,7 @@
           <!-- botões login e cadastrar -->
           <div class="user-actions" id="login-nao-logado">
             <a href="/src/login/login.html">Fazer login</a>
-            <span class="barra">|</span>
+            <span class="barra">|</span> <!--Adicionei classe no span pra poder alterar ele nas telas menores-->
             <a href="/src/cadastro/cadastro.html">Cadastrar-se</a>
           </div>
 
@@ -66,6 +66,7 @@
           </div>
         </div>
       </header>
+      <!--Adicionando barra de pesquisa que fica "escondida" nas telas menores-->
       <div id="mobileSearchBar" class="mobile-search-bar">
         <input type="text" id="mobileSearchInput" placeholder="Pesquisar..." />
         <button onclick="buscarMobile()">Buscar</button>

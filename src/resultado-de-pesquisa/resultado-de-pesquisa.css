@@ -259,6 +259,8 @@ img {
   color: white;
 }
 
+/*INÍCIO DO CSS DA BARRA QUE FICA ESCONDIDA PARA TELAS MENORES*/
+
 .mobile-search-bar {
   display: none;
   padding: 15px;
@@ -291,7 +293,7 @@ img {
   background-color: #02327e;
 }
 
-
+/*INÍCIO DA RESPONSIVIDADE DO MEDIAQUERIES*/
 @media (max-width: 1024px) {
   .search-container {
     width: 100%;

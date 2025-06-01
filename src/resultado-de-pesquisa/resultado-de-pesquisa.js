@@ -479,6 +479,7 @@ const conteudos = [
   },
 ];
 
+//FUNCIONANLIDADE DA BARRA DE PESQUISA QUE FICA ESCONDIDA NAS TELAS MENORES
 //Funcionalidade de esconder ícone em telas maiores
  const mobileSearchIcon = document.querySelector('.search-mobile-icon');
   const mobileSearchBar = document.getElementById('mobileSearchBar');
@@ -497,6 +498,7 @@ const conteudos = [
   }
 }
 
+//INÍCIO DAS FUNCIONALIDADES DOS RESULTADO DE PESQUISA
 const urlParams = new URLSearchParams(window.location.search);
 const termo = urlParams
   .get("q")
