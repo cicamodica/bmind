@@ -422,39 +422,102 @@ document.addEventListener("DOMContentLoaded", function () {
    renderMainPieChart();
 });
 
+// Recupera o identificador do usuário logado (e-mail, por exemplo)
+
 // Função para adicionar uma meta financeira
 document.addEventListener("DOMContentLoaded", function () {
   const formMeta = document.getElementById("form-meta");
   const listaMetas = document.getElementById("lista-metas");
 
-  formMeta.addEventListener("submit", function (e) {
-    e.preventDefault();
+  // --- Verificação de Usuário Logado ---
 
+  if (!emailUsuario) {
+    console.warn("Nenhum usuário logado detectado. As metas financeiras não serão salvas ou carregadas.");
+    return;
+  }
+
+  const metasKey = `metas_${emailUsuario}`;
+
+  // --- Função para Carregar Metas ---
+  // Obtém as metas salvas para o usuário logado e as exibe na interface.
+  function carregarMetas() {
+    // Tenta obter as metas do localStorage; se não encontrar, assume um array vazio.
+    const metasSalvas = JSON.parse(localStorage.getItem(metasKey) || '[]');
+    listaMetas.innerHTML = ''; // Limpa a lista atual para evitar duplicações ao recarregar.
+
+    // Para cada meta encontrada, cria e adiciona o card correspondente à interface.
+    metasSalvas.forEach(meta => {
+      criarCardMeta(meta.titulo, meta.valorTotal, meta.valorAtual, meta.tempo, meta.id);
+    });
+  }
+
+  // --- Função para Salvar Metas ---
+  // Coleta todas as metas atualmente exibidas na interface e as salva no localStorage.
+  function salvarMetas() {
+    const metasAtuais = [];
+    document.querySelectorAll('.card-meta').forEach(card => {
+      metasAtuais.push({
+        id: card.dataset.metaId, // Pega o ID único da meta do dataset do card.
+        titulo: card.querySelector('h4').textContent,
+        valorTotal: parseFloat(card.dataset.valorTotal), // Converte para número.
+        // Adiciona valorAtual do dataset para garantir que o valor mais recente seja salvo
+        valorAtual: parseFloat(card.dataset.valorAtual), 
+        tempo: card.dataset.tempo // Pega o tempo do dataset do card.
+      });
+    });
+    // Salva o array de metas (em formato JSON) no localStorage, usando a chave do usuário.
+    localStorage.setItem(metasKey, JSON.stringify(metasAtuais));
+  }
+
+  // --- Evento de Envio do Formulário de Criação de Meta ---
+  formMeta.addEventListener("submit", function (e) {
+    e.preventDefault(); // Impede o comportamento padrão de envio do formulário (recarregar a página).
+
+    // Coleta os valores inseridos pelo usuário.
     const titulo = document.getElementById("titulo-meta").value;
     const valorTotal = parseFloat(document.getElementById("valor-meta").value);
     const valorAtual = parseFloat(document.getElementById("valor-atual-meta").value);
     const tempo = document.getElementById("tempo-meta").value;
 
+    // Realiza a validação dos campos.
     if (!titulo || isNaN(valorTotal) || isNaN(valorAtual) || !tempo || valorTotal <= 0 || valorAtual < 0) {
-      alert("Preencha todos os campos corretamente.");
-      return;
+      alert("Por favor, preencha todos os campos corretamente. O valor total deve ser maior que zero e o valor atual não pode ser negativo.");
+      return; // Interrompe se a validação falhar.
     }
 
-    criarCardMeta(titulo, valorTotal, valorAtual, tempo);
+    // Gera um ID único para a nova meta (usando o timestamp atual para simplicidade).
+    const metaId = Date.now().toString();
+    
+    // Cria o card da meta na interface do usuário.
+    criarCardMeta(titulo, valorTotal, valorAtual, tempo, metaId);
+    
+  
+    salvarMetas(); 
+    
+    // Limpa o formulário após a adição.
     formMeta.reset();
   });
 
-  function criarCardMeta(titulo, valorTotal, valorAtual, tempo) {
+  // --- Função para Criar o Elemento HTML (Card) de uma Meta ---
+  function criarCardMeta(titulo, valorTotal, valorAtual, tempo, id) {
     const card = document.createElement("div");
     card.classList.add("card-meta");
+    
+    // Armazena dados importantes no `dataset` do elemento HTML para fácil recuperação.
+    card.dataset.metaId = id;
+    card.dataset.valorTotal = valorTotal;
+    card.dataset.valorAtual = valorAtual;
+    card.dataset.tempo = tempo;
 
+    // Calcula o progresso da meta em porcentagem.
     let progresso = Math.min((valorAtual / valorTotal) * 100, 100).toFixed(1);
 
+    // Define a estrutura HTML interna do card.
     card.innerHTML = `
       <h4>${titulo}</h4>
       <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo}</small>
       <div class="barra-progresso">
-      <div class="barra-preenchida" style="width: ${progresso}%"></div>
+        <div class="barra-preenchida" style="width: ${progresso}%"></div>
       </div>
       <div class="porcentagem-meta">${progresso}% alcançado</div>
 
@@ -469,8 +532,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
 
-
-    // Atualização
+    // Seleciona os elementos interativos dentro do card para adicionar eventos.
     const btnAtualizar = card.querySelector('.btn-atualizar');
     const formAtualizacao = card.querySelector('.form-atualizacao');
     const inputNovoValor = card.querySelector('.novo-valor');
@@ -478,39 +540,52 @@ document.addEventListener("DOMContentLoaded", function () {
     const barra = card.querySelector('.barra-preenchida');
     const porcentagemTexto = card.querySelector('.porcentagem-meta');
 
+    // Evento para mostrar/esconder o formulário de atualização do valor.
     btnAtualizar.addEventListener('click', () => {
       formAtualizacao.style.display = formAtualizacao.style.display === 'none' ? 'block' : 'none';
     });
 
     const btnExcluir = card.querySelector('.btn-excluir');
 
+    // Evento para excluir a meta.
     btnExcluir.addEventListener('click', () => {
       if (confirm('Tem certeza que deseja excluir esta meta?')) {
-        card.remove();
-     }
+        card.remove(); // Remove o card da DOM.
+        // **SALVA AS METAS:** Chama a função para persistir a exclusão no localStorage.
+        salvarMetas(); 
+      }
     });
-
- 
+   
+    // Evento para salvar o novo valor de atualização da meta.
     btnSalvar.addEventListener('click', () => {
       const novoValor = parseFloat(inputNovoValor.value);
       if (isNaN(novoValor) || novoValor < 0) {
-        alert("Informe um valor válido.");
+        alert("Por favor, informe um valor numérico válido e não negativo.");
         return;
       }
 
-      const novaPorcentagem = Math.min((novoValor / valorTotal) * 100, 100).toFixed(1);
+      // Atualiza o valor atual no `dataset` do card para que `salvarMetas` pegue o valor correto.
+      card.dataset.valorAtual = novoValor;
+      
+      // Recalcula e atualiza o progresso visual na barra e no texto.
+    
+      const novaPorcentagem = Math.min((novoValor / parseFloat(card.dataset.valorTotal)) * 100, 100).toFixed(1); 
       barra.style.width = `${novaPorcentagem}%`;
       porcentagemTexto.textContent = `${novaPorcentagem}% alcançado`;
 
+      // Esconde o formulário de atualização e limpa o campo de input.
       formAtualizacao.style.display = 'none';
       inputNovoValor.value = '';
+      
+      
+      salvarMetas(); 
     });
 
+    // Adiciona o novo card à lista de metas na interface.
     listaMetas.appendChild(card);
   }
+
+  // --- Carregar Metas ao Inicializar a Página ---
+  
+  carregarMetas();
 });
-
-
-
-
- 
