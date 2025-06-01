@@ -422,5 +422,9 @@ document.addEventListener("DOMContentLoaded", function () {
    renderMainPieChart();
 });
 
+// Limpa o localStorage e exibe os dados do usuário logado
+localStorage.removeItem("vistosRecentemente");
+console.log("✅ Dados soltos foram removidos.");
 
- 
+
+
