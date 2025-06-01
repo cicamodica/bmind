@@ -271,46 +271,64 @@
       <h1 id="boas-vindas"></h1>
     </div>
 
-    <!-- Conteúdo principal -->
-    <main class="conteudo-principal">
-      <!-- Nova seção: Dashboard -->
-     <section class="conteudo-horizontal">
-       <div class="chart-container">
-         <canvas id="pieChartMain"></canvas>
+   <main class="conteudo-principal">
+
+   <!-- TÍTULO PRINCIPAL -->
+   <h2 class="titulo-dashboard">Meu Dashboard</h2>
+
+   <!-- BLOCO PRINCIPAL DO DASHBOARD -->
+   <section class="dashboard-layout">
+    
+     <!-- Gráfico à esquerda -->
+     <div class="chart-container">
+       <canvas id="pieChartMain"></canvas>
+     </div>
+
+     <!-- Resumo financeiro -->
+     <div id="resumo-financeiro">
+       <h3>Resumo Mensal</h3>
+       <p><strong>Total de Entradas:</strong> <span id="resumo-entradas">R$ 0,00</span></p>
+       <p><strong>Total de Saídas:</strong> <span id="resumo-saidas">R$ 0,00</span></p>
+     </div>
+
+     <!-- Histórico mensal + botão -->
+     <div id="historico-mensal">
+       <div class="historico-topo">
+         <h3>Histórico do Mês</h3>
+         <button id="btn-cadastrar" onclick="redirecionarCadastro()">Cadastrar Novo Registro</button>
        </div>
+      <div id="lista-historico"></div>
+      </div>
 
-       <div id="painel-lateral">
-         <div id="resumo-financeiro">
-           <h3>Resumo Financeiro</h3>
-           <p><strong>Total de Entradas:</strong> <span id="resumo-entradas">R$ 0,00</span></p>
-           <p><strong>Total de Saídas:</strong> <span id="resumo-saidas">R$ 0,00</span></p>
-         </div>
+     <!-- Formulário para cadastrar meta -->
+     <div id="area-metas">
+       <h3>Cadastrar Nova Meta</h3>
+       <form id="form-meta">
+         <input type="text" id="titulo-meta" placeholder="Título da meta" required />
+         <input type="number" id="valor-meta" placeholder="Valor da meta (R$)" required />
+         <input type="number" id="valor-atual-meta" placeholder="Valor atual (R$)" required />
+         <input type="date" id="tempo-meta" placeholder="Data Final" required />
+         <button type="submit">Criar Meta</button>
+       </form>
+     </div>
 
-         <div id="historico-mensal">
-           <h3>Histórico do Mês</h3>
-           <div id="lista-historico"></div>
-         </div>
-       </div>
-       
-       <button id="btn-cadastrar" onclick="redirecionarCadastro()">
-          Cadastrar Novo Registro
-       </button> 
+    </section>
 
+    <!-- NOVA SEÇÃO COM OS CARDS DE METAS LISTADOS HORIZONTALMENTE -->
+    <section class="secao-metas">
+      <h3>Minhas Metas</h3>
+      <div id="lista-metas" class="lista-metas-horizontal"></div>
+    </section>
 
-       <div class="error-message" id="error-message"></div>
-     </section>
-
-     
-
-      <!-- Seção de vistos recentemente -->
-      <section class="vistos-recentemente">
-        <h2>Vistos recentemente</h2>
-        <ul id="lista-vistos-recentemente"></ul>
-      </section>
+    <!-- Seção de vistos recentemente -->
+    <section class="vistos-recentemente">
+      <h3>Vistos recentemente</h3>
+      <ul id="lista-vistos-recentemente"></ul>
+    </section>
 
       <!-- Seção de conteúdos recomendados -->
       <section id="conteudo-recomendados" class="conteudo-recomendados">
-        <h2>Recomendações para você</h2>
+        <h3>Recomendações para você</h3>
         <div id="lista-conteudos-recomendados"></div>
       </section>
     </main>
