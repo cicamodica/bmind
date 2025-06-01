@@ -250,7 +250,7 @@ header {
 
 .boas-vindas {
   margin-bottom: 15px;
-  color: #004aad;
+  color: #024dae;
   font-size: 24px;
   font-weight: 500;
   margin-left: 10px;
@@ -366,7 +366,7 @@ header {
 #btn-cadastrar {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #007bff; /* azul */
+  background-color: #024dae; /* azul */
   color: white;
   border: none;
   border-radius: 5px;

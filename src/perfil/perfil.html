@@ -2,7 +2,7 @@
 <html lang="pt-BR">
   <head>
     <!-- Define o tipo de codificação do arquivo -->
-    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Para ligar ao CSS -->
     <title>Bmind</title>
     <link rel="stylesheet" href="/src/perfil/perfil.css" />
@@ -21,29 +21,42 @@
             <i class="fa-solid fa-bars menu-button"></i
             ><!-- ícone do menu -->
           </div>
-          <div class="header-item">
-  <a href="/src/Homepage.html">
-    <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
-  </a>
-</div>
-        </div>
+            <div class="header-item">
+              <a href="/src/Homepage.html">
+                <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+              </a>
+            </div>
+        </div>  
+        <!-- Center group -->
         <div class="center-group">
-          <!-- Container da barra de pesquisa com ícone -->
-          <div class="search-container">
+        <!-- visível só em telas grandes -->
+          <div class="search-container search-desktop">
             <input
               type="text"
               id="search-bar"
               placeholder="Pesquisar..."
               class="search-bar"
-            /><a class="search-button" id="search-button" href="#"
-              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
+            />
+            <a class="search-button" id="search-button" href="#">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
+
+          <!-- visível só no mobile -->
+          <div class="search-mobile-icon">
+            <a href="#">
+              <i class="fa-solid fa-magnifying-glass"></i>
             </a>
           </div>
         </div>
-        <div class="right-group"></div>
+        <div class="right-group">
+          <div class="user-area"> <!-- Área do usuário -->
+            <a href="/src/Main/Main.html" class="minha-area-botao">Minha Área</a>
+          </div>
+        </div>
         <!-- MENU -->
-        <nav class="dropdown-menu" id="dropdownMenu">
-          <ul>
+          <nav class="dropdown-menu" id="dropdownMenu">
+            <ul>
             <li>
               <a class="perfil" href="/src/perfil/perfil.html">Perfil</a>
             </li>
@@ -174,6 +187,10 @@
           </ul>
         </nav>
       </header>
+      <div class="mobile-search-bar" id="mobileSearchBar">
+        <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+        <button onclick="buscarMobile()">Buscar</button>
+      </div>
     </div>
 
     <!-- Conteúdo principal -->

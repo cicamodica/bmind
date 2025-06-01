@@ -48,6 +48,10 @@
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   /*Estilização geral do corpo da página */
   margin: 0;
@@ -56,34 +60,26 @@ body {
 }
 
 header {
-  /*Estilização da classe pai .NAV (barra superior)*/
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 10px 20px;
-  height: 50px;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 20px;
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
 }
 
-.left-group {
-  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
+.left-group,
+.center-group,
+.right-group {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .center-group {
-  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
-  flex: 1;
-  display: flex;
   justify-content: center;
+  flex: 1;
 }
 
-.right-group {
-  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
-  display: flex;
-  align-items: center;
-}
 
 .user-actions {
   /*Estilização do ícone de perfil*/
@@ -93,9 +89,11 @@ header {
 
 .search-container {
   /*Estilização da barra de pesquisa*/
-  position: relative;
   display: flex;
-  width: 900px;
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
   align-items: center;
   z-index: 1;
 }
@@ -105,19 +103,21 @@ header {
   font-family: "Poppins";
   border-radius: 40px;
   outline: none;
-  padding: 12px 40px;
   font-weight: 100;
   border: none;
   width: 100%;
   font-size: 18px;
+  margin: 30px;
+  padding-left: 20px;
 }
 
 .search-icon {
   /*Estilização do ícone de pesquisa */
   position: absolute;
-  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
   color: black;
-  bottom: 16px;
 }
 
 .menu-button {
@@ -212,7 +212,7 @@ header {
   color: white;
 }
 
-.FAQ{
+.FAQ {
   display: block;
   background-color: transparent;
   border: none;
@@ -226,8 +226,8 @@ header {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.Sair{
-    display: block;
+.Sair {
+  display: block;
   background-color: transparent;
   border: none;
   color: #333;
@@ -271,12 +271,25 @@ header {
 .perfil-container {
   max-width: 600px;
   margin: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 100px;
   background: white;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
+}
+/* Botão 'Minha Área' */
+.minha-area-botao {
+  display: inline-block; /* Para permitir padding e margin corretamente */
+  margin: 4px; /* Espaço externo ao redor do botão */
+  padding: 6px 12px; /* Espaço interno (em cima/baixo e lados) */
+  background-color: #ffffff22; /* Cor de fundo (semi-transparente aqui) */
+  color: white; /* Cor do texto */
+  border: 1px solid white; /* Borda branca */
+  border-radius: 6px; /* Cantos arredondados */
+  text-decoration: none; /* Tira o sublinhado */
+  font-weight: bold; /* Deixa o texto mais forte */
+  font-size: 10px;
 }
 
 h1 {
@@ -285,9 +298,9 @@ h1 {
 }
 
 p {
-text-align: center;
-margin-bottom: 40px;
-margin-top: 0px;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 0px;
 }
 
 label {
@@ -296,7 +309,8 @@ label {
   font-weight: 700;
 }
 
-input, textarea {
+input,
+textarea {
   width: 95%;
   padding: 10px;
   margin-top: 5px;
@@ -304,7 +318,7 @@ input, textarea {
   border-radius: 5px;
   font-family: "Poppins";
   font-weight: 300;
-  color:#4e4d4d;
+  color: #4e4d4d;
 }
 
 .save-btn {
@@ -320,7 +334,7 @@ input, textarea {
 }
 
 .save-btn:hover {
-  background-color:#ffffff ;
+  background-color: #ffffff;
   color: #024dae;
   border: 1px solid #024dae;
 }
@@ -338,7 +352,7 @@ input, textarea {
 }
 
 .cancel-btn:hover {
-  background-color:#ccc ;
+  background-color: #ccc;
   color: #ffffff;
   border: 1px solid #ccc;
 }
@@ -366,7 +380,7 @@ input, textarea {
 }
 
 .upload-label {
-  background-color:#ffffff ;
+  background-color: #ffffff;
   color: #024dae;
   padding: 10px 16px;
   border-radius: 8px;
@@ -392,3 +406,85 @@ input, textarea {
   color: #333;
 }
 
+/* Oculta o ícone do mobile por padrão */
+.search-mobile-icon {
+  display: none;
+  font-size: 22px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.search-mobile-icon i {
+  color: white;
+}
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+  .search-container.search-desktop {
+    display: none; /* some com a barra */
+  }
+
+  .search-mobile-icon {
+    display: flex; /* mostra o ícone */
+  }
+
+  .center-group {
+    justify-content: flex-end; /* ícone vai para direita */
+  }
+
+  .left-group {
+    flex: 1; /* ocupa espaço e empurra a barra */
+  }
+
+   .right-group {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .perfil-container {
+    padding: 20px;
+    width: 100%;
+    max-width: 95%; /* reduz a largura total */
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 769px) {
+  #mobileSearchBar {
+    display: none !important;
+  }
+}
+
+.mobile-search-bar {
+  display: none;
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.mobile-search-bar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.mobile-search-bar button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.mobile-search-bar button:hover {
+  background-color: #02327e;
+}
