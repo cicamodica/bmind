@@ -200,9 +200,9 @@ function registrarConteudoVisto(nome, url, imagem) {
   const conteudo = { nome, url, imagem };
   dadosUsuario.vistosRecentemente.unshift(conteudo);
 
-  // Mantém só os 3 mais recentes
-  if (dadosUsuario.vistosRecentemente.length > 3) {
-    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 3);
+  // Mantém só os 5 mais recentes
+  if (dadosUsuario.vistosRecentemente.length > 5) {
+    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 5);
   }
 
   // Salva de volta no localStorage

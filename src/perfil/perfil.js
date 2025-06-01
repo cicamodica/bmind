@@ -150,3 +150,22 @@ document.getElementById("perfil-form").addEventListener("submit", function (e) {
   document.getElementById("cancelar").addEventListener("click", function () {
   window.location.href = "/src/Homepage.html";
 });
+
+
+// Função para delogar o usuário
+function sair() {
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "/src/login/login.html";
+}
+
+// 2. Depois, adiciona o evento
+document.addEventListener("DOMContentLoaded", () => {
+  const botaoSair = document.getElementById("botao-sair");
+
+  if (botaoSair) {
+    botaoSair.addEventListener("click", function (e) {
+      e.preventDefault();
+      sair();
+    });
+  }
+});
