@@ -422,5 +422,95 @@ document.addEventListener("DOMContentLoaded", function () {
    renderMainPieChart();
 });
 
+// Função para adicionar uma meta financeira
+document.addEventListener("DOMContentLoaded", function () {
+  const formMeta = document.getElementById("form-meta");
+  const listaMetas = document.getElementById("lista-metas");
+
+  formMeta.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const titulo = document.getElementById("titulo-meta").value;
+    const valorTotal = parseFloat(document.getElementById("valor-meta").value);
+    const valorAtual = parseFloat(document.getElementById("valor-atual-meta").value);
+    const tempo = document.getElementById("tempo-meta").value;
+
+    if (!titulo || isNaN(valorTotal) || isNaN(valorAtual) || !tempo || valorTotal <= 0 || valorAtual < 0) {
+      alert("Preencha todos os campos corretamente.");
+      return;
+    }
+
+    criarCardMeta(titulo, valorTotal, valorAtual, tempo);
+    formMeta.reset();
+  });
+
+  function criarCardMeta(titulo, valorTotal, valorAtual, tempo) {
+    const card = document.createElement("div");
+    card.classList.add("card-meta");
+
+    let progresso = Math.min((valorAtual / valorTotal) * 100, 100).toFixed(1);
+
+    card.innerHTML = `
+      <h4>${titulo}</h4>
+      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo}</small>
+      <div class="barra-progresso">
+      <div class="barra-preenchida" style="width: ${progresso}%"></div>
+      </div>
+      <div class="porcentagem-meta">${progresso}% alcançado</div>
+
+      <div class="botoes-metas">
+        <button class="btn-atualizar">Atualizar</button>
+        <button class="btn-excluir">Excluir</button>
+      </div>
+
+      <div class="form-atualizacao" style="display: none; margin-top: 8px;">
+        <input type="number" class="novo-valor" placeholder="Novo valor atual" />
+        <button class="confirmar-atualizacao">Salvar</button>
+      </div>
+    `;
+
+
+    // Atualização
+    const btnAtualizar = card.querySelector('.btn-atualizar');
+    const formAtualizacao = card.querySelector('.form-atualizacao');
+    const inputNovoValor = card.querySelector('.novo-valor');
+    const btnSalvar = card.querySelector('.confirmar-atualizacao');
+    const barra = card.querySelector('.barra-preenchida');
+    const porcentagemTexto = card.querySelector('.porcentagem-meta');
+
+    btnAtualizar.addEventListener('click', () => {
+      formAtualizacao.style.display = formAtualizacao.style.display === 'none' ? 'block' : 'none';
+    });
+
+    const btnExcluir = card.querySelector('.btn-excluir');
+
+    btnExcluir.addEventListener('click', () => {
+      if (confirm('Tem certeza que deseja excluir esta meta?')) {
+        card.remove();
+     }
+    });
+
+ 
+    btnSalvar.addEventListener('click', () => {
+      const novoValor = parseFloat(inputNovoValor.value);
+      if (isNaN(novoValor) || novoValor < 0) {
+        alert("Informe um valor válido.");
+        return;
+      }
+
+      const novaPorcentagem = Math.min((novoValor / valorTotal) * 100, 100).toFixed(1);
+      barra.style.width = `${novaPorcentagem}%`;
+      porcentagemTexto.textContent = `${novaPorcentagem}% alcançado`;
+
+      formAtualizacao.style.display = 'none';
+      inputNovoValor.value = '';
+    });
+
+    listaMetas.appendChild(card);
+  }
+});
+
+
+
 
  

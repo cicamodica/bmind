@@ -256,13 +256,27 @@ header {
   margin-left: 10px;
 }
 
-.conteudo-horizontal {
+/* Estrutura geral */
+.conteudo-principal {
+  padding: 2rem;
+  font-family: sans-serif;
+  background-color: #f0f2f5;
+}
+
+.titulo-dashboard {
+  font-size: 1.75rem;
+  color: #024dae;
+  margin-bottom: 1.5rem;
+}
+
+/* Layout principal em colunas */
+.dashboard-layout {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  padding: 2rem;
+  padding-bottom: 2rem;
 }
 
 /* Gráfico */
@@ -276,14 +290,6 @@ header {
 }
 
 /* Resumo financeiro */
-.info-container {
-  width: 300px;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
 #resumo-financeiro {
   flex: 1;
   min-width: 250px;
@@ -295,7 +301,7 @@ header {
 }
 
 #resumo-financeiro h3 {
- margin-bottom: 16px;
+  margin-bottom: 16px;
   font-size: 1.25rem;
   color: #333;
 }
@@ -310,20 +316,13 @@ header {
   display: inline-block;
   width: 90px;
 }
+
 #resumo-financeiro span {
   font-weight: bold;
   color: #222;
 }
-#painel-lateral {
-  flex: 1;
-  min-width: 300px;
-  max-width: 450px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
 
-/* Caixa de histórico */
+/* Histórico mensal */
 #historico-mensal {
   background-color: white;
   padding: 20px;
@@ -331,12 +330,22 @@ header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   max-height: 350px;
   overflow-y: auto;
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.historico-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 #historico-mensal h3 {
-  margin-bottom: 16px;
   font-size: 1.25rem;
   color: #333;
+  margin: 0;
 }
 
 #lista-historico {
@@ -363,35 +372,178 @@ header {
   color: #c62828;
 }
 
+/* Botão Cadastrar Novo Registro */
 #btn-cadastrar {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #024dae; /* azul */
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  background-color: #024dae;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 20px;
 }
 
 #btn-cadastrar:hover {
   background-color: #0056b3;
 }
 
-.vistos-recentemente h2 {
-  /* Estilização do container da lista de conteúdos vistos recentemente */
-  margin-left: 30px;
-  max-width: 100%;
+/* Área de cadastro de nova meta */
+#area-metas {
+  background-color: white;
   padding: 20px;
-  background-color: #f8f9fa;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+#area-metas h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+#form-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+#form-meta input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+}
+
+#form-meta button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#form-meta button:hover {
+  background-color: #0056b3;
+}
+
+/* NOVA SEÇÃO DE METAS LISTADAS HORIZONTALMENTE */
+.secao-metas {
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secao-metas h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.lista-metas-horizontal {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* Estilo dos cards de metas */
+.card-meta {
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 250px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+/* Barra de progresso */
+.barra-progresso {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 18px;
+  margin: 8px 0;
+}
+
+.barra-preenchida {
+  background: linear-gradient(to right, #00b894, #0984e3);
+  height: 100%;
+  width: 0;
+  transition: width 0.4s ease-in-out;
+  border-radius: 20px 0 0 20px;
+}
+
+.porcentagem-meta {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Botões */
+.btn-atualizar,
+.confirmar-atualizacao,
+.btn-excluir {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.btn-atualizar:hover,
+.confirmar-atualizacao:hover,
+.btn-excluir:hover {
+  background-color: #019170;
+}
+
+.botoes-metas {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.botoes-metas button {
+  flex: 1;
+}
+
+.novo-valor {
+  width: 100%;
+  padding: 6px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.vistos-recentemente{
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vistos-recentemente h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
 }
 
 /* Container da lista */
 .vistos-recentemente ul {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   list-style: none;
   padding: 0;
   margin-left: 30px;
@@ -483,13 +635,16 @@ header {
 
 /* Container dos cards */
 .conteudo-recomendados{
-  /* Estilização do container da lista de conteúdos vistos recentemente */
-  margin-left: 30px;
-  max-width: 100%;
+  margin-top: 40px;
+  background-color: white;
   padding: 20px;
-  background-color: #f8f9fa;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.conteudo-recomendados h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
 }
 #lista-conteudos-recomendados {
   display: flex;
