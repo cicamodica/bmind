@@ -43,20 +43,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-  // verifica  se usuario esta logado para apresentar botao de minha area 
+    // verifica  se usuario esta logado para apresentar botao de minha area 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const botaoMinhaArea = document.querySelector(".minha-area-botao");
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
+    document.addEventListener('DOMContentLoaded', () => {
+        const botaoMinhaArea = document.querySelector(".minha-area-botao");
+        const usuarioLogado = localStorage.getItem("usuarioLogado");
 
-  if (botaoMinhaArea) {
-    if (usuarioLogado) {
-      botaoMinhaArea.style.display = "inline-block"; 
-    } else {
-      botaoMinhaArea.style.display = "none";
-    }
-  }
-});  
+        if (botaoMinhaArea) {
+            if (usuarioLogado) {
+                botaoMinhaArea.style.display = "inline-block";
+            } else {
+                botaoMinhaArea.style.display = "none";
+            }
+        }
+    });
     // Função para abrir modais (histórico, entrada, saída, etc.)
     window.openModal = function (tipo) {
         document.getElementById("overlay").style.display = "block";
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDashboard();
     }
 
-    // Função para salvar uma nova entrada
+    // --- FUNÇÃO SALVAR ENTRADA (MODIFICADA) ---
     window.salvarEntrada = function () {
         const dataInput = document.getElementById("entrada-data");
         const valorInput = document.getElementById("entrada-valor");
@@ -145,10 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // --- INÍCIO DA CORREÇÃO DE DATA ---
+        const dataSelecionada = dataInput.value; // Ex: "2025-06-01"
+        // Cria um objeto Date interpretando a data selecionada como meia-noite no fuso horário local.
+        const dataObjeto = new Date(dataSelecionada + 'T00:00:00');
+        // Converte essa data local para uma string ISO 8601 em UTC para armazenamento consistente.
+        const dataParaSalvar = dataObjeto.toISOString();
+        // --- FIM DA CORREÇÃO DE DATA ---
+
         const novaEntrada = {
             id: Date.now(),
             tipo: "entrada",
-            data: dataInput.value,
+            data: dataParaSalvar, // Salva a data corrigida no formato UTC
             valor: parseFloat(valorInput.value),
             categoria: categoriaSelect.value,
             descricao: descricaoInput.value,
@@ -162,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
     };
 
-    // Função para salvar uma nova saída
+    // --- FUNÇÃO SALVAR SAÍDA (MODIFICADA) ---
     window.salvarSaida = function () {
         const dataInput = document.getElementById("saida-data");
         const valorInput = document.getElementById("saida-valor");
@@ -177,10 +185,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // --- INÍCIO DA CORREÇÃO DE DATA ---
+        const dataSelecionada = dataInput.value; // Ex: "2025-06-01"
+        // Cria um objeto Date interpretando a data selecionada como meia-noite no fuso horário local.
+        const dataObjeto = new Date(dataSelecionada + 'T00:00:00');
+        // Converte essa data local para uma string ISO 8601 em UTC para armazenamento consistente.
+        const dataParaSalvar = dataObjeto.toISOString();
+        // --- FIM DA CORREÇÃO DE DATA ---
+
         const novaSaida = {
             id: Date.now(),
             tipo: "saida",
-            data: dataInput.value,
+            data: dataParaSalvar, // Salva a data corrigida no formato UTC
             valor: parseFloat(valorInput.value),
             categoria: categoriaSelect.value,
             descricao: descricaoInput.value,
@@ -233,6 +249,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 `+ R$ ${item.valor.toFixed(2)}`;
             const description = item.descricao ? ` - ${item.descricao}` : "";
             const category = item.categoria ? ` (${item.categoria})` : "";
+
+            // A exibição da data já está correta, usando new Date(item.data)
+            // que converte a string UTC para o fuso horário local.
             const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
 
             itemDiv.innerHTML = `
@@ -364,8 +383,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Função para filtrar transações por ano e mês
     function filterTransactions(transactions, ano, mes) {
         return transactions.filter((item) => {
-            const itemDate = new Date(item.data + "T00:00:00");
+            // Cria o objeto Date diretamente da string ISO salva (que é UTC)
+            const itemDate = new Date(item.data); 
             const itemYear = itemDate.getFullYear().toString();
+            // getMonth() retorna 0-11, então +1 para 1-12
             const itemMonth = (itemDate.getMonth() + 1).toString().padStart(2, "0");
 
             const anoMatch = !ano || itemYear === ano;
@@ -399,10 +420,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         transactions.forEach((item) => {
             if (item.recorrente) {
-                const originalDate = new Date(item.data + "T00:00:00");
-
+                // Ao criar a data original, interpretá-la como UTC
+                const originalDate = new Date(item.data); // item.data já é UTC
                 let currentDate = new Date(originalDate);
 
+                // Avança a data para o ano de início de exibição, se necessário
                 while (currentDate.getFullYear() < startDisplayYear) {
                     if (item.frequencia === "mensal") {
                         currentDate.setMonth(currentDate.getMonth() + 1);
@@ -418,11 +440,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 while (currentDate.getFullYear() <= endDisplayYear) {
                     expandedTransactions.push({
                         ...item,
+                        // Salva a data expandida novamente como string ISO (UTC)
                         data: currentDate.toISOString().split("T")[0],
                     });
 
                     if (item.frequencia === "mensal") {
-                        currentDate.setMonth(currentDate.getMonth() + 1);
+                        const nextMonth = currentDate.getMonth() + 1;
+                        currentDate.setMonth(nextMonth);
+                        // Garante que se a data original for 31 e o próximo mês não tiver 31,
+                        // ela não avance para o próximo mês. Ex: 31 Jan -> 28 Fev, não 3 Mar.
+                        if (currentDate.getMonth() !== (nextMonth % 12)) {
+                            currentDate.setDate(0); // Último dia do mês anterior
+                        }
                     } else if (item.frequencia === "semanal") {
                         currentDate.setDate(currentDate.getDate() + 7);
                     } else if (item.frequencia === "diaria") {
@@ -430,14 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         break;
                     }
-                    if (
-                        currentDate.getDate() !== originalDate.getDate() &&
-                        item.frequencia === "mensal"
-                    ) {
-                        currentDate.setDate(originalDate.getDate());
-                    }
-
-                    if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break;
+                    if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break; // Evita loop infinito
                 }
             } else {
                 expandedTransactions.push(item);
@@ -482,6 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function createListItem(item, displayType) {
             const listItem = document.createElement("li");
             listItem.className = item.tipo;
+            // new Date(item.data) já converte a string UTC para o fuso horário local para exibição.
             const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
             const formattedValue = new Intl.NumberFormat("pt-BR", {
                 style: "currency",
@@ -548,27 +571,24 @@ document.addEventListener('DOMContentLoaded', () => {
             (sum, item) => sum + item.valor,
             0
         );
-        
+
         //add para localStorage
         const chartData = {
             entradas: totalEntradas,
             saidas: totalSaidas,
         };
 
-        localStorage.setItem("chartData",JSON.stringify(chartData));
+        localStorage.setItem("chartData", JSON.stringify(chartData));
 
         chartInstances.pieChart = new Chart(
-            document.getElementById("pieChart").getContext("2d"),
-            {
+            document.getElementById("pieChart").getContext("2d"), {
                 type: "doughnut",
                 data: {
                     labels: ["Entradas", "Saídas"],
-                    datasets: [
-                        {
-                            data: [totalEntradas, totalSaidas],
-                            backgroundColor: ["#4CAF50", "#F44336"],
-                        },
-                    ],
+                    datasets: [{
+                        data: [totalEntradas, totalSaidas],
+                        backgroundColor: ["#4CAF50", "#F44336"],
+                    }, ],
                 },
                 options: {
                     responsive: true,
@@ -610,7 +630,10 @@ document.addEventListener('DOMContentLoaded', () => {
             allFilteredMonths.add(monthKey);
 
             if (!transacoesPorMes[monthKey]) {
-                transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+                transacoesPorMes[monthKey] = {
+                    entradas: 0,
+                    saidas: 0
+                };
             }
             transacoesPorMes[monthKey].entradas += item.valor;
         });
@@ -623,7 +646,10 @@ document.addEventListener('DOMContentLoaded', () => {
             allFilteredMonths.add(monthKey);
 
             if (!transacoesPorMes[monthKey]) {
-                transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+                transacoesPorMes[monthKey] = {
+                    entradas: 0,
+                    saidas: 0
+                };
             }
             transacoesPorMes[monthKey].saidas += item.valor;
         });
@@ -637,7 +663,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const labelsMeses = [];
 
         sortedMonthKeys.forEach((monthKey) => {
-            const dataMes = transacoesPorMes[monthKey] || { entradas: 0, saidas: 0 };
+            const dataMes = transacoesPorMes[monthKey] || {
+                entradas: 0,
+                saidas: 0
+            };
             const saldoMesAtual = dataMes.entradas - dataMes.saidas;
             saldoAcumulado += saldoMesAtual;
 
@@ -655,21 +684,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         chartInstances.lineChart = new Chart(
-            document.getElementById("lineChart").getContext("2d"),
-            {
+            document.getElementById("lineChart").getContext("2d"), {
                 type: "line",
                 data: {
                     labels: labelsMeses,
-                    datasets: [
-                        {
-                            label: "Saldo Acumulado",
-                            data: saldosMensais,
-                            borderColor: "#024dae",
-                            backgroundColor: "rgba(2, 77, 174, 0.2)",
-                            fill: true,
-                            tension: 0.1,
-                        },
-                    ],
+                    datasets: [{
+                        label: "Saldo Acumulado",
+                        data: saldosMensais,
+                        borderColor: "#024dae",
+                        backgroundColor: "rgba(2, 77, 174, 0.2)",
+                        fill: true,
+                        tension: 0.1,
+                    }, ],
                 },
                 options: {
                     responsive: true,
@@ -687,23 +713,19 @@ document.addEventListener('DOMContentLoaded', () => {
         );
 
         chartInstances.comparativeBarChart = new Chart(
-            document.getElementById("comparativeBarChart").getContext("2d"),
-            {
+            document.getElementById("comparativeBarChart").getContext("2d"), {
                 type: "bar",
                 data: {
                     labels: labelsMeses,
-                    datasets: [
-                        {
-                            label: "Entradas",
-                            data: entradasMensais,
-                            backgroundColor: "#4CAF50",
-                        },
-                        {
-                            label: "Saídas",
-                            data: saidasMensais,
-                            backgroundColor: "#F44336",
-                        },
-                    ],
+                    datasets: [{
+                        label: "Entradas",
+                        data: entradasMensais,
+                        backgroundColor: "#4CAF50",
+                    }, {
+                        label: "Saídas",
+                        data: saidasMensais,
+                        backgroundColor: "#F44336",
+                    }, ],
                 },
                 options: {
                     responsive: true,
@@ -749,19 +771,19 @@ window.onclick = function (event) {
 };
 // Função para delogar o usuário
 function sair() {
-  localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
-  localStorage.removeItem("currentUser"); // Remove o usuário atual
-  window.location.href = "/src/login/login.html";
+    localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
+    localStorage.removeItem("currentUser"); // Remove o usuário atual
+    window.location.href = "/src/login/login.html";
 }
 
 // 2. Depois, adiciona o evento
 document.addEventListener("DOMContentLoaded", () => {
-  const botaoSair = document.getElementById("botao-sair");
+    const botaoSair = document.getElementById("botao-sair");
 
-  if (botaoSair) {
-    botaoSair.addEventListener("click", function (e) {
-      e.preventDefault();
-      sair();
-    });
-  }
+    if (botaoSair) {
+        botaoSair.addEventListener("click", function (e) {
+            e.preventDefault();
+            sair();
+        });
+    }
 });
