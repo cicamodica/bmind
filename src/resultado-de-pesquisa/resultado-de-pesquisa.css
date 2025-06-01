@@ -247,6 +247,8 @@ img {
   padding: 2px 16px;
 }
 
+/*INÍCIO DO CSS DA BARRA QUE FICA ESCONDIDA PARA TELAS MENORES*/
+
 /* Oculta o ícone do mobile por padrão */
 .search-mobile-icon {
   display: none;
@@ -258,8 +260,6 @@ img {
 .search-mobile-icon i {
   color: white;
 }
-
-/*INÍCIO DO CSS DA BARRA QUE FICA ESCONDIDA PARA TELAS MENORES*/
 
 .mobile-search-bar {
   display: none;

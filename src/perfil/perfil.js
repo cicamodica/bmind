@@ -91,6 +91,7 @@ window.onload = () => {
   }
 };
 
+  //FUNCIONANLIDADE DA BARRA DE PESQUISA QUE FICA ESCONDIDA NAS TELAS MENORES
   //Funcionalidade de esconder ícone em telas maiores
  const mobileSearchIcon = document.querySelector('.search-mobile-icon');
   const mobileSearchBar = document.getElementById('mobileSearchBar');
@@ -109,7 +110,7 @@ window.onload = () => {
   }
 }
 
-// Selecionar imagem e mostrar preview
+//INÍCIO FUNCIONALIDADE IMAGEM E MOSTRAR PREVIEW
 document.getElementById("imagem").addEventListener("change", function () {
   const nomeArquivo = this.files[0] ? this.files[0].name : "Nenhum arquivo selecionado";
   document.getElementById("nome-arquivo").textContent = nomeArquivo;
