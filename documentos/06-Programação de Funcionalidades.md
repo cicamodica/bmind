@@ -157,9 +157,9 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 
 ### Artefatos da funcionalidade
 
--Index_Validação_de_Dados.html
--Index_Validação_de_Dados.js
--Index_Validação_de_Dados.css
+- Index_Validação_de_Dados.html
+- Index_Validação_de_Dados.js
+- Index_Validação_de_Dados.css
 
 ### Estrutura de Dados
 
@@ -171,14 +171,14 @@ if (emailCadastrado != null) {
     mensagemErro.style.display = "none";
     alert("Código validado com sucesso!");
     window.location.href = "/src/login/login.html";
-  } else {
-    mensagemErro.style.display = "inline";
-  }
-});
+      } else {
+        mensagemErro.style.display = "inline";
+      }
+        });
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL:
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html)
 
 - O usuário é redirecionado para esssa página após preencher seus dados de cadastro. 
 
@@ -202,88 +202,86 @@ RF-08 - A aplicação deve possuir uma funcionalidade de filtro/pesquisa para pe
 
 ### Artefatos da funcionalidade
 
--resultado-de-pesquisa.html
--resultado-de-pesquisa.js
--resultado-de-pesquisa.css
+- resultado-de-pesquisa.html
+- resultado-de-pesquisa.js
+- resultado-de-pesquisa.css
 
 ### Estrutura de Dados
 
-let perfilUsuario = null;
-const usuarioLogado = localStorage.getItem("usuarioLogado");
-if (usuarioLogado !== null) {
-  const dadosDoUsuario = JSON.parse(localStorage.getItem(usuarioLogado));
-  perfilUsuario = dadosDoUsuario?.perfil || null;
-}
+    let perfilUsuario = null;
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    if (usuarioLogado !== null) {
+      const dadosDoUsuario = JSON.parse(localStorage.getItem(usuarioLogado));
+      perfilUsuario = dadosDoUsuario?.perfil || null;
+    }
 
-if (!termo || termo.trim() === "") {
-  resultadosDiv.innerHTML = "<p>Nenhum termo de pesquisa informado.</p>";
-} else {
-  const resultados = conteudos
-    .filter((conteudo) => {
-      const tituloMatch = conteudo.titulo
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .startsWith(termo);
+    if (!termo || termo.trim() === "") {
+          resultadosDiv.innerHTML = "<p>Nenhum termo de pesquisa informado.</p>";
+        } else {
+      const resultados = conteudos
+        .filter((conteudo) => {
+          const tituloMatch = conteudo.titulo
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .startsWith(termo);
 
-      const palavraChaveMatch = conteudo.palavrasChave.some((palavraChave) =>
-        palavraChave
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .startsWith(termo)
-      );
+          const palavraChaveMatch = conteudo.palavrasChave.some((palavraChave) =>
+            palavraChave
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .startsWith(termo)
+          );
 
-      return tituloMatch || palavraChaveMatch;
-    })
-    .filter((conteudo) => {
-      if (perfilUsuario === null) {
-        return true; // mostra todos os conteúdos para quem não está logado
-      }
-      // Se logado → mostrar conteúdos compatíveis com o perfil
-      // perfilUsuario é "Pessoa Física" ou "Pessoa Jurídica"
-      const termoPerfil = perfilUsuario.toLowerCase().includes("física")
-        ? "fisica"
-        : "juridica";
-      const lowerKeywords = conteudo.palavrasChave.map((p) =>
-        p
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-      );
+          return tituloMatch || palavraChaveMatch;
+        })
+        .filter((conteudo) => {
+          if (perfilUsuario === null) {
+            return true; // mostra todos os conteúdos para quem não está logado
+          }
+          const termoPerfil = perfilUsuario.toLowerCase().includes("física")
+            ? "fisica"
+            : "juridica";
+          const lowerKeywords = conteudo.palavrasChave.map((p) =>
+            p
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+          );
 
-      return lowerKeywords.includes(termoPerfil);
-    });
+          return lowerKeywords.includes(termoPerfil);
+        });
 
-  if (resultados.length === 0) {
-    resultadosDiv.innerHTML = `<p>Nenhum resultado encontrado para "<strong>${termo}</strong>".</p>`;
-  } else {
-    resultadosDiv.innerHTML = resultados
-      .map(
-        (resultado) => `
-        <a class="plan-link" href="${resultado.link}">
-          <div class="card">
-            <div class="plan-img">
-              <img src="${resultado.imagem}" alt="imagem" class="imagem" />
-              <div class="plan-descricao-link">
-                  <h2>${resultado.titulo}</h2>
-                  <p class="plan-descricao">${resultado.descricao}</p>
-                  <p class="plan-keyword plan-descricao">
-                    <strong>Palavras-chave:</strong>
-                    ${resultado.palavrasChave.join(", ")}
-                  </p>
+      if (resultados.length === 0) {
+        resultadosDiv.innerHTML = `<p>Nenhum resultado encontrado para "<strong>${termo}</strong>".</p>`;
+      } else {
+        resultadosDiv.innerHTML = resultados
+          .map(
+            (resultado) => `
+            <a class="plan-link" href="${resultado.link}">
+              <div class="card">
+                <div class="plan-img">
+                  <img src="${resultado.imagem}" alt="imagem" class="imagem" />
+                  <div class="plan-descricao-link">
+                      <h2>${resultado.titulo}</h2>
+                      <p class="plan-descricao">${resultado.descricao}</p>
+                      <p class="plan-keyword plan-descricao">
+                        <strong>Palavras-chave:</strong>
+                        ${resultado.palavrasChave.join(", ")}
+                      </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </a>`
-      )
-      .join("");
-  }
-}
+            </a>`
+          )
+          .join("");
+          }
+        }
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL:
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/resultado-de-pesquisa/resultado-de-pesquisa.html)
 
 - Ao clicar na barra de pesquisa no topo da página e escrever uma palavra chave (finanças, por exemplo) o usuário é redirecionado para a página de Resultado. 
 
