@@ -163,10 +163,10 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 
 ### Estrutura de Dados
 
-if (emailCadastrado != null) {
-    const dados = JSON.parse(localStorage.getItem(emailCadastrado));
-    dados.validada = true;
-    localStorage.setItem(emailCadastrado, JSON.stringify(dados));
+    if (emailCadastrado != null) {
+        const dados = JSON.parse(localStorage.getItem(emailCadastrado));
+        dados.validada = true;
+        localStorage.setItem(emailCadastrado, JSON.stringify(dados));
 
     mensagemErro.style.display = "none";
     alert("Código validado com sucesso!");
