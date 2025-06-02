@@ -59,3 +59,9 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
 <div align="center">
   <img src="img/Tela de perfil.png" alt="Página de perfil" style="width: 70%; max-width: 800px;">
 </div>
+
+## Resultado de Pesquisa
+
+<div align="center">
+  <img src="img/Página Resultado de Pesquisa.png" alt="Página de Resultado de Pesquisa" style="width: 70%; max-width: 800px;">
+</div>
