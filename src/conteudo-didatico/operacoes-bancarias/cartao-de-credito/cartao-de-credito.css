@@ -358,18 +358,37 @@ header {
 
 /* RESPONSIVIDADE BÁSICA */
 
-@media (max-width: 1024px) {
-  .search-container {
-    width: 80%;
+@media (max-width: 480px) {
+  header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
   }
 
-  .titulo-nav h1 {
-    font-size: 28px;
+  .left-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .imagem-controle img {
-    height: 400px;
-  }
+  .search-bar {
+    display: none;;
+}
+
+.search-container{
+  width: auto;
+  padding: 0;
+}
+.center-group {
+  justify-content: flex-start;
+}
+.search-icon {
+  position: static;
+ display: inline-block;
+ font-size: 22px;
+ color: white;
 }
 
 @media (max-width: 768px) {

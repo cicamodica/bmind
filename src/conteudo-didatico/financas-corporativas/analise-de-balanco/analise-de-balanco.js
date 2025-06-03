@@ -102,24 +102,7 @@ window.addEventListener("click", function (e) {
   }
 });
 
-/*// Função para registrar um conteúdo como recentemente visto
-function registrarConteudoVisto(nome, url, imagem) {
-  let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
 
-  // Remove se já existir (baseado na URL para garantir unicidade)
-  vistos = vistos.filter(item => item.url !== url);
-
-  // Adiciona no topo da lista
-  const conteudo = { nome, url, imagem };
-  vistos.unshift(conteudo);
-
-  // Mantém apenas os 3 mais recentes
-  if (vistos.length > 3) {
-    vistos = vistos.slice(0, 3);
-  }
-
-  localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
-}*/
 
 function registrarConteudoVisto(nome, url, imagem) {
   const emailUsuario = localStorage.getItem("usuarioLogado");
@@ -138,9 +121,9 @@ function registrarConteudoVisto(nome, url, imagem) {
   const conteudo = { nome, url, imagem };
   dadosUsuario.vistosRecentemente.unshift(conteudo);
 
-  // Mantém só os 3 mais recentes
-  if (dadosUsuario.vistosRecentemente.length > 3) {
-    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 3);
+  // Mantém só os 5 mais recentes
+  if (dadosUsuario.vistosRecentemente.length > 5) {
+    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 5);
   }
 
   // Salva de volta no localStorage
