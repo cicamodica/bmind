@@ -251,7 +251,7 @@ exibirVistosRecentemente();
 // Função exibir conteuudo conforme a preferencias selecionadas no cadrastro//
 
 function exibirConteudoRecomendados() {
-  //Recuperação dos dados do usuario//
+  // Recuperação dos dados do usuário
   const dados = JSON.parse(localStorage.getItem("currentUser"));
 
   if (!dados) {
@@ -259,49 +259,85 @@ function exibirConteudoRecomendados() {
     return;
   }
 
-    const { perfil, preferenciaDeConteudos} = dados;
-    const container = document.getElementById("lista-conteudos-recomendados");
-    
-    if (!container) {
-      console.error("Elemento conteudo-recomendados não encontrado.");
-      return;
-    }
+  const { perfil, preferenciaDeConteudos } = dados;
+  const container = document.getElementById("lista-conteudos-recomendados");
+
+  if (!container) {
+    console.error("Elemento conteudo-recomendados não encontrado.");
+    return;
+  }
 
   if (!preferenciaDeConteudos || preferenciaDeConteudos.length === 0) {
     container.innerHTML = "<p>Não há conteúdos recomendados para você.</p>";
     return;
   }
 
-  // Conteúdos estáticos para recomendações
+  // Conteúdos estáticos para recomendações com links atualizados
   const conteudos = {
     "Pessoa Física": {
-      "Finanças Pessoais": "Aprenda organizar seu orçamento",
-      Investimentos: "Descubra como investir seu dinheiro",
-      "Operações Bancárias": "Entenda como funcionam as operações bancárias",
+      "Finanças Pessoais": {
+        descricao: "Aprenda organizar seu orçamento",
+        link: "/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+      },
+      "Investimentos": {
+        descricao: "Descubra como investir seu dinheiro",
+        link: "/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+      },
+      "Operações Bancárias": {
+        descricao: "Entenda como funcionam as operações bancárias",
+        link: "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+      }
     },
     "Pessoa Jurídica": {
-      "Finanças Corporativas": "Aprenda a gerenciar as finanças da sua empresa",
-      Investimentos: "Descubra como investir o capital da sua empresa",
-      "Operações Bancárias":
-        "Entenda como funcionam as operações bancárias para empresas",
-    },
+      "Finanças Corporativas": {
+        descricao: "Aprenda a gerenciar as finanças da sua empresa",
+        link: "/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+      },
+      "Investimentos Corporativos": {
+        descricao: "Descubra como investir o capital da sua empresa",
+        link: "/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+      },
+      "Operações Bancárias": {
+        descricao: "Entenda como funcionam as operações bancárias para empresas",
+        link: "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+      }
+    }
   };
 
-  //Percorre as preferências do usuário e exibe os conteúdos recomendados//
+  // Limpa o container antes de adicionar novos conteúdos
+  container.innerHTML = "";
 
+  // Percorre as preferências do usuário e exibe os conteúdos recomendados como links
   preferenciaDeConteudos.forEach((preferencia) => {
-    const descricao =
-      conteudos[perfil]?.[preferencia] || "Conteudo não disponível";
-    const bloco = `
+    let conteudo = conteudos[perfil][preferencia];
+
+    // Ajuste específico para "Investimentos" em Pessoa Jurídica
+    if (perfil === "Pessoa Jurídica" && preferencia === "Investimentos") {
+      conteudo = conteudos[perfil]["Investimentos Corporativos"];
+      preferencia = "Investimentos Corporativos"; // Ajuste o nome exibido
+    }
+
+    if (conteudo) {
+      const bloco = `
+        <a href="${conteudo.link}" class="card-conteudo-link">
+          <div class="card-conteudo">
+            <h3>${preferencia}</h3>
+            <p>${conteudo.descricao}</p>
+          </div>
+        </a>
+      `;
+      container.innerHTML += bloco;
+    } else {
+      const bloco = `
         <div class="card-conteudo">
           <h3>${preferencia}</h3>
-          <p>${descricao}</p>
-          </div>
-          `;
-    container.innerHTML += bloco;
+          <p>Conteúdo não disponível.</p>
+        </div>
+      `;
+      container.innerHTML += bloco;
+    }
   });
 }
-// Chama a função para exibir os conteúdos recomendados
 exibirConteudoRecomendados();
 
 window.renderMainPieChart = function () {
@@ -422,10 +458,170 @@ document.addEventListener("DOMContentLoaded", function () {
    renderMainPieChart();
 });
 
-// Limpa o localStorage e exibe os dados do usuário logado
-localStorage.removeItem("vistosRecentemente");
-console.log("✅ Dados soltos foram removidos.");
+// Recupera o identificador do usuário logado (e-mail, por exemplo)
 
+// Função para adicionar uma meta financeira
+document.addEventListener("DOMContentLoaded", function () {
+  const formMeta = document.getElementById("form-meta");
+  const listaMetas = document.getElementById("lista-metas");
 
+  // --- Verificação de Usuário Logado ---
 
- 
+  if (!emailUsuario) {
+    console.warn("Nenhum usuário logado detectado. As metas financeiras não serão salvas ou carregadas.");
+    return;
+  }
+
+  const metasKey = `metas_${emailUsuario}`;
+
+  // --- Função para Carregar Metas ---
+  // Obtém as metas salvas para o usuário logado e as exibe na interface.
+  function carregarMetas() {
+    // Tenta obter as metas do localStorage; se não encontrar, assume um array vazio.
+    const metasSalvas = JSON.parse(localStorage.getItem(metasKey) || '[]');
+    listaMetas.innerHTML = ''; // Limpa a lista atual para evitar duplicações ao recarregar.
+
+    // Para cada meta encontrada, cria e adiciona o card correspondente à interface.
+    metasSalvas.forEach(meta => {
+      criarCardMeta(meta.titulo, meta.valorTotal, meta.valorAtual, meta.tempo, meta.id);
+    });
+  }
+
+  // --- Função para Salvar Metas ---
+  // Coleta todas as metas atualmente exibidas na interface e as salva no localStorage.
+  function salvarMetas() {
+    const metasAtuais = [];
+    document.querySelectorAll('.card-meta').forEach(card => {
+      metasAtuais.push({
+        id: card.dataset.metaId, // Pega o ID único da meta do dataset do card.
+        titulo: card.querySelector('h4').textContent,
+        valorTotal: parseFloat(card.dataset.valorTotal), // Converte para número.
+        // Adiciona valorAtual do dataset para garantir que o valor mais recente seja salvo
+        valorAtual: parseFloat(card.dataset.valorAtual), 
+        tempo: card.dataset.tempo // Pega o tempo do dataset do card.
+      });
+    });
+    // Salva o array de metas (em formato JSON) no localStorage, usando a chave do usuário.
+    localStorage.setItem(metasKey, JSON.stringify(metasAtuais));
+  }
+
+  // --- Evento de Envio do Formulário de Criação de Meta ---
+  formMeta.addEventListener("submit", function (e) {
+    e.preventDefault(); // Impede o comportamento padrão de envio do formulário (recarregar a página).
+
+    // Coleta os valores inseridos pelo usuário.
+    const titulo = document.getElementById("titulo-meta").value;
+    const valorTotal = parseFloat(document.getElementById("valor-meta").value);
+    const valorAtual = parseFloat(document.getElementById("valor-atual-meta").value);
+    const tempo = document.getElementById("tempo-meta").value;
+
+    // Realiza a validação dos campos.
+    if (!titulo || isNaN(valorTotal) || isNaN(valorAtual) || !tempo || valorTotal <= 0 || valorAtual < 0) {
+      alert("Por favor, preencha todos os campos corretamente. O valor total deve ser maior que zero e o valor atual não pode ser negativo.");
+      return; // Interrompe se a validação falhar.
+    }
+
+    // Gera um ID único para a nova meta (usando o timestamp atual para simplicidade).
+    const metaId = Date.now().toString();
+    
+    // Cria o card da meta na interface do usuário.
+    criarCardMeta(titulo, valorTotal, valorAtual, tempo, metaId);
+    
+  
+    salvarMetas(); 
+    
+    // Limpa o formulário após a adição.
+    formMeta.reset();
+  });
+
+  // --- Função para Criar o Elemento HTML (Card) de uma Meta ---
+  function criarCardMeta(titulo, valorTotal, valorAtual, tempo, id) {
+    const card = document.createElement("div");
+    card.classList.add("card-meta");
+    
+    // Armazena dados importantes no `dataset` do elemento HTML para fácil recuperação.
+    card.dataset.metaId = id;
+    card.dataset.valorTotal = valorTotal;
+    card.dataset.valorAtual = valorAtual;
+    card.dataset.tempo = tempo;
+
+    // Calcula o progresso da meta em porcentagem.
+    let progresso = Math.min((valorAtual / valorTotal) * 100, 100).toFixed(1);
+
+    // Define a estrutura HTML interna do card.
+    card.innerHTML = `
+      <h4>${titulo}</h4>
+      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo}</small>
+      <div class="barra-progresso">
+        <div class="barra-preenchida" style="width: ${progresso}%"></div>
+      </div>
+      <div class="porcentagem-meta">${progresso}% alcançado</div>
+
+      <div class="botoes-metas">
+        <button class="btn-atualizar">Atualizar</button>
+        <button class="btn-excluir">Excluir</button>
+      </div>
+
+      <div class="form-atualizacao" style="display: none; margin-top: 8px;">
+        <input type="number" class="novo-valor" placeholder="Novo valor atual" />
+        <button class="confirmar-atualizacao">Salvar</button>
+      </div>
+    `;
+
+    // Seleciona os elementos interativos dentro do card para adicionar eventos.
+    const btnAtualizar = card.querySelector('.btn-atualizar');
+    const formAtualizacao = card.querySelector('.form-atualizacao');
+    const inputNovoValor = card.querySelector('.novo-valor');
+    const btnSalvar = card.querySelector('.confirmar-atualizacao');
+    const barra = card.querySelector('.barra-preenchida');
+    const porcentagemTexto = card.querySelector('.porcentagem-meta');
+
+    // Evento para mostrar/esconder o formulário de atualização do valor.
+    btnAtualizar.addEventListener('click', () => {
+      formAtualizacao.style.display = formAtualizacao.style.display === 'none' ? 'block' : 'none';
+    });
+
+    const btnExcluir = card.querySelector('.btn-excluir');
+
+    // Evento para excluir a meta.
+    btnExcluir.addEventListener('click', () => {
+      if (confirm('Tem certeza que deseja excluir esta meta?')) {
+        card.remove(); // Remove o card da DOM.
+        // **SALVA AS METAS:** Chama a função para persistir a exclusão no localStorage.
+        salvarMetas(); 
+      }
+    });
+   
+    // Evento para salvar o novo valor de atualização da meta.
+    btnSalvar.addEventListener('click', () => {
+      const novoValor = parseFloat(inputNovoValor.value);
+      if (isNaN(novoValor) || novoValor < 0) {
+        alert("Por favor, informe um valor numérico válido e não negativo.");
+        return;
+      }
+
+      // Atualiza o valor atual no `dataset` do card para que `salvarMetas` pegue o valor correto.
+      card.dataset.valorAtual = novoValor;
+      
+      // Recalcula e atualiza o progresso visual na barra e no texto.
+    
+      const novaPorcentagem = Math.min((novoValor / parseFloat(card.dataset.valorTotal)) * 100, 100).toFixed(1); 
+      barra.style.width = `${novaPorcentagem}%`;
+      porcentagemTexto.textContent = `${novaPorcentagem}% alcançado`;
+
+      // Esconde o formulário de atualização e limpa o campo de input.
+      formAtualizacao.style.display = 'none';
+      inputNovoValor.value = '';
+      
+      
+      salvarMetas(); 
+    });
+
+    // Adiciona o novo card à lista de metas na interface.
+    listaMetas.appendChild(card);
+  }
+
+  // --- Carregar Metas ao Inicializar a Página ---
+  
+  carregarMetas();
+});

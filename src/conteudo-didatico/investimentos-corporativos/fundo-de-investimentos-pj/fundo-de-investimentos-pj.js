@@ -126,11 +126,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Fundo de Investimentos",
-  "src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html",
-  "/src/imagens/FundoInvestimentosPF.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {

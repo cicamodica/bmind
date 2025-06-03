@@ -130,11 +130,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Captação de Recursos",
-  "src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html",
-  "/src/imagens/CaptacaoDeRecursos.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {
