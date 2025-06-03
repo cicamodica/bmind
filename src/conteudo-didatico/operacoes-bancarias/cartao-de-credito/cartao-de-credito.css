@@ -350,91 +350,82 @@ ul, li {
   transform: translate(-50%, -55%);
 }
 
-/* RESPONSIVIDADE BÁSICA */
+
 
 @media (max-width: 480px) {
-  header{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: auto;
-  }
-
-  .left-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .search-bar {
-    display: none;;
-}
-
-.search-container{
-  width: auto;
-  padding: 0;
-}
-.center-group {
-  justify-content: flex-start;
-}
-.search-icon {
-  position: static;
- display: inline-block;
- font-size: 22px;
- color: white;
-}
-
-@media (max-width: 768px) {
   header {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
-    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    gap: 8px;
   }
 
   .search-container {
-    width: 100%;
+    display: none;
   }
 
-  .right-group, .center-group, .left-group {
-    width: 100%;
-    justify-content: space-between;
+  .header-item .logo {
+    height: 40px;
   }
 
-  .imagem-controle img {
-    height: 300px;
+  .nav {
+    width: 100%;
   }
 
   .titulo-nav h1 {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 480px) {
-  .search-bar {
-    font-size: 14px;
-    padding: 10px 30px;
+    font-size: 16px;
   }
 
-  .menu-button {
-    font-size: 20px;
+  .imagem-controle {
+    justify-content: center;
+    margin: 0;
+  }
+
+  .imagem-controle img {
+    height: 220px;
+    max-width: 100%;
+  }
+
+  .conteudo-didatico {
+    padding: 0 10px;
+  }
+
+  .user-actions {
+    font-size: 16px;
+    gap: 5px;
+  }
+
+  .minha-area-botao {
+    padding: 4px 8px;
+    font-size: 9px;
   }
 
   .nav-icon {
     font-size: 28px;
   }
 
+
+}
+
+/* Tablet (481px até 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .search-container {
+    width: 500px;
+  }
+
   .imagem-controle img {
-    height: 200px;
+    height: 280px;
+    max-width: 100%;
   }
 
-  .introducao, .topico-2, .topico-3 {
-    font-size: 14px;
+  .titulo-nav h1 {
+    font-size: 28px;
   }
 
-  .lista-topico li {
-    font-size: 14px;
+  .conteudo-didatico {
+    padding: 0 15px;
   }
 }
+  
+ 
+
 
