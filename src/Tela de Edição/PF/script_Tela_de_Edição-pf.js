@@ -146,6 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataInput = document.getElementById("entrada-data");
     const valorInput = document.getElementById("entrada-valor");
     const categoriaSelect = document.getElementById("entrada-categoria");
+    const catetoriaText = categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("entrada-descricao");
     const recorrenteSim = document.getElementById(
       "entrada-recorrente-sim"
@@ -162,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tipo: "entrada",
       data: dataInput.value,
       valor: parseFloat(valorInput.value),
+      catetoriaText: catetoriaText,
       categoria: categoriaSelect.value,
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
@@ -179,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataInput = document.getElementById("saida-data");
     const valorInput = document.getElementById("saida-valor");
     const categoriaSelect = document.getElementById("saida-categoria");
+    const categoriaText = categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("saida-descricao");
     const recorrenteSim = document.getElementById(
       "saida-recorrente-sim"
@@ -196,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
       data: dataInput.value,
       valor: parseFloat(valorInput.value),
       categoria: categoriaSelect.value,
+      categoriaText: categoriaText,
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
@@ -580,13 +584,14 @@ document.addEventListener("DOMContentLoaded", function () {
            dadosDoUsuario.entradas = entradasParaGrafico.map(t => ({
              ...t,
              tipo: "entrada",
-             descricao: t.categoria // opcional: manter para exibição posterior
+             categoriaText: t.categoriaText // opcional: manter para exibição posterior
+              
            }));
 
            dadosDoUsuario.saidas = saidasParaGrafico.map(t => ({
            ...t,
            tipo: "saida",
-           descricao: t.categoria
+           categoriaText: t.categoriaText // opcional: manter para exibição posterior
        }));
 
        localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
@@ -820,7 +825,7 @@ function exibirHistoricoDoMesAtual() {
         li.style.backgroundColor = "#f9f9f9";
 
         li.innerHTML = `
-            <span style="color:${cor};">${data} - ${item.tipo}: ${valor} - ${item.categoria}</span>
+            <span style="color:${cor};">${data} - ${item.tipo}: ${valor} - ${item.catetoriaText}</span>
         `;
 
         return li;

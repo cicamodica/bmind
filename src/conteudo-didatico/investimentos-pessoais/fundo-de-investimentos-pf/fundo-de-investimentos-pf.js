@@ -146,11 +146,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
 
-registrarConteudoVisto(
-  "Fundo de Investimentos",
-  "/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
-  "/src/imagens/FundoInvestimentosPF.jpg"
-);
+
 // Função para delogar o usuário
 function sair() {
   localStorage.removeItem("usuarioLogado");

@@ -251,7 +251,7 @@ exibirVistosRecentemente();
 // Função exibir conteuudo conforme a preferencias selecionadas no cadrastro//
 
 function exibirConteudoRecomendados() {
-  //Recuperação dos dados do usuario//
+  // Recuperação dos dados do usuário
   const dados = JSON.parse(localStorage.getItem("currentUser"));
 
   if (!dados) {
@@ -259,49 +259,85 @@ function exibirConteudoRecomendados() {
     return;
   }
 
-    const { perfil, preferenciaDeConteudos} = dados;
-    const container = document.getElementById("lista-conteudos-recomendados");
-    
-    if (!container) {
-      console.error("Elemento conteudo-recomendados não encontrado.");
-      return;
-    }
+  const { perfil, preferenciaDeConteudos } = dados;
+  const container = document.getElementById("lista-conteudos-recomendados");
+
+  if (!container) {
+    console.error("Elemento conteudo-recomendados não encontrado.");
+    return;
+  }
 
   if (!preferenciaDeConteudos || preferenciaDeConteudos.length === 0) {
     container.innerHTML = "<p>Não há conteúdos recomendados para você.</p>";
     return;
   }
 
-  // Conteúdos estáticos para recomendações
+  // Conteúdos estáticos para recomendações com links atualizados
   const conteudos = {
     "Pessoa Física": {
-      "Finanças Pessoais": "Aprenda organizar seu orçamento",
-      Investimentos: "Descubra como investir seu dinheiro",
-      "Operações Bancárias": "Entenda como funcionam as operações bancárias",
+      "Finanças Pessoais": {
+        descricao: "Aprenda organizar seu orçamento",
+        link: "/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+      },
+      "Investimentos": {
+        descricao: "Descubra como investir seu dinheiro",
+        link: "/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+      },
+      "Operações Bancárias": {
+        descricao: "Entenda como funcionam as operações bancárias",
+        link: "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+      }
     },
     "Pessoa Jurídica": {
-      "Finanças Corporativas": "Aprenda a gerenciar as finanças da sua empresa",
-      Investimentos: "Descubra como investir o capital da sua empresa",
-      "Operações Bancárias":
-        "Entenda como funcionam as operações bancárias para empresas",
-    },
+      "Finanças Corporativas": {
+        descricao: "Aprenda a gerenciar as finanças da sua empresa",
+        link: "/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+      },
+      "Investimentos Corporativos": {
+        descricao: "Descubra como investir o capital da sua empresa",
+        link: "/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+      },
+      "Operações Bancárias": {
+        descricao: "Entenda como funcionam as operações bancárias para empresas",
+        link: "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+      }
+    }
   };
 
-  //Percorre as preferências do usuário e exibe os conteúdos recomendados//
+  // Limpa o container antes de adicionar novos conteúdos
+  container.innerHTML = "";
 
+  // Percorre as preferências do usuário e exibe os conteúdos recomendados como links
   preferenciaDeConteudos.forEach((preferencia) => {
-    const descricao =
-      conteudos[perfil]?.[preferencia] || "Conteudo não disponível";
-    const bloco = `
+    let conteudo = conteudos[perfil][preferencia];
+
+    // Ajuste específico para "Investimentos" em Pessoa Jurídica
+    if (perfil === "Pessoa Jurídica" && preferencia === "Investimentos") {
+      conteudo = conteudos[perfil]["Investimentos Corporativos"];
+      preferencia = "Investimentos Corporativos"; // Ajuste o nome exibido
+    }
+
+    if (conteudo) {
+      const bloco = `
+        <a href="${conteudo.link}" class="card-conteudo-link">
+          <div class="card-conteudo">
+            <h3>${preferencia}</h3>
+            <p>${conteudo.descricao}</p>
+          </div>
+        </a>
+      `;
+      container.innerHTML += bloco;
+    } else {
+      const bloco = `
         <div class="card-conteudo">
           <h3>${preferencia}</h3>
-          <p>${descricao}</p>
-          </div>
-          `;
-    container.innerHTML += bloco;
+          <p>Conteúdo não disponível.</p>
+        </div>
+      `;
+      container.innerHTML += bloco;
+    }
   });
 }
-// Chama a função para exibir os conteúdos recomendados
 exibirConteudoRecomendados();
 
 window.renderMainPieChart = function () {
@@ -507,7 +543,17 @@ document.addEventListener("DOMContentLoaded", function () {
     card.dataset.metaId = id;
     card.dataset.valorTotal = valorTotal;
     card.dataset.valorAtual = valorAtual;
-    card.dataset.tempo = tempo;
+    card.dataset.tempo = tempo; // Mantém a data original no dataset (AAAA-MM-DD)
+
+    // --- Nova Função para Formatar a Data (pode ser definida fora da criarCardMeta para reuso) ---
+    const formatarDataBrasileira = (dataString) => {
+        if (!dataString) return ''; // Retorna vazio se a data for nula/indefinida
+        const [ano, mes, dia] = dataString.split('-');
+        return `${dia}-${mes}-${ano}`;
+    };
+
+    // Formata a data para exibição no card
+    const dataFormatada = formatarDataBrasileira(tempo);
 
     // Calcula o progresso da meta em porcentagem.
     let progresso = Math.min((valorAtual / valorTotal) * 100, 100).toFixed(1);
@@ -515,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define a estrutura HTML interna do card.
     card.innerHTML = `
       <h4>${titulo}</h4>
-      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo}</small>
+      <small>Meta: R$ ${valorTotal.toFixed(2)} - Data Final: ${dataFormatada}</small>
       <div class="barra-progresso">
         <div class="barra-preenchida" style="width: ${progresso}%"></div>
       </div>
@@ -531,6 +577,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="confirmar-atualizacao">Salvar</button>
       </div>
     `;
+
+    // ... (restante da sua função criarCardMeta, incluindo listeners e appendChild) ...
 
     // Seleciona os elementos interativos dentro do card para adicionar eventos.
     const btnAtualizar = card.querySelector('.btn-atualizar');
@@ -568,7 +616,6 @@ document.addEventListener("DOMContentLoaded", function () {
       card.dataset.valorAtual = novoValor;
       
       // Recalcula e atualiza o progresso visual na barra e no texto.
-    
       const novaPorcentagem = Math.min((novoValor / parseFloat(card.dataset.valorTotal)) * 100, 100).toFixed(1); 
       barra.style.width = `${novaPorcentagem}%`;
       porcentagemTexto.textContent = `${novaPorcentagem}% alcançado`;
@@ -577,13 +624,13 @@ document.addEventListener("DOMContentLoaded", function () {
       formAtualizacao.style.display = 'none';
       inputNovoValor.value = '';
       
-      
+      // **SALVA AS METAS:** Chama a função para persistir a atualização no localStorage.
       salvarMetas(); 
     });
 
     // Adiciona o novo card à lista de metas na interface.
     listaMetas.appendChild(card);
-  }
+}
 
   // --- Carregar Metas ao Inicializar a Página ---
   

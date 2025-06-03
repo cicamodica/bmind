@@ -148,7 +148,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 registrarConteudoVisto(
   "Renda Fixa",
   "/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html",
-  "/src/imagens/RendaFixaPF.jpg.jpg"
+  "/src/imagens/RendaFixaPF.jpg"
 );
 
 // Função para delogar o usuário

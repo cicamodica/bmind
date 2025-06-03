@@ -147,7 +147,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 registrarConteudoVisto(
   "Renda Variavel",
   "/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html",
-  "/src/imagens/RendaVariavelPF.jpg"
+  "/src/imagens/RendaVariavelPFmenor.jpg"
 );
 
 // Função para delogar o usuário
