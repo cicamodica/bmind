@@ -34,3 +34,34 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
 <div align="center">
   <img src="img/Página de login.png" alt="Página de login" style="width: 70%; max-width: 800px;">
 </div>
+
+## Redefinição de senha
+
+<div align="center">
+  <img src="img/Página esqueceu a senha.png" alt="Página redefinição de senha" style="width: 70%; max-width: 800px;">
+  <img src="img/Página redefinir senha.png" alt="Página redefinição de senha" style="width: 70%; max-width: 800px;">
+</div>
+
+## Cadastro
+
+<div align="center">
+  <img src="img/Tela de cadastro.png" alt="Página de cadastro" style="width: 70%; max-width: 800px;">
+</div>
+
+## Validação de dados
+
+<div align="center">
+  <img src="img/Tela de validação de dados.png" alt="Página de validação de dados" style="width: 70%; max-width: 800px;">
+</div>
+
+## Perfil
+
+<div align="center">
+  <img src="img/Tela de perfil.png" alt="Página de perfil" style="width: 70%; max-width: 800px;">
+</div>
+
+## Resultado de Pesquisa
+
+<div align="center">
+  <img src="img/Página Resultado de Pesquisa.png" alt="Página de Resultado de Pesquisa" style="width: 70%; max-width: 800px;">
+</div>

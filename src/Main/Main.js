@@ -543,17 +543,7 @@ document.addEventListener("DOMContentLoaded", function () {
     card.dataset.metaId = id;
     card.dataset.valorTotal = valorTotal;
     card.dataset.valorAtual = valorAtual;
-    card.dataset.tempo = tempo; // Mantém a data original no dataset (AAAA-MM-DD)
-
-    // --- Nova Função para Formatar a Data (pode ser definida fora da criarCardMeta para reuso) ---
-    const formatarDataBrasileira = (dataString) => {
-        if (!dataString) return ''; // Retorna vazio se a data for nula/indefinida
-        const [ano, mes, dia] = dataString.split('-');
-        return `${dia}-${mes}-${ano}`;
-    };
-
-    // Formata a data para exibição no card
-    const dataFormatada = formatarDataBrasileira(tempo);
+    card.dataset.tempo = tempo;
 
     // Calcula o progresso da meta em porcentagem.
     let progresso = Math.min((valorAtual / valorTotal) * 100, 100).toFixed(1);
@@ -561,7 +551,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define a estrutura HTML interna do card.
     card.innerHTML = `
       <h4>${titulo}</h4>
-      <small>Meta: R$ ${valorTotal.toFixed(2)} - Data Final: ${dataFormatada}</small>
+      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo}</small>
       <div class="barra-progresso">
         <div class="barra-preenchida" style="width: ${progresso}%"></div>
       </div>
@@ -577,8 +567,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <button class="confirmar-atualizacao">Salvar</button>
       </div>
     `;
-
-    // ... (restante da sua função criarCardMeta, incluindo listeners e appendChild) ...
 
     // Seleciona os elementos interativos dentro do card para adicionar eventos.
     const btnAtualizar = card.querySelector('.btn-atualizar');
@@ -616,6 +604,7 @@ document.addEventListener("DOMContentLoaded", function () {
       card.dataset.valorAtual = novoValor;
       
       // Recalcula e atualiza o progresso visual na barra e no texto.
+    
       const novaPorcentagem = Math.min((novoValor / parseFloat(card.dataset.valorTotal)) * 100, 100).toFixed(1); 
       barra.style.width = `${novaPorcentagem}%`;
       porcentagemTexto.textContent = `${novaPorcentagem}% alcançado`;
@@ -624,13 +613,13 @@ document.addEventListener("DOMContentLoaded", function () {
       formAtualizacao.style.display = 'none';
       inputNovoValor.value = '';
       
-      // **SALVA AS METAS:** Chama a função para persistir a atualização no localStorage.
+      
       salvarMetas(); 
     });
 
     // Adiciona o novo card à lista de metas na interface.
     listaMetas.appendChild(card);
-}
+  }
 
   // --- Carregar Metas ao Inicializar a Página ---
   

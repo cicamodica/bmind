@@ -91,6 +91,7 @@ window.onload = () => {
   }
 };
 
+  //Funcionalidade de esconder ícone em telas maiores
  const mobileSearchIcon = document.querySelector('.search-mobile-icon');
   const mobileSearchBar = document.getElementById('mobileSearchBar');
 
