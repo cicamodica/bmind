@@ -46,6 +46,58 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 
 Maria Cecilia Caruzzo Modica
 
+## Cadastro
+
+![Página de cadastro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20cadastro.png)
+
+Sua principal função é permitir que os usuários crie sua conta na aplicação. Através dessa página, os usuários podem inserir suas informaçações de cadastro, como nome de usuário, senha, email, data de nascimento e também escolher qual tipo de conteúdo quer focar através do formulário de cadastro, depois, o sistema verifica se essas informações são válidas para fazer o cadastro, havendo também um botão de "Já possuí cadastro?" caso o usuário ja tenha um login e queira entrar em sua conta.
+
+### Requisito atendido
+
+- |RF-01|	A aplicação deve permitir que o usuário crie uma conta.
+
+### Artefatos da funcionalidade
+
+- cadastro.html
+- cadastro.css
+- cadastro.js
+
+### Estrutura de Dados
+
+    const dados = JSON.parse(localStorage.getItem(email));
+    if (dados !== null) {
+      mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!";
+      return;
+    }
+
+    const dadosUsuario = {
+      nome: nome,
+      email: email,
+      senha: novaSenha,
+      telefoneContato: telefoneContato,
+      dataNascimento: dataNascimento,
+      preferenciaDeConteudos: selecionados,
+      perfil: perfilSelecionado,
+      validada: false,
+    };
+
+    localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
+    mensagemErro.textContent = "";
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Cadastro/cadastro.html) 
+
+- Faça o cadastro da sua conta. Após o cadastro bem-sucedido, você será redirecionado automaticamente para a página de validação de dados.
+
+- Caso já tenha um cadastro, clique no botão "Já possuí cadastro?" e você sera redirecionado para página de login.
+
+
+#### Responsáveis
+
+- Kauê Alves dos Reis
+- Maria Cecilia Caruzzo Modica
+
 ## Esqueceu a senha?
 
 ![Página esqueceu a senha](https://github.com/user-attachments/assets/f3d16e2e-ddf9-4a5a-bdfc-8760099e2a86)
@@ -291,6 +343,82 @@ RF-08 - A aplicação deve possuir uma funcionalidade de filtro/pesquisa para pe
 #### Responsável
 
 - Maria Cecilia Caruzzo Modica
+
+## Feedback
+
+![Página de Feedback](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20Feedback.png)
+
+Sua principal função é permitir que os usuários deem feedbacks e notas para a aplicação, guardando esses feedbacks em localstorage para que a aplicação possa melhorar diante a opnião dos clientes.
+
+### Requisito atendido
+
+- |RF-11| A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação
+
+### Artefatos da funcionalidade
+
+- feedback.html
+- feedback.css
+- feedback.js
+
+### Estrutura de Dados
+
+    document.querySelector(".submit").addEventListener("click", function () {
+    const feedback = document.getElementById("feedbackText").value.trim();
+
+    if (feedback !== "") {
+    let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+    feedbacks.push(feedback); // Adiciona o novo feedback lista
+
+    // Salva no localStorage
+    localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Feedback/feedback.html) 
+
+- Dê uma nota em estrelas e escreva um feedback para a aplicação, depois, clique em "enviar" para que o feedbqack seja salvo.
+
+- Se quiser voltar para a aplicação, basta clicar no menu e escolher em que página quer ir.
+
+
+#### Responsáveis
+
+- Kauê Alves dos Reis
+
+## Perfil
+
+![Página de Perfil](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20perfil.png)
+
+Sua principal função é permitir que os usuários possam editar seus dados como, nome de usuário, data de nascimento, telefone e etc. Permitindo também que o usuário insira uma imagem ao seu perfil.
+
+### Requisito atendido
+
+- [adionar novo?]
+
+### Artefatos da funcionalidade
+
+- perfil.html
+- perfil.css
+- perfil.js
+
+### Estrutura de Dados
+
+   
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/perfil/perfil.html) 
+
+- Clique em "Fazer upload de imagem" para inserir uma foto de perfil.
+
+- Se quiser, pode editar suas informações e depois clicar no botão de salvar para salvar as edições.
+
+
+#### Responsáveis
+
+- Maria Cecilia Caruzzo Modica
+- Kauê Alves dos Reis
 
 > **Links Úteis**:
 > - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)

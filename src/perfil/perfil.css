@@ -425,6 +425,39 @@ textarea {
   color: white;
 }
 
+.mobile-search-bar {
+  display: none;
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.mobile-search-bar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.mobile-search-bar button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.mobile-search-bar button:hover {
+  background-color: #02327e;
+}
+
+
 /* Para telas menores que 768px */
 @media (max-width: 768px) {
   .search-container.search-desktop {
@@ -464,34 +497,3 @@ textarea {
   }
 }
 
-.mobile-search-bar {
-  display: none;
-  padding: 15px;
-  background-color: #ffffff;
-  text-align: center;
-}
-
-.mobile-search-bar input {
-  width: 80%;
-  padding: 10px;
-  font-size: 16px;
-  font-family: "Poppins";
-  border-radius: 25px;
-  border: 1px solid #ccc;
-}
-
-.mobile-search-bar button {
-  padding: 10px 16px;
-  margin-left: 10px;
-  background-color: #024dae;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  font-family: "Poppins";
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.mobile-search-bar button:hover {
-  background-color: #02327e;
-}
