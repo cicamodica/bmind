@@ -344,6 +344,48 @@ RF-08 - A aplicação deve possuir uma funcionalidade de filtro/pesquisa para pe
 
 - Maria Cecilia Caruzzo Modica
 
+## Feedback
+
+![Página de Feedback](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20Feedback.png)
+
+Sua principal função é permitir que os usuários deem feedbacks e notas para a aplicação, guardando esses feedbacks em localstorage para que a aplicação possa melhorar diante a opnião dos clientes.
+
+### Requisito atendido
+
+- |RF-11| A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação
+
+### Artefatos da funcionalidade
+
+- feedback.html
+- feedback.css
+- feedback.js
+
+### Estrutura de Dados
+
+    document.querySelector(".submit").addEventListener("click", function () {
+    const feedback = document.getElementById("feedbackText").value.trim();
+
+    if (feedback !== "") {
+    let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+    feedbacks.push(feedback); // Adiciona o novo feedback lista
+
+    // Salva no localStorage
+    localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Feedback/feedback.html) 
+
+- Dê uma nota em estrelas e escreva um feedback para a aplicação, depois, clique em "enviar" para que o feedbqack seja salvo.
+
+- Se quiser voltar para a aplicação, basta clicar no menu e escolher em que página quer ir.
+
+
+#### Responsáveis
+
+- Kauê Alves dos Reis
+
 > **Links Úteis**:
 > - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
 > - [JSON Tutorial](https://www.w3resource.com/JSON)
