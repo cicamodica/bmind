@@ -68,6 +68,7 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
 
 ## Feedback
 
-<div align="center"=
-  
+<div align="center">
+  <img src="img/Tela de Feedback.png" alt="Tela de Feedback" style="width: 70%; max-width: 800px;">
+</div>
 
