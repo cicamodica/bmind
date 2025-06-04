@@ -46,6 +46,58 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 
 Maria Cecilia Caruzzo Modica
 
+## Cadastro
+
+![Página de cadastro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20cadastro.png)
+
+Sua principal função é permitir que os usuários crie sua conta na aplicação. Através dessa página, os usuários podem inserir suas informaçações de cadastro, como nome de usuário, senha, email, data de nascimento e também escolher qual tipo de conteúdo quer focar através do formulário de cadastro, depois, o sistema verifica se essas informações são válidas para fazer o cadastro, havendo também um botão de "Já possuí cadastro?" caso o usuário ja tenha um login e queira entrar em sua conta.
+
+### Requisito atendido
+
+- |RF-01|	A aplicação deve permitir que o usuário crie uma conta.
+
+### Artefatos da funcionalidade
+
+- cadastro.html
+- cadastro.css
+- cadastro.js
+
+### Estrutura de Dados
+
+    const dados = JSON.parse(localStorage.getItem(email));
+    if (dados !== null) {
+      mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!";
+      return;
+    }
+
+    const dadosUsuario = {
+      nome: nome,
+      email: email,
+      senha: novaSenha,
+      telefoneContato: telefoneContato,
+      dataNascimento: dataNascimento,
+      preferenciaDeConteudos: selecionados,
+      perfil: perfilSelecionado,
+      validada: false,
+    };
+
+    localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
+    mensagemErro.textContent = "";
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Cadastro/cadastro.html) 
+
+- Faça o cadastro da sua conta. Após o cadastro bem-sucedido, você será redirecionado automaticamente para a página de validação de dados.
+
+- Caso já tenha um cadastro, clique no botão "Já possuí cadastro?" e você sera redirecionado para página de login.
+
+
+#### Responsáveis
+
+- Kauê Alves dos Reis
+- Maria Cecilia Caruzzo Modica
+
 ## Esqueceu a senha?
 
 ![Página esqueceu a senha](https://github.com/user-attachments/assets/f3d16e2e-ddf9-4a5a-bdfc-8760099e2a86)
