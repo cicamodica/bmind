@@ -65,7 +65,7 @@ window.addEventListener("DOMContentLoaded", function () {
     // Se ninguém estiver logado, mostra mensagem genérica ou redireciona
     boasVindas.textContent = "Bem-vindo!";
     // Opcional: redirecionar para a página de login
-    // window.location.href = "/src/login/login.html";
+    window.location.href = "/src/login/login.html";
   }
 });
 
