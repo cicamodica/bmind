@@ -152,7 +152,57 @@ header {
   color: black;
   bottom: 16px;
 }
+ .mobile-search-trigger { /* Estilização do ícone de pesquisa no mobile */
+  display: none; /* Oculta o ícone de pesquisa no desktop */
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px;
+  
+ }
+ .mobile-search-bar { /* Estilização da barra de pesquisa no mobile */
+  background-color: #fff; /* Ou transparent, se o fundo da página for branco */
+  border-radius: 0; 
+  padding: 20px;
+  
+}
 
+ .mobile-buscar-btn-estilizado { /* Estilização do botão de busca no mobile */
+  background-color: #024dae; 
+  color: white;
+  border: none;
+  padding: 10px 15px; 
+  border-radius: 20px; 
+  font-size: 10px;
+  font-family: "Poppins", sans-serif; 
+  font-weight: 500; 
+  cursor: pointer;
+  text-align: center;
+  display: inline-block; /* Para que o padding funcione bem e o botão não ocupe a largura toda */
+  margin-top: 2px; 
+  margin-bottom: 0%; /* Para evitar espaçamento extra abaixo do botão */
+}
+ 
+.mobile-buscar-btn-estilizado:hover { /* Efeito hover para o botão */
+  background-color: #024dae; 
+}
+
+.mobile-search-bar.active { /* Exibe a barra de pesquisa no mobile quando ativa */
+    display: flex;;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobile-search-bar input[type="text"] { /* Estilização do campo de texto da barra de pesquisa no mobile */
+  width: 100%;
+  max-width: 400px; 
+  border: 1px solid #ccc; 
+  border-radius: 6px; 
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+ 
+}
 .menu-button {
   /*Estilização do ícone de menu ☰*/
   font-size: 24px;
@@ -368,7 +418,7 @@ ul, li {
    }
    
    .menu-button {   /* Estilização do ícone de menu */
-    font-size: 16px;
+    font-size: 20px;
    } 
 
   .search-container {  /* Estilização da barra de pesquisa */
@@ -377,21 +427,27 @@ ul, li {
   
    #perfil-logado {  /* Estilização do ícone de perfil */
     margin-left: 6px;/*  Alinha o perfil à direita */
-    width: 10px; ;
-    font-size: 18px;
+    width: 12px; ;
+    font-size: 20px;
   }
   
   .user-actions { /* Estilização do grupo de ações do usuário */
-    font-size: 16px;
+    font-size: 19px;
     gap: 5px;
   }
 
   .minha-area-botao { /* Estilização do botão "Minha Área" */
-    padding: 4px 8px;
-    font-size: 8px;
+    padding: 6px 10px;
+    font-size: 9px;
   }
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
     max-width: 100px;
+  }
+  .search-icon {
+    display: flex;
+  }
+  .mobile-search-trigger {
+    display: block;
   }
  .nav {
     width: 100%;
@@ -408,13 +464,14 @@ ul, li {
   }
   img {
     max-width: 100%;
-    height: auto;
+    max-height: 200px;
     display: inline-block;
   }
   
-  .conteudo-didatico {
-    
-    width: 100%;
+  .conteudo-didatico 
+  {
+  font-size: clamp (1em , 1em + 1vw, 1.25em);  
+   
   }
 
   }
