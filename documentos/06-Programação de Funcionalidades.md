@@ -403,8 +403,55 @@ Sua principal função é permitir que os usuários possam editar seus dados com
 - perfil.js
 
 ### Estrutura de Dados
+    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+    window.addEventListener("DOMContentLoaded", function () {
+    const boasVindas = document.getElementById("boas-vindas");
+    const emailUsuario = localStorage.getItem("usuarioLogado");
 
-   
+    if (emailUsuario) {
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+    if (dadosUsuario && dadosUsuario.nome) {
+      boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+    } else {
+      boasVindas.textContent = "Olá!";
+    }
+    } else {
+    // Se ninguém estiver logado, mostra mensagem genérica ou redireciona
+    boasVindas.textContent = "Bem-vindo!";
+    // Opcional: redirecionar para a página de login
+    // window.location.href = "/src/login/login.html";
+    }
+    });
+    window.onload = () => {
+    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+    if (!usuarioLogado) return;
+
+    const emailUsuario = usuarioLogado.email;
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+
+    if (dadosUsuario) {
+    document.getElementById("nome").value = dadosUsuario.nome || "";
+    document.getElementById("contato").value = dadosUsuario.telefoneContato || "";
+    document.getElementById("data").value = dadosUsuario.dataNascimento || "";
+    document.getElementById("perfil").value = dadosUsuario.perfil || "";
+
+    // imagem
+    const previewImg = document.getElementById("preview-img");
+    if (dadosUsuario.imagemBase64) {
+      previewImg.src = dadosUsuario.imagemBase64;
+    }
+    }
+    };
+    document.getElementById("perfil-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+    if (!usuarioLogado) return;
+
+    const emailUsuario = usuarioLogado.email;
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+    localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
+    
 
 ### Instruções de acesso
 
