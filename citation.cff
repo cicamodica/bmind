@@ -1,29 +1,26 @@
 message: Please cite this software using these metadata.
-title:
+title: Bmind
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Liberato Joia Mariano
+    given-names: Diogo
+  - family-names: Mariano Lopes da Costa
+    given-names: Erick Alexandre 
+  - family-names: Alves dos Reis
+    given-names: Kauê
+  - family-names: Caruzzo Modica
+    given-names: Maria Cecilia
+  - family-names: Turibio Gressi
+    given-names: Mariana 
+  - family-names: Feliciano Andrade Bernardes
+    given-names: Matheus 
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Christina de Paiva Carvalho
+    given-names: Joyce 
 keywords:
-  - 
-  - 
+  - Finanças
+  - Educação 
+  - Gestão 
 repository-code: 
 version: 1.0.0
-date-released: 2023-10-31
+date-released: 2025-06-08

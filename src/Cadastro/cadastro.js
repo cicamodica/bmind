@@ -126,7 +126,7 @@ const preferenciasPorPerfil = {
   ],
   "Pessoa Jurídica": [
     { id: "financas-corp", label: "Finanças Corporativas" },
-    { id: "investimentos", label: "Investimentos" },
+    { id: "investimentos-corp", label: "Investimentos Corporativos" },
     { id: "emprestimos", label: "Operações Bancárias" },
   ],
 };

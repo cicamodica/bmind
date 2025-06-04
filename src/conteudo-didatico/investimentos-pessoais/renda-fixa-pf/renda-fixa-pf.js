@@ -102,24 +102,7 @@ window.addEventListener("click", function (e) {
   }
 });
 
-/*// Função para registrar um conteúdo como recentemente visto
-function registrarConteudoVisto(nome, url, imagem) {
-  let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
 
-  // Remove se já existir (baseado na URL para garantir unicidade)
-  vistos = vistos.filter(item => item.url !== url);
-
-  // Adiciona no topo da lista
-  const conteudo = { nome, url, imagem };
-  vistos.unshift(conteudo);
-
-  // Mantém apenas os 3 mais recentes
-  if (vistos.length > 3) {
-    vistos = vistos.slice(0, 3);
-  }
-
-  localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
-}*/
 function registrarConteudoVisto(nome, url, imagem) {
   const emailUsuario = localStorage.getItem("usuarioLogado");
   if (!emailUsuario) return;
@@ -148,7 +131,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 registrarConteudoVisto(
   "Renda Fixa",
   "/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html",
-  "/src/imagens/RendaFixaPF.jpg.jpg"
+  "/src/imagens/RendaFixaPF.jpg"
 );
 
 // Função para delogar o usuário

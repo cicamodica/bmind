@@ -2,39 +2,137 @@
 const emailUsuario = localStorage.getItem("usuarioLogado");
 
 // Aguarda o carregamento completo da página
-window.addEventListener("DOMContentLoaded", function () {
-  const boasVindas = document.getElementById("boas-vindas");
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Lógica de Boas-Vindas ---
+    const boasVindas = document.getElementById("boas-vindas");
+    
 
-  if (emailUsuario) {
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-    if (dadosUsuario && dadosUsuario.nome) {
-      boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+    if (emailUsuario) {
+        const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+        if (dadosUsuario && dadosUsuario.nome) {
+            boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+        } else {
+            boasVindas.textContent = "Olá!"; // Caso o usuário exista, mas não tenha nome no localStorage
+        }
     } else {
-      boasVindas.textContent = "Olá!";
+        boasVindas.textContent = "Bem-vindo!"; // Se ninguém estiver logado
+        // Opcional: redirecionar para a página de login se não houver usuário logado
+        // window.location.href = "/src/login/login.html";
     }
-  } else {
-    // Se ninguém estiver logado, mostra mensagem genérica
-    boasVindas.textContent = "Bem-vindo!";
-    // Opcional: redirecionar para a página de login
-    // window.location.href = "/src/login/login.html";
-  }
+
+    // --- Seletores para o Menu e Busca ---
+    const menuButton = document.getElementById('menuButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const mobileSearchIcon = document.querySelector('.search-mobile-icon');
+    const mobileSearchBar = document.getElementById('mobileSearchBar');
+    const hasSubmenuLinks = document.querySelectorAll('li.has-submenu > a');
+
+    // --- Funcionalidade do botão de menu principal ---
+    if (menuButton && dropdownMenu) {
+        menuButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+            // Fechar a barra de busca mobile se o menu abrir
+            if (mobileSearchBar.classList.contains('show-mobile-search-bar')) { // Verifica se a barra está aberta
+                mobileSearchBar.classList.remove('show-mobile-search-bar'); // E fecha
+            }
+        });
+    }
+
+    // --- Funcionalidade do ícone de busca mobile ---
+    if (mobileSearchIcon && mobileSearchBar) {
+        mobileSearchIcon.addEventListener('click', () => {
+            // Alternamos uma classe CSS para controlar a visibilidade
+            mobileSearchBar.classList.toggle('show-mobile-search-bar');
+            // Fechar o menu se a barra de busca abrir
+            if (dropdownMenu.classList.contains('show')) { // Verifica se o menu está aberto
+                dropdownMenu.classList.remove('show'); // E fecha
+            }
+        });
+
+        // Este listener de resize é importante para esconder a barra de busca mobile
+        // se a tela for redimensionada para desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767) { // Usar 767px ou 768px conforme sua media query CSS
+                mobileSearchBar.classList.remove('show-mobile-search-bar');
+            }
+        });
+    }
+
+    // --- Fechar menu/barra de busca ao clicar fora ---
+    document.addEventListener('click', (event) => {
+        // Fechar dropdownMenu
+        if (dropdownMenu && !dropdownMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+            // Opcional: fechar todos os submenus quando o menu principal fecha
+            hasSubmenuLinks.forEach(link => {
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    submenu.classList.remove('open-submenu');
+                    link.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+        // Fechar mobileSearchBar
+        if (mobileSearchBar && !mobileSearchBar.contains(event.target) && !mobileSearchIcon.contains(event.target)) {
+            mobileSearchBar.classList.remove('show-mobile-search-bar');
+        }
+    });
+
+    // --- Funcionalidade para submenus (mobile) ---
+    hasSubmenuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Aplica apenas em telas menores para o comportamento de clique no submenu
+            if (window.innerWidth <= 767) { // Mantenha 767px para consistência com o CSS
+                e.preventDefault(); // Previne a navegação do link
+
+                const submenu = link.nextElementSibling;
+
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const isExpanded = link.getAttribute('aria-expanded') === 'true';
+
+                    // Fecha outros submenus abertos no MESMO nível
+                    // Importante: .parentElement.parentNode para pegar o UL pai do LI atual
+                    link.parentElement.parentNode.querySelectorAll(':scope > li > .submenu.open-submenu').forEach(otherSub => {
+                        if (otherSub !== submenu) {
+                            otherSub.classList.remove('open-submenu');
+                            otherSub.previousElementSibling.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    // Alterna a classe 'open-submenu' no <ul> do submenu
+                    submenu.classList.toggle('open-submenu');
+                    // Alterna o atributo aria-expanded no link
+                    link.setAttribute('aria-expanded', !isExpanded);
+                }
+            }
+        });
+    });
 });
 
-function redirecionarCadastro() {
-        const usuarioLogado = localStorage.getItem("usuarioLogado");
-        const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+// Função para busca mobile
+function buscarMobile() {
+  const termo = document.getElementById('mobileSearchInput').value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
+}
 
-        if (dadosDoUsuario && dadosDoUsuario.perfil) {
-            if (dadosDoUsuario.perfil === "Pessoa Física") {
-                window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
-            } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-                window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
-            } else {
-                alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
-            }
-        } else {
-            alert("Usuário não logado ou dados do usuário inválidos.");
-          }
+function redirecionarCadastro() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+  if (dadosDoUsuario && dadosDoUsuario.perfil) {
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
+    } else {
+      alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
+    }
+  } else {
+    alert("Usuário não logado ou dados do usuário inválidos.");
+  }
 }
 
 function atualizarInterfaceUsuario() {
@@ -49,8 +147,6 @@ function atualizarInterfaceUsuario() {
   const itensLogado = document.querySelectorAll('.item-logged');
   const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-  
-
   // Esconde tudo inicialmente
   userActionsLogado.style.display = "none";
   userActionsNaoLogado.style.display = "none";
@@ -60,13 +156,7 @@ function atualizarInterfaceUsuario() {
   itensNaoLogado.forEach(el => el.style.display = 'none');
 
   if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
-
-    
-    
-      userActionsLogado.style.display = "flex";
-    
-
-    // Exibe itens de logado
+    userActionsLogado.style.display = "flex";
     itensLogado.forEach(el => el.style.display = 'block');
 
     if (dadosDoUsuario.perfil === "Pessoa Física") {
@@ -75,35 +165,29 @@ function atualizarInterfaceUsuario() {
       itensPJ.forEach(el => el.style.display = 'block');
     }
   } else {
-    // Usuário não logado ou com dados inválidos
     userActionsNaoLogado.style.display = "flex";
     itensNaoLogado.forEach(el => el.style.display = 'block');
   }
 }
 
-// Executa quando a página terminar de carregar
 document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
 
+// Funcionalidade da pesquisa desktop
+document.getElementById("search-button").addEventListener("click", function (event) {
+  event.preventDefault();
+  const termo = document.getElementById("search-bar").value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
+});
 
-//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
-document
-  .getElementById("search-button")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // evita o redirecionamento padrão
-    const termo = document.getElementById("search-bar").value.trim();
-    if (termo !== "") {
-      const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
-    }
-  });
-
-//Inicio funcionalidades Menu
+// Funcionalidades Menu
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// Fechar menu ao clicar fora
 window.addEventListener("click", function (e) {
   const menu = document.getElementById("dropdownMenu");
   const icon = document.querySelector(".menu-icon");
@@ -112,15 +196,13 @@ window.addEventListener("click", function (e) {
   }
 });
 
-
 // Função para delogar o usuário
 function sair() {
-  localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
-  localStorage.removeItem("currentUser"); // Remove o usuário atual
+  localStorage.removeItem("usuarioLogado");
+  localStorage.removeItem("currentUser");
   window.location.href = "/src/login/login.html";
 }
 
-// 2. Depois, adiciona o evento
 document.addEventListener("DOMContentLoaded", () => {
   const botaoSair = document.getElementById("botao-sair");
 
@@ -131,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
 
 /*/// Função para registrar um conteúdo como recentemente visto
@@ -251,7 +334,7 @@ exibirVistosRecentemente();
 // Função exibir conteuudo conforme a preferencias selecionadas no cadrastro//
 
 function exibirConteudoRecomendados() {
-  //Recuperação dos dados do usuario//
+  // Recuperação dos dados do usuário
   const dados = JSON.parse(localStorage.getItem("currentUser"));
 
   if (!dados) {
@@ -259,49 +342,85 @@ function exibirConteudoRecomendados() {
     return;
   }
 
-    const { perfil, preferenciaDeConteudos} = dados;
-    const container = document.getElementById("lista-conteudos-recomendados");
-    
-    if (!container) {
-      console.error("Elemento conteudo-recomendados não encontrado.");
-      return;
-    }
+  const { perfil, preferenciaDeConteudos } = dados;
+  const container = document.getElementById("lista-conteudos-recomendados");
+
+  if (!container) {
+    console.error("Elemento conteudo-recomendados não encontrado.");
+    return;
+  }
 
   if (!preferenciaDeConteudos || preferenciaDeConteudos.length === 0) {
     container.innerHTML = "<p>Não há conteúdos recomendados para você.</p>";
     return;
   }
 
-  // Conteúdos estáticos para recomendações
+  // Conteúdos estáticos para recomendações com links atualizados
   const conteudos = {
     "Pessoa Física": {
-      "Finanças Pessoais": "Aprenda organizar seu orçamento",
-      Investimentos: "Descubra como investir seu dinheiro",
-      "Operações Bancárias": "Entenda como funcionam as operações bancárias",
+      "Finanças Pessoais": {
+        descricao: "Aprenda organizar seu orçamento",
+        link: "/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+      },
+      "Investimentos": {
+        descricao: "Descubra como investir seu dinheiro",
+        link: "/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+      },
+      "Operações Bancárias": {
+        descricao: "Entenda como funcionam as operações bancárias",
+        link: "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+      }
     },
     "Pessoa Jurídica": {
-      "Finanças Corporativas": "Aprenda a gerenciar as finanças da sua empresa",
-      Investimentos: "Descubra como investir o capital da sua empresa",
-      "Operações Bancárias":
-        "Entenda como funcionam as operações bancárias para empresas",
-    },
+      "Finanças Corporativas": {
+        descricao: "Aprenda a gerenciar as finanças da sua empresa",
+        link: "/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+      },
+      "Investimentos Corporativos": {
+        descricao: "Descubra como investir o capital da sua empresa",
+        link: "/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+      },
+      "Operações Bancárias": {
+        descricao: "Entenda como funcionam as operações bancárias para empresas",
+        link: "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+      }
+    }
   };
 
-  //Percorre as preferências do usuário e exibe os conteúdos recomendados//
+  // Limpa o container antes de adicionar novos conteúdos
+  container.innerHTML = "";
 
+  // Percorre as preferências do usuário e exibe os conteúdos recomendados como links
   preferenciaDeConteudos.forEach((preferencia) => {
-    const descricao =
-      conteudos[perfil]?.[preferencia] || "Conteudo não disponível";
-    const bloco = `
+    let conteudo = conteudos[perfil][preferencia];
+
+    // Ajuste específico para "Investimentos" em Pessoa Jurídica
+    if (perfil === "Pessoa Jurídica" && preferencia === "Investimentos") {
+      conteudo = conteudos[perfil]["Investimentos Corporativos"];
+      preferencia = "Investimentos Corporativos"; // Ajuste o nome exibido
+    }
+
+    if (conteudo) {
+      const bloco = `
+        <a href="${conteudo.link}" class="card-conteudo-link">
+          <div class="card-conteudo">
+            <h3>${preferencia}</h3>
+            <p>${conteudo.descricao}</p>
+          </div>
+        </a>
+      `;
+      container.innerHTML += bloco;
+    } else {
+      const bloco = `
         <div class="card-conteudo">
           <h3>${preferencia}</h3>
-          <p>${descricao}</p>
-          </div>
-          `;
-    container.innerHTML += bloco;
+          <p>Conteúdo não disponível.</p>
+        </div>
+      `;
+      container.innerHTML += bloco;
+    }
   });
 }
-// Chama a função para exibir os conteúdos recomendados
 exibirConteudoRecomendados();
 
 window.renderMainPieChart = function () {
@@ -422,10 +541,170 @@ document.addEventListener("DOMContentLoaded", function () {
    renderMainPieChart();
 });
 
-// Limpa o localStorage e exibe os dados do usuário logado
-localStorage.removeItem("vistosRecentemente");
-console.log("✅ Dados soltos foram removidos.");
+// Recupera o identificador do usuário logado (e-mail, por exemplo)
 
+// Função para adicionar uma meta financeira
+document.addEventListener("DOMContentLoaded", function () {
+  const formMeta = document.getElementById("form-meta");
+  const listaMetas = document.getElementById("lista-metas");
 
+  // --- Verificação de Usuário Logado ---
 
- 
+  if (!emailUsuario) {
+    console.warn("Nenhum usuário logado detectado. As metas financeiras não serão salvas ou carregadas.");
+    return;
+  }
+
+  const metasKey = `metas_${emailUsuario}`;
+
+  // --- Função para Carregar Metas ---
+  // Obtém as metas salvas para o usuário logado e as exibe na interface.
+  function carregarMetas() {
+    // Tenta obter as metas do localStorage; se não encontrar, assume um array vazio.
+    const metasSalvas = JSON.parse(localStorage.getItem(metasKey) || '[]');
+    listaMetas.innerHTML = ''; // Limpa a lista atual para evitar duplicações ao recarregar.
+
+    // Para cada meta encontrada, cria e adiciona o card correspondente à interface.
+    metasSalvas.forEach(meta => {
+      criarCardMeta(meta.titulo, meta.valorTotal, meta.valorAtual, meta.tempo, meta.id);
+    });
+  }
+
+  // --- Função para Salvar Metas ---
+  // Coleta todas as metas atualmente exibidas na interface e as salva no localStorage.
+  function salvarMetas() {
+    const metasAtuais = [];
+    document.querySelectorAll('.card-meta').forEach(card => {
+      metasAtuais.push({
+        id: card.dataset.metaId, // Pega o ID único da meta do dataset do card.
+        titulo: card.querySelector('h4').textContent,
+        valorTotal: parseFloat(card.dataset.valorTotal), // Converte para número.
+        // Adiciona valorAtual do dataset para garantir que o valor mais recente seja salvo
+        valorAtual: parseFloat(card.dataset.valorAtual), 
+        tempo: card.dataset.tempo // Pega o tempo do dataset do card.
+      });
+    });
+    // Salva o array de metas (em formato JSON) no localStorage, usando a chave do usuário.
+    localStorage.setItem(metasKey, JSON.stringify(metasAtuais));
+  }
+
+  // --- Evento de Envio do Formulário de Criação de Meta ---
+  formMeta.addEventListener("submit", function (e) {
+    e.preventDefault(); // Impede o comportamento padrão de envio do formulário (recarregar a página).
+
+    // Coleta os valores inseridos pelo usuário.
+    const titulo = document.getElementById("titulo-meta").value;
+    const valorTotal = parseFloat(document.getElementById("valor-meta").value);
+    const valorAtual = parseFloat(document.getElementById("valor-atual-meta").value);
+    const tempo = document.getElementById("tempo-meta").value;
+
+    // Realiza a validação dos campos.
+    if (!titulo || isNaN(valorTotal) || isNaN(valorAtual) || !tempo || valorTotal <= 0 || valorAtual < 0) {
+      alert("Por favor, preencha todos os campos corretamente. O valor total deve ser maior que zero e o valor atual não pode ser negativo.");
+      return; // Interrompe se a validação falhar.
+    }
+
+    // Gera um ID único para a nova meta (usando o timestamp atual para simplicidade).
+    const metaId = Date.now().toString();
+    
+    // Cria o card da meta na interface do usuário.
+    criarCardMeta(titulo, valorTotal, valorAtual, tempo, metaId);
+    
+  
+    salvarMetas(); 
+    
+    // Limpa o formulário após a adição.
+    formMeta.reset();
+  });
+
+  // --- Função para Criar o Elemento HTML (Card) de uma Meta ---
+  function criarCardMeta(titulo, valorTotal, valorAtual, tempo, id) {
+    const card = document.createElement("div");
+    card.classList.add("card-meta");
+    
+    // Armazena dados importantes no `dataset` do elemento HTML para fácil recuperação.
+    card.dataset.metaId = id;
+    card.dataset.valorTotal = valorTotal;
+    card.dataset.valorAtual = valorAtual;
+    card.dataset.tempo = tempo;
+
+    // Calcula o progresso da meta em porcentagem.
+    let progresso = Math.min((valorAtual / valorTotal) * 100, 100).toFixed(1);
+
+    // Define a estrutura HTML interna do card.
+    card.innerHTML = `
+      <h4>${titulo}</h4>
+      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo}</small>
+      <div class="barra-progresso">
+        <div class="barra-preenchida" style="width: ${progresso}%"></div>
+      </div>
+      <div class="porcentagem-meta">${progresso}% alcançado</div>
+
+      <div class="botoes-metas">
+        <button class="btn-atualizar">Atualizar</button>
+        <button class="btn-excluir">Excluir</button>
+      </div>
+
+      <div class="form-atualizacao" style="display: none; margin-top: 8px;">
+        <input type="number" class="novo-valor" placeholder="Novo valor atual" />
+        <button class="confirmar-atualizacao">Salvar</button>
+      </div>
+    `;
+
+    // Seleciona os elementos interativos dentro do card para adicionar eventos.
+    const btnAtualizar = card.querySelector('.btn-atualizar');
+    const formAtualizacao = card.querySelector('.form-atualizacao');
+    const inputNovoValor = card.querySelector('.novo-valor');
+    const btnSalvar = card.querySelector('.confirmar-atualizacao');
+    const barra = card.querySelector('.barra-preenchida');
+    const porcentagemTexto = card.querySelector('.porcentagem-meta');
+
+    // Evento para mostrar/esconder o formulário de atualização do valor.
+    btnAtualizar.addEventListener('click', () => {
+      formAtualizacao.style.display = formAtualizacao.style.display === 'none' ? 'block' : 'none';
+    });
+
+    const btnExcluir = card.querySelector('.btn-excluir');
+
+    // Evento para excluir a meta.
+    btnExcluir.addEventListener('click', () => {
+      if (confirm('Tem certeza que deseja excluir esta meta?')) {
+        card.remove(); // Remove o card da DOM.
+        // **SALVA AS METAS:** Chama a função para persistir a exclusão no localStorage.
+        salvarMetas(); 
+      }
+    });
+   
+    // Evento para salvar o novo valor de atualização da meta.
+    btnSalvar.addEventListener('click', () => {
+      const novoValor = parseFloat(inputNovoValor.value);
+      if (isNaN(novoValor) || novoValor < 0) {
+        alert("Por favor, informe um valor numérico válido e não negativo.");
+        return;
+      }
+
+      // Atualiza o valor atual no `dataset` do card para que `salvarMetas` pegue o valor correto.
+      card.dataset.valorAtual = novoValor;
+      
+      // Recalcula e atualiza o progresso visual na barra e no texto.
+    
+      const novaPorcentagem = Math.min((novoValor / parseFloat(card.dataset.valorTotal)) * 100, 100).toFixed(1); 
+      barra.style.width = `${novaPorcentagem}%`;
+      porcentagemTexto.textContent = `${novaPorcentagem}% alcançado`;
+
+      // Esconde o formulário de atualização e limpa o campo de input.
+      formAtualizacao.style.display = 'none';
+      inputNovoValor.value = '';
+      
+      
+      salvarMetas(); 
+    });
+
+    // Adiciona o novo card à lista de metas na interface.
+    listaMetas.appendChild(card);
+  }
+
+  // --- Carregar Metas ao Inicializar a Página ---
+  
+  carregarMetas();
+});

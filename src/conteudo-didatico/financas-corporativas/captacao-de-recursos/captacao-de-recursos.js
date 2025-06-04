@@ -104,24 +104,7 @@ window.addEventListener("click", function (e) {
   }
 });
 
-/*// Função para registrar um conteúdo como recentemente visto
-function registrarConteudoVisto(nome, url, imagem) {
-  let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
 
-  // Remove se já existir (baseado na URL para garantir unicidade)
-  vistos = vistos.filter(item => item.url !== url);
-
-  // Adiciona no topo da lista
-  const conteudo = { nome, url, imagem };
-  vistos.unshift(conteudo);
-
-  // Mantém apenas os 3 mais recentes
-  if (vistos.length > 3) {
-    vistos = vistos.slice(0, 3);
-  }
-
-  localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
-}*/
 function registrarConteudoVisto(nome, url, imagem) {
   const emailUsuario = localStorage.getItem("usuarioLogado");
   if (!emailUsuario) return;
@@ -147,11 +130,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Captação de Recursos",
-  "src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html",
-  "/src/imagens/CaptacaoDeRecursos.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {

@@ -71,6 +71,8 @@ header {
   height: 50px;
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
   margin-bottom: -50px;
+  /* ADICIONE ISSO para que os elementos absolutos dentro do header se posicionem em relação a ele */
+  position: relative; /* FUNDAMENTAL para o posicionamento do dropdown */
 }
 
 /*
@@ -110,25 +112,23 @@ header {
   margin-left: 20px;
   font-size: 29px;
   color: white;
- 
 }
 /* Botão 'Minha Área' */
 .minha-area-botao {
-  
- display: inline-block;           /* Para permitir padding e margin corretamente */
-  margin: 4px;                    /* Espaço externo ao redor do botão */
-  padding: 6px 12px;               /* Espaço interno (em cima/baixo e lados) */
-  background-color: #ffffff22;     /* Cor de fundo (semi-transparente aqui) */
-  color: white;                    /* Cor do texto */
-  border: 1px solid white;        /* Borda branca */
-  border-radius: 6px;             /* Cantos arredondados */
-  text-decoration: none;          /* Tira o sublinhado */
-  font-weight: bold;              /* Deixa o texto mais forte */
+  display: inline-block; /* Para permitir padding e margin corretamente */
+  margin: 4px; /* Espaço externo ao redor do botão */
+  padding: 6px 12px; /* Espaço interno (em cima/baixo e lados) */
+  background-color: #ffffff22; /* Cor de fundo (semi-transparente aqui) */
+  color: white; /* Cor do texto */
+  border: 1px solid white; /* Borda branca */
+  border-radius: 6px; /* Cantos arredondados */
+  text-decoration: none; /* Tira o sublinhado */
+  font-weight: bold; /* Deixa o texto mais forte */
   font-size: 10px;
 }
 
-
-.user-actions a { /* Link para o perfil */
+.user-actions a {
+  /* Link para o perfil */
   color: white;
   text-decoration: none;
 }
@@ -138,8 +138,7 @@ header {
   text-decoration: none;
   margin: 0 5px;
   font-weight: bold; /* Deixa o texto mais forte */
- font-size: 15px; /* Tamanho da fonte */
-
+  font-size: 15px; /* Tamanho da fonte */
 }
 
 /*
@@ -200,50 +199,6 @@ header {
   margin-left: 20px;
 }
 
-/*
-  Estilos do Menu Suspenso
-  Define a aparência e o posicionamento do menu suspenso.
-*/
-.dropdown-menu {
-  position: fixed;
-  top: 60px;
-  left: 10px;
-  background: white;
-  color: black;
-  width: 220px;
-  border-radius: 8px;
-  padding: 10px;
-  display: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-
-/*
-  Estilos da Lista do Menu Suspenso
-*/
-.dropdown-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/*
-  Estilos dos Itens da Lista do Menu Suspenso
-*/
-.dropdown-menu li {
-  padding: 10px;
-  cursor: pointer;
-  position: relative;
-  white-space: nowrap;
-}
-
-/*
-  Efeito de Hover dos Itens da Lista do Menu Suspenso
-*/
-.dropdown-menu li:hover {
-  background: #f0f0f0;
-}
-
 .perfil {
   display: block;
   background-color: transparent;
@@ -258,66 +213,91 @@ header {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/*
-  Estilos do Contêiner do Submenu
-  Estilos para submenus aninhados dentro do dropdown.
-*/
-.has-submenu > .submenu {
+/* Reset */
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dropdown principal */
+.dropdown-menu {
+  width: 250px; /* AUMENTADO de 220 para 250 */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  /* ADICIONE OU MODIFIQUE ISSO */
+  top: 100%; /* Começa na parte inferior do header */
+  left: 0; /* Alinha à esquerda do header */
+  display: none;
+  z-index: 1000;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: flex; /* FLEX para alinhar texto e seta */
+  justify-content: space-between; /* espaço entre texto e seta */
+  align-items: center; /* centraliza verticalmente */
+
+  padding: 10px 20px; /* MAIS espaço */
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 6px;
+  position: relative;
+}
+
+.dropdown-menu a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Submenu */
+.has-submenu {
+  position: relative;
+}
+
+/* SETA via pseudo-elemento */
+.has-submenu > a::after {
+  content: "▶";
+  margin-left: 10px; /* separação do texto */
+  font-size: 0.8em;
+}
+
+/* Submenu oculto */
+.submenu {
   display: none;
   position: absolute;
   top: 0;
   left: 100%;
-  background: white;
-  width: 220px;
+  background: #fff;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 20;
+  min-width: 250px; /* AUMENTADO igual ao principal */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
 }
 
-/*
-  Visibilidade do Submenu ao Passar o Mouse
-*/
+/* Mostrar submenu ao hover */
 .has-submenu:hover > .submenu {
   display: block;
 }
 
-/*
-  Posicionamento do Submenu do Menu Suspenso
-*/
-.dropdown-menu > ul > .has-submenu > .submenu {
-  top: 0;
-  left: 220px;
+/* Submenu itens */
+.submenu a {
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
-/*
-  Estilos dos Links dos Botões do Submenu
-*/
-.submenu-btn-link,
-.FAQ,
-.Sair,
-.editar-dashboard {
-  display: block;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  padding: 8px 12px;
-  text-align: left;
-  width: 100%;
-  font-size: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-/*
-  Efeitos de Hover dos Links dos Botões do Submenu
-*/
-.submenu-btn-link:hover,
-.FAQ:hover,
-.Sair:hover,
-.editar-dashboard:hover {
-  background-color: #024dae;
-  color: white;
+.submenu a:hover {
+  background-color: #007bff;
+  color: #fff;
 }
 
 /*
@@ -960,7 +940,8 @@ select,
   }
   .dropdown-menu {
     width: 180px;
-    left: 5px;
+    /* Mantenha o left: 0px ou ajuste se necessário */
+    left: 0px; /* ou 10px se quiser um pequeno espaçamento */
   }
   .dropdown-menu li {
     padding: 8px;
@@ -969,6 +950,6 @@ select,
     width: 180px;
   }
   .dropdown-menu > ul > .has-submenu > .submenu {
-    left: 180px;
+    left: 100%; /* Ajuste para ser 100% do pai, e não 180px fixo */
   }
 }
