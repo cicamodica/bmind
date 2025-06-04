@@ -455,6 +455,7 @@ select,
 */
 .Entradas,
 .Saidas,
+.Editar,
 .Remover {
   position: static;
   margin: 0;
@@ -642,6 +643,8 @@ select,
   padding: 10px;
   background-color: #f9f9f9;
 }
+
+
 
 /*
   Estilos do Título das Colunas do Histórico
