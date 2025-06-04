@@ -1,22 +1,22 @@
 message: Please cite this software using these metadata.
 title: Bmind
 authors:
-  - family-names: Diogo
-    given-names: Liberato Joia Mariano
-  - family-names: Erick Alexandre 
-    given-names: Mariano Lopes da Costa
-  - family-names: Kauê
-    given-names: Alves dos Reis
-  - family-names: Maria Cecilia 
-    given-names: Caruzzo Modica
-  - family-names: Mariana
-    given-names: Turibio Gressi
-  - family-names: Matheus
-    given-names: Feliciano Andrade Bernardes
+  - family-names: Liberato Joia Mariano
+    given-names: Diogo
+  - family-names: Mariano Lopes da Costa
+    given-names: Erick Alexandre 
+  - family-names: Alves dos Reis
+    given-names: Kauê
+  - family-names: Caruzzo Modica
+    given-names: Maria Cecilia
+  - family-names: Turibio Gressi
+    given-names: Mariana 
+  - family-names: Feliciano Andrade Bernardes
+    given-names: Matheus 
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: Joyce
-    given-names: Christina de Paiva Carvalho
+    family-names: Christina de Paiva Carvalho
+    given-names: Joyce 
 keywords:
   - Finanças
   - Educação 

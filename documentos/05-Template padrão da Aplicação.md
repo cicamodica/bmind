@@ -65,3 +65,10 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
 <div align="center">
   <img src="img/Página Resultado de Pesquisa.png" alt="Página de Resultado de Pesquisa" style="width: 70%; max-width: 800px;">
 </div>
+
+## Feedback
+
+<div align="center">
+  <img src="img/Tela de Feedback.png" alt="Tela de Feedback" style="width: 70%; max-width: 800px;">
+</div>
+
