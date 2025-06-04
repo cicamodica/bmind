@@ -2,39 +2,137 @@
 const emailUsuario = localStorage.getItem("usuarioLogado");
 
 // Aguarda o carregamento completo da página
-window.addEventListener("DOMContentLoaded", function () {
-  const boasVindas = document.getElementById("boas-vindas");
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Lógica de Boas-Vindas ---
+    const boasVindas = document.getElementById("boas-vindas");
+    
 
-  if (emailUsuario) {
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-    if (dadosUsuario && dadosUsuario.nome) {
-      boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+    if (emailUsuario) {
+        const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+        if (dadosUsuario && dadosUsuario.nome) {
+            boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+        } else {
+            boasVindas.textContent = "Olá!"; // Caso o usuário exista, mas não tenha nome no localStorage
+        }
     } else {
-      boasVindas.textContent = "Olá!";
+        boasVindas.textContent = "Bem-vindo!"; // Se ninguém estiver logado
+        // Opcional: redirecionar para a página de login se não houver usuário logado
+        // window.location.href = "/src/login/login.html";
     }
-  } else {
-    // Se ninguém estiver logado, mostra mensagem genérica
-    boasVindas.textContent = "Bem-vindo!";
-    // Opcional: redirecionar para a página de login
-    // window.location.href = "/src/login/login.html";
-  }
+
+    // --- Seletores para o Menu e Busca ---
+    const menuButton = document.getElementById('menuButton');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+    const mobileSearchIcon = document.querySelector('.search-mobile-icon');
+    const mobileSearchBar = document.getElementById('mobileSearchBar');
+    const hasSubmenuLinks = document.querySelectorAll('li.has-submenu > a');
+
+    // --- Funcionalidade do botão de menu principal ---
+    if (menuButton && dropdownMenu) {
+        menuButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+            // Fechar a barra de busca mobile se o menu abrir
+            if (mobileSearchBar.classList.contains('show-mobile-search-bar')) { // Verifica se a barra está aberta
+                mobileSearchBar.classList.remove('show-mobile-search-bar'); // E fecha
+            }
+        });
+    }
+
+    // --- Funcionalidade do ícone de busca mobile ---
+    if (mobileSearchIcon && mobileSearchBar) {
+        mobileSearchIcon.addEventListener('click', () => {
+            // Alternamos uma classe CSS para controlar a visibilidade
+            mobileSearchBar.classList.toggle('show-mobile-search-bar');
+            // Fechar o menu se a barra de busca abrir
+            if (dropdownMenu.classList.contains('show')) { // Verifica se o menu está aberto
+                dropdownMenu.classList.remove('show'); // E fecha
+            }
+        });
+
+        // Este listener de resize é importante para esconder a barra de busca mobile
+        // se a tela for redimensionada para desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 767) { // Usar 767px ou 768px conforme sua media query CSS
+                mobileSearchBar.classList.remove('show-mobile-search-bar');
+            }
+        });
+    }
+
+    // --- Fechar menu/barra de busca ao clicar fora ---
+    document.addEventListener('click', (event) => {
+        // Fechar dropdownMenu
+        if (dropdownMenu && !dropdownMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+            // Opcional: fechar todos os submenus quando o menu principal fecha
+            hasSubmenuLinks.forEach(link => {
+                const submenu = link.nextElementSibling;
+                if (submenu && submenu.classList.contains('submenu')) {
+                    submenu.classList.remove('open-submenu');
+                    link.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+        // Fechar mobileSearchBar
+        if (mobileSearchBar && !mobileSearchBar.contains(event.target) && !mobileSearchIcon.contains(event.target)) {
+            mobileSearchBar.classList.remove('show-mobile-search-bar');
+        }
+    });
+
+    // --- Funcionalidade para submenus (mobile) ---
+    hasSubmenuLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Aplica apenas em telas menores para o comportamento de clique no submenu
+            if (window.innerWidth <= 767) { // Mantenha 767px para consistência com o CSS
+                e.preventDefault(); // Previne a navegação do link
+
+                const submenu = link.nextElementSibling;
+
+                if (submenu && submenu.classList.contains('submenu')) {
+                    const isExpanded = link.getAttribute('aria-expanded') === 'true';
+
+                    // Fecha outros submenus abertos no MESMO nível
+                    // Importante: .parentElement.parentNode para pegar o UL pai do LI atual
+                    link.parentElement.parentNode.querySelectorAll(':scope > li > .submenu.open-submenu').forEach(otherSub => {
+                        if (otherSub !== submenu) {
+                            otherSub.classList.remove('open-submenu');
+                            otherSub.previousElementSibling.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    // Alterna a classe 'open-submenu' no <ul> do submenu
+                    submenu.classList.toggle('open-submenu');
+                    // Alterna o atributo aria-expanded no link
+                    link.setAttribute('aria-expanded', !isExpanded);
+                }
+            }
+        });
+    });
 });
 
-function redirecionarCadastro() {
-        const usuarioLogado = localStorage.getItem("usuarioLogado");
-        const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+// Função para busca mobile
+function buscarMobile() {
+  const termo = document.getElementById('mobileSearchInput').value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
+}
 
-        if (dadosDoUsuario && dadosDoUsuario.perfil) {
-            if (dadosDoUsuario.perfil === "Pessoa Física") {
-                window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
-            } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-                window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
-            } else {
-                alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
-            }
-        } else {
-            alert("Usuário não logado ou dados do usuário inválidos.");
-          }
+function redirecionarCadastro() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+  if (dadosDoUsuario && dadosDoUsuario.perfil) {
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
+    } else {
+      alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
+    }
+  } else {
+    alert("Usuário não logado ou dados do usuário inválidos.");
+  }
 }
 
 function atualizarInterfaceUsuario() {
@@ -49,8 +147,6 @@ function atualizarInterfaceUsuario() {
   const itensLogado = document.querySelectorAll('.item-logged');
   const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-  
-
   // Esconde tudo inicialmente
   userActionsLogado.style.display = "none";
   userActionsNaoLogado.style.display = "none";
@@ -60,13 +156,7 @@ function atualizarInterfaceUsuario() {
   itensNaoLogado.forEach(el => el.style.display = 'none');
 
   if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
-
-    
-    
-      userActionsLogado.style.display = "flex";
-    
-
-    // Exibe itens de logado
+    userActionsLogado.style.display = "flex";
     itensLogado.forEach(el => el.style.display = 'block');
 
     if (dadosDoUsuario.perfil === "Pessoa Física") {
@@ -75,35 +165,29 @@ function atualizarInterfaceUsuario() {
       itensPJ.forEach(el => el.style.display = 'block');
     }
   } else {
-    // Usuário não logado ou com dados inválidos
     userActionsNaoLogado.style.display = "flex";
     itensNaoLogado.forEach(el => el.style.display = 'block');
   }
 }
 
-// Executa quando a página terminar de carregar
 document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
 
+// Funcionalidade da pesquisa desktop
+document.getElementById("search-button").addEventListener("click", function (event) {
+  event.preventDefault();
+  const termo = document.getElementById("search-bar").value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
+});
 
-//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
-document
-  .getElementById("search-button")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // evita o redirecionamento padrão
-    const termo = document.getElementById("search-bar").value.trim();
-    if (termo !== "") {
-      const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
-    }
-  });
-
-//Inicio funcionalidades Menu
+// Funcionalidades Menu
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// Fechar menu ao clicar fora
 window.addEventListener("click", function (e) {
   const menu = document.getElementById("dropdownMenu");
   const icon = document.querySelector(".menu-icon");
@@ -112,15 +196,13 @@ window.addEventListener("click", function (e) {
   }
 });
 
-
 // Função para delogar o usuário
 function sair() {
-  localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
-  localStorage.removeItem("currentUser"); // Remove o usuário atual
+  localStorage.removeItem("usuarioLogado");
+  localStorage.removeItem("currentUser");
   window.location.href = "/src/login/login.html";
 }
 
-// 2. Depois, adiciona o evento
 document.addEventListener("DOMContentLoaded", () => {
   const botaoSair = document.getElementById("botao-sair");
 
@@ -131,6 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
 
 /*/// Função para registrar um conteúdo como recentemente visto

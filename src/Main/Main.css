@@ -234,6 +234,11 @@ ul, li {
   color: white;
 }
 
+.mobile-search {
+  display: none;
+  padding: 10px;
+}
+
 .escrita {
   /* Estilo do texto do menu */
   font-size: 40px;
@@ -664,3 +669,132 @@ button:hover,
   color: #555;
 }
 
+/* Barra de busca mobile */
+.mobile-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.mobile-search-input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.mobile-search-button {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background-color: #004aad;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Ícone da lupa no mobile */
+.search-mobile-icon {
+  display: none;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .search-container {
+    display: none;
+  }
+
+  .search-mobile-icon {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-search-bar {
+    display: none !important;
+  }
+}
+
+/* Para controlar a exibição do submenu em mobile via JS */
+@media (max-width: 767px) {
+    .submenu {
+        /* ESSENCIAL: Garante que o submenu esteja oculto por padrão em mobile */
+        display: none;
+        opacity: 0;
+        /* Adicionamos uma transição para suavidade na opacidade */
+        transition: opacity 0.3s ease;
+        /* Para o submenu aparecer abaixo do item pai */
+        position: static;
+        width: 100%;
+        left: auto;
+        top: auto;
+        box-shadow: none; /* Remove sombra para submenus em mobile */
+        border-radius: 0;
+        border-top: 1px solid #eee; /* Adiciona uma linha divisória para clareza */
+        padding-left: 30px; /* Indentação para submenus aninhados em mobile */
+    }
+
+    .submenu.open-submenu {
+        display: block; /* Exibe o submenu quando a classe é adicionada em mobile */
+        opacity: 1; /* Transição de opacidade */
+    }
+
+    /* Seta para submenus */
+    .has-submenu > a::after {
+        content: "▼"; /* Seta para baixo por padrão em mobile */
+        margin-left: 10px;
+        font-size: 0.8em;
+        transition: transform 0.3s ease;
+    }
+
+    /* Gira a seta quando o submenu está aberto (usando aria-expanded) */
+    .has-submenu > a[aria-expanded="true"]::after {
+        transform: rotate(180deg);
+    }
+    /* Remova a linha abaixo, pois usamos aria-expanded no JS e é mais robusto */
+    /* .has-submenu > a:has(+ .submenu.open-submenu)::after { } */
+}
+
+/* Para telas maiores (desktop), o submenu deve voltar ao seu comportamento normal */
+@media (min-width: 768px) {
+    .submenu {
+        display: none; /* Escondido por padrão em desktop, aparece no hover */
+        position: absolute;
+        top: 0;
+        left: 100%; /* Aparece ao lado do item pai */
+        min-width: 250px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Adicionada transição */
+    }
+
+    /* Em desktop, o submenu aparece no hover */
+    .has-submenu:hover > .submenu {
+        display: block;
+        opacity: 1;
+        /* Você pode adicionar um pequeno deslocamento aqui para um efeito de slide */
+        /* transform: translateX(5px); */
+    }
+
+    /* Seta para desktop */
+    .has-submenu > a::after {
+        content: "▶"; /* Seta para a direita em desktop */
+        margin-left: 10px;
+        font-size: 0.8em;
+        transition: transform 0.3s ease;
+    }
+
+    /* A seta não gira em desktop, pois não há clique para expandir */
+    .has-submenu:hover > a::after {
+        /* Se você quiser algum efeito na seta ao passar o mouse, adicione aqui */
+    }
+}
