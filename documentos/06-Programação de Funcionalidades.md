@@ -386,6 +386,40 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 - Kauê Alves dos Reis
 
+## Perfil
+
+![Página de Perfil](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20perfil.png)
+
+Sua principal função é permitir que os usuários possam editar seus dados como, nome de usuário, data de nascimento, telefone e etc. Permitindo também que o usuário insira uma imagem ao seu perfil.
+
+### Requisito atendido
+
+- [adionar novo?]
+
+### Artefatos da funcionalidade
+
+- perfil.html
+- perfil.css
+- perfil.js
+
+### Estrutura de Dados
+
+   
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/perfil/perfil.html) 
+
+- Clique em "Fazer upload de imagem" para inserir uma foto de perfil.
+
+- Se quiser, pode editar suas informações e depois clicar no botão de salvar para salvar as edições.
+
+
+#### Responsáveis
+
+- Maria Cecilia Caruzzo Modica
+- Kauê Alves dos Reis
+
 > **Links Úteis**:
 > - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
 > - [JSON Tutorial](https://www.w3resource.com/JSON)
