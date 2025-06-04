@@ -93,7 +93,6 @@ header {
   margin-left: 20px;
   font-size: 29px;
   color: white;
- 
 }
 
 .user-actions a {
@@ -115,6 +114,7 @@ header {
   font-weight: bold;              /* Deixa o texto mais forte */
   font-size: 10px;
 }
+
 #login-nao-logado a {
   color: white;
   text-decoration: none;
@@ -194,7 +194,6 @@ ul, li {
   display: flex; /* FLEX para alinhar texto e seta */
   justify-content: space-between; /* espaço entre texto e seta */
   align-items: center; /* centraliza verticalmente */
-  
   padding: 10px 20px; /* MAIS espaço */
   color: #333;
   text-decoration: none;
@@ -364,50 +363,63 @@ ul, li {
     justify-content: flex-start;
     gap: 8px;
   }
-   .right-group{
-    margin-left: 38px;/* Alinha o grupo à direita */
+   .right-group{  /* Estilização do grupo de itens que fica à direita do header */
+    margin-left: 25px;/* Alinha o grupo à direita */
    }
-   .menu-button {
+   
+   .menu-button {   /* Estilização do ícone de menu */
     font-size: 16px;
    } 
 
-  .search-container {
+  .search-container {  /* Estilização da barra de pesquisa */
     display: none;
   }
-
-  /*.header-item .logo {
-    height: 40px;
-    width: 10px;
-  } */
-
-  .nav {
-    width: 100%;
-    height: 40px;
+  
+   #perfil-logado {  /* Estilização do ícone de perfil */
+    margin-left: 6px;/*  Alinha o perfil à direita */
+    width: 10px; ;
+    font-size: 18px;
   }
-.nav-icon {
-    font-size: 15px;
-  }
-  .titulo-nav h1 {
-    font-size: 15px;
-  }
-
-  .user-actions {
+  
+  .user-actions { /* Estilização do grupo de ações do usuário */
     font-size: 16px;
     gap: 5px;
   }
 
-  .minha-area-botao {
+  .minha-area-botao { /* Estilização do botão "Minha Área" */
     padding: 4px 8px;
-    font-size: 9px;
+    font-size: 8px;
   }
-  .center-group{
+  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
     max-width: 100px;
   }
-
+ .nav {
+    width: 100%;
+    height: 40px;
+  }
+  .nav-icon { /* Estilização do ícone da nav (seta de voltar) */
+    font-size: 18px;
+  }
+ 
+  .titulo-nav h1 {
+    font-size: 15px;
+    height: 20px;
+    
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+  }
   
+  .conteudo-didatico {
+    
+    width: 100%;
+  }
+
+  }
 
 
-}
 
 @media (max-width: 780px) {
   header {
