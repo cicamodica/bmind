@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const dashboardTitle = document.getElementById("dashboard-titulo");
     if (emailUsuario) {
       const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)); // Use email as key
+
       if (dadosUsuario && dadosUsuario.nome) {
         dashboardTitle.textContent = `Dashboard de ${dadosUsuario.nome}`; // Update title with user's name
       } else {
@@ -17,12 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-    //Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+  // Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
   document
     .getElementById("search-button")
     .addEventListener("click", function (event) {
       event.preventDefault(); // evita o redirecionamento padrão
       const termo = document.getElementById("search-bar").value.trim();
+
       if (termo !== "") {
         const encodedTermo = encodeURIComponent(termo);
         window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
@@ -54,20 +56,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // verifica  se usuario esta logado para apresentar botao de minha area
+  // verifica se usuario esta logado para apresentar botao de minha area
+  const botaoMinhaArea = document.querySelector(".minha-area-botao");
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const botaoMinhaArea = document.querySelector(".minha-area-botao");
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-
-    if (botaoMinhaArea) {
-      if (usuarioLogado) {
-        botaoMinhaArea.style.display = "inline-block";
-      } else {
-        botaoMinhaArea.style.display = "none";
-      }
+  if (botaoMinhaArea) {
+    if (usuarioLogado) {
+      botaoMinhaArea.style.display = "inline-block";
+    } else {
+      botaoMinhaArea.style.display = "none";
     }
-  });
+  }
+
   // Função para abrir modais (histórico, entrada, saída, etc.)
   window.openModal = function (tipo) {
     document.getElementById("overlay").style.display = "block";
@@ -111,6 +111,14 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("tipo-remocao").selectedIndex = 0;
       document.getElementById("lista-transacoes-remocao").innerHTML = "";
     }
+
+    // Reset visibility of edit modal specific elements
+    document.getElementById("edit-modal-title").style.display = "block";
+    document.getElementById("edit-type-label").style.display = "block";
+    document.getElementById("tipo-edicao").style.display = "block";
+    // Also ensure the list of transactions for editing is visible when reopening the edit modal
+    document.getElementById("lista-transacoes-edicao").style.display =
+      "block"; // Ensure this is visible on open
   };
 
   // Listener para mostrar/esconder opções de recorrência com base no radio button
@@ -146,15 +154,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataInput = document.getElementById("entrada-data");
     const valorInput = document.getElementById("entrada-valor");
     const categoriaSelect = document.getElementById("entrada-categoria");
-    const catetoriaText = categoriaSelect.options[categoriaSelect.selectedIndex].text;
+    const catetoriaText =
+      categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("entrada-descricao");
     const recorrenteSim = document.getElementById(
       "entrada-recorrente-sim"
     ).checked;
     const frequenciaSelect = document.getElementById("entrada-frequencia");
+    const encerramentoInput = document.getElementById("entrada-encerramento"); // Adicionado
 
     if (!dataInput.value || !valorInput.value) {
       alert("Data e Valor são obrigatórios para entradas.");
+      return;
+    }
+
+    if (recorrenteSim && !encerramentoInput.value) {
+      alert("A Data de Encerramento é obrigatória para entradas recorrentes.");
       return;
     }
 
@@ -168,8 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
-      // *** CORREÇÃO AQUI: SALVAR dataEncerramento NO OBJETO ***
-      dataEncerramento: recorrenteSim && encerramentoInput.value ? encerramentoInput.value : null,
+      dataEncerramento: recorrenteSim ? encerramentoInput.value : null,
     };
 
     const data = getFinancialData();
@@ -183,24 +197,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataInput = document.getElementById("saida-data");
     const valorInput = document.getElementById("saida-valor");
     const categoriaSelect = document.getElementById("saida-categoria");
-    const categoriaText = categoriaSelect.options[categoriaSelect.selectedIndex].text;
+    const categoriaText =
+      categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("saida-descricao");
     const recorrenteSim = document.getElementById(
       "saida-recorrente-sim"
     ).checked;
     const frequenciaSelect = document.getElementById("saida-frequencia");
-    // *** CORREÇÃO AQUI: LER O CAMPO dataEncerramento (se existir) ***
-    const encerramentoInput = document.getElementById("saida-encerramento"); // Assumindo que você tem um ID similar para saídas
+    const encerramentoInput = document.getElementById("saida-encerramento"); // Adicionado
 
     if (!dataInput.value || !valorInput.value) {
       alert("Data e Valor são obrigatórios para saídas.");
       return;
     }
 
-     if (recorrenteSim && encerramentoInput && !encerramentoInput.value) {
+    if (recorrenteSim && !encerramentoInput.value) {
       alert("A Data de Encerramento é obrigatória para saídas recorrentes.");
-        return;
-      }
+      return;
+    }
 
     const novaSaida = {
       id: Date.now(),
@@ -212,8 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
-       // *** CORREÇÃO AQUI: SALVAR dataEncerramento NO OBJETO ***
-       dataEncerramento: recorrenteSim && encerramentoInput && encerramentoInput.value ? encerramentoInput.value : null,
+      dataEncerramento: recorrenteSim ? encerramentoInput.value : null,
     };
 
     const data = getFinancialData();
@@ -221,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
     saveFinancialData(data);
 
     closeModal();
-    };
+  };
 
   // Função para abrir o modal de remoção
   window.openRemoveModal = function () {
@@ -249,7 +262,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Ordena as transações da mais recente para a mais antiga
-    transactionsToDisplay.sort((a, b) => new Date(b.data) - new Date(a.data));
+    transactionsToDisplay.sort(
+      (a, b) =>
+        new Date(b.data + "T12:00:00") - new Date(a.data + "T12:00:00")
+    );
 
     transactionsToDisplay.forEach((item) => {
       const itemDiv = document.createElement("div");
@@ -261,7 +277,10 @@ document.addEventListener("DOMContentLoaded", function () {
           : `+ R$ ${item.valor.toFixed(2)}`;
       const description = item.descricao ? ` - ${item.descricao}` : "";
       const category = item.categoria ? ` (${item.categoria})` : "";
-      const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
+
+      const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
+        "pt-BR"
+      );
 
       itemDiv.innerHTML = `
                 <input type="checkbox" id="remove-${item.id}" value="${item.id}" data-type="${item.tipo}">
@@ -312,11 +331,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Função para abrir o modal de edição
   window.openEditModal = function () {
-    
     openModal("editar");
     document.getElementById("tipo-edicao").value = ""; // Reseta a seleção
     document.getElementById("lista-transacoes-edicao").innerHTML = ""; // Limpa a lista
     document.getElementById("form-edicao").style.display = "none"; // Esconde o formulário
+
+    // Show initial elements when opening the edit modal
+    document.getElementById("edit-modal-title").style.display = "block";
+    document.getElementById("edit-type-label").style.display = "block";
+    document.getElementById("tipo-edicao").style.display = "block";
+    document.getElementById("lista-transacoes-edicao").style.display =
+      "block"; // Ensure this is visible on open
   };
 
   // Função para carregar transações para edição no modal de edição
@@ -346,7 +371,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Ordena as transações da mais recente para a mais antiga
-    transactionsToDisplay.sort((a, b) => new Date(b.data) - new Date(a.data));
+    transactionsToDisplay.sort(
+      (a, b) =>
+        new Date(b.data + "T12:00:00") - new Date(a.data + "T12:00:00")
+    );
 
     transactionsToDisplay.forEach((item) => {
       const itemDiv = document.createElement("div");
@@ -358,7 +386,10 @@ document.addEventListener("DOMContentLoaded", function () {
           : `+ R$ ${item.valor.toFixed(2)}`;
       const description = item.descricao ? ` - ${item.descricao}` : "";
       const category = item.categoria ? ` (${item.categoria})` : "";
-      const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
+
+      const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
+        "pt-BR"
+      );
 
       itemDiv.innerHTML = `
                 <button class="edit-button" onclick="editTransaction(${item.id}, '${item.tipo}')">
@@ -385,13 +416,18 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    // Hide elements specific to selecting a transaction
+    document.getElementById("edit-modal-title").style.display = "none";
+    document.getElementById("edit-type-label").style.display = "none";
+    document.getElementById("tipo-edicao").style.display = "none";
+    document.getElementById("lista-transacoes-edicao").style.display = "none";
+
     // Preenche o formulário de edição
     document.getElementById("edit-id").value = transactionToEdit.id;
     document.getElementById("edit-tipo").value = transactionToEdit.tipo;
     document.getElementById("edit-data").value = transactionToEdit.data;
     document.getElementById("edit-valor").value = transactionToEdit.valor;
     document.getElementById("edit-descricao").value = transactionToEdit.descricao;
-      transactionToEdit.descricao;
 
     // Popula as categorias
     const categoriaSelect = document.getElementById("edit-categoria");
@@ -399,7 +435,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let categories = [];
     if (tipo === "entrada") {
-      categories = ["Salário", "Investimento", "Presente", "Outros"];
+      categories = ["Salário", "Investimentos", "Lucros", "Outros"];
     } else {
       categories = [
         "Alimentação",
@@ -408,27 +444,30 @@ document.addEventListener("DOMContentLoaded", function () {
         "Lazer",
         "Saúde",
         "Educação",
+        "Contas",
         "Outros",
       ];
     }
 
     categories.forEach((cat) => {
       const option = document.createElement("option");
-      option.value = cat.toLowerCase();
+      // Padroniza o valor da opção para ser minúsculo e sem acentos para a comparação
+      option.value = cat
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
       option.textContent = cat;
       categoriaSelect.appendChild(option);
     });
-    categoriaSelect.value = transactionToEdit.categoria;
 
-    document.getElementById("lista-transacoes-edicao").style.display = "none";
+    // Seleciona a categoria correta, padronizando também o valor da categoria salva
+    const savedCategoryValue = transactionToEdit.categoria
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    categoriaSelect.value = savedCategoryValue;
+
     document.getElementById("form-edicao").style.display = "block";
-
-    window.resetEditModal = function () {
-      document.getElementById("tipo-edicao").value = ""; // Limpa tipo
-      document.getElementById("lista-transacoes-edicao").innerHTML = ""; // Limpa lista
-      document.getElementById("lista-transacoes-edicao").style.display = "block"; // Mostra lista
-      document.getElementById("form-edicao").style.display = "none"; // Esconde o formulário
-    };
 
     // Recorrência
     if (transactionToEdit.recorrente) {
@@ -441,7 +480,8 @@ document.addEventListener("DOMContentLoaded", function () {
         transactionToEdit.dataEncerramento || "";
     } else {
       document.getElementById("edit-recorrente-nao").checked = true;
-      document.getElementById("edit-opcoes-recorrentes").style.display = "none";
+      document.getElementById("edit-opcoes-recorrentes").style.display =
+        "none";
       document.getElementById("edit-frequencia").value = "";
       document.getElementById("edit-encerramento").value = "";
     }
@@ -455,8 +495,11 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelectorAll('input[name="edit-recorrente"]')
     .forEach((radio) => {
       radio.addEventListener("change", function () {
-        const recorrenteDiv = document.getElementById("edit-opcoes-recorrentes");
-        const encerramentoInput = document.getElementById("edit-encerramento");
+        const recorrenteDiv = document.getElementById(
+          "edit-opcoes-recorrentes"
+        );
+        const encerramentoInput =
+          document.getElementById("edit-encerramento");
         const frequenciaSelect = document.getElementById("edit-frequencia");
 
         if (recorrenteDiv) {
@@ -530,7 +573,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Transação não encontrada.");
     }
-    resetEditModal();
   };
 
   // Função para obter anos únicos das transações (e anos relevantes para o futuro)
@@ -538,8 +580,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const years = new Set();
     const currentYear = new Date().getFullYear();
 
-    const startDisplayYear = 2023;
-    const maxYear = currentYear + 2;
+    const startDisplayYear = 2025; // Início do período para exibição
+    const maxYear = currentYear + 5; // Fim do período para exibição
 
     for (let year = startDisplayYear; year <= maxYear; year++) {
       years.add(year.toString());
@@ -616,7 +658,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função para filtrar transações por ano e mês
   function filterTransactions(transactions, ano, mes) {
     return transactions.filter((item) => {
-      const itemDate = new Date(item.data + "T00:00:00");
+      const itemDate = new Date(item.data + "T12:00:00");
       const itemYear = itemDate.getFullYear().toString();
       const itemMonth = (itemDate.getMonth() + 1).toString().padStart(2, "0");
 
@@ -646,14 +688,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const today = new Date();
     const currentYear = today.getFullYear();
 
-    const startDisplayYear = 2023;
-    const endDisplayYear = currentYear + 2;
+    const startDisplayYear = 2025; // Início do período para exibição
+    const endDisplayYear = currentYear + 5; // Fim do período para exibição
+
     transactions.forEach((item) => {
       if (item.recorrente) {
-        const originalDate = new Date(item.data + "T00:00:00");
-
+        const originalDate = new Date(item.data + "T12:00:00");
         let currentDate = new Date(originalDate);
 
+        // Ajusta a data inicial para o começo do período de exibição se a data original for anterior
         while (currentDate.getFullYear() < startDisplayYear) {
           if (item.frequencia === "mensal") {
             currentDate.setMonth(currentDate.getMonth() + 1);
@@ -662,11 +705,21 @@ document.addEventListener("DOMContentLoaded", function () {
           } else if (item.frequencia === "diaria") {
             currentDate.setDate(currentDate.getDate() + 1);
           } else {
+            // Para frequência personalizada ou desconhecida, sai do loop
             break;
           }
         }
 
+        // Gera as transações recorrentes até a data de encerramento ou o final do período de exibição
         while (currentDate.getFullYear() <= endDisplayYear) {
+          // Verifica se a transação já deveria ter encerrado
+          if (
+            item.dataEncerramento &&
+            new Date(currentDate) > new Date(item.dataEncerramento + "T23:59:59")
+          ) {
+            break; // Se a data atual for após a data de encerramento, para de gerar
+          }
+
           expandedTransactions.push({
             ...item,
             data: currentDate.toISOString().split("T")[0],
@@ -674,21 +727,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (item.frequencia === "mensal") {
             currentDate.setMonth(currentDate.getMonth() + 1);
+            // Manter o dia do mês se for o último dia do mês ou se o mês seguinte não tiver o mesmo dia
+            if (currentDate.getDate() !== originalDate.getDate()) {
+              currentDate.setDate(0); // Último dia do mês anterior
+              currentDate.setDate(originalDate.getDate()); // Tenta voltar para o dia original
+              if (
+                currentDate.getMonth() !==
+                (originalDate.getMonth() + 1) % 12
+              ) {
+                currentDate = new Date(
+                  currentDate.getFullYear(),
+                  (originalDate.getMonth() + 2) % 12,
+                  0
+                ); // Vai para o último dia do mês seguinte
+              }
+            }
           } else if (item.frequencia === "semanal") {
             currentDate.setDate(currentDate.getDate() + 7);
           } else if (item.frequencia === "diaria") {
             currentDate.setDate(currentDate.getDate() + 1);
           } else {
-            break;
-          }
-          if (
-            currentDate.getDate() !== originalDate.getDate() &&
-            item.frequencia === "mensal"
-          ) {
-            currentDate.setDate(originalDate.getDate());
+            break; // Para frequência personalizada ou desconhecida
           }
 
-          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break;
+          // Adição de uma condição de saída para evitar loop infinito em casos inesperados
+          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break; // Limite superior para evitar loops infinitos
         }
       } else {
         expandedTransactions.push(item);
@@ -733,13 +796,20 @@ document.addEventListener("DOMContentLoaded", function () {
     function createListItem(item, displayType) {
       const listItem = document.createElement("li");
       listItem.className = item.tipo;
-      const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
+      const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
+        "pt-BR"
+      );
       const formattedValue = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL",
       }).format(item.valor);
       const description = item.descricao ? ` - ${item.descricao}` : "";
-      const category = item.categoria ? item.categoria : "Sem Categoria";
+      const category =
+        item.categoriaText
+          ? item.categoriaText
+          : item.categoria
+            ? item.categoria
+            : "Sem Categoria";
 
       listItem.innerHTML = `
                 <span class="transaction-type">${displayType}:</span>
@@ -747,6 +817,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <span class="transaction-description">${category}${description}</span>
                 <span class="transaction-value">${formattedValue}</span>
             `;
+
       return listItem;
     }
 
@@ -791,46 +862,45 @@ document.addEventListener("DOMContentLoaded", function () {
       mesFiltro
     );
 
-        const totalEntradas = entradasParaGrafico.reduce(
-            (sum, item) => sum + item.valor,
-            0
-        );
-        const totalSaidas = saidasParaGrafico.reduce(
-            (sum, item) => sum + item.valor,
-            0
-        );
-        
-        
-        // Salvar dados no localStorage, dentro do objeto do usuário logado
-        const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+    const totalEntradas = entradasParaGrafico.reduce(
+      (sum, item) => sum + item.valor,
+      0
+    );
+    const totalSaidas = saidasParaGrafico.reduce(
+      (sum, item) => sum + item.valor,
+      0
+    );
 
-        if (emailUsuarioLogado) {
-          const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+    // Salvar dados no localStorage, dentro do objeto do usuário logado
+    const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
 
-          if (dadosDoUsuario) {
-             dadosDoUsuario.chartData = {
-                entradas: totalEntradas,
-                saidas: totalSaidas
-           };
+    if (emailUsuarioLogado) {
+      const dadosDoUsuario = JSON.parse(
+        localStorage.getItem(emailUsuarioLogado)
+      );
 
-           // Salvar também as transações filtradas do mês atual com tipo padronizado
-           dadosDoUsuario.entradas = entradasParaGrafico.map(t => ({
-             ...t,
-             tipo: "entrada",
-             categoriaText: t.categoriaText // opcional: manter para exibição posterior
-              
-           }));
+      if (dadosDoUsuario) {
+        dadosDoUsuario.chartData = {
+          entradas: totalEntradas,
+          saidas: totalSaidas,
+        };
 
-           dadosDoUsuario.saidas = saidasParaGrafico.map(t => ({
-           ...t,
-           tipo: "saida",
-           categoriaText: t.categoriaText // opcional: manter para exibição posterior
-       }));
+        // Salvar também as transações filtradas do mês atual com tipo padronizado
+        dadosDoUsuario.entradas = entradasParaGrafico.map((t) => ({
+          ...t,
+          tipo: "entrada",
+          categoriaText: t.categoriaText, // opcional: manter para exibição posterior
+        }));
 
-       localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
-       }
-    } 
+        dadosDoUsuario.saidas = saidasParaGrafico.map((t) => ({
+          ...t,
+          tipo: "saida",
+          categoriaText: t.categoriaText, // opcional: manter para exibição posterior
+        }));
 
+        localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
+      }
+    }
 
     chartInstances.pieChart = new Chart(
       document.getElementById("pieChart").getContext("2d"),
@@ -878,10 +948,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const allFilteredMonths = new Set();
 
     entradasParaGrafico.forEach((item) => {
-      const date = new Date(item.data);
+      const date = new Date(item.data + "T12:00:00"); // Corrigido aqui
       const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, "0")}`;
+
       allFilteredMonths.add(monthKey);
 
       if (!transacoesPorMes[monthKey]) {
@@ -891,10 +962,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     saidasParaGrafico.forEach((item) => {
-      const date = new Date(item.data);
+      const date = new Date(item.data + "T12:00:00"); // Corrigido aqui
       const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, "0")}`;
+
       allFilteredMonths.add(monthKey);
 
       if (!transacoesPorMes[monthKey]) {
@@ -954,8 +1026,10 @@ document.addEventListener("DOMContentLoaded", function () {
               beginAtZero: true,
             },
           },
-          legend: {
-            display: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
           },
         },
       }
@@ -988,126 +1062,60 @@ document.addEventListener("DOMContentLoaded", function () {
               beginAtZero: true,
             },
           },
-          legend: {
-            display: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
           },
         },
       }
     );
   };
 
-    renderDashboard();
-    exibirHistoricoDoMesAtual();
-});
+  renderDashboard();
 
-function filtrarTransacoesValidas(transacoes) {
-  return transacoes.filter(t =>
-    t &&
-    t.id &&
-    t.data &&
-    t.valor > 0 &&
-    t.categoria // pode manter essa se todas têm
-  );
-}
+  window.onclick = function (event) {
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const menuIcon = document.querySelector(".menu-icon");
 
-
-function exibirHistoricoDoMesAtual() {
-    const listaHistorico = document.getElementById("lista-historico");
-    if (!listaHistorico) return;
-
-    listaHistorico.innerHTML = "";
-
-    const { entradas, saidas } = getFinancialData();
-
-    const entradasValidas = filtrarTransacoesValidas(entradas);
-    const saidasValidas = filtrarTransacoesValidas(saidas);
-
-    const entradasExpandidas = expandRecurringTransactions(entradasValidas);
-    const saidasExpandidas = expandRecurringTransactions(saidasValidas);
-
-    const hoje = new Date();
-    const anoAtual = hoje.getFullYear().toString();
-    const mesAtual = (hoje.getMonth() + 1).toString().padStart(2, "0");
-
-    const entradasMes = filterTransactions(entradasExpandidas, anoAtual, mesAtual);
-    const saidasMes = filterTransactions(saidasExpandidas, anoAtual, mesAtual);
-
-    const todasTransacoes = [
-        ...entradasMes.map(transacao => ({ ...transacao, tipo: "Entrada" })),
-        ...saidasMes.map(transacao => ({ ...transacao, tipo: "Saída" }))
-    ];
-
-    // Ordena tudo junto
-    todasTransacoes.sort((a, b) => new Date(b.data) - new Date(a.data));
-
-    function criarItemLista(item) {
-        const li = document.createElement("div");
-        li.className = "item-historico";
-
-        const data = new Date(item.data).toLocaleDateString("pt-BR");
-        const valor = new Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        }).format(item.valor);
-
-        const cor = item.tipo === "Entrada" ? "green" : "red";
-
-        li.style.borderLeft = `4px solid ${cor}`;
-        li.style.padding = "8px";
-        li.style.marginBottom = "8px";
-        li.style.backgroundColor = "#f9f9f9";
-
-        li.innerHTML = `
-            <span style="color:${cor};">${data} - ${item.tipo}: ${valor} - ${item.catetoriaText}</span>
-        `;
-
-        return li;
+    if (
+      dropdownMenu &&
+      menuIcon &&
+      !menuIcon.contains(event.target) &&
+      !dropdownMenu.contains(event.target)
+    ) {
+      dropdownMenu.style.display = "none";
     }
 
-    if (todasTransacoes.length === 0) {
-        const vazio = document.createElement("div");
-        vazio.textContent = "Sem movimentações neste mês.";
-        listaHistorico.appendChild(vazio);
-    } else {
-        todasTransacoes.forEach(item => listaHistorico.appendChild(criarItemLista(item)));
+    // Close modal if click outside modal and not on a button that opens a modal
+    if (
+      !event.target.closest(".modal") &&
+      !event.target.matches(".Historico") &&
+      !event.target.matches(".Entradas") &&
+      !event.target.matches(".Saidas") &&
+      !event.target.matches(".Editar") &&
+      !event.target.matches(".Remover") &&
+      // Add a specific check for the close button within the modal
+      !event.target.matches(".close-button")
+    ) {
+      const modals = document.querySelectorAll(".modal");
+      modals.forEach((modal) => {
+        if (modal.style.display === "block") {
+          closeModal();
+        }
+      });
     }
-}
+  };
 
-
-function toggleMenu() {
-  var dropdownMenu = document.getElementById("dropdownMenu");
-  if (dropdownMenu.style.display === "block") {
-    dropdownMenu.style.display = "none";
-  } else {
-    dropdownMenu.style.display = "block";
+  // Função para delogar o usuário
+  function sair() {
+    localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
+    localStorage.removeItem("currentUser"); // Remove o usuário atual
+    window.location.href = "/src/login/login.html";
   }
-}
 
-window.onclick = function (event) {
-  if (
-    !event.target.matches(".menu-icon") &&
-    !event.target.matches(".menu-button")
-  ) {
-    var dropdowns = document.getElementsByClassName("dropdown-menu");
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.style.display === "block") {
-        openDropdown.style.display = "none";
-      }
-    }
-  }
-};
-// Função para delogar o usuário
-function sair() {
-  localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
-  localStorage.removeItem("currentUser"); // Remove o usuário atual
-  window.location.href = "/src/login/login.html";
-}
-
-// 2. Depois, adiciona o evento
-document.addEventListener("DOMContentLoaded", () => {
+  // Adiciona o evento de clique ao botão de sair
   const botaoSair = document.getElementById("botao-sair");
-
   if (botaoSair) {
     botaoSair.addEventListener("click", function (e) {
       e.preventDefault();
