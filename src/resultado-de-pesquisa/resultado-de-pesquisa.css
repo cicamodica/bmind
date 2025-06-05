@@ -371,6 +371,7 @@ img {
     font-size: 29px;
     color: white;
   }
+
 }
 
 /* Antes de 860px, oculta a barra e mostra o ícone */
@@ -386,12 +387,23 @@ img {
     padding: 0 10px;
     cursor: pointer;
   }
+
+  /* Mostrar a barra mobile SOMENTE abaixo de 861px */
+  #mobileSearchBar {
+    display: block;
+  }
 }
 
 /* Depois de 861px, oculta o ícone e mostra a barra */
 @media (min-width: 861px) {
   .search-mobile-icon {
     display: none;
+  }
+
+  
+/* Ocultar a barra em telas maiores que 861px */
+  #mobileSearchBar {
+    display: none !important; /* força a ocultação mesmo se o JS ativar */
   }
 
   .search-container.search-desktop {
