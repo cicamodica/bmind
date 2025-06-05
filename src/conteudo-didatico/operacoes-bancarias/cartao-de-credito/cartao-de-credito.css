@@ -128,7 +128,8 @@ header {
   /*Estilização da barra de pesquisa*/
   position: relative;
   display: flex;
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   align-items: center;
   z-index: 1;
 }
@@ -241,7 +242,7 @@ ul, li {
 }
 
 .dropdown-menu a {
-  display: flex; /* FLEX para alinhar texto e seta */
+  display: flex; 
   justify-content: space-between; /* espaço entre texto e seta */
   align-items: center; /* centraliza verticalmente */
   padding: 10px 20px; /* MAIS espaço */
@@ -331,6 +332,7 @@ ul, li {
 
 .imagem-controle {
   /*Estilização da imagem no posicionamento na página*/
+  display: flex;
   float: center;
   margin-top: -30px;
   margin-right: 60px;
@@ -340,6 +342,8 @@ ul, li {
   /*Estilização da imagem*/
   position: relative;
   height: 450px;
+  max-width: 900px;
+  width: 100%;
 }
 
 .conteudo-didatico {
@@ -579,7 +583,7 @@ ul, li {
     
   }
   img {
-    max-width: 200%;
+    max-width: 150%;
     max-height: 300px;
     display: inline-block;
   }
@@ -624,6 +628,9 @@ ul, li {
   .search-container {  /* Estilização da barra de pesquisa */
     display: flex;
     justify-content: center;
+  }
+  .mobile-search-trigger {
+    display: none;
   }
 }
 
