@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (submenu && submenu.classList.contains('submenu')) {
         e.preventDefault(); // Impede o comportamento padrão do link (navegar para '#')
-        e.stopPropagation(); // <-- AQUI ESTÁ A ALTERAÇÃO PRINCIPAL: Impede que o clique se propague para o document
+        e.stopPropagation(); //Impede que o clique se propague para o document
 
         const isMobile = window.innerWidth <= 1120; // Altere para 780 aqui;
         const isExpanded = link.getAttribute('aria-expanded') === 'true';
@@ -80,14 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
           submenu.classList.toggle('open-submenu'); // Alterna a classe que mostra/esconde o submenu
           link.setAttribute('aria-expanded', !isExpanded); // Atualiza o atributo ARIA
         }
-        // Se você quiser que o clique também funcione em desktop (não apenas hover),
-        // precisaria remover a condição `if (isMobile)` aqui ou adicionar uma lógica para desktop.
-        // No seu caso, o problema é no mobile, então o `if (isMobile)` está correto para o foco.
+        
       }
     });
 
-    // Opcional: Impedir que cliques DENTRO do submenu se propaguem e fechem o menu principal.
-    // Isso é útil se o submenu tiver links ou botões que você não quer que fechem o menu pai.
+    // Impedir que cliques DENTRO do submenu se propaguem e fechem o menu principal.
+    
     const submenuContent = link.nextElementSibling;
     if (submenuContent && submenuContent.classList.contains('submenu')) {
       submenuContent.addEventListener('click', (e) => {
@@ -226,57 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-
-
-/*/// Função para registrar um conteúdo como recentemente visto
-function registrarConteudoVisto(nome, url, imagem) {
-  let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
-
-  // Remove se já existir (baseado na URL para garantir unicidade)
-  vistos = vistos.filter(item => item.url !== url);
-
-  // Adiciona no topo da lista
-  const conteudo = { nome, url, imagem };
-  vistos.unshift(conteudo);
-
-  // Mantém apenas os 3 mais recentes
-  if (vistos.length > 3) {
-    vistos = vistos.slice(0, 3);
-  }
-
-  localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
-} 
-
-// Função para exibir os conteúdos vistos recentemente
- /*function exibirVistosRecentemente() {
-  const lista = document.getElementById("lista-vistos-recentemente");
-  if (!lista) return;  // Evita erro se o elemento não existir na página
-
-  const vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
-  lista.innerHTML = "";
-
-  vistos.forEach(conteudo => {
-    const li = document.createElement("li");
-    li.classList.add("item-visto");
-
-    const link = document.createElement("a");
-    link.href = conteudo.url;
-    link.classList.add("link-visto");
-
-    const img = document.createElement("img");
-    img.src = conteudo.imagem;
-    img.alt = conteudo.nome;
-
-    const texto = document.createElement("p");
-    texto.textContent = conteudo.nome;
-
-    link.appendChild(img);
-    link.appendChild(texto);
-    li.appendChild(link);
-    lista.appendChild(li);
-  }); 
-}*/
 
 
 function registrarConteudoVisto(nome, url, imagem) {
