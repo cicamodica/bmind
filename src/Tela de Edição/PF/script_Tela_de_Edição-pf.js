@@ -312,6 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Função para abrir o modal de edição
   window.openEditModal = function () {
+    
     openModal("editar");
     document.getElementById("tipo-edicao").value = ""; // Reseta a seleção
     document.getElementById("lista-transacoes-edicao").innerHTML = ""; // Limpa a lista
@@ -389,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("edit-tipo").value = transactionToEdit.tipo;
     document.getElementById("edit-data").value = transactionToEdit.data;
     document.getElementById("edit-valor").value = transactionToEdit.valor;
-    document.getElementById("edit-descricao").value =
+    document.getElementById("edit-descricao").value = transactionToEdit.descricao;
       transactionToEdit.descricao;
 
     // Popula as categorias
@@ -418,6 +419,16 @@ document.addEventListener("DOMContentLoaded", function () {
       categoriaSelect.appendChild(option);
     });
     categoriaSelect.value = transactionToEdit.categoria;
+
+    document.getElementById("lista-transacoes-edicao").style.display = "none";
+    document.getElementById("form-edicao").style.display = "block";
+
+    window.resetEditModal = function () {
+      document.getElementById("tipo-edicao").value = ""; // Limpa tipo
+      document.getElementById("lista-transacoes-edicao").innerHTML = ""; // Limpa lista
+      document.getElementById("lista-transacoes-edicao").style.display = "block"; // Mostra lista
+      document.getElementById("form-edicao").style.display = "none"; // Esconde o formulário
+    };
 
     // Recorrência
     if (transactionToEdit.recorrente) {
@@ -519,6 +530,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       alert("Transação não encontrada.");
     }
+    resetEditModal();
   };
 
   // Função para obter anos únicos das transações (e anos relevantes para o futuro)

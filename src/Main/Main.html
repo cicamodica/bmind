@@ -15,42 +15,64 @@
   </head>
 
   <body>
-  <!-- Barra de navegação superior -->
-  <div class="header">
-    <header>
-      <div class="left-group">
-        <div class="menu-icon" onclick="toggleMenu()">
-          <i class="fa-solid fa-bars menu-button"></i>
+    <!-- Barra de navegação superior -->
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i>
+          </div>
+          <div class="header-item">
+            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
         </div>
-        <div class="header-item">
-          <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
-        </div>
-      </div>
-      <div class="center-group">
-        <div class="search-container">
-          <input type="text" id="search-bar" placeholder="Pesquisar..." class="search-bar" />
-          <a class="search-button" id="search-button" href="#">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          </a>
-        </div>
-      </div>
-      <div class="right-group">
-        <div class="user-actions" id="login-nao-logado">
-          <a href="/src/login/login.html">Fazer login</a>
-          <span>|</span>
-          <a href="/src/cadastro/cadastro.html">Cadastrar-se</a>
-        </div>
-        <div class="user-actions" id="perfil-logado">
-          <a href="/src/perfil/perfil.html">
-            <i class="fa-regular fa-circle-user"></i>
-          </a>
-        </div>
-      </div>
-    </header>
-  </div>
 
-  <!-- Menu dropdown -->
-  <nav class="dropdown-menu" id="dropdownMenu">
+        <div class="center-group">
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            />
+            <a class="search-button" id="search-button" href="#">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Ícone da lupa mobile -->
+        <div class="search-mobile-icon" onclick="toggleMobileSearch()">
+         <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div class="right-group">
+          <div class="user-actions" id="login-nao-logado">
+            <a href="/src/login/login.html">Fazer login</a>
+            <span>|</span>
+            <a href="/src/cadastro/cadastro.html">Cadastrar-se</a>
+          </div>
+          <div class="user-actions" id="perfil-logado">
+            <a href="/src/perfil/perfil.html">
+              <i class="fa-regular fa-circle-user"></i>
+            </a>
+          </div>
+        </div>
+       </header>
+        <!-- Barra de busca mobile (fora do header) -->
+        <div id="mobileSearchBar" class="mobile-search-bar" style="display: none;">
+         <input
+           type="text"
+           id="mobileSearchInput"
+           class="mobile-search-input"
+           placeholder="Pesquisar..."
+          />
+          <button class="mobile-search-button" onclick="buscarMobile()">Buscar</button>
+        </div>
+    </div>
+
+    <!-- Menu dropdown -->
+    <nav class="dropdown-menu" id="dropdownMenu">
     <ul id="menu">
       <li class="item-logged">
         <a class="perfil" href="/src/perfil/perfil.html">Perfil</a>
@@ -249,53 +271,56 @@
     </ul>
   </nav>
 
+  
 
-<!-- Mensagem de boas-vindas -->
-<div class="boas-vindas">
-  <h1 id="boas-vindas"></h1>
-</div>
 
-<main class="conteudo-principal">
-  <!-- Título principal -->
-  <h2 class="titulo-dashboard">Meu Dashboard</h2>
 
-  <!-- Layout principal -->
-  <section class="dashboard-layout">
+  <!-- Mensagem de boas-vindas -->
+  <div class="boas-vindas">
+    <h1 id="boas-vindas"></h1>
+  </div>
+
+ <main class="conteudo-principal">
+    <!-- Título principal -->
+    <h2 class="titulo-dashboard">Meu Dashboard</h2>
+
+    <!-- Layout principal -->
+    <section class="dashboard-layout">
     
-    <!-- Gráfico -->
-    <div class="chart-container">
-      <canvas id="pieChartMain"></canvas>
-    </div>
-
-    <!-- Resumo financeiro -->
-    <div id="resumo-financeiro">
-      <h3>Resumo Mensal</h3>
-      <p><strong>Total de Entradas:</strong> <span id="resumo-entradas">R$ 0,00</span></p>
-      <p><strong>Total de Saídas:</strong> <span id="resumo-saidas">R$ 0,00</span></p>
-    </div>
-
-    <!-- Histórico mensal -->
-    <div id="historico-mensal">
-      <div class="historico-topo">
-        <h3>Histórico do Mês</h3>
-        <button class="btn-dashboard" onclick="redirecionarCadastro()">Cadastrar Novo Registro</button>
+      <!-- Gráfico -->
+      <div class="chart-container">
+        <canvas id="pieChartMain"></canvas>
       </div>
-      <div id="lista-historico"></div>
-    </div>
 
-    <!-- Formulário de metas -->
-    <div id="area-metas">
-      <h3>Cadastrar Nova Meta</h3>
-      <form id="form-meta">
-        <input type="text" id="titulo-meta" placeholder="Título da meta" required />
-        <input type="number" id="valor-meta" placeholder="Valor da meta (R$)" required />
-        <input type="number" id="valor-atual-meta" placeholder="Valor atual (R$)" required />
-        <input type="date" id="tempo-meta" required />
-        <button type="submit" class="btn-dashboard">Criar Meta</button>
-      </form>
-    </div>
+      <!-- Resumo financeiro -->
+      <div id="resumo-financeiro">
+        <h3>Resumo Mensal</h3>
+        <p><strong>Total de Entradas:</strong> <span id="resumo-entradas">R$ 0,00</span></p>
+        <p><strong>Total de Saídas:</strong> <span id="resumo-saidas">R$ 0,00</span></p>
+      </div>
 
-   </section>
+      <!-- Histórico mensal -->
+      <div id="historico-mensal">
+        <div class="historico-topo">
+          <h3>Histórico do Mês</h3>
+          <button class="btn-dashboard" onclick="redirecionarCadastro()">Cadastrar Novo Registro</button>
+       </div>
+       <div id="lista-historico"></div>
+     </div>
+
+     <!-- Formulário de metas -->
+     <div id="area-metas">
+        <h3>Cadastrar Nova Meta</h3>
+        <form id="form-meta">
+          <input type="text" id="titulo-meta" placeholder="Título da meta" required />
+          <input type="number" id="valor-meta" placeholder="Valor da meta (R$)" required />
+          <input type="number" id="valor-atual-meta" placeholder="Valor atual (R$)" required />
+          <input type="date" id="tempo-meta" required />
+          <button type="submit" class="btn-dashboard">Criar Meta</button>
+       </form>
+     </div>
+
+    </section>
 
 
 

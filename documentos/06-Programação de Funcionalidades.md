@@ -344,6 +344,129 @@ RF-08 - A aplicação deve possuir uma funcionalidade de filtro/pesquisa para pe
 
 - Maria Cecilia Caruzzo Modica
 
+## Feedback
+
+![Página de Feedback](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20Feedback.png)
+
+Sua principal função é permitir que os usuários deem feedbacks e notas para a aplicação, guardando esses feedbacks em localstorage para que a aplicação possa melhorar diante a opnião dos clientes.
+
+### Requisito atendido
+
+- |RF-11| A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação
+
+### Artefatos da funcionalidade
+
+- feedback.html
+- feedback.css
+- feedback.js
+
+### Estrutura de Dados
+
+    document.querySelector(".submit").addEventListener("click", function () {
+    const feedback = document.getElementById("feedbackText").value.trim();
+
+    if (feedback !== "") {
+    let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+    feedbacks.push(feedback); // Adiciona o novo feedback lista
+
+    // Salva no localStorage
+    localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Feedback/feedback.html) 
+
+- Dê uma nota em estrelas e escreva um feedback para a aplicação, depois, clique em "enviar" para que o feedbqack seja salvo.
+
+- Se quiser voltar para a aplicação, basta clicar no menu e escolher em que página quer ir.
+
+
+#### Responsáveis
+
+- Kauê Alves dos Reis
+
+## Perfil
+
+![Página de Perfil](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20perfil.png)
+
+Sua principal função é permitir que os usuários possam editar seus dados como, nome de usuário, data de nascimento, telefone e etc. Permitindo também que o usuário insira uma imagem ao seu perfil.
+
+### Requisito atendido
+
+- [adionar novo?]
+
+### Artefatos da funcionalidade
+
+- perfil.html
+- perfil.css
+- perfil.js
+
+### Estrutura de Dados
+    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+    window.addEventListener("DOMContentLoaded", function () {
+    const boasVindas = document.getElementById("boas-vindas");
+    const emailUsuario = localStorage.getItem("usuarioLogado");
+
+    if (emailUsuario) {
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+    if (dadosUsuario && dadosUsuario.nome) {
+      boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+    } else {
+      boasVindas.textContent = "Olá!";
+    }
+    } else {
+    // Se ninguém estiver logado, mostra mensagem genérica ou redireciona
+    boasVindas.textContent = "Bem-vindo!";
+    // Opcional: redirecionar para a página de login
+    // window.location.href = "/src/login/login.html";
+    }
+    });
+    window.onload = () => {
+    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+    if (!usuarioLogado) return;
+
+    const emailUsuario = usuarioLogado.email;
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+
+    if (dadosUsuario) {
+    document.getElementById("nome").value = dadosUsuario.nome || "";
+    document.getElementById("contato").value = dadosUsuario.telefoneContato || "";
+    document.getElementById("data").value = dadosUsuario.dataNascimento || "";
+    document.getElementById("perfil").value = dadosUsuario.perfil || "";
+
+    // imagem
+    const previewImg = document.getElementById("preview-img");
+    if (dadosUsuario.imagemBase64) {
+      previewImg.src = dadosUsuario.imagemBase64;
+    }
+    }
+    };
+    document.getElementById("perfil-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+    if (!usuarioLogado) return;
+
+    const emailUsuario = usuarioLogado.email;
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+    localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
+    
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/perfil/perfil.html) 
+
+- Clique em "Fazer upload de imagem" para inserir uma foto de perfil.
+
+- Se quiser, pode editar suas informações e depois clicar no botão de salvar para salvar as edições.
+
+
+#### Responsáveis
+
+- Maria Cecilia Caruzzo Modica
+- Kauê Alves dos Reis
+
 > **Links Úteis**:
 > - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
 > - [JSON Tutorial](https://www.w3resource.com/JSON)
