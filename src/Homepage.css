@@ -103,27 +103,13 @@ header {
   margin-left: 20px;
   font-size: 29px;
   color: white;
- 
 }
-/* Botão 'Minha Área' */
-.minha-area-botao {
-  
- display: inline-block;           /* Para permitir padding e margin corretamente */
-  margin: 4px;                    /* Espaço externo ao redor do botão */
-  padding: 6px 12px;               /* Espaço interno (em cima/baixo e lados) */
-  background-color: #ffffff22;     /* Cor de fundo (semi-transparente aqui) */
-  color: white;                    /* Cor do texto */
-  border: 1px solid white;        /* Borda branca */
-  border-radius: 6px;             /* Cantos arredondados */
-  text-decoration: none;          /* Tira o sublinhado */
-  font-weight: bold;              /* Deixa o texto mais forte */
-  font-size: 10px;
-}
+
 .minha-area-botao {
   display: none;
 }
 
-.user-actions a { /* Link para o perfil */
+.user-actions a {
   color: white;
   text-decoration: none;
 }
@@ -132,12 +118,10 @@ header {
   color: white;
   text-decoration: none;
   margin: 0 5px;
-  font-weight: bold; /* Deixa o texto mais forte */
- font-size: 15px; /* Tamanho da fonte */
-
+  font-weight: bold;
+  font-size: 15px;
 }
 
-/* Barra de pesquisa */
 .search-container {
   position: relative;
   display: flex;
@@ -163,16 +147,14 @@ header {
   color: black;
 }
 
-/* Reset */
 ul, li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* Dropdown principal */
 .dropdown-menu {
-  width: 250px; /* AUMENTADO de 220 para 250 */
+  width: 250px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -187,11 +169,10 @@ ul, li {
 }
 
 .dropdown-menu a {
-  display: flex; /* FLEX para alinhar texto e seta */
-  justify-content: space-between; /* espaço entre texto e seta */
-  align-items: center; /* centraliza verticalmente */
-  
-  padding: 10px 20px; /* MAIS espaço */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   color: #333;
   text-decoration: none;
   white-space: nowrap;
@@ -204,19 +185,16 @@ ul, li {
   color: #fff;
 }
 
-/* Submenu */
 .has-submenu {
   position: relative;
 }
 
-/* SETA via pseudo-elemento */
 .has-submenu > a::after {
   content: "▶";
-  margin-left: 10px; /* separação do texto */
+  margin-left: 10px;
   font-size: 0.8em;
 }
 
-/* Submenu oculto */
 .submenu {
   display: none;
   position: absolute;
@@ -225,17 +203,15 @@ ul, li {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  min-width: 250px; /* AUMENTADO igual ao principal */
+  min-width: 250px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1001;
 }
 
-/* Mostrar submenu ao hover */
 .has-submenu:hover > .submenu {
   display: block;
 }
 
-/* Submenu itens */
 .submenu a {
   padding: 10px 20px;
   border-radius: 6px;
@@ -246,10 +222,7 @@ ul, li {
   color: #fff;
 }
 
-
-
-
-* Container principal do carrossel */ .hero {
+.hero {
   position: relative;
   display: flex;
   align-items: center;
@@ -257,33 +230,29 @@ ul, li {
   padding: 40px;
   background-color: #f5f5f5;
   gap: 30px;
-  height: 400px; /* controla a altura visível do carrossel */
+  height: 400px;
   overflow: hidden;
 }
 
-/* Faixa com os slides lado a lado */
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
 }
 
-/* Slide individual */
 .hero-slide {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 100%; /* crucial para ocupar espaço */
+  width: 100%;
   gap: 30px;
 }
 
-/* Conteúdo de texto */
 .hero-content {
   max-width: 400px;
 }
 
-/* Estilização de título e texto */
 .hero h1 {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -293,45 +262,30 @@ ul, li {
   color: #444;
 }
 
-/* Imagem */
 .hero-image {
   width: 300px;
   height: auto;
 }
 
-.hero {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  padding: 60px 40px;
-  background-color: #f5f5f5;
-  min-height: 400px;
-}
-
-/* Container principal de texto e imagem */
 .hero-content,
 .hero-image {
   z-index: 1;
 }
 
-/* Botões do carrossel */
 .nav-left,
 .nav-right {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   font-size: 32px;
-  background: none; /* Remove o fundo */
-  border: none; /* Remove a borda */
-  color: black; /* Cor da seta */
+  background: none;
+  border: none;
+  color: black;
   cursor: pointer;
   z-index: 2;
-  outline: none; /* Remove contorno ao focar */
+  outline: none;
 }
 
-/* Posicionamento horizontal */
 .nav-left {
   left: 10px;
 }
@@ -340,7 +294,6 @@ ul, li {
   right: 10px;
 }
 
-/* Menu de abas */
 .tabs {
   display: flex;
   justify-content: center;
@@ -359,7 +312,6 @@ ul, li {
   border-bottom: 3px solid black;
 }
 
-/* Conteúdo das abas */
 .tab-content {
   display: none;
   text-align: center;
@@ -370,7 +322,6 @@ ul, li {
   display: block;
 }
 
-/* Botões dentro das abas */
 .tab-content button {
   padding: 12px 20px;
   margin: 10px;
@@ -386,7 +337,6 @@ ul, li {
   background-color: #005999;
 }
 
-/* Estilo do conteúdo de planejamento financeiro */
 #planejamento-conteudo {
   text-align: left;
   margin-top: 30px;
@@ -405,17 +355,220 @@ ul, li {
   margin-bottom: 16px;
   color: #333;
 }
-/* Estilo do conteúdo de orçamento domestico */
-#orçamento-domestico {
-  text-align: left;
-  margin-top: 30px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+
+.mobile-search-bar {
+  display: none;
+  margin: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#orçamento-domestico h2,
-#orçamento-domestico h3 {
-  color: #003366;
+.mobile-search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 14px;
+  outline: none;
+}
+
+.mobile-search-button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.mobile-search-button:hover {
+  background-color: #003080;
+}
+
+@media (min-width: 768px) {
+  .search-mobile-icon {
+    display: none;
+  }
+
+  #mobileSearchBar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1120px) {
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(to right, #00bcd4, #1976d2);
+    color: white;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .mobile-menu {
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-menu li {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .mobile-menu a {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .submenu {
+    display: none;
+    background: #f9f9f9;
+  }
+
+  .has-submenu > a::after {
+    content: ' ▼';
+    float: right;
+    font-size: 0.9rem;
+  }
+
+  .has-submenu.open > .submenu {
+    display: block;
+  }
+}
+
+@media (min-width: 1121px) {
+  .mobile-header, .mobile-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .search-container {
+    display: none;
+  }
+
+  .search-mobile-icon {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-search-bar {
+    display: none !important;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1120px) and (min-width: 780px) {
+  .header-item .logo {
+    height: 45px;
+  }
+
+  .search-container {
+    width: 70%;
+  }
+
+  .search-bar {
+    padding: 10px 30px;
+    font-size: 16px;
+  }
+
+  .search-icon {
+    right: 15px;
+    bottom: 14px;
+    font-size: 16px;
+  }
+
+  .user-actions {
+    font-size: 26px;
+    margin-left: 10px;
+  }
+
+  #login-nao-logado a {
+    font-size: 13px;
+  }
+
+  .menu-button {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .has-submenu:hover > .submenu {
+    display: block;
+  }
+
+  .submenu {
+    display: none; /* padrão em desktop */
+    position: absolute;
+    left: 100%;
+    top: 0;
+    min-width: 250px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .has-submenu.open > .submenu {
+    display: none; /* garante que só hover funcione em desktop */
+  }
+}
+@media (max-width: 1023px) {
+  .has-submenu > a::after {
+    content: "▼";
+    float: right;
+    margin-left: 10px;
+  }
+
+  .submenu {
+    display: none;
+    position: relative;
+    background-color: white;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+
+  .has-submenu.open > .submenu {
+    display: block;
+  }
 }

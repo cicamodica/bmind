@@ -43,20 +43,26 @@ function atualizarInterfaceUsuario() {
   }
 }
 
-// verifica  se usuario esta logado para apresentar botao de minha area 
+// mobile-search.js
 
-document.addEventListener('DOMContentLoaded', () => {
-  const botaoMinhaArea = document.querySelector(".minha-area-botao");
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
+const mobileSearchIcon = document.querySelector('.search-mobile-icon');
+const mobileSearchBar = document.getElementById('mobileSearchBar');
 
-  if (botaoMinhaArea) {
-    if (usuarioLogado) {
-      botaoMinhaArea.style.display = "inline-block"; 
-    } else {
-      botaoMinhaArea.style.display = "none";
-    }
+if (mobileSearchIcon && mobileSearchBar) {
+  mobileSearchIcon.addEventListener('click', () => {
+    mobileSearchBar.style.display = 
+      mobileSearchBar.style.display === 'block' ? 'none' : 'block';
+  });
+}
+
+function buscarMobile() {
+  const termo = document.getElementById('mobileSearchInput').value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
-});
+}
+
 
 
 // Executa quando a página terminar de carregar
