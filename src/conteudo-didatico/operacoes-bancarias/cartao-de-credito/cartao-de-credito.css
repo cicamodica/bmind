@@ -434,9 +434,7 @@ ul, li {
     width: 12px; ;
     font-size: 20px;
   }
-  #login-nao-logado a {
-    font-size: 10px;
-  }
+ 
   
   .user-actions { /* Estilização do grupo de ações do usuário */
     font-size: 19px;
