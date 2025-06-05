@@ -1,8 +1,8 @@
 /*
-  Importação de Fontes
-  Define as faces de fonte personalizadas para "Poppins" com vários pesos,
-  carregando-as de arquivos locais.
-*/
+ * Importação de Fontes
+ * Define as faces de fonte personalizadas para "Poppins" com vários pesos,
+ * carregando-as de arquivos locais.
+ */
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
@@ -46,10 +46,10 @@
 }
 
 /*
-  Estilos Globais do Corpo
-  Define a fonte padrão, cor de fundo e layout básico para
-  toda a página.
-*/
+ * Estilos Globais do Corpo
+ * Define a fonte padrão, cor de fundo e layout básico para
+ * toda a página.
+ */
 body {
   font-family: "Poppins", sans-serif;
   background-color: #fff;
@@ -59,9 +59,9 @@ body {
 }
 
 /*
-  Estilos do Cabeçalho
-  Define o layout, fundo, posicionamento e dimensionamento do cabeçalho da página.
-*/
+ * Estilos do Cabeçalho
+ * Define o layout, fundo, posicionamento e dimensionamento do cabeçalho da página.
+ */
 header {
   /*Estilização da classe pai .NAV (barra superior)*/
   display: flex;
@@ -76,9 +76,9 @@ header {
 }
 
 /*
-  Estilos de Agrupamento do Cabeçalho
-  Estilos para contêineres flexíveis dentro do cabeçalho para organização do layout.
-*/
+ * Estilos de Agrupamento do Cabeçalho
+ * Estilos para contêineres flexíveis dentro do cabeçalho para organização do layout.
+ */
 .left-group,
 .center-group,
 .right-group {
@@ -87,23 +87,23 @@ header {
 }
 
 /*
-  Espaçamento do Grupo Esquerdo do Cabeçalho
-*/
+ * Espaçamento do Grupo Esquerdo do Cabeçalho
+ */
 .left-group {
   gap: 10px;
 }
 
 /*
-  Layout do Grupo Central do Cabeçalho
-*/
+ * Layout do Grupo Central do Cabeçalho
+ */
 .center-group {
   flex: 1;
   justify-content: center;
 }
 
 /*
-  Estilos dos Ícones de Ações do Usuário
-*/
+ * Estilos dos Ícones de Ações do Usuário
+ */
 /* Ícone de perfil */
 .user-actions {
   display: flex;
@@ -142,9 +142,9 @@ header {
 }
 
 /*
-  Estilos do Contêiner de Busca
-  Posiciona e dimensiona o contêiner da barra de busca.
-*/
+ * Estilos do Contêiner de Busca
+ * Posiciona e dimensiona o contêiner da barra de busca.
+ */
 .search-container {
   /*Estilização da barra de pesquisa*/
   position: relative;
@@ -155,8 +155,8 @@ header {
 }
 
 /*
-  Estilos da Barra de Busca
-*/
+ * Estilos da Barra de Busca
+ */
 .search-bar {
   /*Estilização da barra de pesquisa*/
   font-family: "Poppins";
@@ -170,8 +170,8 @@ header {
 }
 
 /*
-  Posicionamento do Ícone de Busca
-*/
+ * Posicionamento do Ícone de Busca
+ */
 .search-icon {
   /*Estilização do ícone de pesquisa */
   position: absolute;
@@ -181,8 +181,8 @@ header {
 }
 
 /*
-  Estilos do Botão de Menu
-*/
+ * Estilos do Botão de Menu
+ */
 .menu-button {
   font-size: 24px;
   cursor: pointer;
@@ -191,8 +191,8 @@ header {
 }
 
 /*
-  Estilos do Logotipo do Cabeçalho
-*/
+ * Estilos do Logotipo do Cabeçalho
+ */
 .header-item .logo {
   height: 55px;
   margin-right: auto;
@@ -301,15 +301,15 @@ li {
 }
 
 /*
-  Preenchimento do Conteúdo Principal
-*/
+ * Preenchimento do Conteúdo Principal
+ */
 .main-content {
   padding-top: 60px;
 }
 
 /*
-  Estilos de Parágrafo para o título do dashboard
-*/
+ * Estilos de Parágrafo para o título do dashboard
+ */
 #dashboard-titulo {
   font-size: 34px;
   margin-top: 0px;
@@ -321,8 +321,8 @@ li {
 }
 
 /*
-  Estilos Gerais de Botão
-*/
+ * Estilos Gerais de Botão
+ */
 button {
   padding: 10px 20px;
   margin: 10px;
@@ -335,23 +335,35 @@ button {
 }
 
 /*
-  Efeito de Hover do Botão
-*/
+ * Efeito de Hover do Botão
+ */
 button:hover {
   background-color: #c4c4c4;
 }
 
 /*
-  Estilos do Título H2
-*/
-h2 {
-  font-weight: 400;
+ * Estilos do Título H2
+ */
+/* Aplica a todos os h2 dentro de .modal (inclusive o novo h3 no modal-editar) */
+.modal h2,
+.modal h3 {
+  font-weight: 400; /* Mantém o peso da fonte consistente */
+  font-size: 1.5em; /* Ajuste se necessário para o h3, para que seja ligeiramente menor que o h2 */
+  margin-top: 0;
+  margin-bottom: 20px; /* Adiciona um espaço abaixo do título */
+  text-align: center; /* Centraliza o texto */
+  width: 100%; /* Garante que ocupe a largura total para centralização */
+}
+
+/* ADICIONADO PARA DIMINUIR A DISTÂNCIA DO TÍTULO "DETALHES DA TRANSAÇÃO" DO TOPO */
+#modal-editar h3 {
+  margin-top: -30px; /* Ajuste este valor conforme necessário */
 }
 
 /*
-  Estilos do Modal
-  Define a aparência e o posicionamento das janelas modais.
-*/
+ * Estilos do Modal
+ * Define a aparência e o posicionamento das janelas modais.
+ */
 .modal {
   display: none;
   position: fixed;
@@ -365,11 +377,40 @@ h2 {
   align-items: center;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: fixed; /* Fixa o modal na tela */
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta para centralização exata */
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2000;
+  max-width: 500px; /* Limita a largura do modal */
+  width: 90%; /* Ocupa 90% da largura disponível, para responsividade */
+  box-sizing: border-box; /* Inclui padding e border no width/height */
+}
+
+/* Botão de fechar */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #333;
+  text-decoration: none;
 }
 
 /*
-  Estilos dos Campos de Entrada e Seleção dentro dos Modais
-*/
+ * Estilos dos Campos de Entrada e Seleção dentro dos Modais
+ */
 select,
 .data,
 .entrada,
@@ -387,9 +428,31 @@ select,
   border: 1px solid #ccc;
 }
 
+/* ADICIONADO PARA CENTRALIZAR O SELECT DE TIPO DE TRANSAÇÃO NO MODAL DE EDIÇÃO */
+#modal-editar #tipo-edicao {
+  display: block; /* Garante que o select ocupe seu próprio espaço */
+  margin-left: auto; /* Centraliza horizontalmente */
+  margin-right: auto; /* Centraliza horizontalmente */
+  width: 250px; /* Garante que tenha uma largura definida para centralização */
+}
+
+/* MODIFICAÇÃO: Garante que o input de data de encerramento fique abaixo do select de frequência e seja centralizado */
+#entrada-opcoes-recorrentes label[for="entrada-encerramento"],
+#entrada-opcoes-recorrentes #entrada-encerramento,
+#saida-opcoes-recorrentes label[for="saida-encerramento"],
+#saida-opcoes-recorrentes #saida-encerramento,
+#edit-opcoes-recorrentes label[for="edit-encerramento"],
+#edit-opcoes-recorrentes #edit-encerramento {
+  display: block; /* Garante que ocupe toda a largura disponível e quebre a linha */
+  margin-left: auto; /* Centraliza o elemento */
+  margin-right: auto; /* Centraliza o elemento */
+  margin-top: 10px; /* Adiciona espaço acima */
+}
+
+
 /*
-  Estilos da Seção de Atualização ações do dashboard
-*/
+ * Estilos da Seção de Atualização ações do dashboard
+ */
 .atualizar {
   position: static;
   margin-top: 10px;
@@ -406,8 +469,8 @@ select,
 }
 
 /*
-  Estilos do Título da Seção de Atualização
-*/
+ * Estilos do Título da Seção de Atualização
+ */
 .atualizar h3 {
   margin: 0 0 10px 0;
   font-size: 1.5em;
@@ -418,8 +481,8 @@ select,
 }
 
 /*
-  Estilos do Contêiner dos Botões de Ação
-*/
+ * Estilos do Contêiner dos Botões de Ação
+ */
 .botoes-acao {
   display: flex;
   flex-direction: column;
@@ -431,8 +494,8 @@ select,
 }
 
 /*
-  Estilos de Botões de Ação Específicos
-*/
+ * Estilos de Botões de Ação Específicos
+ */
 .Entradas,
 .Saidas,
 .Editar,
@@ -446,8 +509,8 @@ select,
 }
 
 /*
-  Estilos do Botão de Confirmar Entrada
-*/
+ * Estilos do Botão de Confirmar Entrada
+ */
 .input-confirmar {
   position: absolute;
   bottom: 25px;
@@ -465,16 +528,16 @@ select,
 }
 
 /*
-  Efeito de Hover do Botão de Confirmar Entrada
-*/
+ * Efeito de Hover do Botão de Confirmar Entrada
+ */
 .input-confirmar:hover {
   background-color: #024dae;
 }
 
 /*
-  Estilos da Sobreposição
-  Escurece o fundo quando um modal está ativo.
-*/
+ * Estilos da Sobreposição
+ * Escurece o fundo quando um modal está ativo.
+ */
 .overlay {
   display: none;
   position: fixed;
@@ -487,8 +550,8 @@ select,
 }
 
 /*
-  Estilos do Cabeçalho do Dashboard
-*/
+ * Estilos do Cabeçalho do Dashboard
+ */
 .filtros-dashboard {
   position: static;
   display: flex;
@@ -507,8 +570,8 @@ select,
 }
 
 /*
-  Estilos do Seletor de Filtro
-*/
+ * Estilos do Seletor de Filtro
+ */
 .seletor-filtro {
   display: flex;
   gap: 15px;
@@ -516,8 +579,8 @@ select,
 }
 
 /*
-  Estilos do Botão Histórico no Cabeçalho do Dashboard
-*/
+ * Estilos do Botão Histórico no Cabeçalho do Dashboard
+ */
 .filtros-dashboard .Historico {
   position: static;
   margin-left: 15px;
@@ -526,15 +589,15 @@ select,
 }
 
 /*
-  Estilos dos Rótulos do Seletor de Filtro
-*/
+ * Estilos dos Rótulos do Seletor de Filtro
+ */
 .seletor-filtro label {
   font-weight: 500;
 }
 
 /*
-  Estilos do Dropdown do Seletor de Filtro
-*/
+ * Estilos do Dropdown do Seletor de Filtro
+ */
 .seletor-filtro select {
   padding: 8px 10px;
   border-radius: 5px;
@@ -542,8 +605,8 @@ select,
 }
 
 /*
-  Layout da Grade de Gráficos
-*/
+ * Layout da Grade de Gráficos
+ */
 .charts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -555,8 +618,8 @@ select,
 }
 
 /*
-  Estilos do Contêiner do Gráfico
-*/
+ * Estilos do Contêiner do Gráfico
+ */
 .chart-container {
   background-color: #ffffff;
   border-radius: 8px;
@@ -570,8 +633,8 @@ select,
 }
 
 /*
-  Dimensionamento da Tela do Gráfico
-*/
+ * Dimensionamento da Tela do Gráfico
+ */
 .chart-container canvas {
   width: 100% !important;
   height: 100% !important;
@@ -579,8 +642,8 @@ select,
 }
 
 /*
-  Estilos do Título do Contêiner do Gráfico
-*/
+ * Estilos do Título do Contêiner do Gráfico
+ */
 .chart-container h3 {
   margin-top: 10px;
   font-weight: 600;
@@ -592,8 +655,8 @@ select,
 }
 
 /*
-  Estilos do Contêiner da Lista de Histórico
-*/
+ * Estilos do Contêiner da Lista de Histórico
+ */
 .historico-lista {
   max-height: 400px;
   overflow-y: auto;
@@ -605,8 +668,8 @@ select,
 }
 
 /*
-  Layout das Colunas do Histórico
-*/
+ * Layout das Colunas do Histórico
+ */
 .historico-colunas {
   display: flex;
   gap: 15px;
@@ -614,8 +677,8 @@ select,
 }
 
 /*
-  Estilos dos Itens das Colunas do Histórico
-*/
+ * Estilos dos Itens das Colunas do Histórico
+ */
 .historico-colunas > div {
   flex: 1;
   border: 1px solid #ddd;
@@ -624,12 +687,10 @@ select,
   background-color: #f9f9f9;
 }
 
-
-
 /*
-  Estilos do Título das Colunas do Histórico
-*/
-.historico-colunas h3 {
+ * Estilos do Título das Colunas do Histórico
+ */
+.historico-colunash3 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 10px;
@@ -638,8 +699,8 @@ select,
 }
 
 /*
-  Estilos da Lista do Histórico
-*/
+ * Estilos da Lista do Histórico
+ */
 .historico-lista ul {
   list-style: none;
   padding: 0;
@@ -647,8 +708,8 @@ select,
 }
 
 /*
-  Estilos dos Itens Individuais da Lista de Histórico
-*/
+ * Estilos dos Itens Individuais da Lista de Histórico
+ */
 .historico-lista li {
   padding: 8px 0;
   border-bottom: 1px dashed #eee;
@@ -661,23 +722,23 @@ select,
 }
 
 /*
-  Sem Borda para o Último Item da Lista de Histórico
-*/
+ * Sem Borda para o Último Item da Lista de Histórico
+ */
 .historico-lista li:last-child {
   border-bottom: none;
 }
 
 /*
-  Preenchimento do Span do Item da Lista de Histórico
-*/
+ * Preenchimento do Span do Item da Lista de Histórico
+ */
 .historico-lista li span {
   flex-shrink: 0;
   padding: 0 5px;
 }
 
 /*
-  Estilos do Span do Tipo de Transação do Histórico
-*/
+ * Estilos do Span do Tipo de Transação do Histórico
+ */
 .historico-lista li.transaction-type {
   font-weight: 700;
   width: 70px;
@@ -685,16 +746,16 @@ select,
 }
 
 /*
-  Estilos do Span da Data da Transação do Histórico
-*/
+ * Estilos do Span da Data da Transação do Histórico
+ */
 .historico-lista li .transaction-date {
   width: 90px;
   text-align: left;
 }
 
 /*
-  Estilos do Span da Descrição da Transação do Histórico
-*/
+ * Estilos do Span da Descrição da Transação do Histórico
+ */
 .historico-lista li .transaction-description {
   flex-grow: 1;
   text-align: left;
@@ -705,8 +766,8 @@ select,
 }
 
 /*
-  Estilos do Span do Valor da Transação do Histórico
-*/
+ * Estilos do Span do Valor da Transação do Histórico
+ */
 .historico-lista li.transaction-value {
   font-weight: 700;
   width: 120px;
@@ -714,15 +775,15 @@ select,
 }
 
 /*
-  Cor do Tipo de Entrada do Histórico
-*/
+ * Cor do Tipo de Entrada do Histórico
+ */
 .historico-lista li.entrada.transaction-type {
   color: #4caf50;
 }
 
 /*
-  Cor do Tipo de Saída do Histórico
-*/
+ * Cor do Tipo de Saída do Histórico
+ */
 .historico-lista li.saida.transaction-type {
   color: #f44336;
 }
@@ -767,8 +828,8 @@ select,
 }
 
 /*
-  Responsividade - Telas Grandes
-*/
+ * Responsividade - Telas Grandes
+ */
 @media (max-width: 1200px) {
   .search-container {
     width: 600px;
@@ -776,8 +837,8 @@ select,
 }
 
 /*
-  Responsividade - Telas Médias
-*/
+ * Responsividade - Telas Médias
+ */
 @media (max-width: 900px) {
   .search-container {
     width: 400px;
@@ -794,8 +855,8 @@ select,
 }
 
 /*
-  Responsividade - Tablets e Telas Menores
-*/
+ * Responsividade - Tablets e Telas Menores
+ */
 @media (max-width: 768px) {
   header {
     justify-content: space-between;
@@ -902,16 +963,16 @@ select,
     width: 90%;
   }
 
-  #modal-historico .seletor-filtro {
+  #modal-historico.seletor-filtro {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 35px;
+    width: auto; /* Ajustado para ser mais flexível */
+    height: auto; /* Ajustado para ser mais flexível */
   }
-  #modal-historico .seletor-filtro select,
-  #modal-historico .seletor-filtro label {
+  #modal-historico.seletor-filtro select,
+  #modal-historico.seletor-filtro label {
     width: auto;
     margin: 5px;
   }
@@ -926,8 +987,8 @@ select,
 }
 
 /*
-  Responsividade - Telas Mínimas (Mobile)
-*/
+ * Responsividade - Telas Mínimas (Mobile)
+ */
 @media (max-width: 480px) {
   .header {
     height: 45px;
