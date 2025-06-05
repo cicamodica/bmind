@@ -91,7 +91,7 @@ header {
   align-items: center;
   gap: 10px;
   margin-left: 20px;
-  font-size: 29px;
+  font-size: clamp(22px, 3vw, 29px);
   color: white;
 }
 
@@ -162,9 +162,10 @@ header {
   
  }
  .mobile-search-bar { /* Estilização da barra de pesquisa no mobile */
-  background-color: #fff; 
+  background-color: white; 
   border-radius: 0; 
   padding: 20px;
+ 
   
 }
 
@@ -193,6 +194,7 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 8px;
+  
 }
 
 .mobile-search-bar input[type="text"] { /* Estilização do campo de texto da barra de pesquisa no mobile */
@@ -402,7 +404,7 @@ ul, li {
   content: "✓";
   position: absolute;
   color: white;
-  font-size: 14px;
+  font-size: clamp(10px, 1.5vw, 14px);
   top: 60%;
   left: 50%;
   transform: translate(-50%, -55%);
@@ -412,9 +414,15 @@ ul, li {
   display: none;
 }
 
+.texto-conteudo-didatico h2 {
+  
+  font-size: clamp(19px, 3vw, 28px);
+}
 
-
-
+.texto-conteudo-didatico h3 {
+  
+  font-size: clamp(16px, 2.5vw, 22px);
+}
 
 @media(max-width: 480px) {
   header {
@@ -439,10 +447,7 @@ ul, li {
   }
  
   
-  .user-actions { /* Estilização do grupo de ações do usuário */
-    font-size: 19px;
-    gap: 5px;
-  }
+ 
 
   .minha-area-botao { /* Estilização do botão "Minha Área" */
     padding: 6px 10px;
@@ -462,39 +467,11 @@ ul, li {
  .nav {
     width: 100%;
     height: 40px;
-  }
-  
-*/
- /* .introducao,
-  .inicio-artigo,
- .topico-1,
- .topico-2,
- .topico-3,
- .topico-4,
- .topico-5,
- .topico-6,
- .topico-7 {
-  Estilização dos corpos de texto
-  font-size: 12px;
-  margin-bottom: 30px;
-  text-align: justify;
-  }*/
- .lista-topico li {
-  /*Estilização do texto da lista*/
-  margin: 15px;
-  font-size: 12px;
-  display: flex;
-  align-items: flex-start;
- }
+}
 
- .texto-conteudo-didatico h2 {
-  font-size: 16px;;
- }
  
- .texto-conteudo-didatico h3 {
-    font-size: 14px;  
 
-  }
+
 
 
 }
@@ -513,10 +490,7 @@ ul, li {
    margin-right: 75px;  /*Alinha o grupo à direita */
    }
    
-    /*.menu-button {   Estilização do ícone de menu 
-    font-size: 24px;
-   } 
-*/
+   
   .search-container {  /* Estilização da barra de pesquisa */
     display: none;
   }
@@ -527,11 +501,7 @@ ul, li {
     font-size: 24px;
   }
   
-  .user-actions { /* Estilização do grupo de ações do usuário */
-    font-size: 19px;
-    gap: 5px;
-   
-  }
+  
 
   .minha-area-botao { /* Estilização do botão "Minha Área" */
     padding: 6px 10px;
@@ -551,20 +521,10 @@ ul, li {
     width: 100%;
     height: 50px;
   }
-  /*.nav-icon {  Estilização do ícone da nav (seta de voltar) 
-    font-size: 18px;
-  }*/
- 
-  .texto-conteudo-didatico h2 {
-  font-size: 19px;;
- }
- .texto-conteudo-didatico h3 {
-    font-size: 16px;  
 
-  }
  }
 
-@media (min-width: 781px) {
+ @media (min-width: 781px) {
   /* Estilização para telas maiores que 780px */
 
   header {
@@ -592,6 +552,6 @@ ul, li {
   .mobile-search-trigger {
     display: none;
   }
-}
+   }
 
 
