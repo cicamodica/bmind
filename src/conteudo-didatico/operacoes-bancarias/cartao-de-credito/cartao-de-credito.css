@@ -86,7 +86,7 @@ header {
 }
 
 /* Login / Cadastro */
-.user-actions {
+.user-actions { /*Estilização do grupo de ações do usuário (ícone de perfil e links de login/cadastro)*/
   display: flex;
   align-items: center;
   gap: 10px;
@@ -115,13 +115,13 @@ header {
   font-size: 10px;
 }
 
-#login-nao-logado a {
+#login-nao-logado a { /*Estilização do link de login não logado*/
   color: white;
   text-decoration: none;
   margin: 0 5px;
   font-weight: bold; /* Deixa o texto mais forte */
- font-size: 15px; /* Tamanho da fonte */
-
+  /*font-size: 15px;  Tamanho da fonte */
+  font-size: clamp(10px, 2vw, 15px); /* Tamanho da fonte responsivo */
 }
 
 .search-container {
@@ -433,6 +433,9 @@ ul, li {
     margin-left: 6px;/*  Alinha o perfil à direita */
     width: 12px; ;
     font-size: 20px;
+  }
+  #login-nao-logado a {
+    font-size: 10px;
   }
   
   .user-actions { /* Estilização do grupo de ações do usuário */
