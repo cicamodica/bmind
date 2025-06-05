@@ -159,6 +159,7 @@ header {
   border: none;
   color: white;
   padding: 8px;
+  font-size: 30px;
   
  }
  .mobile-search-bar { /* Estilização da barra de pesquisa no mobile */
@@ -449,10 +450,7 @@ ul, li {
   
  
 
-  .minha-area-botao { /* Estilização do botão "Minha Área" */
-    padding: 6px 10px;
-    font-size: 9px;
-  }
+ 
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
     max-width: 100px;
   }
