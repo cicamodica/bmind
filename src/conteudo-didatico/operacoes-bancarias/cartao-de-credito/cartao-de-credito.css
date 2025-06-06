@@ -109,17 +109,16 @@ header {
 }
 
 .minha-area-botao {
-  white-space: nowrap;
-  display: inline-block;           /* Para permitir padding e margin corretamente */
-  margin: 4px;                    /* Espaço externo ao redor do botão */
-  padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px);              /* Espaço interno (em cima/baixo e lados) */
-  background-color: #ffffff22;     /* Cor de fundo (semi-transparente aqui) */
-  color: white;                    /* Cor do texto */
-  border: 1px solid white;        /* Borda branca */
-  border-radius: 6px;             /* Cantos arredondados */
-  text-decoration: none;          /* Tira o sublinhado */
-  font-weight: bold;              /* Deixa o texto mais forte */
-  font-size: clamp(10px, 1.8vw, 12px);
+  display: inline-block; /* Para permitir padding e margin corretamente */
+  margin: 4px; /* Espaço externo ao redor do botão */
+  padding: 6px 12px; /* Espaço interno (em cima/baixo e lados) */
+  background-color: #ffffff22; /* Cor de fundo (semi-transparente aqui) */
+  color: white; /* Cor do texto */
+  border: 1px solid white; /* Borda branca */
+  border-radius: 6px; /* Cantos arredondados */
+  text-decoration: none; /* Tira o sublinhado */
+  font-weight: bold; /* Deixa o texto mais forte */
+  font-size: 10px;
 }
 
 #login-nao-logado a { /*Estilização do link de login não logado*/
@@ -127,8 +126,7 @@ header {
   text-decoration: none;
   margin: 0 5px;
   font-weight: bold; /* Deixa o texto mais forte */
-  /*font-size: 15px;  Tamanho da fonte */
-  font-size: clamp(10px, 2vw, 15px); /* Tamanho da fonte responsivo */
+  font-size: 15px; /* Tamanho da fonte */
 }
 
 .search-container {
@@ -160,60 +158,62 @@ header {
   color: black;
   bottom: 16px;
 }
- .mobile-search-trigger { /* Estilização do ícone de pesquisa no mobile */
-  display: none; 
+.mobile-search-trigger {
+  /* Estilização do ícone de pesquisa no mobile */
+  display: none;
   background: none;
   border: none;
   color: white;
   padding: 8px;
-  font-size: 30px;
-  
- }
- .mobile-search-bar { /* Estilização da barra de pesquisa no mobile */
-  background-color: white; 
-  border-radius: 0; 
-  padding: 15px;
+}
+.mobile-search-bar {
+  /* Estilização da barra de pesquisa no mobile */
   display: flex;
-  
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
 }
 
- .mobile-buscar-btn-estilizado { /* Estilização do botão de busca no mobile */
-  background-color: #024dae; 
+.mobile-buscar-btn-estilizado {
+  /* Estilização do botão de busca no mobile */
+  background-color: #024dae;
   color: white;
   border: none;
-  padding: 10px 15px; 
-  border-radius: 25px; 
+  padding: 10px 15px;
+  border-radius: 25px;
   font-size: 14px;
-  font-family: "Poppins", sans-serif; 
-  font-weight: 400; 
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
   cursor: pointer;
   text-align: center;
-  display: inline-block; 
-  margin-left: 10px; 
+  display: inline-block;
+  margin-left: 10px;
   margin-bottom: 0%; /* Para evitar espaçamento extra abaixo do botão */
 }
- 
-.mobile-buscar-btn-estilizado:hover { /* Efeito hover para o botão */
-  background-color: #02327e; 
+
+.mobile-buscar-btn-estilizado:hover {
+  /* Efeito hover para o botão */
+  background-color: #02327e;
 }
 
-.mobile-search-bar.active { /* Exibe a barra de pesquisa no mobile quando ativa */
-    display: flex;;
-    background-color: white;
-    text-align: center;
-    width: 100%;
-  
+.mobile-search-bar.active {
+  /* Exibe a barra de pesquisa no mobile quando ativa */
+  display: flex;
+  width: 100%;
+  background-color: #ffffff;
+  text-align: center;
 }
 
-.mobile-search-bar input[type="text"] { /* Estilização do campo de texto da barra de pesquisa no mobile */
+.mobile-search-bar input[type="text"] {
+  /* Estilização do campo de texto da barra de pesquisa no mobile */
   width: 80%;
-  max-width: 400px; 
-  border: 1px solid #ccc; 
-  border-radius: 25px; 
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
- 
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
 }
+
 .menu-button {
   /*Estilização do ícone de menu ☰*/
   font-size: clamp(22px, 4vw, 28px);
@@ -229,7 +229,8 @@ header {
 }
 
 /* Reset */
-ul, li { 
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -252,7 +253,7 @@ ul, li {
 }
 
 .dropdown-menu a {
-  display: flex; 
+  display: flex;
   justify-content: space-between; /* espaço entre texto e seta */
   align-items: center; /* centraliza verticalmente */
   padding: 10px 20px; /* MAIS espaço */
@@ -424,43 +425,47 @@ ul, li {
   display: none;
 }
 
-.texto-conteudo-didatico h2 {
-  
-  font-size: clamp(19px, 3vw, 28px);
-}
-
-.texto-conteudo-didatico h3 {
-  
-  font-size: clamp(16px, 2.5vw, 22px);
-}
-
-@media(max-width: 480px) {
+@media (max-width: 480px) {
   header {
     width: 100%;
     justify-content: flex-start;
     gap: 8px;
   }
-   /* .right-group{  Estilização do grupo de itens que fica à direita do header 
-    
-   }
-   
-   */
+  .right-group {
+    /* Estilização do grupo de itens que fica à direita do header */
+    margin-left: 25px; /* Alinha o grupo à direita */
+  }
 
-  .search-container {  /* Estilização da barra de pesquisa */
+  .menu-button {
+    /* Estilização do ícone de menu */
+    font-size: 20px;
+  }
+
+  .search-container {
+    /* Estilização da barra de pesquisa */
     display: none;
   }
-  
-   #perfil-logado {  /* Estilização do ícone de perfil */
-    margin-left: 6px;/*  Alinha o perfil à direita */
-    width: 12px; ;
-    font-size: 24px;
-  }
- 
-  
- 
 
- 
-  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
+  #perfil-logado {
+    /* Estilização do ícone de perfil */
+    margin-left: 6px; /*  Alinha o perfil à direita */
+    width: 12px;
+    font-size: 20px;
+  }
+
+  .user-actions {
+    /* Estilização do grupo de ações do usuário */
+    font-size: 19px;
+    gap: 5px;
+  }
+
+  .minha-area-botao {
+    /* Estilização do botão "Minha Área" */
+    padding: 6px 10px;
+    font-size: 9px;
+  }
+  .center-group {
+    /* Estilização do grupo de itens que fica no centro do header */
     max-width: 100px;
   }
   .search-icon {
@@ -471,21 +476,69 @@ ul, li {
   .mobile-search-trigger {
     display: block;
   }
- .nav {
+  .nav {
     width: 100%;
     height: 40px;
+  }
+  .nav-icon {
+    /* Estilização do ícone da nav (seta de voltar) */
+    font-size: 18px;
+  }
+
+  .dropdown-menu {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dropdownMenu ul {
+    font-size: 12px;
+  }
+
+  .titulo-nav h1 {
+    font-size: 15px;
+    height: 20px;
+  }
+  img {
+    max-width: 100%;
+    max-height: 200px;
+    display: inline-block;
+  }
+
+  .conteudo-didatico {
+    font-size: clamp (1em, 1em + 1vw, 1.25em);
+  }
+  .introducao,
+  .inicio-artigo,
+  .topico-1,
+  .topico-2,
+  .topico-3,
+  .topico-4,
+  .topico-5,
+  .topico-6,
+  .topico-7 {
+    /*Estilização dos corpos de texto*/
+    font-size: 12px;
+    margin-bottom: 30px;
+    text-align: justify;
+  }
+  .lista-topico li {
+    /*Estilização do texto da lista*/
+    margin: 15px;
+    font-size: 12px;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .texto-conteudo-didatico h2 {
+    font-size: 16px;
+  }
+
+  .texto-conteudo-didatico h3 {
+    font-size: 14px;
+  }
 }
 
- 
-
-
-
-
-}
-   @media ( min-width: 481px) and (max-width: 780px)  
- 
- {
-    
+@media (min-width: 481px) and (max-width: 780px) {
   header {
     width: 100%;
     justify-content: space-between;
@@ -493,28 +546,41 @@ ul, li {
     display: flex;
     align-items: center;
   }
-   .right-group{  /* Estilização do grupo de itens que fica à direita do header */
-   margin-right: 75px;  /*Alinha o grupo à direita */
-   }
-   
-   
-  .search-container {  /* Estilização da barra de pesquisa */
-    display: none;
+  .right-group {
+    /* Estilização do grupo de itens que fica à direita do header */
+    margin-right: 75px; /*Alinha o grupo à direita */
   }
-  
-   #perfil-logado {  /* Estilização do ícone de perfil */
-    margin-left: 10px;/*  Alinha o perfil à direita */
-    width: 12px; ;
+
+  .menu-button {
+    /* Estilização do ícone de menu */
     font-size: 24px;
   }
-  
-  
 
-  .minha-area-botao { /* Estilização do botão "Minha Área" */
+  .search-container {
+    /* Estilização da barra de pesquisa */
+    display: none;
+  }
+
+  #perfil-logado {
+    /* Estilização do ícone de perfil */
+    margin-left: 10px; /*  Alinha o perfil à direita */
+    width: 12px;
+    font-size: 24px;
+  }
+
+  .user-actions {
+    /* Estilização do grupo de ações do usuário */
+    font-size: 19px;
+    gap: 5px;
+  }
+
+  .minha-area-botao {
+    /* Estilização do botão "Minha Área" */
     padding: 6px 10px;
     font-size: 10px;
   }
-  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
+  .center-group {
+    /* Estilização do grupo de itens que fica no centro do header */
     max-width: 100px;
   }
   .search-icon {
@@ -524,18 +590,43 @@ ul, li {
   .mobile-search-trigger {
     display: block;
   }
-  .mobile-search-bar {
-    display: block;
-  }
-
- .nav {
+  .nav {
     width: 100%;
     height: 50px;
   }
+  .nav-icon {
+    /* Estilização do ícone da nav (seta de voltar) */
+    font-size: 18px;
+  }
 
- }
+  .titulo-nav h1 {
+    font-size: 20px;
+    height: 20px;
+  }
+  img {
+    max-width: 150%;
+    max-height: 300px;
+    display: inline-block;
+  }
 
- @media (min-width: 781px) {
+  .conteudo-didatico {
+    font-size: clamp (1em, 1em + 1vw, 1.25em);
+  }
+  .texto-conteudo-didatico h2 {
+    font-size: 19px;
+  }
+  .texto-conteudo-didatico h3 {
+    font-size: 16px;
+  }
+
+  /* Mostrar a barra mobile SOMENTE abaixo de 861px */
+  #mobileSearchBar {
+    display: block;
+  }
+}
+
+
+@media (min-width: 781px) {
   /* Estilização para telas maiores que 780px */
 
   header {
@@ -544,44 +635,48 @@ ul, li {
     gap: 8px;
     display: flex;
     align-items: center;
-
   }
   .nav {
     width: 100%;
   }
 
-   .right-group{  /* Estilização do grupo de itens que fica à direita do header */
-   margin-right: 49px;  /*Alinha o grupo à direita */
-   }
-   
-  .mobile-search-bar {
-    display: none !important ;  /* Oculta a barra de pesquisa no desktop */
-  }
-  
-   #perfil-logado {  /* Estilização do ícone de perfil */
-    margin-left: 10px;/*  Alinha o perfil à direita */
-    width: 12px; ;
-    font-size: 24px;
+  .right-group {
+    /* Estilização do grupo de itens que fica à direita do header */
+    margin-right: 49px; /*Alinha o grupo à direita */
   }
 
-  .search-container {  /* Estilização da barra de pesquisa */
+  .menu-button {
+    /* Estilização do ícone de menu */
+    font-size: 20px;
+  }
+
+  .search-container {
+    /* Estilização da barra de pesquisa */
     display: flex;
     justify-content: center;
   }
   .mobile-search-trigger {
     display: none;
   }
-   }
 
-@media (min-375px) and (max-width: 600px) {
-
-  .mobile-search-bar {
-  
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-
-
+/* Ocultar a barra em telas maiores que 861px */
+  #mobileSearchBar {
+    display: none !important; /* força a ocultação mesmo se o JS ativar */
   }
-
 }
+
+@media (min-width: 375px) and (max-width: 780px) {
+.mobile-search-bar {
+  /* Estilização da barra de pesquisa no mobile */
+  flex-direction: column; /* <-- isso empilha os elementos */
+  align-items: center;     /* opcional: centraliza os filhos */
+  gap: 10px;               /* espaço entre input e botão */
+}
+}
+
+@media (min-width: 479px) and (max-width: 571px) {
+.mobile-buscar-btn-estilizado {
+margin-top: 10px;
+}
+}
+
