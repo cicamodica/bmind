@@ -60,8 +60,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
-  height: 50px;
+  padding: 10px clamp(10px, 4vw, 25px);
+  min-height: 50px;
+  gap: clamp(10px, 2vw, 20px);
+  /*box-sizing: border-box;*/
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
 }
 
@@ -72,11 +74,16 @@ header {
   gap: 10px;
 }
 
+.left-group, .right-group {
+ gap: clamp(8px, 1.5vw, 15px);
+}
+
 .center-group {
   /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
   flex: 1;
   display: flex;
   justify-content: center;
+  min-width: 150px;
 }
 
 .right-group {
@@ -86,14 +93,13 @@ header {
 }
 
 /* Login / Cadastro */
-.user-actions {
+.user-actions { /*Estilização do grupo de ações do usuário (ícone de perfil e links de login/cadastro)*/
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-left: 20px;
+  /*margin-left: 20px;*/
   font-size: 29px;
   color: white;
- 
+  gap: clamp(8px, 1.5vw, 15px);
 }
 
 .user-actions a {
@@ -101,33 +107,36 @@ header {
   margin: 0 5px;
   text-decoration: none;
 }
+
 .minha-area-botao {
-  
- display: inline-block;           /* Para permitir padding e margin corretamente */
+  white-space: nowrap;
+  display: inline-block;           /* Para permitir padding e margin corretamente */
   margin: 4px;                    /* Espaço externo ao redor do botão */
-  padding: 6px 12px;               /* Espaço interno (em cima/baixo e lados) */
+  padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px);              /* Espaço interno (em cima/baixo e lados) */
   background-color: #ffffff22;     /* Cor de fundo (semi-transparente aqui) */
   color: white;                    /* Cor do texto */
   border: 1px solid white;        /* Borda branca */
   border-radius: 6px;             /* Cantos arredondados */
   text-decoration: none;          /* Tira o sublinhado */
   font-weight: bold;              /* Deixa o texto mais forte */
-  font-size: 10px;
+  font-size: clamp(10px, 1.8vw, 12px);
 }
-#login-nao-logado a {
+
+#login-nao-logado a { /*Estilização do link de login não logado*/
   color: white;
   text-decoration: none;
   margin: 0 5px;
   font-weight: bold; /* Deixa o texto mais forte */
- font-size: 15px; /* Tamanho da fonte */
-
+  /*font-size: 15px;  Tamanho da fonte */
+  font-size: clamp(10px, 2vw, 15px); /* Tamanho da fonte responsivo */
 }
 
 .search-container {
   /*Estilização da barra de pesquisa*/
   position: relative;
   display: flex;
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   align-items: center;
   z-index: 1;
 }
@@ -151,10 +160,63 @@ header {
   color: black;
   bottom: 16px;
 }
+ .mobile-search-trigger { /* Estilização do ícone de pesquisa no mobile */
+  display: none; 
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px;
+  font-size: 30px;
+  
+ }
+ .mobile-search-bar { /* Estilização da barra de pesquisa no mobile */
+  background-color: white; 
+  border-radius: 0; 
+  padding: 15px;
+  display: flex;
+  
+}
 
+ .mobile-buscar-btn-estilizado { /* Estilização do botão de busca no mobile */
+  background-color: #024dae; 
+  color: white;
+  border: none;
+  padding: 10px 15px; 
+  border-radius: 25px; 
+  font-size: 14px;
+  font-family: "Poppins", sans-serif; 
+  font-weight: 400; 
+  cursor: pointer;
+  text-align: center;
+  display: inline-block; 
+  margin-left: 10px; 
+  margin-bottom: 0%; /* Para evitar espaçamento extra abaixo do botão */
+}
+ 
+.mobile-buscar-btn-estilizado:hover { /* Efeito hover para o botão */
+  background-color: #02327e; 
+}
+
+.mobile-search-bar.active { /* Exibe a barra de pesquisa no mobile quando ativa */
+    display: flex;;
+    background-color: white;
+    text-align: center;
+    width: 100%;
+  
+}
+
+.mobile-search-bar input[type="text"] { /* Estilização do campo de texto da barra de pesquisa no mobile */
+  width: 80%;
+  max-width: 400px; 
+  border: 1px solid #ccc; 
+  border-radius: 25px; 
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+ 
+}
 .menu-button {
   /*Estilização do ícone de menu ☰*/
-  font-size: 24px;
+  font-size: clamp(22px, 4vw, 28px);
   cursor: pointer;
   margin-right: 15px;
   color: white;
@@ -162,12 +224,12 @@ header {
 
 .header-item .logo {
   /*Estilização do logo*/
-  height: 55px;
+  height: clamp(40px, 8vw, 55px);
   margin-right: auto;
 }
 
 /* Reset */
-ul, li {
+ul, li { 
   list-style: none;
   margin: 0;
   padding: 0;
@@ -190,10 +252,9 @@ ul, li {
 }
 
 .dropdown-menu a {
-  display: flex; /* FLEX para alinhar texto e seta */
+  display: flex; 
   justify-content: space-between; /* espaço entre texto e seta */
   align-items: center; /* centraliza verticalmente */
-  
   padding: 10px 20px; /* MAIS espaço */
   color: #333;
   text-decoration: none;
@@ -258,11 +319,13 @@ ul, li {
 .nav-icon {
   /*Estilização do ícone da nav (seta de voltar)*/
   margin: 20px 0;
-  font-size: 35px;
+  font-size: clamp(18px, 4vw, 35px);
   cursor: pointer;
   color: white;
 }
-
+.lista-topico li strong {
+  white-space: nowrap; /* Impede que o texto dentro do <strong> quebre linha */
+}
 .titulo-nav {
   /*Estilização do título da página*/
   display: flex;
@@ -274,13 +337,15 @@ ul, li {
   /*Estilização do título da página*/
   display: flex;
   align-items: center;
-  font-size: 35px;
+  font-size: clamp(15px, 4vw, 35px);
   color: white;
   font-weight: 500;
+
 }
 
 .imagem-controle {
   /*Estilização da imagem no posicionamento na página*/
+  display: flex;
   float: center;
   margin-top: -30px;
   margin-right: 60px;
@@ -289,7 +354,11 @@ ul, li {
 .imagem-controle img {
   /*Estilização da imagem*/
   position: relative;
-  height: 455px;
+  width: clamp(300px, 100%, 900px); /* Tamanho responsivo da imagem */
+  aspect-ratio: 2 / 1; /* Mantém a proporção da imagem */
+  height: auto;    /* Altura automática para manter a proporção */
+  display: block; /* Exibe a imagem como um bloco */
+  object-fit: cover; /* Cobre o espaço disponível mantendo a proporção */
 }
 
 .conteudo-didatico {
@@ -297,6 +366,7 @@ ul, li {
   max-width: 1000px;
   margin: 40px auto;
   padding: 0 20px;
+  font-size: clamp(1em, 1em + 1vw, 1.25em); /* Tamanho responsivo do texto */
 }
 
 .introducao,
@@ -309,7 +379,7 @@ ul, li {
 .topico-6,
 .topico-7 {
   /*Estilização dos corpos de texto*/
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 16px);
   margin-bottom: 30px;
   text-align: justify;
 }
@@ -325,6 +395,7 @@ ul, li {
   margin: 15px;
   display: flex;
   align-items: flex-start;
+   font-size: clamp(12px, 1.5vw, 16px);
 }
 
 .list-icon {
@@ -343,8 +414,174 @@ ul, li {
   content: "✓";
   position: absolute;
   color: white;
-  font-size: 14px;
+  font-size: clamp(8px, 2.5vw, 14px);
   top: 60%;
   left: 50%;
   transform: translate(-50%, -55%);
+}
+/* Oculta o ícone do mobile por padrão */
+.mobile-search-bar {
+  display: none;
+}
+
+.texto-conteudo-didatico h2 {
+  
+  font-size: clamp(19px, 3vw, 28px);
+}
+
+.texto-conteudo-didatico h3 {
+  
+  font-size: clamp(16px, 2.5vw, 22px);
+}
+
+@media(max-width: 480px) {
+  header {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+   /* .right-group{  Estilização do grupo de itens que fica à direita do header 
+    
+   }
+   
+   */
+
+  .search-container {  /* Estilização da barra de pesquisa */
+    display: none;
+  }
+  
+   #perfil-logado {  /* Estilização do ícone de perfil */
+    margin-left: 6px;/*  Alinha o perfil à direita */
+    width: 12px; ;
+    font-size: 24px;
+  }
+ 
+  
+ 
+
+ 
+  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
+    max-width: 100px;
+  }
+  .search-icon {
+    display: flex;
+  }
+
+  
+  .mobile-search-trigger {
+    display: block;
+  }
+ .nav {
+    width: 100%;
+    height: 40px;
+}
+
+ 
+
+
+
+
+}
+   @media ( min-width: 481px) and (max-width: 780px)  
+ 
+ {
+    
+  header {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+  }
+   .right-group{  /* Estilização do grupo de itens que fica à direita do header */
+   margin-right: 75px;  /*Alinha o grupo à direita */
+   }
+   
+   
+  .search-container {  /* Estilização da barra de pesquisa */
+    display: none;
+  }
+  
+   #perfil-logado {  /* Estilização do ícone de perfil */
+    margin-left: 10px;/*  Alinha o perfil à direita */
+    width: 12px; ;
+    font-size: 24px;
+  }
+  
+  
+
+  .minha-area-botao { /* Estilização do botão "Minha Área" */
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
+    max-width: 100px;
+  }
+  .search-icon {
+    display: flex;
+    font-size: 20px;
+  }
+  .mobile-search-trigger {
+    display: block;
+  }
+  .mobile-search-bar {
+    display: block;
+  }
+
+ .nav {
+    width: 100%;
+    height: 50px;
+  }
+
+ }
+
+ @media (min-width: 781px) {
+  /* Estilização para telas maiores que 780px */
+
+  header {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+
+  }
+  .nav {
+    width: 100%;
+  }
+
+   .right-group{  /* Estilização do grupo de itens que fica à direita do header */
+   margin-right: 49px;  /*Alinha o grupo à direita */
+   }
+   
+  .mobile-search-bar {
+    display: none !important ;  /* Oculta a barra de pesquisa no desktop */
+  }
+  
+   #perfil-logado {  /* Estilização do ícone de perfil */
+    margin-left: 10px;/*  Alinha o perfil à direita */
+    width: 12px; ;
+    font-size: 24px;
+  }
+
+  .search-container {  /* Estilização da barra de pesquisa */
+    display: flex;
+    justify-content: center;
+  }
+  .mobile-search-trigger {
+    display: none;
+  }
+   }
+
+@media (min-375px) and (max-width: 600px) {
+
+  .mobile-search-bar {
+  
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+
+  }
+
 }
