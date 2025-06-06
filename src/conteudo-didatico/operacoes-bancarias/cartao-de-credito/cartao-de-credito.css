@@ -60,8 +60,10 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 20px;
-  height: 50px;
+  padding: 10px clamp(10px, 4vw, 25px);
+  min-height: 50px;
+  gap: clamp(10px, 2vw, 20px);
+  /*box-sizing: border-box;*/
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
 }
 
@@ -72,11 +74,16 @@ header {
   gap: 10px;
 }
 
+.left-group, .right-group {
+ gap: clamp(8px, 1.5vw, 15px);
+}
+
 .center-group {
   /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
   flex: 1;
   display: flex;
   justify-content: center;
+  min-width: 150px;
 }
 
 .right-group {
@@ -86,13 +93,13 @@ header {
 }
 
 /* Login / Cadastro */
-.user-actions {
+.user-actions { /*Estilização do grupo de ações do usuário (ícone de perfil e links de login/cadastro)*/
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-left: 20px;
+  /*margin-left: 20px;*/
   font-size: 29px;
   color: white;
+  gap: clamp(8px, 1.5vw, 15px);
 }
 
 .user-actions a {
@@ -114,7 +121,7 @@ header {
   font-size: 10px;
 }
 
-#login-nao-logado a {
+#login-nao-logado a { /*Estilização do link de login não logado*/
   color: white;
   text-decoration: none;
   margin: 0 5px;
@@ -209,7 +216,7 @@ header {
 
 .menu-button {
   /*Estilização do ícone de menu ☰*/
-  font-size: 24px;
+  font-size: clamp(22px, 4vw, 28px);
   cursor: pointer;
   margin-right: 15px;
   color: white;
@@ -217,7 +224,7 @@ header {
 
 .header-item .logo {
   /*Estilização do logo*/
-  height: 55px;
+  height: clamp(40px, 8vw, 55px);
   margin-right: auto;
 }
 
@@ -313,11 +320,13 @@ li {
 .nav-icon {
   /*Estilização do ícone da nav (seta de voltar)*/
   margin: 20px 0;
-  font-size: 35px;
+  font-size: clamp(18px, 4vw, 35px);
   cursor: pointer;
   color: white;
 }
-
+.lista-topico li strong {
+  white-space: nowrap; /* Impede que o texto dentro do <strong> quebre linha */
+}
 .titulo-nav {
   /*Estilização do título da página*/
   display: flex;
@@ -329,9 +338,10 @@ li {
   /*Estilização do título da página*/
   display: flex;
   align-items: center;
-  font-size: 35px;
+  font-size: clamp(15px, 4vw, 35px);
   color: white;
   font-weight: 500;
+
 }
 
 .imagem-controle {
@@ -345,9 +355,11 @@ li {
 .imagem-controle img {
   /*Estilização da imagem*/
   position: relative;
-  height: 450px;
-  max-width: 900px;
-  width: 100%;
+  width: clamp(300px, 100%, 900px); /* Tamanho responsivo da imagem */
+  aspect-ratio: 2 / 1; /* Mantém a proporção da imagem */
+  height: auto;    /* Altura automática para manter a proporção */
+  display: block; /* Exibe a imagem como um bloco */
+  object-fit: cover; /* Cobre o espaço disponível mantendo a proporção */
 }
 
 .conteudo-didatico {
@@ -355,6 +367,7 @@ li {
   max-width: 1000px;
   margin: 40px auto;
   padding: 0 20px;
+  font-size: clamp(1em, 1em + 1vw, 1.25em); /* Tamanho responsivo do texto */
 }
 
 .introducao,
@@ -367,7 +380,7 @@ li {
 .topico-6,
 .topico-7 {
   /*Estilização dos corpos de texto*/
-  font-size: 16px;
+  font-size: clamp(12px, 1.5vw, 16px);
   margin-bottom: 30px;
   text-align: justify;
 }
@@ -383,6 +396,7 @@ li {
   margin: 15px;
   display: flex;
   align-items: flex-start;
+   font-size: clamp(12px, 1.5vw, 16px);
 }
 
 .list-icon {
@@ -401,7 +415,7 @@ li {
   content: "✓";
   position: absolute;
   color: white;
-  font-size: 14px;
+  font-size: clamp(8px, 2.5vw, 14px);
   top: 60%;
   left: 50%;
   transform: translate(-50%, -55%);
@@ -457,6 +471,8 @@ li {
   .search-icon {
     display: flex;
   }
+
+  
   .mobile-search-trigger {
     display: block;
   }
