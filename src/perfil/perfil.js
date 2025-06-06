@@ -46,6 +46,7 @@ document.querySelector(".menu-icon").addEventListener("click", function () {
     }
   }
 });
+
 function toggleMenu() {
   // Função para alternar o menu dropdown
   const menu = document.getElementById("dropdownMenu");
