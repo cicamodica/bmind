@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Funcionalidade da pesquisa (barra de pesquisa desktop) > lê na URL o que foi pesquisado e procura nos conteúdos
+  // Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
   document
     .getElementById("search-button")
     .addEventListener("click", function (event) {
@@ -1077,7 +1077,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.onclick = function (event) {
     const dropdownMenu = document.getElementById("dropdownMenu");
     const menuIcon = document.querySelector(".menu-icon");
-    const mobileSearchBar = document.getElementById('mobileSearchBar'); // Get mobile search bar
 
     if (
       dropdownMenu &&
@@ -1089,7 +1088,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Close modal if click outside modal and not on a button that opens a modal
-    // Also, close mobile search bar if click outside
     if (
       !event.target.closest(".modal") &&
       !event.target.matches(".Historico") &&
@@ -1097,9 +1095,8 @@ document.addEventListener("DOMContentLoaded", function () {
       !event.target.matches(".Saidas") &&
       !event.target.matches(".Editar") &&
       !event.target.matches(".Remover") &&
-      !event.target.matches(".close-button") &&
-      !event.target.closest('.search-mobile-icon') && // Exclude clicking the search icon
-      !event.target.closest('#mobileSearchBar') // Exclude clicking inside the mobile search bar
+      // Add a specific check for the close button within the modal
+      !event.target.matches(".close-button")
     ) {
       const modals = document.querySelectorAll(".modal");
       modals.forEach((modal) => {
@@ -1107,10 +1104,6 @@ document.addEventListener("DOMContentLoaded", function () {
           closeModal();
         }
       });
-      // Close mobile search bar if it's open and click is outside
-      if (mobileSearchBar && mobileSearchBar.style.display === 'block') {
-          mobileSearchBar.style.display = 'none';
-      }
     }
   };
 
@@ -1129,34 +1122,4 @@ document.addEventListener("DOMContentLoaded", function () {
       sair();
     });
   }
-
-  // New: Mobile search bar functionality
-  const mobileSearchIcon = document.querySelector('.search-mobile-icon');
-  const mobileSearchBar = document.getElementById('mobileSearchBar');
-
-  if (mobileSearchIcon && mobileSearchBar) { // Ensure elements exist before adding listeners
-    mobileSearchIcon.addEventListener('click', (event) => {
-      event.preventDefault(); // Prevent default link behavior
-      event.stopPropagation(); // Stop propagation to prevent document click from immediately closing it
-      // Toggle visibility
-      mobileSearchBar.style.display =
-        mobileSearchBar.style.display === 'block' ? 'none' : 'block';
-    });
-
-    // New: Hide mobile search bar on window resize to larger screens
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 861 && mobileSearchBar.style.display === 'block') {
-        mobileSearchBar.style.display = 'none';
-      }
-    });
-  }
 });
-
-// New: Global function for mobile search button (called from HTML onclick)
-function buscarMobile() {
-    const termo = document.getElementById('mobileSearchInput').value.trim();
-    if (termo !== "") {
-        const encodedTermo = encodeURIComponent(termo);
-        window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
-    }
-}
