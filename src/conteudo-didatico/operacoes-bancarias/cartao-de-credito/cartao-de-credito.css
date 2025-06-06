@@ -619,10 +619,10 @@ li {
     font-size: 16px;
   }
 
-  /* Mostrar a barra mobile SOMENTE abaixo de 861px */
+  /* Mostrar a barra mobile SOMENTE abaixo de 861px 
   #mobileSearchBar {
     display: block;
-  }
+  }*/
 }
 
 

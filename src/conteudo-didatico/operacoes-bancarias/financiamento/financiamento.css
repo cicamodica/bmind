@@ -423,6 +423,9 @@ ul, li {
 .mobile-search-bar {
   display: none;
 }
+.texto-conteudo-didatico h1{
+  font-size: clamp(20px, 4vw, 29px);
+}
 
 .texto-conteudo-didatico h2 {
   
