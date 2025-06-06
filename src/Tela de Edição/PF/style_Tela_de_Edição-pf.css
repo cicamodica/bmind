@@ -68,10 +68,9 @@ header {
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
-  height: 50px;
+  height: 50px; /* Mantido em 50px, ajuste conforme necessidade */
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
-  margin-bottom: -50px;
-  /* ADICIONE ISSO para que os elementos absolutos dentro do header se posicionem em relação a ele */
+  /* REMOVIDO: margin-bottom:-50px; Isso causava o problema de posicionamento */
   position: relative; /* FUNDAMENTAL para o posicionamento do dropdown */
 }
 
@@ -170,14 +169,61 @@ header {
 }
 
 /*
- * Posicionamento do Ícone de Busca
+ * Posicionamento do Ícone de Busca - ATUALIZADO para centralização vertical
  */
 .search-icon {
   /*Estilização do ícone de pesquisa */
   position: absolute;
-  right: 20px;
+  top: 50%; /* Centraliza verticalmente em relação ao elemento pai */
+  transform: translateY(-50%); /* Ajusta para a altura do próprio ícone */
+  right: 20px; /* Mantém o espaçamento à direita */
   color: black;
-  bottom: 16px;
+}
+
+/* New: Mobile search icon */
+.search-mobile-icon {
+  display: none; /* Hidden by default */
+  font-size: 22px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.search-mobile-icon i {
+  color: white;
+}
+
+/* New: Mobile search bar */
+#mobileSearchBar {
+  display: none; /* Hidden by default */
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
+  /* Não precisa de position absolute ou fixed se for para ficar no fluxo normal */
+}
+
+#mobileSearchBar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+#mobileSearchBar button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#mobileSearchBar button:hover {
+  background-color: #02327e;
 }
 
 /*
@@ -229,7 +275,6 @@ li {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: absolute;
-  /* ADICIONE OU MODIFIQUE ISSO */
   top: 100%; /* Começa na parte inferior do header */
   left: 0; /* Alinha à esquerda do header */
   display: none;
@@ -301,10 +346,10 @@ li {
 }
 
 /*
- * Preenchimento do Conteúdo Principal
+ * Preenchimento do Conteúdo Principal - AJUSTADO para compensar altura do header
  */
 .main-content {
-  padding-top: 60px;
+  padding-top: 50px; /* O padding deve ser igual à altura do header */
 }
 
 /*
@@ -448,7 +493,6 @@ select,
   margin-right: auto; /* Centraliza o elemento */
   margin-top: 10px; /* Adiciona espaço acima */
 }
-
 
 /*
  * Estilos da Seção de Atualização ações do dashboard
@@ -731,7 +775,7 @@ select,
 /*
  * Preenchimento do Span do Item da Lista de Histórico
  */
-.historico-lista li span {
+.historico-lista lispan {
   flex-shrink: 0;
   padding: 0 5px;
 }
@@ -748,7 +792,7 @@ select,
 /*
  * Estilos do Span da Data da Transação do Histórico
  */
-.historico-lista li .transaction-date {
+.historico-lista li.transaction-date {
   width: 90px;
   text-align: left;
 }
@@ -756,7 +800,7 @@ select,
 /*
  * Estilos do Span da Descrição da Transação do Histórico
  */
-.historico-lista li .transaction-description {
+.historico-lista li.transaction-description {
   flex-grow: 1;
   text-align: left;
   white-space: nowrap;
@@ -820,7 +864,7 @@ select,
   cursor: pointer;
 }
 
-.lista-transacoes-remocao label {
+.lista-transacoes-remocaolabel {
   flex-grow: 1;
   font-size: 0.95em;
   color: #333;
@@ -828,16 +872,63 @@ select,
 }
 
 /*
- * Responsividade - Telas Grandes
+ * Responsividade - Telas Grandes (max-width: 1200px and 1024px combined)
  */
 @media (max-width: 1200px) {
   .search-container {
     width: 600px;
   }
+  #login-nao-logado a {
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .user-actions i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    font-size: 29px;
+    color: white;
+  }
+  /* From search results max-width 1024px, applies to this range as well */
+  .search-container {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+/* New: Hide mobile search icon and show desktop search bar on larger screens */
+@media (min-width: 861px) {
+  .search-mobile-icon {
+    display: none;
+  }
+  #mobileSearchBar {
+    display: none !important; /* Forces hiding, overrides JS */
+  }
+  .search-container.search-desktop {
+    display: flex; /* Ensure desktop search is visible */
+  }
+}
+
+/* New: Hide desktop search and show mobile search icon/bar on smaller screens */
+@media (max-width: 860px) {
+  .search-container.search-desktop {
+    display: none;
+  }
+  .search-mobile-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+  #mobileSearchBar {
+    display: none; /* Keep hidden initially, JS will toggle on click */
+  }
 }
 
 /*
- * Responsividade - Telas Médias
+ * Responsividade - Telas Médias (max-width: 900px, 860px and 768px combined)
  */
 @media (max-width: 900px) {
   .search-container {
@@ -854,9 +945,6 @@ select,
   }
 }
 
-/*
- * Responsividade - Tablets e Telas Menores
- */
 @media (max-width: 768px) {
   header {
     justify-content: space-between;
@@ -880,7 +968,7 @@ select,
     font-size: 30px;
   }
   .main-content {
-    padding-top: 70px;
+    padding-top: 70px; /* Ajuste o padding-top para a altura total do cabeçalho quando a barra mobile NÃO está presente */
   }
   p {
     font-size: 28px;
@@ -984,10 +1072,55 @@ select,
   .lista-transacoes-remocao {
     width: 90%;
   }
+
+  /* From search results max-width 768px */
+  .right-group {
+    margin-right: 5px;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  .search-container {
+    margin: 10px 0;
+    width: 100%;
+    padding: 0 15px;
+  }
+  /* This rule is now effectively handled by max-width: 860px */
+  .search-container.search-desktop {
+    display: none;
+  }
+  .minha-area-botao {
+    font-size: 9px;
+    padding: 4px 10px;
+  }
+  .search-mobile-icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .user-actions {
+    flex-direction: row;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  #login-nao-logado a {
+    font-size: 13px;
+  }
+  .user-area {
+    margin-left: 5px;
+  }
+  .barra {
+    font-size: 16px;
+    padding: 0 5px;
+  }
+  /* This rule is now effectively handled by max-width: 860px */
+  #mobileSearchBar {
+    display: none;
+  }
 }
 
 /*
- * Responsividade - Telas Mínimas (Mobile)
+ * Responsividade - Telas Mínimas (Mobile - max-width: 480px and 481px-767px combined)
  */
 @media (max-width: 480px) {
   .header {
@@ -1012,5 +1145,110 @@ select,
   }
   .dropdown-menu > ul > .has-submenu > .submenu {
     left: 100%; /* Ajuste para ser 100% do pai, e não 180px fixo */
+  }
+
+  /* From search results max-width 480px */
+  .search-container.search-desktop {
+    display: none;
+  }
+  .search-bar {
+    font-size: 16px;
+    padding: 10px 30px;
+  }
+  .search-icon {
+    right: 30px;
+  }
+  .search-mobile-icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  /* From search results max-width 480px (third occurrence) */
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  .left-group {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+  .center-group {
+    display: none;
+  }
+  .right-group {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .search-mobile-icon,
+  .minha-area-botao,
+  #perfil-logado {
+    display: flex;
+    align-items: center;
+  }
+  .minha-area-botao {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .user-actions {
+    font-size: 22px;
+    margin-left: 0;
+  }
+  .header-item .logo {
+    height: 40px;
+  }
+  .header-icon {
+    font-size: 28px;
+  }
+}
+
+/* From search results min-width: 481px and max-width: 767px (identical to 480px third block, but for larger mobile/small tablet screens) */
+@media (min-width: 481px) and (max-width: 767px) {
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  .left-group {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+  .center-group {
+    display: none;
+  }
+  .right-group {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .search-mobile-icon,
+  .minha-area-botao,
+  #perfil-logado {
+    display: flex;
+    align-items: center;
+  }
+  .minha-area-botao {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .user-actions {
+    font-size: 22px;
+    margin-left: 0;
+  }
+  .header-item .logo {
+    height: 40px;
+  }
+  .header-icon {
+    font-size: 28px;
   }
 }

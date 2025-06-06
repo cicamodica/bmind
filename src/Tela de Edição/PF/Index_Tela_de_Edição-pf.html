@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard do Usuário</title>
-    <link rel="stylesheet" href="/src/Tela de Edição/PF/style_Tela_de_Edição-pf.css" />
+    <link rel="stylesheet" href="/src/Tela de Edição/PF/style_Tela_de_Edição-pf.css"/>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -20,12 +20,12 @@
             <i class="fa-solid fa-bars menu-button"></i>
           </div>
           <div class="header-item">
-            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo"/>
           </div>
         </div>
 
         <div class="center-group">
-          <div class="search-container">
+          <div class="search-container search-desktop">
             <input
               type="text"
               id="search-bar"
@@ -39,6 +39,9 @@
         </div>
 
         <div class="right-group">
+          <div class="search-mobile-icon">
+            <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+          </div>
           <div class="user-area">
             <a href="/src/Main/Main.html" class="minha-area-botao">Minha Área</a>
           </div>
@@ -180,6 +183,10 @@
           </ul>
         </nav>
       </header>
+      <div id="mobileSearchBar" class="mobile-search-bar">
+        <input type="text" id="mobileSearchInput" placeholder="Pesquisar..." />
+        <button onclick="buscarMobile()">Buscar</button>
+      </div>
     </div>
 
     <main class="main-content">
@@ -262,22 +269,22 @@
       <span class="close-button" onclick="closeModal()">&times;</span>
 
       <h2>Atualização de Entrada</h2>
-      <label>DATA</label><br />
-      <input class="data" type="date" id="entrada-data" /><br />
-      <label>VALOR DE ENTRADA</label><br />
+      <label>DATA</label><br/>
+      <input class="data" type="date" id="entrada-data"/><br />
+      <label>VALOR DE ENTRADA</label><br/>
       <input class="entrada" type="number" id="entrada-valor" /><br />
 
-      <label>CATEGORIA</label><br />
+      <label>CATEGORIA</label><br/>
       <select id="entrada-categoria">
         <option value="" disabled selected>Seleção</option>
         <option value="salario">Salário</option>
         <option value="investimentos">Investimentos</option>
         <option value="lucros">Lucros</option>
         <option value="outros_entrada">Outros</option>
-      </select><br />
-      <label>DESCRIÇÃO (Opcional)</label><br />
-      <input class="descricao" type="text" id="entrada-descricao" /><br />
-      <label>É RECORRENTE?</label><br />
+      </select><br/>
+      <label>DESCRIÇÃO (Opcional)</label><br/>
+      <input class="descricao" type="text" id="entrada-descricao"/><br />
+      <label>É RECORRENTE?</label><br/>
       <input
         type="radio"
         id="entrada-recorrente-sim"
@@ -292,17 +299,17 @@
         value="nao"
         checked
       />
-      <label for="entrada-recorrente-nao">NÃO</label><br />
+      <label for="entrada-recorrente-nao">NÃO</label><br/>
 
       <div id="entrada-opcoes-recorrentes" style="display: none; margin-top: 10px">
-        <label for="entrada-frequencia">Frequência:</label><br />
+        <label for="entrada-frequencia">Frequência:</label><br/>
         <select id="entrada-frequencia">
           <option value="mensal">Mensal</option>
           <option value="semanal">Semanal</option>
           <option value="diaria">Diária</option>
           <option value="personalizada">Personalizada</option>
         </select>
-        <br />
+        <br/>
         <label for="entrada-encerramento">Data de Encerramento:</label>
         <input type="date" id="entrada-encerramento" class="data" /><br />
       </div>
@@ -316,7 +323,7 @@
       <label>DATA</label><br />
       <input class="data" type="date" id="saida-data" /><br />
 
-      <label>VALOR DE SAÍDA</label><br />
+      <label>VALOR DE SAÍDA</label><br/>
       <input class="saida" type="number" id="saida-valor" /><br />
 
       <label>CATEGORIA</label><br />
@@ -332,10 +339,10 @@
         <option value="outros_saida">Outros</option>
       </select><br />
 
-      <label>DESCRIÇÃO (Opcional)</label><br />
+      <label>DESCRIÇÃO (Opcional)</label><br/>
       <input class="descricao" type="text" id="saida-descricao" /><br />
 
-      <label>É RECORRENTE?</label><br />
+      <label>É RECORRENTE?</label><br/>
       <input
         type="radio"
         id="saida-recorrente-sim"
@@ -350,17 +357,17 @@
         value="nao"
         checked
       />
-      <label for="saida-recorrente-nao">NÃO</label><br />
+      <label for="saida-recorrente-nao">NÃO</label><br/>
 
       <div id="saida-opcoes-recorrentes" style="display: none; margin-top: 10px">
-        <label for="saida-frequencia">Frequência:</label><br />
+        <label for="saida-frequencia">Frequência:</label><br/>
         <select id="saida-frequencia">
           <option value="mensal">Mensal</option>
           <option value="semanal">Semanal</option>
           <option value="diaria">Diária</option>
           <option value="personalizada">Personalizada</option>
         </select>
-        <br />
+        <br/>
         <label for="saida-encerramento">Data de Encerramento:</label>
         <input type="date" id="saida-encerramento" class="data" /><br />
       </div>
@@ -372,12 +379,12 @@
       <span class="close-button" onclick="closeModal()">&times;</span>
 
       <h2>Remover Dados</h2>
-      <label for="tipo-remocao">Tipo de Dados:</label><br />
+      <label for="tipo-remocao">Tipo de Dados:</label><br/>
       <select id="tipo-remocao" onchange="loadTransactionsForRemoval()">
         <option value="" disabled selected>Selecione</option>
         <option value="entradas">Entrada</option>
         <option value="saidas">Saída</option>
-      </select><br /><br />
+      </select><br/><br />
       <div id="lista-transacoes-remocao" class="lista-transacoes-remocao"></div>
 
       <button onclick="confirmRemoveSelected()">Remover</button>
@@ -406,13 +413,13 @@
         <label for="edit-data">DATA</label><br />
         <input class="data" type="date" id="edit-data" /><br />
 
-        <label for="edit-valor">Valor</label><br />
+        <label for="edit-valor">Valor</label><br/>
         <input class="entrada" type="number" id="edit-valor" step="0.01" /><br />
 
         <label for="edit-categoria">Categoria:</label><br />
         <select id="edit-categoria"> </select><br />
 
-        <label for="edit-descricao">Descrição:</label><br />
+        <label for="edit-descricao">Descrição:</label><br/>
         <input class="descricao" type="text" id="edit-descricao" /><br />
 
         <label>Recorrente:</label><br />
@@ -434,14 +441,14 @@
         <label for="edit-recorrente-nao">NÃO</label><br />
 
         <div id="edit-opcoes-recorrentes" style="display: none; margin-top: 10px">
-          <label for="edit-frequencia">Frequência:</label><br />
+          <label for="edit-frequencia">Frequência:</label><br/>
           <select id="edit-frequencia">
             <option value="mensal">Mensal</option>
             <option value="semanal">Semanal</option>
             <option value="diaria">Diária</option>
             <option value="personalizada">Personalizada</option>
           </select>
-          <br />
+          <br/>
           <label for="edit-encerramento">Data de Encerramento:</label>
           <input type="date" id="edit-encerramento" class="data" /><br />
         </div>
