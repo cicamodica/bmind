@@ -15,110 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     boasVindas.textContent = "Bem-vindo!";
   }
-
-  // --- Seletores ---
-  const menuButton = document.querySelector('.menu-toggle'); // Botão do menu (hamburger)
-  const dropdownMenu = document.getElementById('dropdownMenu'); // Menu dropdown principal
-  const mobileSearchIcon = document.querySelector('.search-mobile-icon'); // Ícone da lupa
-  const mobileSearchBar = document.getElementById('mobileSearchBar'); // Barra de busca mobile
-  const hasSubmenuLinks = document.querySelectorAll('li.has-submenu > a'); // Links que abrem submenus
-
-  // --- Toggle Menu Principal ---
-  if (menuButton && dropdownMenu) {
-    menuButton.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdownMenu.classList.toggle('show');
-      if (mobileSearchBar?.classList.contains('show-mobile-search-bar')) {
-        mobileSearchBar.classList.remove('show-mobile-search-bar');
-      }
-    });
-  }
-
-  // --- Toggle Barra de Busca Mobile ---
-  if (mobileSearchIcon && mobileSearchBar) {
-    mobileSearchIcon.addEventListener('click', () => {
-      mobileSearchBar.classList.toggle('show-mobile-search-bar');
-      dropdownMenu?.classList.remove('show');
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 767) {
-        mobileSearchBar.classList.remove('show-mobile-search-bar');
-      }
-    });
-  }
-
-  // --- Fechar menus ao clicar fora ---
-  document.addEventListener('click', (event) => {
-    // Verifica se o clique foi fora do dropdownMenu e fora do menuButton
-    if (dropdownMenu && !dropdownMenu.contains(event.target) && !menuButton.contains(event.target)) {
-      dropdownMenu.classList.remove('show');
-      closeAllSubmenus(); // Fecha todos os submenus abertos
-    }
-
-    // Verifica se o clique foi fora da barra de busca mobile e fora do ícone da lupa
-    if (mobileSearchBar && !mobileSearchBar.contains(event.target) && !mobileSearchIcon.contains(event.target)) {
-      mobileSearchBar.classList.remove('show-mobile-search-bar');
-    }
-  });
-
-  // --- Submenu Mobile ---
-  hasSubmenuLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const submenu = link.nextElementSibling;
-
-      if (submenu && submenu.classList.contains('submenu')) {
-        e.preventDefault(); // Impede o comportamento padrão do link (navegar para '#')
-        e.stopPropagation(); //Impede que o clique se propague para o document
-
-        const isMobile = window.innerWidth <= 1120; // Altere para 780 aqui;
-        const isExpanded = link.getAttribute('aria-expanded') === 'true';
-
-        // Lógica de abertura/fechamento do submenu para mobile
-        if (isMobile) {
-          closeSiblingsSubmenus(link); // Fecha outros submenus irmãos para evitar múltiplos abertos
-          submenu.classList.toggle('open-submenu'); // Alterna a classe que mostra/esconde o submenu
-          link.setAttribute('aria-expanded', !isExpanded); // Atualiza o atributo ARIA
-        }
-        
-      }
-    });
-
-    // Impedir que cliques DENTRO do submenu se propaguem e fechem o menu principal.
-    
-    const submenuContent = link.nextElementSibling;
-    if (submenuContent && submenuContent.classList.contains('submenu')) {
-      submenuContent.addEventListener('click', (e) => {
-        e.stopPropagation(); // Impede que um clique dentro do submenu feche o menu principal
-      });
-    }
-  });
-
-  // --- Função: Fecha todos os submenus ---
-  function closeAllSubmenus() {
-    document.querySelectorAll('.submenu.open-submenu').forEach(submenu => {
-      submenu.classList.remove('open-submenu');
-      submenu.previousElementSibling?.setAttribute('aria-expanded', 'false'); // Define aria-expanded como false
-    });
-  }
-
-  // --- Função: Fecha submenus irmãos (mesmo nível) ---
-  function closeSiblingsSubmenus(link) {
-    const parentUl = link.closest('ul'); // Encontra o <ul> pai do link clicado
-    if (parentUl) {
-      // Seleciona apenas os submenus abertos que são irmãos do submenu atual (no mesmo <ul>)
-      parentUl.querySelectorAll(':scope > li > .submenu.open-submenu').forEach(openSub => {
-        // Garante que não feche o submenu que acabou de ser clicado para abrir
-        if (openSub.previousElementSibling !== link) {
-          openSub.classList.remove('open-submenu');
-          openSub.previousElementSibling?.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-  }
 });
 
+const mobileSearchIcon = document.querySelector('.search-mobile-icon');
+const mobileSearchBar = document.getElementById('mobileSearchBar');
 
+if (mobileSearchIcon && mobileSearchBar) {
+  mobileSearchIcon.addEventListener('click', () => {
+    mobileSearchBar.style.display = 
+      mobileSearchBar.style.display === 'block' ? 'none' : 'block';
+  });
+}
 // --- Função para busca mobile ---
 function buscarMobile() {
     const termo = document.getElementById('mobileSearchInput').value.trim();
@@ -190,6 +97,25 @@ document.getElementById("search-button").addEventListener("click", function (eve
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
     window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
+});
+
+//Início das funções de menu (ALTERAÇÃO DO EVENTLISTENER PARA ATENDER AO MENU NO MOBILE (A PARTIR DE 768PX))
+document.querySelector(".menu-icon").addEventListener("click", function () {
+  const navMenu = document.getElementById("dropdownMenu"); // corrigido
+  const header = document.querySelector(".header");
+
+  navMenu.classList.toggle("show");
+  const menuEstaAberto = navMenu.classList.contains("show"); // corrigido
+
+  if (window.innerWidth < 780) {
+    if (menuEstaAberto) {
+      header.classList.add("fixo-quando-menu-aberto");
+      document.body.classList.add("menu-aberto-margin");
+    } else {
+      header.classList.remove("fixo-quando-menu-aberto");
+      document.body.classList.remove("menu-aberto-margin");
+    }
   }
 });
 
@@ -668,3 +594,22 @@ document.addEventListener("DOMContentLoaded", function () {
   
   carregarMetas();
 });
+
+
+// ADICIONANDO FUNCIONALIDADE AO SUBMENU DO MENU NO MOBILE (EXCLUSIVO PARA TELA ABAIXO DE 768PX)
+  if (window.innerWidth <= 768) {
+    const submenuToggles = document.querySelectorAll(".has-submenu > a");
+
+    submenuToggles.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const parent = this.parentElement;
+        const submenu = parent.querySelector(".submenu");
+
+        parent.classList.toggle("open");
+        if (submenu) submenu.classList.toggle("show");
+      });
+    });
+  };

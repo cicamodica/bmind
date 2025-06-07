@@ -136,8 +136,11 @@ header {
   height: 55px;
   margin-right: auto;
 }
+/*Menu dropdown:*/
+
 /* Reset */
-ul, li {
+ul,
+li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -173,7 +176,7 @@ ul, li {
 }
 
 .dropdown-menu a:hover {
-  background-color: #007bff;
+  background-color: #024dae;
   color: #fff;
 }
 
@@ -187,14 +190,12 @@ ul, li {
   content: "▶";
   margin-left: 10px; /* separação do texto */
   font-size: 0.8em;
-  transition: transform 0.3s ease, color 0.3s ease; /* Adicionada transição */
 }
 
-/* === MODIFICAÇÃO AQUI: Submenu oculto por padrão em todas as telas (será sobrescrito para desktop) === */
+/* Submenu oculto */
 .submenu {
-  display: none; /* Inicia oculto */
-  /* Propriedades comuns a mobile e desktop quando não visível */
-  position: absolute; /* Posição absoluta para flyout em desktop */
+  display: none;
+  position: absolute;
   top: 0;
   left: 100%;
   background: #fff;
@@ -205,14 +206,19 @@ ul, li {
   z-index: 1001;
 }
 
-/* Submenu itens (estilo comum, pode ser sobrescrito por media query) */
+/* Mostrar submenu ao hover */
+.has-submenu:hover > .submenu {
+  display: block;
+}
+
+/* Submenu itens */
 .submenu a {
   padding: 10px 20px;
   border-radius: 6px;
 }
 
 .submenu a:hover {
-  background-color: #007bff;
+  background-color: #024dae;
   color: #fff;
 }
 
@@ -226,11 +232,7 @@ ul, li {
   color: white;
 }
 
-/* mobile-search e search-mobile-icon - sem alterações nestes blocos */
-.mobile-search {
-  display: none;
-  padding: 10px;
-}
+
 
 .escrita {
   /* Estilo do texto do menu */
@@ -484,101 +486,47 @@ button:hover,
   border: 1px solid #ccc;
   border-radius: 6px;
 }
-
-
-/* RESPONSIVO */
-/* === MODIFICAÇÃO AQUI: Alterado de 768px para 780px para consistência === */
-@media (max-width: 780px) {
-  .dashboard-layout {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .chart-container,
-  #resumo-financeiro,
-  #historico-mensal,
-  #area-metas {
-    width: 100%;
-  }
-
-  
-  /* Remove o posicionamento absoluto do submenu no mobile */
-  .submenu {
-    position: relative; /* Agora posicionado dentro do fluxo do documento */
-    left: 0; /* Remove o offset de 100% */
-    top: 0;
-    min-width: 100%; /* Ocupa a largura total do pai */
-    border: none; /* Remove a borda, se desejar um look mais limpo */
-    box-shadow: none; /* Remove a sombra */
-    /* Adicionando padding e background específicos para o submenu mobile para visualização */
-    padding-left: 15px; /* Recuo para os itens do submenu */
-    background-color: #f0f0f0; /* Fundo para diferenciar o submenu */
-    max-height: 0; /* Começa com altura 0 para transição suave */
-    overflow: hidden; /* Esconde o conteúdo extra */
-    opacity: 0; /* Começa invisível */
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Transição para o open-submenu */
-  }
-
-  /* Mostra o submenu quando a classe 'open-submenu' é adicionada no mobile */
-  .submenu.open-submenu {
-    display: block; /* Garante que é exibido */
-    max-height: 500px; /* Suficiente para expandir o conteúdo */
-    opacity: 1; /* Torna visível */
-  }
-
-  /* Rotação da seta quando o submenu está aberto no mobile */
-  .has-submenu > a[aria-expanded="true"]::after {
-    transform: rotate(90deg); /* Gira a seta para baixo */
-    color: #007bff; /* Pode mudar a cor para indicar ativo */
-  }
-
-  /* Estilos para os links dentro do submenu no mobile */
-  .submenu li a {
-    padding: 8px 10px; /* Ajuste o padding */
-    font-size: 0.9em; /* Talvez um pouco menor */
-    color: #444; /* Cor mais suave */
-  }
-
-  .submenu li a:hover,
-  .submenu li a:focus {
-    background-color: #e0e0e0;
-    color: #000;
-  }
-
-  /* Opcional: Destacar o item pai quando seu submenu está aberto no mobile */
-  .has-submenu > a[aria-expanded="true"] {
-      font-weight: bold;
-      color: #007bff;
-      background-color: #e6e6e6;
-  }
+.mobile-search-bar {
+  display: none;
+  /*margin: 10px;
+  padding: 10px;*/
+  background-color: #ffffff;
+  /*border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;*/
+  padding: 15px;
+  text-align: center;
 }
 
-/* === ADIÇÃO AQUI: Media Query para telas MAIORES que 780px (desktop) === */
-@media screen and (min-width: 1121px) {
-    /* Define o comportamento do submenu no desktop (ex: ao passar o mouse) */
-    .has-submenu:hover > .submenu {
-        display: block; /* Torna o submenu visível ao hover */
-        /* Mantém as propriedades de posicionamento absoluto, etc., definidas no .submenu global */
-    }
+.mobile-search-input {
+  /*flex: 1;*/
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  /*outline: none;*/
+  width: 80%;
+  font-family: "Poppins";
+}
 
-    /* Assegura que a seta não gire no desktop ao abrir (se você quiser) */
-    .has-submenu > a[aria-expanded="true"]::after {
-        transform: none; /* Remove a rotação da seta */
-        color: #666; /* Volta à cor padrão se ela foi alterada no mobile */
-    }
+.mobile-search-button {
+  margin-left: 10px;
+  padding: 10px 16px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  /*font-size: 14px;*/
+  font-family: "Poppins";
+  /*transition: background-color 0.3s;*/
+  margin-top: 10px;
+}
 
-    /* Assegura que o submenu esteja oculto por padrão no desktop, e só apareça no hover */
-    /* (A regra `display: none;` no `.submenu` global já faz isso, mas é bom reforçar se houver conflitos) */
-    .submenu {
-        display: none;
-    }
-
-    /* Pode ajustar estilos de padding/tamanho de fonte para desktop, se forem diferentes */
-    .submenu li a {
-        padding: 10px 20px; /* Exemplo, pode ser o mesmo do global se não tiver diferença */
-        font-size: 1em;
-        color: #333;
-    }
+.mobile-search-button:hover {
+  background-color: #003080;
 }
 
 
@@ -740,32 +688,6 @@ button:hover,
   color: #555;
 }
 
-/* Barra de busca mobile */
-.mobile-search-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
-}
-
-.mobile-search-input {
-  flex: 1;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
-
-.mobile-search-button {
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  background-color: #004aad;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
 
 /* Ícone da lupa no mobile */
 .search-mobile-icon {
@@ -775,21 +697,6 @@ button:hover,
   cursor: pointer;
 }
 
-@media (max-width: 767px) { /* Mantenha 767px aqui se o display do search for diferente */
-  .search-container {
-    display: none;
-  }
-
-  .search-mobile-icon {
-    display: block;
-  }
-}
-
-@media (min-width: 768px) { /* Mantenha 768px aqui para desktop search */
-  .mobile-search-bar {
-    display: none !important;
-  }
-}
 
 /* Esconde o menu e mostra o botão em telas pequenas */
 .menu-toggle {
@@ -800,39 +707,187 @@ button:hover,
   cursor: pointer;
 }
 
-@media (max-width: 1120px) and (min-width: 780px) {
-  .header-item .logo {
-    height: 45px; /* Reduz o tamanho do logo */
+@media (max-width: 1120px) {
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(to right, #00bcd4, #1976d2);
+    color: white;
+    justify-content: space-between;
   }
 
-  .search-container {
-    width: 70%; /* Ajusta a largura da barra de pesquisa */
+  .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
   }
 
-  .search-bar {
-    padding: 10px 30px; /* Ajusta o padding da barra de pesquisa */
-    font-size: 16px; /* Reduz o tamanho da fonte na barra de pesquisa */
+  .submenu {
+    display: none;
+    background: #f9f9f9;
   }
 
-  .search-icon {
-    right: 15px; /* Ajusta a posição do ícone de pesquisa */
-    bottom: 14px;
-    font-size: 16px;
+  .has-submenu > a::after {
+    content: " ▼";
+    float: right;
+    font-size: 0.9rem;
   }
 
-  .user-actions {
-    font-size: 26px; /* Reduz o tamanho do ícone de perfil */
-    margin-left: 10px; /* Reduz a margem */
-  }
-
-  #login-nao-logado a {
-    font-size: 13px; /* Reduz o tamanho da fonte de login */
-  }
-
-  .menu-button {
-    font-size: 22px; /* Reduz o tamanho do botão de menu */
-    margin-right: 10px;
+  .has-submenu.open > .submenu {
+    display: block;
   }
 }
 
+@media (max-width: 1120px) and (min-width: 768px) {
+  #login-nao-logado a {
+    font-size: 13px;
+  }
+}
 
+@media (max-width: 768px) {
+  .search-container {
+    display: none;
+  }
+
+  .search-mobile-icon {
+    display: flex;
+    color: #ffff;
+    font-size: 24px;
+    padding: 20px;
+  }
+
+  /*ADICIONANDO MEDIA QUERIES PARA O MENU NO MOBILE*/
+
+  .header.fixo-quando-menu-aberto {
+    /*Mantém o header fixo quando abre o menu*/
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  /* Adiciona margem para não sobrepor conteúdo */
+  body.menu-aberto-margin {
+    margin-top: 70px !important; /* Ajuste da margem superior do menu mobile para mostrar o header (mesmo tamanho do header > 70px) */
+  }
+
+  /*Responsividade do submenu*/
+  .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+  }
+
+  .submenu.show {
+    display: flex;
+  }
+
+  .has-submenu.open > a {
+    background-color: #024dae;
+    color: white;
+    font-weight: bold;
+  }
+
+  /*Responsividade do dropdown menu*/
+  .dropdown-menu {
+    position: fixed;
+    top: 70px; /* altura exata do header */
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-sizing: border-box;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 5px;
+    position: static; /* <<< ESSENCIAL: evita flutuação lateral */
+    background: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .dropdown-menu .submenu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .has-submenu > a::after {
+    content: "▼";
+    font-size: 0.8em;
+    margin-left: auto;
+  }
+
+  .dropdown-menu .has-submenu.open > a::after {
+    content: "▲";
+  }
+}
+
+@media (min-width: 768px) {
+  .search-mobile-icon {
+    display: none;
+  }
+
+  #mobileSearchBar {
+    display: none !important;
+  }
+
+  .mobile-search-bar {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    margin: 10px; /* reduz o espaço */
+    padding: 10px 20px; /* mais compacto */
+    font-size: 16px;
+  }
+
+  .search-icon {
+    right: 20px;
+  }
+
+
+
+  .header-item .logo {
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) and (min-width: 375px) {
+  .search-bar {
+    margin: 10px; /* reduz o espaço */
+    padding: 10px 20px; /* mais compacto */
+    font-size: 16px;
+  }
+
+  .search-icon {
+    right: 20px;
+  }
+
+  
+
+  .header-item .logo {
+    height: 45px;
+  }
+}
