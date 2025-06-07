@@ -1,47 +1,37 @@
-function atualizarInterfaceUsuario() {
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
-  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
 
-  const userActionsLogado = document.getElementById("perfil-logado");
-  const userActionsNaoLogado = document.getElementById("login-nao-logado");
-
-  const itensPF = document.querySelectorAll('.item-pf');
-  const itensPJ = document.querySelectorAll('.item-pj');
-  const itensLogado = document.querySelectorAll('.item-logged');
-  const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
-
-  const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
-
-  // Esconde tudo inicialmente
-  userActionsLogado.style.display = "none";
-  userActionsNaoLogado.style.display = "none";
-  itensPF.forEach(el => el.style.display = 'none');
-  itensPJ.forEach(el => el.style.display = 'none');
-  itensLogado.forEach(el => el.style.display = 'none');
-  itensNaoLogado.forEach(el => el.style.display = 'none');
-
-  if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
-
-    
-    // Só mostra o botão "perfil-logado" se não estiver na própria página de "Minha Área"
-    if (!estaNaPaginaMinhaArea && userActionsLogado) {
-      userActionsLogado.style.display = "flex";
-    }
-
-    // Exibe itens de logado
-    itensLogado.forEach(el => el.style.display = 'block');
-
-    if (dadosDoUsuario.perfil === "Pessoa Física") {
-      itensPF.forEach(el => el.style.display = 'block');
-    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      itensPJ.forEach(el => el.style.display = 'block');
-    }
-  } else {
-    // Usuário não logado ou com dados inválidos
-    userActionsNaoLogado.style.display = "flex";
-    itensNaoLogado.forEach(el => el.style.display = 'block');
+  // Redireciona para login se não estiver logado
+  if (!usuarioLogado) {
+    window.location.href = "/src/login/login.html";
+    return;
   }
-}
+
+  const perfil = usuarioLogado.perfil;
+  const spanPerfil = document.getElementById("perfil");
+  if (spanPerfil) spanPerfil.textContent = perfil;
+
+  // Função de exibição condicional
+  function configurarMenuPorPerfil(perfil) {
+    // Itens específicos de PF e PJ
+    const itensPF = document.querySelectorAll(".item-pf");
+    const itensPJ = document.querySelectorAll(".item-pj");
+
+    if (perfil === "Pessoa Física") {
+      // Esconde conteúdos PJ
+      itensPJ.forEach(el => el.style.display = "none");
+      // Mostra conteúdos PF
+      itensPF.forEach(el => el.style.display = "block");
+    } else if (perfil === "Pessoa Jurídica") {
+      // Esconde conteúdos PF
+      itensPF.forEach(el => el.style.display = "none");
+      // Mostra conteúdos PJ
+      itensPJ.forEach(el => el.style.display = "block");
+    }
+  }
+
+  configurarMenuPorPerfil(perfil);
+});
 
 // verifica  se usuario esta logado para apresentar botao de minha area 
 
@@ -168,3 +158,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+// ADICIONANDO FUNCIONALIDADE AO SUBMENU DO MENU NO MOBILE (EXCLUSIVO PARA TELA ABAIXO DE 768PX)
+  if (window.innerWidth <= 768) {
+    const submenuToggles = document.querySelectorAll(".has-submenu > a");
+
+    submenuToggles.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const parent = this.parentElement;
+        const submenu = parent.querySelector(".submenu");
+
+        parent.classList.toggle("open");
+        if (submenu) submenu.classList.toggle("show");
+      });
+    });
+  };
