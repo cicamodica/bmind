@@ -83,7 +83,7 @@ header {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 150px;
+  min-width: 50px;
 }
 
 .right-group {
@@ -464,7 +464,8 @@ ul, li {
 
  
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
+    max-width: 2px;
+    width: 100%;
   }
   .search-icon {
     display: flex;
@@ -473,6 +474,8 @@ ul, li {
   
   .mobile-search-trigger {
     display: block;
+    margin: 0px;
+    padding: 0px;
   }
  .nav {
     width: 100%;
@@ -498,6 +501,7 @@ ul, li {
   }
    .right-group{  /* Estilização do grupo de itens que fica à direita do header */
    margin-right: 75px;  /*Alinha o grupo à direita */
+   gap:0%;
    }
    
    
@@ -517,15 +521,16 @@ ul, li {
     padding: 6px 10px;
     font-size: 10px;
   }
-  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
-  }
+ 
   .search-icon {
     display: flex;
     font-size: 20px;
   }
   
-  
+   .mobile-search-trigger {
+    margin: 0% 0% 0% 0%; /* Ajusta a margem do ícone de pesquisa no mobile */
+    display: block;;
+  }
 
 
  .nav {
