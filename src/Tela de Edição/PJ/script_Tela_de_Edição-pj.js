@@ -191,6 +191,52 @@ document.addEventListener("DOMContentLoaded", function () {
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
+      // *** CORREÇÃO AQUI: SALVAR dataEncerramento NO OBJETO ***
+      dataEncerramento: recorrenteSim && encerramentoInput.value ? encerramentoInput.value : null,
+    };
+
+    const data = getFinancialData();
+    data.saidas.push(novaSaida);
+    saveFinancialData(data);
+    closeModal();
+  };
+
+  // Função para salvar uma nova saída
+  window.salvarSaida = function () {
+    const dataInput = document.getElementById("saida-data");
+    const valorInput = document.getElementById("saida-valor");
+    const categoriaSelect = document.getElementById("saida-categoria");
+    const categoriaText = categoriaSelect.options[categoriaSelect.selectedIndex].text;
+    const descricaoInput = document.getElementById("saida-descricao");
+    const recorrenteSim = document.getElementById(
+      "saida-recorrente-sim"
+    ).checked;
+    const frequenciaSelect = document.getElementById("saida-frequencia");
+    // *** CORREÇÃO AQUI: LER O CAMPO dataEncerramento (se existir) ***
+    const encerramentoInput = document.getElementById("saida-encerramento"); // Assumindo que você tem um ID similar para saídas
+
+    if (!dataInput.value || !valorInput.value) {
+      alert("Data e Valor são obrigatórios para saídas.");
+      return;
+    }
+
+     if (recorrenteSim && encerramentoInput && !encerramentoInput.value) {
+      alert("A Data de Encerramento é obrigatória para saídas recorrentes.");
+        return;
+      }
+
+    const novaSaida = {
+      id: Date.now(),
+      tipo: "saida",
+      data: dataInput.value,
+      valor: parseFloat(valorInput.value),
+      categoria: categoriaSelect.value,
+      categoriaText: categoriaText,
+      descricao: descricaoInput.value,
+      recorrente: recorrenteSim,
+      frequencia: recorrenteSim ? frequenciaSelect.value : null,
+       // *** CORREÇÃO AQUI: SALVAR dataEncerramento NO OBJETO ***
+       dataEncerramento: recorrenteSim && encerramentoInput && encerramentoInput.value ? encerramentoInput.value : null,
     };
 
     const data = getFinancialData();
@@ -198,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
     saveFinancialData(data);
 
     closeModal();
-  };
+    };
 
   // Função para abrir o modal de remoção
   window.openRemoveModal = function () {
@@ -285,6 +331,229 @@ document.addEventListener("DOMContentLoaded", function () {
     saveFinancialData(data);
     closeModal();
     alert("Registro(s) Removido");
+  };
+
+  // Função para abrir o modal de edição
+  window.openEditModal = function () {
+    
+    openModal("editar");
+    document.getElementById("tipo-edicao").value = ""; // Reseta a seleção
+    document.getElementById("lista-transacoes-edicao").innerHTML = ""; // Limpa a lista
+    document.getElementById("form-edicao").style.display = "none"; // Esconde o formulário
+  };
+
+  // Função para carregar transações para edição no modal de edição
+  window.loadTransactionsForEdit = function () {
+    const tipoEdicao = document.getElementById("tipo-edicao").value;
+    const listaDiv = document.getElementById("lista-transacoes-edicao");
+    listaDiv.innerHTML = ""; // Limpa a lista existente
+    document.getElementById("form-edicao").style.display = "none"; // Esconde o formulário ao trocar o tipo
+
+    if (!tipoEdicao) {
+      listaDiv.innerHTML = `<p>Selecione o tipo de transação para editar.</p>`;
+      return;
+    }
+
+    const allData = getFinancialData();
+    let transactionsToDisplay = [];
+
+    if (tipoEdicao === "entradas") {
+      transactionsToDisplay = allData.entradas;
+    } else if (tipoEdicao === "saidas") {
+      transactionsToDisplay = allData.saidas;
+    }
+
+    if (transactionsToDisplay.length === 0) {
+      listaDiv.innerHTML = `<p>Nenhum registro encontrado para editar.</p>`;
+      return;
+    }
+
+    // Ordena as transações da mais recente para a mais antiga
+    transactionsToDisplay.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    transactionsToDisplay.forEach((item) => {
+      const itemDiv = document.createElement("div");
+      itemDiv.className = "transaction-item-edicao";
+
+      const valueDisplay =
+        item.tipo === "saida"
+          ? `- R$ ${item.valor.toFixed(2)}`
+          : `+ R$ ${item.valor.toFixed(2)}`;
+      const description = item.descricao ? ` - ${item.descricao}` : "";
+      const category = item.categoria ? ` (${item.categoria})` : "";
+      const formattedDate = new Date(item.data).toLocaleDateString("pt-BR");
+
+      itemDiv.innerHTML = `
+                <button class="edit-button" onclick="editTransaction(${item.id}, '${item.tipo}')">
+                    ${formattedDate} ${valueDisplay}${category}${description}
+                </button>
+            `;
+      listaDiv.appendChild(itemDiv);
+    });
+  };
+
+  // Função para popular o formulário de edição com os dados da transação
+  window.editTransaction = function (id, tipo) {
+    const data = getFinancialData();
+    let transactionToEdit = null;
+
+    if (tipo === "entrada") {
+      transactionToEdit = data.entradas.find((item) => item.id === id);
+    } else if (tipo === "saida") {
+      transactionToEdit = data.saidas.find((item) => item.id === id);
+    }
+
+    if (!transactionToEdit) {
+      alert("Transação não encontrada para edição.");
+      return;
+    }
+
+    // Preenche o formulário de edição
+    document.getElementById("edit-id").value = transactionToEdit.id;
+    document.getElementById("edit-tipo").value = transactionToEdit.tipo;
+    document.getElementById("edit-data").value = transactionToEdit.data;
+    document.getElementById("edit-valor").value = transactionToEdit.valor;
+    document.getElementById("edit-descricao").value = transactionToEdit.descricao;
+      transactionToEdit.descricao;
+
+    // Popula as categorias
+    const categoriaSelect = document.getElementById("edit-categoria");
+    categoriaSelect.innerHTML = ""; // Limpa opções existentes
+
+    let categories = [];
+    if (tipo === "entrada") {
+      categories = ["Salário", "Investimento", "Presente", "Outros"];
+    } else {
+      categories = [
+        "Alimentação",
+        "Transporte",
+        "Moradia",
+        "Lazer",
+        "Saúde",
+        "Educação",
+        "Outros",
+      ];
+    }
+
+    categories.forEach((cat) => {
+      const option = document.createElement("option");
+      option.value = cat.toLowerCase();
+      option.textContent = cat;
+      categoriaSelect.appendChild(option);
+    });
+    categoriaSelect.value = transactionToEdit.categoria;
+
+    document.getElementById("lista-transacoes-edicao").style.display = "none";
+    document.getElementById("form-edicao").style.display = "block";
+
+    window.resetEditModal = function () {
+      document.getElementById("tipo-edicao").value = ""; // Limpa tipo
+      document.getElementById("lista-transacoes-edicao").innerHTML = ""; // Limpa lista
+      document.getElementById("lista-transacoes-edicao").style.display = "block"; // Mostra lista
+      document.getElementById("form-edicao").style.display = "none"; // Esconde o formulário
+    };
+
+    // Recorrência
+    if (transactionToEdit.recorrente) {
+      document.getElementById("edit-recorrente-sim").checked = true;
+      document.getElementById("edit-opcoes-recorrentes").style.display =
+        "block";
+      document.getElementById("edit-frequencia").value =
+        transactionToEdit.frequencia || "";
+      document.getElementById("edit-encerramento").value =
+        transactionToEdit.dataEncerramento || "";
+    } else {
+      document.getElementById("edit-recorrente-nao").checked = true;
+      document.getElementById("edit-opcoes-recorrentes").style.display = "none";
+      document.getElementById("edit-frequencia").value = "";
+      document.getElementById("edit-encerramento").value = "";
+    }
+
+    // Exibe o formulário de edição
+    document.getElementById("form-edicao").style.display = "block";
+  };
+
+  // Listener para mostrar/esconder opções de recorrência no modal de edição
+  document
+    .querySelectorAll('input[name="edit-recorrente"]')
+    .forEach((radio) => {
+      radio.addEventListener("change", function () {
+        const recorrenteDiv = document.getElementById("edit-opcoes-recorrentes");
+        const encerramentoInput = document.getElementById("edit-encerramento");
+        const frequenciaSelect = document.getElementById("edit-frequencia");
+
+        if (recorrenteDiv) {
+          if (this.value === "sim" && this.checked) {
+            recorrenteDiv.style.display = "block";
+          } else {
+            recorrenteDiv.style.display = "none";
+            if (encerramentoInput) encerramentoInput.value = "";
+            if (frequenciaSelect) frequenciaSelect.value = "";
+          }
+        }
+      });
+    });
+
+  // Função para salvar as alterações da transação editada
+  window.saveEditedTransaction = function () {
+    const id = parseInt(document.getElementById("edit-id").value);
+    const tipo = document.getElementById("edit-tipo").value;
+    const data = document.getElementById("edit-data").value;
+    const valor = parseFloat(document.getElementById("edit-valor").value);
+    const categoria = document.getElementById("edit-categoria").value;
+    const descricao = document.getElementById("edit-descricao").value;
+    const recorrente = document.getElementById("edit-recorrente-sim").checked;
+    const frequencia = recorrente
+      ? document.getElementById("edit-frequencia").value
+      : null;
+    const dataEncerramento =
+      recorrente && document.getElementById("edit-encerramento").value
+        ? document.getElementById("edit-encerramento").value
+        : null;
+
+    if (!data || isNaN(valor)) {
+      alert("Data e Valor são obrigatórios para editar a transação.");
+      return;
+    }
+
+    if (recorrente && !dataEncerramento) {
+      alert("A Data de Encerramento é obrigatória para transações recorrentes.");
+      return;
+    }
+
+    const allData = getFinancialData();
+
+    let transactionList;
+    if (tipo === "entrada") {
+      transactionList = allData.entradas;
+    } else if (tipo === "saida") {
+      transactionList = allData.saidas;
+    } else {
+      alert("Tipo de transação inválido para edição.");
+      return;
+    }
+
+    const index = transactionList.findIndex((item) => item.id === id);
+
+    if (index !== -1) {
+      transactionList[index] = {
+        id: id,
+        tipo: tipo,
+        data: data,
+        valor: valor,
+        categoria: categoria,
+        descricao: descricao,
+        recorrente: recorrente,
+        frequencia: frequencia,
+        dataEncerramento: dataEncerramento,
+      };
+      saveFinancialData(allData);
+      alert("Transação atualizada com sucesso!");
+      closeModal();
+    } else {
+      alert("Transação não encontrada.");
+    }
+    resetEditModal();
   };
 
   // Função para obter anos únicos das transações (e anos relevantes para o futuro)
