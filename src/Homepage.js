@@ -46,6 +46,49 @@ function atualizarInterfaceUsuario() {
   }
 }
 
+function controlarBotaoMinhaArea() {
+    
+    const minhaAreaBotao = document.querySelector(".minha-area-botao");
+
+    // Verifica se o botão existe na página
+    if (!minhaAreaBotao) {
+        console.warn("Botão 'Minha Área' não encontrado no DOM.");
+        return; // Sai da função se o botão não for encontrado
+    }
+
+    // 2. Verifica o status de login
+    const usuarioLogado = localStorage.getItem("usuarioLogado"); // Pega a chave do usuário logado (geralmente o email)
+
+    // 3. Define a visibilidade do botão
+    if (usuarioLogado) {
+        // Se houver uma chave em "usuarioLogado", significa que o usuário está logado
+        minhaAreaBotao.style.display = "block"; // 
+    } else {
+        // Se não houver, o usuário não está logado
+        minhaAreaBotao.style.display = "none";
+    }
+}
+document.addEventListener("DOMContentLoaded", () => {
+    controlarBotaoMinhaArea();
+});
+
+function redirecionarCadastro() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+  if (dadosDoUsuario && dadosDoUsuario.perfil) {
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
+    } else {
+      alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
+    }
+  } else {
+    alert("Usuário não logado ou dados do usuário inválidos.");
+  }
+}
+
 // mobile-search.js
 
 const mobileSearchIcon = document.querySelector('.search-mobile-icon');
