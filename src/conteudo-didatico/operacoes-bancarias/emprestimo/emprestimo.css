@@ -83,7 +83,7 @@ header {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 150px;
+  min-width: 50px;
 }
 
 .right-group {
@@ -166,8 +166,8 @@ header {
   border: none;
   color: white;
   padding: 8px;
-  font-size: 30px;
-  
+  margin: 0%; /* Remove o espaçamento padrão */
+  font-size: clamp(24px, 4vw, 30px);
  }
  .mobile-search-bar { /* Estilização da barra de pesquisa no mobile */
   background-color: white; 
@@ -411,6 +411,7 @@ ul, li {
   display: inline-block;
   margin-right: 10px;
   position: relative;
+  font-size: clamp(6px, 2vw, 14px);
 }
 
 .list-icon::after {
@@ -428,7 +429,7 @@ ul, li {
   display: none;
 }
 .texto-conteudo-didatico h1{
-  font-size: clamp(20px, 4vw, 29px);
+  font-size: clamp(20px, 4vw, 30px);
 }
 
 .texto-conteudo-didatico h2 {
@@ -468,7 +469,8 @@ ul, li {
 
  
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
+    max-width: 2px;
+    width: 100%;
   }
   .search-icon {
     display: flex;
@@ -477,6 +479,8 @@ ul, li {
   
   .mobile-search-trigger {
     display: block;
+    margin: 0px;
+    padding: 0px;
   }
  .nav {
     width: 100%;
@@ -502,13 +506,19 @@ ul, li {
   }
    .right-group{  /* Estilização do grupo de itens que fica à direita do header */
    margin-right: 75px;  /*Alinha o grupo à direita */
+   gap:0px;
    }
    
    
-  .search-container {  /* Estilização da barra de pesquisa */
+.mobile-search-trigger {
+    margin: 0px 0px 0px 0px; /* Remove o espaçamento padrão */  
+   }  .search-container {  /* Estilização da barra de pesquisa */
+
     display: none;
   }
-  
+  .user-actions{
+    margin: 0% 0% 0% 0%;
+  }
    #perfil-logado {  /* Estilização do ícone de perfil */
     margin-left: 10px;/*  Alinha o perfil à direita */
     width: 12px; ;
@@ -522,7 +532,7 @@ ul, li {
     font-size: 10px;
   }
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
+    max-width: 60px;
   }
   .search-icon {
     display: flex;
@@ -554,11 +564,19 @@ ul, li {
   .nav {
     width: 100%;
   }
-
+   .user-actions{
+    margin-right: 14px ; /* Remove o espaçamento padrão */
+    padding: 0px 0px 0px 0px;
+    border: none;
+    gap: 0px 0px 0px 0px; /* Remove o espaçamento padrão */
+  }
    .right-group{  /* Estilização do grupo de itens que fica à direita do header */
    margin-right: 49px;  /*Alinha o grupo à direita */
    }
-   
+    .minha-area-botao {
+  margin: 0px 0px 0px 0px;
+  margin-left: none; /* Remove o espaçamento padrão */
+  }
   .mobile-search-bar {
     display: none !important ;  /* Oculta a barra de pesquisa no desktop */
   }
@@ -589,4 +607,8 @@ ul, li {
 
   }
 
+}
+ .minha-area-botao {
+  margin: 0px 0px 0px 0px;
+  margin-left: none; /* Remove o espaçamento padrão */
 }
