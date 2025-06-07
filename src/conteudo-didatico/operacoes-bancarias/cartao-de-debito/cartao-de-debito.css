@@ -467,8 +467,11 @@ font-size: clamp(20px,4vw,30px);
 
  
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
+    max-width: 70px;
+    flex-grow: 0;
   }
+
+
   .search-icon {
     display: flex;
   }
