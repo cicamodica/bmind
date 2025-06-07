@@ -113,6 +113,7 @@ header {
   font-size: 29px;
   color: white;
 }
+
 /* Botão 'Minha Área' */
 .minha-area-botao {
   display: inline-block; /* Para permitir padding e margin corretamente */
