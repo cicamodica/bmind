@@ -83,7 +83,7 @@ header {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 150px;
+  min-width: 40px;
 }
 
 .right-group {
@@ -343,7 +343,7 @@ ul, li {
 
 }
 
-.imagem-controle {
+.imagem-orcamento {
   /*Estilização da imagem no posicionamento na página*/
   display: flex;
   float: center;
@@ -351,7 +351,7 @@ ul, li {
   margin-right: 60px;
 }
 
-.imagem-controle img {
+.imagem-orcamento img {
   /*Estilização da imagem*/
   position: relative;
   width: clamp(300px, 100%, 900px); /* Tamanho responsivo da imagem */
@@ -423,7 +423,9 @@ ul, li {
 .mobile-search-bar {
   display: none;
 }
-
+.texto-conteudo-didatico h1{
+  font-size: clamp(20px, 4vw, 29px);
+}
 .texto-conteudo-didatico h2 {
   
   font-size: clamp(19px, 3vw, 28px);
@@ -460,8 +462,9 @@ ul, li {
  
 
  
-  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
+   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
+    max-width: 2px;
+    width: 100%;
   }
   .search-icon {
     display: flex;
@@ -470,6 +473,8 @@ ul, li {
   
   .mobile-search-trigger {
     display: block;
+    margin: 0px;
+    padding: 0px;
   }
  .nav {
     width: 100%;
@@ -521,11 +526,12 @@ ul, li {
     display: flex;
     font-size: 20px;
   }
-  .mobile-search-trigger {
+   .mobile-search-trigger {
+    margin: 0% 0% 0% 0%; /* Ajusta a margem do ícone de pesquisa no mobile */
     display: block;
   }
   .mobile-search-bar {
-    display: block;
+    display: none;
   }
 
  .nav {
