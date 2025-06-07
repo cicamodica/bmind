@@ -75,7 +75,7 @@ header {
 }
 
 .left-group, .right-group {
- gap: clamp(8px, 1.5vw, 15px);
+ gap: clamp(6px, 1.5vw, 15px);
 }
 
 .center-group {
@@ -83,7 +83,7 @@ header {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 90px;
+  min-width: 50px;
 }
 
 .right-group {
@@ -475,6 +475,8 @@ ul, li {
   
   .mobile-search-trigger {
     display: block;
+    margin: 0px;
+    padding: 0px;
   }
  .nav {
     width: 100%;
