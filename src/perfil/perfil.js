@@ -1,10 +1,37 @@
-//Recupera o usuario logado
-const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
 
-// Redireciona para o login caso o usuario não esteja logado
-if (usuarioLogado == null) {
-  window.location.href = `/src/login/login.html`;
-}
+  // Redireciona para login se não estiver logado
+  if (!usuarioLogado) {
+    window.location.href = "/src/login/login.html";
+    return;
+  }
+
+  const perfil = usuarioLogado.perfil;
+  const spanPerfil = document.getElementById("perfil");
+  if (spanPerfil) spanPerfil.textContent = perfil;
+
+  // Função de exibição condicional
+  function configurarMenuPorPerfil(perfil) {
+    // Itens específicos de PF e PJ
+    const itensPF = document.querySelectorAll(".item-pf");
+    const itensPJ = document.querySelectorAll(".item-pj");
+
+    if (perfil === "Pessoa Física") {
+      // Esconde conteúdos PJ
+      itensPJ.forEach(el => el.style.display = "none");
+      // Mostra conteúdos PF
+      itensPF.forEach(el => el.style.display = "block");
+    } else if (perfil === "Pessoa Jurídica") {
+      // Esconde conteúdos PF
+      itensPF.forEach(el => el.style.display = "none");
+      // Mostra conteúdos PJ
+      itensPJ.forEach(el => el.style.display = "block");
+    }
+  }
+
+  configurarMenuPorPerfil(perfil);
+});
 
 console.log(usuarioLogado.perfil);
 const spanPerfil = document.getElementById("perfil");
@@ -16,17 +43,6 @@ if (usuarioLogado.perfil == "Pessoa Jurídica") {
   liFinancasPessoais.style.display = "none";
 }
 
-//Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
-document
-  .getElementById("search-button")
-  .addEventListener("click", function (event) {
-    event.preventDefault(); // evita o redirecionamento padrão
-    const termo = document.getElementById("search-bar").value.trim();
-    if (termo !== "") {
-      const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
-    }
-  });
 
 //Início das funções de menu (ALTERAÇÃO DO EVENTLISTENER PARA ATENDER AO MENU NO MOBILE (A PARTIR DE 768PX))
 document.querySelector(".menu-icon").addEventListener("click", function () {
@@ -182,7 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
       sair();
     });
 
-  // ADICIONANDO FUNCIONALIDADE AO SUBMENU DO MENU NO MOBILE (EXCLUSIVO PARA TELA ABAIXO DE 768PX)
+  }
+});
+
+// ADICIONANDO FUNCIONALIDADE AO SUBMENU DO MENU NO MOBILE (EXCLUSIVO PARA TELA ABAIXO DE 768PX)
   if (window.innerWidth <= 768) {
     const submenuToggles = document.querySelectorAll(".has-submenu > a");
 
@@ -198,5 +217,4 @@ document.addEventListener("DOMContentLoaded", () => {
         if (submenu) submenu.classList.toggle("show");
       });
     });
-  }
-}});
+  };

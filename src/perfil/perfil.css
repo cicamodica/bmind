@@ -135,8 +135,6 @@ header {
   cursor: pointer;
 }
 
-/*Menu dropdown:*/
-
 /* Reset */
 ul, li {
   list-style: none;
@@ -154,6 +152,8 @@ ul, li {
   position: absolute;
   display: none;
   z-index: 1000;
+  top:70px;
+  
 }
 
 .dropdown-menu.show {
@@ -161,11 +161,10 @@ ul, li {
 }
 
 .dropdown-menu a {
-  display: flex; /* FLEX para alinhar texto e seta */
-  justify-content: space-between; /* espaço entre texto e seta */
-  align-items: center; /* centraliza verticalmente */
-  
-  padding: 10px 20px; /* MAIS espaço */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
   color: #333;
   text-decoration: none;
   white-space: nowrap;
@@ -178,19 +177,19 @@ ul, li {
   color: #fff;
 }
 
+/* Seta para submenu */
+.has-submenu > a::after {
+  content: "▶";
+  margin-left: 8px;
+  font-size: 0.75em;
+  
+}
+
 /* Submenu */
 .has-submenu {
   position: relative;
 }
 
-/* SETA via pseudo-elemento */
-.has-submenu > a::after {
-  content: "▶";
-  margin-left: 10px; /* separação do texto */
-  font-size: 0.8em;
-}
-
-/* Submenu oculto */
 .submenu {
   display: none;
   position: absolute;
@@ -199,26 +198,28 @@ ul, li {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  min-width: 250px; /* AUMENTADO igual ao principal */
+  min-width: 220px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1001;
 }
 
-/* Mostrar submenu ao hover */
 .has-submenu:hover > .submenu {
   display: block;
 }
 
-/* Submenu itens */
+/* Submenu links */
 .submenu a {
-  padding: 10px 20px;
+  padding: 12px 16px;
   border-radius: 6px;
+  
 }
 
 .submenu a:hover {
   background-color: #024dae;
   color: #fff;
 }
+
+
 .FAQ {
   display: block;
   background-color: transparent;
@@ -544,6 +545,7 @@ textarea {
     padding: 20px;
     overflow-y: auto;
     z-index: 9999;
+    box-sizing: border-box;
   }
 
   .dropdown-menu.show {
