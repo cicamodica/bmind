@@ -515,9 +515,7 @@ ul, li {
     width: 12px; ;
     font-size: 24px;
   }
-  .mobile-search-trigger {
-    margin: 0px 0px 0px 0px; /* Remove o espaçamento padrão */  
-   }
+  
   
 
   .minha-area-botao { /* Estilização do botão "Minha Área" */
