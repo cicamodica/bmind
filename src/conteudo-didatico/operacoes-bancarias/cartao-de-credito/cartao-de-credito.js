@@ -87,6 +87,43 @@ document.querySelector(".menu-icon").addEventListener("click", function () {
   navMenu.classList.toggle("hidden");
 });
 
+// ADICIONANDO FUNCIONALIDADE AO SUBMENU DO MENU NO MOBILE (EXCLUSIVO PARA TELA ABAIXO DE 768PX)
+  if (window.innerWidth <= 768) {
+    const submenuToggles = document.querySelectorAll(".has-submenu > a");
+
+    submenuToggles.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const parent = this.parentElement;
+        const submenu = parent.querySelector(".submenu");
+
+        parent.classList.toggle("open");
+        if (submenu) submenu.classList.toggle("show");
+      });
+    });
+  };
+
+  //Início das funções de menu (ALTERAÇÃO DO EVENTLISTENER PARA ATENDER AO MENU NO MOBILE (A PARTIR DE 768PX))
+document.querySelector(".menu-icon").addEventListener("click", function () {
+  const navMenu = document.getElementById("dropdownMenu"); // corrigido
+  const header = document.querySelector(".header");
+
+  navMenu.classList.toggle("show");
+  const menuEstaAberto = navMenu.classList.contains("show"); // corrigido
+
+  if (window.innerWidth < 780) {
+    if (menuEstaAberto) {
+      header.classList.add("fixo-quando-menu-aberto");
+      document.body.classList.add("menu-aberto-margin");
+    } else {
+      header.classList.remove("fixo-quando-menu-aberto");
+      document.body.classList.remove("menu-aberto-margin");
+    }
+  }
+});
+
 function toggleMenu() {
   // Função para alternar o menu dropdown
   const menu = document.getElementById("dropdownMenu");
