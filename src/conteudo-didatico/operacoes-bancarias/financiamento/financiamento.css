@@ -533,7 +533,9 @@ ul, li {
     margin: 0% 0% 0% 0%; /* Ajusta a margem do ícone de pesquisa no mobile */
     display: block;;
   }
- 
+ .mobile-search-bar {
+    display: none;
+  }
 
  .nav {
     width: 100%;

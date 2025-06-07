@@ -83,7 +83,7 @@ header {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 150px;
+  min-width: 50px;
 }
 
 .right-group {
@@ -342,24 +342,25 @@ ul, li {
   font-weight: 500;
 
 }
-
-.imagem-controle {
+.imagem-balanco {
   /*Estilização da imagem no posicionamento na página*/
-  display: flex;
   float: center;
   margin-top: -30px;
   margin-right: 60px;
+  align-content: center;
 }
 
-.imagem-controle img {
+.imagem-balanco img {
   /*Estilização da imagem*/
   position: relative;
-  width: clamp(300px, 100%, 900px); /* Tamanho responsivo da imagem */
-  aspect-ratio: 2 / 1; /* Mantém a proporção da imagem */
-  height: auto;    /* Altura automática para manter a proporção */
-  display: block; /* Exibe a imagem como um bloco */
-  object-fit: cover; /* Cobre o espaço disponível mantendo a proporção */
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 2/1;
+  width: clamp(300px, 100%, 900px); 
 }
+
+
 
 .conteudo-didatico {
   /*Estilização do conteúdo do cartão*/
@@ -423,7 +424,9 @@ ul, li {
 .mobile-search-bar {
   display: none;
 }
-
+.texto-conteudo-didatico h1{
+  font-size: clamp(20px, 4vw, 29px);
+}
 .texto-conteudo-didatico h2 {
   
   font-size: clamp(19px, 3vw, 28px);
@@ -461,7 +464,8 @@ ul, li {
 
  
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
+    max-width: 2px;
+    width: 100%;
   }
   .search-icon {
     display: flex;
@@ -470,6 +474,8 @@ ul, li {
   
   .mobile-search-trigger {
     display: block;
+    margin: 0px;
+    padding: 0px;
   }
  .nav {
     width: 100%;
@@ -495,6 +501,7 @@ ul, li {
   }
    .right-group{  /* Estilização do grupo de itens que fica à direita do header */
    margin-right: 75px;  /*Alinha o grupo à direita */
+   gap:0%;
    }
    
    
@@ -514,18 +521,17 @@ ul, li {
     padding: 6px 10px;
     font-size: 10px;
   }
-  .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
-  }
+  
   .search-icon {
     display: flex;
     font-size: 20px;
   }
   .mobile-search-trigger {
     display: block;
+    margin: 0% 0% 0% 0%;
   }
   .mobile-search-bar {
-    display: block;
+    display: none;
   }
 
  .nav {
@@ -563,6 +569,16 @@ ul, li {
     width: 12px; ;
     font-size: 24px;
   }
+   .user-actions{
+    margin-right: 14px ; /* Remove o espaçamento padrão */
+    padding: 0px 0px 0px 0px;
+    border: none;
+    gap: 0px 0px 0px 0px; /* Remove o espaçamento padrão */
+  }
+ .minha-area-botao {
+  margin: 0px 0px 0px 0px;
+  margin-left: none; /* Remove o espaçamento padrão */
+}
 
   .search-container {  /* Estilização da barra de pesquisa */
     display: flex;

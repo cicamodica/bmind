@@ -83,7 +83,7 @@ header {
   flex: 1;
   display: flex;
   justify-content: center;
-  min-width: 150px;
+  min-width: 40px;
 }
 
 .right-group {
@@ -343,7 +343,7 @@ ul, li {
 
 }
 
-.imagem-controle {
+.imagem-fundo-PJ {
   /*Estilização da imagem no posicionamento na página*/
   display: flex;
   float: center;
@@ -351,7 +351,7 @@ ul, li {
   margin-right: 60px;
 }
 
-.imagem-controle img {
+.imagem-fundo-PJ img {
   /*Estilização da imagem*/
   position: relative;
   width: clamp(300px, 100%, 900px); /* Tamanho responsivo da imagem */
@@ -383,19 +383,7 @@ ul, li {
   margin-bottom: 30px;
   text-align: justify;
 }
-.imagem-fundo-PJ {
-  /*Estilização da imagem no posicionamento na página*/
-  float: center;
-  margin-top: -30px;
-  margin-right: 60px;
-  align-content: center;
-}
 
-.imagem-fundo-PJ img {
-  /*Estilização da imagem*/
-  position: relative;
-  height: 640px;
-}
 
 
 
@@ -442,7 +430,9 @@ ul, li {
 .mobile-search-bar {
   display: none;
 }
-
+.texto-conteudo-didatico h1{
+  font-size: clamp(20px, 4vw, 29px);
+}
 .texto-conteudo-didatico h2 {
   
   font-size: clamp(19px, 3vw, 28px);
@@ -480,7 +470,8 @@ ul, li {
 
  
   .center-group{ /* Estilização do grupo de itens que fica no centro do header */
-    max-width: 100px;
+    max-width: 2px;
+    width: 100%;
   }
   .search-icon {
     display: flex;
@@ -489,6 +480,8 @@ ul, li {
   
   .mobile-search-trigger {
     display: block;
+    margin: 0px;
+    padding: 0px;
   }
  .nav {
     width: 100%;
@@ -544,7 +537,7 @@ ul, li {
     display: block;
   }
   .mobile-search-bar {
-    display: block;
+    display: none;
   }
 
  .nav {
@@ -604,5 +597,18 @@ ul, li {
   }
 
 }
+@media (min-width: 810px) {
+
+   .user-actions{
+    margin-right: 30px ;
+    margin-left: 0px; 
+    padding: 0px 10px 0px 0px;
+    border: none;
+    gap: 0px 0px 0px 0px; /* Remove o espaçamento padrão */
+   }
+ .minha-area-botao { 
+  margin: 0px 0px 0px 5px;
+  
+}}
 
 
