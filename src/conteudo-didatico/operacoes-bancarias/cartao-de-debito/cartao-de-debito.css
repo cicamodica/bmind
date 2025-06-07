@@ -125,10 +125,10 @@ header {
 #login-nao-logado a { /*Estilização do link de login não logado*/
   color: white;
   text-decoration: none;
-  margin: 0 5px;
+  margin: 0 ;
   font-weight: bold; /* Deixa o texto mais forte */
   /*font-size: 15px;  Tamanho da fonte */
-  font-size: clamp(10px, 2vw, 15px); /* Tamanho da fonte responsivo */
+  font-size: clamp(8px, 1.5vw, 15px); /* Tamanho responsivo da fonte */
 }
 
 .search-container {
@@ -166,7 +166,8 @@ header {
   border: none;
   color: white;
   padding: 8px;
-  font-size: 30px;
+  font-size: clamp(26px, 4vw, 30px); /* Tamanho responsivo do ícone */
+  margin : 0%;
   
  }
  .mobile-search-bar { /* Estilização da barra de pesquisa no mobile */
@@ -181,7 +182,7 @@ header {
   background-color: #024dae; 
   color: white;
   border: none;
-  padding: 10px 15px; 
+  padding: 6px 10px; 
   border-radius: 25px; 
   font-size: 14px;
   font-family: "Poppins", sans-serif; 
@@ -189,7 +190,6 @@ header {
   cursor: pointer;
   text-align: center;
   display: inline-block; 
-  margin-left: 10px; 
   margin-bottom: 0%; /* Para evitar espaçamento extra abaixo do botão */
 }
  
@@ -407,6 +407,7 @@ ul, li {
   display: inline-block;
   margin-right: 10px;
   position: relative;
+  font-size: clamp(6px, 2vw, 14px); /* Tamanho responsivo do ícone */
 }
 
 .list-icon::after {
@@ -422,6 +423,11 @@ ul, li {
 /* Oculta o ícone do mobile por padrão */
 .mobile-search-bar {
   display: none;
+}
+
+.texto-conteudo-didatico h1{
+font-size: clamp(20px,4vw,30px);
+  
 }
 
 .texto-conteudo-didatico h2 {
@@ -503,7 +509,7 @@ ul, li {
   }
   
    #perfil-logado {  /* Estilização do ícone de perfil */
-    margin-left: 10px;/*  Alinha o perfil à direita */
+    /*margin-left: 10px;  Alinha o perfil à direita */
     width: 12px; ;
     font-size: 24px;
   }
@@ -582,4 +588,18 @@ ul, li {
 
   }
 
+}
+@media (max-375px) and (max-width: 480px) {
+  header {
+    width: 100%!important;
+  }
+ .mobile-search-trigger {
+  color: yellow;
+ }
+.right-group{
+  margin-right: auto; /*  Alinha o grupo à direita */
+ }
+ .list-icon::after {
+  font-size: clamp(6px, 2vw, 10px); /* Tamanho responsivo do símbolo de check */
+ }
 }
