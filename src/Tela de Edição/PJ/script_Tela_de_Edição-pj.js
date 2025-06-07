@@ -62,6 +62,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  document.querySelector(".menu-icon").addEventListener("click", function () {
+   const navMenu = document.getElementById("dropdownMenu"); // corrigido
+   const header = document.querySelector(".header");
+
+   navMenu.classList.toggle("show");
+   const menuEstaAberto = navMenu.classList.contains("show"); // corrigido
+
+   if (window.innerWidth < 780) {
+     if (menuEstaAberto) {
+       header.classList.add("fixo-quando-menu-aberto");
+       document.body.classList.add("menu-aberto-margin");
+     } else {
+       header.classList.remove("fixo-quando-menu-aberto");
+       document.body.classList.remove("menu-aberto-margin");
+     }
+    }
+  });
+
   // Função para abrir modais (histórico, entrada, saída, etc.)
   window.openModal = function (tipo) {
     document.getElementById("overlay").style.display = "block";

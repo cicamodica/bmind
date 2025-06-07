@@ -294,24 +294,18 @@ li {
   padding: 0;
 }
 
-/* Dropdown
-principal */
+/* Dropdown principal */
 .dropdown-menu {
-  width:250px; /*
-AUMENTADO de 220 para 250 */
+  width: 250px; /* AUMENTADO de 220 para 250 */
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: absolute;
-  /*
-ADICIONE OU MODIFIQUE ISSO */
-  top:100%; /*
-Começa na parte inferior do header */
-  left:0; /* Alinha à
-esquerda do header */
   display: none;
   z-index: 1000;
+  top: 100%; /* Posiciona abaixo do botão */
+  left: 0;;
 }
 
 .dropdown-menu.show {
@@ -319,14 +313,11 @@ esquerda do header */
 }
 
 .dropdown-menu a {
-  display:
-flex; /* FLEX para alinhar texto e seta */
-  justify-content:
-space-between; /* espaço entre texto e seta */
-  align-items:
-center; /* centraliza verticalmente */
+  display: flex; /* FLEX para alinhar texto e seta */
+  justify-content: space-between; /* espaço entre texto e seta */
+  align-items: center; /* centraliza verticalmente */
 
-  padding:10px 20px;/* MAIS espaço */
+  padding: 10px 20px; /* MAIS espaço */
   color: #333;
   text-decoration: none;
   white-space: nowrap;
@@ -335,22 +326,20 @@ center; /* centraliza verticalmente */
 }
 
 .dropdown-menu a:hover {
-  background-color: #007bff;
+  background-color: #024dae;
   color: #fff;
 }
 
 /* Submenu */
 .has-submenu {
-  position:
-relative;
+  position: relative;
 }
 
 /* SETA via pseudo-elemento */
 .has-submenu > a::after {
   content: "▶";
-  margin-left:10px; /*
-separação do texto */
-  font-size:0.8em;
+  margin-left: 10px; /* separação do texto */
+  font-size: 0.8em;
 }
 
 /* Submenu oculto */
@@ -361,11 +350,10 @@ separação do texto */
   left: 100%;
   background: #fff;
   border: 1px solid #ddd;
-  border-radius:8px;
-  min-width:250px; /*
-AUMENTADO igual ao principal */
+  border-radius: 8px;
+  min-width: 250px; /* AUMENTADO igual ao principal */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index:1001;
+  z-index: 1001;
 }
 
 /* Mostrar submenu ao hover */
@@ -373,17 +361,15 @@ AUMENTADO igual ao principal */
   display: block;
 }
 
-/* Submenu
-itens */
+/* Submenu itens */
 .submenu a {
   padding: 10px 20px;
   border-radius: 6px;
 }
 
 .submenu a:hover {
-  background-color: #007bff;
-  color:
-#fff;
+  background-color: #024dae;
+  color: #fff;
 }
 
 /*
@@ -1057,10 +1043,10 @@ pointer;
     height: 45px;
     margin-left: 10px;
   }
-  .menu-button {
+  /*.menu-button {
     font-size: 20px;
     margin-right: 10px;
-  }
+  }*/
   .user-actions {
     font-size: 30px;
   }
@@ -1245,13 +1231,12 @@ column;
   p {
     font-size: 24px;
   }
-  .dropdown-menu
-{
+  /*.dropdown-menu
+  {
     width:180px;
     /* Mantenha o left:
-0px ou ajuste se necessário */
-    left:0px; /* ou 10px se
-quiser um pequeno espaçamento */
+    0px ou ajuste se necessário 
+   
   }
   .dropdown-menu li {
     padding: 8px;
@@ -1260,8 +1245,8 @@ quiser um pequeno espaçamento */
     width: 180px;
   }
   .dropdown-menu > ul > .has-submenu > .submenu {
-    left: 100%;/* Ajuste para ser 100% do pai, e não 180px fixo */
-  }
+    left: 100%;/* Ajuste para ser 100% do pai, e não 180px fixo 
+  }*/
 
   /* From search results max-width 480px */
   .search-container.search-desktop {
@@ -1366,5 +1351,116 @@ quiser um pequeno espaçamento */
   }
   .header-icon {
     font-size: 28px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .submenu {
+    display: none;
+    background: #f9f9f9;
+  }
+
+  .has-submenu > a::after {
+    content: " ▼";
+    float: right;
+    font-size: 0.9rem;
+  }
+
+  .has-submenu.open > .submenu {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  /*ADICIONANDO MEDIA QUERIES PARA O MENU NO MOBILE*/
+
+  .header.fixo-quando-menu-aberto {
+    /*Mantém o header fixo quando abre o menu*/
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  /* Adiciona margem para não sobrepor conteúdo */
+  body.menu-aberto-margin {
+    margin-top: 70px !important; /* Ajuste da margem superior do menu mobile para mostrar o header (mesmo tamanho do header > 70px) */
+  }
+
+  /*Responsividade do submenu*/
+  .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+  }
+
+  .submenu.show {
+    display: flex;
+  }
+
+  .has-submenu.open > a {
+    background-color: #024dae;
+    color: white;
+    font-weight: bold;
+  }
+
+  /*Responsividade do dropdown menu*/
+  .dropdown-menu {
+    position: fixed;
+    top: 70px; /* altura exata do header */
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-sizing: border-box;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 5px;
+    position: static; /* <<< ESSENCIAL: evita flutuação lateral */
+    background: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .dropdown-menu .submenu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .has-submenu > a::after {
+    content: "▼";
+    font-size: 0.8em;
+    margin-left: auto;
+  }
+
+  .dropdown-menu .has-submenu.open > a::after {
+    content: "▲";
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 }
