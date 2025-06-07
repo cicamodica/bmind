@@ -1,122 +1,133 @@
-// Recupera o identificador do usuário logado (e-mail, por exemplo)
+/// Recupera o identificador do usuário logado (e-mail, por exemplo)
 const emailUsuario = localStorage.getItem("usuarioLogado");
 
-// Aguarda o carregamento completo da página
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Lógica de Boas-Vindas ---
-    const boasVindas = document.getElementById("boas-vindas");
-    
+  // --- Boas-Vindas ---
+  const boasVindas = document.getElementById("boas-vindas");
 
-    if (emailUsuario) {
-        const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-        if (dadosUsuario && dadosUsuario.nome) {
-            boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
-        } else {
-            boasVindas.textContent = "Olá!"; // Caso o usuário exista, mas não tenha nome no localStorage
-        }
+  if (emailUsuario) {
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+    if (dadosUsuario && dadosUsuario.nome) {
+      boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
     } else {
-        boasVindas.textContent = "Bem-vindo!"; // Se ninguém estiver logado
-        // Opcional: redirecionar para a página de login se não houver usuário logado
-        // window.location.href = "/src/login/login.html";
+      boasVindas.textContent = "Olá!";
     }
+  } else {
+    boasVindas.textContent = "Bem-vindo!";
+  }
 
-    // --- Seletores para o Menu e Busca ---
-    const menuButton = document.getElementById('menuButton');
-    const dropdownMenu = document.getElementById('dropdownMenu');
-    const mobileSearchIcon = document.querySelector('.search-mobile-icon');
-    const mobileSearchBar = document.getElementById('mobileSearchBar');
-    const hasSubmenuLinks = document.querySelectorAll('li.has-submenu > a');
+  // --- Seletores ---
+  const menuButton = document.querySelector('.menu-toggle'); // Botão do menu (hamburger)
+  const dropdownMenu = document.getElementById('dropdownMenu'); // Menu dropdown principal
+  const mobileSearchIcon = document.querySelector('.search-mobile-icon'); // Ícone da lupa
+  const mobileSearchBar = document.getElementById('mobileSearchBar'); // Barra de busca mobile
+  const hasSubmenuLinks = document.querySelectorAll('li.has-submenu > a'); // Links que abrem submenus
 
-    // --- Funcionalidade do botão de menu principal ---
-    if (menuButton && dropdownMenu) {
-        menuButton.addEventListener('click', () => {
-            dropdownMenu.classList.toggle('show');
-            // Fechar a barra de busca mobile se o menu abrir
-            if (mobileSearchBar.classList.contains('show-mobile-search-bar')) { // Verifica se a barra está aberta
-                mobileSearchBar.classList.remove('show-mobile-search-bar'); // E fecha
-            }
-        });
-    }
+  // --- Toggle Menu Principal ---
+  if (menuButton && dropdownMenu) {
+    menuButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownMenu.classList.toggle('show');
+      if (mobileSearchBar?.classList.contains('show-mobile-search-bar')) {
+        mobileSearchBar.classList.remove('show-mobile-search-bar');
+      }
+    });
+  }
 
-    // --- Funcionalidade do ícone de busca mobile ---
-    if (mobileSearchIcon && mobileSearchBar) {
-        mobileSearchIcon.addEventListener('click', () => {
-            // Alternamos uma classe CSS para controlar a visibilidade
-            mobileSearchBar.classList.toggle('show-mobile-search-bar');
-            // Fechar o menu se a barra de busca abrir
-            if (dropdownMenu.classList.contains('show')) { // Verifica se o menu está aberto
-                dropdownMenu.classList.remove('show'); // E fecha
-            }
-        });
-
-        // Este listener de resize é importante para esconder a barra de busca mobile
-        // se a tela for redimensionada para desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 767) { // Usar 767px ou 768px conforme sua media query CSS
-                mobileSearchBar.classList.remove('show-mobile-search-bar');
-            }
-        });
-    }
-
-    // --- Fechar menu/barra de busca ao clicar fora ---
-    document.addEventListener('click', (event) => {
-        // Fechar dropdownMenu
-        if (dropdownMenu && !dropdownMenu.contains(event.target) && !menuButton.contains(event.target)) {
-            dropdownMenu.classList.remove('show');
-            // Opcional: fechar todos os submenus quando o menu principal fecha
-            hasSubmenuLinks.forEach(link => {
-                const submenu = link.nextElementSibling;
-                if (submenu && submenu.classList.contains('submenu')) {
-                    submenu.classList.remove('open-submenu');
-                    link.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-        // Fechar mobileSearchBar
-        if (mobileSearchBar && !mobileSearchBar.contains(event.target) && !mobileSearchIcon.contains(event.target)) {
-            mobileSearchBar.classList.remove('show-mobile-search-bar');
-        }
+  // --- Toggle Barra de Busca Mobile ---
+  if (mobileSearchIcon && mobileSearchBar) {
+    mobileSearchIcon.addEventListener('click', () => {
+      mobileSearchBar.classList.toggle('show-mobile-search-bar');
+      dropdownMenu?.classList.remove('show');
     });
 
-    // --- Funcionalidade para submenus (mobile) ---
-    hasSubmenuLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            // Aplica apenas em telas menores para o comportamento de clique no submenu
-            if (window.innerWidth <= 767) { // Mantenha 767px para consistência com o CSS
-                e.preventDefault(); // Previne a navegação do link
-
-                const submenu = link.nextElementSibling;
-
-                if (submenu && submenu.classList.contains('submenu')) {
-                    const isExpanded = link.getAttribute('aria-expanded') === 'true';
-
-                    // Fecha outros submenus abertos no MESMO nível
-                    // Importante: .parentElement.parentNode para pegar o UL pai do LI atual
-                    link.parentElement.parentNode.querySelectorAll(':scope > li > .submenu.open-submenu').forEach(otherSub => {
-                        if (otherSub !== submenu) {
-                            otherSub.classList.remove('open-submenu');
-                            otherSub.previousElementSibling.setAttribute('aria-expanded', 'false');
-                        }
-                    });
-
-                    // Alterna a classe 'open-submenu' no <ul> do submenu
-                    submenu.classList.toggle('open-submenu');
-                    // Alterna o atributo aria-expanded no link
-                    link.setAttribute('aria-expanded', !isExpanded);
-                }
-            }
-        });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 767) {
+        mobileSearchBar.classList.remove('show-mobile-search-bar');
+      }
     });
+  }
+
+  // --- Fechar menus ao clicar fora ---
+  document.addEventListener('click', (event) => {
+    // Verifica se o clique foi fora do dropdownMenu e fora do menuButton
+    if (dropdownMenu && !dropdownMenu.contains(event.target) && !menuButton.contains(event.target)) {
+      dropdownMenu.classList.remove('show');
+      closeAllSubmenus(); // Fecha todos os submenus abertos
+    }
+
+    // Verifica se o clique foi fora da barra de busca mobile e fora do ícone da lupa
+    if (mobileSearchBar && !mobileSearchBar.contains(event.target) && !mobileSearchIcon.contains(event.target)) {
+      mobileSearchBar.classList.remove('show-mobile-search-bar');
+    }
+  });
+
+  // --- Submenu Mobile ---
+  hasSubmenuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const submenu = link.nextElementSibling;
+
+      if (submenu && submenu.classList.contains('submenu')) {
+        e.preventDefault(); // Impede o comportamento padrão do link (navegar para '#')
+        e.stopPropagation(); //Impede que o clique se propague para o document
+
+        const isMobile = window.innerWidth <= 1120; // Altere para 780 aqui;
+        const isExpanded = link.getAttribute('aria-expanded') === 'true';
+
+        // Lógica de abertura/fechamento do submenu para mobile
+        if (isMobile) {
+          closeSiblingsSubmenus(link); // Fecha outros submenus irmãos para evitar múltiplos abertos
+          submenu.classList.toggle('open-submenu'); // Alterna a classe que mostra/esconde o submenu
+          link.setAttribute('aria-expanded', !isExpanded); // Atualiza o atributo ARIA
+        }
+        
+      }
+    });
+
+    // Impedir que cliques DENTRO do submenu se propaguem e fechem o menu principal.
+    
+    const submenuContent = link.nextElementSibling;
+    if (submenuContent && submenuContent.classList.contains('submenu')) {
+      submenuContent.addEventListener('click', (e) => {
+        e.stopPropagation(); // Impede que um clique dentro do submenu feche o menu principal
+      });
+    }
+  });
+
+  // --- Função: Fecha todos os submenus ---
+  function closeAllSubmenus() {
+    document.querySelectorAll('.submenu.open-submenu').forEach(submenu => {
+      submenu.classList.remove('open-submenu');
+      submenu.previousElementSibling?.setAttribute('aria-expanded', 'false'); // Define aria-expanded como false
+    });
+  }
+
+  // --- Função: Fecha submenus irmãos (mesmo nível) ---
+  function closeSiblingsSubmenus(link) {
+    const parentUl = link.closest('ul'); // Encontra o <ul> pai do link clicado
+    if (parentUl) {
+      // Seleciona apenas os submenus abertos que são irmãos do submenu atual (no mesmo <ul>)
+      parentUl.querySelectorAll(':scope > li > .submenu.open-submenu').forEach(openSub => {
+        // Garante que não feche o submenu que acabou de ser clicado para abrir
+        if (openSub.previousElementSibling !== link) {
+          openSub.classList.remove('open-submenu');
+          openSub.previousElementSibling?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  }
 });
 
-// Função para busca mobile
+
+// --- Função para busca mobile ---
 function buscarMobile() {
-  const termo = document.getElementById('mobileSearchInput').value.trim();
-  if (termo !== "") {
-    const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
-  }
+    const termo = document.getElementById('mobileSearchInput').value.trim();
+    if (termo !== "") {
+        const encodedTermo = encodeURIComponent(termo);
+        window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    }
 }
+
 
 function redirecionarCadastro() {
   const usuarioLogado = localStorage.getItem("usuarioLogado");
@@ -213,57 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-
-
-/*/// Função para registrar um conteúdo como recentemente visto
-function registrarConteudoVisto(nome, url, imagem) {
-  let vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
-
-  // Remove se já existir (baseado na URL para garantir unicidade)
-  vistos = vistos.filter(item => item.url !== url);
-
-  // Adiciona no topo da lista
-  const conteudo = { nome, url, imagem };
-  vistos.unshift(conteudo);
-
-  // Mantém apenas os 3 mais recentes
-  if (vistos.length > 3) {
-    vistos = vistos.slice(0, 3);
-  }
-
-  localStorage.setItem("vistosRecentemente", JSON.stringify(vistos));
-} 
-
-// Função para exibir os conteúdos vistos recentemente
- /*function exibirVistosRecentemente() {
-  const lista = document.getElementById("lista-vistos-recentemente");
-  if (!lista) return;  // Evita erro se o elemento não existir na página
-
-  const vistos = JSON.parse(localStorage.getItem("vistosRecentemente")) || [];
-  lista.innerHTML = "";
-
-  vistos.forEach(conteudo => {
-    const li = document.createElement("li");
-    li.classList.add("item-visto");
-
-    const link = document.createElement("a");
-    link.href = conteudo.url;
-    link.classList.add("link-visto");
-
-    const img = document.createElement("img");
-    img.src = conteudo.imagem;
-    img.alt = conteudo.nome;
-
-    const texto = document.createElement("p");
-    texto.textContent = conteudo.nome;
-
-    link.appendChild(img);
-    link.appendChild(texto);
-    li.appendChild(link);
-    lista.appendChild(li);
-  }); 
-}*/
 
 
 function registrarConteudoVisto(nome, url, imagem) {

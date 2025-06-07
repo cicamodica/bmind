@@ -37,6 +37,12 @@
           </div>
         </div>
         <div class="right-group">
+
+
+             <button class="mobile-search-trigger" id="mobileSearchTrigger" aria-label="Abrir pesquisa">
+               <i class="fa-solid fa-magnifying-glass"></i>  <!--mover para a o grupo da direita-->
+             </button>
+
             <div class="user-actions" id="login-nao-logado">
                <a href="/src/login/login.html">Fazer login</a>
                <span>|</span>
@@ -255,6 +261,12 @@
           </li>
         </ul>
       </nav>
+           <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+              <button type="button" onclick="buscarMobile()" class="mobile-buscar-btn-estilizado">
+              Buscar
+             </button>
+</div>
     </div> 
 
     <div class="nav">
@@ -276,9 +288,9 @@
         <div class="texto-conteudo-didatico">
 
          
-          
+            <h1>O que é Empréstimo?</h1>
           <p class="introducao">
-             <h1>O que é Empréstimo?</h1>
+           
 
            O empréstimo é uma operação financeira onde uma instituição (como um banco ou financeira)
             disponibiliza uma quantia em dinheiro para uma pessoa física ou jurídica, mediante o compromisso 

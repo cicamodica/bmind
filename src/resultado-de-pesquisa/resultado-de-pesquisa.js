@@ -489,6 +489,13 @@ const conteudos = [
       mobileSearchBar.style.display === 'block' ? 'none' : 'block';
   });
 
+// Garante que a barra mobile desapareça ao aumentar a largura da tela
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 861) {
+    mobileSearchBar.style.display = 'none';
+  }
+});
+
  function buscarMobile() {
   const termo = document.getElementById('mobileSearchInput').value.trim();
   if (termo !== "") {

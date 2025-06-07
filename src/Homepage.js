@@ -36,6 +36,9 @@ function atualizarInterfaceUsuario() {
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
       itensPJ.forEach(el => el.style.display = 'block');
     }
+    if (userArea) {
+  userArea.style.display = "block";
+}
   } else {
     // Usuário não logado ou com dados inválidos
     userActionsNaoLogado.style.display = "flex";
@@ -43,20 +46,26 @@ function atualizarInterfaceUsuario() {
   }
 }
 
-// verifica  se usuario esta logado para apresentar botao de minha area 
+// mobile-search.js
 
-document.addEventListener('DOMContentLoaded', () => {
-  const botaoMinhaArea = document.querySelector(".minha-area-botao");
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
+const mobileSearchIcon = document.querySelector('.search-mobile-icon');
+const mobileSearchBar = document.getElementById('mobileSearchBar');
 
-  if (botaoMinhaArea) {
-    if (usuarioLogado) {
-      botaoMinhaArea.style.display = "inline-block"; 
-    } else {
-      botaoMinhaArea.style.display = "none";
-    }
+if (mobileSearchIcon && mobileSearchBar) {
+  mobileSearchIcon.addEventListener('click', () => {
+    mobileSearchBar.style.display = 
+      mobileSearchBar.style.display === 'block' ? 'none' : 'block';
+  });
+}
+
+function buscarMobile() {
+  const termo = document.getElementById('mobileSearchInput').value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
-});
+}
+
 
 
 // Executa quando a página terminar de carregar
@@ -94,7 +103,28 @@ document
     }
   });
 
+
 //Inicio funcionalidades Menu
+
+//Início das funções de menu (ALTERAÇÃO DO EVENTLISTENER PARA ATENDER AO MENU NO MOBILE (A PARTIR DE 768PX))
+document.querySelector(".menu-icon").addEventListener("click", function () {
+  const navMenu = document.getElementById("dropdownMenu"); // corrigido
+  const header = document.querySelector(".header");
+
+  navMenu.classList.toggle("show");
+  const menuEstaAberto = navMenu.classList.contains("show"); // corrigido
+
+  if (window.innerWidth < 780) {
+    if (menuEstaAberto) {
+      header.classList.add("fixo-quando-menu-aberto");
+      document.body.classList.add("menu-aberto-margin");
+    } else {
+      header.classList.remove("fixo-quando-menu-aberto");
+      document.body.classList.remove("menu-aberto-margin");
+    }
+  }
+});
+
 function toggleMenu() {
   const menu = document.getElementById("dropdownMenu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
@@ -329,3 +359,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Fim funcionalidades das abas de conteudo
+
+// ADICIONANDO FUNCIONALIDADE AO SUBMENU DO MENU NO MOBILE (EXCLUSIVO PARA TELA ABAIXO DE 768PX)
+  if (window.innerWidth <= 768) {
+    const submenuToggles = document.querySelectorAll(".has-submenu > a");
+
+    submenuToggles.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const parent = this.parentElement;
+        const submenu = parent.querySelector(".submenu");
+
+        parent.classList.toggle("open");
+        if (submenu) submenu.classList.toggle("show");
+      });
+    });
+  };
+
+
+

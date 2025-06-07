@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="/src/Tela de Edição/PF/style_Tela_de_Edição-pf.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/src/Tela de Edição/PF/script_Tela_de_Edição-pf.js" defer></script>
   </head>
@@ -22,6 +23,7 @@
             <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
           </div>
         </div>
+<<<<<<< HEAD
 
         <div class="center-group">
           <div class="search-container">
@@ -249,12 +251,170 @@
            </li>
         </ul>
       </nav>
+=======
+
+        <div class="center-group">
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            />
+            <a class="search-button" id="search-button" href="#">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="right-group">
+          <div class="user-area">
+            <a href="/src/Main/Main.html" class="minha-area-botao">Minha Área</a>
+          </div>
+          <div class="user-actions" id="perfil-logado">
+            <a href="/src/perfil/perfil.html">
+              <i class="fa-regular fa-circle-user"></i>
+            </a>
+          </div>
+        </div>
+
+        <nav class="dropdown-menu" id="dropdownMenu">
+          <ul id="menu">
+            <li class="item-logged">
+              <a class="perfil" href="/src/perfil/perfil.html">Perfil</a>
+            </li>
+            <li class="item-logged">
+              <a href="/src/Main/Main.html">Minha Área</a>
+            </li>
+            <li class="item-logged">
+              <a href="#" onclick="redirecionarCadastro()">Meu Dashboard</a>
+            </li>
+            <li class="has-submenu">
+              <a href="#">Conteúdo Didático</a>
+              <ul class="submenu">
+                <li class="has-submenu item-pf">
+                  <a href="#">Finanças Pessoais</a>
+                  <ul class="submenu">
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                        onclick="registrarConteudoVisto('Planejamento Financeiro', '/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html', '/src/imagens/PlanejamentoFinanceiro.jpg')"
+                      >
+                        Planejamento Financeiro
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                        onclick="registrarConteudoVisto('Orçamento Doméstico', '/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html', '/src/imagens/OrcamentoDomestico.jpg')"
+                      >
+                        Orçamento Doméstico
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                        onclick="registrarConteudoVisto('Controle de Dívidas', '/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html', '/src/imagens/ControleDividas.jpg')"
+                      >
+                        Controle de Dívidas
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="has-submenu">
+                  <a href="#">Operações Bancárias</a>
+                  <ul class="submenu">
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html"
+                        onclick="registrarConteudoVisto('Cartão de Débito', '/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html', '/src/imagens/CartaoDeDebito.jpg')"
+                      >
+                        Cartão de Débito
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html"
+                        onclick="registrarConteudoVisto('Cartão de Crédito', '/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html', '/src/imagens/CartaodeCredito.png')"
+                      >
+                        Cartão de Crédito
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html"
+                        onclick="registrarConteudoVisto('Empréstimo', '/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html', '/src/imagens/Emprestimos.jpg')"
+                      >
+                        Empréstimos
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html"
+                        onclick="registrarConteudoVisto('Financiamento', '/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html', '/src/imagens/Financiamento.webp')"
+                      >
+                        Financiamento
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+                        onclick="registrarConteudoVisto('Taxas e Tarifas', '/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html', '/src/imagens/TaxasTarifas.jpg')"
+                      >
+                        Taxas e Tarifas
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li class="has-submenu item-pf">
+                  <a href="#">Investimentos Pessoais</a>
+                  <ul class="submenu">
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                        onclick="registrarConteudoVisto('Renda Fixa', '/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html', '/src/imagens/RendaFixaPF.jpg')"
+                      >
+                        Renda Fixa
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                        onclick="registrarConteudoVisto('Renda Variável', '/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html', '/src/imagens/RendaVariavelPFmenor.jpg')"
+                      >
+                        Renda Variável
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
+                        onclick="registrarConteudoVisto('Fundo de Investimentos', '/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html', '/src/imagens/FundoInvestimentosPF.jpg')"
+                      >
+                        Fundo de Investimentos
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <li class="item-logged">
+              <a href="/src/Feedback/feedback.html">FAQ</a>
+            </li>
+            <li class="item-logged">
+              <a href="#" id="botao-sair">Sair</a>
+            </li>
+          </ul>
+        </nav>
+>>>>>>> b7a548ee03cc76df9a55dc604e772f6da1a872e1
       </header>
     </div>
 
     
     <main class="main-content">
-      <p id="dashboard-titulo">Dashboard de Fulano</p>
+      <p id="dashboard-titulo"></p>
 
       <div class="filtros-dashboard">
         <div class="seletor-filtro">
@@ -305,13 +465,17 @@
         <h3>Atualizar</h3>
 
         <div class="botoes-acao">
-          <button class="Entradas" onclick="openModal('entradas')">Entradas</button>
+          <button class="Entradas" onclick="openModal('entradas')">
+            Entradas
+          </button>
 
           <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
 
-          <button class="Editar" onclick="openModal('editar')">Editar</button>
+          <button class="Editar" onclick="openEditModal()">Editar Dados</button>
 
-          <button class="Remover" onclick="openRemoveModal()">Remover Dados</button>
+          <button class="Remover" onclick="openRemoveModal()">
+            Remover Dados
+          </button>
 
           <input
             type="submit"
@@ -326,6 +490,8 @@
     <div class="overlay" id="overlay" onclick="closeModal()"></div>
 
     <div class="modal" id="modal-entradas">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+
       <h2>Atualização de Entrada</h2>
       <label>DATA</label><br />
       <input class="data" type="date" id="entrada-data" /><br />
@@ -359,10 +525,7 @@
       />
       <label for="entrada-recorrente-nao">NÃO</label><br />
 
-      <div
-        id="entrada-opcoes-recorrentes"
-        style="display: none; margin-top: 10px"
-      >
+      <div id="entrada-opcoes-recorrentes" style="display: none; margin-top: 10px">
         <label for="entrada-frequencia">Frequência:</label><br />
         <select id="entrada-frequencia">
           <option value="mensal">Mensal</option>
@@ -370,17 +533,20 @@
           <option value="diaria">Diária</option>
           <option value="personalizada">Personalizada</option>
         </select>
-
-        <label for="entrada-encerramento">Data de Encerramento:</label><br />
-         <input type="date" id="entrada-encerramento" /><br />
+        <br />
+        <label for="entrada-encerramento">Data de Encerramento:</label>
+        <input type="date" id="entrada-encerramento" class="data" /><br />
       </div>
 
       <button onclick="salvarEntrada()">Salvar</button>
     </div>
     <div class="modal" id="modal-saidas">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+
       <h2>Atualização de Saída</h2>
       <label>DATA</label><br />
       <input class="data" type="date" id="saida-data" /><br />
+
       <label>VALOR DE SAÍDA</label><br />
       <input class="saida" type="number" id="saida-valor" /><br />
 
@@ -396,6 +562,7 @@
         <option value="contas">Contas</option>
         <option value="outros_saida">Outros</option>
       </select><br />
+
       <label>DESCRIÇÃO (Opcional)</label><br />
       <input class="descricao" type="text" id="saida-descricao" /><br />
 
@@ -416,10 +583,7 @@
       />
       <label for="saida-recorrente-nao">NÃO</label><br />
 
-      <div
-        id="saida-opcoes-recorrentes"
-        style="display: none; margin-top: 10px"
-      >
+      <div id="saida-opcoes-recorrentes" style="display: none; margin-top: 10px">
         <label for="saida-frequencia">Frequência:</label><br />
         <select id="saida-frequencia">
           <option value="mensal">Mensal</option>
@@ -427,12 +591,17 @@
           <option value="diaria">Diária</option>
           <option value="personalizada">Personalizada</option>
         </select>
+        <br />
+        <label for="saida-encerramento">Data de Encerramento:</label>
+        <input type="date" id="saida-encerramento" class="data" /><br />
       </div>
 
       <button onclick="salvarSaida()">Salvar</button>
     </div>
 
     <div class="modal" id="modal-remover">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+
       <h2>Remover Dados</h2>
       <label for="tipo-remocao">Tipo de Dados:</label><br />
       <select id="tipo-remocao" onchange="loadTransactionsForRemoval()">
@@ -440,24 +609,80 @@
         <option value="entradas">Entrada</option>
         <option value="saidas">Saída</option>
       </select><br /><br />
+<<<<<<< HEAD
       <div id="lista-transacoes-remocao" class="lista-transacoes-remocao">
       </div>
+=======
+      <div id="lista-transacoes-remocao" class="lista-transacoes-remocao"></div>
+
+>>>>>>> b7a548ee03cc76df9a55dc604e772f6da1a872e1
       <button onclick="confirmRemoveSelected()">Remover</button>
     </div>
 
-    <!--   MODAL EDITAR    -->
-    <di class="modal" id="modal-editar">
-        <h2>Editar Transação</h2>  
-        <label for="tipo-edicao">TIPO DE TRANSAÇÃO</label><br />
-        <select id="tipo-edicao" onchange="loadTransactionsForEdit()">
-          <option value="">Selecione</option>
-          <option value="entradas">Entradas</option>
-          <option value="saidas">Saídas</option>
-        </select><br />
+    <div class="modal" id="modal-editar">
+      <span class="close-button" onclick="closeModal()">&times;</span>
 
-        <div id="lista-transacoes-edicao" class="transaction-selection-list"> 
+      <h2 id="edit-modal-title">Editar Transação</h2>
+
+      <label for="tipo-edicao" id="edit-type-label">TIPO DE TRANSAÇÃO</label
+      ><br />
+      <select id="tipo-edicao" onchange="loadTransactionsForEdit()">
+        <option value="">Selecione</option>
+        <option value="entradas">Entradas</option>
+        <option value="saidas">Saídas</option>
+      </select><br />
+
+      <div id="lista-transacoes-edicao" class="transaction-selection-list"></div>
+
+      <div id="form-edicao" style="display: none">
+        <h3>Detalhes da Transação</h3>
+        <input type="hidden" id="edit-id" />
+        <input type="hidden" id="edit-tipo" />
+
+        <label for="edit-data">DATA</label><br />
+        <input class="data" type="date" id="edit-data" /><br />
+
+        <label for="edit-valor">Valor</label><br />
+        <input class="entrada" type="number" id="edit-valor" step="0.01" /><br />
+
+        <label for="edit-categoria">Categoria:</label><br />
+        <select id="edit-categoria"> </select><br />
+
+        <label for="edit-descricao">Descrição:</label><br />
+        <input class="descricao" type="text" id="edit-descricao" /><br />
+
+        <label>Recorrente:</label><br />
+        <input
+          type="radio"
+          id="edit-recorrente-sim"
+          name="edit-recorrente"
+          value="sim"
+        />
+        <label for="edit-recorrente-sim">SIM</label>
+        <input
+          type="radio"
+          id="edit-recorrente-nao"
+          name="edit-recorrente"
+          value="nao"
+          checked
+        />
+
+        <label for="edit-recorrente-nao">NÃO</label><br />
+
+        <div id="edit-opcoes-recorrentes" style="display: none; margin-top: 10px">
+          <label for="edit-frequencia">Frequência:</label><br />
+          <select id="edit-frequencia">
+            <option value="mensal">Mensal</option>
+            <option value="semanal">Semanal</option>
+            <option value="diaria">Diária</option>
+            <option value="personalizada">Personalizada</option>
+          </select>
+          <br />
+          <label for="edit-encerramento">Data de Encerramento:</label>
+          <input type="date" id="edit-encerramento" class="data" /><br />
         </div>
 
+<<<<<<< HEAD
         <div id="form-edicao" style="display: none">
           <h3>Detalhes da Transação</h3>
           <input type="hidden" id="edit-id" />
@@ -515,8 +740,15 @@
           <button onclick="saveEditedTransaction()">Salvar</button>
         </div>
       </div>
+=======
+        <button onclick="saveEditedTransaction()">Salvar</button>
+      </div>
+    </div>
+>>>>>>> b7a548ee03cc76df9a55dc604e772f6da1a872e1
 
     <div class="modal" id="modal-historico">
+      <span class="close-button" onclick="closeModal()">&times;</span>
+
       <h2>Histórico de Transações</h2>
       <div class="seletor-filtro">
         <label for="historico-ano-filtro">Filtrar por Ano:</label>

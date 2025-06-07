@@ -389,3 +389,103 @@ textarea {
   border: 2px solid #024dae;
   cursor: pointer;
 }
+
+
+/* -------------------- TABLETS E CELULARES MAIORES (300px a 768px) -------------------- */
+@media (min-width: 300px) and (max-width: 768px) {
+  header {
+    flex-direction: row;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .left-group, .right-group {
+    width: auto;
+    justify-content: space-between;
+  }
+
+  .center-group { 
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .search-container { 
+    width: 80%; 
+    margin: 0 auto;
+  }
+
+  .feedback-container {
+    max-width: 90%;
+    padding: 20px;
+    margin: 20px auto;
+  } 
+
+  .search-bar {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .search-icon {
+    right: 20px;
+  }
+
+  .perfil-container {
+    width: 90%;
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .save-btn, .cancel-btn {
+    width: auto;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  textarea {
+    width: auto;
+    font-size: 16px;
+    height: 120px;
+  }
+
+  .upload-label {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .imagem-perfil img {
+    width: 120px;
+    height: 120px;
+  }
+
+}
+
+/* -------------------- TELAS MAIORES QUE 769px -------------------- */
+
+@media (min-width: 769px) {
+  /* Estilos para telas maiores que 769px */
+  header {
+    padding: 10px 40px; 
+  }
+
+  .search-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .search-bar {
+    font-size: 18px;
+    padding: 12px 30px;
+  }
+
+  .perfil-container {
+    width: 60%;
+    padding: 30px;
+    margin: 30px auto;
+  }
+
+  .save-btn, .cancel-btn {
+    width: auto;
+    padding: 12px 20px;
+  }
+}

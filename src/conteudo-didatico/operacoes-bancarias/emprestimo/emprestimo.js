@@ -183,3 +183,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const mobileSearchTrigger = document.getElementById('mobileSearchTrigger');
+  const mobileSearchBar = document.getElementById('mobileSearchBar');
+  const mobileSearchInput = document.getElementById('mobileSearchInput');
+
+  if (mobileSearchTrigger && mobileSearchBar){
+   
+    mobileSearchTrigger.addEventListener('click', function () {
+      mobileSearchBar.classList.toggle('active');
+     
+      if (mobileSearchBar.classList.contains('active')) {
+        mobileSearchInput.focus();
+      } else {
+        console.warn("barra de pesquisa não está ativa");
+      }
+
+      
+    });
+   
+  }
+});

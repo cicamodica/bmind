@@ -1,8 +1,9 @@
 /*
-  Importação de Fontes
-  Define as faces de fonte personalizadas para "Poppins" com vários pesos,
-  carregando-as de arquivos locais.
-*/
+ * Importação de Fontes
+ * Define as faces de fonte personalizadas
+para "Poppins" com vários pesos,
+ * carregando-as de arquivos locais.
+ */
 @font-face {
   font-family: "Poppins";
   src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
@@ -46,10 +47,11 @@
 }
 
 /*
-  Estilos Globais do Corpo
-  Define a fonte padrão, cor de fundo e layout básico para
-  toda a página.
-*/
+ * Estilos Globais do Corpo
+ * Define a fonte padrão, cor de fundo e
+layout básico para
+ * toda a página.
+ */
 body {
   font-family: "Poppins", sans-serif;
   background-color: #fff;
@@ -59,26 +61,33 @@ body {
 }
 
 /*
-  Estilos do Cabeçalho
-  Define o layout, fundo, posicionamento e dimensionamento do cabeçalho da página.
-*/
+ * Estilos do Cabeçalho
+ * Define o layout, fundo, posicionamento e
+dimensionamento do cabeçalho da página.
+ */
 header {
-  /*Estilização da classe pai .NAV (barra superior)*/
+  /*Estilização da
+classe pai .NAV (barra superior)*/
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;
   height: 50px;
-  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
-  margin-bottom: -50px;
-  /* ADICIONE ISSO para que os elementos absolutos dentro do header se posicionem em relação a ele */
-  position: relative; /* FUNDAMENTAL para o posicionamento do dropdown */
+  background: linear-gradient(to right,
+#5bc5cc 0%, #024dae 100%);
+  margin-bottom:-50px;
+  /* ADICIONE ISSO
+para que os elementos absolutos dentro do header se posicionem em relação a ele
+*/
+  position:
+relative; /* FUNDAMENTAL para o posicionamento do dropdown */
 }
 
 /*
-  Estilos de Agrupamento do Cabeçalho
-  Estilos para contêineres flexíveis dentro do cabeçalho para organização do layout.
-*/
+ * Estilos de Agrupamento do Cabeçalho
+ * Estilos para contêineres flexíveis dentro
+do cabeçalho para organização do layout.
+ */
 .left-group,
 .center-group,
 .right-group {
@@ -87,23 +96,23 @@ header {
 }
 
 /*
-  Espaçamento do Grupo Esquerdo do Cabeçalho
-*/
+ * Espaçamento do Grupo Esquerdo do Cabeçalho
+ */
 .left-group {
-  gap: 10px;
+  gap:10px;
 }
 
 /*
-  Layout do Grupo Central do Cabeçalho
-*/
+ * Layout do Grupo Central do Cabeçalho
+ */
 .center-group {
   flex: 1;
   justify-content: center;
 }
 
 /*
-  Estilos dos Ícones de Ações do Usuário
-*/
+ * Estilos dos Ícones de Ações do Usuário
+ */
 /* Ícone de perfil */
 .user-actions {
   display: flex;
@@ -115,16 +124,27 @@ header {
 }
 
 /* Botão 'Minha Área' */
-.minha-area-botao {
-  display: inline-block; /* Para permitir padding e margin corretamente */
-  margin: 4px; /* Espaço externo ao redor do botão */
-  padding: 6px 12px; /* Espaço interno (em cima/baixo e lados) */
-  background-color: #ffffff22; /* Cor de fundo (semi-transparente aqui) */
-  color: white; /* Cor do texto */
-  border: 1px solid white; /* Borda branca */
-  border-radius: 6px; /* Cantos arredondados */
-  text-decoration: none; /* Tira o sublinhado */
-  font-weight: bold; /* Deixa o texto mais forte */
+.minha-area-botao
+{
+  display:
+inline-block; /* Para permitir padding e margin
+corretamente */
+  margin:4px; /* Espaço externo
+ao redor do botão */
+  padding:6px 12px;/* Espaço interno (em cima/baixo e lados) */
+  background-color:
+#ffffff22; /* Cor de fundo (semi-transparente
+aqui) */
+  color:
+white; /* Cor do texto */
+  border:1px solid white; /*
+Borda branca */
+  border-radius:6px; /* Cantos
+arredondados */
+  text-decoration:
+none; /* Tira o sublinhado */
+  font-weight:
+bold; /* Deixa o texto mais forte */
   font-size: 10px;
 }
 
@@ -138,16 +158,21 @@ header {
   color: white;
   text-decoration: none;
   margin: 0 5px;
-  font-weight: bold; /* Deixa o texto mais forte */
-  font-size: 15px; /* Tamanho da fonte */
+  font-weight:
+bold; /* Deixa o texto mais forte */
+  font-size:15px; /*
+Tamanho da fonte */
 }
 
 /*
-  Estilos do Contêiner de Busca
-  Posiciona e dimensiona o contêiner da barra de busca.
-*/
-.search-container {
-  /*Estilização da barra de pesquisa*/
+ * Estilos do Contêiner de Busca
+ * Posiciona e dimensiona o contêiner da barra
+de busca.
+ */
+.search-container
+{
+  /*Estilização da
+barra de pesquisa*/
   position: relative;
   display: flex;
   width: 900px;
@@ -156,10 +181,11 @@ header {
 }
 
 /*
-  Estilos da Barra de Busca
-*/
+ * Estilos da Barra de Busca
+ */
 .search-bar {
-  /*Estilização da barra de pesquisa*/
+  /*Estilização da
+barra de pesquisa*/
   font-family: "Poppins";
   border-radius: 40px;
   outline: none;
@@ -167,33 +193,80 @@ header {
   font-weight: 100;
   border: none;
   width: 100%;
-  font-size: 18px;
+  font-size:18px;
 }
 
 /*
-  Posicionamento do Ícone de Busca
-*/
+ * Posicionamento do Ícone de Busca
+ */
 .search-icon {
-  /*Estilização do ícone de pesquisa */
+  /*Estilização do
+ícone de pesquisa */
   position: absolute;
   right: 20px;
   color: black;
-  bottom: 16px;
+  bottom:16px;
+}
+
+/* New: Mobile search icon */
+.search-mobile-icon {
+  display: none; /* Hidden by default */
+  font-size: 22px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.search-mobile-icon i {
+  color: white;
+}
+
+/* New: Mobile search bar */
+#mobileSearchBar {
+  display: none; /* Hidden by default */
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+#mobileSearchBar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+#mobileSearchBar button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#mobileSearchBar button:hover {
+  background-color: #02327e;
 }
 
 /*
-  Estilos do Botão de Menu
-*/
+ * Estilos do Botão de Menu
+ */
 .menu-button {
   font-size: 24px;
   cursor: pointer;
   margin-right: 15px;
-  color: white;
+  color:
+white;
 }
 
 /*
-  Estilos do Logotipo do Cabeçalho
-*/
+ * Estilos do Logotipo do Cabeçalho
+ */
 .header-item .logo {
   height: 55px;
   margin-right: auto;
@@ -222,17 +295,22 @@ li {
   padding: 0;
 }
 
-/* Dropdown principal */
+/* Dropdown
+principal */
 .dropdown-menu {
-  width: 250px; /* AUMENTADO de 220 para 250 */
+  width:250px; /*
+AUMENTADO de 220 para 250 */
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: absolute;
-  /* ADICIONE OU MODIFIQUE ISSO */
-  top: 100%; /* Começa na parte inferior do header */
-  left: 0; /* Alinha à esquerda do header */
+  /*
+ADICIONE OU MODIFIQUE ISSO */
+  top:100%; /*
+Começa na parte inferior do header */
+  left:0; /* Alinha à
+esquerda do header */
   display: none;
   z-index: 1000;
 }
@@ -242,11 +320,14 @@ li {
 }
 
 .dropdown-menu a {
-  display: flex; /* FLEX para alinhar texto e seta */
-  justify-content: space-between; /* espaço entre texto e seta */
-  align-items: center; /* centraliza verticalmente */
+  display:
+flex; /* FLEX para alinhar texto e seta */
+  justify-content:
+space-between; /* espaço entre texto e seta */
+  align-items:
+center; /* centraliza verticalmente */
 
-  padding: 10px 20px; /* MAIS espaço */
+  padding:10px 20px;/* MAIS espaço */
   color: #333;
   text-decoration: none;
   white-space: nowrap;
@@ -261,14 +342,16 @@ li {
 
 /* Submenu */
 .has-submenu {
-  position: relative;
+  position:
+relative;
 }
 
 /* SETA via pseudo-elemento */
 .has-submenu > a::after {
   content: "▶";
-  margin-left: 10px; /* separação do texto */
-  font-size: 0.8em;
+  margin-left:10px; /*
+separação do texto */
+  font-size:0.8em;
 }
 
 /* Submenu oculto */
@@ -279,10 +362,11 @@ li {
   left: 100%;
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  min-width: 250px; /* AUMENTADO igual ao principal */
+  border-radius:8px;
+  min-width:250px; /*
+AUMENTADO igual ao principal */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
+  z-index:1001;
 }
 
 /* Mostrar submenu ao hover */
@@ -290,7 +374,8 @@ li {
   display: block;
 }
 
-/* Submenu itens */
+/* Submenu
+itens */
 .submenu a {
   padding: 10px 20px;
   border-radius: 6px;
@@ -298,32 +383,35 @@ li {
 
 .submenu a:hover {
   background-color: #007bff;
-  color: #fff;
+  color:
+#fff;
 }
 
 /*
-  Preenchimento do Conteúdo Principal
-*/
+ * Preenchimento do Conteúdo Principal
+ */
 .main-content {
   padding-top: 60px;
 }
 
 /*
-  Estilos de Parágrafo para o título do dashboard
-*/
+ * Estilos de Parágrafo para o título do
+dashboard
+ */
 #dashboard-titulo {
   font-size: 34px;
   margin-top: 0px;
   font-weight: 500;
   margin-left: 40px;
   margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
+  position:
+relative;
+  z-index:1;
 }
 
 /*
-  Estilos Gerais de Botão
-*/
+ * Estilos Gerais de Botão
+ */
 button {
   padding: 10px 20px;
   margin: 10px;
@@ -331,28 +419,53 @@ button {
   cursor: pointer;
   background-color: transparent;
   transition: background-color 0.3s;
-  color: black;
-  border: none;
+  color:
+black;
+  border:
+none;
 }
 
 /*
-  Efeito de Hover do Botão
-*/
+ * Efeito de Hover do Botão
+ */
 button:hover {
   background-color: #c4c4c4;
 }
 
 /*
-  Estilos do Título H2
-*/
-h2 {
-  font-weight: 400;
+ * Estilos do Título H2
+ */
+/* Aplica a todos os h2 dentro de .modal (inclusive
+o novo h3 no modal-editar) */
+.modal h2,
+.modal h3
+{
+  font-weight:400; /* Mantém o peso da
+fonte consistente */
+  font-size:1.5em; /*
+Ajuste se necessário para o h3, para que seja ligeiramente menor que o h2 */
+  margin-top:0;
+  margin-bottom:20px; /*
+Adiciona um espaço abaixo do título */
+  text-align:
+center; /* Centraliza o texto */
+  width:100%; /*
+Garante que ocupe a largura total para centralização */
+}
+
+/* ADICIONADO PARA DIMINUIR A DISTÂNCIA DO TÍTULO
+"DETALHES DA TRANSAÇÃO" DO TOPO */
+#modal-editar h3
+{
+  margin-top:-30px; /*
+Ajuste este valor conforme necessário */
 }
 
 /*
-  Estilos do Modal
-  Define a aparência e o posicionamento das janelas modais.
-*/
+ * Estilos do Modal
+ * Define a aparência e o posicionamento das
+janelas modais.
+ */
 .modal {
   display: none;
   position: fixed;
@@ -366,11 +479,47 @@ h2 {
   align-items: center;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position:
+fixed; /* Fixa o modal na tela */
+  top:50%; /* Centraliza
+verticalmente */
+  left:50%; /* Centraliza
+horizontalmente */
+  transform:
+translate(-50%, -50%);/* Ajusta para centralização exata */
+  padding: 20px;
+  background-color: white;
+  border-radius:8px;
+  box-shadow:0 4px8px rgba(0,0, 0,0.2);
+  z-index:2000;
+  max-width:500px; /*
+Limita a largura do modal */
+  width:90%; /* Ocupa 90% da
+largura disponível, para responsividade */
+  box-sizing: border-box; /* Inclui padding e border no width/height */
+}
+
+/* Botão de fechar */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #333;
+  text-decoration: none;
 }
 
 /*
-  Estilos dos Campos de Entrada e Seleção dentro dos Modais
-*/
+ * Estilos dos Campos de Entrada e Seleção
+dentro dos Modais
+ */
 select,
 .data,
 .entrada,
@@ -385,12 +534,47 @@ select,
   border-width: 1px;
   padding: 5px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border:1px solid #ccc;
+}
+
+/* ADICIONADO PARA CENTRALIZAR O SELECT DE TIPO DE
+TRANSAÇÃO NO MODAL DE EDIÇÃO */
+#modal-editar #tipo-edicao
+{
+  display:
+block; /* Garante que o select ocupe seu próprio espaço */
+  margin-left:
+auto; /* Centraliza horizontalmente */
+  margin-right:
+auto; /* Centraliza horizontalmente */
+  width:250px; /*
+Garante que tenha uma largura definida para centralização */
+}
+
+/* MODIFICAÇÃO: Garante que o input de data de
+encerramento fique abaixo do select de frequência e seja centralizado */
+#entrada-opcoes-recorrenteslabel[for="entrada-encerramento"],
+#entrada-opcoes-recorrentes#entrada-encerramento,
+#saida-opcoes-recorrenteslabel[for="saida-encerramento"],
+#saida-opcoes-recorrentes#saida-encerramento,
+#edit-opcoes-recorrenteslabel[for="edit-encerramento"],
+#edit-opcoes-recorrentes#edit-encerramento
+{
+  display:
+block; /* Garante que ocupe toda a largura disponível e
+quebre a linha */
+  margin-left:
+auto; /* Centraliza o elemento */
+  margin-right:
+auto; /* Centraliza o elemento */
+  margin-top:10px; /*
+Adiciona espaço acima */
 }
 
 /*
-  Estilos da Seção de Atualização ações do dashboard
-*/
+ * Estilos da Seção de Atualização ações do
+dashboard
+ */
 .atualizar {
   position: static;
   margin-top: 10px;
@@ -403,24 +587,26 @@ select,
   flex-direction: column;
   align-items: flex-start;
   z-index: auto;
-  height: auto;
+  height:
+auto;
 }
 
 /*
-  Estilos do Título da Seção de Atualização
-*/
-.atualizar h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.5em;
+ * Estilos do Título da Seção de Atualização
+ */
+.atualizar h3
+{
+  margin:0 010px 0;
+  font-size:1.5em;
   font-weight: 600;
   width: auto;
   text-align: left;
-  padding-left: 30px;
+  padding-left:30px;
 }
 
 /*
-  Estilos do Contêiner dos Botões de Ação
-*/
+ * Estilos do Contêiner dos Botões de Ação
+ */
 .botoes-acao {
   display: flex;
   flex-direction: column;
@@ -432,8 +618,8 @@ select,
 }
 
 /*
-  Estilos de Botões de Ação Específicos
-*/
+ * Estilos de Botões de Ação Específicos
+ */
 .Entradas,
 .Saidas,
 .Editar,
@@ -443,12 +629,13 @@ select,
   width: 180px;
   text-align: left;
   padding: 10px 20px;
-  box-sizing: border-box;
+  box-sizing:
+border-box;
 }
 
 /*
-  Estilos do Botão de Confirmar Entrada
-*/
+ * Estilos do Botão de Confirmar Entrada
+ */
 .input-confirmar {
   position: absolute;
   bottom: 25px;
@@ -462,20 +649,23 @@ select,
   border-radius: 5px;
   padding: 10px 20px;
   z-index: 1;
-  width: auto;
+  width:
+auto;
 }
 
 /*
-  Efeito de Hover do Botão de Confirmar Entrada
-*/
+ * Efeito de Hover do Botão de Confirmar
+Entrada
+ */
 .input-confirmar:hover {
   background-color: #024dae;
 }
 
 /*
-  Estilos da Sobreposição
-  Escurece o fundo quando um modal está ativo.
-*/
+ * Estilos da Sobreposição
+ * Escurece o fundo quando um modal está
+ativo.
+ */
 .overlay {
   display: none;
   position: fixed;
@@ -484,12 +674,12 @@ select,
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1999;
+  z-index:1999;
 }
 
 /*
-  Estilos do Cabeçalho do Dashboard
-*/
+ * Estilos do Cabeçalho do Dashboard
+ */
 .filtros-dashboard {
   position: static;
   display: flex;
@@ -508,8 +698,8 @@ select,
 }
 
 /*
-  Estilos do Seletor de Filtro
-*/
+ * Estilos do Seletor de Filtro
+ */
 .seletor-filtro {
   display: flex;
   gap: 15px;
@@ -517,34 +707,38 @@ select,
 }
 
 /*
-  Estilos do Botão Histórico no Cabeçalho do Dashboard
-*/
+ * Estilos do Botão Histórico no Cabeçalho do
+Dashboard
+ */
 .filtros-dashboard .Historico {
   position: static;
   margin-left: 15px;
   width: auto;
-  padding: 8px 15px;
+  padding:8px 15px;
 }
 
 /*
-  Estilos dos Rótulos do Seletor de Filtro
-*/
-.seletor-filtro label {
-  font-weight: 500;
+ * Estilos dos Rótulos do Seletor de Filtro
+ */
+.seletor-filtro label
+{
+  font-weight:500;
 }
 
 /*
-  Estilos do Dropdown do Seletor de Filtro
-*/
-.seletor-filtro select {
-  padding: 8px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+ * Estilos do Dropdown do Seletor de Filtro
+ */
+.seletor-filtro select
+{
+  padding:8px 10px;
+  border-radius:5px;
+  cursor:
+pointer;
 }
 
 /*
-  Layout da Grade de Gráficos
-*/
+ * Layout da Grade de Gráficos
+ */
 .charts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -552,12 +746,13 @@ select,
   margin-top: 20px;
   padding: 0 20px;
   margin-bottom: 0px;
-  align-items: start;
+  align-items:
+start;
 }
 
 /*
-  Estilos do Contêiner do Gráfico
-*/
+ * Estilos do Contêiner do Gráfico
+ */
 .chart-container {
   background-color: #ffffff;
   border-radius: 8px;
@@ -567,12 +762,12 @@ select,
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 190px;
+  min-height:190px;
 }
 
 /*
-  Dimensionamento da Tela do Gráfico
-*/
+ * Dimensionamento da Tela do Gráfico
+ */
 .chart-container canvas {
   width: 100% !important;
   height: 100% !important;
@@ -580,8 +775,8 @@ select,
 }
 
 /*
-  Estilos do Título do Contêiner do Gráfico
-*/
+ * Estilos do Título do Contêiner do Gráfico
+ */
 .chart-container h3 {
   margin-top: 10px;
   font-weight: 600;
@@ -593,10 +788,10 @@ select,
 }
 
 /*
-  Estilos do Contêiner da Lista de Histórico
-*/
+ * Estilos do Contêiner da Lista de Histórico
+ */
 .historico-lista {
-  max-height: 400px;
+  max-height:400px;
   overflow-y: auto;
   text-align: left;
   border: 1px solid #eee;
@@ -606,96 +801,110 @@ select,
 }
 
 /*
-  Layout das Colunas do Histórico
-*/
-.historico-colunas {
-  display: flex;
-  gap: 15px;
-  width: 100%;
+ * Layout das Colunas do Histórico
+ */
+.historico-colunas
+{
+  display:
+flex;
+  gap:15px;
+  width:100%;
 }
 
 /*
-  Estilos dos Itens das Colunas do Histórico
-*/
-.historico-colunas > div {
-  flex: 1;
-  border: 1px solid #ddd;
+ * Estilos dos Itens das Colunas do Histórico
+ */
+.historico-colunas
+> div {
+  flex:1;
+  border:1px solid #ddd;
   border-radius: 5px;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color:
+#f9f9f9;
 }
 
-
-
 /*
-  Estilos do Título das Colunas do Histórico
-*/
-.historico-colunas h3 {
+ * Estilos do Título das Colunas do Histórico
+ */
+.historico-colunash3 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1.1em;
-  color: #333;
+  color:
+#333;
 }
 
 /*
-  Estilos da Lista do Histórico
-*/
-.historico-lista ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+ * Estilos da Lista do Histórico
+ */
+.historico-lista ul
+{
+  list-style:
+none;
+  padding:0;
+  margin:0;
 }
 
 /*
-  Estilos dos Itens Individuais da Lista de Histórico
-*/
-.historico-lista li {
-  padding: 8px 0;
+ * Estilos dos Itens Individuais da Lista de
+Histórico
+ */
+.historico-lista li
+{
+  padding:8px 0;
   border-bottom: 1px dashed #eee;
   font-size: 0.95em;
   color: #555;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap:
+wrap;
 }
 
 /*
-  Sem Borda para o Último Item da Lista de Histórico
-*/
+ * Sem Borda para o Último Item da Lista de
+Histórico
+ */
 .historico-lista li:last-child {
   border-bottom: none;
 }
 
 /*
-  Preenchimento do Span do Item da Lista de Histórico
-*/
-.historico-lista li span {
-  flex-shrink: 0;
-  padding: 0 5px;
+ * Preenchimento do Span do Item da Lista de
+Histórico
+ */
+.historico-lista lispan {
+  flex-shrink:0;
+  padding:0 5px;
 }
 
 /*
-  Estilos do Span do Tipo de Transação do Histórico
-*/
-.historico-lista li.transaction-type {
+ * Estilos do Span do Tipo de Transação do
+Histórico
+ */
+.historico-lista li.transaction-type
+{
   font-weight: 700;
   width: 70px;
   text-align: left;
 }
 
 /*
-  Estilos do Span da Data da Transação do Histórico
-*/
+ * Estilos do Span da Data da Transação do
+Histórico
+ */
 .historico-lista li .transaction-date {
   width: 90px;
   text-align: left;
 }
 
 /*
-  Estilos do Span da Descrição da Transação do Histórico
-*/
+ * Estilos do Span da Descrição da Transação
+do Histórico
+ */
 .historico-lista li .transaction-description {
   flex-grow: 1;
   text-align: left;
@@ -706,31 +915,38 @@ select,
 }
 
 /*
-  Estilos do Span do Valor da Transação do Histórico
-*/
-.historico-lista li.transaction-value {
+ * Estilos do Span do Valor da Transação do
+Histórico
+ */
+.historico-lista li.transaction-value
+{
   font-weight: 700;
   width: 120px;
   text-align: right;
 }
 
 /*
-  Cor do Tipo de Entrada do Histórico
-*/
-.historico-lista li.entrada.transaction-type {
-  color: #4caf50;
+ * Cor do Tipo de Entrada do Histórico
+ */
+.historico-lista li.entrada.transaction-type
+{
+  color:
+#4caf50;
 }
 
 /*
-  Cor do Tipo de Saída do Histórico
-*/
-.historico-lista li.saida.transaction-type {
-  color: #f44336;
+ * Cor do Tipo de Saída do Histórico
+ */
+.historico-lista li.saida.transaction-type
+{
+  color:
+#f44336;
 }
 
 /* Estilos para o modal de remoção */
-.lista-transacoes-remocao {
-  max-height: 250px;
+.lista-transacoes-remocao
+{
+  max-height:250px;
   overflow-y: auto;
   border: 1px solid #ccc;
   padding: 10px;
@@ -755,30 +971,50 @@ select,
 
 .lista-transacoes-remocao input[type="checkbox"] {
   margin-right: 10px;
-  min-width: 20px; /* Garante que o checkbox tenha um tamanho mínimo */
+  min-width:20px; /*
+Garante que o checkbox tenha um tamanho mínimo */
   min-height: 20px;
   cursor: pointer;
 }
 
-.lista-transacoes-remocao label {
-  flex-grow: 1;
-  font-size: 0.95em;
-  color: #333;
-  cursor: pointer;
+.lista-transacoes-remocaolabel {
+  flex-grow:1;
+  font-size:0.95em;
+  color:
+#333;
+  cursor:
+pointer;
 }
 
 /*
-  Responsividade - Telas Grandes
-*/
+ * Responsividade - Telas Grandes (max-width: 1200px and 1024px combined)
+ */
 @media (max-width: 1200px) {
   .search-container {
     width: 600px;
   }
+  #login-nao-logado a {
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .user-actions i {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+    font-size: 29px;
+    color: white;
+  }
+  /* From search results max-width 1024px, applies to this range as well */
+  .search-container {
+    width: 100%;
+    max-width: 600px;
+  }
 }
 
 /*
-  Responsividade - Telas Médias
-*/
+ * Responsividade - Telas Médias (max-width: 900px, 860px and 768px combined)
+ */
 @media (max-width: 900px) {
   .search-container {
     width: 400px;
@@ -794,9 +1030,19 @@ select,
   }
 }
 
-/*
-  Responsividade - Tablets e Telas Menores
-*/
+/* After 861px, hide mobile search icon and show desktop search bar */
+@media (min-width: 861px) {
+  .search-mobile-icon {
+    display: none;
+  }
+  #mobileSearchBar {
+    display: none !important;
+  }
+  .search-container.search-desktop {
+    display: flex;
+  }
+}
+
 @media (max-width: 768px) {
   header {
     justify-content: space-between;
@@ -835,8 +1081,8 @@ select,
     min-height: 200px;
   }
 
-  .atualizar h3 {
-    padding-left: 0;
+  .atualizarh3 {
+     padding-left: 0;
     text-align: center;
   }
 
@@ -899,36 +1145,97 @@ select,
   .entrada,
   .saida,
   .descricao,
-  .valor {
+  .valor
+{
     width: 90%;
   }
 
-  #modal-historico .seletor-filtro {
+  #modal-historico.seletor-filtro {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 35px;
+     width:
+auto; /* Ajustado para ser mais flexível */
+     height:
+auto; /* Ajustado para ser mais flexível */
   }
-  #modal-historico .seletor-filtro select,
-  #modal-historico .seletor-filtro label {
-    width: auto;
-    margin: 5px;
+  #modal-historico.seletor-filtroselect,
+  #modal-historico.seletor-filtrolabel {
+     width:
+auto;
+     margin:5px;
   }
 
-  .historico-colunas {
-    flex-direction: column;
+  .historico-colunas
+{
+     flex-direction:
+column;
   }
 
-  .lista-transacoes-remocao {
-    width: 90%;
+  .lista-transacoes-remocao
+{
+     width:90%;
+  }
+
+  /* From search results max-width 768px */
+  .right-group {
+    margin-right: 5px;
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+  .search-container {
+    margin: 10px 0;
+    width: 100%;
+    padding: 0 15px;
+  }
+  .search-container.search-desktop {
+    display: none;
+  }
+  .minha-area-botao {
+    font-size: 9px;
+    padding: 4px 10px;
+  }
+  .search-mobile-icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .user-actions {
+    flex-direction: row;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  #login-nao-logado a {
+    font-size: 13px;
+  }
+  .user-area {
+    margin-left: 5px;
+  }
+  .barra {
+    font-size: 16px;
+    padding: 0 5px;
+  }
+  /* From search results max-width 860px (falls within 768px) */
+  .search-container.search-desktop {
+    display: none;
+  }
+  .search-mobile-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+  #mobileSearchBar {
+    display: block;
   }
 }
 
 /*
-  Responsividade - Telas Mínimas (Mobile)
-*/
+ * Responsividade - Telas Mínimas (Mobile - max-width: 480px and 481px-767px combined)
+ */
 @media (max-width: 480px) {
   .header {
     height: 45px;
@@ -939,10 +1246,13 @@ select,
   p {
     font-size: 24px;
   }
-  .dropdown-menu {
-    width: 180px;
-    /* Mantenha o left: 0px ou ajuste se necessário */
-    left: 0px; /* ou 10px se quiser um pequeno espaçamento */
+  .dropdown-menu
+{
+    width:180px;
+    /* Mantenha o left:
+0px ou ajuste se necessário */
+    left:0px; /* ou 10px se
+quiser um pequeno espaçamento */
   }
   .dropdown-menu li {
     padding: 8px;
@@ -951,6 +1261,111 @@ select,
     width: 180px;
   }
   .dropdown-menu > ul > .has-submenu > .submenu {
-    left: 100%; /* Ajuste para ser 100% do pai, e não 180px fixo */
+    left: 100%;/* Ajuste para ser 100% do pai, e não 180px fixo */
+  }
+
+  /* From search results max-width 480px */
+  .search-container.search-desktop {
+    display: none;
+  }
+  .search-bar {
+    font-size: 16px;
+    padding: 10px 30px;
+  }
+  .search-icon {
+    right: 30px;
+  }
+  .search-mobile-icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  /* From search results max-width 480px (third occurrence) */
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  .left-group {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+  .center-group {
+    display: none;
+  }
+  .right-group {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .search-mobile-icon,
+  .minha-area-botao,
+  #perfil-logado {
+    display: flex;
+    align-items: center;
+  }
+  .minha-area-botao {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .user-actions {
+    font-size: 22px;
+    margin-left: 0;
+  }
+  .header-item .logo {
+    height: 40px;
+  }
+  .header-icon {
+    font-size: 28px;
+  }
+}
+
+/* From search results min-width: 481px and max-width: 767px (identical to 480px third block, but for larger mobile/small tablet screens) */
+@media (min-width: 481px) and (max-width: 767px) {
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  .left-group {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+  .center-group {
+    display: none;
+  }
+  .right-group {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .search-mobile-icon,
+  .minha-area-botao,
+  #perfil-logado {
+    display: flex;
+    align-items: center;
+  }
+  .minha-area-botao {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .user-actions {
+    font-size: 22px;
+    margin-left: 0;
+  }
+  .header-item .logo {
+    height: 40px;
+  }
+  .header-icon {
+    font-size: 28px;
   }
 }

@@ -37,7 +37,6 @@ body {
   background-color: #fff;
   color: #000;
   overflow-x: hidden;
- 
 }
 
 header {
@@ -48,6 +47,7 @@ header {
   padding: 10px 20px;
   height: 50px;
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+  
 }
 
 .left-group {
@@ -71,7 +71,6 @@ header {
 }
 
 /* Estilo do icone de perfil */
-
 .user-actions {
   display: flex;
   align-items: center;
@@ -79,7 +78,6 @@ header {
   margin-left: 20px;
   font-size: 29px;
   color: white;
- 
 }
 
 .user-actions a {
@@ -93,8 +91,7 @@ header {
   text-decoration: none;
   margin: 0 5px;
   font-weight: bold; /* Deixa o texto mais forte */
- font-size: 15px; /* Tamanho da fonte */
-
+  font-size: 15px; /* Tamanho da fonte */
 }
 
 .search-container {
@@ -166,7 +163,7 @@ ul, li {
   display: flex; /* FLEX para alinhar texto e seta */
   justify-content: space-between; /* espaço entre texto e seta */
   align-items: center; /* centraliza verticalmente */
-  
+
   padding: 10px 20px; /* MAIS espaço */
   color: #333;
   text-decoration: none;
@@ -190,12 +187,14 @@ ul, li {
   content: "▶";
   margin-left: 10px; /* separação do texto */
   font-size: 0.8em;
+  transition: transform 0.3s ease, color 0.3s ease; /* Adicionada transição */
 }
 
-/* Submenu oculto */
+/* === MODIFICAÇÃO AQUI: Submenu oculto por padrão em todas as telas (será sobrescrito para desktop) === */
 .submenu {
-  display: none;
-  position: absolute;
+  display: none; /* Inicia oculto */
+  /* Propriedades comuns a mobile e desktop quando não visível */
+  position: absolute; /* Posição absoluta para flyout em desktop */
   top: 0;
   left: 100%;
   background: #fff;
@@ -206,12 +205,7 @@ ul, li {
   z-index: 1001;
 }
 
-/* Mostrar submenu ao hover */
-.has-submenu:hover > .submenu {
-  display: block;
-}
-
-/* Submenu itens */
+/* Submenu itens (estilo comum, pode ser sobrescrito por media query) */
 .submenu a {
   padding: 10px 20px;
   border-radius: 6px;
@@ -221,8 +215,6 @@ ul, li {
   background-color: #007bff;
   color: #fff;
 }
-
-
 
 /* Perfil, FAQ e Sair - estilo específico */
 .item-logged > a {
@@ -234,6 +226,7 @@ ul, li {
   color: white;
 }
 
+/* mobile-search e search-mobile-icon - sem alterações nestes blocos */
 .mobile-search {
   display: none;
   padding: 10px;
@@ -279,9 +272,6 @@ ul, li {
   align-items: stretch;
   width: 100%;
 }
-
-
-
 
 /* Cartões padrão */
 .chart-container,
@@ -497,7 +487,8 @@ button:hover,
 
 
 /* RESPONSIVO */
-@media (max-width: 768px) {
+/* === MODIFICAÇÃO AQUI: Alterado de 768px para 780px para consistência === */
+@media (max-width: 780px) {
   .dashboard-layout {
     flex-direction: column;
     align-items: stretch;
@@ -509,9 +500,89 @@ button:hover,
   #area-metas {
     width: 100%;
   }
+
+  
+  /* Remove o posicionamento absoluto do submenu no mobile */
+  .submenu {
+    position: relative; /* Agora posicionado dentro do fluxo do documento */
+    left: 0; /* Remove o offset de 100% */
+    top: 0;
+    min-width: 100%; /* Ocupa a largura total do pai */
+    border: none; /* Remove a borda, se desejar um look mais limpo */
+    box-shadow: none; /* Remove a sombra */
+    /* Adicionando padding e background específicos para o submenu mobile para visualização */
+    padding-left: 15px; /* Recuo para os itens do submenu */
+    background-color: #f0f0f0; /* Fundo para diferenciar o submenu */
+    max-height: 0; /* Começa com altura 0 para transição suave */
+    overflow: hidden; /* Esconde o conteúdo extra */
+    opacity: 0; /* Começa invisível */
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Transição para o open-submenu */
+  }
+
+  /* Mostra o submenu quando a classe 'open-submenu' é adicionada no mobile */
+  .submenu.open-submenu {
+    display: block; /* Garante que é exibido */
+    max-height: 500px; /* Suficiente para expandir o conteúdo */
+    opacity: 1; /* Torna visível */
+  }
+
+  /* Rotação da seta quando o submenu está aberto no mobile */
+  .has-submenu > a[aria-expanded="true"]::after {
+    transform: rotate(90deg); /* Gira a seta para baixo */
+    color: #007bff; /* Pode mudar a cor para indicar ativo */
+  }
+
+  /* Estilos para os links dentro do submenu no mobile */
+  .submenu li a {
+    padding: 8px 10px; /* Ajuste o padding */
+    font-size: 0.9em; /* Talvez um pouco menor */
+    color: #444; /* Cor mais suave */
+  }
+
+  .submenu li a:hover,
+  .submenu li a:focus {
+    background-color: #e0e0e0;
+    color: #000;
+  }
+
+  /* Opcional: Destacar o item pai quando seu submenu está aberto no mobile */
+  .has-submenu > a[aria-expanded="true"] {
+      font-weight: bold;
+      color: #007bff;
+      background-color: #e6e6e6;
+  }
+}
+
+/* === ADIÇÃO AQUI: Media Query para telas MAIORES que 780px (desktop) === */
+@media screen and (min-width: 1121px) {
+    /* Define o comportamento do submenu no desktop (ex: ao passar o mouse) */
+    .has-submenu:hover > .submenu {
+        display: block; /* Torna o submenu visível ao hover */
+        /* Mantém as propriedades de posicionamento absoluto, etc., definidas no .submenu global */
+    }
+
+    /* Assegura que a seta não gire no desktop ao abrir (se você quiser) */
+    .has-submenu > a[aria-expanded="true"]::after {
+        transform: none; /* Remove a rotação da seta */
+        color: #666; /* Volta à cor padrão se ela foi alterada no mobile */
+    }
+
+    /* Assegura que o submenu esteja oculto por padrão no desktop, e só apareça no hover */
+    /* (A regra `display: none;` no `.submenu` global já faz isso, mas é bom reforçar se houver conflitos) */
+    .submenu {
+        display: none;
+    }
+
+    /* Pode ajustar estilos de padding/tamanho de fonte para desktop, se forem diferentes */
+    .submenu li a {
+        padding: 10px 20px; /* Exemplo, pode ser o mesmo do global se não tiver diferença */
+        font-size: 1em;
+        color: #333;
+    }
 }
 
 
+/* Vistos recentemente e recomendados - sem alterações nestes blocos */
 .vistos-recentemente{
   margin-top: 40px;
   background-color: white;
@@ -704,7 +775,7 @@ button:hover,
   cursor: pointer;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767px) { /* Mantenha 767px aqui se o display do search for diferente */
   .search-container {
     display: none;
   }
@@ -714,87 +785,54 @@ button:hover,
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 768px) { /* Mantenha 768px aqui para desktop search */
   .mobile-search-bar {
     display: none !important;
   }
 }
 
-/* Para controlar a exibição do submenu em mobile via JS */
-@media (max-width: 767px) {
-    .submenu {
-        /* ESSENCIAL: Garante que o submenu esteja oculto por padrão em mobile */
-        display: none;
-        opacity: 0;
-        /* Adicionamos uma transição para suavidade na opacidade */
-        transition: opacity 0.3s ease;
-        /* Para o submenu aparecer abaixo do item pai */
-        position: static;
-        width: 100%;
-        left: auto;
-        top: auto;
-        box-shadow: none; /* Remove sombra para submenus em mobile */
-        border-radius: 0;
-        border-top: 1px solid #eee; /* Adiciona uma linha divisória para clareza */
-        padding-left: 30px; /* Indentação para submenus aninhados em mobile */
-    }
-
-    .submenu.open-submenu {
-        display: block; /* Exibe o submenu quando a classe é adicionada em mobile */
-        opacity: 1; /* Transição de opacidade */
-    }
-
-    /* Seta para submenus */
-    .has-submenu > a::after {
-        content: "▼"; /* Seta para baixo por padrão em mobile */
-        margin-left: 10px;
-        font-size: 0.8em;
-        transition: transform 0.3s ease;
-    }
-
-    /* Gira a seta quando o submenu está aberto (usando aria-expanded) */
-    .has-submenu > a[aria-expanded="true"]::after {
-        transform: rotate(180deg);
-    }
-    /* Remova a linha abaixo, pois usamos aria-expanded no JS e é mais robusto */
-    /* .has-submenu > a:has(+ .submenu.open-submenu)::after { } */
+/* Esconde o menu e mostra o botão em telas pequenas */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* Para telas maiores (desktop), o submenu deve voltar ao seu comportamento normal */
-@media (min-width: 768px) {
-    .submenu {
-        display: none; /* Escondido por padrão em desktop, aparece no hover */
-        position: absolute;
-        top: 0;
-        left: 100%; /* Aparece ao lado do item pai */
-        min-width: 250px;
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        z-index: 1001;
-        opacity: 0;
-        transition: opacity 0.3s ease, transform 0.3s ease; /* Adicionada transição */
-    }
+@media (max-width: 1120px) and (min-width: 780px) {
+  .header-item .logo {
+    height: 45px; /* Reduz o tamanho do logo */
+  }
 
-    /* Em desktop, o submenu aparece no hover */
-    .has-submenu:hover > .submenu {
-        display: block;
-        opacity: 1;
-        /* Você pode adicionar um pequeno deslocamento aqui para um efeito de slide */
-        /* transform: translateX(5px); */
-    }
+  .search-container {
+    width: 70%; /* Ajusta a largura da barra de pesquisa */
+  }
 
-    /* Seta para desktop */
-    .has-submenu > a::after {
-        content: "▶"; /* Seta para a direita em desktop */
-        margin-left: 10px;
-        font-size: 0.8em;
-        transition: transform 0.3s ease;
-    }
+  .search-bar {
+    padding: 10px 30px; /* Ajusta o padding da barra de pesquisa */
+    font-size: 16px; /* Reduz o tamanho da fonte na barra de pesquisa */
+  }
 
-    /* A seta não gira em desktop, pois não há clique para expandir */
-    .has-submenu:hover > a::after {
-        /* Se você quiser algum efeito na seta ao passar o mouse, adicione aqui */
-    }
+  .search-icon {
+    right: 15px; /* Ajusta a posição do ícone de pesquisa */
+    bottom: 14px;
+    font-size: 16px;
+  }
+
+  .user-actions {
+    font-size: 26px; /* Reduz o tamanho do ícone de perfil */
+    margin-left: 10px; /* Reduz a margem */
+  }
+
+  #login-nao-logado a {
+    font-size: 13px; /* Reduz o tamanho da fonte de login */
+  }
+
+  .menu-button {
+    font-size: 22px; /* Reduz o tamanho do botão de menu */
+    margin-right: 10px;
+  }
 }
+
+

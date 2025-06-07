@@ -36,6 +36,13 @@
           </div>
         </div>
         <div class="right-group">
+
+          
+           <button class="mobile-search-trigger" id="mobileSearchTrigger" aria-label="Abrir pesquisa">
+               <i class="fa-solid fa-magnifying-glass"></i>  <!--mover para a o grupo da direita-->
+             </button>
+
+
             <div class="user-actions" id="login-nao-logado">
                <a href="/src/login/login.html">Fazer login</a>
                <span>|</span>
@@ -254,6 +261,12 @@
           </li>
         </ul>
       </nav>
+       <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+              <button type="button" onclick="buscarMobile()" class="mobile-buscar-btn-estilizado">
+              Buscar
+             </button>
+</div>
     </div>
 
     <main>
