@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="center-group">
-                <div class="search-container">
+                <div class="search-container search-desktop">
                     <input
                         type="text"
                         id="search-bar"
@@ -38,7 +38,15 @@
                 </div>
             </div>
             <div class="right-group">
-                <div class="user-actions" id="login-nao-logado" style="display: none;"> <a href="/src/login/login.html">Fazer login</a>
+                  <div class="search-mobile-icon">
+                    <a href="#">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                </div>
+                 <div class="user-area">
+                    <a href="/src/Main/Main.html" class="minha-area-botao">Minha Área</a>
+                </div>
+              <div class="user-actions" id="login-nao-logado" style="display: none;"> <a href="/src/login/login.html">Fazer login</a>
                     <span>|</span>
                     <a href="/src/cadastro/cadastro.html">Cadastrar-se</a>
                 </div>
@@ -50,6 +58,10 @@
                 </div>
             </div>
         </header>
+          <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+            <button onclick="buscarMobile()">Buscar</button>
+        </div>
     </div>
 
     <nav class="dropdown-menu" id="dropdownMenu">

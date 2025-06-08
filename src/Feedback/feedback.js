@@ -76,6 +76,35 @@ document
     }
   });
 
+   //INÍCIO FUNCIONALIDADES DA BARRA DE PESQUISA MOBILE
+
+  //Funcionalidade de esconder ícone em telas maiores
+ const mobileSearchIcon = document.querySelector('.search-mobile-icon');
+  const mobileSearchBar = document.getElementById('mobileSearchBar');
+
+mobileSearchIcon.addEventListener('click', () => {
+  // alterna entre mostrar e esconder
+  mobileSearchBar.style.display =
+    mobileSearchBar.style.display === 'block' ? 'none' : 'block';
+});
+
+// Garante que a barra mobile desapareça ao aumentar a largura da tela
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 861) {
+    mobileSearchBar.style.display = 'none';
+  }
+});
+
+ window.buscarMobile = function () {
+  const termo = document.getElementById('mobileSearchInput').value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
+};
+
+//FIM DAS FUNCIONALIDADES DA BARRA DE PESQUISA MOBILE
+
 document.querySelector(".menu-icon").addEventListener("click", function () {
   const navMenu = document.querySelector(".nav-menu");
   navMenu.classList.toggle("hidden");
