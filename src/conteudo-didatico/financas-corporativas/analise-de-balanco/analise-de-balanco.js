@@ -231,4 +231,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
    
   }
+  window.buscarMobile = function () {
+  const termo = document.getElementById('mobileSearchInput').value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
+};
 });
