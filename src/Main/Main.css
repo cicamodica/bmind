@@ -891,3 +891,80 @@ button:hover,
     height: 45px;
   }
 }
+
+@media (min-width: 769px) and (max-width: 1120px) {
+
+  /* Centraliza e reduz a largura da barra de pesquisa */
+  .search-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 0 10px;
+  }
+
+  /* Reduz o tamanho do texto no menu */
+  .escrita {
+    font-size: 32px;
+  }
+
+  /* Adapta layout dos cards do dashboard */
+  .dashboard-layout {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Reduz padding dos containers */
+  .chart-container,
+  #resumo-financeiro,
+  #historico-mensal,
+  #area-metas,
+  .secao-metas,
+  .vistos-recentemente,
+  .conteudo-recomendados {
+    padding: 16px;
+  }
+
+  /* Cards de metas e recomendados mais compactos */
+  .card-meta,
+  .card-conteudo {
+    min-width: 200px;
+    width: auto;
+    padding: 12px;
+  }
+
+  /* Barra de progresso menor */
+  .barra-progresso {
+    height: 14px;
+  }
+
+  /* Itens da lista vistos recentemente se adaptam melhor */
+  .item-visto {
+    width: 100px;
+  }
+
+  .link-visto img {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* Ajusta o tamanho do ícone de perfil e menu */
+  .user-actions {
+    font-size: 24px;
+  }
+
+  .menu-button {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  /* Botões menores */
+  button,
+  .btn-atualizar,
+  .confirmar-atualizacao,
+  .btn-excluir,
+  #btn-cadastrar {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+  }
+
+}
+

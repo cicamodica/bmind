@@ -520,7 +520,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define a estrutura HTML interna do card.
     card.innerHTML = `
       <h4>${titulo}</h4>
-      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo}</small>
+      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo} - Atual: R$ ${valorAtual.toFixed(2)}</small>
       <div class="barra-progresso">
         <div class="barra-preenchida" style="width: ${progresso}%"></div>
       </div>
