@@ -29,6 +29,13 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
   <img src="img/Tipografia.png" alt="Tipografia" style="width: 70%; max-width: 800px;">
 </div>
 
+## Homepage (Logado e não Logado)
+<div align="center">
+  <img src="img/Homepage Logado.png" alt="Página Homepage Logado" style="width: 70%; max-width: 800px;">
+  <img src="img/Homepage naoLogado.png" alt="Página Homepage não Logado" style="width: 70%; max-width: 800px;">
+</div>
+
+
 ## Login
 
 <div align="center">
