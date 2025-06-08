@@ -2,6 +2,35 @@
 
 O documento de programação de funcionalidades descreve as características principais de cada página do sistema. Em cada seção, haverá uma imagem representativa da página e serão fornecidas instruções de acesso, requisitos atendidos, artefatos relacionados à funcionalidade, estruturas de dados utilizadas e o/os responsável/responsáveis por cada funcionalidade.
 
+## Homepage
+
+Sua principal função é ser  o ponto de entrada central e ocartão de visitas do site. Atraves dessa pagina podemos apresentar as informações e produtos que oferecemos, alem  de direcionar os vitantes para os nossos conteudos e incentiva-los a se cadastrar para acessar mais funcionalidades. Ela adapta o conteudo exibido conforme o status de login  e perfil de usuario (Pessoa Física ou Jurídica), controla a exibição de botoes e links, implementa a funcionalidade bsuca, gerencia um carrossel de banners e organiza o conteudo em abas interativas.
+
+### Requisito atendido
+
+
+- |RF-20| O menu deve permitir a navegação para as principais seções da aplicação (Minha área, Meu Dashboard, Conteúdo Didático, Perfil, FAQ), conforme usuario logado.
+
+### Artefatos da funcionalidade
+-Homepage.html
+-Homepage.css
+-Homepage.js
+
+### Estrutura de Dados
+ Esta página não possui estrutura de dados
+
+### Instruçoes de acesso
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Homepage.html) 
+
+-Nesta pagina você poderá consumir diversos conteudos sobres finanças e investimentos tanto pessoais quanto corporativos
+
+-Se fizer login a pagina será modificada de acordo com o seu perfil cadastrado. 
+
+#### Responsável
+
+Mariana Turibio Gressi
+
+
 ## Login
 
 ![Página de login](https://github.com/user-attachments/assets/06be0abd-3a3a-4e9f-935e-5126a4db24ac)
