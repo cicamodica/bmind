@@ -4,13 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard do Usuário</title>
-    <link rel="stylesheet" href="/src/Tela de Edição/PF/style_Tela_de_Edição-pf.css" />
+    <link
+      rel="stylesheet"
+      href="/src/Tela de Edição/PF/style_Tela_de_Edição-pf.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/src/Tela de Edição/PF/script_Tela_de_Edição-pf.js" defer></script>
+    <script
+      src="/src/Tela de Edição/PF/script_Tela_de_Edição-pf.js"
+      defer
+    ></script>
   </head>
   <body>
     <div class="header">
@@ -40,7 +46,9 @@
 
         <div class="right-group">
           <div class="user-area">
-            <a href="/src/Main/Main.html" class="minha-area-botao">Minha Área</a>
+            <a href="/src/Main/Main.html" class="minha-area-botao"
+              >Minha Área</a
+            >
           </div>
           <div class="user-actions" id="perfil-logado">
             <a href="/src/perfil/perfil.html">
@@ -233,21 +241,26 @@
       <div class="atualizar">
         <h3>Atualizar</h3>
 
-          <div class="botoes-acao">
-            <button class="Entradas" onclick="openModal('entradas')">Entradas</button>
+        <div class="botoes-acao">
+          <button class="Entradas" onclick="openModal('entradas')">
+            Entradas
+          </button>
 
-            <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
+          <button class="Saidas" onclick="openModal('saidas')">Saídas</button>
 
-            <button class="Editar" onclick="openEditModal()">Editar Dados</button>
+          <button class="Editar" onclick="openEditModal()">Editar</button>
 
-            <button class="Remover" onclick="openRemoveModal()">Remover Dados</button>
+          <button class="Remover" onclick="openRemoveModal()">
+            Remover Dados
+          </button>
 
           <input
             type="submit"
             class="input-confirmar"
             value="Salvar alterações"
-            onclick="renderDashboard()"/>
-          </div>
+            onclick="renderDashboard()"
+          />
+        </div>
       </div>
     </main>
 
@@ -264,12 +277,7 @@
 
       <label>CATEGORIA</label><br />
       <select id="entrada-categoria">
-        <option value="" disabled selected>Seleção</option>
-        <option value="salario">Salário</option>
-        <option value="investimentos">Investimentos</option>
-        <option value="lucros">Lucros</option>
-        <option value="outros_entrada">Outros</option>
-      </select><br />
+        </select><br />
       <label>DESCRIÇÃO (Opcional)</label><br />
       <input class="descricao" type="text" id="entrada-descricao" /><br />
       <label>É RECORRENTE?</label><br />
@@ -289,7 +297,10 @@
       />
       <label for="entrada-recorrente-nao">NÃO</label><br />
 
-      <div id="entrada-opcoes-recorrentes" style="display: none; margin-top: 10px">
+      <div
+        id="entrada-opcoes-recorrentes"
+        style="display: none; margin-top: 10px"
+      >
         <label for="entrada-frequencia">Frequência:</label><br />
         <select id="entrada-frequencia">
           <option value="mensal">Mensal</option>
@@ -316,16 +327,7 @@
 
       <label>CATEGORIA</label><br />
       <select id="saida-categoria">
-        <option value="" disabled selected>Seleção</option>
-        <option value="alimentacao">Alimentação</option>
-        <option value="transporte">Transporte</option>
-        <option value="lazer">Lazer</option>
-        <option value="moradia">Moradia</option>
-        <option value="educacao">Educação</option>
-        <option value="saude">Saúde</option>
-        <option value="contas">Contas</option>
-        <option value="outros_saida">Outros</option>
-      </select><br />
+        </select><br />
 
       <label>DESCRIÇÃO (Opcional)</label><br />
       <input class="descricao" type="text" id="saida-descricao" /><br />
@@ -347,7 +349,10 @@
       />
       <label for="saida-recorrente-nao">NÃO</label><br />
 
-      <div id="saida-opcoes-recorrentes" style="display: none; margin-top: 10px">
+      <div
+        id="saida-opcoes-recorrentes"
+        style="display: none; margin-top: 10px"
+      >
         <label for="saida-frequencia">Frequência:</label><br />
         <select id="saida-frequencia">
           <option value="mensal">Mensal</option>
@@ -374,7 +379,7 @@
         <option value="saidas">Saída</option>
       </select><br /><br />
       <div id="lista-transacoes-remocao" class="lista-transacoes-remocao"></div>
-      
+
       <button onclick="confirmRemoveSelected()">Remover</button>
     </div>
 
@@ -383,7 +388,8 @@
 
       <h2 id="edit-modal-title">Editar Transação</h2>
 
-      <label for="tipo-edicao" id="edit-type-label">TIPO DE TRANSAÇÃO</label
+      <label for="tipo-edicao" id="edit-type-label"
+        >TIPO DE TRANSAÇÃO</label
       ><br />
       <select id="tipo-edicao" onchange="loadTransactionsForEdit()">
         <option value="">Selecione</option>
@@ -405,7 +411,7 @@
         <input class="entrada" type="number" id="edit-valor" step="0.01" /><br />
 
         <label for="edit-categoria">Categoria:</label><br />
-        <select id="edit-categoria"> </select><br />
+        <select id="edit-categoria"></select><br />
 
         <label for="edit-descricao">Descrição:</label><br />
         <input class="descricao" type="text" id="edit-descricao" /><br />
@@ -428,7 +434,10 @@
 
         <label for="edit-recorrente-nao">NÃO</label><br />
 
-        <div id="edit-opcoes-recorrentes" style="display: none; margin-top: 10px">
+        <div
+          id="edit-opcoes-recorrentes"
+          style="display: none; margin-top: 10px"
+        >
           <label for="edit-frequencia">Frequência:</label><br />
           <select id="edit-frequencia">
             <option value="mensal">Mensal</option>

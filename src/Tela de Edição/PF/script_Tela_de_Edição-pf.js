@@ -1,21 +1,98 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Recupera o identificador do usuário logado (e-mail, por exemplo)
-  const emailUsuario = localStorage.getItem("usuarioLogado"); // Assumes 'usuarioLogado' stores the email
+  const emailUsuario = localStorage.getItem("usuarioLogado");
+  let tipoPerfilUsuario = null; // Variável para armazenar o tipo de perfil do usuário logado
+
+  // Definir as categorias para PF e PJ
+  const categoriasEntradaPF = [
+    { value: "salario", text: "Salário" },
+    { value: "investimentos", text: "Investimentos" },
+    { value: "lucros", text: "Lucros" },
+    { value: "outros_entrada", text: "Outros" },
+  ];
+
+  const categoriasSaidaPF = [
+    { value: "alimentacao", text: "Alimentação" },
+    { value: "transporte", text: "Transporte" },
+    { value: "lazer", text: "Lazer" },
+    { value: "moradia", text: "Moradia" },
+    { value: "educacao", text: "Educação" },
+    { value: "saude", text: "Saúde" },
+    { value: "contas", text: "Contas" },
+    { value: "outros_saida", text: "Outros" },
+  ];
+
+  const categoriasEntradaPJ = [
+    { value: "vendas_servicos", text: "Vendas de Produtos/Serviços" },
+    { value: "recebimentos_clientes", text: "Recebimentos de Clientes" },
+    { value: "investimentos_pj", text: "Investimentos (PJ)" },
+    { value: "outras_entradas_pj", text: "Outras Entradas" },
+  ];
+
+  const categoriasSaidaPJ = [
+    { value: "folha_pagamento", text: "Folha de Pagamento" },
+    { value: "aluguel_despesas_operacionais", text: "Aluguel e Despesas" },
+    { value: "impostos_taxas", text: "Impostos e Taxas" },
+    { value: "compras_fornecedores", text: "Compras de Fornecedores" },
+    { value: "marketing_publicidade", text: "Marketing e Publicidade" },
+    { value: "servicos_terceirizados", text: "Serviços Terceirizados" },
+    { value: "outras_saidas_pj", text: "Outras Saídas" },
+  ];
 
   // Função para carregar o nome do usuário e atualizar o título
-  function loadUserName() {
+  function loadUserNameAndProfile() {
     const dashboardTitle = document.getElementById("dashboard-titulo");
     if (emailUsuario) {
-      const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)); // Use email as key
-
+      const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
       if (dadosUsuario && dadosUsuario.nome) {
-        dashboardTitle.textContent = `Dashboard de ${dadosUsuario.nome}`; // Update title with user's name
+        dashboardTitle.textContent = `Dashboard de ${dadosUsuario.nome}`;
+        tipoPerfilUsuario = dadosUsuario.perfil; // Salva o tipo de perfil
       } else {
-        dashboardTitle.textContent = "Dashboard de Usuário"; // Fallback if name not found
+        dashboardTitle.textContent = "Dashboard de Usuário";
+        tipoPerfilUsuario = "Pessoa Física"; // Padrão se nome não encontrado ou dados corrompidos
       }
     } else {
-      dashboardTitle.textContent = "Dashboard de Fulano"; // Fallback if no user is logged in
+      dashboardTitle.textContent = "Dashboard de Fulano";
+      tipoPerfilUsuario = "Pessoa Física"; // Padrão se não houver usuário logado
     }
+    populateCategorySelects(); // Popula os selects de categoria após definir o perfil
+  }
+
+  // Função para popular os selects de categoria
+  function populateCategorySelects() {
+    const entradaCategoriaSelect = document.getElementById("entrada-categoria");
+    const saidaCategoriaSelect = document.getElementById("saida-categoria");
+
+    // Limpa as opções existentes
+    entradaCategoriaSelect.innerHTML =
+      '<option value="" disabled selected>Seleção</option>';
+    saidaCategoriaSelect.innerHTML =
+      '<option value="" disabled selected>Seleção</option>';
+
+    let categoriasEntrada;
+    let categoriasSaida;
+
+    if (tipoPerfilUsuario === "Pessoa Jurídica") {
+      categoriasEntrada = categoriasEntradaPJ;
+      categoriasSaida = categoriasSaidaPJ;
+    } else {
+      // Padrão para Pessoa Física
+      categoriasEntrada = categoriasEntradaPF;
+      categoriasSaida = categoriasSaidaPF;
+    }
+
+    categoriasEntrada.forEach((cat) => {
+      const option = document.createElement("option");
+      option.value = cat.value;
+      option.textContent = cat.text;
+      entradaCategoriaSelect.appendChild(option);
+    });
+
+    categoriasSaida.forEach((cat) => {
+      const option = document.createElement("option");
+      option.value = cat.value;
+      option.textContent = cat.text;
+      saidaCategoriaSelect.appendChild(option);
+    });
   }
 
   // Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
@@ -31,8 +108,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-  // Chamar a função para carregar o nome do usuário ao carregar a página
-  loadUserName();
+  // Chamar a função para carregar o nome do usuário e perfil ao carregar a página
+  loadUserNameAndProfile();
 
   // Função para alternar a visibilidade do menu dropdown
   window.toggleMenu = function () {
@@ -68,29 +145,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  document.querySelector(".menu-icon").addEventListener("click", function () {
-   const navMenu = document.getElementById("dropdownMenu"); // corrigido
-   const header = document.querySelector(".header");
-
-   navMenu.classList.toggle("show");
-   const menuEstaAberto = navMenu.classList.contains("show"); // corrigido
-
-   if (window.innerWidth < 780) {
-     if (menuEstaAberto) {
-       header.classList.add("fixo-quando-menu-aberto");
-       document.body.classList.add("menu-aberto-margin");
-     } else {
-       header.classList.remove("fixo-quando-menu-aberto");
-       document.body.classList.remove("menu-aberto-margin");
-     }
-    }
-  });
-
   // Função para abrir modais (histórico, entrada, saída, etc.)
   window.openModal = function (tipo) {
     document.getElementById("overlay").style.display = "block";
     const modal = document.getElementById(`modal-${tipo}`);
     modal.style.display = "block";
+
+    // Repopula os selects de categoria sempre que um modal de entrada/saída é aberto
+    if (tipo === "entradas" || tipo === "saidas") {
+        populateCategorySelects();
+    }
 
     if (tipo === "historico") {
       // Garante que os filtros do histórico sejam populados antes de carregar as transações
@@ -109,9 +173,14 @@ document.addEventListener("DOMContentLoaded", function () {
           'input[type="date"], input[type="number"], input[type="text"]'
         )
         .forEach((input) => (input.value = ""));
-      modal
-        .querySelectorAll("select")
-        .forEach((select) => (select.selectedIndex = 0));
+      
+      // Resetar seleção de categorias para o valor padrão "Seleção"
+      modal.querySelectorAll('select').forEach(select => {
+          if (select.id.includes('-categoria') || select.id.includes('frequencia')) {
+              select.selectedIndex = 0;
+          }
+      });
+      
       const recorrenteNao = modal.querySelector(
         'input[type="radio"][value="nao"]'
       );
@@ -134,7 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("edit-modal-title").style.display = "block";
     document.getElementById("edit-type-label").style.display = "block";
     document.getElementById("tipo-edicao").style.display = "block";
-    // Also ensure the list of transactions for editing is visible when reopening the edit modal
     document.getElementById("lista-transacoes-edicao").style.display =
       "block"; // Ensure this is visible on open
   };
@@ -153,17 +221,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Função para obter dados financeiros do localStorage
+  // Função para obter dados financeiros do localStorage do usuário logado
   function getFinancialData() {
-    // Use a unique key for PF dashboard data
-    const storedData = localStorage.getItem("financialDashboardDataPF");
-    return storedData ? JSON.parse(storedData) : { entradas: [], saidas: [] };
+    const email = localStorage.getItem("usuarioLogado");
+    if (!email) {
+      console.warn("Nenhum usuário logado. Não é possível carregar dados financeiros.");
+      return { entradas: [], saidas: [] };
+    }
+    let userData = JSON.parse(localStorage.getItem(email));
+
+    // Se o usuário não tiver dados financeiros, inicializa
+    if (!userData || !userData.financialData) {
+        userData = userData || {};
+        userData.financialData = { entradas: [], saidas: [] };
+        localStorage.setItem(email, JSON.stringify(userData)); // Salva a estrutura inicial
+    }
+    return userData.financialData;
   }
 
-  // Função para salvar dados financeiros no localStorage e renderizar o dashboard
+  // Função para salvar dados financeiros no localStorage do usuário logado
   function saveFinancialData(data) {
-    // Use a unique key for PF dashboard data
-    localStorage.setItem("financialDashboardDataPF", JSON.stringify(data));
+    const email = localStorage.getItem("usuarioLogado");
+    if (!email) {
+      console.warn("Nenhum usuário logado. Não é possível salvar dados financeiros.");
+      return;
+    }
+    let userData = JSON.parse(localStorage.getItem(email));
+    if (!userData) {
+      userData = {}; // Inicializa se não existir
+    }
+    userData.financialData = data;
+    localStorage.setItem(email, JSON.stringify(userData));
     renderDashboard();
   }
 
@@ -172,18 +260,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const dataInput = document.getElementById("entrada-data");
     const valorInput = document.getElementById("entrada-valor");
     const categoriaSelect = document.getElementById("entrada-categoria");
-    const catetoriaText =
+    const categoriaText =
       categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("entrada-descricao");
     const recorrenteSim = document.getElementById(
       "entrada-recorrente-sim"
     ).checked;
     const frequenciaSelect = document.getElementById("entrada-frequencia");
-    const encerramentoInput = document.getElementById("entrada-encerramento"); // Adicionado
+    const encerramentoInput = document.getElementById("entrada-encerramento");
 
     if (!dataInput.value || !valorInput.value) {
       alert("Data e Valor são obrigatórios para entradas.");
       return;
+    }
+    if (categoriaSelect.value === "") {
+        alert("A categoria é obrigatória para entradas.");
+        return;
     }
 
     if (recorrenteSim && !encerramentoInput.value) {
@@ -196,8 +288,8 @@ document.addEventListener("DOMContentLoaded", function () {
       tipo: "entrada",
       data: dataInput.value,
       valor: parseFloat(valorInput.value),
-      catetoriaText: catetoriaText,
       categoria: categoriaSelect.value,
+      categoriaText: categoriaText, // Armazena o texto visível da categoria
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
@@ -222,11 +314,15 @@ document.addEventListener("DOMContentLoaded", function () {
       "saida-recorrente-sim"
     ).checked;
     const frequenciaSelect = document.getElementById("saida-frequencia");
-    const encerramentoInput = document.getElementById("saida-encerramento"); // Adicionado
+    const encerramentoInput = document.getElementById("saida-encerramento");
 
     if (!dataInput.value || !valorInput.value) {
       alert("Data e Valor são obrigatórios para saídas.");
       return;
+    }
+    if (categoriaSelect.value === "") {
+        alert("A categoria é obrigatória para saídas.");
+        return;
     }
 
     if (recorrenteSim && !encerramentoInput.value) {
@@ -240,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
       data: dataInput.value,
       valor: parseFloat(valorInput.value),
       categoria: categoriaSelect.value,
-      categoriaText: categoriaText,
+      categoriaText: categoriaText, // Armazena o texto visível da categoria
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
@@ -281,8 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Ordena as transações da mais recente para a mais antiga
     transactionsToDisplay.sort(
-      (a, b) =>
-        new Date(b.data + "T12:00:00") - new Date(a.data + "T12:00:00")
+      (a, b) => new Date(b.data + "T12:00:00") - new Date(a.data + "T12:00:00")
     );
 
     transactionsToDisplay.forEach((item) => {
@@ -294,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ? `- R$ ${item.valor.toFixed(2)}`
           : `+ R$ ${item.valor.toFixed(2)}`;
       const description = item.descricao ? ` - ${item.descricao}` : "";
-      const category = item.categoria ? ` (${item.categoria})` : "";
+      const categoryText = item.categoriaText ? ` (${item.categoriaText})` : ""; // Usa categoriaText
 
       const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
         "pt-BR"
@@ -303,7 +398,7 @@ document.addEventListener("DOMContentLoaded", function () {
       itemDiv.innerHTML = `
                 <input type="checkbox" id="remove-${item.id}" value="${item.id}" data-type="${item.tipo}">
                 <label for="remove-${item.id}">
-                    ${formattedDate} ${valueDisplay}${category}${description}
+                    ${formattedDate} ${valueDisplay}${categoryText}${description}
                 </label>
             `;
       listaDiv.appendChild(itemDiv);
@@ -390,8 +485,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Ordena as transações da mais recente para a mais antiga
     transactionsToDisplay.sort(
-      (a, b) =>
-        new Date(b.data + "T12:00:00") - new Date(a.data + "T12:00:00")
+      (a, b) => new Date(b.data + "T12:00:00") - new Date(a.data + "T12:00:00")
     );
 
     transactionsToDisplay.forEach((item) => {
@@ -403,7 +497,7 @@ document.addEventListener("DOMContentLoaded", function () {
           ? `- R$ ${item.valor.toFixed(2)}`
           : `+ R$ ${item.valor.toFixed(2)}`;
       const description = item.descricao ? ` - ${item.descricao}` : "";
-      const category = item.categoria ? ` (${item.categoria})` : "";
+      const categoryText = item.categoriaText ? ` (${item.categoriaText})` : ""; // Usa categoriaText
 
       const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
         "pt-BR"
@@ -411,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       itemDiv.innerHTML = `
                 <button class="edit-button" onclick="editTransaction(${item.id}, '${item.tipo}')">
-                    ${formattedDate} ${valueDisplay}${category}${description}
+                    ${formattedDate} ${valueDisplay}${categoryText}${description}
                 </button>
             `;
       listaDiv.appendChild(itemDiv);
@@ -451,39 +545,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoriaSelect = document.getElementById("edit-categoria");
     categoriaSelect.innerHTML = ""; // Limpa opções existentes
 
-    let categories = [];
+    let categoriesOptions = [];
     if (tipo === "entrada") {
-      categories = ["Salário", "Investimentos", "Lucros", "Outros"];
+      categoriesOptions =
+        tipoPerfilUsuario === "Pessoa Jurídica"
+          ? categoriasEntradaPJ
+          : categoriasEntradaPF;
     } else {
-      categories = [
-        "Alimentação",
-        "Transporte",
-        "Moradia",
-        "Lazer",
-        "Saúde",
-        "Educação",
-        "Contas",
-        "Outros",
-      ];
+      categoriesOptions =
+        tipoPerfilUsuario === "Pessoa Jurídica"
+          ? categoriasSaidaPJ
+          : categoriasSaidaPF;
     }
 
-    categories.forEach((cat) => {
+    categoriesOptions.forEach((cat) => {
       const option = document.createElement("option");
-      // Padroniza o valor da opção para ser minúsculo e sem acentos para a comparação
-      option.value = cat
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-      option.textContent = cat;
+      option.value = cat.value;
+      option.textContent = cat.text;
       categoriaSelect.appendChild(option);
     });
 
-    // Seleciona a categoria correta, padronizando também o valor da categoria salva
-    const savedCategoryValue = transactionToEdit.categoria
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-    categoriaSelect.value = savedCategoryValue;
+    // Seleciona a categoria correta
+    categoriaSelect.value = transactionToEdit.categoria;
 
     document.getElementById("form-edicao").style.display = "block";
 
@@ -518,7 +601,8 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         const encerramentoInput =
           document.getElementById("edit-encerramento");
-        const frequenciaSelect = document.getElementById("edit-frequencia");
+        const frequenciaSelect =
+          document.getElementById("edit-frequencia");
 
         if (recorrenteDiv) {
           if (this.value === "sim" && this.checked) {
@@ -538,7 +622,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const tipo = document.getElementById("edit-tipo").value;
     const data = document.getElementById("edit-data").value;
     const valor = parseFloat(document.getElementById("edit-valor").value);
-    const categoria = document.getElementById("edit-categoria").value;
+    const categoriaSelect = document.getElementById("edit-categoria");
+    const categoria = categoriaSelect.value;
+    const categoriaText = categoriaSelect.options[categoriaSelect.selectedIndex].text; // Pega o texto da categoria
     const descricao = document.getElementById("edit-descricao").value;
     const recorrente = document.getElementById("edit-recorrente-sim").checked;
     const frequencia = recorrente
@@ -552,6 +638,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!data || isNaN(valor)) {
       alert("Data e Valor são obrigatórios para editar a transação.");
       return;
+    }
+    if (categoriaSelect.value === "") {
+        alert("A categoria é obrigatória para editar a transação.");
+        return;
     }
 
     if (recorrente && !dataEncerramento) {
@@ -580,6 +670,7 @@ document.addEventListener("DOMContentLoaded", function () {
         data: data,
         valor: valor,
         categoria: categoria,
+        categoriaText: categoriaText, // Salva o texto da categoria
         descricao: descricao,
         recorrente: recorrente,
         frequencia: frequencia,
@@ -598,7 +689,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const years = new Set();
     const currentYear = new Date().getFullYear();
 
-    const startDisplayYear = 2025; // Início do período para exibição
+    const startDisplayYear = 2024; // Início do período para exibição
     const maxYear = currentYear + 5; // Fim do período para exibição
 
     for (let year = startDisplayYear; year <= maxYear; year++) {
@@ -634,8 +725,8 @@ document.addEventListener("DOMContentLoaded", function () {
       anoFiltroSelect.appendChild(option);
     });
 
-    anoFiltroSelect.value =
-      currentAnoFilter || new Date().getFullYear().toString();
+    // Tenta manter o ano selecionado ou define o ano atual como padrão
+    anoFiltroSelect.value = currentAnoFilter || new Date().getFullYear().toString();
 
     mesFiltroSelect.value = currentMesFilter;
   }
@@ -706,7 +797,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const today = new Date();
     const currentYear = today.getFullYear();
 
-    const startDisplayYear = 2025; // Início do período para exibição
+    const startDisplayYear = 2024; // Início do período para exibição
     const endDisplayYear = currentYear + 5; // Fim do período para exibição
 
     transactions.forEach((item) => {
@@ -738,10 +829,13 @@ document.addEventListener("DOMContentLoaded", function () {
             break; // Se a data atual for após a data de encerramento, para de gerar
           }
 
-          expandedTransactions.push({
-            ...item,
-            data: currentDate.toISOString().split("T")[0],
-          });
+          // Adiciona apenas se a data de encerramento não tiver sido atingida e estiver dentro do intervalo
+          if (!item.dataEncerramento || new Date(currentDate) <= new Date(item.dataEncerramento + "T23:59:59")) {
+            expandedTransactions.push({
+              ...item,
+              data: currentDate.toISOString().split("T")[0],
+            });
+          }
 
           if (item.frequencia === "mensal") {
             currentDate.setMonth(currentDate.getMonth() + 1);
@@ -822,17 +916,12 @@ document.addEventListener("DOMContentLoaded", function () {
         currency: "BRL",
       }).format(item.valor);
       const description = item.descricao ? ` - ${item.descricao}` : "";
-      const category =
-        item.categoriaText
-          ? item.categoriaText
-          : item.categoria
-            ? item.categoria
-            : "Sem Categoria";
+      const categoryText = item.categoriaText ? item.categoriaText : "Sem Categoria"; // Usa categoriaText
 
       listItem.innerHTML = `
                 <span class="transaction-type">${displayType}:</span>
                 <span class="transaction-date">${formattedDate}</span>
-                <span class="transaction-description">${category}${description}</span>
+                <span class="transaction-description">${categoryText}${description}</span>
                 <span class="transaction-value">${formattedValue}</span>
             `;
 
@@ -889,37 +978,6 @@ document.addEventListener("DOMContentLoaded", function () {
       0
     );
 
-    // Salvar dados no localStorage, dentro do objeto do usuário logado
-    const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
-
-    if (emailUsuarioLogado) {
-      const dadosDoUsuario = JSON.parse(
-        localStorage.getItem(emailUsuarioLogado)
-      );
-
-      if (dadosDoUsuario) {
-        dadosDoUsuario.chartData = {
-          entradas: totalEntradas,
-          saidas: totalSaidas,
-        };
-
-        // Salvar também as transações filtradas do mês atual com tipo padronizado
-        dadosDoUsuario.entradas = entradasParaGrafico.map((t) => ({
-          ...t,
-          tipo: "entrada",
-          categoriaText: t.categoriaText, // opcional: manter para exibição posterior
-        }));
-
-        dadosDoUsuario.saidas = saidasParaGrafico.map((t) => ({
-          ...t,
-          tipo: "saida",
-          categoriaText: t.categoriaText, // opcional: manter para exibição posterior
-        }));
-
-        localStorage.setItem(emailUsuarioLogado, JSON.stringify(dadosDoUsuario));
-      }
-    }
-
     chartInstances.pieChart = new Chart(
       document.getElementById("pieChart").getContext("2d"),
       {
@@ -966,7 +1024,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const allFilteredMonths = new Set();
 
     entradasParaGrafico.forEach((item) => {
-      const date = new Date(item.data + "T12:00:00"); // Corrigido aqui
+      const date = new Date(item.data + "T12:00:00");
       const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, "0")}`;
@@ -980,7 +1038,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     saidasParaGrafico.forEach((item) => {
-      const date = new Date(item.data + "T12:00:00"); // Corrigido aqui
+      const date = new Date(item.data + "T12:00:00");
       const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, "0")}`;
@@ -1092,6 +1150,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   renderDashboard();
 
+
   window.onclick = function (event) {
     const dropdownMenu = document.getElementById("dropdownMenu");
     const menuIcon = document.querySelector(".menu-icon");
@@ -1113,7 +1172,6 @@ document.addEventListener("DOMContentLoaded", function () {
       !event.target.matches(".Saidas") &&
       !event.target.matches(".Editar") &&
       !event.target.matches(".Remover") &&
-      // Add a specific check for the close button within the modal
       !event.target.matches(".close-button")
     ) {
       const modals = document.querySelectorAll(".modal");
@@ -1127,16 +1185,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Função para delogar o usuário
   function sair() {
-    localStorage.removeItem("usuarioLogado"); // Remove o usuário logado
-    localStorage.removeItem("currentUser"); // Remove o usuário atual
-    window.location.href = "/src/login/login.html";
+    localStorage.removeItem("usuarioLogado"); // Remove o e-mail do usuário logado do localStorage
+    window.location.href = "/src/login/login.html"; // Redireciona para a página de login
   }
 
   // Adiciona o evento de clique ao botão de sair
   const botaoSair = document.getElementById("botao-sair");
   if (botaoSair) {
     botaoSair.addEventListener("click", function (e) {
-      e.preventDefault();
+      e.preventDefault(); // Evita o comportamento padrão do link
       sair();
     });
   }
