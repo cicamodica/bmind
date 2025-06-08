@@ -1,11 +1,12 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const voltar = document.getElementById("botao-voltar");
-  if (voltar) {
-    voltar.addEventListener("click", () => {
+function botaoVoltar() {
+
+  const botaoVoltar = document.getElementById("botao-voltar");
+  if (botaoVoltar) {
+    botaoVoltar.addEventListener("click", () => {
       history.back();
     });
   }
-});
+}
 
 
 function atualizarInterfaceUsuario() {
