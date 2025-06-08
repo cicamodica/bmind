@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const categoriasSaidaPJ = [
     { value: "folha_pagamento", text: "Folha de Pagamento" },
-    { value: "aluguel_despesas_operacionais", text: "Aluguel e Despesas" },
+    {
+      value: "aluguel_despesas_operacionais",
+      text: "Aluguel e Despesas",
+    },
     { value: "impostos_taxas", text: "Impostos e Taxas" },
     { value: "compras_fornecedores", text: "Compras de Fornecedores" },
     { value: "marketing_publicidade", text: "Marketing e Publicidade" },
@@ -59,7 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Função para popular os selects de categoria
   function populateCategorySelects() {
-    const entradaCategoriaSelect = document.getElementById("entrada-categoria");
+    const entradaCategoriaSelect =
+      document.getElementById("entrada-categoria");
     const saidaCategoriaSelect = document.getElementById("saida-categoria");
 
     // Limpa as opções existentes
@@ -153,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Repopula os selects de categoria sempre que um modal de entrada/saída é aberto
     if (tipo === "entradas" || tipo === "saidas") {
-        populateCategorySelects();
+      populateCategorySelects();
     }
 
     if (tipo === "historico") {
@@ -173,14 +177,14 @@ document.addEventListener("DOMContentLoaded", function () {
           'input[type="date"], input[type="number"], input[type="text"]'
         )
         .forEach((input) => (input.value = ""));
-      
+
       // Resetar seleção de categorias para o valor padrão "Seleção"
-      modal.querySelectorAll('select').forEach(select => {
-          if (select.id.includes('-categoria') || select.id.includes('frequencia')) {
-              select.selectedIndex = 0;
-          }
+      modal.querySelectorAll("select").forEach((select) => {
+        if (select.id.includes("-categoria") || select.id.includes("frequencia")) {
+          select.selectedIndex = 0;
+        }
       });
-      
+
       const recorrenteNao = modal.querySelector(
         'input[type="radio"][value="nao"]'
       );
@@ -232,9 +236,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Se o usuário não tiver dados financeiros, inicializa
     if (!userData || !userData.financialData) {
-        userData = userData || {};
-        userData.financialData = { entradas: [], saidas: [] };
-        localStorage.setItem(email, JSON.stringify(userData)); // Salva a estrutura inicial
+      userData = userData || {};
+      userData.financialData = { entradas: [], saidas: [] };
+      localStorage.setItem(email, JSON.stringify(userData)); // Salva a estrutura inicial
     }
     return userData.financialData;
   }
@@ -263,19 +267,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoriaText =
       categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("entrada-descricao");
-    const recorrenteSim = document.getElementById(
-      "entrada-recorrente-sim"
-    ).checked;
+    const recorrenteSim =
+      document.getElementById("entrada-recorrente-sim").checked;
     const frequenciaSelect = document.getElementById("entrada-frequencia");
-    const encerramentoInput = document.getElementById("entrada-encerramento");
+    const encerramentoInput =
+      document.getElementById("entrada-encerramento");
 
     if (!dataInput.value || !valorInput.value) {
       alert("Data e Valor são obrigatórios para entradas.");
       return;
     }
     if (categoriaSelect.value === "") {
-        alert("A categoria é obrigatória para entradas.");
-        return;
+      alert("A categoria é obrigatória para entradas.");
+      return;
     }
 
     if (recorrenteSim && !encerramentoInput.value) {
@@ -310,19 +314,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoriaText =
       categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("saida-descricao");
-    const recorrenteSim = document.getElementById(
-      "saida-recorrente-sim"
-    ).checked;
+    const recorrenteSim =
+      document.getElementById("saida-recorrente-sim").checked;
     const frequenciaSelect = document.getElementById("saida-frequencia");
-    const encerramentoInput = document.getElementById("saida-encerramento");
+    const encerramentoInput =
+      document.getElementById("saida-encerramento");
 
     if (!dataInput.value || !valorInput.value) {
       alert("Data e Valor são obrigatórios para saídas.");
       return;
     }
     if (categoriaSelect.value === "") {
-        alert("A categoria é obrigatória para saídas.");
-        return;
+      alert("A categoria é obrigatória para saídas.");
+      return;
     }
 
     if (recorrenteSim && !encerramentoInput.value) {
@@ -391,9 +395,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const description = item.descricao ? ` - ${item.descricao}` : "";
       const categoryText = item.categoriaText ? ` (${item.categoriaText})` : ""; // Usa categoriaText
 
-      const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
-        "pt-BR"
-      );
+      const formattedDate = new Date(
+        item.data + "T12:00:00"
+      ).toLocaleDateString("pt-BR");
 
       itemDiv.innerHTML = `
                 <input type="checkbox" id="remove-${item.id}" value="${item.id}" data-type="${item.tipo}">
@@ -499,9 +503,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const description = item.descricao ? ` - ${item.descricao}` : "";
       const categoryText = item.categoriaText ? ` (${item.categoriaText})` : ""; // Usa categoriaText
 
-      const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
-        "pt-BR"
-      );
+      const formattedDate = new Date(
+        item.data + "T12:00:00"
+      ).toLocaleDateString("pt-BR");
 
       itemDiv.innerHTML = `
                 <button class="edit-button" onclick="editTransaction(${item.id}, '${item.tipo}')">
@@ -539,7 +543,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("edit-tipo").value = transactionToEdit.tipo;
     document.getElementById("edit-data").value = transactionToEdit.data;
     document.getElementById("edit-valor").value = transactionToEdit.valor;
-    document.getElementById("edit-descricao").value = transactionToEdit.descricao;
+    document.getElementById("edit-descricao").value =
+      transactionToEdit.descricao;
 
     // Popula as categorias
     const categoriaSelect = document.getElementById("edit-categoria");
@@ -624,9 +629,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const valor = parseFloat(document.getElementById("edit-valor").value);
     const categoriaSelect = document.getElementById("edit-categoria");
     const categoria = categoriaSelect.value;
-    const categoriaText = categoriaSelect.options[categoriaSelect.selectedIndex].text; // Pega o texto da categoria
+    const categoriaText =
+      categoriaSelect.options[categoriaSelect.selectedIndex].text; // Pega o texto da categoria
     const descricao = document.getElementById("edit-descricao").value;
-    const recorrente = document.getElementById("edit-recorrente-sim").checked;
+    const recorrente =
+      document.getElementById("edit-recorrente-sim").checked;
     const frequencia = recorrente
       ? document.getElementById("edit-frequencia").value
       : null;
@@ -640,8 +647,8 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     if (categoriaSelect.value === "") {
-        alert("A categoria é obrigatória para editar a transação.");
-        return;
+      alert("A categoria é obrigatória para editar a transação.");
+      return;
     }
 
     if (recorrente && !dataEncerramento) {
@@ -726,7 +733,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Tenta manter o ano selecionado ou define o ano atual como padrão
-    anoFiltroSelect.value = currentAnoFilter || new Date().getFullYear().toString();
+    anoFiltroSelect.value =
+      currentAnoFilter || new Date().getFullYear().toString();
 
     mesFiltroSelect.value = currentMesFilter;
   }
@@ -908,9 +916,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function createListItem(item, displayType) {
       const listItem = document.createElement("li");
       listItem.className = item.tipo;
-      const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString(
-        "pt-BR"
-      );
+      const formattedDate = new Date(
+        item.data + "T12:00:00"
+      ).toLocaleDateString("pt-BR");
       const formattedValue = new Intl.NumberFormat("pt-BR", {
         style: "currency",
         currency: "BRL",
@@ -1149,7 +1157,6 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   renderDashboard();
-
 
   window.onclick = function (event) {
     const dropdownMenu = document.getElementById("dropdownMenu");

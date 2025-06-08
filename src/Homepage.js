@@ -80,7 +80,7 @@ function redirecionarCadastro() {
     if (dadosDoUsuario.perfil === "Pessoa Física") {
       window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else {
       alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
     }

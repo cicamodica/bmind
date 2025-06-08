@@ -718,7 +718,7 @@ select,
 /*
  * Preenchimento do Span do Item da Lista de Histórico
  */
-.historico-lista lispan {
+.historico-lista li span {
   flex-shrink: 0;
   padding: 0 5px;
 }
@@ -807,7 +807,7 @@ select,
   cursor: pointer;
 }
 
-.lista-transacoes-remocaolabel {
+.lista-transacoes-remocao label {
   flex-grow: 1;
   font-size: 0.95em;
   color: #333;
@@ -882,7 +882,7 @@ select,
     min-height: 200px;
   }
 
-  .atualizarh3 {
+  .atualizar h3 {
     padding-left: 0;
     text-align: center;
   }
@@ -958,8 +958,8 @@ select,
     width: auto; /* Ajustado para ser mais flexível */
     height: auto; /* Ajustado para ser mais flexível */
   }
-  #modal-historico.seletor-filtroselect,
-  #modal-historico.seletor-filtrolabel {
+  #modal-historico.seletor-filtro select,
+  #modal-historico.seletor-filtro label {
     width: auto;
     margin: 5px;
   }
