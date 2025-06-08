@@ -4,6 +4,8 @@ O documento de programação de funcionalidades descreve as características pri
 
 ## Homepage
 
+![Homepage Logado](https://github.com/user-attachments/assets/bf9d77f9-2985-4ab5-98a8-921c95d87701)
+
 Sua principal função é ser  o ponto de entrada central e ocartão de visitas do site. Atraves dessa pagina podemos apresentar as informações e produtos que oferecemos, alem  de direcionar os vitantes para os nossos conteudos e incentiva-los a se cadastrar para acessar mais funcionalidades. Ela adapta o conteudo exibido conforme o status de login  e perfil de usuario (Pessoa Física ou Jurídica), controla a exibição de botoes e links, implementa a funcionalidade bsuca, gerencia um carrossel de banners e organiza o conteudo em abas interativas.
 
 ### Requisito atendido
