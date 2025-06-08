@@ -362,7 +362,8 @@ header {
   /*Estilização do conteúdo do cartão*/
   max-width: 1000px;
   margin: 40px auto;
-font-size: clamp(1em, 1em + 1vw, 1.25em); 
+  padding: 0 20px;
+  font-size: clamp(1em, 1em + 1vw, 1.25em); /* Tamanho responsivo do texto */
 }
 
 .introducao,
@@ -507,8 +508,9 @@ font-size: clamp(1em, 1em + 1vw, 1.25em);
    
 .mobile-search-trigger {
     margin: 0px 0px 0px 0px; /* Remove o espaçamento padrão */  
-   }  .search-container {  /* Estilização da barra de pesquisa */
-
+   }  
+   
+   .search-container {  /* Estilização da barra de pesquisa */
     display: none;
   }
   .user-actions{
