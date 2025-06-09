@@ -154,10 +154,7 @@ header {
   align-items: center;
   z-index: 1;
 }
-/* Adicionado: Classe para esconder a barra de pesquisa desktop no mobile */
-.search-container.search-desktop {
-    /* Por padrão, está visível. Será escondida nas media queries. */
-}
+
 
 /*
  * Estilos da Barra de Busca

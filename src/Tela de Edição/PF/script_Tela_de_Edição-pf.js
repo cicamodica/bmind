@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- LÓGICA DE VERIFICAÇÃO DE LOGIN ---
   if (!emailUsuario) {
     alert("Conteúdo disponível somente para usuários cadastrados.");
-    window.location.href = "https://www.google.com"; // Redireciona para o Google
+    window.location.href = "/src/Homepage.html"; // Redireciona para o Google
     return; // Interrompe a execução do restante do script
   }
   // --- FIM DA LÓGICA ---
