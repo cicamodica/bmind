@@ -79,3 +79,9 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
   <img src="img/Tela de Feedback.png" alt="Tela de Feedback" style="width: 70%; max-width: 800px;">
 </div>
 
+## Conteúdo Didático
+
+<div align="center">
+  <img src="img/Página de conteúdo.png" alt="Página de conteúdo" style="width: 70%; max-width: 800px;">
+</div>
+
