@@ -532,7 +532,8 @@ window.renderMainPieChart = function () {
       }).format(item.valor);
       const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString("pt-BR");
 
-      div.textContent = `${formattedDate} - ${item.tipo === "entrada" ? "Entrada" : "Saída"}: ${formattedValue} - ${item.descricao || "Sem descrição"}`;
+     div.textContent = `${formattedDate} - ${item.tipo === "entrada" ? "Entrada" : "Saída"}: ${formattedValue} - ${item.categoriaText || "Sem Categoria"}`;
+
 
       lista.appendChild(div);
     });
