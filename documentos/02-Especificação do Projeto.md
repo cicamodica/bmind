@@ -97,7 +97,7 @@
 | RF-02	| A aplicação deve disponibilizar uma página para validação dos dados cadastrados pelo usuário.	                                            |    ALTA    |
 | RF-03 |	A aplicação deve permitir que o usuário faça login em sua conta.	                                                                        |    ALTA    |
 | RF-04 |	A aplicação deverá permitir que o usuário redefina sua senha.	                                                                            |    ALTA    |
-| RF-05	| A aplicação deve disponibilizar conteúdos didáticos sobre finanças, como: Orçamento mensal, reserva de emergência, poupança, cartão de crédito, juros, parcelamento, inflação, poder de compra, custo efetivo total (CET) de empréstimos, renda passiva, comparadores financeiros, entre outros.	                                                                      |    ALTA    |
+| RF-05	| A aplicação deve disponibilizar conteúdos didáticos sobre finanças, como: Finanças Pessoais, Finanças Corporativas, Investimentos Pessoais, Investimentos Corporativos, Operações Bancárias.	                                                                                                                                                                          |    ALTA    |
 | RF-06 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.	                |    ALTA    |
 | RF-07 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento de metas estabelecidas pelo próprio.          |    ALTA    |
 | RF-08	| A aplicação deve disponibilizar ao usuário uma ferramenta para o registro de receitas e despesas.	                                        |    ALTA    |
@@ -108,7 +108,7 @@
 | RF-13	| A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.	        |    ALTA    |
 | RF-14	| O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.	|   ALTA   |
 | RF-15	| O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.	|   ALTA   |
-| RF-16	| A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03).	|   MÉDIA   |
+| RF-16	| A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).	|   MÉDIA   |
 | RF-17	| A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.	                    |   MÉDIA   |
 | RF-18	| Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.	                                                                  |   MÉDIA   |
 | RF-19	| A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação	|   MÉDIA   |
