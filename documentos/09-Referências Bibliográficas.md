@@ -17,7 +17,10 @@ Serasa limpa nome. HIPERLINK: “https://www.serasa.com.br/limpa-nome-online/”
 
 Acessado em 04/03/2025 
 
- 
+ W3Schools : (https://www.w3schools.com/)
+ Nwebdocs : (https://developer.mozilla.org/en-US/)
+
+Acessado diversas vezes
 
 SPC Brasil. HIPERLINK: “https://www.spcbrasil.org.br/” Oito em cada dez brasileiros não sabem como controlar as próprias despesas  https://www.spcbrasil.org.br/uploads/st_imprensa/release_pesquisa_educacao_financeira_vf.pdf  
 
