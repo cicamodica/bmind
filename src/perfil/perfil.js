@@ -202,3 +202,20 @@ document.getElementById("perfil-form").addEventListener("submit", function (e) {
 document.getElementById("cancelar").addEventListener("click", function () {
   window.location.href = "/src/Homepage.html";
 });
+
+function redirecionarCadastro() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+  if (dadosDoUsuario && dadosDoUsuario.perfil) {
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+    } else {
+      alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
+    }
+  } else {
+    alert("Usuário não logado ou dados do usuário inválidos.");
+  }
+}
