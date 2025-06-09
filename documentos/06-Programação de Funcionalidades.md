@@ -273,6 +273,39 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 - Erick Costa
 - Maria Cecilia Caruzzo Modica
 
+## Main (Minha Área)
+
+Sua função principal é trazer para o ususario um resumo de todas as atividades que ele realizou no plataforma. Iniciando com as exibição do dashboard com base nas despesas e receitas cadastradas, um resumo to total gasto e recebido do mes alem de um hisotrico com tudo que foi registrado no mes. A pagina permite qu eo usuario crie e gerencie metas que ele deseja alcançar. Exibe tambem os ultimos 5 conteudos vistos pelo o usurario e recomenda conteudos com base no perfil cadastrado.
+
+### Requisito atendido
+
+[Adicionar novo?]
+
+### Artefatos da funcionalidade
+
+-Main.css
+-Main.html
+-Main.js
+
+### Estrutura de Dados
+Esta página não possui estrutura de dados
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Main/Main.html)
+
+- O usuário é redirecionado para esssa página após fazer login na aplicação.
+
+- Ao ser redirecionado, ele tem acesso as funcionalidades da pagina.
+
+
+#### Responsável
+
+-Mariana Turibio Gressi
+-Matheus Feliciano Andrade Bernardes
+
+
+
 ## Resultado de pesquisa
 
 ![Página Resultado de Pesquisa](https://github.com/user-attachments/assets/e312ad21-4063-46ca-b554-ecbe4d13a3dd)

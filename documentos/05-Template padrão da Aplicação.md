@@ -61,6 +61,12 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
   <img src="img/Tela de validação de dados.png" alt="Página de validação de dados" style="width: 70%; max-width: 800px;">
 </div>
 
+## Main (Minha Área)
+<div align="center">
+  <img src="img/Main.png" alt="Página main" style="width: 70%; max-width: 800px;">
+  <img src="img/Main2.png" alt="Página main" style="width: 70%; max-width: 800px;">
+</div>
+
 ## Perfil
 
 <div align="center">
