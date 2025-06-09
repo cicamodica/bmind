@@ -698,7 +698,270 @@ function atualizarInterfaceUsuario() {
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: 
+- Abra um navegador de Internet e informe a seguinte URL:
+
+- ## Tela de Edição
+Sua função principal é trazer para o ususario um resumo de todas as atividades que ele realizou no plataforma. Iniciando com as exibição do dashboard com base nas despesas e receitas cadastradas, um resumo to total gasto e recebido do mes alem de um hisotrico com tudo que foi registrado no mes. A pagina permite qu eo usuario crie e gerencie metas que ele deseja alcançar. Exibe tambem os ultimos 5 conteudos vistos pelo o usurario e recomenda conteudos com base no perfil cadastrado.
+
+### Requisito atendido
+RF-06 A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.
+
+### Artefatos da funcionalidade
+
+-Index_Tela_de_Edição-pf.html
+-script_Tela_de_Edição-pf.js
+-style_Tela_de_Edição-pf.css
+
+### Estrutura de Dados
+// Função para carregar o nome do usuário e atualizar o título
+  function loadUserNameAndProfile() {
+    const dashboardTitle = document.getElementById("dashboard-titulo");
+    if (emailUsuario) {
+      const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)); // JSON.parse
+      if (dadosUsuario && dadosUsuario.nome) {
+        dashboardTitle.textContent = `Dashboard de ${dadosUsuario.nome}`;
+        tipoPerfilUsuario = dadosUsuario.perfil;
+      } else {
+        dashboardTitle.textContent = "Dashboard de Usuário";
+        tipoPerfilUsuario = "Pessoa Física";
+      }
+    } else {
+      dashboardTitle.textContent = "Dashboard de Fulano";
+      tipoPerfilUsuario = "Pessoa Física";
+    }
+    populateCategorySelects();
+  }
+
+  // Função para obter dados financeiros do localStorage do usuário logado
+  function getFinancialData() {
+    const email = localStorage.getItem("usuarioLogado");
+    if (!email) {
+      console.warn("Nenhum usuário logado. Não é possível carregar dados financeiros.");
+      return { entradas: [], saidas: [] };
+    }
+    let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
+
+    // Se o usuário não tiver dados financeiros, inicializa
+    if (!userData || !userData.financialData) {
+      userData = userData || {};
+      userData.financialData = { entradas: [], saidas: [] };
+      localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
+    }
+    return userData.financialData;
+  }
+
+  // Função para salvar dados financeiros no localStorage do usuário logado
+  function saveFinancialData(data) {
+    const email = localStorage.getItem("usuarioLogado");
+    if (!email) {
+      console.warn("Nenhum usuário logado. Não é possível salvar dados financeiros.");
+      return;
+    }
+    let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
+    if (!userData) {
+      userData = {};
+    }
+    userData.financialData = data;
+    localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
+    renderDashboard();
+  }
+
+// Função para salvar uma nova entrada
+  window.salvarEntrada = function () {
+    const dataInput = document.getElementById("entrada-data");
+    const valorInput = document.getElementById("entrada-valor");
+    const categoriaSelect = document.getElementById("entrada-categoria");
+    const categoriaText =
+      categoriaSelect.options[categoriaSelect.selectedIndex].text;
+    const descricaoInput = document.getElementById("entrada-descricao");
+    const recorrenteSim =
+      document.getElementById("entrada-recorrente-sim").checked;
+    const frequenciaSelect = document.getElementById("entrada-frequencia");
+    const encerramentoInput =
+      document.getElementById("entrada-encerramento");
+
+    if (!dataInput.value || !valorInput.value) {
+      alert("Data e Valor são obrigatórios para entradas.");
+      return;
+    }
+    if (categoriaSelect.value === "") {
+      alert("A categoria é obrigatória para entradas.");
+      return;
+    }
+
+    if (recorrenteSim && !encerramentoInput.value) {
+      alert("A Data de Encerramento é obrigatória para entradas recorrentes.");
+      return;
+    }
+
+    const novaEntrada = {
+      id: Date.now(),
+      tipo: "entrada",
+      data: dataInput.value,
+      valor: parseFloat(valorInput.value),
+      categoria: categoriaSelect.value,
+      categoriaText: categoriaText,
+      descricao: descricaoInput.value,
+      recorrente: recorrenteSim,
+      frequencia: recorrenteSim ? frequenciaSelect.value : null,
+      dataEncerramento: recorrenteSim
+        ? encerramentoInput.value
+        : null,
+    };
+
+    const data = getFinancialData();
+    data.entradas.push(novaEntrada);
+    saveFinancialData(data);
+    closeModal();
+  };
+
+  // Função para salvar uma nova saída
+  window.salvarSaida = function () {
+    const dataInput = document.getElementById("saida-data");
+    const valorInput = document.getElementById("saida-valor");
+    const categoriaSelect = document.getElementById("saida-categoria");
+    const categoriaText =
+      categoriaSelect.options[categoriaSelect.selectedIndex].text;
+    const descricaoInput = document.getElementById("saida-descricao");
+    const recorrenteSim =
+      document.getElementById("saida-recorrente-sim").checked;
+    const frequenciaSelect = document.getElementById("saida-frequencia");
+    const encerramentoInput =
+      document.getElementById("saida-encerramento");
+
+    if (!dataInput.value || !valorInput.value) {
+      alert("Data e Valor são obrigatórios para saídas.");
+      return;
+    }
+    if (categoriaSelect.value === "") {
+      alert("A categoria é obrigatória para saídas.");
+      return;
+    }
+
+    if (recorrenteSim && !encerramentoInput.value) {
+      alert("A Data de Encerramento é obrigatória para saídas recorrentes.");
+      return;
+    }
+
+    const novaSaida = {
+      id: Date.now(),
+      tipo: "saida",
+      data: dataInput.value,
+      valor: parseFloat(valorInput.value),
+      categoria: categoriaSelect.value,
+      categoriaText: categoriaText,
+      descricao: descricaoInput.value,
+      recorrente: recorrenteSim,
+      frequencia: recorrenteSim ? frequenciaSelect.value : null,
+      dataEncerramento: recorrenteSim
+        ? encerramentoInput.value
+        : null,
+    };
+
+    const data = getFinancialData();
+    data.saidas.push(novaSaida);
+    saveFinancialData(data);
+
+    closeModal();
+  };
+
+// Função para salvar as alterações da transação editada
+  window.saveEditedTransaction = function () {
+    const id = parseInt(document.getElementById("edit-id").value);
+    const tipo = document.getElementById("edit-tipo").value;
+    const data = document.getElementById("edit-data").value;
+    const valor = parseFloat(document.getElementById("edit-valor").value);
+    const categoriaSelect = document.getElementById("edit-categoria");
+    const categoria = categoriaSelect.value;
+    const categoriaText =
+      categoriaSelect.options[categoriaSelect.selectedIndex].text;
+    const descricao = document.getElementById("edit-descricao").value;
+    const recorrente =
+      document.getElementById("edit-recorrente-sim").checked;
+    const frequencia = recorrente
+      ? document.getElementById("edit-frequencia").value
+      : null;
+    const dataEncerramento =
+      recorrente && document.getElementById("edit-encerramento").value
+        ? document.getElementById("edit-encerramento").value
+        : null;
+
+    if (!data || isNaN(valor)) {
+      alert("Data e Valor são obrigatórios para editar a transação.");
+      return;
+    }
+    if (categoriaSelect.value === "") {
+      alert("A categoria é obrigatória para editar a transação.");
+      return;
+    }
+
+    if (recorrente && !dataEncerramento) {
+      alert("A Data de Encerramento é obrigatória para transações recorrentes.");
+      return;
+    }
+
+    const allData = getFinancialData();
+
+    let transactionList;
+    if (tipo === "entrada") {
+      transactionList = allData.entradas;
+    } else if (tipo === "saida") {
+      transactionList = allData.saidas;
+    } else {
+      alert("Tipo de transação inválido para edição.");
+      return;
+    }
+
+    const index = transactionList.findIndex((item) => item.id === id);
+
+    if (index !== -1) {
+      transactionList[index] = {
+        id: id,
+        tipo: tipo,
+        data: data,
+        valor: valor,
+        categoria: categoria,
+        categoriaText: categoriaText,
+        descricao: descricao,
+        recorrente: recorrente,
+        frequencia: frequencia,
+        dataEncerramento: dataEncerramento,
+      };
+      saveFinancialData(allData);
+      alert("Transação atualizada com sucesso!");
+      closeModal();
+    } else {
+      alert("Transação não encontrada.");
+    }
+  };
+// Salva os totais atuais no localStorage para a página principal usar
+    const currentUserEmail = localStorage.getItem("usuarioLogado");
+    if (currentUserEmail) {
+      let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
+      if (!currentUserData) currentUserData = {};
+      currentUserData.chartData = {
+        entradas: totalEntradas,
+        saidas: totalSaidas,
+      };
+      currentUserData.financialDataPreview = {
+        entradas: entradasParaGrafico,
+        saidas: saidasParaGrafico,
+      };
+      localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
+    }
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Tela%20de%20Edi%C3%A7%C3%A3o/PF/Index_Tela_de_Edi%C3%A7%C3%A3o-pf.html)
+- O usuário é redirecionado para esssa página após fazer login na aplicação.
+
+- Ao ser redirecionado, ele tem acesso as funcionalidades da pagina.
+
+
+#### Responsável
+
+-Erick Alexandre Mariano Lopes da Costa
+-Diogo
 
 > **Links Úteis**:
 > - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
