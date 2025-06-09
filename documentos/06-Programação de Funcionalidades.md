@@ -498,6 +498,175 @@ Sua principal função é permitir que os usuários possam editar seus dados com
 - Maria Cecilia Caruzzo Modica
 - Kauê Alves dos Reis
 
+  
+## Pagina de conteúdo
+
+
+![image](https://github.com/user-attachments/assets/87e90ab7-a73e-4734-8a1f-78d6a4958457)
+
+Sua principal função é permitir que os usuários possam acesar conteudos informativos sobre , operações bancarias , investimentos e finanças . 
+
+
+##Requisito Atendido 
+
+-A aplicação deverá permitir que o usuário deslogue de sua conta 
+-A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03). 
+-O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado. 
+-O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica). 
+-A aplicação deve ser fazer a verificação de logado ou não logado para exibir icone de perfil ou fazer login/cadastre-se 
+
+
+### Artefatos da funcionalidade
+
+-analise-de-balanco.css
+-analise-de-balanco.html
+-analise-de-balanco.js
+-captacao-de-recursos.css
+-captacao-de-recursos.html
+-captacao-de-recursos.js
+-dre.css
+-dre.html
+-dre.js
+-fluxo-de-caixa.css
+-fluxo-de-caixa.html
+-fluxo-de-caixa.js
+-controle-de-dividas.css
+-controle-de-dividas.html
+-controle-de-dividas.js
+-orcamento-domestico.css
+-orcamento-domestico.html
+-orcamento-domestico.js
+-planejamento-financeiro.css
+-planejamento-financeiro.html
+-planejamento-financeiro.js
+-fundo-de-investimentos-pj.css
+-fundo-de-investimentos-pj.html
+-fundo-de-investimentos-pj.js
+-renda-fixa-pj.css
+-renda-fixa-pj.html
+-renda-fixa-pj.js
+-renda-variavel-pj.css
+-renda-variavel-pj.html
+-renda-variavel-pj.js
+-fundo-de-investimentos-pf.css
+-fundo-de-investimentos-pf.html
+-fundo-de-investimentos-pf.js
+-renda-fixa-pf.css
+-renda-fixa-pf.html
+-renda-fixa-pf.js
+-renda-varial-pf.css
+-renda-varial-pf.html
+-renda-varial-pf.js
+-cartao-de-credito.css
+-cartao-de-credito.html
+-cartao-de-credito.js
+-cartao-de-debito.css
+-cartao-de-debito.html
+-cartao-de-debito.js
+-emprestimo.css
+-emprestimo.html
+-emprestimo.js
+-financiamento.css
+-financiamento.html
+-financiamento.js
+-taxas-e-tarifas.css
+-taxas-e-tarifas.html
+-taxas-e-tarifas.js
+
+### Estrutura de Dados
+
+ function redirecionarCadastro() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+  if (dadosDoUsuario && dadosDoUsuario.perfil) {
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
+    } else {
+      alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
+    }
+  } else {
+    alert("Usuário não logado ou dados do usuário inválidos.");
+  }
+}
+function atualizarInterfaceUsuario() {
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+  const userActionsLogado = document.getElementById("perfil-logado");
+  const userActionsNaoLogado = document.getElementById("login-nao-logado");
+
+  const itensPF = document.querySelectorAll('.item-pf');
+  const itensPJ = document.querySelectorAll('.item-pj');
+  const itensLogado = document.querySelectorAll('.item-logged');
+  const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
+
+  const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
+
+  // Esconde tudo inicialmente
+  userActionsLogado.style.display = "none";
+  userActionsNaoLogado.style.display = "none";
+  itensPF.forEach(el => el.style.display = 'none');
+  itensPJ.forEach(el => el.style.display = 'none');
+  itensLogado.forEach(el => el.style.display = 'none');
+  itensNaoLogado.forEach(el => el.style.display = 'none');
+
+  if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa     Jurídica")) {
+  // Função para registrar o conteúdo visto recentemente
+ function registrarConteudoVisto(nome, url, imagem) {
+  const emailUsuario = localStorage.getItem("usuarioLogado");
+  if (!emailUsuario) return;
+
+  const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+
+  if (!dadosUsuario.vistosRecentemente) {
+    dadosUsuario.vistosRecentemente = [];
+  }
+
+  // Remove se já existir (baseado na URL para garantir que não repita)
+  dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.filter(item => item.url !== url);
+
+  // Adiciona no topo
+  const conteudo = { nome, url, imagem };
+  dadosUsuario.vistosRecentemente.unshift(conteudo);
+
+  // Mantém só os 5 mais recentes
+  if (dadosUsuario.vistosRecentemente.length > 5) {
+    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 5);
+  }
+
+  // Salva de volta no localStorage
+  localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
+}
+
+    
+    // Só mostra o botão "perfil-logado" se não estiver na própria página de "Minha Área"
+    if (!estaNaPaginaMinhaArea && userActionsLogado) {
+      userActionsLogado.style.display = "flex";
+    }
+
+    // Exibe itens de logado
+    itensLogado.forEach(el => el.style.display = 'block');
+
+    if (dadosDoUsuario.perfil === "Pessoa Física") {
+      itensPF.forEach(el => el.style.display = 'block');
+    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
+      itensPJ.forEach(el => el.style.display = 'block');
+    }
+  } else {
+    // Usuário não logado ou com dados inválidos
+    userActionsNaoLogado.style.display = "flex";
+    itensNaoLogado.forEach(el => el.style.display = 'block');
+  }
+}
+
+
+### Instruções de acesso
+
+- Abra um navegador de Internet e informe a seguinte URL: 
+
 > **Links Úteis**:
 > - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
 > - [JSON Tutorial](https://www.w3resource.com/JSON)
