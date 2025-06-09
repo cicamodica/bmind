@@ -608,11 +608,11 @@ Sua principal função é permitir que os usuários possam acesar conteudos info
 
 ### Estrutura de Dados
 
- function redirecionarCadastro() {
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
-  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+    function redirecionarCadastro() {
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
-  if (dadosDoUsuario && dadosDoUsuario.perfil) {
+    if (dadosDoUsuario && dadosDoUsuario.perfil) {
     if (dadosDoUsuario.perfil === "Pessoa Física") {
       window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
@@ -620,59 +620,59 @@ Sua principal função é permitir que os usuários possam acesar conteudos info
     } else {
       alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
     }
-  } else {
+     } else {
     alert("Usuário não logado ou dados do usuário inválidos.");
-  }
-}
-function atualizarInterfaceUsuario() {
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
-  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+    }
+    }
+    function atualizarInterfaceUsuario() {
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
-  const userActionsLogado = document.getElementById("perfil-logado");
-  const userActionsNaoLogado = document.getElementById("login-nao-logado");
+    const userActionsLogado = document.getElementById("perfil-logado");
+    const userActionsNaoLogado = document.getElementById("login-nao-logado");
 
-  const itensPF = document.querySelectorAll('.item-pf');
-  const itensPJ = document.querySelectorAll('.item-pj');
-  const itensLogado = document.querySelectorAll('.item-logged');
-  const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
+    const itensPF = document.querySelectorAll('.item-pf');
+    const itensPJ = document.querySelectorAll('.item-pj');
+    const itensLogado = document.querySelectorAll('.item-logged');
+     const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-  const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
+    const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
 
-  // Esconde tudo inicialmente
-  userActionsLogado.style.display = "none";
-  userActionsNaoLogado.style.display = "none";
-  itensPF.forEach(el => el.style.display = 'none');
-  itensPJ.forEach(el => el.style.display = 'none');
-  itensLogado.forEach(el => el.style.display = 'none');
-  itensNaoLogado.forEach(el => el.style.display = 'none');
+    // Esconde tudo inicialmente
+    userActionsLogado.style.display = "none";
+    userActionsNaoLogado.style.display = "none";
+    itensPF.forEach(el => el.style.display = 'none');
+    itensPJ.forEach(el => el.style.display = 'none');
+    itensLogado.forEach(el => el.style.display = 'none');
+    itensNaoLogado.forEach(el => el.style.display = 'none');
 
-  if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa     Jurídica")) {
-  // Função para registrar o conteúdo visto recentemente
- function registrarConteudoVisto(nome, url, imagem) {
-  const emailUsuario = localStorage.getItem("usuarioLogado");
-  if (!emailUsuario) return;
+    if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa     Jurídica")) {
+    // Função para registrar o conteúdo visto recentemente
+    function registrarConteudoVisto(nome, url, imagem) {
+    const emailUsuario = localStorage.getItem("usuarioLogado");
+    if (!emailUsuario) return;
 
-  const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
 
-  if (!dadosUsuario.vistosRecentemente) {
+    if (!dadosUsuario.vistosRecentemente) {
     dadosUsuario.vistosRecentemente = [];
-  }
+    }
 
-  // Remove se já existir (baseado na URL para garantir que não repita)
-  dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.filter(item => item.url !== url);
+    // Remove se já existir (baseado na URL para garantir que não repita)
+    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.filter(item => item.url !== url);
 
-  // Adiciona no topo
-  const conteudo = { nome, url, imagem };
-  dadosUsuario.vistosRecentemente.unshift(conteudo);
+    // Adiciona no topo
+    const conteudo = { nome, url, imagem };
+    dadosUsuario.vistosRecentemente.unshift(conteudo);
 
-  // Mantém só os 5 mais recentes
-  if (dadosUsuario.vistosRecentemente.length > 5) {
+    // Mantém só os 5 mais recentes
+    if (dadosUsuario.vistosRecentemente.length > 5) {
     dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 5);
-  }
+     }
 
-  // Salva de volta no localStorage
-  localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
-}
+     // Salva de volta no localStorage
+      localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
+       }
 
     
     // Só mostra o botão "perfil-logado" se não estiver na própria página de "Minha Área"
@@ -688,17 +688,38 @@ function atualizarInterfaceUsuario() {
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
       itensPJ.forEach(el => el.style.display = 'block');
     }
-  } else {
+    } else {
     // Usuário não logado ou com dados inválidos
     userActionsNaoLogado.style.display = "flex";
     itensNaoLogado.forEach(el => el.style.display = 'block');
-  }
-}
+    }
+    }
 
 
 ### Instruções de acesso
 
 - Abra um navegador de Internet e informe a seguinte URL:
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/dre/dre.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html
+- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html
+
+  #### Responsável
+  -Matheus Feliciano Andrade Bernardes
 
 - ## Tela de Edição
 Sua função principal é trazer para o ususario um resumo de todas as atividades que ele realizou no plataforma. Iniciando com as exibição do dashboard com base nas despesas e receitas cadastradas, um resumo to total gasto e recebido do mes alem de um hisotrico com tudo que foi registrado no mes. A pagina permite qu eo usuario crie e gerencie metas que ele deseja alcançar. Exibe tambem os ultimos 5 conteudos vistos pelo o usurario e recomenda conteudos com base no perfil cadastrado.
