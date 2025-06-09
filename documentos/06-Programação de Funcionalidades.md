@@ -735,65 +735,68 @@ RF-06 A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) p
 -script_Tela_de_Edição-pf.js
 -style_Tela_de_Edição-pf.css
 
-    ### Estrutura de Dados
-     // Função para carregar o nome do usuário e atualizar o título
-      function loadUserNameAndProfile() {
-    const dashboardTitle = document.getElementById("dashboard-titulo");
-    if (emailUsuario) {
-      const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)); // JSON.parse
-      if (dadosUsuario && dadosUsuario.nome) {
-        dashboardTitle.textContent = `Dashboard de ${dadosUsuario.nome}`;
-        tipoPerfilUsuario = dadosUsuario.perfil;
-      } else {
-        dashboardTitle.textContent = "Dashboard de Usuário";
-        tipoPerfilUsuario = "Pessoa Física";
-      }
-    } else {
-      dashboardTitle.textContent = "Dashboard de Fulano";
-      tipoPerfilUsuario = "Pessoa Física";
-    }
-    populateCategorySelects();
-  }
 
-  // Função para obter dados financeiros do localStorage do usuário logado
-  function getFinancialData() {
-    const email = localStorage.getItem("usuarioLogado");
-    if (!email) {
-      console.warn("Nenhum usuário logado. Não é possível carregar dados financeiros.");
-      return { entradas: [], saidas: [] };
-    }
-    let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
+### Estrutura de Dados
 
-    // Se o usuário não tiver dados financeiros, inicializa
-    if (!userData || !userData.financialData) {
-      userData = userData || {};
-      userData.financialData = { entradas: [], saidas: [] };
-      localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
-    }
-    return userData.financialData;
-  }
 
-  // Função para salvar dados financeiros no localStorage do usuário logado
-  function saveFinancialData(data) {
-    const email = localStorage.getItem("usuarioLogado");
-    if (!email) {
-      console.warn("Nenhum usuário logado. Não é possível salvar dados financeiros.");
-      return;
-    }
-    let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
-    if (!userData) {
-      userData = {};
-    }
-    userData.financialData = data;
-    localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
-    renderDashboard();
-  }
+          // Função para carregar o nome do usuário e atualizar o título
+        function loadUserNameAndProfile() {
+          const dashboardTitle = document.getElementById("dashboard-titulo");
+          if (emailUsuario) {
+          const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)); // JSON.parse
+          if (dadosUsuario && dadosUsuario.nome) {
+          dashboardTitle.textContent = `Dashboard de ${dadosUsuario.nome}`;
+           tipoPerfilUsuario = dadosUsuario.perfil;
+           } else {
+          dashboardTitle.textContent = "Dashboard de Usuário";
+          tipoPerfilUsuario = "Pessoa Física";
+          }
+          } else {
+          dashboardTitle.textContent = "Dashboard de Fulano";
+         tipoPerfilUsuario = "Pessoa Física";
+           }
+          populateCategorySelects();
+           }
 
-// Função para salvar uma nova entrada
-  window.salvarEntrada = function () {
-    const dataInput = document.getElementById("entrada-data");
-    const valorInput = document.getElementById("entrada-valor");
-    const categoriaSelect = document.getElementById("entrada-categoria");
+       // Função para obter dados financeiros do localStorage do usuário logado
+         function getFinancialData() {
+         const email = localStorage.getItem("usuarioLogado");
+         if (!email) {
+         console.warn("Nenhum usuário logado. Não é possível carregar dados financeiros.");
+         return { entradas: [], saidas: [] };
+           }
+          let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
+
+          // Se o usuário não tiver dados financeiros, inicializa
+           if (!userData || !userData.financialData) {
+           userData = userData || {};
+           userData.financialData = { entradas: [], saidas: [] };
+           localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
+            }
+          return userData.financialData;
+           }
+
+            // Função para salvar dados financeiros no localStorage do usuário logado
+            function saveFinancialData(data) {
+            const email = localStorage.getItem("usuarioLogado");
+            if (!email) {
+            console.warn("Nenhum usuário logado. Não é possível salvar dados financeiros.");
+          return;
+           }
+           let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
+            if (!userData) {
+           userData = {};
+           }
+           userData.financialData = data;
+          localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
+              renderDashboard();
+             }
+
+    // Função para salvar uma nova entrada
+      window.salvarEntrada = function () {
+        const dataInput = document.getElementById("entrada-data");
+        const valorInput = document.getElementById("entrada-valor");
+         const categoriaSelect = document.getElementById("entrada-categoria");
     const categoriaText =
       categoriaSelect.options[categoriaSelect.selectedIndex].text;
     const descricaoInput = document.getElementById("entrada-descricao");
@@ -957,7 +960,7 @@ RF-06 A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) p
       alert("Transação não encontrada.");
     }
   };
-// Salva os totais atuais no localStorage para a página principal usar
+           // Salva os totais atuais no localStorage para a página principal usar
     const currentUserEmail = localStorage.getItem("usuarioLogado");
     if (currentUserEmail) {
       let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
