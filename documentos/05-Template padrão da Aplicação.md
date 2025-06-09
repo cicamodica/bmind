@@ -91,3 +91,9 @@ O layout padrão do site (HTML e CSS) que será utilizado em todas as páginas, 
   <img src="img/Página de conteúdo.png" alt="Página de conteúdo" style="width: 70%; max-width: 800px;">
 </div>
 
+## Tela de Edição
+
+<div align="center">
+  <img ![image](https://github.com/user-attachments/assets/d701f70c-bde9-4c7b-bae6-0ee70fc0438f)
+ alt="Página de conteúdo" style="width: 70%; max-width: 800px;">
+</div>
