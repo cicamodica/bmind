@@ -22,23 +22,23 @@ const mobileSearchBar = document.getElementById('mobileSearchBar');
 
 if (mobileSearchIcon && mobileSearchBar) {
   mobileSearchIcon.addEventListener('click', () => {
-    mobileSearchBar.style.display = 
+    mobileSearchBar.style.display =
       mobileSearchBar.style.display === 'block' ? 'none' : 'block';
   });
 }
 // --- Função para busca mobile ---
 function buscarMobile() {
-    const termo = document.getElementById('mobileSearchInput').value.trim();
-    if (termo !== "") {
-        const encodedTermo = encodeURIComponent(termo);
-        window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
-    }
+  const termo = document.getElementById('mobileSearchInput').value.trim();
+  if (termo !== "") {
+    const encodedTermo = encodeURIComponent(termo);
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+  }
 }
-
 
 function redirecionarCadastro() {
   const usuarioLogado = localStorage.getItem("usuarioLogado");
-  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+  const dadosDoUsuario = usuarioLogado ?
+    JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
   if (dadosDoUsuario && dadosDoUsuario.perfil) {
     if (dadosDoUsuario.perfil === "Pessoa Física") {
@@ -55,7 +55,8 @@ function redirecionarCadastro() {
 
 function atualizarInterfaceUsuario() {
   const usuarioLogado = localStorage.getItem("usuarioLogado");
-  const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+  const dadosDoUsuario = usuarioLogado ?
+    JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
   const userActionsLogado = document.getElementById("perfil-logado");
   const userActionsNaoLogado = document.getElementById("login-nao-logado");
@@ -68,14 +69,18 @@ function atualizarInterfaceUsuario() {
   // Esconde tudo inicialmente
   userActionsLogado.style.display = "none";
   userActionsNaoLogado.style.display = "none";
+
   itensPF.forEach(el => el.style.display = 'none');
   itensPJ.forEach(el => el.style.display = 'none');
-  itensLogado.forEach(el => el.style.display = 'none');
-  itensNaoLogado.forEach(el => el.style.display = 'none');
+  itensLogado.forEach(el =>
+    el.style.display = 'none');
+  itensNaoLogado.forEach(el =>
+    el.style.display = 'none');
 
   if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa Jurídica")) {
     userActionsLogado.style.display = "flex";
-    itensLogado.forEach(el => el.style.display = 'block');
+    itensLogado.forEach(el =>
+      el.style.display = 'block');
 
     if (dadosDoUsuario.perfil === "Pessoa Física") {
       itensPF.forEach(el => el.style.display = 'block');
@@ -84,7 +89,8 @@ function atualizarInterfaceUsuario() {
     }
   } else {
     userActionsNaoLogado.style.display = "flex";
-    itensNaoLogado.forEach(el => el.style.display = 'block');
+    itensNaoLogado.forEach(el =>
+      el.style.display = 'block');
   }
 }
 
@@ -93,7 +99,8 @@ document.addEventListener('DOMContentLoaded', atualizarInterfaceUsuario);
 // Funcionalidade da pesquisa desktop
 document.getElementById("search-button").addEventListener("click", function (event) {
   event.preventDefault();
-  const termo = document.getElementById("search-bar").value.trim();
+  const termo =
+    document.getElementById("search-bar").value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
     window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
@@ -128,7 +135,8 @@ function toggleMenu() {
 window.addEventListener("click", function (e) {
   const menu = document.getElementById("dropdownMenu");
   const icon = document.querySelector(".menu-icon");
-  if (!menu.contains(e.target) && !icon.contains(e.target)) {
+  if (!menu.contains(e.target) &&
+    !icon.contains(e.target)) {
     menu.style.display = "none";
   }
 });
@@ -136,12 +144,13 @@ window.addEventListener("click", function (e) {
 // Função para delogar o usuário
 function sair() {
   localStorage.removeItem("usuarioLogado");
-  localStorage.removeItem("currentUser");
+  localStorage.removeItem("currentUser"); // Ensure this is also removed for consistency if used elsewhere
   window.location.href = "/src/login/login.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const botaoSair = document.getElementById("botao-sair");
+  const botaoSair =
+    document.getElementById("botao-sair");
 
   if (botaoSair) {
     botaoSair.addEventListener("click", function (e) {
@@ -151,19 +160,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
 function registrarConteudoVisto(nome, url, imagem) {
   const emailUsuario = localStorage.getItem("usuarioLogado");
   if (!emailUsuario) return;
 
-  const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+  const dadosUsuario =
+    JSON.parse(localStorage.getItem(emailUsuario)) || {};
 
   if (!dadosUsuario.vistosRecentemente) {
     dadosUsuario.vistosRecentemente = [];
   }
 
   // Remove se já existir (baseado na URL para garantir que não repita)
-  dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.filter(item => item.url !== url);
+  dadosUsuario.vistosRecentemente =
+    dadosUsuario.vistosRecentemente.filter(item =>
+      item.url !== url);
 
   // Adiciona no topo
   const conteudo = { nome, url, imagem };
@@ -171,24 +182,38 @@ function registrarConteudoVisto(nome, url, imagem) {
 
   // Mantém só os 5 mais recentes
   if (dadosUsuario.vistosRecentemente.length > 5) {
-    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 5);
+    dadosUsuario.vistosRecentemente =
+      dadosUsuario.vistosRecentemente.slice(0, 5);
   }
 
   // Salva de volta no localStorage
-  localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
+  localStorage.setItem(emailUsuario,
+    JSON.stringify(dadosUsuario));
 }
 
 function exibirVistosRecentemente() {
   const emailUsuario = localStorage.getItem("usuarioLogado");
-  if (!emailUsuario) return;
+  if (!emailUsuario) {
+    const lista = document.getElementById("lista-vistos-recentemente");
+    if (lista) {
+      lista.innerHTML = "<p>Faça login para ver seu histórico.</p>";
+    }
+    return;
+  }
 
   const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
   const vistos = dadosUsuario.vistosRecentemente || [];
 
   const lista = document.getElementById("lista-vistos-recentemente");
-  if (!lista) return; 
+  if (!lista) return;
 
   lista.innerHTML = "";
+
+  if (vistos.length === 0) {
+    lista.innerHTML = "<p>Nenhum conteúdo visualizado recentemente.</p>";
+    return;
+  }
+
 
   vistos.forEach(conteudo => {
     const li = document.createElement("li");
@@ -212,19 +237,26 @@ function exibirVistosRecentemente() {
   });
 }
 
-
 // Executa sempre para exibir
 exibirVistosRecentemente();
-
 
 // Função exibir conteuudo conforme a preferencias selecionadas no cadrastro//
 
 function exibirConteudoRecomendados() {
+  const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+  if (!emailUsuarioLogado) {
+    const container = document.getElementById("lista-conteudos-recomendados");
+    if (container) {
+      container.innerHTML = "<p>Faça login para ver recomendações personalizadas.</p>";
+    }
+    return;
+  }
+
   // Recuperação dos dados do usuário
-  const dados = JSON.parse(localStorage.getItem("currentUser"));
+  const dados = JSON.parse(localStorage.getItem(emailUsuarioLogado));
 
   if (!dados) {
-    console.error("Usuário não encontrado.");
+    console.error("Dados do usuário não encontrados.");
     return;
   }
 
@@ -237,7 +269,7 @@ function exibirConteudoRecomendados() {
   }
 
   if (!preferenciaDeConteudos || preferenciaDeConteudos.length === 0) {
-    container.innerHTML = "<p>Não há conteúdos recomendados para você.</p>";
+    container.innerHTML = "<p>Não há conteúdos recomendados para você. Atualize suas preferências de cadastro.</p>";
     return;
   }
 
@@ -280,7 +312,7 @@ function exibirConteudoRecomendados() {
   preferenciaDeConteudos.forEach((preferencia) => {
     let conteudo = conteudos[perfil][preferencia];
 
-    // Ajuste específico para "Investimentos" em Pessoa Jurídica
+    // Ajuste específico para "Investimentos" em Pessoa Jurídica (se sua preferência for genérica)
     if (perfil === "Pessoa Jurídica" && preferencia === "Investimentos") {
       conteudo = conteudos[perfil]["Investimentos Corporativos"];
       preferencia = "Investimentos Corporativos"; // Ajuste o nome exibido
@@ -309,135 +341,222 @@ function exibirConteudoRecomendados() {
 }
 exibirConteudoRecomendados();
 
+// This function now uses the financial data stored by the dashboard
 window.renderMainPieChart = function () {
-    const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+  const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
 
-    if (!emailUsuarioLogado) {
-        alert("Usuário não está logado.");
-        return;
-    }
+  if (!emailUsuarioLogado) {
+    // Hide chart container and show a message if no user is logged in
+    document.getElementById("pieChartMain").style.display = "none";
+    document.getElementById("resumo-financeiro").innerHTML = "<h3>Resumo Mensal</h3><p>Faça login para ver seus dados financeiros.</p>";
+    document.getElementById("historico-mensal").innerHTML = "<h3>Histórico do Mês</h3><p>Faça login para ver seu histórico.</p>";
+    return;
+  }
 
-    const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+  const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
 
-    if (!dadosDoUsuario || !dadosDoUsuario.perfil) {
-        alert("Dados do usuário inválidos ou incompletos.");
-        return;
-    }
+  if (!dadosDoUsuario || !dadosDoUsuario.financialData) {
+    // If financialData is not present, initialize it or show a message
+    document.getElementById("pieChartMain").style.display = "none";
+    document.getElementById("resumo-financeiro").innerHTML = "<h3>Resumo Mensal</h3><p>Nenhum dado financeiro encontrado. Adicione transações no seu Dashboard.</p>";
+    document.getElementById("historico-mensal").innerHTML = "<h3>Histórico do Mês</h3><p>Nenhum histórico encontrado. Adicione transações no seu Dashboard.</p>";
+    return;
+  }
 
-    const chartData = dadosDoUsuario.chartData;
+  // Ensure canvas is visible
+  document.getElementById("pieChartMain").style.display = "block";
 
-    if (!chartData || typeof chartData.entradas !== "number" || typeof chartData.saidas !== "number") {
-        alert("Dados do gráfico não encontrados para este usuário.");
-        return;
-    }
 
-    // Agora renderiza o gráfico de acordo com o perfil (PF ou PJ)
-    const perfil = dadosDoUsuario.perfil;
+  const allData = dadosDoUsuario.financialData;
 
-    if (perfil !== "Pessoa Física" && perfil !== "Pessoa Jurídica") {
-        alert("Perfil de usuário desconhecido.");
-        return;
-    }
+  // Helper function to expand recurring transactions (copied from dashboard script)
+  function expandRecurringTransactions(transactions) {
+    const expandedTransactions = [];
+    const today = new Date();
+    const currentYear = today.getFullYear();
 
-    const ctx = document.getElementById("pieChartMain").getContext("2d");
+    const startDisplayYear = 2024; // Início do período para exibição
+    const endDisplayYear = currentYear + 5; // Fim do período para exibição
 
-    new Chart(ctx, {
-        type: "doughnut",
-        data: {
-            labels: ["Entradas", "Saídas"],
-            datasets: [
-                {
-                    data: [chartData.entradas, chartData.saidas],
-                    backgroundColor: ["#4CAF50", "#F44336"],
-                },
-            ],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        label: function (context) {
-                            let label = context.label || "";
-                            if (label) label += ": ";
-                            if (context.parsed !== null) {
-                                label += new Intl.NumberFormat("pt-BR", {
-                                    style: "currency",
-                                    currency: "BRL",
-                                }).format(context.parsed);
-                            }
-                            return label;
-                        },
-                    },
-                },
-                legend: {
-                    display: false,
-                },
-            },
-        },
+    transactions.forEach((item) => {
+      if (item.recorrente) {
+        const originalDate = new Date(item.data + "T12:00:00");
+        let currentDate = new Date(originalDate);
+
+        while (currentDate.getFullYear() < startDisplayYear) {
+          if (item.frequencia === "mensal") {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+          } else if (item.frequencia === "semanal") {
+            currentDate.setDate(currentDate.getDate() + 7);
+          } else if (item.frequencia === "diaria") {
+            currentDate.setDate(currentDate.getDate() + 1);
+          } else {
+            break;
+          }
+        }
+
+        while (currentDate.getFullYear() <= endDisplayYear) {
+          if (
+            item.dataEncerramento &&
+            new Date(currentDate) > new Date(item.dataEncerramento + "T23:59:59")
+          ) {
+            break;
+          }
+
+          if (!item.dataEncerramento || new Date(currentDate) <= new Date(item.dataEncerramento + "T23:59:59")) {
+            expandedTransactions.push({
+              ...item,
+              data: currentDate.toISOString().split("T")[0],
+            });
+          }
+
+          if (item.frequencia === "mensal") {
+            const nextMonth = currentDate.getMonth() + 1;
+            currentDate.setMonth(nextMonth);
+            if (currentDate.getMonth() !== (nextMonth % 12)) {
+                currentDate.setDate(0);
+                currentDate.setDate(originalDate.getDate());
+                if (currentDate.getMonth() !== (nextMonth % 12)) {
+                    currentDate = new Date(currentDate.getFullYear(), nextMonth, 0);
+                }
+            }
+          } else if (item.frequencia === "semanal") {
+            currentDate.setDate(currentDate.getDate() + 7);
+          } else if (item.frequencia === "diaria") {
+            currentDate.setDate(currentDate.getDate() + 1);
+          } else {
+            break;
+          }
+
+          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break;
+        }
+      } else {
+        expandedTransactions.push(item);
+      }
     });
-    // Atualiza o resumo financeiro
-    document.getElementById("resumo-entradas").textContent = new Intl.NumberFormat("pt-BR", {
-       style: "currency",
-       currency: "BRL"
-    }).format(chartData.entradas);
 
-    document.getElementById("resumo-saidas").textContent = new Intl.NumberFormat("pt-BR", {
-       style: "currency",
-       currency: "BRL"
-    }).format(chartData.saidas);
+    return expandedTransactions;
+  }
 
-    // FILTRAR histórico do mês atual e exibir
-    const now = new Date();
-    const anoAtual = now.getFullYear();
-    const mesAtual = now.getMonth(); // 0-indexado
+  const expandedEntradas = expandRecurringTransactions(allData.entradas || []);
+  const expandedSaidas = expandRecurringTransactions(allData.saidas || []);
 
-    const historicoDoMes = [...(dadosDoUsuario.entradas || []), ...(dadosDoUsuario.saidas || [])]
-       .filter(item => {
-         const data = new Date(item.data);
-         return data.getFullYear() === anoAtual && data.getMonth() === mesAtual;
-       })
-       .sort((a, b) => new Date(b.data) - new Date(a.data)); // mais recentes primeiro
+  const totalEntradas = expandedEntradas.reduce(
+    (sum, item) => sum + item.valor,
+    0
+  );
+  const totalSaidas = expandedSaidas.reduce(
+    (sum, item) => sum + item.valor,
+    0
+  );
 
-    const lista = document.getElementById("lista-historico");
-    lista.innerHTML = ""; // limpar antes
+  const ctx = document.getElementById("pieChartMain").getContext("2d");
 
-    if (historicoDoMes.length === 0) {
-      lista.innerHTML = "<p>Sem transações neste mês.</p>";
-    } else {
-      historicoDoMes.forEach((item) => {
-        const div = document.createElement("div");
-        div.classList.add("transacao-item");
-        div.classList.add(item.tipo === "entrada" ? "transacao-entrada" : "transacao-saida");
+  // Destroy previous chart instance if it exists
+  if (window.pieChartMainInstance) {
+    window.pieChartMainInstance.destroy();
+  }
 
-        div.textContent = `${new Date(item.data).toLocaleDateString("pt-BR")} - ${
-         item.tipo === "entrada" ? "Entrada" : "Saída"
-        }: ${new Intl.NumberFormat("pt-BR", {
-          style: "currency",
-          currency: "BRL"
-        }).format(item.valor)} - ${item.descricao || "Sem descrição"}`;
+  window.pieChartMainInstance = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Entradas", "Saídas"],
+      datasets: [{
+        data: [totalEntradas, totalSaidas],
+        backgroundColor: ["#4CAF50", "#F44336"],
+      }, ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              let label = context.label || "";
+              if (label) label += ": ";
+              if (context.parsed !== null) {
+                label += new Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(context.parsed);
+              }
+              return label;
+            },
+          },
+        },
+        legend: {
+          display: false,
+        },
+      },
+    },
+  });
 
-        lista.appendChild(div);
-      });
-   }
+  // Atualiza o resumo financeiro
+  document.getElementById("resumo-entradas").textContent = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  }).format(totalEntradas);
+
+  document.getElementById("resumo-saidas").textContent = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  }).format(totalSaidas);
+
+  // FILTRAR histórico do mês atual e exibir
+  const now = new Date();
+  const anoAtual = now.getFullYear();
+  const mesAtual = now.getMonth(); // 0-indexado
+
+  const historicoDoMes = [...expandedEntradas, ...expandedSaidas]
+    .filter(item => {
+      const data = new Date(item.data);
+      return data.getFullYear() === anoAtual && data.getMonth() === mesAtual;
+    })
+    .sort((a, b) => new Date(b.data) - new Date(a.data)); // mais recentes primeiro
+
+  const lista = document.getElementById("lista-historico");
+  lista.innerHTML = ""; // limpar antes
+
+  if (historicoDoMes.length === 0) {
+    lista.innerHTML = "<p>Sem transações neste mês.</p>";
+  } else {
+    historicoDoMes.forEach((item) => {
+      const div = document.createElement("div");
+      div.classList.add("transacao-item");
+      div.classList.add(item.tipo === "entrada" ? "transacao-entrada" : "transacao-saida");
+
+      const formattedValue = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      }).format(item.valor);
+      const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString("pt-BR");
+
+      div.textContent = `${formattedDate} - ${item.tipo === "entrada" ? "Entrada" : "Saída"}: ${formattedValue} - ${item.descricao || "Sem descrição"}`;
+
+      lista.appendChild(div);
+    });
+  }
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-   renderMainPieChart();
+  renderMainPieChart(); // Call this on page load
 });
 
 // Recupera o identificador do usuário logado (e-mail, por exemplo)
 
 // Função para adicionar uma meta financeira
 document.addEventListener("DOMContentLoaded", function () {
-  const formMeta = document.getElementById("form-meta");
+  const formMeta =
+    document.getElementById("form-meta");
   const listaMetas = document.getElementById("lista-metas");
 
   // --- Verificação de Usuário Logado ---
 
   if (!emailUsuario) {
     console.warn("Nenhum usuário logado detectado. As metas financeiras não serão salvas ou carregadas.");
+    listaMetas.innerHTML = '<p>Faça login para gerenciar suas metas.</p>';
+    formMeta.style.display = 'none'; // Hide the form if no user logged in
     return;
   }
 
@@ -451,9 +570,13 @@ document.addEventListener("DOMContentLoaded", function () {
     listaMetas.innerHTML = ''; // Limpa a lista atual para evitar duplicações ao recarregar.
 
     // Para cada meta encontrada, cria e adiciona o card correspondente à interface.
-    metasSalvas.forEach(meta => {
-      criarCardMeta(meta.titulo, meta.valorTotal, meta.valorAtual, meta.tempo, meta.id);
-    });
+    if (metasSalvas.length === 0) {
+      listaMetas.innerHTML = '<p>Nenhuma meta cadastrada. Crie uma nova meta acima!</p>';
+    } else {
+      metasSalvas.forEach(meta => {
+        criarCardMeta(meta.titulo, meta.valorTotal, meta.valorAtual, meta.tempo, meta.id);
+      });
+    }
   }
 
   // --- Função para Salvar Metas ---
@@ -466,12 +589,14 @@ document.addEventListener("DOMContentLoaded", function () {
         titulo: card.querySelector('h4').textContent,
         valorTotal: parseFloat(card.dataset.valorTotal), // Converte para número.
         // Adiciona valorAtual do dataset para garantir que o valor mais recente seja salvo
-        valorAtual: parseFloat(card.dataset.valorAtual), 
+        valorAtual: parseFloat(card.dataset.valorAtual),
         tempo: card.dataset.tempo // Pega o tempo do dataset do card.
       });
     });
     // Salva o array de metas (em formato JSON) no localStorage, usando a chave do usuário.
-    localStorage.setItem(metasKey, JSON.stringify(metasAtuais));
+    localStorage.setItem(metasKey,
+      JSON.stringify(metasAtuais));
+    carregarMetas(); // Recarrega para exibir a mensagem se a lista ficar vazia
   }
 
   // --- Evento de Envio do Formulário de Criação de Meta ---
@@ -492,13 +617,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Gera um ID único para a nova meta (usando o timestamp atual para simplicidade).
     const metaId = Date.now().toString();
-    
+
     // Cria o card da meta na interface do usuário.
-    criarCardMeta(titulo, valorTotal, valorAtual, tempo, metaId);
-    
-  
-    salvarMetas(); 
-    
+    criarCardMeta(titulo, valorTotal,
+      valorAtual, tempo, metaId);
+
+
+    salvarMetas();
+
+
     // Limpa o formulário após a adição.
     formMeta.reset();
   });
@@ -507,7 +634,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function criarCardMeta(titulo, valorTotal, valorAtual, tempo, id) {
     const card = document.createElement("div");
     card.classList.add("card-meta");
-    
+
     // Armazena dados importantes no `dataset` do elemento HTML para fácil recuperação.
     card.dataset.metaId = id;
     card.dataset.valorTotal = valorTotal;
@@ -520,20 +647,31 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define a estrutura HTML interna do card.
     card.innerHTML = `
       <h4>${titulo}</h4>
-      <small>Meta: R$ ${valorTotal.toFixed(2)} - Tempo: ${tempo} - Atual: R$ ${valorAtual.toFixed(2)}</small>
-      <div class="barra-progresso">
-        <div class="barra-preenchida" style="width: ${progresso}%"></div>
+      <small>Meta: R$ ${valorTotal.toFixed(2)}
+- Tempo: ${tempo}
+- Atual: R$ ${valorAtual.toFixed(2)}</small>
+      <div
+class="barra-progresso">
+        <div
+class="barra-preenchida" style="width: ${progresso}%"></div>
       </div>
-      <div class="porcentagem-meta">${progresso}% alcançado</div>
+      <div
+class="porcentagem-meta">${progresso}%
+alcançado</div>
 
       <div class="botoes-metas">
         <button class="btn-atualizar">Atualizar</button>
-        <button class="btn-excluir">Excluir</button>
+        <button
+class="btn-excluir">Excluir</button>
       </div>
 
-      <div class="form-atualizacao" style="display: none; margin-top: 8px;">
-        <input type="number" class="novo-valor" placeholder="Novo valor atual" />
-        <button class="confirmar-atualizacao">Salvar</button>
+
+      <div class="form-atualizacao" style="display: none;
+margin-top: 8px;">
+        <input type="number"
+class="novo-valor" placeholder="Novo valor atual" />
+        <button
+class="confirmar-atualizacao">Salvar</button>
       </div>
     `;
 
@@ -553,37 +691,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnExcluir = card.querySelector('.btn-excluir');
 
     // Evento para excluir a meta.
-    btnExcluir.addEventListener('click', () => {
-      if (confirm('Tem certeza que deseja excluir esta meta?')) {
-        card.remove(); // Remove o card da DOM.
-        // **SALVA AS METAS:** Chama a função para persistir a exclusão no localStorage.
-        salvarMetas(); 
-      }
-    });
-   
+    btnExcluir.addEventListener('click',
+      () => {
+        if (confirm('Tem certeza que deseja excluir esta meta?')) {
+          card.remove(); // Remove o card da DOM.
+          // **SALVA AS METAS:** Chama a função para persistir a exclusão no localStorage.
+          salvarMetas();
+        }
+      });
+
     // Evento para salvar o novo valor de atualização da meta.
     btnSalvar.addEventListener('click', () => {
-      const novoValor = parseFloat(inputNovoValor.value);
+      const novoValor =
+        parseFloat(inputNovoValor.value);
+
       if (isNaN(novoValor) || novoValor < 0) {
         alert("Por favor, informe um valor numérico válido e não negativo.");
         return;
       }
 
       // Atualiza o valor atual no `dataset` do card para que `salvarMetas` pegue o valor correto.
-      card.dataset.valorAtual = novoValor;
-      
+      card.dataset.valorAtual =
+        novoValor;
+
       // Recalcula e atualiza o progresso visual na barra e no texto.
-    
-      const novaPorcentagem = Math.min((novoValor / parseFloat(card.dataset.valorTotal)) * 100, 100).toFixed(1); 
+
+      const novaPorcentagem = Math.min((novoValor / parseFloat(card.dataset.valorTotal)) * 100, 100).toFixed(1);
       barra.style.width = `${novaPorcentagem}%`;
       porcentagemTexto.textContent = `${novaPorcentagem}% alcançado`;
 
-      // Esconde o formulário de atualização e limpa o campo de input.
-      formAtualizacao.style.display = 'none';
-      inputNovoValor.value = '';
-      
-      
-      salvarMetas(); 
+
+      salvarMetas();
     });
 
     // Adiciona o novo card à lista de metas na interface.
@@ -591,25 +729,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- Carregar Metas ao Inicializar a Página ---
-  
+
   carregarMetas();
 });
 
-
 // ADICIONANDO FUNCIONALIDADE AO SUBMENU DO MENU NO MOBILE (EXCLUSIVO PARA TELA ABAIXO DE 768PX)
-  if (window.innerWidth <= 768) {
-    const submenuToggles = document.querySelectorAll(".has-submenu > a");
+if (window.innerWidth <= 768) {
+  const submenuToggles =
+    document.querySelectorAll(".has-submenu > a");
 
-    submenuToggles.forEach((link) => {
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
 
-        const parent = this.parentElement;
-        const submenu = parent.querySelector(".submenu");
+  submenuToggles.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
 
-        parent.classList.toggle("open");
-        if (submenu) submenu.classList.toggle("show");
-      });
+
+      const parent = this.parentElement;
+      const submenu =
+        parent.querySelector(".submenu");
+
+
+      parent.classList.toggle("open");
+      if (submenu)
+        submenu.classList.toggle("show");
+
     });
-  };
+  });
+};

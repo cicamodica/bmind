@@ -32,7 +32,7 @@
 
 /* Estilo base */
 body {
-  margin:0;
+  margin: 0;
   font-family: "Poppins";
   background-color: #fff;
   color: #000;
@@ -47,7 +47,6 @@ header {
   padding: 10px 20px;
   height: 50px;
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
-  
 }
 
 .left-group {
@@ -232,8 +231,6 @@ li {
   color: white;
 }
 
-
-
 .escrita {
   /* Estilo do texto do menu */
   font-size: 40px;
@@ -343,12 +340,12 @@ li {
 }
 
 .transacao-entrada {
-  border-color: #4CAF50;
+  border-color: #4caf50;
   color: #2e7d32;
 }
 
 .transacao-saida {
-  border-color: #F44336;
+  border-color: #f44336;
   color: #c62828;
 }
 
@@ -489,13 +486,18 @@ button:hover,
 .mobile-search-bar {
   display: none;
   /*margin: 10px;
-  padding: 10px;*/
+
+padding: 10px;*/
   background-color: #ffffff;
   /*border-radius: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;*/
+
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+display: flex;
+
+align-items: center;
+justify-content:
+space-between;*/
   padding: 15px;
   text-align: center;
 }
@@ -521,7 +523,8 @@ button:hover,
   cursor: pointer;
   /*font-size: 14px;*/
   font-family: "Poppins";
-  /*transition: background-color 0.3s;*/
+  /*transition:
+background-color 0.3s;*/
   margin-top: 10px;
 }
 
@@ -529,9 +532,8 @@ button:hover,
   background-color: #003080;
 }
 
-
 /* Vistos recentemente e recomendados - sem alterações nestes blocos */
-.vistos-recentemente{
+.vistos-recentemente {
   margin-top: 40px;
   background-color: white;
   padding: 20px;
@@ -639,7 +641,7 @@ button:hover,
 }
 
 /* Container dos cards */
-.conteudo-recomendados{
+.conteudo-recomendados {
   margin-top: 40px;
   background-color: white;
   padding: 20px;
@@ -666,7 +668,7 @@ button:hover,
   border-radius: 16px;
   padding: 16px;
   width: 220px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
@@ -688,7 +690,6 @@ button:hover,
   color: #555;
 }
 
-
 /* Ícone da lupa no mobile */
 .search-mobile-icon {
   display: none;
@@ -696,7 +697,6 @@ button:hover,
   margin-right: 1rem;
   cursor: pointer;
 }
-
 
 /* Esconde o menu e mostra o botão em telas pequenas */
 .menu-toggle {
@@ -867,8 +867,6 @@ button:hover,
     right: 20px;
   }
 
-
-
   .header-item .logo {
     height: 45px;
   }
@@ -885,15 +883,12 @@ button:hover,
     right: 20px;
   }
 
-  
-
   .header-item .logo {
     height: 45px;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1120px) {
-
   /* Centraliza e reduz a largura da barra de pesquisa */
   .search-container {
     width: 100%;
@@ -965,6 +960,4 @@ button:hover,
     font-size: 0.85rem;
     padding: 8px 14px;
   }
-
 }
-

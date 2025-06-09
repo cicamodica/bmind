@@ -297,7 +297,9 @@ document.addEventListener("DOMContentLoaded", function () {
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
-      dataEncerramento: recorrenteSim ? encerramentoInput.value : null,
+      dataEncerramento: recorrenteSim
+        ? encerramentoInput.value
+        : null,
     };
 
     const data = getFinancialData();
@@ -344,7 +346,9 @@ document.addEventListener("DOMContentLoaded", function () {
       descricao: descricaoInput.value,
       recorrente: recorrenteSim,
       frequencia: recorrenteSim ? frequenciaSelect.value : null,
-      dataEncerramento: recorrenteSim ? encerramentoInput.value : null,
+      dataEncerramento: recorrenteSim
+        ? encerramentoInput.value
+        : null,
     };
 
     const data = getFinancialData();
@@ -813,7 +817,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const originalDate = new Date(item.data + "T12:00:00");
         let currentDate = new Date(originalDate);
 
-        // Ajusta a data inicial para o começo do período de exibição se a data original for anterior
+        // Adjust the initial date to the beginning of the display period if the original date is earlier
         while (currentDate.getFullYear() < startDisplayYear) {
           if (item.frequencia === "mensal") {
             currentDate.setMonth(currentDate.getMonth() + 1);
@@ -822,22 +826,22 @@ document.addEventListener("DOMContentLoaded", function () {
           } else if (item.frequencia === "diaria") {
             currentDate.setDate(currentDate.getDate() + 1);
           } else {
-            // Para frequência personalizada ou desconhecida, sai do loop
+            // For custom or unknown frequency, exit the loop
             break;
           }
         }
 
-        // Gera as transações recorrentes até a data de encerramento ou o final do período de exibição
+        // Generate recurring transactions up to the end date or the end of the display period
         while (currentDate.getFullYear() <= endDisplayYear) {
-          // Verifica se a transação já deveria ter encerrado
+          // Check if the transaction should have ended already
           if (
             item.dataEncerramento &&
             new Date(currentDate) > new Date(item.dataEncerramento + "T23:59:59")
           ) {
-            break; // Se a data atual for após a data de encerramento, para de gerar
+            break; // If the current date is after the end date, stop generating
           }
 
-          // Adiciona apenas se a data de encerramento não tiver sido atingida e estiver dentro do intervalo
+          // Add only if the end date has not been reached and is within the range
           if (!item.dataEncerramento || new Date(currentDate) <= new Date(item.dataEncerramento + "T23:59:59")) {
             expandedTransactions.push({
               ...item,
@@ -846,32 +850,26 @@ document.addEventListener("DOMContentLoaded", function () {
           }
 
           if (item.frequencia === "mensal") {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            // Manter o dia do mês se for o último dia do mês ou se o mês seguinte não tiver o mesmo dia
-            if (currentDate.getDate() !== originalDate.getDate()) {
-              currentDate.setDate(0); // Último dia do mês anterior
-              currentDate.setDate(originalDate.getDate()); // Tenta voltar para o dia original
-              if (
-                currentDate.getMonth() !==
-                (originalDate.getMonth() + 1) % 12
-              ) {
-                currentDate = new Date(
-                  currentDate.getFullYear(),
-                  (originalDate.getMonth() + 2) % 12,
-                  0
-                ); // Vai para o último dia do mês seguinte
-              }
+            const nextMonth = currentDate.getMonth() + 1;
+            currentDate.setMonth(nextMonth);
+            // Handle month end overflow (e.g., Jan 31 + 1 month = Mar 2, not Feb 31)
+            if (currentDate.getMonth() !== (nextMonth % 12)) {
+                currentDate.setDate(0); // Set to last day of previous month
+                currentDate.setDate(originalDate.getDate()); // Try to go back to original day
+                if (currentDate.getMonth() !== (nextMonth % 12)) { // If still not the right month, set to end of target month
+                    currentDate = new Date(currentDate.getFullYear(), nextMonth, 0);
+                }
             }
           } else if (item.frequencia === "semanal") {
             currentDate.setDate(currentDate.getDate() + 7);
           } else if (item.frequencia === "diaria") {
             currentDate.setDate(currentDate.getDate() + 1);
           } else {
-            break; // Para frequência personalizada ou desconhecida
+            break; // For custom or unknown frequency
           }
 
-          // Adição de uma condição de saída para evitar loop infinito em casos inesperados
-          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break; // Limite superior para evitar loops infinitos
+          // Add an exit condition to prevent infinite loops in unexpected cases
+          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break; // Upper limit to prevent infinite loops
         }
       } else {
         expandedTransactions.push(item);
@@ -985,6 +983,24 @@ document.addEventListener("DOMContentLoaded", function () {
       (sum, item) => sum + item.valor,
       0
     );
+
+    // Save current totals to localStorage for the main page to use
+    const currentUserEmail = localStorage.getItem("usuarioLogado");
+    if (currentUserEmail) {
+      let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
+      if (!currentUserData) currentUserData = {};
+      currentUserData.chartData = {
+        entradas: totalEntradas,
+        saidas: totalSaidas,
+      };
+      // Also store a simplified version of financial data for quick access on main page if needed
+      currentUserData.financialDataPreview = {
+        entradas: entradasParaGrafico,
+        saidas: saidasParaGrafico,
+      };
+      localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
+    }
+
 
     chartInstances.pieChart = new Chart(
       document.getElementById("pieChart").getContext("2d"),
@@ -1156,7 +1172,9 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   };
 
+
   renderDashboard();
+
 
   window.onclick = function (event) {
     const dropdownMenu = document.getElementById("dropdownMenu");
