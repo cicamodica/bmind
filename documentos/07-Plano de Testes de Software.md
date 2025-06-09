@@ -6,17 +6,6 @@ Abaixo estão os cenários de testes selecionados para avaliação da aplicaçã
 -	Navegador da Internet - Chrome, Firefox ou Edge
 -	Conectividade de Internet para acesso às plataformas (APISs)
 
-No nosso plano de teste de software, foram selecionados os seguintes cenários para serem testados:
-
-## Testes de Navegabilidade:
-Tem por objetivo verificar se todos os links são navegáveis, estão corretos e levam o usuário a uma outra tela existente na aplicação. Foram feitos testes automatizados e testes manuais, como seguem os resultados abaixo.
-Os Testes automatizados foram realizados através de: https://datayze.com/site-navigability-analyzer
-Também foram feitos testes de forma manual navegando pela aplicação somente para exemplificar o procedimento manual, visto que, os testes automatizados foram positivos e não apresentaram problemas de navegabilidade na aplicação.
-
-## Teste de Responsividade:
-Os testes de responsividade foram automatizados pelo Google: 
-Teste de compatibilidade com dispositivos móveis https://search.google.com/test/mobile-friendly?hl=pt
-Link para os resultados:  
 Os testes funcionais a serem realizados no aplicativo são descritos a seguir.
 
 |Caso de Teste   | CT-01 - Testes da Página de Homepage |
