@@ -722,6 +722,8 @@ Sua principal função é permitir que os usuários possam acesar conteudos info
   -Matheus Feliciano Andrade Bernardes
 
 - ## Tela de Edição
+ ![Tela de Edição](https://github.com/user-attachments/assets/938a0c82-8a51-41a2-824d-67fe1de28676)
+
 Sua função principal é trazer para o ususario um resumo de todas as atividades que ele realizou no plataforma. Iniciando com as exibição do dashboard com base nas despesas e receitas cadastradas, um resumo to total gasto e recebido do mes alem de um hisotrico com tudo que foi registrado no mes. A pagina permite qu eo usuario crie e gerencie metas que ele deseja alcançar. Exibe tambem os ultimos 5 conteudos vistos pelo o usurario e recomenda conteudos com base no perfil cadastrado.
 
 ### Requisito atendido
@@ -733,9 +735,9 @@ RF-06 A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) p
 -script_Tela_de_Edição-pf.js
 -style_Tela_de_Edição-pf.css
 
-### Estrutura de Dados
-// Função para carregar o nome do usuário e atualizar o título
-  function loadUserNameAndProfile() {
+    ### Estrutura de Dados
+     // Função para carregar o nome do usuário e atualizar o título
+      function loadUserNameAndProfile() {
     const dashboardTitle = document.getElementById("dashboard-titulo");
     if (emailUsuario) {
       const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)); // JSON.parse
