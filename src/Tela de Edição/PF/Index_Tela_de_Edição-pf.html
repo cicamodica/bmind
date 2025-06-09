@@ -13,10 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script
-      src="/src/Tela de Edição/PF/script_Tela_de_Edição-pf.js"
-      defer
-    ></script>
+    <script src="/src/Tela de Edição/PF/script_Tela_de_Edição-pf.js" defer></script>
   </head>
   <body>
     <div class="header">
@@ -31,8 +28,7 @@
         </div>
 
         <div class="center-group">
-          <div class="search-container">
-            <input
+          <div class="search-container search-desktop"> <input
               type="text"
               id="search-bar"
               placeholder="Pesquisar..."
@@ -45,6 +41,8 @@
         </div>
 
         <div class="right-group">
+          <div class="search-mobile-icon" onclick="toggleMobileSearchBar()"> <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
           <div class="user-area">
             <a href="/src/Main/Main.html" class="minha-area-botao"
               >Minha Área</a
@@ -190,6 +188,15 @@
           </ul>
         </nav>
       </header>
+    </div>
+
+    <div class="mobile-search-bar" id="mobileSearchBar">
+      <input
+        type="text"
+        id="mobile-search-input"
+        placeholder="Pesquisar..."
+      />
+      <button id="mobile-search-button">Buscar</button>
     </div>
 
     <main class="main-content">

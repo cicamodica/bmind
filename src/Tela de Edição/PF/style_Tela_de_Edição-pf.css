@@ -65,15 +65,12 @@ body {
 header {
   /*Estilização da classe pai .NAV (barra superior)*/
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 10px 20px;
-  height: 50px;
+  justify-content: space-between; /* Ajustado para alinhar itens como na outra página */
+  height: 70px; /* Ajustado para a altura da outra página */
+  padding: 0 20px; /* Ajustado para o padding da outra página */
   background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
-  margin-bottom: -50px;
-  /* ADICIONE ISSO para que os elementos absolutos dentro do header se posicionem em relação a ele
-   */
-  position: relative; /* FUNDAMENTAL para o posicionamento do dropdown */
+  position: relative;
 }
 
 /*
@@ -102,6 +99,7 @@ header {
   justify-content: center;
 }
 
+
 /*
  * Estilos dos Ícones de Ações do Usuário
  */
@@ -111,7 +109,7 @@ header {
   align-items: center;
   gap: 10px;
   margin-left: 20px;
-  font-size: 29px;
+  font-size: 35px; /* Ajustado para o tamanho da outra página */
   color: white;
 }
 /* Botão 'Minha Área' */
@@ -150,9 +148,15 @@ header {
   /*Estilização da barra de pesquisa*/
   position: relative;
   display: flex;
-  width: 900px;
+  width: 100%; /* Ajustado para a outra página */
+  max-width: 900px; /* Ajustado para a outra página */
+  margin: 0 auto; /* Centraliza a barra de pesquisa */
   align-items: center;
   z-index: 1;
+}
+/* Adicionado: Classe para esconder a barra de pesquisa desktop no mobile */
+.search-container.search-desktop {
+    /* Por padrão, está visível. Será escondida nas media queries. */
 }
 
 /*
@@ -168,6 +172,7 @@ header {
   border: none;
   width: 100%;
   font-size: 18px;
+  padding-left: 20px; /* Ajustado para a outra página */
 }
 
 /*
@@ -176,9 +181,10 @@ header {
 .search-icon {
   /*Estilização do ícone de pesquisa */
   position: absolute;
-  right: 20px;
+  top: 50%; /* Ajustado para a outra página */
+  transform: translateY(-50%); /* Ajustado para a outra página */
+  right: 50px; /* Ajustado para a outra página */
   color: black;
-  bottom: 16px;
 }
 
 /*
@@ -198,6 +204,7 @@ header {
   height: 55px;
   margin-right: auto;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .perfil {
@@ -230,9 +237,8 @@ li {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: absolute;
-  /* ADICIONE OU MODIFIQUE ISSO */
-  top: 100%; /* Começa na parte inferior do header */
-  left: 0; /* Alinha à esquerda do header */
+  top: 70px; /* Ajustado para a altura do novo cabeçalho */
+  left: 0;
   display: none;
   z-index: 1000;
 }
@@ -246,7 +252,7 @@ li {
   justify-content: space-between; /* espaço entre texto e seta */
   align-items: center; /* centraliza verticalmente */
 
-  padding: 10px 20px; /* MAIS espaço */
+  padding: 12px 16px; /* Ajustado para a outra página */
   color: #333;
   text-decoration: none;
   white-space: nowrap;
@@ -255,7 +261,7 @@ li {
 }
 
 .dropdown-menu a:hover {
-  background-color: #007bff;
+  background-color: #024dae; /* Ajustado para a cor da outra página */
   color: #fff;
 }
 
@@ -267,8 +273,8 @@ li {
 /* SETA via pseudo-elemento */
 .has-submenu > a::after {
   content: "▶";
-  margin-left: 10px; /* separação do texto */
-  font-size: 0.8em;
+  margin-left: 8px; /* Ajustado para a outra página */
+  font-size: 0.75em; /* Ajustado para a outra página */
 }
 
 /* Submenu oculto */
@@ -280,7 +286,7 @@ li {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  min-width: 250px; /* AUMENTADO igual ao principal */
+  min-width: 220px; /* Ajustado para a outra página */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1001;
 }
@@ -292,20 +298,86 @@ li {
 
 /* Submenu itens */
 .submenu a {
-  padding: 10px 20px;
+  padding: 12px 16px; /* Ajustado para a outra página */
   border-radius: 6px;
 }
 
 .submenu a:hover {
-  background-color: #007bff;
+  background-color: #024dae; /* Ajustado para a cor da outra página */
   color: #fff;
 }
+
+/* Adicionado: Estilos para outras opções do menu que a outra página tem */
+.FAQ,
+.Sair,
+.perfil,
+.editar-dashboard {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+
+/* Adicionado: Oculta o ícone do mobile por padrão */
+.search-mobile-icon {
+  display: none; /* Por padrão, o ícone mobile está escondido */
+  font-size: 22px;
+  align-items: center;
+  padding-right: 10px;
+  cursor: pointer; /* Adicionado para indicar que é clicável */
+}
+
+.search-mobile-icon i {
+  color: white;
+}
+
+/* Adicionado: Estilos da barra de pesquisa para mobile */
+.mobile-search-bar {
+  display: none; /* Por padrão, a barra mobile está escondida */
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.mobile-search-bar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.mobile-search-bar button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.mobile-search-bar button:hover {
+  background-color: #02327e;
+}
+
 
 /*
  * Preenchimento do Conteúdo Principal
  */
 .main-content {
-  padding-top: 60px;
+  padding-top: 60px; /* Mantido o padding, pode ser ajustado com base no novo header */
 }
 
 /*
@@ -677,7 +749,7 @@ select,
 /*
  * Estilos do Título das Colunas do Histórico
  */
-.historico-colunash3 {
+.historico-colunas h3 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 10px;
@@ -726,7 +798,7 @@ select,
 /*
  * Estilos do Span do Tipo de Transação do Histórico
  */
-.historico-lista li.transaction-type {
+.historico-lista li .transaction-type {
   font-weight: 700;
   width: 70px;
   text-align: left;
@@ -755,7 +827,7 @@ select,
 /*
  * Estilos do Span do Valor da Transação do Histórico
  */
-.historico-lista li.transaction-value {
+.historico-lista li .transaction-value {
   font-weight: 700;
   width: 120px;
   text-align: right;
@@ -815,20 +887,20 @@ select,
 }
 
 /*
- * Responsividade - Telas Grandes
+ * Responsividade - Telas Grandes (acima de 1200px)
  */
 @media (max-width: 1200px) {
   .search-container {
-    width: 600px;
+    max-width: 600px;
   }
 }
 
 /*
- * Responsividade - Telas Médias
+ * Responsividade - Telas Médias (900px)
  */
 @media (max-width: 900px) {
   .search-container {
-    width: 400px;
+    max-width: 400px;
   }
   .charts-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -842,32 +914,115 @@ select,
 }
 
 /*
- * Responsividade - Tablets e Telas Menores
+ * Responsividade - Tablets e Telas Menores (768px)
  */
 @media (max-width: 768px) {
   header {
     justify-content: space-between;
-    padding: 10px;
+    padding: 0 20px;
+    height: 70px;
   }
-  .center-group {
+  .search-container.search-desktop {
+    /* some com a barra de pesquisa desktop */
     display: none;
   }
+
+  .search-mobile-icon {
+    display: flex; /* mostra o ícone de pesquisa mobile */
+  }
+
+  .center-group {
+    justify-content: flex-end; /* ícone vai para direita */
+  }
+
   .left-group {
-    gap: 5px;
+    flex: 1; /* ocupa espaço e empurra outros elementos */
   }
-  .header-item .logo {
-    height: 45px;
-    margin-left: 10px;
+
+  .right-group {
+    display: flex;
+    align-items: center;
   }
-  .menu-button {
-    font-size: 20px;
-    margin-right: 10px;
+
+  /* Adicionado: Mantém o header fixo quando abre o menu */
+  .header.fixo-quando-menu-aberto {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
-  .user-actions {
-    font-size: 30px;
+
+  /* Adicionado: Adiciona margem para não sobrepor conteúdo quando menu mobile aberto */
+  body.menu-aberto-margin {
+    margin-top: 70px !important; /* Ajuste da margem superior do menu mobile para mostrar o header (mesmo tamanho do header > 70px) */
   }
+
+  /* Responsividade do submenu (dentro do dropdown mobile) */
+  .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+  }
+
+  .submenu.show {
+    display: flex;
+  }
+
+  .has-submenu.open > a {
+    background-color: #024dae;
+    color: white;
+    font-weight: bold;
+  }
+
+  /* Responsividade do dropdown menu principal (no mobile) */
+  .dropdown-menu {
+    position: fixed;
+    top: 70px; /* altura exata do header */
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-sizing: border-box;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 5px;
+    position: static; /* ESSENCIAL: evita flutuação lateral */
+    background: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .dropdown-menu .submenu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .has-submenu > a::after {
+    content: "▼";
+    font-size: 0.8em;
+    margin-left: auto;
+  }
+
+  .dropdown-menu .has-submenu.open > a::after {
+    content: "▲";
+  }
+
+  /* Mantido: Estilos para o dashboard principal em telas menores */
   .main-content {
-    padding-top: 70px;
+    padding-top: 70px; /* Ajustado para compensar o header fixo */
   }
   p {
     font-size: 28px;
@@ -950,7 +1105,7 @@ select,
     width: 90%;
   }
 
-  #modal-historico.seletor-filtro {
+  #modal-historico .seletor-filtro {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -958,8 +1113,8 @@ select,
     width: auto; /* Ajustado para ser mais flexível */
     height: auto; /* Ajustado para ser mais flexível */
   }
-  #modal-historico.seletor-filtro select,
-  #modal-historico.seletor-filtro label {
+  #modal-historico .seletor-filtro select,
+  #modal-historico .seletor-filtro label {
     width: auto;
     margin: 5px;
   }
@@ -973,12 +1128,19 @@ select,
   }
 }
 
+/* Adicionado: Para telas com largura mínima de 769px, oculta a barra de pesquisa mobile */
+@media (min-width: 769px) {
+  .mobile-search-bar { /* Seleciona a barra de pesquisa mobile */
+    display: none !important; /* Garante que ela esteja escondida em telas maiores */
+  }
+}
+
 /*
- * Responsividade - Telas Mínimas (Mobile)
+ * Responsividade - Telas Mínimas (Mobile) (480px)
  */
 @media (max-width: 480px) {
   .header {
-    height: 45px;
+    height: 45px; /* Ajustado para a altura do cabeçalho em 480px da outra página */
   }
   .header-item .logo {
     height: 40px;
@@ -987,15 +1149,14 @@ select,
     font-size: 24px;
   }
   .dropdown-menu {
-    width: 180px;
-    /* Mantenha o left: 0px ou ajuste se necessário */
-    left: 0px; /* ou 10px se quiser um pequeno espaçamento */
+    width: 180px; /* Ajustado para a largura do menu mobile em 480px da outra página */
+    left: 0px; /* Ajustado para o alinhamento da outra página */
   }
   .dropdown-menu li {
     padding: 8px;
   }
   .submenu {
-    width: 180px;
+    width: 180px; /* Ajustado para a largura do submenu em 480px da outra página */
   }
   .dropdown-menu > ul > .has-submenu > .submenu {
     left: 100%; /* Ajuste para ser 100% do pai, e não 180px fixo */

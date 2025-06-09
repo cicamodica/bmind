@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const emailUsuario = localStorage.getItem("usuarioLogado");
+
+  // --- LÓGICA DE VERIFICAÇÃO DE LOGIN ---
+  if (!emailUsuario) {
+    alert("Conteúdo disponível somente para usuários cadastrados.");
+    window.location.href = "https://www.google.com"; // Redireciona para o Google
+    return; // Interrompe a execução do restante do script
+  }
+  // --- FIM DA LÓGICA ---
+
   let tipoPerfilUsuario = null; // Variável para armazenar o tipo de perfil do usuário logado
 
   // Definir as categorias para PF e PJ
@@ -100,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Funcionalidade da pesquisa (barra de pesquisa) > lê na URL o que foi pesquisado e procura nos conteúdos
+  // Lógica para a barra de pesquisa desktop
   document
     .getElementById("search-button")
     .addEventListener("click", function (event) {
@@ -111,6 +121,21 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
       }
     });
+
+  // Lógica para a barra de pesquisa mobile
+  document
+    .getElementById("mobile-search-button")
+    .addEventListener("click", function (event) {
+      event.preventDefault(); // evita o redirecionamento padrão
+      const termo = document.getElementById("mobile-search-input").value.trim();
+
+      if (termo !== "") {
+        const encodedTermo = encodeURIComponent(termo);
+        window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+      }
+      toggleMobileSearchBar(); // Esconde a barra mobile após a busca
+    });
+
 
   // Chamar a função para carregar o nome do usuário e perfil ao carregar a página
   loadUserNameAndProfile();
@@ -139,15 +164,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // verifica se usuario esta logado para apresentar botao de minha area
   const botaoMinhaArea = document.querySelector(".minha-area-botao");
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
 
   if (botaoMinhaArea) {
-    if (usuarioLogado) {
+    if (emailUsuario) {
       botaoMinhaArea.style.display = "inline-block";
     } else {
       botaoMinhaArea.style.display = "none";
     }
   }
+
+  window.redirecionarCadastro = function () {
+    if (!emailUsuario) {
+        alert("Conteúdo disponível somente para usuários cadastrados.");
+        window.location.href = "https://www.google.com";
+    }
+  };
+
+  // --- NOVA FUNÇÃO PARA BARRA DE PESQUISA MOBILE ---
+  window.toggleMobileSearchBar = function () {
+    const mobileSearchBar = document.getElementById("mobileSearchBar");
+    if (mobileSearchBar.style.display === "block") {
+      mobileSearchBar.style.display = "none";
+    } else {
+      mobileSearchBar.style.display = "block";
+    }
+  };
+  // --- FIM DA NOVA FUNÇÃO ---
+
 
   // Função para abrir modais (histórico, entrada, saída, etc.)
   window.openModal = function (tipo) {
@@ -701,9 +744,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentYear = new Date().getFullYear();
 
     const startDisplayYear = 2024; // Início do período para exibição
-    const maxYear = currentYear + 5; // Fim do período para exibição
+    const maxYearFuture = 5; // Anos no futuro para considerar recorrência
+    const endDisplayYear = currentYear + maxYearFuture; // Fim do período para exibição
 
-    for (let year = startDisplayYear; year <= maxYear; year++) {
+    for (let year = startDisplayYear; year <= endDisplayYear; year++) {
       years.add(year.toString());
     }
 
@@ -810,15 +854,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const currentYear = today.getFullYear();
 
     const startDisplayYear = 2024; // Início do período para exibição
-    const endDisplayYear = currentYear + 5; // Fim do período para exibição
+    const maxYearFuture = 5; // Anos no futuro para considerar recorrência
+    const endDisplayYear = currentYear + maxYearFuture; // Fim do período para exibição
 
     transactions.forEach((item) => {
       if (item.recorrente) {
         const originalDate = new Date(item.data + "T12:00:00");
         let currentDate = new Date(originalDate);
 
-        // Adjust the initial date to the beginning of the display period if the original date is earlier
-        while (currentDate.getFullYear() < startDisplayYear) {
+        // Ajusta a data inicial para o início do período de exibição se a data original for anterior
+        // ou se a data original estiver muito no futuro
+        while (currentDate.getFullYear() < startDisplayYear && currentDate <= new Date(endDisplayYear, 11, 31)) {
           if (item.frequencia === "mensal") {
             currentDate.setMonth(currentDate.getMonth() + 1);
           } else if (item.frequencia === "semanal") {
@@ -826,23 +872,25 @@ document.addEventListener("DOMContentLoaded", function () {
           } else if (item.frequencia === "diaria") {
             currentDate.setDate(currentDate.getDate() + 1);
           } else {
-            // For custom or unknown frequency, exit the loop
-            break;
+            break; // Para frequência personalizada ou desconhecida, sai do loop
           }
         }
 
-        // Generate recurring transactions up to the end date or the end of the display period
+        // Gera transações recorrentes até a data de encerramento ou o fim do período de exibição
         while (currentDate.getFullYear() <= endDisplayYear) {
-          // Check if the transaction should have ended already
+          // Verifica se a transação deveria ter terminado
           if (
             item.dataEncerramento &&
             new Date(currentDate) > new Date(item.dataEncerramento + "T23:59:59")
           ) {
-            break; // If the current date is after the end date, stop generating
+            break; // Se a data atual for após a data de encerramento, para de gerar
           }
 
-          // Add only if the end date has not been reached and is within the range
-          if (!item.dataEncerramento || new Date(currentDate) <= new Date(item.dataEncerramento + "T23:59:59")) {
+          // Adiciona apenas se a data final não foi atingida e está dentro do período de exibição
+          if (
+            !item.dataEncerramento ||
+            new Date(currentDate) <= new Date(item.dataEncerramento + "T23:59:59")
+          ) {
             expandedTransactions.push({
               ...item,
               data: currentDate.toISOString().split("T")[0],
@@ -852,24 +900,25 @@ document.addEventListener("DOMContentLoaded", function () {
           if (item.frequencia === "mensal") {
             const nextMonth = currentDate.getMonth() + 1;
             currentDate.setMonth(nextMonth);
-            // Handle month end overflow (e.g., Jan 31 + 1 month = Mar 2, not Feb 31)
+            // Lida com o estouro do final do mês (ex: 31 Jan + 1 mês = 2 Mar, não 31 Fev)
             if (currentDate.getMonth() !== (nextMonth % 12)) {
-                currentDate.setDate(0); // Set to last day of previous month
-                currentDate.setDate(originalDate.getDate()); // Try to go back to original day
-                if (currentDate.getMonth() !== (nextMonth % 12)) { // If still not the right month, set to end of target month
-                    currentDate = new Date(currentDate.getFullYear(), nextMonth, 0);
-                }
+              currentDate.setDate(0); // Define para o último dia do mês anterior
+              currentDate.setDate(originalDate.getDate()); // Tenta voltar para o dia original
+              if (currentDate.getMonth() !== (nextMonth % 12)) {
+                // Se ainda não for o mês correto, define para o final do mês alvo
+                currentDate = new Date(currentDate.getFullYear(), nextMonth, 0);
+              }
             }
           } else if (item.frequencia === "semanal") {
             currentDate.setDate(currentDate.getDate() + 7);
           } else if (item.frequencia === "diaria") {
             currentDate.setDate(currentDate.getDate() + 1);
           } else {
-            break; // For custom or unknown frequency
+            break; // Para frequência personalizada ou desconhecida
           }
 
-          // Add an exit condition to prevent infinite loops in unexpected cases
-          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break; // Upper limit to prevent infinite loops
+          // Adiciona uma condição de saída para evitar loops infinitos em casos inesperados
+          if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break; // Limite superior para evitar loops infinitos
         }
       } else {
         expandedTransactions.push(item);
@@ -878,6 +927,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return expandedTransactions;
   }
+
 
   // Função para popular o modal de histórico
   window.populateHistoricoModal = function () {
@@ -984,7 +1034,7 @@ document.addEventListener("DOMContentLoaded", function () {
       0
     );
 
-    // Save current totals to localStorage for the main page to use
+    // Salva os totais atuais no localStorage para a página principal usar
     const currentUserEmail = localStorage.getItem("usuarioLogado");
     if (currentUserEmail) {
       let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
@@ -993,13 +1043,45 @@ document.addEventListener("DOMContentLoaded", function () {
         entradas: totalEntradas,
         saidas: totalSaidas,
       };
-      // Also store a simplified version of financial data for quick access on main page if needed
       currentUserData.financialDataPreview = {
         entradas: entradasParaGrafico,
         saidas: saidasParaGrafico,
       };
       localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
     }
+
+    // --- Lógica para Mensagem "Nenhum dado adicionado" ---
+    const chartContainers = document.querySelectorAll('.chart-container');
+    const hasAnyData = totalEntradas > 0 || totalSaidas > 0 || entradasParaGrafico.length > 0 || saidasParaGrafico.length > 0;
+
+    chartContainers.forEach(container => {
+      const canvas = container.querySelector('canvas');
+      const h3 = container.querySelector('h3');
+      const noDataMessageId = `no-data-${canvas.id}`;
+      let noDataMessageElement = document.getElementById(noDataMessageId);
+
+      if (!noDataMessageElement) {
+        noDataMessageElement = document.createElement('p');
+        noDataMessageElement.id = noDataMessageId;
+        noDataMessageElement.textContent = 'Nenhum dado adicionado.';
+        noDataMessageElement.style.cssText = 'text-align: center; color: #888; font-size: 1.1em; margin-top: 20px;';
+        container.insertBefore(noDataMessageElement, h3);
+      }
+
+      if (!hasAnyData) {
+        canvas.style.display = 'none';
+        noDataMessageElement.style.display = 'block';
+      } else {
+        canvas.style.display = 'block';
+        noDataMessageElement.style.display = 'none';
+      }
+    });
+
+    // Se não houver dados, saia da função para não tentar renderizar gráficos vazios
+    if (!hasAnyData) {
+        return;
+    }
+    // --- Fim da Lógica para Mensagem "Nenhum dado adicionado" ---
 
 
     chartInstances.pieChart = new Chart(
@@ -1044,73 +1126,127 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
 
-    const transacoesPorMes = {};
-    const allFilteredMonths = new Set();
+    // --- Lógica para o Gráfico de Linha (Evolução do Saldo) e Barras (Comparação Mensal) ---
+    const transacoesAgrupadas = {};
+    let labelsGrafico = [];
+    let saldosAcumulados = [];
+    let entradasAgrupadas = [];
+    let saidasAgrupadas = [];
 
-    entradasParaGrafico.forEach((item) => {
-      const date = new Date(item.data + "T12:00:00");
-      const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
-        .toString()
-        .padStart(2, "0")}`;
+    // Determina se o filtro de mês está ativo
+    const isMonthFiltered = mesFiltro !== "";
 
-      allFilteredMonths.add(monthKey);
-
-      if (!transacoesPorMes[monthKey]) {
-        transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+    // Agrupa as transações por mês ou por dia, dependendo do filtro
+    if (isMonthFiltered) {
+      // Agrupar por dia
+      const daysInMonth = new Date(parseInt(anoFiltro), parseInt(mesFiltro), 0).getDate(); // Obter o número de dias no mês
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dayKey = `${anoFiltro}-${mesFiltro}-${i.toString().padStart(2, '0')}`;
+        transacoesAgrupadas[dayKey] = { entradas: 0, saidas: 0 };
       }
-      transacoesPorMes[monthKey].entradas += item.valor;
-    });
 
-    saidasParaGrafico.forEach((item) => {
-      const date = new Date(item.data + "T12:00:00");
-      const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1)
-        .toString()
-        .padStart(2, "0")}`;
+      entradasParaGrafico.forEach((item) => {
+        const date = new Date(item.data + "T12:00:00");
+        const dayKey = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+        if (transacoesAgrupadas[dayKey]) {
+          transacoesAgrupadas[dayKey].entradas += item.valor;
+        }
+      });
+      saidasParaGrafico.forEach((item) => {
+        const date = new Date(item.data + "T12:00:00");
+        const dayKey = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+        if (transacoesAgrupadas[dayKey]) {
+          transacoesAgrupadas[dayKey].saidas += item.valor;
+        }
+      });
 
-      allFilteredMonths.add(monthKey);
+      // Ordena as chaves dos dias
+      const sortedDayKeys = Object.keys(transacoesAgrupadas).sort();
 
-      if (!transacoesPorMes[monthKey]) {
-        transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+      let saldoDiarioAcumulado = 0;
+      sortedDayKeys.forEach((dayKey) => {
+        const dataDia = transacoesAgrupadas[dayKey];
+        const saldoDiaAtual = dataDia.entradas - dataDia.saidas;
+        saldoDiarioAcumulado += saldoDiaAtual;
+
+        saldosAcumulados.push(saldoDiarioAcumulado);
+        entradasAgrupadas.push(dataDia.entradas);
+        saidasAgrupadas.push(dataDia.saidas);
+        labelsGrafico.push(dayKey.split('-')[2]); // Apenas o dia (DD)
+      });
+
+    } else {
+      // Agrupar por mês (lógica original)
+      const transacoesPorMes = {};
+      const allFilteredMonths = new Set();
+
+      // Primeiro, preencher todos os meses do ano filtrado com 0 para garantir que todos apareçam
+      const currentYear = parseInt(anoFiltro);
+      if (!isNaN(currentYear)) {
+          for (let month = 1; month <= 12; month++) {
+              const monthKey = `${currentYear}-${month.toString().padStart(2, '0')}`;
+              transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+              allFilteredMonths.add(monthKey);
+          }
       }
-      transacoesPorMes[monthKey].saidas += item.valor;
-    });
 
-    const sortedMonthKeys = Array.from(allFilteredMonths).sort();
+      entradasParaGrafico.forEach((item) => {
+        const date = new Date(item.data + "T12:00:00");
+        const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}`;
+        // Adiciona ao conjunto de meses apenas se a transação realmente se encaixa no filtro atual
+        if (anoFiltro === '' || date.getFullYear().toString() === anoFiltro) {
+             allFilteredMonths.add(monthKey);
+        }
+        if (!transacoesPorMes[monthKey]) {
+          transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+        }
+        transacoesPorMes[monthKey].entradas += item.valor;
+      });
 
-    let saldoAcumulado = 0;
-    const saldosMensais = [];
-    const entradasMensais = [];
-    const saidasMensais = [];
-    const labelsMeses = [];
+      saidasParaGrafico.forEach((item) => {
+        const date = new Date(item.data + "T12:00:00");
+        const monthKey = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}`;
+        // Adiciona ao conjunto de meses apenas se a transação realmente se encaixa no filtro atual
+        if (anoFiltro === '' || date.getFullYear().toString() === anoFiltro) {
+             allFilteredMonths.add(monthKey);
+        }
+        if (!transacoesPorMes[monthKey]) {
+          transacoesPorMes[monthKey] = { entradas: 0, saidas: 0 };
+        }
+        transacoesPorMes[monthKey].saidas += item.valor;
+      });
 
-    sortedMonthKeys.forEach((monthKey) => {
-      const dataMes = transacoesPorMes[monthKey] || { entradas: 0, saidas: 0 };
-      const saldoMesAtual = dataMes.entradas - dataMes.saidas;
-      saldoAcumulado += saldoMesAtual;
+      const sortedMonthKeys = Array.from(allFilteredMonths).sort();
 
-      saldosMensais.push(saldoAcumulado);
-      entradasMensais.push(dataMes.entradas);
-      saidasMensais.push(dataMes.saidas);
+      let saldoAcumulado = 0;
+      sortedMonthKeys.forEach((monthKey) => {
+        const dataMes = transacoesPorMes[monthKey] || { entradas: 0, saidas: 0 };
+        const saldoMesAtual = dataMes.entradas - dataMes.saidas;
+        saldoAcumulado += saldoMesAtual;
 
-      const [year, month] = monthKey.split("-");
-      labelsMeses.push(
-        new Date(year, parseInt(month) - 1).toLocaleString("pt-BR", {
-          month: "short",
-          year: "2-digit",
-        })
-      );
-    });
+        saldosAcumulados.push(saldoAcumulado);
+        entradasAgrupadas.push(dataMes.entradas);
+        saidasAgrupadas.push(dataMes.saidas);
+        const [year, month] = monthKey.split("-");
+        labelsGrafico.push(
+          new Date(year, parseInt(month) - 1).toLocaleString("pt-BR", {
+            month: "short",
+            year: "2-digit",
+          })
+        );
+      });
+    }
 
     chartInstances.lineChart = new Chart(
       document.getElementById("lineChart").getContext("2d"),
       {
         type: "line",
         data: {
-          labels: labelsMeses,
+          labels: labelsGrafico,
           datasets: [
             {
               label: "Saldo Acumulado",
-              data: saldosMensais,
+              data: saldosAcumulados,
               borderColor: "#024dae",
               backgroundColor: "rgba(2, 77, 174, 0.2)",
               fill: true,
@@ -1140,16 +1276,16 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         type: "bar",
         data: {
-          labels: labelsMeses,
+          labels: labelsGrafico,
           datasets: [
             {
               label: "Entradas",
-              data: entradasMensais,
+              data: entradasAgrupadas,
               backgroundColor: "#4CAF50",
             },
             {
               label: "Saídas",
-              data: saidasMensais,
+              data: saidasAgrupadas,
               backgroundColor: "#F44336",
             },
           ],
@@ -1172,9 +1308,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   };
 
-
   renderDashboard();
-
 
   window.onclick = function (event) {
     const dropdownMenu = document.getElementById("dropdownMenu");
@@ -1197,7 +1331,9 @@ document.addEventListener("DOMContentLoaded", function () {
       !event.target.matches(".Saidas") &&
       !event.target.matches(".Editar") &&
       !event.target.matches(".Remover") &&
-      !event.target.matches(".close-button")
+      !event.target.matches(".close-button") &&
+      !event.target.closest(".search-mobile-icon") && // Adicionado: para não fechar a barra de pesquisa mobile se clicar no ícone
+      !event.target.closest(".mobile-search-bar") // Adicionado: para não fechar a barra de pesquisa mobile se clicar nela
     ) {
       const modals = document.querySelectorAll(".modal");
       modals.forEach((modal) => {
@@ -1205,6 +1341,11 @@ document.addEventListener("DOMContentLoaded", function () {
           closeModal();
         }
       });
+      // Adicionado: Fecha a barra de pesquisa mobile se clicar fora dela e não for o ícone
+      const mobileSearchBar = document.getElementById("mobileSearchBar");
+      if (mobileSearchBar.style.display === "block") {
+          mobileSearchBar.style.display = "none";
+      }
     }
   };
 
