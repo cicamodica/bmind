@@ -327,7 +327,7 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
     } else {
       boasVindas.textContent = "Bem-vindo!";
     }
-   });
+     });
 
     function redirecionarCadastro() {
      const usuarioLogado = localStorage.getItem("usuarioLogado");
@@ -693,20 +693,38 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
   
 ### Estrutura de Dados
 
-        function loadUserNameAndProfile() {
-          const dashboardTitle = document.getElementById("dashboard-titulo");
-           if (emailUsuario) {
-          const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));}}
-         
-          let userData = JSON.parse(localStorage.getItem(email)); 
+   const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
 
-          localStorage.setItem(email, JSON.stringify(userData));
+   function getFinancialData() {
+     const email = localStorage.getItem("usuarioLogado");
+     if (!email) {
+       console.warn("Nenhum usuário logado. Não é possível carregar dados financeiros.");
+       return { entradas: [], saidas: [] };
+     }
+     
+     let userData = JSON.parse(localStorage.getItem(email));
 
-          let userData = JSON.parse(localStorage.getItem(email)); 
-  
-          let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
-     
-          localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
+      if (!userData || !userData.financialData) {
+      userData = userData || {};
+      userData.financialData = { entradas: [], saidas: [] };
+      localStorage.setItem(email, JSON.stringify(userData)); // Salva a estrutura inicial
+     }
+     return userData.financialData;
+     }
+
+      let userData = JSON.parse(localStorage.getItem(email));
+
+       if (!userData) {
+      userData = {}; // Inicializa se não existir
+      }
+      userData.financialData = data;
+      localStorage.setItem(email, JSON.stringify(userData));
+      renderDashboard();
+      }
+
+      let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
+
+      localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
     
 ### Instruções de acesso
 
