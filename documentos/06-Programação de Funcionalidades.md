@@ -6,27 +6,30 @@ O documento de programação de funcionalidades descreve as características pri
 
 ![Homepage Logado](https://github.com/user-attachments/assets/bf9d77f9-2985-4ab5-98a8-921c95d87701)
 
-Sua principal função é ser  o ponto de entrada central e ocartão de visitas do site. Atraves dessa pagina podemos apresentar as informações e produtos que oferecemos, alem  de direcionar os vitantes para os nossos conteudos e incentiva-los a se cadastrar para acessar mais funcionalidades. Ela adapta o conteudo exibido conforme o status de login  e perfil de usuario (Pessoa Física ou Jurídica), controla a exibição de botoes e links, implementa a funcionalidade bsuca, gerencia um carrossel de banners e organiza o conteudo em abas interativas.
+Sua principal função é ser o ponto de entrada central e o cartão de visitas do site. Através dessa página podemos apresentar as informações e produtos que oferecemos, além  de direcionar os visitantes para os nossos conteúdos e incentivá-los a se cadastrar para acessar mais funcionalidades. Ela adapta o conteúdo exibido conforme o status de login e de perfil de usuário (Pessoa Física ou Pessoa Jurídica), controla a exibição de botões e links, implementa a funcionalidade de busca, gerencia um carrossel de banners e organiza o conteúdo em abas interativas.
 
 ### Requisito atendido
 
-
-- |RF-20| O menu deve permitir a navegação para as principais seções da aplicação (Minha área, Meu Dashboard, Conteúdo Didático, Perfil, FAQ), conforme usuario logado.
+- | RF-18 |	Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.
+- | RF-24	| A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se. 
 
 ### Artefatos da funcionalidade
--Homepage.html
--Homepage.css
--Homepage.js
+
+- Homepage.html
+- Homepage.css
+- Homepage.js
 
 ### Estrutura de Dados
- Esta página não possui estrutura de dados
 
-### Instruçoes de acesso
+Esta página não possui estrutura de dados.
+
+### Instruções de acesso
+
 - Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Homepage.html) 
 
--Nesta pagina você poderá consumir diversos conteudos sobres finanças e investimentos tanto pessoais quanto corporativos
+- Nesta página você poderá consumir diversos conteúdos sobres finanças e investimentos tanto pessoais quanto corporativos.
 
--Se fizer login a pagina será modificada de acordo com o seu perfil cadastrado. 
+- Se fizer login, a página será modificada de acordo com o perfil cadastrado. 
 
 #### Responsável
 
@@ -41,7 +44,7 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 
 ### Requisito atendido
 
-- |RF-02| A aplicação deve permitir que o usuário faça login em sua conta.
+- | RF-03 | A aplicação deve permitir que o usuário faça login em sua conta.
 
 ### Artefatos da funcionalidade
 
@@ -137,7 +140,7 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 ### Requisito atendido
 
-[Adicionar novo?]
+- | RF-04 |	A aplicação deverá permitir que o usuário redefina sua senha.
 
 ### Artefatos da funcionalidade
 
@@ -198,7 +201,7 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 ### Requisito atendido
 
-[Adicionar novo?]
+- | RF-04 |	A aplicação deverá permitir que o usuário redefina sua senha.
 
 ### Artefatos da funcionalidade
 
@@ -222,7 +225,6 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 - Após acessar o link, insira a sua nova senha e confirme. Ao finalizar a redefinição você terá seu acesso a aplicação garantido.
 
-
 #### Responsável
 
 - Kauê Alves dos Reis 
@@ -236,7 +238,7 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 
 ### Requisito atendido
 
-[Adicionar novo?]
+- | RF-02 |	A aplicação deve disponibilizar uma página para validação dos dados cadastrados pelo usuário.
 
 ### Artefatos da funcionalidade
 
@@ -275,20 +277,74 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 
 ## Main (Minha Área)
 
-Sua função principal é trazer para o ususario um resumo de todas as atividades que ele realizou no plataforma. Iniciando com as exibição do dashboard com base nas despesas e receitas cadastradas, um resumo to total gasto e recebido do mes alem de um hisotrico com tudo que foi registrado no mes. A pagina permite qu eo usuario crie e gerencie metas que ele deseja alcançar. Exibe tambem os ultimos 5 conteudos vistos pelo o usurario e recomenda conteudos com base no perfil cadastrado.
+![Main](https://github.com/user-attachments/assets/73106496-d6a6-4465-91e8-7432d90e1377)
+![Main2](https://github.com/user-attachments/assets/3f193f85-b5e7-49a5-9545-58a099410de6)
+
+Sua função principal é trazer para o usuário um resumo de todas as atividades que ele realizou na plataforma. Iniciando com as exibições do dashboard, com base nas despesas e receitas cadastradas, um resumo do total de receitas do mês (gastos e recebidos), além de um histórico com tudo que foi registrado no mês. A página permite que o usuário crie e gerencie metas que ele deseja alcançar. Exibe também os últimos 5 conteúdos vistos pelo o usuário e recomenda conteúdos com base no perfil cadastrado.
 
 ### Requisito atendido
 
-[Adicionar novo?]
+- | RF-06 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.
+- | RF-07 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento de metas estabelecidas pelo próprio.
+- | RF-12 |	A aplicação deve exibir uma mensagem de boas-vindas personalizada para o usuário logado.
+- | RF-13	| A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
+- | RF-17	| A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
+- | RF-18	| Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.
+- | RF-20	| A aplicação deve registrar e exibir os conteúdos didáticos visualizados recentemente pelo usuário.
+- | RF-21	| A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
+- | RF-22	| A aplicação deve exibir um histórico das transações do mês atual no dashboard.
 
 ### Artefatos da funcionalidade
 
--Main.css
--Main.html
--Main.js
+- Main.css
+- Main.html
+- Main.js
 
 ### Estrutura de Dados
-Esta página não possui estrutura de dados
+
+ const emailUsuario = localStorage.getItem("usuarioLogado");
+
+ document.addEventListener('DOMContentLoaded', () => {
+   // --- Boas-Vindas ---
+   const boasVindas = document.getElementById("boas-vindas");
+
+   if (emailUsuario) {
+     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+     if (dadosUsuario && dadosUsuario.nome) {
+       boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+     } else {
+       boasVindas.textContent = "Olá!";
+     }
+   } else {
+     boasVindas.textContent = "Bem-vindo!";
+   }
+ });
+
+  function redirecionarCadastro() {
+   const usuarioLogado = localStorage.getItem("usuarioLogado");
+   const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
+ function atualizarInterfaceUsuario() {
+   const usuarioLogado = localStorage.getItem("usuarioLogado");
+   const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+  
+ function registrarConteudoVisto(nome, url, imagem) {
+   const emailUsuario = localStorage.getItem("usuarioLogado");
+    if (!emailUsuario) return;
+   const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+
+   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));}
+
+   const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+
+   // Recuperação dos dados do usuário
+   const dados = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+
+   const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+
+   const metasSalvas = JSON.parse(localStorage.getItem(metasKey) || '[]');
+
+    localStorage.setItem(metasKey, JSON.stringify(metasAtuais)); carregarMetas(); 
 
 ### Instruções de acesso
 
@@ -301,10 +357,8 @@ Esta página não possui estrutura de dados
 
 #### Responsável
 
--Mariana Turibio Gressi
--Matheus Feliciano Andrade Bernardes
-
-
+- Mariana Turibio Gressi
+- Matheus Feliciano Andrade Bernardes
 
 ## Resultado de pesquisa
 
@@ -314,7 +368,7 @@ Sua principal função é redirecionar o usuário para o conteúdo que ele desej
 
 ### Requisito atendido
 
-RF-08 - A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03).
+- | RF-16 |	A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
 
 ### Artefatos da funcionalidade
 
@@ -416,7 +470,7 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 ### Requisito atendido
 
-- |RF-11| A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação
+- | RF-19 |	A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação.
 
 ### Artefatos da funcionalidade
 
@@ -454,11 +508,11 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 ![Página de Perfil](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/documentos/img/Tela%20de%20perfil.png)
 
-Sua principal função é permitir que os usuários possam editar seus dados como, nome de usuário, data de nascimento, telefone e etc. Permitindo também que o usuário insira uma imagem ao seu perfil.
+Sua principal função é permitir que os usuários possam editar seus dados como nome de usuário, data de nascimento e telefone. Permitindo também que o usuário insira uma imagem ao seu perfil.
 
 ### Requisito atendido
 
-- [adionar novo?]
+- | RF-11 |	A aplicação deve permitir que o usuário visualize, edite e salve suas informações pessoais (incluindo nome, contato, data de nascimento) e imagem de perfil.
 
 ### Artefatos da funcionalidade
 
@@ -532,466 +586,169 @@ Sua principal função é permitir que os usuários possam editar seus dados com
 - Kauê Alves dos Reis
 
   
-## Pagina de conteúdo
-
+## Páginas de Conteúdo
 
 ![image](https://github.com/user-attachments/assets/87e90ab7-a73e-4734-8a1f-78d6a4958457)
 
-Sua principal função é permitir que os usuários possam acesar conteudos informativos sobre , operações bancarias , investimentos e finanças . 
+Sua principal função é permitir que os usuários possam acesar conteudos informativos sobre, operações bancárias, investimentos e finanças. 
 
+### Requisito Atendido 
 
-##Requisito Atendido 
-
--A aplicação deverá permitir que o usuário deslogue de sua conta 
--A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03). 
--O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado. 
--O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica). 
--A aplicação deve ser fazer a verificação de logado ou não logado para exibir icone de perfil ou fazer login/cadastre-se 
+- A aplicação deverá permitir que o usuário deslogue de sua conta 
+- A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03). 
+- O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado. 
+- O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica). 
+- A aplicação deve ser fazer a verificação de logado ou não logado para exibir icone de perfil ou fazer login/cadastre-se 
 
 
 ### Artefatos da funcionalidade
 
--analise-de-balanco.css
--analise-de-balanco.html
--analise-de-balanco.js
--captacao-de-recursos.css
--captacao-de-recursos.html
--captacao-de-recursos.js
--dre.css
--dre.html
--dre.js
--fluxo-de-caixa.css
--fluxo-de-caixa.html
--fluxo-de-caixa.js
--controle-de-dividas.css
--controle-de-dividas.html
--controle-de-dividas.js
--orcamento-domestico.css
--orcamento-domestico.html
--orcamento-domestico.js
--planejamento-financeiro.css
--planejamento-financeiro.html
--planejamento-financeiro.js
--fundo-de-investimentos-pj.css
--fundo-de-investimentos-pj.html
--fundo-de-investimentos-pj.js
--renda-fixa-pj.css
--renda-fixa-pj.html
--renda-fixa-pj.js
--renda-variavel-pj.css
--renda-variavel-pj.html
--renda-variavel-pj.js
--fundo-de-investimentos-pf.css
--fundo-de-investimentos-pf.html
--fundo-de-investimentos-pf.js
--renda-fixa-pf.css
--renda-fixa-pf.html
--renda-fixa-pf.js
--renda-varial-pf.css
--renda-varial-pf.html
--renda-varial-pf.js
--cartao-de-credito.css
--cartao-de-credito.html
--cartao-de-credito.js
--cartao-de-debito.css
--cartao-de-debito.html
--cartao-de-debito.js
--emprestimo.css
--emprestimo.html
--emprestimo.js
--financiamento.css
--financiamento.html
--financiamento.js
--taxas-e-tarifas.css
--taxas-e-tarifas.html
--taxas-e-tarifas.js
+- analise-de-balanco.css
+- analise-de-balanco.html
+- analise-de-balanco.js
+- captacao-de-recursos.css
+- captacao-de-recursos.html
+- captacao-de-recursos.js
+- dre.css
+- dre.html
+- dre.js
+- fluxo-de-caixa.css
+- fluxo-de-caixa.html
+- fluxo-de-caixa.js
+- controle-de-dividas.css
+- controle-de-dividas.html
+- controle-de-dividas.js
+- orcamento-domestico.css
+- orcamento-domestico.html
+- orcamento-domestico.js
+- planejamento-financeiro.css
+- planejamento-financeiro.html
+- planejamento-financeiro.js
+- fundo-de-investimentos-pj.css
+- fundo-de-investimentos-pj.html
+- fundo-de-investimentos-pj.js
+- renda-fixa-pj.css
+- renda-fixa-pj.html
+- renda-fixa-pj.js
+- renda-variavel-pj.css
+- renda-variavel-pj.html
+- renda-variavel-pj.js
+- fundo-de-investimentos-pf.css
+- fundo-de-investimentos-pf.html
+- fundo-de-investimentos-pf.js
+- renda-fixa-pf.css
+- renda-fixa-pf.html
+- renda-fixa-pf.js
+- renda-varial-pf.css
+- renda-varial-pf.html
+- renda-varial-pf.js
+- cartao-de-credito.css
+- cartao-de-credito.html
+- cartao-de-credito.js
+- cartao-de-debito.css
+- cartao-de-debito.html
+- cartao-de-debito.js
+- emprestimo.css
+- emprestimo.html
+- emprestimo.js
+- financiamento.css
+- financiamento.html
+- financiamento.js
+- taxas-e-tarifas.css
+- taxas-e-tarifas.html
+- taxas-e-tarifas.js
 
 ### Estrutura de Dados
 
     function redirecionarCadastro() {
     const usuarioLogado = localStorage.getItem("usuarioLogado");
     const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
-
-    if (dadosDoUsuario && dadosDoUsuario.perfil) {
-    if (dadosDoUsuario.perfil === "Pessoa Física") {
-      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
-    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      window.location.href = "/src/Tela de Edição/PJ/Index_Tela_de_Edição-pj.html";
-    } else {
-      alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
-    }
-     } else {
-    alert("Usuário não logado ou dados do usuário inválidos.");
-    }
-    }
+    
     function atualizarInterfaceUsuario() {
     const usuarioLogado = localStorage.getItem("usuarioLogado");
     const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
-    const userActionsLogado = document.getElementById("perfil-logado");
-    const userActionsNaoLogado = document.getElementById("login-nao-logado");
-
-    const itensPF = document.querySelectorAll('.item-pf');
-    const itensPJ = document.querySelectorAll('.item-pj');
-    const itensLogado = document.querySelectorAll('.item-logged');
-     const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
-
-    const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/Main/Main.html")
-
-    // Esconde tudo inicialmente
-    userActionsLogado.style.display = "none";
-    userActionsNaoLogado.style.display = "none";
-    itensPF.forEach(el => el.style.display = 'none');
-    itensPJ.forEach(el => el.style.display = 'none');
-    itensLogado.forEach(el => el.style.display = 'none');
-    itensNaoLogado.forEach(el => el.style.display = 'none');
-
-    if (dadosDoUsuario && (dadosDoUsuario.perfil === "Pessoa Física" || dadosDoUsuario.perfil === "Pessoa     Jurídica")) {
-    // Função para registrar o conteúdo visto recentemente
-    function registrarConteudoVisto(nome, url, imagem) {
-    const emailUsuario = localStorage.getItem("usuarioLogado");
-    if (!emailUsuario) return;
-
     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
 
-    if (!dadosUsuario.vistosRecentemente) {
-    dadosUsuario.vistosRecentemente = [];
-    }
-
-    // Remove se já existir (baseado na URL para garantir que não repita)
-    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.filter(item => item.url !== url);
-
-    // Adiciona no topo
-    const conteudo = { nome, url, imagem };
-    dadosUsuario.vistosRecentemente.unshift(conteudo);
-
-    // Mantém só os 5 mais recentes
-    if (dadosUsuario.vistosRecentemente.length > 5) {
-    dadosUsuario.vistosRecentemente = dadosUsuario.vistosRecentemente.slice(0, 5);
-     }
-
-     // Salva de volta no localStorage
       localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
        }
 
-    
-    // Só mostra o botão "perfil-logado" se não estiver na própria página de "Minha Área"
-    if (!estaNaPaginaMinhaArea && userActionsLogado) {
-      userActionsLogado.style.display = "flex";
-    }
-
-    // Exibe itens de logado
-    itensLogado.forEach(el => el.style.display = 'block');
-
-    if (dadosDoUsuario.perfil === "Pessoa Física") {
-      itensPF.forEach(el => el.style.display = 'block');
-    } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      itensPJ.forEach(el => el.style.display = 'block');
-    }
-    } else {
-    // Usuário não logado ou com dados inválidos
-    userActionsNaoLogado.style.display = "flex";
-    itensNaoLogado.forEach(el => el.style.display = 'block');
-    }
-    }
-
-
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL:
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/dre/dre.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html
-- https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html
+- Abra um navegador de Internet e informe as seguintes URL:
+- Página de Análise de Balanço (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html)
+- Página de Captação de Recursos (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html)
+- Página de DRE (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/dre/dre.html)
+- Página de Fluxo de Caixa (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html)
+- Página de Controle de Dívidas (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html)
+- Página de Orçamento Doméstico (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html)
+- Página de Planejamento Financeiro (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html)
+- Página de Fundos de Investimento PJ (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html)
+- Página de Renda Fixa PJ (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html) 
+- Página de Renda Variável PJ (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html)
+- Página de Fundo de Investimentos PF (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html)
+- Página de Renda Fixa PF (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html)
+- Página de Renda Variável PF (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html)
+- Página Cartão de Crédito (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html)
+- Página Cartão de Débito (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html)
+- Página de Empréstimo (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html)
+- Página de Financiamento (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html)
+- Página de Taxas e Tarifas (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html)
 
-  #### Responsável
-  -Matheus Feliciano Andrade Bernardes
+  ### Responsável
+  
+  - Matheus Feliciano Andrade Bernardes
 
-- ## Tela de Edição
+ ## Tela de Edição
  ![Tela de Edição](https://github.com/user-attachments/assets/938a0c82-8a51-41a2-824d-67fe1de28676)
 
-Sua função principal é trazer para o ususario um resumo de todas as atividades que ele realizou no plataforma. Iniciando com as exibição do dashboard com base nas despesas e receitas cadastradas, um resumo to total gasto e recebido do mes alem de um hisotrico com tudo que foi registrado no mes. A pagina permite qu eo usuario crie e gerencie metas que ele deseja alcançar. Exibe tambem os ultimos 5 conteudos vistos pelo o usurario e recomenda conteudos com base no perfil cadastrado.
+Sua função principal é trazer para o usuário um resumo de todas as atividades que ele realizou na plataforma. Iniciando com as exibições do dashboard com base nas despesas e receitas cadastradas, um resumo do total gasto e recebido do mês além de um histórico com tudo que foi registrado no mês.
 
 ### Requisito atendido
-RF-06 A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.
+
+- | RF-06 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.
+- | RF-07 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento de metas estabelecidas pelo próprio.
+- | RF-08	| A aplicação deve disponibilizar ao usuário uma ferramenta para o registro de receitas e despesas.
+- | RF-09	| A aplicação deve permitir a categorização dos registros inseridos pelo usuário.
+- | RF-13	| A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
+- | RF-17	| A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
+- | RF-21	| A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
+- | RF-22	| A aplicação deve exibir um histórico das transações do mês atual no dashboard.
 
 ### Artefatos da funcionalidade
 
--Index_Tela_de_Edição-pf.html
--script_Tela_de_Edição-pf.js
--style_Tela_de_Edição-pf.css
-
-
+- Index_Tela_de_Edição-pf.html
+- script_Tela_de_Edição-pf.js
+- style_Tela_de_Edição-pf.css
+- 
 ### Estrutura de Dados
 
-
-          // Função para carregar o nome do usuário e atualizar o título
         function loadUserNameAndProfile() {
           const dashboardTitle = document.getElementById("dashboard-titulo");
           if (emailUsuario) {
-          const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)); // JSON.parse
-          if (dadosUsuario && dadosUsuario.nome) {
-          dashboardTitle.textContent = `Dashboard de ${dadosUsuario.nome}`;
-           tipoPerfilUsuario = dadosUsuario.perfil;
-           } else {
-          dashboardTitle.textContent = "Dashboard de Usuário";
-          tipoPerfilUsuario = "Pessoa Física";
-          }
-          } else {
-          dashboardTitle.textContent = "Dashboard de Fulano";
-         tipoPerfilUsuario = "Pessoa Física";
-           }
-          populateCategorySelects();
-           }
+          const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+         
+        let userData = JSON.parse(localStorage.getItem(email)); 
 
-       // Função para obter dados financeiros do localStorage do usuário logado
-         function getFinancialData() {
-         const email = localStorage.getItem("usuarioLogado");
-         if (!email) {
-         console.warn("Nenhum usuário logado. Não é possível carregar dados financeiros.");
-         return { entradas: [], saidas: [] };
-           }
-          let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
+        localStorage.setItem(email, JSON.stringify(userData));
 
-          // Se o usuário não tiver dados financeiros, inicializa
-           if (!userData || !userData.financialData) {
-           userData = userData || {};
-           userData.financialData = { entradas: [], saidas: [] };
-           localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
-            }
-          return userData.financialData;
-           }
-
-            // Função para salvar dados financeiros no localStorage do usuário logado
-            function saveFinancialData(data) {
-            const email = localStorage.getItem("usuarioLogado");
-            if (!email) {
-            console.warn("Nenhum usuário logado. Não é possível salvar dados financeiros.");
-          return;
-           }
-           let userData = JSON.parse(localStorage.getItem(email)); // JSON.parse
-            if (!userData) {
-           userData = {};
-           }
-           userData.financialData = data;
-          localStorage.setItem(email, JSON.stringify(userData)); // JSON.stringify
-              renderDashboard();
-             }
-
-    // Função para salvar uma nova entrada
-      window.salvarEntrada = function () {
-        const dataInput = document.getElementById("entrada-data");
-        const valorInput = document.getElementById("entrada-valor");
-         const categoriaSelect = document.getElementById("entrada-categoria");
-    const categoriaText =
-      categoriaSelect.options[categoriaSelect.selectedIndex].text;
-    const descricaoInput = document.getElementById("entrada-descricao");
-    const recorrenteSim =
-      document.getElementById("entrada-recorrente-sim").checked;
-    const frequenciaSelect = document.getElementById("entrada-frequencia");
-    const encerramentoInput =
-      document.getElementById("entrada-encerramento");
-
-    if (!dataInput.value || !valorInput.value) {
-      alert("Data e Valor são obrigatórios para entradas.");
-      return;
-    }
-    if (categoriaSelect.value === "") {
-      alert("A categoria é obrigatória para entradas.");
-      return;
-    }
-
-    if (recorrenteSim && !encerramentoInput.value) {
-      alert("A Data de Encerramento é obrigatória para entradas recorrentes.");
-      return;
-    }
-
-    const novaEntrada = {
-      id: Date.now(),
-      tipo: "entrada",
-      data: dataInput.value,
-      valor: parseFloat(valorInput.value),
-      categoria: categoriaSelect.value,
-      categoriaText: categoriaText,
-      descricao: descricaoInput.value,
-      recorrente: recorrenteSim,
-      frequencia: recorrenteSim ? frequenciaSelect.value : null,
-      dataEncerramento: recorrenteSim
-        ? encerramentoInput.value
-        : null,
-    };
-
-    const data = getFinancialData();
-    data.entradas.push(novaEntrada);
-    saveFinancialData(data);
-    closeModal();
-  };
-
-  // Função para salvar uma nova saída
-  window.salvarSaida = function () {
-    const dataInput = document.getElementById("saida-data");
-    const valorInput = document.getElementById("saida-valor");
-    const categoriaSelect = document.getElementById("saida-categoria");
-    const categoriaText =
-      categoriaSelect.options[categoriaSelect.selectedIndex].text;
-    const descricaoInput = document.getElementById("saida-descricao");
-    const recorrenteSim =
-      document.getElementById("saida-recorrente-sim").checked;
-    const frequenciaSelect = document.getElementById("saida-frequencia");
-    const encerramentoInput =
-      document.getElementById("saida-encerramento");
-
-    if (!dataInput.value || !valorInput.value) {
-      alert("Data e Valor são obrigatórios para saídas.");
-      return;
-    }
-    if (categoriaSelect.value === "") {
-      alert("A categoria é obrigatória para saídas.");
-      return;
-    }
-
-    if (recorrenteSim && !encerramentoInput.value) {
-      alert("A Data de Encerramento é obrigatória para saídas recorrentes.");
-      return;
-    }
-
-    const novaSaida = {
-      id: Date.now(),
-      tipo: "saida",
-      data: dataInput.value,
-      valor: parseFloat(valorInput.value),
-      categoria: categoriaSelect.value,
-      categoriaText: categoriaText,
-      descricao: descricaoInput.value,
-      recorrente: recorrenteSim,
-      frequencia: recorrenteSim ? frequenciaSelect.value : null,
-      dataEncerramento: recorrenteSim
-        ? encerramentoInput.value
-        : null,
-    };
-
-    const data = getFinancialData();
-    data.saidas.push(novaSaida);
-    saveFinancialData(data);
-
-    closeModal();
-  };
-
-// Função para salvar as alterações da transação editada
-  window.saveEditedTransaction = function () {
-    const id = parseInt(document.getElementById("edit-id").value);
-    const tipo = document.getElementById("edit-tipo").value;
-    const data = document.getElementById("edit-data").value;
-    const valor = parseFloat(document.getElementById("edit-valor").value);
-    const categoriaSelect = document.getElementById("edit-categoria");
-    const categoria = categoriaSelect.value;
-    const categoriaText =
-      categoriaSelect.options[categoriaSelect.selectedIndex].text;
-    const descricao = document.getElementById("edit-descricao").value;
-    const recorrente =
-      document.getElementById("edit-recorrente-sim").checked;
-    const frequencia = recorrente
-      ? document.getElementById("edit-frequencia").value
-      : null;
-    const dataEncerramento =
-      recorrente && document.getElementById("edit-encerramento").value
-        ? document.getElementById("edit-encerramento").value
-        : null;
-
-    if (!data || isNaN(valor)) {
-      alert("Data e Valor são obrigatórios para editar a transação.");
-      return;
-    }
-    if (categoriaSelect.value === "") {
-      alert("A categoria é obrigatória para editar a transação.");
-      return;
-    }
-
-    if (recorrente && !dataEncerramento) {
-      alert("A Data de Encerramento é obrigatória para transações recorrentes.");
-      return;
-    }
-
-    const allData = getFinancialData();
-
-    let transactionList;
-    if (tipo === "entrada") {
-      transactionList = allData.entradas;
-    } else if (tipo === "saida") {
-      transactionList = allData.saidas;
-    } else {
-      alert("Tipo de transação inválido para edição.");
-      return;
-    }
-
-    const index = transactionList.findIndex((item) => item.id === id);
-
-    if (index !== -1) {
-      transactionList[index] = {
-        id: id,
-        tipo: tipo,
-        data: data,
-        valor: valor,
-        categoria: categoria,
-        categoriaText: categoriaText,
-        descricao: descricao,
-        recorrente: recorrente,
-        frequencia: frequencia,
-        dataEncerramento: dataEncerramento,
-      };
-      saveFinancialData(allData);
-      alert("Transação atualizada com sucesso!");
-      closeModal();
-    } else {
-      alert("Transação não encontrada.");
-    }
-  };
-           // Salva os totais atuais no localStorage para a página principal usar
-    const currentUserEmail = localStorage.getItem("usuarioLogado");
-    if (currentUserEmail) {
-      let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
-      if (!currentUserData) currentUserData = {};
-      currentUserData.chartData = {
-        entradas: totalEntradas,
-        saidas: totalSaidas,
-      };
-      currentUserData.financialDataPreview = {
-        entradas: entradasParaGrafico,
-        saidas: saidasParaGrafico,
-      };
-      localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
-    }
-
+        let userData = JSON.parse(localStorage.getItem(email)); 
+  
+        let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
+     
+       localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
+    
 ### Instruções de acesso
 
 - Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Tela%20de%20Edi%C3%A7%C3%A3o/PF/Index_Tela_de_Edi%C3%A7%C3%A3o-pf.html)
-- O usuário é redirecionado para esssa página após fazer login na aplicação.
+  
+- O usuário é redirecionado para essa página após fazer login na aplicação.
 
-- Ao ser redirecionado, ele tem acesso as funcionalidades da pagina.
+- Ao ser redirecionado, ele tem acesso as funcionalidades da página.
 
 
-#### Responsável
+### Responsável
 
--Erick Alexandre Mariano Lopes da Costa
--Diogo
-
-> **Links Úteis**:
-> - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
-> - [JSON Tutorial](https://www.w3resource.com/JSON)
-> - [JSON - Introduction (W3Schools)](https://www.w3schools.com/js/js_json_intro.asp)
-> - [JSON Tutorial (TutorialsPoint)](https://www.tutorialspoint.com/json/index.htm)
+- Erick Alexandre Mariano Lopes da Costa
+- Diogo Joia
 
