@@ -327,20 +327,20 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
     } else {
       boasVindas.textContent = "Bem-vindo!";
     }
-  });
+   });
 
-   function redirecionarCadastro() {
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+    function redirecionarCadastro() {
+     const usuarioLogado = localStorage.getItem("usuarioLogado");
+     const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
-   function atualizarInterfaceUsuario() {
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+    function atualizarInterfaceUsuario() {
+     const usuarioLogado = localStorage.getItem("usuarioLogado");
+     const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
   
-   function registrarConteudoVisto(nome, url, imagem) {
-    const emailUsuario = localStorage.getItem("usuarioLogado");
-     if (!emailUsuario) return;
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+    function registrarConteudoVisto(nome, url, imagem) {
+     const emailUsuario = localStorage.getItem("usuarioLogado");
+      if (!emailUsuario) return;
+     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
 
     localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));}
 
@@ -695,18 +695,18 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 
         function loadUserNameAndProfile() {
           const dashboardTitle = document.getElementById("dashboard-titulo");
-          if (emailUsuario) {
-          const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+           if (emailUsuario) {
+          const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));}}
          
-         let userData = JSON.parse(localStorage.getItem(email)); 
+          let userData = JSON.parse(localStorage.getItem(email)); 
 
-         localStorage.setItem(email, JSON.stringify(userData));
+          localStorage.setItem(email, JSON.stringify(userData));
 
-         let userData = JSON.parse(localStorage.getItem(email)); 
+          let userData = JSON.parse(localStorage.getItem(email)); 
   
-         let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
+          let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
      
-        localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
+          localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
     
 ### Instruções de acesso
 
