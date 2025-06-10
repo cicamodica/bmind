@@ -8,10 +8,14 @@ O documento de programação de funcionalidades descreve as características pri
 
 Sua principal função é ser o ponto de entrada central e o cartão de visitas do site. Através dessa página podemos apresentar as informações e produtos que oferecemos, além  de direcionar os visitantes para os nossos conteúdos e incentivá-los a se cadastrar para acessar mais funcionalidades. Ela adapta o conteúdo exibido conforme o status de login e de perfil de usuário (Pessoa Física ou Pessoa Jurídica), controla a exibição de botões e links, implementa a funcionalidade de busca, gerencia um carrossel de banners e organiza o conteúdo em abas interativas.
 
-### Requisito atendido
+### Requisitos atendidos
 
-- | RF-18 |	Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.
-- | RF-24	| A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se. 
+- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta
+- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
+- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
+- | RF-17 |	Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.
+- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
+- | RF-23 | A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se. 
 
 ### Artefatos da funcionalidade
 
@@ -225,7 +229,7 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 - Após acessar o link, insira a sua nova senha e confirme. Ao finalizar a redefinição você terá seu acesso a aplicação garantido.
 
-#### Responsável
+#### Responsáveis
 
 - Kauê Alves dos Reis 
 - Maria Cecilia Caruzzo Modica
@@ -270,7 +274,7 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 - Ao ser redirecionado, ele recebe automaticamente um e-mail com o código de validação.
 
 
-#### Responsável
+#### Responsáveis
 
 - Erick Costa
 - Maria Cecilia Caruzzo Modica
@@ -282,17 +286,22 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 
 Sua função principal é trazer para o usuário um resumo de todas as atividades que ele realizou na plataforma. Iniciando com as exibições do dashboard, com base nas despesas e receitas cadastradas, um resumo do total de receitas do mês (gastos e recebidos), além de um histórico com tudo que foi registrado no mês. A página permite que o usuário crie e gerencie metas que ele deseja alcançar. Exibe também os últimos 5 conteúdos vistos pelo o usuário e recomenda conteúdos com base no perfil cadastrado.
 
-### Requisito atendido
+### Requisitos atendidos
 
 - | RF-06 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.
 - | RF-07 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento de metas estabelecidas pelo próprio.
+- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
 - | RF-12 |	A aplicação deve exibir uma mensagem de boas-vindas personalizada para o usuário logado.
-- | RF-13	| A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
-- | RF-17	| A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
-- | RF-18	| Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.
-- | RF-20	| A aplicação deve registrar e exibir os conteúdos didáticos visualizados recentemente pelo usuário.
-- | RF-21	| A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
-- | RF-22	| A aplicação deve exibir um histórico das transações do mês atual no dashboard.
+- | RF-13 | A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
+- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
+- | RF-16 | A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
+- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
+- | RF-17 | Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.
+- | RF-19 | A aplicação deve registrar e exibir os conteúdos didáticos visualizados recentemente pelo usuário.
+- | RF-20 | A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
+- | RF-21 | A aplicação deve exibir um histórico das transações do mês atual no dashboard.
+- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
+- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -302,47 +311,47 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 
 ### Estrutura de Dados
 
- const emailUsuario = localStorage.getItem("usuarioLogado");
+  const emailUsuario = localStorage.getItem("usuarioLogado");
 
- document.addEventListener('DOMContentLoaded', () => {
-   // --- Boas-Vindas ---
-   const boasVindas = document.getElementById("boas-vindas");
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- Boas-Vindas ---
+    const boasVindas = document.getElementById("boas-vindas");
 
-   if (emailUsuario) {
-     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-     if (dadosUsuario && dadosUsuario.nome) {
-       boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
-     } else {
-       boasVindas.textContent = "Olá!";
-     }
-   } else {
-     boasVindas.textContent = "Bem-vindo!";
-   }
- });
+    if (emailUsuario) {
+      const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
+      if (dadosUsuario && dadosUsuario.nome) {
+        boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
+      } else {
+        boasVindas.textContent = "Olá!";
+      }
+    } else {
+      boasVindas.textContent = "Bem-vindo!";
+    }
+  });
 
-  function redirecionarCadastro() {
-   const usuarioLogado = localStorage.getItem("usuarioLogado");
-   const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+   function redirecionarCadastro() {
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
- function atualizarInterfaceUsuario() {
-   const usuarioLogado = localStorage.getItem("usuarioLogado");
-   const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+   function atualizarInterfaceUsuario() {
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
+    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
   
- function registrarConteudoVisto(nome, url, imagem) {
-   const emailUsuario = localStorage.getItem("usuarioLogado");
-    if (!emailUsuario) return;
-   const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+   function registrarConteudoVisto(nome, url, imagem) {
+    const emailUsuario = localStorage.getItem("usuarioLogado");
+     if (!emailUsuario) return;
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
 
-   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));}
+    localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));}
 
-   const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
 
-   // Recuperação dos dados do usuário
-   const dados = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+    // Recuperação dos dados do usuário
+    const dados = JSON.parse(localStorage.getItem(emailUsuarioLogado));
 
-   const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
+    const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
 
-   const metasSalvas = JSON.parse(localStorage.getItem(metasKey) || '[]');
+    const metasSalvas = JSON.parse(localStorage.getItem(metasKey) || '[]');
 
     localStorage.setItem(metasKey, JSON.stringify(metasAtuais)); carregarMetas(); 
 
@@ -355,7 +364,7 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 - Ao ser redirecionado, ele tem acesso as funcionalidades da pagina.
 
 
-#### Responsável
+#### Responsáveis
 
 - Mariana Turibio Gressi
 - Matheus Feliciano Andrade Bernardes
@@ -366,9 +375,13 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 
 Sua principal função é redirecionar o usuário para o conteúdo que ele deseja acessar a partir de uma palavra chave.
 
-### Requisito atendido
+### Requisitos atendidos
 
-- | RF-16 |	A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
+- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
+- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
+- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
+- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
+- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -378,76 +391,16 @@ Sua principal função é redirecionar o usuário para o conteúdo que ele desej
 
 ### Estrutura de Dados
 
+    function atualizarInterfaceUsuario() {
+      const usuarioLogado = localStorage.getItem("usuarioLogado");
+      const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+
     let perfilUsuario = null;
     const usuarioLogado = localStorage.getItem("usuarioLogado");
     if (usuarioLogado !== null) {
       const dadosDoUsuario = JSON.parse(localStorage.getItem(usuarioLogado));
       perfilUsuario = dadosDoUsuario?.perfil || null;
     }
-
-    if (!termo || termo.trim() === "") {
-          resultadosDiv.innerHTML = "<p>Nenhum termo de pesquisa informado.</p>";
-        } else {
-      const resultados = conteudos
-        .filter((conteudo) => {
-          const tituloMatch = conteudo.titulo
-            .toLowerCase()
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .startsWith(termo);
-
-          const palavraChaveMatch = conteudo.palavrasChave.some((palavraChave) =>
-            palavraChave
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .startsWith(termo)
-          );
-
-          return tituloMatch || palavraChaveMatch;
-        })
-        .filter((conteudo) => {
-          if (perfilUsuario === null) {
-            return true; // mostra todos os conteúdos para quem não está logado
-          }
-          const termoPerfil = perfilUsuario.toLowerCase().includes("física")
-            ? "fisica"
-            : "juridica";
-          const lowerKeywords = conteudo.palavrasChave.map((p) =>
-            p
-              .toLowerCase()
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-          );
-
-          return lowerKeywords.includes(termoPerfil);
-        });
-
-      if (resultados.length === 0) {
-        resultadosDiv.innerHTML = `<p>Nenhum resultado encontrado para "<strong>${termo}</strong>".</p>`;
-      } else {
-        resultadosDiv.innerHTML = resultados
-          .map(
-            (resultado) => `
-            <a class="plan-link" href="${resultado.link}">
-              <div class="card">
-                <div class="plan-img">
-                  <img src="${resultado.imagem}" alt="imagem" class="imagem" />
-                  <div class="plan-descricao-link">
-                      <h2>${resultado.titulo}</h2>
-                      <p class="plan-descricao">${resultado.descricao}</p>
-                      <p class="plan-keyword plan-descricao">
-                        <strong>Palavras-chave:</strong>
-                        ${resultado.palavrasChave.join(", ")}
-                      </p>
-                  </div>
-                </div>
-              </div>
-            </a>`
-          )
-          .join("");
-          }
-        }
 
 ### Instruções de acesso
 
@@ -468,9 +421,14 @@ Sua principal função é redirecionar o usuário para o conteúdo que ele desej
 
 Sua principal função é permitir que os usuários deem feedbacks e notas para a aplicação, guardando esses feedbacks em localstorage para que a aplicação possa melhorar diante a opnião dos clientes.
 
-### Requisito atendido
+### Requisitos atendidos
 
+- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
+- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
+- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
 - | RF-19 |	A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação.
+- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
+- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -500,7 +458,7 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 - Se quiser voltar para a aplicação, basta clicar no menu e escolher em que página quer ir.
 
 
-#### Responsáveis
+#### Responsável
 
 - Kauê Alves dos Reis
 
@@ -510,9 +468,14 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 Sua principal função é permitir que os usuários possam editar seus dados como nome de usuário, data de nascimento e telefone. Permitindo também que o usuário insira uma imagem ao seu perfil.
 
-### Requisito atendido
+### Requisitos atendidos
 
+- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
 - | RF-11 |	A aplicação deve permitir que o usuário visualize, edite e salve suas informações pessoais (incluindo nome, contato, data de nascimento) e imagem de perfil.
+- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
+- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
+- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
+- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -592,13 +555,14 @@ Sua principal função é permitir que os usuários possam editar seus dados com
 
 Sua principal função é permitir que os usuários possam acesar conteudos informativos sobre, operações bancárias, investimentos e finanças. 
 
-### Requisito Atendido 
+### Requisitos Atendidos
 
-- A aplicação deverá permitir que o usuário deslogue de sua conta 
-- A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 03). 
-- O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado. 
-- O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica). 
-- A aplicação deve ser fazer a verificação de logado ou não logado para exibir icone de perfil ou fazer login/cadastre-se 
+- | RF-05 |	A aplicação deve disponibilizar conteúdos didáticos sobre finanças, como: Finanças corporativas, Finanças pessoais, Investimentos corporativos, Investimentos pessoais e Operações bancárias.
+- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
+- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
+- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
+- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
+- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 
 ### Artefatos da funcionalidade
@@ -660,18 +624,18 @@ Sua principal função é permitir que os usuários possam acesar conteudos info
 
 ### Estrutura de Dados
 
-    function redirecionarCadastro() {
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+     function redirecionarCadastro() {
+      const usuarioLogado = localStorage.getItem("usuarioLogado");
+      const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
     
-    function atualizarInterfaceUsuario() {
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-    const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
+     function atualizarInterfaceUsuario() {
+      const usuarioLogado = localStorage.getItem("usuarioLogado");
+      const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
 
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
+     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
 
-      localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
-       }
+       localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
+        }
 
 ### Instruções de acesso
 
@@ -695,7 +659,7 @@ Sua principal função é permitir que os usuários possam acesar conteudos info
 - Página de Financiamento (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html)
 - Página de Taxas e Tarifas (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html)
 
-  ### Responsável
+  #### Responsável
   
   - Matheus Feliciano Andrade Bernardes
 
@@ -708,19 +672,25 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 
 - | RF-06 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.
 - | RF-07 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento de metas estabelecidas pelo próprio.
-- | RF-08	| A aplicação deve disponibilizar ao usuário uma ferramenta para o registro de receitas e despesas.
-- | RF-09	| A aplicação deve permitir a categorização dos registros inseridos pelo usuário.
-- | RF-13	| A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
-- | RF-17	| A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
-- | RF-21	| A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
-- | RF-22	| A aplicação deve exibir um histórico das transações do mês atual no dashboard.
+- | RF-08 | A aplicação deve disponibilizar ao usuário uma ferramenta para o registro de receitas e despesas.
+- | RF-09 | A aplicação deve permitir a categorização dos registros inseridos pelo usuário.
+- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
+- | RF-12 | A aplicação deve exibir uma mensagem de boas-vindas personalizada para o usuário logado.
+- | RF-13 | A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
+- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
+- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
+- | RF-16 | A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
+- | RF-20 | A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
+- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
+- | RF-21 | A aplicação deve exibir um histórico das transações do mês atual no dashboard.
+- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
 - Index_Tela_de_Edição-pf.html
 - script_Tela_de_Edição-pf.js
 - style_Tela_de_Edição-pf.css
-- 
+  
 ### Estrutura de Dados
 
         function loadUserNameAndProfile() {
@@ -728,15 +698,15 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
           if (emailUsuario) {
           const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
          
-        let userData = JSON.parse(localStorage.getItem(email)); 
+         let userData = JSON.parse(localStorage.getItem(email)); 
 
-        localStorage.setItem(email, JSON.stringify(userData));
+         localStorage.setItem(email, JSON.stringify(userData));
 
-        let userData = JSON.parse(localStorage.getItem(email)); 
+         let userData = JSON.parse(localStorage.getItem(email)); 
   
-        let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
+         let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
      
-       localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
+        localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
     
 ### Instruções de acesso
 
@@ -747,7 +717,7 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 - Ao ser redirecionado, ele tem acesso as funcionalidades da página.
 
 
-### Responsável
+#### Responsáveis
 
 - Erick Alexandre Mariano Lopes da Costa
 - Diogo Joia
