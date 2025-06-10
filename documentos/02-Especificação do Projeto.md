@@ -107,16 +107,15 @@
 | RF-12	| A aplicação deve exibir uma mensagem de boas-vindas personalizada para o usuário logado.	                                                |    ALTA    |
 | RF-13	| A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.	        |    ALTA    |
 | RF-14	| O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.	|   ALTA   |
-| RF-15	| O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.	|   ALTA   |
-| RF-16	| A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).	|   MÉDIA   |
-| RF-17	| A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.	                    |   MÉDIA   |
-| RF-18	| Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.	                                                                  |   MÉDIA   |
-| RF-19	| A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação	|   MÉDIA   |
-| RF-20	| A aplicação deve registrar e exibir os conteúdos didáticos visualizados recentemente pelo usuário.	                                      |   MÉDIA   |
-| RF-21	| A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.	                                                  |   MÉDIA   |
-| RF-22	| A aplicação deve exibir um histórico das transações do mês atual no dashboard.	                                                          |   MÉDIA   |
-| RF-23	| O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).	              |   MÉDIA   |
-| RF-24	| A aplicação deve ser fazer a verificação de logado ou não logado para exibir icone de perfil ou fazer login/cadastre-se.                  |   MÉDIA   |
+| RF-15	| A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).	|   MÉDIA   |
+| RF-16	| A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.	                    |   MÉDIA   |
+| RF-17	| Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.	                                                                  |   MÉDIA   |
+| RF-18	| A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação	|   MÉDIA   |
+| RF-19	| A aplicação deve registrar e exibir os conteúdos didáticos visualizados recentemente pelo usuário.	                                      |   MÉDIA   |
+| RF-20	| A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.	                                                  |   MÉDIA   |
+| RF-21	| A aplicação deve exibir um histórico das transações do mês atual no dashboard.	                                                          |   MÉDIA   |
+| RF-22	| O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).	              |   MÉDIA   |
+| RF-23	| A aplicação deve ser fazer a verificação de logado ou não logado para exibir icone de perfil ou fazer login/cadastre-se.                  |   MÉDIA   |
 
 
 **Prioridade: Alta / Média / Baixa. 
