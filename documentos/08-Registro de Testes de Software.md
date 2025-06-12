@@ -59,7 +59,7 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 
 |Caso de Teste    | CT-12 - Teste das Páginas de Feedback |
 |:---|:---|
-| Resultados obtidos |Acesso a pagina com sucesso; Seleção de estrelas ok; Escrever comentario no campo de texto realizado com exito; Botão enviar funcionando; Dados salvos no localstorage; Botão funciona; Não tem botão minha area; Icone de perfil fazendo direcionamento correto; Responsividade nao tem a barra secundaria para telas menores; Menu  sem links de direcionamentos de conteudos e de meu dashbord;|
+| Resultados obtidos |Acesso a pagina com sucesso; Seleção de estrelas ok; Escrever comentario no campo de texto realizado com exito; Botão enviar funcionando; Dados salvos no localstorage; Botão funciona; Botão minha area funcionando corretamente; Icone de perfil fazendo direcionamento correto; Barra secundaria para telas menores funcionando corretamente; Menu funcionando corretamente;|
 | Responsável pela execução do caso de Teste | Matheus Feliciano |
 
 |Caso de Teste    | CT-13 - Teste das Páginas de Perfil |
