@@ -1,11 +1,18 @@
+// Executa quando o DOM estiver carregado
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+
+  // Redireciona se não estiver logado
+  if (!usuarioLogado) {
+    window.location.href = "/src/login/login.html";
+    return;
+  }
+});
+
 const params = new URLSearchParams(window.location.search);
 const email = params.get("email");
 
 const dados = JSON.parse(localStorage.getItem(email));
-
-if (dados == null) {
-  window.location.href = "/src/cadastro/cadastro.html";
-}
 
 const formPassword = document.getElementById("form-forget-password");
 const newPassword = document.getElementById("form-password");

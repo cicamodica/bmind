@@ -1,3 +1,14 @@
+// Executa quando o DOM estiver carregado
+document.addEventListener("DOMContentLoaded", () => {
+  const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+
+  // Redireciona se não estiver logado
+  if (!usuarioLogado) {
+    window.location.href = "/src/login/login.html";
+    return;
+  }
+});
+
 (function () {
   emailjs.init({
     publicKey: "OskDlznicgvWwaEPN",

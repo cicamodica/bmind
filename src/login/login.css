@@ -264,20 +264,13 @@ form .signup {
 .recaptcha-outer {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 /* Container interno aplica o scale */
 .recaptcha-container {
-  transform: scale(1);
-  transform-origin: top left;
-  margin-top: 20px;
-}
-
-/* Tela pequena: aumenta e continua centralizado */
-@media (max-width: 480px) {
-  .recaptcha-container {
-    transform: scale(1.05);
-    margin-top: 20px;
-    margin-left: 30px;
-  }
+  width: auto;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
 }

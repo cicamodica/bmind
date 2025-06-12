@@ -10,14 +10,19 @@ formLogin.addEventListener("submit", function (event) {
   //.addEventListener adiciona um ouvinte para o elemento HTML (form, input...) quando um evento for disparado (submit), ou seja, quando o usuário apertar o botão (Entrar) que possui o type = submit, a função sera executada
   event.preventDefault();
 
+  const response = grecaptcha.getResponse();
+  if (!response) {
+    alert("Você precisa confirmar que não é um robô!");
+    return; // Impede o envio se o reCAPTCHA não foi marcado
+  }
+
   const dados = JSON.parse(localStorage.getItem(inputEmail.value));
   if (!dados) {
     formInputMessage.textContent = "Cadastro não encontrado no sistema";
     formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão} else {
   } else {
     if (!dados.validada) {
-      formInputMessage.textContent =
-        "E-mail não validado";
+      formInputMessage.textContent = "E-mail não validado";
       formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão
     } else {
       if (
