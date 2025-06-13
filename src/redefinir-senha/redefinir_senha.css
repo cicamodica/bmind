@@ -65,6 +65,7 @@ body {
   background-image: linear-gradient(to right, #5bc5cc, #024dae);
   padding: 10px 20px;
   height: 50px;
+  width: 100%;
 }
 
 .nav-item .logo {
@@ -88,7 +89,9 @@ nav .nav-link {
 
 form {
   /*Estilização do pai FORM*/
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 20px;
 }
 
 .form {
@@ -97,6 +100,7 @@ form {
   display: flex;
   justify-content: center;
   padding-top: 200px;
+  width: 100%;
 }
 
 form .form-title {
@@ -105,38 +109,51 @@ form .form-title {
   justify-content: center;
   font-size: 45px;
   font-weight: 500;
+  width: 80%;
+  margin: 0 auto; /* centraliza horizontalmente */
+  text-align: center;
 }
 
 .form-input {
   /*Estilização da caixa de texto para receber o ícone de vizualização de senha*/
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* força que label fique acima do input */
+  align-items: center; /* centraliza tudo horizontalmente */
+}
+
+.input-wrapper {
   position: relative;
-  width: 600px;
+  width: 80%;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 form .form-input-label {
   /*Estilização da classe .form-text dentro de form (Nomes do textfield da página: Para redefinir a senha, informe o e-mail cadastrado para o envio do link)*/
-  display: block;
+  display: flex;
   font-size: 15px;
   font-weight: 300;
   text-align: center;
 }
 
-form .form-input-textfield {
-  /*Estilização da classe .form-input-textfield dentro de form (A caixa de texto em si)*/
+.form-input-textfield {
   width: 100%;
   height: 40px;
+  padding-left: 12px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .toggle-password {
-  /*Estilização do botão para ver a senha (olho)*/
   position: absolute;
+  top: 50%;
   right: 10px;
+  transform: translateY(-50%);
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 20px;
-  bottom: 8px; /*Alinhar olho com a caixa de texto*/
+  font-size: 18px;
 }
 
 form .form-button {
@@ -181,4 +198,23 @@ form .form-button:hover {
 .p-top-50 {
   /*Estilização da classe .p-top-50 (botão entrar)*/
   padding-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .form {
+    padding-top: 100px;
+  }
+
+  form .form-title {
+    font-size: 30px;
+    width: 100%;
+  }
+
+  .form-input-textfield {
+    font-size: 16px;
+  }
+
+  .form-button {
+    width: 100%;
+  }
 }

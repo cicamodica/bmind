@@ -9,8 +9,7 @@
     <!-- Link para CSS -->
     <script
       type="text/javascript"
-      defer
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
     <script defer src="esqueceu_senha.js"></script>
     <!-- Link para JS (defer para colocar no head)-->
@@ -46,18 +45,19 @@
         ><!-- Título da página -->
         <div class="form-input p-top-10">
           <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
-          <label class="form-input-label" for="name"
+          <label class="form-input-label" for="form-input-email"
             >Para redefinir a senha, informe o e-mail cadastrado para o envio do
             link
           </label>
           <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
-          <input
-            id="form-input-email"
-            class="form-input-textfield"
-            type="email"
-          /><!-- type e-mail = campo para preenchimento de e-mail-->
+          <div class="input-wrapper">
+            <input
+              id="form-input-email"
+              class="form-input-textfield"
+              type="email"
+            /><!-- type e-mail = campo para preenchimento de e-mail-->
+          </div>
         </div>
-
         <div class="form-input center p-top-50">
           <!-- HMTL Button tag (botão "enviar"): https://www.w3schools.com/tags/tag_button.asp -->
           <button type="submit" class="form-button">Enviar</button>

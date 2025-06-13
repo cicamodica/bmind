@@ -22,7 +22,7 @@ formLogin.addEventListener("submit", function (event) {
     formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão} else {
   } else {
     if (!dados.validada) {
-      formInputMessage.textContent = "E-mail não validado";
+      formInputMessage.innerHTML = "E-mail não validado! <a href='/src/validacao-de-dados/Index_Validação_de_Dados.html'> Valide aqui </a>";
       formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão
     } else {
       if (

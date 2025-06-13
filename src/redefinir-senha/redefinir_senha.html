@@ -42,20 +42,22 @@
           <!-- O nome "input" significa entrada, ele permite a entrada de dados do usuário. -->
           <label class="form-input-label" for="name">Nova senha </label>
           <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
-          <input
-            id="form-password"
-            class="form-input-textfield"
-            type="password"
-          /><!-- type password = campo para preenchimento de senha-->
+          <div class="input-wrapper">
+            <input
+              id="form-password"
+              class="form-input-textfield"
+              type="password"
+            />
+            <button
+              class="toggle-password"
+              type="button"
+              onclick="togglePassword('form-password', this)"
+            >
+              <i class="fa-solid fa-eye"></i>
+              <!--Ícone de olho do fontAwesome--></button
+            ><!-- type password = campo para preenchimento de senha-->
+          </div>
           <!--Botão para vizualizar a senha-->
-          <button
-            class="toggle-password"
-            type="button"
-            onclick="togglePassword()"
-          >
-            <i class="fa-solid fa-eye"></i>
-            <!--Ícone de olho do fontAwesome-->
-          </button>
         </div>
 
         <div class="form-input p-top-10">
@@ -64,21 +66,23 @@
             >Confirmação da nova senha
           </label>
           <!--  A tag <label> no HTML é usada para definir um rótulo descritivo para um campo de formulário-->
-          <input
+          <div class="input-wrapper">
+            <input
             id="form-confirm-password"
             class="form-input-textfield"
             type="password"
-          />
-          <!-- type password = campo para preenchimento de senha-->
-          <!--Botão para vizualizar a senha-->
-          <button
+           />
+           <!-- type password = campo para preenchimento de senha-->
+           <!--Botão para vizualizar a senha-->
+           <button
             class="toggle-password"
             type="button"
-            onclick="togglePassword()"
-          >
+            onclick="togglePassword('form-confirm-password', this)"
+           >
             <i class="fa-solid fa-eye"></i>
             <!--Ícone de olho do fontAwesome-->
-          </button>
+           </button>
+          </div>
         </div>
 
         <div class="form-input p-top-5">

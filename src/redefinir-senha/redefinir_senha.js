@@ -1,14 +1,3 @@
-// Executa quando o DOM estiver carregado
-document.addEventListener("DOMContentLoaded", () => {
-  const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
-
-  // Redireciona se não estiver logado
-  if (!usuarioLogado) {
-    window.location.href = "/src/login/login.html";
-    return;
-  }
-});
-
 const params = new URLSearchParams(window.location.search);
 const email = params.get("email");
 
@@ -42,7 +31,17 @@ confirmNewPassword.addEventListener("input", function () {
   formInputMessage.style.display = "none"; //Isso faz com que a mensagem de erro suma (display = none)
 });
 
-function togglePassword() {
-  const input = document.getElementById("form-password");
-  input.type = input.type === "password" ? "text" : "password";
+function togglePassword(inputId, button) {
+  const input = document.getElementById(inputId);
+  const icon = button.querySelector("i");
+
+  if (input.type === "password") {
+    input.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    input.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye");
+  }
 }

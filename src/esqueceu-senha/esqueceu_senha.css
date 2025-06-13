@@ -97,6 +97,7 @@ form {
   display: flex;
   justify-content: center;
   padding-top: 200px;
+  width: 100%;
 }
 
 form .form-title {
@@ -105,6 +106,22 @@ form .form-title {
   justify-content: center;
   font-size: 45px;
   font-weight: 500;
+  width: 100%;
+  margin: 0 auto; /* centraliza horizontalmente */
+  text-align: center;
+}
+
+.form-input {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* força que label fique acima do input */
+  align-items: center; /* centraliza tudo horizontalmente */
+}
+
+.input-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 form .form-input-label {
@@ -113,17 +130,19 @@ form .form-input-label {
   font-weight: 300;
   display: block;
   text-align: center;
+  width: 80%;
 }
 
 form .form-input-textfield {
   /*Estilização da classe .form-input-textfield dentro de form (A caixa de texto em si)*/
-  width: 100%;
+  width: 80%;
   height: 40px;
-  box-sizing: border-box; /*Comando para fazer um input (campo de texto, no caso) ficar do tamanho da div pai em seu comprimento*/
+  box-sizing: border-box;
   text-align: center;
+  margin-top: 10px;
 }
 
-form .form-button {
+.form-button {
   /*Estilização da classe .form-button dentro da classe .form (botão de enviar)*/
   font-family: "Poppins";
   background-color: black;
@@ -157,4 +176,16 @@ form .form-button:hover {
 .p-top-50 {
   /*Estilização da classe .p-top-50 (botão entrar)*/
   padding-top: 50px;
+}
+
+@media (max-width: 600px) {
+  form .form-input-textfield {
+    /*Estilização da classe .form-input-textfield dentro de form (A caixa de texto em si)*/
+    width: 80%;
+  }
+
+  form .form-title {
+  /*Estilização da classe .form-title dentro da classe .form (Título da página > Esqueceu sua senha?)*/
+  font-size: 30px;
+}
 }

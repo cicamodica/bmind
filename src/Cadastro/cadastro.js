@@ -89,20 +89,28 @@ document
     localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
     mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
 
-    (function () {
-      emailjs.init("OskDlznicgvWwaEPN"); // sua publicKey correta
-    })();
+
+      (function () {
+  emailjs.init(
+    "WLpGT6lQQbkrwpRSy"
+  );
+})();
 
     const codigoDeValidacao = Math.floor(100000 + Math.random() * 900000);
     localStorage.setItem(codigoDeValidacao.toString(), email);
 
-    emailjs
-      .send("service_ct2hayr", "template_oklmcbi", {
-        email: email,
+    const templateParams = {
+      email: email,
         passcode: codigoDeValidacao,
         link: "http://127.0.0.1:5501/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html",
-      })
-      .then(
+    };
+
+      emailjs
+        .send(
+          "service_joo3heu",
+          "template_kmr82a7", 
+          templateParams)
+         .then(
         () => {
           alert(
             "Um e-mail foi enviado com o código de verificação de dados! Verifique sua caixa de entrada."
@@ -114,7 +122,8 @@ document
           alert("E-mail não enviado: " + error.text);
         }
       );
-  });
+    }
+  );
 
 let perfilSelecionado = null; // fora do submit, para ser acessado lá dentro
 

@@ -102,17 +102,21 @@ form {
 form .form-title {
   /*Estilização da classe .form-title dentro da classe .form (Título da página > Esqueceu sua senha?)*/
   display: flex;
-  justify-content: center;
+  text-align: center;
   font-size: 45px;
   font-weight: 500;
+  width: 80%;
+   margin: 0 auto; /* centraliza horizontalmente */
 }
 
 form .form-input-label {
   /*Estilização da classe .form-text dentro de form (Nomes do textfield da página: Para redefinir a senha, informe o e-mail cadastrado para o envio do link)*/
   font-size: 15px;
   font-weight: 300;
-  display: block;
+  display: flex;
   text-align: center;
+  width: 80%;
+   margin: 0 auto; /* centraliza horizontalmente */
 }
 
 form .form-input-textfield {
@@ -144,18 +148,22 @@ form .form-button:hover {
 }
 
 .password-button {
-  position: relative; /*classe criada para mover separadamente o botão com ícone de olho*/
+  /*classe criada para mover separadamente o botão com ícone de olho*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .toggle-password {
   /*Estilização do botão para ver a senha (visual do ícone de olho)*/
   position: absolute;
+  right: 10px;
   background: none;
-  border: none; 
+  border: none;
   cursor: pointer;
   font-size: 20px;
   bottom: 7px;
-  right: 10px;
 }
 
 .center {
@@ -186,7 +194,7 @@ form .form-button:hover {
 }
 
 /* Responsividade básica */
-@media (max-width: 768px) {
+@media (max-width: 375px) {
   #cabecalho {
     flex-direction: column;
     height: auto;
@@ -200,5 +208,51 @@ form .form-button:hover {
 
   .mensagem-erro {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 600px) {
+  form .form-input-textfield {
+    /*Estilização da classe .form-input-textfield dentro de form (A caixa de texto em si)*/
+    width: 80%;
+    height: 40px;
+    box-sizing: border-box; /*Comando para fazer um input (campo de texto, no caso) ficar do tamanho da div pai em seu comprimento*/
+    text-align: center;
+  }
+
+    .toggle-password {
+    /*Estilização do botão para ver a senha (visual do ícone de olho)*/
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    right: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+
+    .toggle-password {
+    /*Estilização do botão para ver a senha (visual do ícone de olho)*/
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    right: 60px;
+  }
+}
+
+@media (max-width: 375px) {
+
+    .toggle-password {
+    /*Estilização do botão para ver a senha (visual do ícone de olho)*/
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    right: 50px;
   }
 }
