@@ -7,6 +7,44 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+//IMPEDIR NÚMEROS NO CAMPO NOME
+document.getElementById("nome").addEventListener("input", function (e) {
+  this.value = this.value.replace(/[0-9]/g, ""); // remove números
+});
+
+
+//IMPEDIR LETRAS O CAMPO CONTATO
+document.getElementById("telefone-contato").addEventListener("input", function (e) {
+  this.value = this.value.replace(/[^0-9]/g, ""); // remove tudo que não for número
+});
+
+//RESTRINGINDO IDADE PARA ATÉ 16 ANOS
+document.getElementById("form-cadastro").addEventListener("submit", function (e) {
+  const input = document.getElementById("data-nascimento");
+  const erro = document.getElementById("erro-idade");
+  const dataNascimento = new Date(input.value);
+  const hoje = new Date();
+  
+  const idadeMinima = 16;
+
+  let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+  const m = hoje.getMonth() - dataNascimento.getMonth();
+
+  if (m < 0 || (m === 0 && hoje.getDate() < dataNascimento.getDate())) {
+    idade--;
+  }
+
+  if (idade < idadeMinima) {
+    e.preventDefault();
+    erro.textContent = `Você precisa ter pelo menos ${idadeMinima} anos para se cadastrar.`;
+    erro.style.color = "red";
+    input.classList.add("erro");
+  } else {
+    erro.textContent = "";
+    input.classList.remove("erro");
+  }
+});
+
 // Evento de envio do formulário
 document
   .getElementById("form-cadastro")
@@ -89,6 +127,7 @@ document
     localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
     mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
 
+//INÍCIO DAS FUNCIONALIDADES DA API EMAIL JS:
 
       (function () {
   emailjs.init(
@@ -124,6 +163,8 @@ document
       );
     }
   );
+
+//INÍCIO FUNCIONALIDADES DOS BOTÕES DE PERFIL E PREFERÊNCIAS:
 
 let perfilSelecionado = null; // fora do submit, para ser acessado lá dentro
 

@@ -236,8 +236,24 @@ input[type="checkbox"] {
   text-align: center;
   margin-bottom: 5px;
   font-family: "Poppins";
-  font-weight: 200;
+  font-weight: 300;
 }
+
+
+#data-nascimento {
+  margin-bottom: 4px;
+}
+
+.mensagem-erro-idade {
+  font-size: 10px;
+  color: red;
+  text-align: left;
+  font-family: "Poppins";
+  font-weight: 400;
+  margin-top: 2px;
+  display: block;
+}
+
 
 /* Responsividade */
 @media (min-width: 768px) {
