@@ -532,57 +532,7 @@ img {
     justify-content: flex-end;
     width: 100%;
   }
-}
 
-@media (max-width: 480px) {
-  .search-container.search-desktop {
-    display: none; /* some com a barra */
-  }
-
-  .search-bar {
-    font-size: 16px;
-    padding: 10px 30px;
-  }
-
-  .search-icon {
-    right: 30px;
-  }
-
-  .plan-descricao {
-    font-size: 14px;
-  }
-
-  .plan-link h2 {
-    font-size: 18px;
-  }
-
-  .titulo-results {
-    font-size: 20px;
-  }
-  .card {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0; /* remove margem lateral que estava estourando */
-    box-sizing: border-box;
-  }
-
-  .plan-img {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .container-results {
-    padding: 10px;
-  }
-
-  .search-mobile-icon {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
   header {
     flex-wrap: wrap;
     height: auto;
@@ -632,6 +582,7 @@ img {
   .header-icon {
     font-size: 28px;
   }
+
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -683,5 +634,13 @@ img {
 
   .header-icon {
     font-size: 28px;
+  }
+}
+
+@media (max-width:480px) and (min-width:375px) {
+  
+  .barra {
+    font-size: 5px;
+    padding: 0px;
   }
 }

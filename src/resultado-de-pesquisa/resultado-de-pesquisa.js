@@ -504,6 +504,31 @@ window.addEventListener('resize', () => {
   }
 }
 
+//ALTERAR TEXTO DO FAZER LOGIN E CADASTRAR-SE NO MOBILE
+
+function atualizarTextoBotoesPorResolucao() {
+  const loginBtn = document.getElementById("botao-login");
+  const cadastroBtn = document.getElementById("botao-cadastro");
+
+  const mediaQuery = window.matchMedia("(max-width: 480px) and (min-width: 375px)");
+
+  if (mediaQuery.matches) {
+    // Altere os textos se estiver entre 375px e 480px
+    loginBtn.textContent = "Login";
+    cadastroBtn.textContent = "Cadastro";
+  } else {
+    // Volta ao texto original
+    loginBtn.textContent = "Fazer login";
+    cadastroBtn.textContent = "Cadastrar-se";
+  }
+}
+
+// Chamada inicial
+atualizarTextoBotoesPorResolucao();
+
+// Atualiza se o usuário redimensionar a janela
+window.addEventListener("resize", atualizarTextoBotoesPorResolucao);
+
 const urlParams = new URLSearchParams(window.location.search);
 const termo = urlParams
   .get("q")
