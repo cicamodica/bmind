@@ -109,6 +109,10 @@ header {
   text-decoration: none;
 }
 
+.user-actions i {
+  font-size: 33px;
+}
+
 #login-nao-logado a {
   color: white;
   text-decoration: none;
@@ -324,15 +328,6 @@ img {
     font-size: 13px; /* Tamanho da fonte */
   }
 
-  .user-actions i {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    font-size: 29px;
-    color: white;
-  }
-
   .user-actions .barra {
     font-size: 20px;
   }
@@ -356,20 +351,6 @@ img {
 
   .user-area {
     margin-left: 5px;
-  }
-
-  .barra {
-    font-size: 16px;
-    padding: 0 5px;
-  }
-
-  .user-actions i {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 10px;
-    font-size: 29px;
-    color: white;
   }
 
 }
@@ -480,9 +461,13 @@ img {
     margin-left: 5px;
   }
 
-  .barra {
-    font-size: 16px;
-    padding: 0 5px;
+  .user-actions .barra {
+    font-size: 18px;
+    padding: 0px;
+  }
+  
+  .user-actions i {
+    font-size: 29px;
   }
 }
 
@@ -583,6 +568,11 @@ img {
     font-size: 28px;
   }
 
+  .user-actios .barra {
+    font-size: 16px;
+    padding: 0px;
+  }
+
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -623,11 +613,6 @@ img {
     white-space: nowrap;
   }
 
-  .user-actions {
-    font-size: 22px;
-    margin-left: 0;
-  }
-
   .header-item .logo {
     height: 40px;
   }
@@ -639,8 +624,14 @@ img {
 
 @media (max-width:480px) and (min-width:375px) {
   
-  .barra {
-    font-size: 5px;
+  .user-actions .barra {
+    font-size: 14px;
     padding: 0px;
+  }
+
+  
+  .user-actions i {
+    font-size: 29px;
+    padding-right: 0px;
   }
 }
