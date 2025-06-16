@@ -254,7 +254,7 @@ img {
 /* Oculta o ícone do mobile por padrão */
 .search-mobile-icon {
   display: none;
-  font-size: 24px;
+  font-size: 22px;
   align-items: center;
   padding-right: 10px;
 }

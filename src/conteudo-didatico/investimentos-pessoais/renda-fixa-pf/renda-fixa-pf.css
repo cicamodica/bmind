@@ -53,6 +53,7 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background-color: #f4f6f8;
+  overflow-x: hidden;
 }
 
 header {
@@ -500,9 +501,9 @@ ul, li {
     align-items: center;
   }
    .right-group{  /* Estilização do grupo de itens que fica à direita do header */
-   margin-right: 75px;  /*Alinha o grupo à direita */
+   margin-right: 40px; /* Alinha o grupo à direita */
    gap:0%; /* Remove o gap entre os itens do grupo */
-
+    justify-content: flex-end; /* Alinha os itens do grupo à direita */
    }
    
    
@@ -560,7 +561,7 @@ ul, li {
   }
 
    .right-group{  /* Estilização do grupo de itens que fica à direita do header */
-   margin-right: 49px;  /*Alinha o grupo à direita */
+   margin-right: 25px;  /*Alinha o grupo à direita */
    }
    
   .mobile-search-bar {
@@ -692,3 +693,4 @@ ul, li {
     cursor: pointer;
   }
 }
+
