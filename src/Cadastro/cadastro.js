@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
       history.back();
     });
   }
-});
+
 
 //IMPEDIR NÚMEROS NO CAMPO NOME
 document.getElementById("nome").addEventListener("input", function (e) {
@@ -18,151 +18,114 @@ document.getElementById("telefone-contato").addEventListener("input", function (
   this.value = this.value.replace(/[^0-9]/g, ""); // remove tudo que não for número
 });
 
-//RESTRINGINDO IDADE PARA ATÉ 16 ANOS
-document.getElementById("form-cadastro").addEventListener("submit", function (e) {
+// Evento de envio do formulário
+document.getElementById("form-cadastro").addEventListener("submit", function (event) {
+  event.preventDefault(); // Sempre previne o envio inicial
+
+  const nome = document.getElementById("nome").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const novaSenha = document.getElementById("nova-senha").value.trim();
+  const telefoneContato = document.getElementById("telefone-contato").value.trim();
+  const dataNascimentoStr = document.getElementById("data-nascimento").value;
+
+  const campos = ["nome", "email", "nova-senha", "telefone-contato", "data-nascimento"];
+  let valido = true;
+
+  campos.forEach((id) => {
+    const campo = document.getElementById(id);
+    if (campo.value.trim() === "") {
+      campo.classList.add("erro");
+      valido = false;
+    } else {
+      campo.classList.remove("erro");
+    }
+  });
+
+  const mensagemErro = document.getElementById("mensagem-erro");
+  if (!valido) {
+    mensagemErro.textContent = "Por favor, preencha todos os campos obrigatórios.";
+    return;
+  }
+
+  // Validação de idade mínima
   const input = document.getElementById("data-nascimento");
   const erro = document.getElementById("erro-idade");
-  const dataNascimento = new Date(input.value);
+  const dataNascimento = new Date(dataNascimentoStr);
   const hoje = new Date();
-  
   const idadeMinima = 16;
 
   let idade = hoje.getFullYear() - dataNascimento.getFullYear();
   const m = hoje.getMonth() - dataNascimento.getMonth();
-
   if (m < 0 || (m === 0 && hoje.getDate() < dataNascimento.getDate())) {
     idade--;
   }
 
   if (idade < idadeMinima) {
-    e.preventDefault();
     erro.textContent = `Você precisa ter pelo menos ${idadeMinima} anos para se cadastrar.`;
-    erro.style.color = "red";
     input.classList.add("erro");
+    return;
   } else {
     erro.textContent = "";
     input.classList.remove("erro");
   }
+
+  // Validação extra: perfil selecionado
+  if (!perfilSelecionado) {
+    mensagemErro.textContent = "Por favor, selecione um perfil de usuário.";
+    return;
+  }
+
+  // Validação extra: pelo menos uma preferência marcada
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  const selecionados = Array.from(checkboxes).map((cb) => cb.value);
+
+  if (selecionados.length === 0) {
+    mensagemErro.textContent = "Selecione pelo menos uma preferência de conteúdo.";
+    return;
+  }
+
+  // Verificação de e-mail duplicado
+  if (localStorage.getItem(email) !== null) {
+    mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!";
+    return;
+  }
+
+  // Salvar no localStorage
+  const dadosUsuario = {
+    nome: nome,
+    email: email,
+    senha: novaSenha,
+    telefoneContato: telefoneContato,
+    dataNascimento: dataNascimentoStr,
+    preferenciaDeConteudos: selecionados,
+    perfil: perfilSelecionado,
+    validada: false,
+  };
+
+  localStorage.setItem(email, JSON.stringify(dadosUsuario));
+
+  // Enviar código de validação via EmailJS
+  emailjs.init("WLpGT6lQQbkrwpRSy");
+
+  const codigoDeValidacao = Math.floor(100000 + Math.random() * 900000);
+  localStorage.setItem(codigoDeValidacao.toString(), email);
+
+  const templateParams = {
+    email: email,
+    passcode: codigoDeValidacao,
+    link: "http://127.0.0.1:5501/src/validacao-de-dados/Index_Validação_de_Dados.html",
+  };
+
+  emailjs.send("service_joo3heu", "template_kmr82a7", templateParams).then(
+    () => {
+      alert("Um e-mail foi enviado com o código de verificação de dados! Verifique sua caixa de entrada.");
+      window.location.href = "/src/validacao-de-dados/Index_Validação_de_Dados.html";
+    },
+    (error) => {
+      alert("E-mail não enviado: " + error.text);
+    }
+  );
 });
-
-// Evento de envio do formulário
-document
-  .getElementById("form-cadastro")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Impede o envio do formulário para validação
-
-    const nome = document.getElementById("nome").value;
-    const email = document.getElementById("email").value;
-    const novaSenha = document.getElementById("nova-senha").value;
-    const telefoneContato = document.getElementById("telefone-contato").value;
-    const dataNascimento = document.getElementById("data-nascimento").value;
-
-    // Pega os dados do formulário
-    const campos = [
-      "nome",
-      "email",
-      "nova-senha",
-      "telefone-contato",
-      "data-nascimento",
-    ];
-
-    let valido = true; // Variável para verificar se todos os campos estão preenchidos
-
-    campos.forEach((id) => {
-      const campo = document.getElementById(id);
-      if (campo.value.trim() === "") {
-        // Verifica se o campo está vazio
-        campo.classList.add("erro"); // Adiciona a classe de erro
-        valido = false; // Marca como inválido se algum campo estiver vazio
-      } else {
-        campo.classList.remove("erro"); // Remove a classe de erro se o campo estiver preenchido
-      }
-    });
-
-    const mensagemErro = document.getElementById("mensagem-erro");
-
-    if (!valido) {
-      mensagemErro.textContent =
-        "Por favor, preencha todos os campos obrigatórios."; // Mensagem de erro se algum campo estiver vazio
-      return; // Interrompe a execução se houver erro
-    }
-
-    const checkboxes = document.querySelectorAll(
-      'input[type="checkbox"]:checked'
-    );
-    const selecionados = Array.from(checkboxes).map((cb) => cb.value);
-
-    // Validação extra: perfil selecionado
-    if (!perfilSelecionado) {
-      mensagemErro.textContent = "Por favor, selecione um perfil de usuário.";
-      return;
-    }
-
-    // Validação extra: pelo menos uma preferência marcada
-    if (selecionados.length === 0) {
-      mensagemErro.textContent =
-        "Selecione pelo menos uma preferência de conteúdo.";
-      return;
-    }
-
-    // Verificação de e-mail duplicado
-    const dados = JSON.parse(localStorage.getItem(email));
-    if (dados !== null) {
-      mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!";
-      return;
-    }
-
-    const dadosUsuario = {
-      nome: nome,
-      email: email,
-      senha: novaSenha,
-      telefoneContato: telefoneContato,
-      dataNascimento: dataNascimento,
-      preferenciaDeConteudos: selecionados,
-      perfil: perfilSelecionado,
-      validada: false,
-    };
-
-    //Se tudo estiver certo, salva os dados no localStorage
-    localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
-    mensagemErro.textContent = ""; // Limpa a mensagem se estiver tudo certo
-
-//INÍCIO DAS FUNCIONALIDADES DA API EMAIL JS:
-
-      (function () {
-  emailjs.init(
-    "WLpGT6lQQbkrwpRSy"
-  );
-})();
-
-    const codigoDeValidacao = Math.floor(100000 + Math.random() * 900000);
-    localStorage.setItem(codigoDeValidacao.toString(), email);
-
-    const templateParams = {
-      email: email,
-        passcode: codigoDeValidacao,
-        link: "http://127.0.0.1:5501/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html",
-    };
-
-      emailjs
-        .send(
-          "service_joo3heu",
-          "template_kmr82a7", 
-          templateParams)
-         .then(
-        () => {
-          alert(
-            "Um e-mail foi enviado com o código de verificação de dados! Verifique sua caixa de entrada."
-          );
-          window.location.href =
-            "/src/validacao-de-dados/Index_Validação_de_Dados.html";
-        },
-        (error) => {
-          alert("E-mail não enviado: " + error.text);
-        }
-      );
-    }
-  );
 
 //INÍCIO FUNCIONALIDADES DOS BOTÕES DE PERFIL E PREFERÊNCIAS:
 
@@ -213,8 +176,9 @@ botoesPerfil.forEach((botao) => {
     });
   });
 });
-
+});
 function togglePassword() {
   const input = document.getElementById("nova-senha");
   input.type = input.type === "password" ? "text" : "password";
 }
+
