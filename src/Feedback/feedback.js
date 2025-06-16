@@ -225,5 +225,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Botão cancelar
 document.getElementById("cancelar").addEventListener("click", function () {
-  window.location.href = "/src/Homepage.html";
+  window.location.href = "/src/index.html";
 });
