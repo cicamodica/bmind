@@ -930,3 +930,38 @@ li {
     height: 45px;
   }
 }
+/* Responsividade específica até 540px */
+@media (max-width: 540px) {
+  .right-group {
+    display: flex;
+    justify-content: center; /* Centraliza na tela menor */
+    width: 100%;
+  }
+
+  #login-nao-logado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  #login-nao-logado a {
+    font-size: 13px;
+    white-space: nowrap; /* Mantém o texto inteiro */
+  }
+
+  #login-nao-logado span {
+    display: none; 
+  }
+}
+
+
+
+
+
+
+
+
+
+
