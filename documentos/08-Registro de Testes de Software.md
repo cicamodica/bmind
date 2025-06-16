@@ -1,4 +1,4 @@
-![menugif](https://github.com/user-attachments/assets/61ee2f77-08da-4158-8cc3-47f353ff6893)![logoutgif](https://github.com/user-attachments/assets/3bb64943-f02d-4dc2-bc56-f4819ce432ed)# Registro de Testes de Software
+# Registro de Testes de Software
 
 Relatório com as evidências dos testes de software realizados na aplicação pela equipe, baseado no plano de testes pré-definido.
 
