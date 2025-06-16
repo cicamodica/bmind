@@ -197,10 +197,11 @@ header {
 }
 
 .mobile-search-bar.active { /* Exibe a barra de pesquisa no mobile quando ativa */
-    display: flex;;
+    display: flex;
     background-color: white;
     text-align: center;
     width: 100%;
+    justify-content: center;
   
 }
 
