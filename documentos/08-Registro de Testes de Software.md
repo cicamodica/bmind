@@ -1,4 +1,4 @@
-# Registro de Testes de Software
+![menugif](https://github.com/user-attachments/assets/61ee2f77-08da-4158-8cc3-47f353ff6893)![logoutgif](https://github.com/user-attachments/assets/3bb64943-f02d-4dc2-bc56-f4819ce432ed)# Registro de Testes de Software
 
 Relatório com as evidências dos testes de software realizados na aplicação pela equipe, baseado no plano de testes pré-definido.
 
@@ -40,7 +40,8 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 |:---|:---|
 | Resultados obtidos | Ao clicar em “sair” o programa excluí o campo “usuário logado” do localstorage e mantem o cadastro do usuário para futuros acessos; Ao clicar em “sair” o usuário é direcionado para tela de login; Logout não exclui atualizações feitas no programa;|
 | Responsável pela execução do caso de Teste | Kauê Alves dos Reis |
-|Registro do teste | |
+|Registro do teste | ![logoutgif](https://github.com/user-attachments/assets/d56d1010-74b0-43a5-86a6-637e9a5010a8)
+   |
 
 
 |Caso de Teste    | CT-08 - Teste da Página Main (Minha Área) |
@@ -61,7 +62,8 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 |:---|:---|
 | Resultados obtidos | Ao clicar no menu ou digitar na barra de pesquisa, o usuário encontra o conteúdo e seleciona, a página redireciona aos conteúdos selecionados e é possível continuar as buscas a partir dessa página;|
 | Responsável pela execução do caso de Teste | Diogo Joia |
-|Registro do teste | |
+|Registro do teste |  ![conteudosgif](https://github.com/user-attachments/assets/ab75f2ce-24db-4d92-ae2b-7565e45186a1)
+  |
 
 
 |Caso de Teste    | CT-11 - Testes da Página de Resultado de Pesquisa |
@@ -81,7 +83,8 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 |:---|:---|
 | Resultados obtidos |Icone de menu aparente em todas as páginas; Menu exibido de acordo com o usuário; Todos os botões redirecionam para a página correta; Menu responsivo |
 | Responsável pela execução do caso de Teste | Kauê Alves dos Reis |
-|Registro do teste | |![Gravando 2025-06-08 231244 (1)](https://github.com/user-attachments/assets/e5af8e35-ebd7-4243-ac4d-0984de96fbe7)
+|Registro do teste |  ![menugif](https://github.com/user-attachments/assets/38ffe6ce-4d30-40e0-bd0b-09f69dd62ab1)
+ |
 
 
 |Caso de Teste    | CT-14 - Teste das Páginas de Feedback |
