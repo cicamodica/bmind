@@ -28,6 +28,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  //IMPEDIR NÚMEROS NO CAMPO NOME
+document.getElementById("nome").addEventListener("input", function (e) {
+  this.value = this.value.replace(/[0-9]/g, ""); // remove números
+});
+
+
+//IMPEDIR LETRAS O CAMPO CONTATO
+document.getElementById("contato").addEventListener("input", function (e) {
+  this.value = this.value.replace(/[^0-9]/g, ""); // remove tudo que não for número
+});
+
+//RESTRINGINDO IDADE PARA ATÉ 16 ANOS
+const inputData = document.getElementById("data");
+if (inputData) {
+  const hoje = new Date();
+  hoje.setFullYear(hoje.getFullYear() - 16); // Subtrai 16 anos
+  const ano = hoje.getFullYear();
+  const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+  const dia = String(hoje.getDate()).padStart(2, "0");
+
+  inputData.max = `${ano}-${mes}-${dia}`;
+}
+
+const campoData = document.getElementById("data");
+const dataFormatadaSpan = document.getElementById("data-formatada");
+
+campoData.addEventListener("input", () => {
+  const valor = campoData.value; // formato YYYY-MM-DD
+  if (valor) {
+    const [ano, mes, dia] = valor.split("-");
+    dataFormatadaSpan.textContent = `${dia}/${mes}/${ano}`;
+  } else {
+    dataFormatadaSpan.textContent = "";
+  }
+});
+
   configurarMenuPorPerfil(perfil);
 
   // Botão sair
