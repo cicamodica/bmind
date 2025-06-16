@@ -641,15 +641,19 @@ document.addEventListener("DOMContentLoaded", function () {
     card.dataset.valorAtual = valorAtual;
     card.dataset.tempo = tempo;
 
+    // Converter tempo para o formato brasileiro (dd/mm/aaaa)
+    const data = new Date(tempo);
+    const tempoFormatado = data.toLocaleDateString("pt-BR");
+
     // Calcula o progresso da meta em porcentagem.
     let progresso = Math.min((valorAtual / valorTotal) * 100, 100).toFixed(1);
 
     // Define a estrutura HTML interna do card.
     card.innerHTML = `
       <h4>${titulo}</h4>
-      <small>Meta: R$ ${valorTotal.toFixed(2)}
-- Tempo: ${tempo}
-- Atual: R$ ${valorAtual.toFixed(2)}</small>
+      <small>Meta: R$ ${valorTotal.toFixed(2)}<br>
+             Tempo: ${tempoFormatado}<br>
+             Atual: R$ ${valorAtual.toFixed(2)}</small>
       <div
 class="barra-progresso">
         <div

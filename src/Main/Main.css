@@ -251,7 +251,7 @@ li {
 /* Conteúdo principal */
 .conteudo-principal {
   padding: 2rem;
-  font-family: sans-serif;
+  font-family: Poppins;
   background-color: #f0f2f5;
 }
 
@@ -483,6 +483,11 @@ button:hover,
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+.form-atualizacao button.confirmar-atualizacao {
+  margin-top: 6px; /* Ajuste conforme necessário */
+}
+
+
 .mobile-search-bar {
   display: none;
   /*margin: 10px;
@@ -961,3 +966,257 @@ background-color 0.3s;*/
     padding: 8px 14px;
   }
 }
+
+/* A partir de 1120px (desktop) */
+@media (min-width: 1120px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    flex-wrap: nowrap;
+  }
+
+  .left-group,
+  .center-group,
+  .right-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .center-group {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .search-container {
+    width: 800px;
+  }
+
+  .search-bar {
+    font-size: 18px;
+    padding: 12px 40px;
+  }
+
+  .search-icon {
+    right: 20px;
+    bottom: 16px;
+  }
+
+  .menu-button {
+    font-size: 24px;
+    margin-right: 15px;
+  }
+
+  .user-actions {
+    font-size: 29px;
+    gap: 10px;
+  }
+
+  #login-nao-logado a {
+    font-size: 15px;
+  }
+}
+
+
+/* Telas entre 768px e 1119px */
+@media (min-width: 768px) and (max-width: 1119px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    flex-wrap: nowrap;
+  }
+
+  .left-group,
+  .center-group,
+  .right-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .center-group {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .search-container {
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .search-bar {
+    font-size: 16px;
+    padding: 10px 36px;
+  }
+
+  .search-icon {
+    right: 16px;
+    bottom: 14px;
+  }
+
+  .menu-button {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+
+  .user-actions {
+    font-size: 26px;
+    gap: 8px;
+  }
+
+  #login-nao-logado a {
+    font-size: 14px;
+  }
+}
+
+
+/* Telas até 767px (mobile e tablets pequenos) */
+@media (max-width: 767px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 10px;
+  }
+
+  .left-group,
+  .center-group,
+  .right-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0; /* Impede que o grupo encolha e suma */
+  }
+
+
+  .center-group {
+  flex: 1;
+  justify-content: center;
+  min-width: 0; /* evita expansão forçada */
+ }
+
+ .search-container {
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
+ }
+  .search-bar {
+    font-size: 15px;
+    padding: 10px 36px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .search-icon {
+    right: 18px;
+    bottom: 14px;
+  }
+
+  .menu-button {
+    font-size: 20px;
+    margin-right: 0;
+  }
+
+  .user-actions {
+    font-size: 22px;
+    gap: 6px;
+    margin-left: 0;
+  }
+
+  #login-nao-logado a {
+    font-size: 13px;
+  }
+
+  .header-item .logo {
+    height: 48px;
+  }
+}
+
+
+/* Telas muito pequenas (até 375px) */
+@media (max-width: 375px) {
+  header {
+    padding: 8px;
+  }
+
+ .center-group {
+  flex: 1;
+  justify-content: center;
+  min-width: 0; /* evita expansão forçada */
+ }
+ .right-group {
+  flex-shrink: 0; /* Impede que o grupo encolha e suma */
+ }
+
+
+ .search-container {
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
+ }
+
+  .search-bar {
+    font-size: 14px;
+    padding: 8px 32px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .search-icon {
+    right: 14px;
+    bottom: 12px;
+  }
+
+  .menu-button {
+    font-size: 18px;
+  }
+
+  .user-actions {
+    font-size: 20px;
+    gap: 4px;
+  }
+
+  #login-nao-logado a {
+    font-size: 12px;
+  }
+
+  .header-item .logo {
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .boas-vindas {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 690px) {
+  .secao-metas .lista-metas-horizontal {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .secao-metas .card-meta {
+    max-width: 100%;
+    width: 100%;
+    min-width: unset;
+    box-sizing: border-box;
+  }
+}
+
+
+
