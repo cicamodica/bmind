@@ -89,5 +89,6 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 |:---|:---|
 | Resultados obtidos |Acesso da pagina com sucesso; Inserimento de dados dos campos com sucesso; Uploud de imagem realizado com sucesso; Botão salvar  funcionando; Dados salvos estão sendo corretamente salvo no local sotorage dentro email do usuario; Responsividade funcionando ; Botão menu  responsivo |
 | Responsável pela execução do caso de Teste | Matheus Feliciano |
-|Registro do teste | |
+|Registro do teste | |![Gravando 2025-06-08 231244 (1)](https://github.com/user-attachments/assets/e5af8e35-ebd7-4243-ac4d-0984de96fbe7)
+
 
