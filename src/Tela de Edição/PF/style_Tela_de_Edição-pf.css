@@ -148,13 +148,11 @@ header {
   /*Estilização da barra de pesquisa*/
   position: relative;
   display: flex;
-  width: 100%; /* Ajustado para a outra página */
-  max-width: 900px; /* Ajustado para a outra página */
-  margin: 0 auto; /* Centraliza a barra de pesquisa */
+  width: 100%;
+  max-width: 900px;
   align-items: center;
   z-index: 1;
 }
-
 
 /*
  * Estilos da Barra de Busca
@@ -168,8 +166,10 @@ header {
   font-weight: 100;
   border: none;
   width: 100%;
+  max-width: 900px;
   font-size: 18px;
-  padding-left: 20px; /* Ajustado para a outra página */
+  margin: 30px;
+  padding-left: 20px;
 }
 
 /*
@@ -178,9 +178,9 @@ header {
 .search-icon {
   /*Estilização do ícone de pesquisa */
   position: absolute;
-  top: 50%; /* Ajustado para a outra página */
-  transform: translateY(-50%); /* Ajustado para a outra página */
-  right: 50px; /* Ajustado para a outra página */
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
   color: black;
 }
 
@@ -190,7 +190,6 @@ header {
 .menu-button {
   font-size: 24px;
   cursor: pointer;
-  margin-right: 15px;
   color: white;
 }
 
@@ -374,20 +373,23 @@ li {
  * Preenchimento do Conteúdo Principal
  */
 .main-content {
-  padding-top: 60px; /* Mantido o padding, pode ser ajustado com base no novo header */
+  padding-top: 20px; /* Mantido o padding, pode ser ajustado com base no novo header */
 }
 
 /*
  * Estilos de Parágrafo para o título do dashboard
  */
 #dashboard-titulo {
-  font-size: 34px;
+  font-size: 40px;
   margin-top: 0px;
   font-weight: 500;
   margin-left: 40px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   position: relative;
   z-index: 1;
+  color: #024dae;
+  font-family: "Poppins";
+  font-weight: 600;
 }
 
 /*
@@ -511,7 +513,7 @@ select,
  */
 .atualizar {
   position: static;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
   background-color: #ffffff;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
@@ -522,6 +524,7 @@ select,
   align-items: flex-start;
   z-index: auto;
   height: auto;
+  font-family: "Poppins";
 }
 
 /*
@@ -534,6 +537,7 @@ select,
   width: auto;
   text-align: left;
   padding-left: 30px;
+  font-family: "Poppins";
 }
 
 /*
@@ -557,11 +561,16 @@ select,
 .Editar,
 .Remover {
   position: static;
-  margin: 0;
+  margin: -5px;
   width: 180px;
   text-align: left;
-  padding: 10px 20px;
   box-sizing: border-box;
+  font-family: "Poppins";
+  font-size: 14px;
+}
+
+.Entradas {
+  margin-top: 20px;
 }
 
 /*
@@ -619,10 +628,13 @@ select,
   margin-bottom: 20px;
   margin-top: -22px;
   padding-left: 42px;
+  font-size: 20px;
+  font-family: "Poppins";
+  font-weight: 500;
 }
 
 #ano-filtro {
-  padding-left: 38px;
+  padding-left: 0px;
 }
 
 /*
@@ -632,16 +644,31 @@ select,
   display: flex;
   gap: 15px;
   align-items: center;
+  font-family: "Poppins";
 }
 
 /*
  * Estilos do Botão Histórico no Cabeçalho do Dashboard
  */
 .filtros-dashboard .Historico {
-  position: static;
-  margin-left: 15px;
+  align-items: center;
   width: auto;
-  padding: 8px 15px;
+  font-family: "Poppins";
+  font-weight: 300;
+  background-color: #024dae; /* Cor de fundo (semi-transparente aqui) */
+  color: white; /* Cor do texto */
+  border: 1px solid #024dae; /* Borda branca */
+  border-radius: 6px; /* Cantos arredondados */
+  text-decoration: none; /* Tira o sublinhado */
+  height: 35px;
+  display: flex;            /* Ativa o flexbox */
+  align-items: center;      /* Centraliza verticalmente */
+  justify-content: center;  /* Centraliza horizontalmente */
+}
+
+.filtros-dashboard .Historico:hover {
+  background-color: white;
+  color: #024dae;
 }
 
 /*
@@ -883,22 +910,25 @@ select,
   cursor: pointer;
 }
 
-/*
- * Responsividade - Telas Grandes (acima de 1200px)
- */
-@media (max-width: 1200px) {
+
+@media (max-width: 1024px) {
   .search-container {
+    width: 100%;
     max-width: 600px;
   }
+
+  #dashboard-titulo {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 }
 
 /*
  * Responsividade - Telas Médias (900px)
  */
 @media (max-width: 900px) {
-  .search-container {
-    max-width: 400px;
-  }
   .charts-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
@@ -910,15 +940,51 @@ select,
   }
 }
 
+@media (max-width: 850px) {
+.filtros-dashboard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-left: 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .seletor-filtro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+  }
+  .seletor-filtro select,
+  .seletor-filtro label {
+    width: 100%;
+  }
+  .filtros-dashboard .Historico {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .seletor-filtro {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+
 /*
  * Responsividade - Tablets e Telas Menores (768px)
  */
 @media (max-width: 768px) {
-  header {
-    justify-content: space-between;
-    padding: 0 20px;
-    height: 70px;
+
+  .header {
+    width: 100%;
   }
+
   .search-container.search-desktop {
     /* some com a barra de pesquisa desktop */
     display: none;
@@ -949,6 +1015,10 @@ select,
     right: 0;
     z-index: 1000;
   }
+
+  .user-actions i {
+  font-size: 29px; /* Ajustado para o tamanho da outra página */
+}
 
   /* Adicionado: Adiciona margem para não sobrepor conteúdo quando menu mobile aberto */
   body.menu-aberto-margin {
@@ -1019,7 +1089,7 @@ select,
 
   /* Mantido: Estilos para o dashboard principal em telas menores */
   .main-content {
-    padding-top: 70px; /* Ajustado para compensar o header fixo */
+    padding-top: 20px; /* Ajustado para compensar o header fixo */
   }
   p {
     font-size: 28px;
@@ -1040,14 +1110,15 @@ select,
   }
 
   .botoes-acao {
-    align-items: center;
-    padding-left: 0;
-    width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .botoes-acao button {
-    width: 90%;
-    max-width: 250px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .input-confirmar {
@@ -1125,10 +1196,12 @@ select,
   }
 }
 
+
 /* Adicionado: Para telas com largura mínima de 769px, oculta a barra de pesquisa mobile */
 @media (min-width: 769px) {
-  .mobile-search-bar { /* Seleciona a barra de pesquisa mobile */
-    display: none !important; /* Garante que ela esteja escondida em telas maiores */
+/* Ocultar a barra em telas maiores que 861px */
+  #mobileSearchBar {
+    display: none !important; /* força a ocultação mesmo se o JS ativar */
   }
 }
 
@@ -1139,23 +1212,18 @@ select,
   .header {
     height: 45px; /* Ajustado para a altura do cabeçalho em 480px da outra página */
   }
+
   .header-item .logo {
     height: 40px;
   }
+
   p {
     font-size: 24px;
   }
-  .dropdown-menu {
-    width: 180px; /* Ajustado para a largura do menu mobile em 480px da outra página */
-    left: 0px; /* Ajustado para o alinhamento da outra página */
-  }
-  .dropdown-menu li {
-    padding: 8px;
-  }
-  .submenu {
-    width: 180px; /* Ajustado para a largura do submenu em 480px da outra página */
-  }
-  .dropdown-menu > ul > .has-submenu > .submenu {
-    left: 100%; /* Ajuste para ser 100% do pai, e não 180px fixo */
-  }
+}
+
+@media (max-width: 480px) and (min-width:375px) {
+  .mobile-search-bar {
+  padding-top: 40px;
+}
 }

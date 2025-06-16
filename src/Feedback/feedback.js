@@ -156,37 +156,50 @@ function updateStars(rating) {
 // Adiciona evento de clique ao botão de enviar
 
 document.querySelector(".submit").addEventListener("click", function () {
-  const feedback = document.getElementById("feedbackText").value.trim();
+  const feedbackTexto = document.getElementById("feedbackText").value.trim();
 
-  if (feedback !== "") {
-    let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+  if (feedbackTexto !== "" && selectedRating > 0) {
+    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
+    const email = usuarioLogado?.email;
 
-    feedbacks.push(feedback); // Adiciona o novo feedback lista
+    if (email) {
+      const todosFeedbacks = JSON.parse(localStorage.getItem("feedbacks")) || {};
 
-    // Salva no localStorage
-    localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+      // Garante que o array exista
+      if (!Array.isArray(todosFeedbacks[email])) {
+        todosFeedbacks[email] = [];
+      }
 
-    // Limpa o campo
-    document.getElementById("feedbackText").value = "";
+      // Adiciona o feedback com nota + comentário
+      todosFeedbacks[email].push({
+        nota: Number(selectedRating),
+        comentario: feedbackTexto
+      });
 
-    // Mostra a mensagem visual
-    const mensagem = document.getElementById("mensagemSucesso");
-    mensagem.textContent = "Feedback salvo com sucesso!";
-    mensagem.style.display = "block";
+      localStorage.setItem("feedbacks", JSON.stringify(todosFeedbacks));
 
-    // Oculta após 3 segundos
-    setTimeout(() => {
-      mensagem.style.display = "none";
-    }, 3000);
+      // Resetar campos
+      document.getElementById("feedbackText").value = "";
+      updateStars(0); // limpa a seleção de estrelas
+      selectedRating = 0;
+
+      // Feedback visual
+      const msg = document.getElementById("mensagemSucesso");
+      msg.textContent = "Feedback salvo com sucesso!";
+      msg.style.display = "block";
+      setTimeout(() => msg.style.display = "none", 3000);
+    }
   } else {
-    const mensagem = document.getElementById("mensagemErro");
-    mensagem.textContent = "Por favor, insira um feedback.";
-    mensagem.style.display = "block";
-    setTimeout(() => {
-      mensagem.style.display = "none";
-    }, 3000);
+    const msg = document.getElementById("mensagemErro");
+    msg.textContent =
+      selectedRating === 0
+        ? "Por favor, selecione uma nota com estrelas."
+        : "Por favor, insira um feedback.";
+    msg.style.display = "block";
+    setTimeout(() => (msg.style.display = "none"), 3000);
   }
 });
+
 // Função para delogar o usuário
 function sair() {
   localStorage.removeItem("usuarioLogado");

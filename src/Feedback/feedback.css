@@ -626,4 +626,10 @@ textarea {
   .search-mobile-icon {
     display: flex; /* mostra o ícone */
   }
+
+  .header-item .logo {
+  /*Estilização do logo*/
+  height: 40px;
+  margin-right: auto;
+}
 }
