@@ -53,6 +53,7 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background-color: #f4f6f8;
+  overflow-x: hidden;
 }
 
 header {
