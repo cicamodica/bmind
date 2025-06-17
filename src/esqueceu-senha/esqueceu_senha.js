@@ -21,7 +21,7 @@ document
 
     const templateParams = {
       email: email,
-      link: `http://127.0.0.1:5501/src/redefinir-senha/redefinir_senha.html?email=${email}`,
+      link: `./redefinir-senha/redefinir_senha.html?email=${email}`,
     };
 
       emailjs

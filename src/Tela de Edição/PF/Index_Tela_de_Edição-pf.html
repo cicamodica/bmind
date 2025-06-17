@@ -6,14 +6,14 @@
     <title>Dashboard do Usuário</title>
     <link
       rel="stylesheet"
-      href="/src/Tela de Edição/PF/style_Tela_de_Edição-pf.css"
+      href="./Tela de Edição/PF/style_Tela_de_Edição-pf.css"
     />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/src/Tela de Edição/PF/script_Tela_de_Edição-pf.js" defer></script>
+    <script src="./Tela de Edição/PF/script_Tela_de_Edição-pf.js" defer></script>
   </head>
   <body>
     <div class="header">
@@ -23,7 +23,7 @@
             <i class="fa-solid fa-bars menu-button"></i>
           </div>
           <div class="header-item">
-            <img src="/src/imagens/Logo site.png" alt="Logo" class="logo" />
+            <img src="./imagens/Logo site.png" alt="Logo" class="logo" />
           </div>
         </div>
 
@@ -44,12 +44,12 @@
           <div class="search-mobile-icon" onclick="toggleMobileSearchBar()"> <i class="fa-solid fa-magnifying-glass"></i>
           </div>
           <div class="user-area">
-            <a href="/src/Main/Main.html" class="minha-area-botao"
+            <a href="./Main/Main.html" class="minha-area-botao"
               >Minha Área</a
             >
           </div>
           <div class="user-actions" id="perfil-logado">
-            <a href="/src/perfil/perfil.html">
+            <a href="./perfil/perfil.html">
               <i class="fa-regular fa-circle-user"></i>
             </a>
           </div>
@@ -58,10 +58,10 @@
         <nav class="dropdown-menu" id="dropdownMenu">
           <ul id="menu">
             <li class="item-logged">
-              <a class="perfil" href="/src/perfil/perfil.html">Perfil</a>
+              <a class="perfil" href="./perfil/perfil.html">Perfil</a>
             </li>
             <li class="item-logged">
-              <a href="/src/Main/Main.html">Minha Área</a>
+              <a href="./Main/Main.html">Minha Área</a>
             </li>
             <li class="item-logged">
               <a href="#" onclick="redirecionarCadastro()"
@@ -76,24 +76,24 @@
                   <ul class="submenu">
                     <li>
                       <a
-                        href="/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
-                        onclick="registrarConteudoVisto('Planejamento Financeiro', '/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html', '/src/imagens/PlanejamentoFinanceiro.jpg')"
+                        href="./conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                        onclick="registrarConteudoVisto('Planejamento Financeiro', './conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html', './imagens/PlanejamentoFinanceiro.jpg')"
                       >
                         Planejamento Financeiro
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
-                        onclick="registrarConteudoVisto('Orçamento Doméstico', '/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html', '/src/imagens/OrcamentoDomestico.jpg')"
+                        href="./conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                        onclick="registrarConteudoVisto('Orçamento Doméstico', './conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html', './imagens/OrcamentoDomestico.jpg')"
                       >
                         Orçamento Doméstico
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
-                        onclick="registrarConteudoVisto('Controle de Dívidas', '/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html', '/src/imagens/ControleDividas.jpg')"
+                        href="./conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                        onclick="registrarConteudoVisto('Controle de Dívidas', './conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html', './imagens/ControleDividas.jpg')"
                       >
                         Controle de Dívidas
                       </a>
@@ -106,40 +106,40 @@
                   <ul class="submenu">
                     <li>
                       <a
-                        href="/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html"
-                        onclick="registrarConteudoVisto('Cartão de Débito', '/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html', '/src/imagens/CartaoDeDebito.jpg')"
+                        href="./conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html"
+                        onclick="registrarConteudoVisto('Cartão de Débito', './conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html', './imagens/CartaoDeDebito.jpg')"
                       >
                         Cartão de Débito
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html"
-                        onclick="registrarConteudoVisto('Cartão de Crédito', '/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html', '/src/imagens/CartaodeCredito.png')"
+                        href="./conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html"
+                        onclick="registrarConteudoVisto('Cartão de Crédito', './conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html', './imagens/CartaodeCredito.png')"
                       >
                         Cartão de Crédito
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html"
-                        onclick="registrarConteudoVisto('Empréstimo', '/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html', '/src/imagens/Emprestimos.jpg')"
+                        href="./conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html"
+                        onclick="registrarConteudoVisto('Empréstimo', './conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html', './imagens/Emprestimos.jpg')"
                       >
                         Empréstimos
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html"
-                        onclick="registrarConteudoVisto('Financiamento', '/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html', '/src/imagens/Financiamento.webp')"
+                        href="./conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html"
+                        onclick="registrarConteudoVisto('Financiamento', './conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html', './imagens/Financiamento.webp')"
                       >
                         Financiamento
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
-                        onclick="registrarConteudoVisto('Taxas e Tarifas', '/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html', '/src/imagens/TaxasTarifas.jpg')"
+                        href="./conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+                        onclick="registrarConteudoVisto('Taxas e Tarifas', './conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html', './imagens/TaxasTarifas.jpg')"
                       >
                         Taxas e Tarifas
                       </a>
@@ -152,24 +152,24 @@
                   <ul class="submenu">
                     <li>
                       <a
-                        href="/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
-                        onclick="registrarConteudoVisto('Renda Fixa', '/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html', '/src/imagens/RendaFixaPF.jpg')"
+                        href="./conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                        onclick="registrarConteudoVisto('Renda Fixa', './conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html', './imagens/RendaFixaPF.jpg')"
                       >
                         Renda Fixa
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
-                        onclick="registrarConteudoVisto('Renda Variável', '/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html', '/src/imagens/RendaVariavelPFmenor.jpg')"
+                        href="./conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                        onclick="registrarConteudoVisto('Renda Variável', './conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html', './imagens/RendaVariavelPFmenor.jpg')"
                       >
                         Renda Variável
                       </a>
                     </li>
                     <li>
                       <a
-                        href="/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
-                        onclick="registrarConteudoVisto('Fundo de Investimentos', '/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html', '/src/imagens/FundoInvestimentosPF.jpg')"
+                        href="./conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
+                        onclick="registrarConteudoVisto('Fundo de Investimentos', './conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html', './imagens/FundoInvestimentosPF.jpg')"
                       >
                         Fundo de Investimentos
                       </a>
@@ -180,7 +180,7 @@
             </li>
 
             <li class="item-logged">
-              <a href="/src/Feedback/feedback.html">FAQ</a>
+              <a href="./Feedback/feedback.html">FAQ</a>
             </li>
             <li class="item-logged">
               <a href="#" id="botao-sair">Sair</a>

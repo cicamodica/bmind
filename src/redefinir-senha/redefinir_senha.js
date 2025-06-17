@@ -15,7 +15,7 @@ formPassword.addEventListener("submit", function (event) {
   if (newPassword.value == confirmNewPassword.value) {
     dados.senha = newPassword.value;
     localStorage.setItem(email, JSON.stringify(dados));
-    window.location.href = "/src/login/login.html";
+    window.location.href = "./login/login.html";
   } else {
     formInputMessage.style.display = "block";
   }
