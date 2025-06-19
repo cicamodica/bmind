@@ -31,7 +31,7 @@ function buscarMobile() {
   const termo = document.getElementById('mobileSearchInput').value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `./resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
 }
 
@@ -41,9 +41,9 @@ function redirecionarCadastro() {
 
   if (dadosDoUsuario && dadosDoUsuario.perfil) {
     if (dadosDoUsuario.perfil === "Pessoa Física") {
-      window.location.href = "./Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      window.location.href = "./Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else {
       alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
     }
@@ -102,7 +102,7 @@ document.getElementById("search-button").addEventListener("click", function (eve
     document.getElementById("search-bar").value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `./resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
 });
 
@@ -144,7 +144,7 @@ window.addEventListener("click", function (e) {
 function sair() {
   localStorage.removeItem("usuarioLogado");
   localStorage.removeItem("currentUser"); // Ensure this is also removed for consistency if used elsewhere
-  window.location.href = "./login/login.html";
+  window.location.href = "/src/login/login.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {

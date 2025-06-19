@@ -35,7 +35,7 @@ formValidacao.addEventListener("submit", function (event) {
 
     mensagemErro.style.display = "none";
     alert("Código validado com sucesso!");
-    window.location.href = "./login/login.html";
+    window.location.href = "/src/login/login.html";
   } else {
     mensagemErro.style.display = "inline";
   }

@@ -113,13 +113,13 @@ document.getElementById("form-cadastro").addEventListener("submit", function (ev
   const templateParams = {
     email: email,
     passcode: codigoDeValidacao,
-    link: "./validacao-de-dados/Index_Validação_de_Dados.html",
+    link: "/src/validacao-de-dados/Index_Validação_de_Dados.html",
   };
 
   emailjs.send("service_joo3heu", "template_kmr82a7", templateParams).then(
     () => {
       alert("Um e-mail foi enviado com o código de verificação de dados! Verifique sua caixa de entrada.");
-      window.location.href = "./validacao-de-dados/Index_Validação_de_Dados.html";
+      window.location.href = "/src/validacao-de-dados/Index_Validação_de_Dados.html";
     },
     (error) => {
       alert("E-mail não enviado: " + error.text);
