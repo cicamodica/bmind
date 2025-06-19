@@ -22,7 +22,7 @@ formLogin.addEventListener("submit", function (event) {
     formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão} else {
   } else {
     if (!dados.validada) {
-      formInputMessage.innerHTML = "E-mail não validado! <a href='./validacao-de-dados/Index_Validação_de_Dados.html'> Valide aqui </a>";
+      formInputMessage.innerHTML = "E-mail não validado! <a href='../validacao-de-dados/Index_Validação_de_Dados.html'> Valide aqui </a>";
       formInputMessage.style.display = "block"; //Mostra a mensagem de erro (display = "block"), que estava "escondida" por padrão
     } else {
       if (
@@ -33,7 +33,7 @@ formLogin.addEventListener("submit", function (event) {
         formInputMessage.style.display = "none"; //Faz sumir a mensagem de erro (display = "none") enquanto os dados forem colocados forem corretos
         localStorage.setItem("usuarioLogado", inputEmail.value); //Armazena o e-mail do usuário logado no localStorage
         localStorage.setItem("currentUser", JSON.stringify(dados)); //Armazena os dados do usuário logado no localStorage
-        window.location.href = "./index.html"; //Redireciona o usuário para outra página (main)
+        window.location.href = "../index.html"; //Redireciona o usuário para outra página (main)
       } else {
         //Entra nesse bloco ({}) caso os dados inseridos em e-mail e senha forem incorretos, ou seja, o e-mail digitado != "ceciliacmodica@gmail.com" e senha != 123456
         formInputMessage.textContent =
