@@ -3,7 +3,7 @@
 /*Adicionar fontes na font family = Poppins Thin*/
 @font-face {
   font-family: "Poppins";
-  src: url("./poppins/Poppins-Thin.ttf") format("truetype");
+  src: url("/src/poppins/Poppins-Thin.ttf") format("truetype");
   font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
   font-style: normal;
 }
@@ -11,7 +11,7 @@
 /*Adicionar fontes na font family = Poppins Extra Light*/
 @font-face {
   font-family: "Poppins";
-  src: url("./poppins/Poppins-ExtraLight.ttf") format("truetype");
+  src: url("/src/poppins/Poppins-ExtraLight.ttf") format("truetype");
   font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
   font-style: normal;
 }
@@ -19,7 +19,7 @@
 /*Adicionar fontes na font family = Poppins Light*/
 @font-face {
   font-family: "Poppins";
-  src: url("./poppins/Poppins-Light.ttf") format("truetype");
+  src: url("/src/poppins/Poppins-Light.ttf") format("truetype");
   font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
   font-style: normal;
 }
@@ -27,7 +27,7 @@
 /*Adicionar fontes na font family = Poppins Regular*/
 @font-face {
   font-family: "Poppins";
-  src: url("./poppins/Poppins-Regular.ttf") format("truetype");
+  src: url("/src/poppins/Poppins-Regular.ttf") format("truetype");
   font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
   font-style: normal;
 }
@@ -35,7 +35,7 @@
 /*Adicionar fontes na font family = Poppins Medium*/
 @font-face {
   font-family: "Poppins";
-  src: url("./poppins/Poppins-Medium.ttf") format("truetype");
+  src: url("/src/poppins/Poppins-Medium.ttf") format("truetype");
   font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
   font-style: normal;
 }
@@ -43,7 +43,7 @@
 /*Adicionar fontes na font family = Poppins Bold*/
 @font-face {
   font-family: "Poppins";
-  src: url("./poppins/Poppins-Bold.ttf") format("truetype");
+  src: url("/src/poppins/Poppins-Bold.ttf") format("truetype");
   font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
   font-style: normal;
 }
