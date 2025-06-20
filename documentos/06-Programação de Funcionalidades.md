@@ -25,11 +25,11 @@ Sua principal função é ser o ponto de entrada central e o cartão de visitas 
 
 ### Estrutura de Dados
 
-Esta página não possui estrutura de dados.
+    //Esta página não possui estrutura de dados.
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Homepage.html) 
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/index.html) 
 
 - Nesta página você poderá consumir diversos conteúdos sobres finanças e investimentos tanto pessoais quanto corporativos.
 
@@ -58,22 +58,15 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 
 ### Estrutura de Dados
 
-    const dados = JSON.parse(localStorage.getItem(inputEmail.value));
-      if (
-        dados &&
-        inputEmail.value == dados.email && 
-        inputPassword.value == dados.senha
-          ) {
-      formInputMessage.style.display = "none"; 
-      window.location.href = "/src/Main/Main.html";
-        } else {
-      formInputMessage.style.display = "block"; 
+    dadosUsuario = { 
+        email: "ceciliacmodica@gmail.com"
+        senha: "123456"
         }
 
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/login/login.html) 
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/login/login.html) 
 
 - Faça o login em sua conta. Após o login bem-sucedido, você será redirecionado automaticamente para a página inicial da aplicação.
 
@@ -102,13 +95,7 @@ Sua principal função é permitir que os usuários crie sua conta na aplicaçã
 
 ### Estrutura de Dados
 
-    const dados = JSON.parse(localStorage.getItem(email));
-    if (dados !== null) {
-      mensagemErro.textContent = "Usuário já cadastrado com esse e-mail!";
-      return;
-    }
-
-    const dadosUsuario = {
+    dadosUsuario = {
       nome: nome,
       email: email,
       senha: novaSenha,
@@ -116,15 +103,21 @@ Sua principal função é permitir que os usuários crie sua conta na aplicaçã
       dataNascimento: dataNascimento,
       preferenciaDeConteudos: selecionados,
       perfil: perfilSelecionado,
-      validada: false,
-    };
-
-    localStorage.setItem(email, JSON.stringify(dadosUsuario)); // Salva no localStorage como JSON string
-    mensagemErro.textContent = "";
+    }
+    
+    dadosUsuario = {
+        nome: "Maria Cecilia Modica",
+        email: "ceciliateste@gmail.com",
+        senha: "123456",
+        telefoneContato: "11999999999",
+        dataNascimento: "1998-10-31",
+        preferenciaDeConteudos: ["Investimentos", "Operações Bancárias"],
+        perfil: "Pessoa Física",
+        }
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Cadastro/cadastro.html) 
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/cadastro/cadastro.html) 
 
 - Faça o cadastro da sua conta. Após o cadastro bem-sucedido, você será redirecionado automaticamente para a página de validação de dados.
 
@@ -154,38 +147,11 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 ### Estrutura de Dados
 
-    const dados = JSON.parse(localStorage.getItem(inputEmail.value));
-
-    if (dados == null) {
-      alert("Usuário não encontrado");
-    } else {
-      emailjs
-        .send(
-          "service_ct2hayr",
-          "template_je09365",
-          {
-            link:
-              "http://127.0.0.1:5501/src/redefinir-senha/redefinir_senha.html?email=" +
-              inputEmail.value,
-            email: inputEmail.value,
-          },
-          null
-        )
-        .then(
-          (response) => {
-            alert("E-mail enviado! Verifique sua caixa de entrada", response.status, response.text);
+    //Esta página não possui funcionalidades.
     
-          },
-          (error) => {
-           alert("E-mail não enviado", error);
-          }
-        );
-    }
-
-
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/esqueceu-senha/esqueceu_senha.html)
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/esqueceu-senha/esqueceu_senha.html)
 
 - Insira o e-mail que foi cadastrado anteriormente. Você receberá em sua caixa de entrada um e-mail com um link de acesso que irá te redirecionar para a página de redefinição de senha.
 
@@ -215,15 +181,11 @@ Sua principal função é permitir que os usuários que esqueceram a senha, cada
 
 ### Estrutura de Dados
 
-    const dados = JSON.parse(localStorage.getItem(email));
-
-    if (dados == null) {
-      window.location.href = "/src/cadastro/cadastro.html";
-    }
+    //Esta página não possui funcionalidades.
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL:(https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/redefinir-senha/redefinir_senha.html)
+- Abra um navegador de Internet e informe a seguinte URL:(https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/redefinir-senha/redefinir_senha.html?email=ceciliacmodica@gmail.com)
 
 - Essa página você acessa ao clicar no link de acesso encaminhado via e-mail. 
 
@@ -252,22 +214,11 @@ Sua principal função é validar os dados do usuário a partir de um e-mail que
 
 ### Estrutura de Dados
 
-    if (emailCadastrado != null) {
-        const dados = JSON.parse(localStorage.getItem(emailCadastrado));
-        dados.validada = true;
-        localStorage.setItem(emailCadastrado, JSON.stringify(dados));
-
-    mensagemErro.style.display = "none";
-    alert("Código validado com sucesso!");
-    window.location.href = "/src/login/login.html";
-      } else {
-        mensagemErro.style.display = "inline";
-      }
-        });
+    //Esta página não possui funcionalidades.
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html)
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/validacao-de-dados/Index_Valida%C3%A7%C3%A3o_de_Dados.html)
 
 - O usuário é redirecionado para esssa página após preencher seus dados de cadastro. 
 
@@ -290,18 +241,13 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 
 - | RF-06 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento e controle de suas finanças.
 - | RF-07 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento de metas estabelecidas pelo próprio.
-- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
 - | RF-12 |	A aplicação deve exibir uma mensagem de boas-vindas personalizada para o usuário logado.
 - | RF-13 | A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
-- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
 - | RF-16 | A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
-- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
 - | RF-17 | Oferecer sugestões de conteúdo personalizado de acordo com o dashboard.
 - | RF-19 | A aplicação deve registrar e exibir os conteúdos didáticos visualizados recentemente pelo usuário.
 - | RF-20 | A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
 - | RF-21 | A aplicação deve exibir um histórico das transações do mês atual no dashboard.
-- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
-- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -311,53 +257,20 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 
 ### Estrutura de Dados
 
-  const emailUsuario = localStorage.getItem("usuarioLogado");
+    [{id: "1750398429281",
+    tempo: "2025-06-24",
+    titulo: "Entrada do carro",
+    valorAtual: 500,
+    valorTotal: 10000,
+    }]
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // --- Boas-Vindas ---
-    const boasVindas = document.getElementById("boas-vindas");
-
-    if (emailUsuario) {
-      const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-      if (dadosUsuario && dadosUsuario.nome) {
-        boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
-      } else {
-        boasVindas.textContent = "Olá!";
-      }
-    } else {
-      boasVindas.textContent = "Bem-vindo!";
+    dadosUsuario {
+    vistosRecentemente: [{nome: "Cartão de Crédito",…}]
     }
-     });
-
-    function redirecionarCadastro() {
-     const usuarioLogado = localStorage.getItem("usuarioLogado");
-     const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
-
-    function atualizarInterfaceUsuario() {
-     const usuarioLogado = localStorage.getItem("usuarioLogado");
-     const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
   
-    function registrarConteudoVisto(nome, url, imagem) {
-     const emailUsuario = localStorage.getItem("usuarioLogado");
-      if (!emailUsuario) return;
-     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
-
-    localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));}
-
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
-
-    // Recuperação dos dados do usuário
-    const dados = JSON.parse(localStorage.getItem(emailUsuarioLogado));
-
-    const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
-
-    const metasSalvas = JSON.parse(localStorage.getItem(metasKey) || '[]');
-
-    localStorage.setItem(metasKey, JSON.stringify(metasAtuais)); carregarMetas(); 
-
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Main/Main.html)
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/main/Main.html)
 
 - O usuário é redirecionado para esssa página após fazer login na aplicação.
 
@@ -377,11 +290,7 @@ Sua principal função é redirecionar o usuário para o conteúdo que ele desej
 
 ### Requisitos atendidos
 
-- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
-- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
 - | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
-- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
-- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -391,20 +300,11 @@ Sua principal função é redirecionar o usuário para o conteúdo que ele desej
 
 ### Estrutura de Dados
 
-    function atualizarInterfaceUsuario() {
-      const usuarioLogado = localStorage.getItem("usuarioLogado");
-      const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
-
-    let perfilUsuario = null;
-    const usuarioLogado = localStorage.getItem("usuarioLogado");
-    if (usuarioLogado !== null) {
-      const dadosDoUsuario = JSON.parse(localStorage.getItem(usuarioLogado));
-      perfilUsuario = dadosDoUsuario?.perfil || null;
-    }
+    //Esta página não possui funcionalidades.
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/resultado-de-pesquisa/resultado-de-pesquisa.html)
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=financas)
 
 - Ao clicar na barra de pesquisa no topo da página e escrever uma palavra chave (finanças, por exemplo) o usuário é redirecionado para a página de Resultado. 
 
@@ -423,12 +323,7 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 ### Requisitos atendidos
 
-- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
-- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
-- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
 - | RF-19 |	A aplicação deve disponibilizar uma aba de suporte, para recolher feedbacks de usuários, dar apoio e sanar suas possíveis dúvidas referentes à própria aplicação.
-- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
-- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -438,20 +333,13 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 ### Estrutura de Dados
 
-    document.querySelector(".submit").addEventListener("click", function () {
-    const feedback = document.getElementById("feedbackText").value.trim();
-
-    if (feedback !== "") {
-    let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
-
-    feedbacks.push(feedback); // Adiciona o novo feedback lista
-
-    // Salva no localStorage
-    localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+   feedbacks = {
+       ceciliateste@gmail.com: [{nota: 5, comentario: "amei"}]
+       }
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Feedback/feedback.html) 
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/Feedback/feedback.html) 
 
 - Dê uma nota em estrelas e escreva um feedback para a aplicação, depois, clique em "enviar" para que o feedbqack seja salvo.
 
@@ -470,12 +358,7 @@ Sua principal função é permitir que os usuários possam editar seus dados com
 
 ### Requisitos atendidos
 
-- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
 - | RF-11 |	A aplicação deve permitir que o usuário visualize, edite e salve suas informações pessoais (incluindo nome, contato, data de nascimento) e imagem de perfil.
-- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
-- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
-- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
-- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
