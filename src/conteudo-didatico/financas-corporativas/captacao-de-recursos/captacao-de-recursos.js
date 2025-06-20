@@ -14,9 +14,9 @@ function redirecionarCadastro() {
 
   if (dadosDoUsuario && dadosDoUsuario.perfil) {
     if (dadosDoUsuario.perfil === "Pessoa Física") {
-      window.location.href = "../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "../../../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      window.location.href = "../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "../../../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else {
       alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
     }
@@ -37,7 +37,7 @@ function atualizarInterfaceUsuario() {
   const itensLogado = document.querySelectorAll('.item-logged');
   const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-  const estaNaPaginaMinhaArea = window.location.pathname.includes("../Main/Main.html")
+  const estaNaPaginaMinhaArea = window.location.pathname.includes("../../../main/Main.html")
 
   // Esconde tudo inicialmente
   userActionsLogado.style.display = "none";
@@ -97,7 +97,7 @@ document
     const termo = document.getElementById("search-bar").value.trim();
     if (termo !== "") {
       const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+      window.location.href = `../../../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
     }
   });
 
@@ -190,7 +190,7 @@ function registrarConteudoVisto(nome, url, imagem) {
 // Função para delogar o usuário
 function sair() {
   localStorage.removeItem("usuarioLogado");
-  window.location.href = "../login/login.html";
+  window.location.href = "../../../login/login.html";
 }
 
 // 2. Depois, adiciona o evento
@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const termo = document.getElementById('mobileSearchInput').value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    window.location.href = `../../../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
 };
 });
