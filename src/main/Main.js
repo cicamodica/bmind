@@ -31,7 +31,7 @@ function buscarMobile() {
   const termo = document.getElementById('mobileSearchInput').value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
 }
 
@@ -41,9 +41,9 @@ function redirecionarCadastro() {
 
   if (dadosDoUsuario && dadosDoUsuario.perfil) {
     if (dadosDoUsuario.perfil === "Pessoa Física") {
-      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      window.location.href = "/src/Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else {
       alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
     }
@@ -102,7 +102,7 @@ document.getElementById("search-button").addEventListener("click", function (eve
     document.getElementById("search-bar").value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
 });
 
@@ -144,7 +144,7 @@ window.addEventListener("click", function (e) {
 function sair() {
   localStorage.removeItem("usuarioLogado");
   localStorage.removeItem("currentUser"); // Ensure this is also removed for consistency if used elsewhere
-  window.location.href = "/src/login/login.html";
+  window.location.href = "../login/login.html";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -277,29 +277,29 @@ function exibirConteudoRecomendados() {
     "Pessoa Física": {
       "Finanças Pessoais": {
         descricao: "Aprenda organizar seu orçamento",
-        link: "./conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+        link: "../conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
       },
       "Investimentos": {
         descricao: "Descubra como investir seu dinheiro",
-        link: "./conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+        link: "../conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
       },
       "Operações Bancárias": {
         descricao: "Entenda como funcionam as operações bancárias",
-        link: "./conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+        link: "../conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
       }
     },
     "Pessoa Jurídica": {
       "Finanças Corporativas": {
         descricao: "Aprenda a gerenciar as finanças da sua empresa",
-        link: "./conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+        link: "../conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
       },
       "Investimentos Corporativos": {
         descricao: "Descubra como investir o capital da sua empresa",
-        link: "./conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+        link: "../conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
       },
       "Operações Bancárias": {
         descricao: "Entenda como funcionam as operações bancárias para empresas",
-        link: "./conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+        link: "../conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
       }
     }
   };
