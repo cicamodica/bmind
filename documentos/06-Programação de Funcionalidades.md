@@ -333,7 +333,7 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 ### Estrutura de Dados
 
-       feedbacks = { ceciliateste@gmail.com: 
+       feedbacks = { e-mail: 
            [{nota: 5, comentario: "amei"}]
            };
 
