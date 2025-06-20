@@ -10,7 +10,7 @@ function atualizarInterfaceUsuario() {
   const itensLogado = document.querySelectorAll('.item-logged');
   const itensNaoLogado = document.querySelectorAll('.item-nao-logado');
 
-  const estaNaPaginaMinhaArea = window.location.pathname.includes("/src/main/Main.html")
+  const estaNaPaginaMinhaArea = window.location.pathname.includes("../main/Main.html")
 
   const userArea = document.querySelector(".user-area");
 if (userArea) {
@@ -68,7 +68,7 @@ document
     const termo = document.getElementById("search-bar").value.trim();
     if (termo !== "") {
       const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+      window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
     }
   });
 
@@ -76,8 +76,8 @@ const conteudos = [
   {
     titulo: "Planejamento Financeiro",
     perfil: "Pessoa Física",
-    link: "/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html",
-    imagem: "/src/imagens/PlanejamentoFinanceiro.jpg",
+    link: "../conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html",
+    imagem: "../imagens/PlanejamentoFinanceiro.jpg",
     palavrasChave: [
       "planejamento",
       "financeiro",
@@ -94,8 +94,8 @@ const conteudos = [
   {
     titulo: "Orçamento Doméstico",
     perfil: "Pessoa Física",
-    link: "/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html",
-    imagem: "/src/imagens/OrcamentoDomestico.jpg",
+    link: "../conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html",
+    imagem: "../imagens/OrcamentoDomestico.jpg",
     palavrasChave: [
       "orçamento",
       "doméstico",
@@ -113,8 +113,8 @@ const conteudos = [
   {
     titulo: "Controle de Dívidas",
     perfil: "Pessoa Física",
-    link: "/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html",
-    imagem: "/src/imagens/Controlededividas.jpg",
+    link: "../conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html",
+    imagem: "../imagens/Controlededividas.jpg",
     palavrasChave: [
       "controle",
       "dívidas",
@@ -132,8 +132,8 @@ const conteudos = [
   {
     titulo: "Análise de Balanço",
     perfil: "Pessoa Jurídica",
-    link: "/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
-    imagem: "/src/imagens/AnaliseDeBalancos.jpg",
+    link: "../conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
+    imagem: "../imagens/AnaliseDeBalancos.jpg",
     palavrasChave: [
       "análise",
       "balanço",
@@ -153,8 +153,8 @@ const conteudos = [
   {
     titulo: "Fluxo de Caixa",
     perfil: "Pessoa Jurídica",
-    link: "/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
-    imagem: "/src/imagens/FluxoDeCaixa.jpg",
+    link: "../conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
+    imagem: "../imagens/FluxoDeCaixa.jpg",
     palavrasChave: [
       "fluxo",
       "caixa",
@@ -174,8 +174,8 @@ const conteudos = [
   {
     titulo: "Captação de Recursos",
     perfil: "Pessoa Jurídica",
-    link: "/src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html",
-    imagem: "/src/imagens/CaptacaoDeRecursos.jpg",
+    link: "../conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html",
+    imagem: "../imagens/CaptacaoDeRecursos.jpg",
     palavrasChave: [
       "captação",
       "recursos",
@@ -195,8 +195,8 @@ const conteudos = [
   {
     titulo: "DRE",
     perfil: "Pessoa Jurídica",
-    link: "/src/conteudo-didatico/financas-corporativas/dre/dre.html",
-    imagem: "/src/imagens/DRE.jpg",
+    link: "../conteudo-didatico/financas-corporativas/dre/dre.html",
+    imagem: "../imagens/DRE.jpg",
     palavrasChave: [
       "dre",
       "demonstração",
@@ -219,8 +219,8 @@ const conteudos = [
   {
     titulo: "Cartão de Débito",
     perfil: "Ambos",
-    link: "/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html",
-    imagem: "/src/imagens/CartaoDeDebito.jpg",
+    link: "../conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html",
+    imagem: "../imagens/CartaoDeDebito.jpg",
     palavrasChave: [
       "cartão",
       "débito",
@@ -244,8 +244,8 @@ const conteudos = [
   {
     titulo: "Cartão de Crédito",
     perfil: "Ambos",
-    link: "/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html",
-    imagem: "/src/imagens/CartaodeCredito.png",
+    link: "../conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html",
+    imagem: "../imagens/CartaodeCredito.png",
     palavrasChave: [
       "cartão",
       "crédito",
@@ -269,8 +269,8 @@ const conteudos = [
   {
     titulo: "Empréstimo",
     perfil: "Ambos",
-    link: "/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html",
-    imagem: "/src/imagens/Emprestimos.jpg",
+    link: "../conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html",
+    imagem: "../imagens/Emprestimos.jpg",
     palavrasChave: [
       "empréstimo",
       "operações",
@@ -293,8 +293,8 @@ const conteudos = [
   {
     titulo: "Financiamento",
     perfil: "Ambos",
-    link: "/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html",
-    imagem: "/src/imagens/Financiamento.webp",
+    link: "../conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html",
+    imagem: "../imagens/Financiamento.webp",
     palavrasChave: [
       "financiamento",
       "operações",
@@ -317,8 +317,8 @@ const conteudos = [
   {
     titulo: "Taxas e Tarifas",
     perfil: "Ambos",
-    link: "/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html",
-    imagem: "/src/imagens/Tarifasetaxas.webp",
+    link: "../conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html",
+    imagem: "../imagens/Tarifasetaxas.webp",
     palavrasChave: [
       "taxas",
       "tarifas",
@@ -342,8 +342,8 @@ const conteudos = [
   {
     titulo: "Renda Fixa PF",
     perfil: "Pessoa Física",
-    link: "/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html",
-    imagem: "/src/imagens/RendaFixaPF.jpg",
+    link: "../conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html",
+    imagem: "../imagens/RendaFixaPF.jpg",
     palavrasChave: [
       "renda",
       "fixa",
@@ -365,8 +365,8 @@ const conteudos = [
   {
     titulo: "Renda Fixa PJ",
     perfil: "Pessoa Jurídica",
-    link: "/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html",
-    imagem: "/src/imagens/RendaFixaPJ.jpg",
+    link: "../conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html",
+    imagem: "../imagens/RendaFixaPJ.jpg",
     palavrasChave: [
       "renda",
       "fixa",
@@ -388,8 +388,8 @@ const conteudos = [
   {
     titulo: "Renda Variável PF",
     perfil: "Pessoa Física",
-    link: "/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html",
-    imagem: "/src/imagens/RendaVariavelPFsub.jpg",
+    link: "../conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html",
+    imagem: "../imagens/RendaVariavelPFsub.jpg",
     palavrasChave: [
       "renda",
       "variável",
@@ -411,8 +411,8 @@ const conteudos = [
   {
     titulo: "Renda Variável PJ",
     perfil: "Pessoa Jurídica",
-    link: "/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
-    imagem: "/src/imagens/RendaVariavelPJ.jpg",
+    link: "../conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html",
+    imagem: "../imagens/RendaVariavelPJ.jpg",
     palavrasChave: [
       "renda",
       "variável",
@@ -434,8 +434,8 @@ const conteudos = [
   {
     titulo: "Fundos de Investimento PF",
     perfil: "Pessoa Física",
-    link: "/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html",
-    imagem: "/src/imagens/FundoInvestimentosPF.jpg",
+    link: "../conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html",
+    imagem: "../imagens/FundoInvestimentosPF.jpg",
     palavrasChave: [
       "fundos",
       "investimento",
@@ -457,8 +457,8 @@ const conteudos = [
   {
     titulo: "Fundos de Investimento PJ",
     perfil: "Pessoa Jurídica",
-    link: "/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html",
-    imagem: "/src/imagens/FundosDeInvestimentoPJ.jpg",
+    link: "../conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html",
+    imagem: "../imagens/FundosDeInvestimentoPJ.jpg",
     palavrasChave: [
       "fundos",
       "investimento",
@@ -500,7 +500,7 @@ window.addEventListener('resize', () => {
   const termo = document.getElementById('mobileSearchInput').value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `/src/resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
 }
 

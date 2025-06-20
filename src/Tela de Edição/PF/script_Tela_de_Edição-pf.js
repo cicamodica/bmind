@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- LÓGICA DE VERIFICAÇÃO DE LOGIN ---
   if (!emailUsuario) {
     alert("Conteúdo disponível somente para usuários cadastrados.");
-    window.location.href = "./index.html"; // Redireciona para o Google
+    window.location.href = "../index.html"; // Redireciona para o Google
     return; // Interrompe a execução do restante do script
   }
   // --- FIM DA LÓGICA ---
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (termo !== "") {
         const encodedTermo = encodeURIComponent(termo);
-        window.location.href = `./resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+        window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
       }
     });
 
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (termo !== "") {
         const encodedTermo = encodeURIComponent(termo);
-        window.location.href = `./resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+        window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
       }
       toggleMobileSearchBar(); // Esconde a barra mobile após a busca
     });
@@ -1352,7 +1352,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função para delogar o usuário
   function sair() {
     localStorage.removeItem("usuarioLogado"); // Remove o e-mail do usuário logado do localStorage
-    window.location.href = "./login/login.html"; // Redireciona para a página de login
+    window.location.href = "../login/login.html"; // Redireciona para a página de login
   }
 
   // Adiciona o evento de clique ao botão de sair
