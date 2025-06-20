@@ -367,59 +367,17 @@ Sua principal função é permitir que os usuários possam editar seus dados com
 - perfil.js
 
 ### Estrutura de Dados
-    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
-    window.addEventListener("DOMContentLoaded", function () {
-    const boasVindas = document.getElementById("boas-vindas");
-    const emailUsuario = localStorage.getItem("usuarioLogado");
 
-    if (emailUsuario) {
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-    if (dadosUsuario && dadosUsuario.nome) {
-      boasVindas.textContent = `Olá, ${dadosUsuario.nome}!`;
-    } else {
-      boasVindas.textContent = "Olá!";
+    dadosUsuario = {
+        nome: "Maria Cecilia teste"
+        telefoneContato: "11996449949"
+        dataNascimento: "1998-10-31"
+        imagemBase64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVE
     }
-    } else {
-    // Se ninguém estiver logado, mostra mensagem genérica ou redireciona
-    boasVindas.textContent = "Bem-vindo!";
-    // Opcional: redirecionar para a página de login
-    // window.location.href = "/src/login/login.html";
-    }
-    });
-    window.onload = () => {
-    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
-    if (!usuarioLogado) return;
-
-    const emailUsuario = usuarioLogado.email;
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-
-    if (dadosUsuario) {
-    document.getElementById("nome").value = dadosUsuario.nome || "";
-    document.getElementById("contato").value = dadosUsuario.telefoneContato || "";
-    document.getElementById("data").value = dadosUsuario.dataNascimento || "";
-    document.getElementById("perfil").value = dadosUsuario.perfil || "";
-
-    // imagem
-    const previewImg = document.getElementById("preview-img");
-    if (dadosUsuario.imagemBase64) {
-      previewImg.src = dadosUsuario.imagemBase64;
-    }
-    }
-    };
-    document.getElementById("perfil-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const usuarioLogado = JSON.parse(localStorage.getItem("currentUser"));
-    if (!usuarioLogado) return;
-
-    const emailUsuario = usuarioLogado.email;
-    const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
-    localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
-    
 
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/perfil/perfil.html) 
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/perfil/perfil.html) 
 
 - Clique em "Fazer upload de imagem" para inserir uma foto de perfil.
 
@@ -441,12 +399,6 @@ Sua principal função é permitir que os usuários possam acesar conteudos info
 ### Requisitos Atendidos
 
 - | RF-05 |	A aplicação deve disponibilizar conteúdos didáticos sobre finanças, como: Finanças corporativas, Finanças pessoais, Investimentos corporativos, Investimentos pessoais e Operações bancárias.
-- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
-- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
-- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
-- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
-- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
-
 
 ### Artefatos da funcionalidade
 
@@ -507,40 +459,29 @@ Sua principal função é permitir que os usuários possam acesar conteudos info
 
 ### Estrutura de Dados
 
-     function redirecionarCadastro() {
-      const usuarioLogado = localStorage.getItem("usuarioLogado");
-      const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
-    
-     function atualizarInterfaceUsuario() {
-      const usuarioLogado = localStorage.getItem("usuarioLogado");
-      const dadosDoUsuario = usuarioLogado ? JSON.parse(localStorage.getItem(usuarioLogado)) : null;
-
-     const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario)) || {};
-
-       localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
-        }
+     //Estas páginas não possuem funcionalidades.
 
 ### Instruções de acesso
 
 - Abra um navegador de Internet e informe as seguintes URL:
-- Página de Análise de Balanço (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html)
-- Página de Captação de Recursos (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html)
-- Página de DRE (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/dre/dre.html)
-- Página de Fluxo de Caixa (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html)
-- Página de Controle de Dívidas (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html)
-- Página de Orçamento Doméstico (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html)
-- Página de Planejamento Financeiro (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html)
-- Página de Fundos de Investimento PJ (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html)
-- Página de Renda Fixa PJ (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html) 
-- Página de Renda Variável PJ (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html)
-- Página de Fundo de Investimentos PF (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html)
-- Página de Renda Fixa PF (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html)
-- Página de Renda Variável PF (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html)
-- Página Cartão de Crédito (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html)
-- Página Cartão de Débito (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html)
-- Página de Empréstimo (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html)
-- Página de Financiamento (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html)
-- Página de Taxas e Tarifas (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html)
+- Página de Análise de Balanço (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html)
+- Página de Captação de Recursos (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html)
+- Página de DRE (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/financas-corporativas/dre/dre.html)
+- Página de Fluxo de Caixa (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html)
+- Página de Controle de Dívidas (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html)
+- Página de Orçamento Doméstico (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html)
+- Página de Planejamento Financeiro (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html)
+- Página de Fundos de Investimento PJ (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html)
+- Página de Renda Fixa PJ (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html) 
+- Página de Renda Variável PJ (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html)
+- Página de Fundo de Investimentos PF (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html)
+- Página de Renda Fixa PF (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html)
+- Página de Renda Variável PF (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html)
+- Página Cartão de Crédito (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html)
+- Página Cartão de Débito (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html)
+- Página de Empréstimo (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html)
+- Página de Financiamento (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html)
+- Página de Taxas e Tarifas (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html)
 
   #### Responsável
   
@@ -557,16 +498,11 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
 - | RF-07 |	A aplicação deve disponibilizar ao usuário uma ferramenta (dashboard) para o acompanhamento de metas estabelecidas pelo próprio.
 - | RF-08 | A aplicação deve disponibilizar ao usuário uma ferramenta para o registro de receitas e despesas.
 - | RF-09 | A aplicação deve permitir a categorização dos registros inseridos pelo usuário.
-- | RF-10 | A aplicação deverá permitir que o usuário deslogue de sua conta.
 - | RF-12 | A aplicação deve exibir uma mensagem de boas-vindas personalizada para o usuário logado.
 - | RF-13 | A aplicação deve permitir que o usuário cadastre e gerencie metas financeiras com título, valor total, valor atual e data limite.
-- | RF-14 | O menu deve permitir a navegação para as principais seções da aplicação (Minha Area, Dashboard, Conteúdo Didático, Perfil,FAQ), conforme usuário logado.
-- | RF-15 | A aplicação deve possuir uma funcionalidade de filtro/pesquisa para permitir ao usuário localizar o conteúdo desejado (de acordo com os tópicos listados em RF - 05).
 - | RF-16 | A aplicação deve permitir a visualização de gráficos e tabelas para facilitar a compreensão dos cálculos financeiros.
 - | RF-20 | A aplicação deve exibir um resumo mensal de entradas e saídas financeiras no dashboard.
-- | RF-22 | O menu de navegação deve apresentar itens de menu específicos para o perfil de usuário (Pessoa Física ou Pessoa Jurídica).
 - | RF-21 | A aplicação deve exibir um histórico das transações do mês atual no dashboard.
-- | RF-23 |	A aplicação deve ser fazer a verificação de logado ou não logado para exibir ícone de perfil ou fazer login/cadastre-se.
 
 ### Artefatos da funcionalidade
 
@@ -576,42 +512,33 @@ Sua função principal é trazer para o usuário um resumo de todas as atividade
   
 ### Estrutura de Dados
 
-   const dadosUsuario = JSON.parse(localStorage.getItem(emailUsuario));
-
-   function getFinancialData() {
-     const email = localStorage.getItem("usuarioLogado");
-     if (!email) {
-       console.warn("Nenhum usuário logado. Não é possível carregar dados financeiros.");
-       return { entradas: [], saidas: [] };
-     }
-     
-     let userData = JSON.parse(localStorage.getItem(email));
-
-      if (!userData || !userData.financialData) {
-      userData = userData || {};
-      userData.financialData = { entradas: [], saidas: [] };
-      localStorage.setItem(email, JSON.stringify(userData)); // Salva a estrutura inicial
-     }
-     return userData.financialData;
-     }
-
-      let userData = JSON.parse(localStorage.getItem(email));
-
-       if (!userData) {
-      userData = {}; // Inicializa se não existir
-      }
-      userData.financialData = data;
-      localStorage.setItem(email, JSON.stringify(userData));
-      renderDashboard();
-      }
-
-      let currentUserData = JSON.parse(localStorage.getItem(currentUserEmail));
-
-      localStorage.setItem(currentUserEmail, JSON.stringify(currentUserData));
-    
+    dadosUsuario = { financialData: {,…}
+        entradas: [{id: 1750400465327, 
+                    tipo: "entrada", 
+                    data: "2025-06-01", 
+                    valor: 2000, 
+                    categoria: "salario",…}]
+        saidas: [{id: 1750400484623, 
+                    tipo: "saida", 
+                    data: "2025-06-13", 
+                    valor: 32, 
+                    categoria: "lazer",…}]
+        
+        dadosUsuario = { financialDataPreview: {,…}
+            entradas: [{id: 1750400465327, 
+                        tipo: "entrada", 
+                        data: "2025-06-01", 
+                        valor: 2000, 
+                        categoria: "salario",…}]
+            saidas: [{id: 1750400484623, 
+                        tipo: "saida", 
+                        data: "2025-06-13", 
+                        valor: 32, 
+                        categoria: "lazer",…}]
+   
 ### Instruções de acesso
 
-- Abra um navegador de Internet e informe a seguinte URL: (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/blob/main/src/Tela%20de%20Edi%C3%A7%C3%A3o/PF/Index_Tela_de_Edi%C3%A7%C3%A3o-pf.html)
+- Abra um navegador de Internet e informe a seguinte URL: (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/Tela%20de%20Edi%C3%A7%C3%A3o/PF/Index_Tela_de_Edi%C3%A7%C3%A3o-pf.html)
   
 - O usuário é redirecionado para essa página após fazer login na aplicação.
 
