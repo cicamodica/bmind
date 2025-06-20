@@ -333,9 +333,9 @@ Sua principal função é permitir que os usuários deem feedbacks e notas para 
 
 ### Estrutura de Dados
 
-   feedbacks = {
-       ceciliateste@gmail.com: [{nota: 5, comentario: "amei"}]
-       }
+       feedbacks = { ceciliateste@gmail.com: 
+           [{nota: 5, comentario: "amei"}]
+           };
 
 ### Instruções de acesso
 
