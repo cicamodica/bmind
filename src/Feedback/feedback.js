@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Redireciona para login se não estiver logado
   if (!usuarioLogado) {
-    window.location.href = "./login/login.html";
+    window.location.href = "../login/login.html";
     return;
   }
 
@@ -54,9 +54,9 @@ function redirecionarCadastro() {
 
   if (dadosDoUsuario && dadosDoUsuario.perfil) {
     if (dadosDoUsuario.perfil === "Pessoa Física") {
-      window.location.href = "./Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else if (dadosDoUsuario.perfil === "Pessoa Jurídica") {
-      window.location.href = "./Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
+      window.location.href = "../Tela de Edição/PF/Index_Tela_de_Edição-pf.html";
     } else {
       alert("Perfil de usuário desconhecido. Não é possível redirecionar.");
     }
@@ -72,7 +72,7 @@ document
     const termo = document.getElementById("search-bar").value.trim();
     if (termo !== "") {
       const encodedTermo = encodeURIComponent(termo);
-      window.location.href = `./resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+      window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
     }
   });
 
@@ -99,7 +99,7 @@ window.addEventListener('resize', () => {
   const termo = document.getElementById('mobileSearchInput').value.trim();
   if (termo !== "") {
     const encodedTermo = encodeURIComponent(termo);
-    window.location.href = `./resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
+    window.location.href = `../resultado-de-pesquisa/resultado-de-pesquisa.html?q=${encodedTermo}`;
   }
 };
 
@@ -203,7 +203,7 @@ document.querySelector(".submit").addEventListener("click", function () {
 // Função para delogar o usuário
 function sair() {
   localStorage.removeItem("usuarioLogado");
-  window.location.href = "./login/login.html";
+  window.location.href = "../login/login.html";
 }
 
 // 2. Depois, adiciona o evento
@@ -238,5 +238,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Botão cancelar
 document.getElementById("cancelar").addEventListener("click", function () {
-  window.location.href = "./index.html";
+  window.location.href = "../index.html";
 });
