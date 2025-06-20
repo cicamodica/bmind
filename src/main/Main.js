@@ -385,7 +385,7 @@ window.renderMainPieChart = function () {
 
   // ✅ 1. Redirecionamento se não estiver logado
   if (!emailUsuarioLogado) {
-    window.location.href = "/src/login.html"; // ajuste se o caminho for diferente
+    window.location.href = "../login/login.html"; // ajuste se o caminho for diferente
     return;
   }
 
