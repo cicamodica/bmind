@@ -183,11 +183,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Fluxo de Caixa",
-  "../../financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html",
-  "../../../imagens/FluxoDeCaixa.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {

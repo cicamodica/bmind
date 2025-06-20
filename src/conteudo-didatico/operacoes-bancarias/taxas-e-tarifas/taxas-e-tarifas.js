@@ -201,11 +201,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
 
-registrarConteudoVisto(
-  "Taxas e Tarifas",
-  "./taxas-e-tarifas.html",
-  "../../../imagens/Tarifasetaxas.webp"
-);
+
 
 
 // Função para delogar o usuário

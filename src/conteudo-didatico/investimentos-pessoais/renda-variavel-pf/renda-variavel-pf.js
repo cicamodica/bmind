@@ -182,11 +182,6 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Renda Variavel",
-  "./renda-variavel-pf.html",
-  "../../../imagens/RendaVariavelPFmenor.jpg"
-);
 
 // Função para delogar o usuário
 function sair() {

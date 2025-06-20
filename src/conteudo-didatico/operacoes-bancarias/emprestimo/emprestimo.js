@@ -201,11 +201,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
 
-registrarConteudoVisto(
-  "Emprestimo",
-  ".emprestimo.html",
-  "../../../imagens/Emprestimos.jpg"
-);
+
 
 
 

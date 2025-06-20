@@ -201,11 +201,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Cartão de Débito",
-  "./cartao-de-debito.html",
-  "../../../imagens/CartaoDeDebito.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {

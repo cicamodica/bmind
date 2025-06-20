@@ -186,11 +186,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
 
-registrarConteudoVisto(
-  "Análise de Balanço",
-  "./conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html",
-  "../../../imagens/AnaliseDeBalancos.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {

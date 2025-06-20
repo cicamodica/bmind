@@ -185,11 +185,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
 
-registrarConteudoVisto(
-  "Planejamento Financeiro",
-   "../../financas-pessoais/planejamento-financeiro/planejamento-financeiro.html",
-  "../../../imagens/PlanejamentoFinanceiro.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {

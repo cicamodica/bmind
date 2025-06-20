@@ -183,11 +183,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Renda Variavel",
-   ".renda-variavel-pj.html",
-  "../../../imagens/RendaVariavelPJ.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {

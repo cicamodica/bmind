@@ -183,11 +183,7 @@ function registrarConteudoVisto(nome, url, imagem) {
   // Salva de volta no localStorage
   localStorage.setItem(emailUsuario, JSON.stringify(dadosUsuario));
 }
-registrarConteudoVisto(
-  "Renda Fixa",
-  "./renda-fixa-pf.html",
-  "../../../imagens/RendaFixaPF.jpg"
-);
+
 
 // Função para delogar o usuário
 function sair() {
