@@ -3,7 +3,7 @@
 /*Adicionar fontes na font family = Poppins Thin*/
 @font-face {
   font-family: "Poppins";
-  src: url("../../poppins/Poppins-Thin.ttf") format("truetype");
+  src: url("../../../poppins/Poppins-Thin.ttf") format("truetype");
   font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
   font-style: normal;
 }
