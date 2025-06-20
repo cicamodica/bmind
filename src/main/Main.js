@@ -343,39 +343,70 @@ exibirConteudoRecomendados();
 // This function now uses the financial data stored by the dashboard
 window.renderMainPieChart = function () {
   const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+  const graficoContainer = document.querySelector(".chart-container");
+  const canvas = document.getElementById("pieChartMain");
 
+  // Funções auxiliares
+  function formatarMoeda(valor) {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(valor);
+  }
+
+  function exibirMensagemSemDados(mensagemResumo, mensagemHistorico) {
+    if (graficoContainer && canvas) {
+      canvas.style.display = "none"; // oculta o gráfico
+      graficoContainer.innerHTML = `
+        <div style="
+          display: flex; 
+          justify-content: center; 
+          align-items: center; 
+          height: 250px;
+        ">
+          <p style="color: #666; font-size: 16px;">Nenhum registro encontrado.</p>
+        </div>
+      `;
+    }
+
+    document.getElementById("resumo-financeiro").innerHTML = `
+      <h3>Resumo Mensal</h3>
+      <p>${mensagemResumo}</p>
+    `;
+
+    document.getElementById("historico-mensal").innerHTML = `
+      <div class="historico-topo">
+        <h3>Histórico do Mês</h3>
+        <button class="btn-dashboard" onclick="redirecionarCadastro()">Cadastrar Novo Registro</button>
+      </div>
+      <p style="text-align:center; margin-top: 20px;">${mensagemHistorico}</p>
+    `;
+  }
+
+  // ✅ 1. Redirecionamento se não estiver logado
   if (!emailUsuarioLogado) {
-    // Hide chart container and show a message if no user is logged in
-    document.getElementById("pieChartMain").style.display = "none";
-    document.getElementById("resumo-financeiro").innerHTML = "<h3>Resumo Mensal</h3><p>Faça login para ver seus dados financeiros.</p>";
-    document.getElementById("historico-mensal").innerHTML = "<h3>Histórico do Mês</h3><p>Faça login para ver seu histórico.</p>";
+    window.location.href = "/src/login.html"; // ajuste se o caminho for diferente
     return;
   }
 
   const dadosDoUsuario = JSON.parse(localStorage.getItem(emailUsuarioLogado));
 
+  // ✅ 2. Se estiver logado mas sem dados financeiros
   if (!dadosDoUsuario || !dadosDoUsuario.financialData) {
-    // If financialData is not present, initialize it or show a message
-    document.getElementById("pieChartMain").style.display = "none";
-    document.getElementById("resumo-financeiro").innerHTML = "<h3>Resumo Mensal</h3><p>Nenhum dado financeiro encontrado. Adicione transações no seu Dashboard.</p>";
-    document.getElementById("historico-mensal").innerHTML = "<h3>Histórico do Mês</h3><p>Nenhum histórico encontrado. Adicione transações no seu Dashboard.</p>";
+    exibirMensagemSemDados(
+      "Nenhum dado financeiro encontrado. Adicione transações no seu Dashboard.",
+      "Nenhum histórico encontrado."
+    );
     return;
   }
 
-  // Ensure canvas is visible
-  document.getElementById("pieChartMain").style.display = "block";
-
-
-  const allData = dadosDoUsuario.financialData;
-
-  // Helper function to expand recurring transactions (copied from dashboard script)
+  // Função para expandir transações recorrentes
   function expandRecurringTransactions(transactions) {
-    const expandedTransactions = [];
+    const expanded = [];
     const today = new Date();
     const currentYear = today.getFullYear();
-
-    const startDisplayYear = 2024; // Início do período para exibição
-    const endDisplayYear = currentYear + 5; // Fim do período para exibição
+    const startDisplayYear = 2024;
+    const endDisplayYear = currentYear + 5;
 
     transactions.forEach((item) => {
       if (item.recorrente) {
@@ -383,41 +414,29 @@ window.renderMainPieChart = function () {
         let currentDate = new Date(originalDate);
 
         while (currentDate.getFullYear() < startDisplayYear) {
-          if (item.frequencia === "mensal") {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-          } else if (item.frequencia === "semanal") {
-            currentDate.setDate(currentDate.getDate() + 7);
-          } else if (item.frequencia === "diaria") {
-            currentDate.setDate(currentDate.getDate() + 1);
-          } else {
-            break;
-          }
+          if (item.frequencia === "mensal") currentDate.setMonth(currentDate.getMonth() + 1);
+          else if (item.frequencia === "semanal") currentDate.setDate(currentDate.getDate() + 7);
+          else if (item.frequencia === "diaria") currentDate.setDate(currentDate.getDate() + 1);
+          else break;
         }
 
         while (currentDate.getFullYear() <= endDisplayYear) {
-          if (
-            item.dataEncerramento &&
-            new Date(currentDate) > new Date(item.dataEncerramento + "T23:59:59")
-          ) {
-            break;
-          }
+          if (item.dataEncerramento && currentDate > new Date(item.dataEncerramento + "T23:59:59")) break;
 
-          if (!item.dataEncerramento || new Date(currentDate) <= new Date(item.dataEncerramento + "T23:59:59")) {
-            expandedTransactions.push({
-              ...item,
-              data: currentDate.toISOString().split("T")[0],
-            });
-          }
+          expanded.push({
+            ...item,
+            data: currentDate.toISOString().split("T")[0],
+          });
 
           if (item.frequencia === "mensal") {
             const nextMonth = currentDate.getMonth() + 1;
             currentDate.setMonth(nextMonth);
             if (currentDate.getMonth() !== (nextMonth % 12)) {
-                currentDate.setDate(0);
-                currentDate.setDate(originalDate.getDate());
-                if (currentDate.getMonth() !== (nextMonth % 12)) {
-                    currentDate = new Date(currentDate.getFullYear(), nextMonth, 0);
-                }
+              currentDate.setDate(0);
+              currentDate.setDate(originalDate.getDate());
+              if (currentDate.getMonth() !== (nextMonth % 12)) {
+                currentDate = new Date(currentDate.getFullYear(), nextMonth, 0);
+              }
             }
           } else if (item.frequencia === "semanal") {
             currentDate.setDate(currentDate.getDate() + 7);
@@ -430,31 +449,36 @@ window.renderMainPieChart = function () {
           if (currentDate > new Date(endDisplayYear + 1, 0, 1)) break;
         }
       } else {
-        expandedTransactions.push(item);
+        expanded.push(item);
       }
     });
 
-    return expandedTransactions;
+    return expanded;
   }
 
-  const expandedEntradas = expandRecurringTransactions(allData.entradas || []);
-  const expandedSaidas = expandRecurringTransactions(allData.saidas || []);
+  // Processamento
+  const allData = dadosDoUsuario.financialData;
+  const entradas = expandRecurringTransactions(allData.entradas || []);
+  const saidas = expandRecurringTransactions(allData.saidas || []);
 
-  const totalEntradas = expandedEntradas.reduce(
-    (sum, item) => sum + item.valor,
-    0
-  );
-  const totalSaidas = expandedSaidas.reduce(
-    (sum, item) => sum + item.valor,
-    0
-  );
+  const totalEntradas = entradas.reduce((sum, item) => sum + item.valor, 0);
+  const totalSaidas = saidas.reduce((sum, item) => sum + item.valor, 0);
 
-  const ctx = document.getElementById("pieChartMain").getContext("2d");
-
-  // Destroy previous chart instance if it exists
-  if (window.pieChartMainInstance) {
-    window.pieChartMainInstance.destroy();
+  // ✅ 3. Esconde gráfico se totais forem 0
+  if (totalEntradas === 0 && totalSaidas === 0) {
+    exibirMensagemSemDados(
+      "Nenhum dado financeiro encontrado. Adicione transações no seu Dashboard.",
+      "Nenhum histórico encontrado."
+    );
+    return;
   }
+
+  // Mostrar canvas
+  if (canvas) canvas.style.display = "block";
+
+  // Chart.js - destruição anterior
+  const ctx = canvas.getContext("2d");
+  if (window.pieChartMainInstance) window.pieChartMainInstance.destroy();
 
   window.pieChartMainInstance = new Chart(ctx, {
     type: "doughnut",
@@ -463,7 +487,7 @@ window.renderMainPieChart = function () {
       datasets: [{
         data: [totalEntradas, totalSaidas],
         backgroundColor: ["#4CAF50", "#F44336"],
-      }, ],
+      }],
     },
     options: {
       responsive: true,
@@ -475,10 +499,7 @@ window.renderMainPieChart = function () {
               let label = context.label || "";
               if (label) label += ": ";
               if (context.parsed !== null) {
-                label += new Intl.NumberFormat("pt-BR", {
-                  style: "currency",
-                  currency: "BRL",
-                }).format(context.parsed);
+                label += formatarMoeda(context.parsed);
               }
               return label;
             },
@@ -491,53 +512,50 @@ window.renderMainPieChart = function () {
     },
   });
 
-  // Atualiza o resumo financeiro
-  document.getElementById("resumo-entradas").textContent = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  }).format(totalEntradas);
+  // Atualiza Resumo
+  document.getElementById("resumo-entradas").textContent = formatarMoeda(totalEntradas);
+  document.getElementById("resumo-saidas").textContent = formatarMoeda(totalSaidas);
 
-  document.getElementById("resumo-saidas").textContent = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  }).format(totalSaidas);
-
-  // FILTRAR histórico do mês atual e exibir
+  // Histórico do mês atual
   const now = new Date();
   const anoAtual = now.getFullYear();
-  const mesAtual = now.getMonth(); // 0-indexado
+  const mesAtual = now.getMonth();
 
-  const historicoDoMes = [...expandedEntradas, ...expandedSaidas]
+  const historicoDoMes = [...entradas, ...saidas]
     .filter(item => {
       const data = new Date(item.data);
       return data.getFullYear() === anoAtual && data.getMonth() === mesAtual;
     })
-    .sort((a, b) => new Date(b.data) - new Date(a.data)); // mais recentes primeiro
+    .sort((a, b) => new Date(b.data) - new Date(a.data));
 
   const lista = document.getElementById("lista-historico");
-  lista.innerHTML = ""; // limpar antes
+  lista.innerHTML = "";
 
   if (historicoDoMes.length === 0) {
     lista.innerHTML = "<p>Sem transações neste mês.</p>";
   } else {
-    historicoDoMes.forEach((item) => {
+    historicoDoMes.forEach(item => {
       const div = document.createElement("div");
       div.classList.add("transacao-item");
       div.classList.add(item.tipo === "entrada" ? "transacao-entrada" : "transacao-saida");
 
-      const formattedValue = new Intl.NumberFormat("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-      }).format(item.valor);
+      const formattedValue = formatarMoeda(item.valor);
       const formattedDate = new Date(item.data + "T12:00:00").toLocaleDateString("pt-BR");
+      const categoria = item.categoriaText || item.categoria || "Sem Categoria";
 
-     div.textContent = `${formattedDate} - ${item.tipo === "entrada" ? "Entrada" : "Saída"}: ${formattedValue} - ${item.categoriaText || "Sem Categoria"}`;
-
+      div.innerHTML = `
+        <strong>${formattedDate}</strong> 
+        <span style="color:${item.tipo === "entrada" ? "#4CAF50" : "#F44336"};">
+          ${item.tipo === "entrada" ? "Entrada" : "Saída"}: ${formattedValue}
+        </span> 
+        <em>${categoria}</em>
+      `;
 
       lista.appendChild(div);
     });
   }
 };
+
 
 document.addEventListener("DOMContentLoaded", function () {
   renderMainPieChart(); // Call this on page load

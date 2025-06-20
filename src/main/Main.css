@@ -135,6 +135,14 @@ header {
   height: 55px;
   margin-right: auto;
 }
+.chart-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  min-height: 250px;
+
+}
 /*Menu dropdown:*/
 
 /* Reset */
@@ -353,7 +361,7 @@ li {
 button,
 .btn-atualizar,
 .confirmar-atualizacao,
-.btn-excluir,
+.btn-excluir,.btn-dashboard,
 #btn-cadastrar {
   padding: 10px 16px;
   font-size: 0.95rem;
