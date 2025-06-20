@@ -21,7 +21,7 @@ document
 
     const templateParams = {
       email: email,
-      link: `http://127.0.0.1:5501/src/redefinir-senha/redefinir_senha.html?email=${email}`,
+      link: `https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/redefinir-senha/redefinir_senha.html`,
     };
 
       emailjs
