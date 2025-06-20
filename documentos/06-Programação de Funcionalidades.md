@@ -59,7 +59,7 @@ Sua principal função é permitir que os usuários autentiquem suas identidades
 ### Estrutura de Dados
 
     dadosUsuario = { 
-        email: "ceciliacmodica@gmail.com"
+        email: "ceciliateste@gmail.com"
         senha: "123456"
         }
 
