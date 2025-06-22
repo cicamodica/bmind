@@ -20,7 +20,7 @@ Para organização e distribuição das tarefas do projeto, a equipe está utili
 - In progress: Quando uma tarefa tiver sido iniciada, ela é movida para cá. 
 - Done: nesta lista são colocadas as tarefas que passaram pelos testes e controle de qualidade e estão prontos para ser entregues ao usuário. Não há mais edições ou revisões necessárias, ele está agendado e pronto para a ação.
 
-O quadro kanban do grupo no GitHub está disponível no link (https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/1876/views/1) e é apresentado, no estado atual, na figura abaixo:
+O quadro kanban do grupo no GitHub está disponível no link (https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/1876)) e é apresentado, no estado atual, na figura abaixo:
 
 ![Kanban](https://github.com/user-attachments/assets/3d285b02-616e-4f87-b6cf-a6417e839ec4)
 
