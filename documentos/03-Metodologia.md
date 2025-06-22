@@ -22,7 +22,7 @@ Para organização e distribuição das tarefas do projeto, a equipe está utili
 
 O quadro kanban do grupo no GitHub está disponível no link (https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/1876/views/1) e é apresentado, no estado atual, na figura abaixo:
 
-![image](https://github.com/user-attachments/assets/d8dc5c41-e8ad-47c7-b1fd-e47b0bd55cb1)
+![Kanban](https://github.com/user-attachments/assets/3d285b02-616e-4f87-b6cf-a6417e839ec4)
 
 Figura 2 - Tela do kanban no GitHub utilizada pelo grupo
 
@@ -52,13 +52,13 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 
 | AMBIENTE                            | PLATAFORMA                         | LINK DE ACESSO                         |
 |-------------------------------------|------------------------------------|----------------------------------------|
-| Repositório de código fonte         | GitHub                             | http://....                            |
+| Repositório de código fonte         | GitHub                             | (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/tree/main/src)|
 | Documentos do projeto               | GitHub                             | http://....                            |
-| Projeto de Interface                | Canva                              | [http://.... ](https://www.canva.com/design/DAGj5G4VV9k/LZj1_tkLqIyLEPVMgSnv0A/edit?utm_content=DAGj5G4VV9k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)                           |
+| Projeto de Interface                | Canva                              | (https://www.canva.com/design/DAGj5G4VV9k/LZj1_tkLqIyLEPVMgSnv0A/edit?utm_content=DAGj5G4VV9k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)                           |
 | Gerenciamento do Projeto            | GitHub Projects                    | http://....                            |
-| Hospedagem                          | GitHub Pages                       | http://....                            |
+| Hospedagem                          | GitHub Pages                       | (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/)|
 
 
 ### Estratégia de Organização de Codificação 
 
-Todos os artefatos relacionados a implementação e visualização dos conteúdos do projeto do site deverão ser inseridos na pasta [código-fonte](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/tree/main/codigo-fonte) . Consulte também a nossa sugestão referente a estratégia de organização de codificação a ser adotada pela equipe de desenvolvimento do projeto.
+Todos os artefatos relacionados a implementação e visualização dos conteúdos do projeto do site deverão ser inseridos na pasta (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/tree/main/src).
