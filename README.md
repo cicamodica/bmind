@@ -38,7 +38,7 @@ O objetivo principal deste projeto é desenvolver uma aplicação web que seja d
 
 # Hospedagem
 
-* Insira o endereço eletrônico público de acesso ao conteúdo publicado. 
+(https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/) 
 
 # Código-Fonte
 
