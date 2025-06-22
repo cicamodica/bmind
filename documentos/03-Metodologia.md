@@ -53,9 +53,9 @@ Os artefatos do projeto são desenvolvidos a partir de diversas plataformas e a 
 | AMBIENTE                            | PLATAFORMA                         | LINK DE ACESSO                         |
 |-------------------------------------|------------------------------------|----------------------------------------|
 | Repositório de código fonte         | GitHub                             | (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/tree/main/src)|
-| Documentos do projeto               | GitHub                             | http://....                            |
+| Documentos do projeto               | GitHub                             | (https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind)|
 | Projeto de Interface                | Canva                              | (https://www.canva.com/design/DAGj5G4VV9k/LZj1_tkLqIyLEPVMgSnv0A/edit?utm_content=DAGj5G4VV9k&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)                           |
-| Gerenciamento do Projeto            | GitHub Projects                    | http://....                            |
+| Gerenciamento do Projeto            | GitHub Projects                    | (https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/1876)|
 | Hospedagem                          | GitHub Pages                       | (https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2025-1-e1-proj-web-t1-pmv-ads-2025-1-e1-proj-bmind/src/)|
 
 
