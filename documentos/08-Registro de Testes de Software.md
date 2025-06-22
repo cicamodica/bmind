@@ -40,13 +40,12 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 |:---|:---|
 | Resultados obtidos | Ao clicar em “sair” o programa excluí o campo “usuário logado” do localstorage e mantem o cadastro do usuário para futuros acessos; Ao clicar em “sair” o usuário é direcionado para tela de login; Logout não exclui atualizações feitas no programa;|
 | Responsável pela execução do caso de Teste | Kauê Alves dos Reis |
-|Registro do teste | ![logoutgif](https://github.com/user-attachments/assets/d56d1010-74b0-43a5-86a6-637e9a5010a8)
-   |
+|Registro do teste | ![logoutgif](https://github.com/user-attachments/assets/d56d1010-74b0-43a5-86a6-637e9a5010a8)|
 
 
 |Caso de Teste    | CT-08 - Teste da Página Main (Minha Área) |
 |:---|:---|
-| Resultados obtidos | A aplicação exibe Boas- vindas com seu nome; O dashboard do main é igual ao do edição de tela; O resumo financeiro é somatoria das receitas e despesas mensais do mes atual; O historico do mes só exibe os regsitros do mes atual; As metas são criadas corretamente; As metas são exibidas corretamente; As metas são atualizadas corretamente; As metas são excluidas corretamente; Os conteudos vistos recentmente são exibisdos corretamente; Os links dos conteudos vistos recentemente são redirecionados corretamente; Os conteudos recomendados são exibidos corretamente; Os links do conteudos recomendado estão sendo redirecionados para o conteudo correto;|
+| Resultados obtidos | A aplicação exibe Boas-vindas com seu nome; O dashboard do main é igual ao do edição de tela; O resumo financeiro é somatoria das receitas e despesas mensais do mes atual; O historico do mes só exibe os regsitros do mes atual; As metas são criadas corretamente; As metas são exibidas corretamente; As metas são atualizadas corretamente; As metas são excluidas corretamente; Os conteudos vistos recentmente são exibisdos corretamente; Os links dos conteudos vistos recentemente são redirecionados corretamente; Os conteudos recomendados são exibidos corretamente; Os links do conteudos recomendado estão sendo redirecionados para o conteudo correto;|
 | Responsável pela execução do caso de Teste | Kauê Alves dos Reis |
 |Registro  do teste | ![Maingif](https://github.com/user-attachments/assets/efe27de1-e4f2-4bbe-bb27-7a759027154c) |
 
