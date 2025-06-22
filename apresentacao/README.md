@@ -2,7 +2,7 @@
 
 ## Apresentação de Slides
 
-[Adicione pdf de apresentação.]
+[Apresentação Slides Bmind.pdf](https://github.com/user-attachments/files/20855251/Apresentacao.Slides.Bmind.pdf)
 
 ## Vídeo de apresentação
 
