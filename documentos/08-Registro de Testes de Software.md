@@ -81,11 +81,9 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 
 |Caso de Teste    | CT-13 - Teste dos Menus|
 |:---|:---|
-
 | Resultados obtidos |Icone de menu aparente em todas as páginas; Menu exibido de acordo com o usuário; Todos os botões redirecionam para a página correta; Menu responsivo |
 | Responsável pela execução do caso de Teste | Kauê Alves dos Reis |
-|Registro do teste |  ![menugif](https://github.com/user-attachments/assets/38ffe6ce-4d30-40e0-bd0b-09f69dd62ab1) |
- |
+|Registro do teste | ![menugif](https://github.com/user-attachments/assets/38ffe6ce-4d30-40e0-bd0b-09f69dd62ab1) |
 
 
 |Caso de Teste    | CT-14 - Teste das Páginas de Feedback |
