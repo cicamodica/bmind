@@ -54,7 +54,8 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 |:---|:---|
 | Resultados obtidos | Ao preencher e salvar os dados que foram inseridos corretamente, os conteúdos dos gráficos se atualizam de acordo com as entradas de dados; Ao selecionar a opção de “Valor recorrente” dentro do pop-up de edição, o valor é carregado de acordo com a frequência que foi selecionada; Caso algum dado seja preenchido de forma incorreta ou algum campo não seja preenchido, a página informa um erro; Ao modificar um registro em “Editar Dados” o Dashboard é automaticamente atualizado para as informações agora atualizadas; Ao clicar em remover dados, o registro de entradas ou saídas selecionado some do Dashboard e do Histórico. Ao filtrar o ano e mês, o Dashboard corresponde aos dados inseridos por data. Ao clicar em “Buscar” após filtrar os dados, a página exibe uma listagem do histórico ordenado por data; Uma mensagem amigável como “Nenhum conteúdo visto ainda” é exibida quando o usuário tem seu primeiro acesso;|
 | Responsável pela execução do caso de Teste | Maria Cecilia Caruzzo Modica|
-|Registro do teste|  |
+|Registro do teste| ![dashgif](https://github.com/user-attachments/assets/2583a5f0-7c3c-4cc3-afe5-a0d8c42203d4) |
+
 
 
 |Caso de Teste    | CT-10 - Testes da Páginas de Conteudo |
@@ -76,13 +77,14 @@ Relatório com as evidências dos testes de software realizados na aplicação p
 |:---|:---|
 | Resultados obtidos | Acesso da pagina com sucesso; Inserimento de dados dos campos com sucesso; Uploud de imagem realizado com sucesso; Botão salvar  funcionando; Dados salvos estão sendo corretamente salvo no local sotorage dentro email do usuario; Responsividade funcionando ; Botão menu  responsivo
 | Responsável pela execução do caso de Teste | Matheus Feliciano |
-|Registro do Teste |  |
+|Registro do Teste | ![perfilgif](https://github.com/user-attachments/assets/02f55070-96df-482b-a700-fbeda20fc1c3) |
 
 |Caso de Teste    | CT-13 - Teste dos Menus|
 |:---|:---|
+
 | Resultados obtidos |Icone de menu aparente em todas as páginas; Menu exibido de acordo com o usuário; Todos os botões redirecionam para a página correta; Menu responsivo |
 | Responsável pela execução do caso de Teste | Kauê Alves dos Reis |
-|Registro do teste |  ![menugif](https://github.com/user-attachments/assets/38ffe6ce-4d30-40e0-bd0b-09f69dd62ab1)
+|Registro do teste |  ![menugif](https://github.com/user-attachments/assets/38ffe6ce-4d30-40e0-bd0b-09f69dd62ab1) |
  |
 
 
