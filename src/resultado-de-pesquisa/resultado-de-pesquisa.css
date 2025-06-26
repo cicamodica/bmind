@@ -1,0 +1,637 @@
+/*Download da fonte: https://fontmeme.com/fontes/fonte-poppins/#previewtool + Importação: https://cursos.alura.com.br/forum/topico-importacao-de-fontes-409962*/
+
+/*Adicionar fontes na font family = Poppins Thin*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+
+body {
+  /*Estilização geral do corpo da página */
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f6f8;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 70px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.left-group,
+.right-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.center-group {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
+}
+
+/* Ícone de perfil */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 29px;
+  color: white;
+}
+/* Botão 'Minha Área' */
+.minha-area-botao {
+  display: inline-block; /* Para permitir padding e margin corretamente */
+  margin: 2px; /* Espaço externo ao redor do botão */
+  padding: 6px 12px; /* Espaço interno (em cima/baixo e lados) */
+  background-color: #ffffff22; /* Cor de fundo (semi-transparente aqui) */
+  color: white; /* Cor do texto */
+  border: 1px solid white; /* Borda branca */
+  border-radius: 6px; /* Cantos arredondados */
+  text-decoration: none; /* Tira o sublinhado */
+  font-weight: bold; /* Deixa o texto mais forte */
+  font-size: 10px;
+}
+.user-actions a {
+  /* Link para o perfil */
+  color: white;
+  text-decoration: none;
+}
+
+.user-actions i {
+  font-size: 33px;
+}
+
+#login-nao-logado a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold; /* Deixa o texto mais forte */
+  font-size: 15px; /* Tamanho da fonte */
+}
+
+.search-container {
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  display: flex;
+  width: 900px;
+  align-items: center;
+  z-index: 1;
+}
+
+.search-bar {
+  /*Estilização da barra de pesquisa*/
+  font-family: "Poppins";
+  border-radius: 40px;
+  outline: none;
+  padding: 12px 40px;
+  font-weight: 100;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+  margin: 30px;
+  padding-left: 20px;
+}
+
+.search-icon {
+  /*Estilização do ícone de pesquisa */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 50px;
+  color: black;
+}
+
+.header-item .logo {
+  /*Estilização do logo*/
+  height: 55px;
+  margin-right: auto;
+}
+
+.header-icon {
+  /*Estilização do ícone de seta na classe .nav-icon, que está dentro de nav pai (Seta)*/
+  font-size: 35px;
+  color: #ffffff;
+}
+
+.header-link {
+  /*Estilização do link ligado ao ícone de seta na classe .nav-link, que está dentro de nav pai (Seta)*/
+  background-color: transparent;
+  border: unset;
+  text-decoration: none;
+}
+
+.titulo-results {
+  max-width: 100vw;
+  padding: 0 20px;
+  display: flex;
+  justify-content: left;
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+.container-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0 auto; /* centraliza horizontalmente */
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.plan-img {
+  /*Estilização da imagem no posicionamento na página*/
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+img {
+  max-height: 546px;
+  max-width: 546px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.plan-link {
+  text-decoration: none; /* Remove a linha do hiperlink */
+}
+
+.plan-link h2 {
+  color: #37a6d1; /* Altera a cor do hiperlink */
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.plan-descricao {
+  color: #222;
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: justify;
+  width: auto;
+}
+
+.card {
+  /* /* Add shadows to create the "card" effect  */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* /* On mouse-over, add a deeper shadow  */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* /* Add some padding inside the card container  */
+.container {
+  padding: 2px 16px;
+}
+
+/* Oculta o ícone do mobile por padrão */
+.search-mobile-icon {
+  display: none;
+  font-size: 22px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.search-mobile-icon i {
+  color: white;
+}
+
+.mobile-search-bar {
+  display: none;
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.mobile-search-bar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.mobile-search-bar button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.mobile-search-bar button:hover {
+  background-color: #02327e;
+}
+
+@media (max-width: 1024px) {
+  .search-container {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .plan-img {
+    flex-direction: column;
+    align-items: center; /* <-- centraliza horizontalmente */
+  }
+
+  .plan-descricao {
+    font-size: 15px;
+  }
+
+  .card {
+    padding: 20px;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  #login-nao-logado a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500; /* Deixa o texto mais forte */
+    font-size: 13px; /* Tamanho da fonte */
+  }
+
+  .user-actions .barra {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .right-group {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .minha-area-botao {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  #login-nao-logado a {
+    font-size: 13px; /* Reforça o tamanho já usado */
+  }
+
+  .user-area {
+    margin-left: 5px;
+  }
+
+}
+
+/* Antes de 860px, oculta a barra e mostra o ícone */
+@media (max-width: 860px) {
+  .search-container.search-desktop {
+    display: none;
+  }
+
+  .search-mobile-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+
+  /* Mostrar a barra mobile SOMENTE abaixo de 861px */
+  #mobileSearchBar {
+    display: block;
+  }
+}
+
+/* Depois de 861px, oculta o ícone e mostra a barra */
+@media (min-width: 861px) {
+  .search-mobile-icon {
+    display: none;
+  }
+
+  
+/* Ocultar a barra em telas maiores que 861px */
+  #mobileSearchBar {
+    display: none !important; /* força a ocultação mesmo se o JS ativar */
+  }
+
+  .search-container.search-desktop {
+    display: flex;
+  }
+}
+
+@media (max-width: 768px) {
+  .right-group {
+    margin-right: 5px;
+  }
+
+  .search-container {
+    margin: 10px 0;
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .search-container.search-desktop {
+    display: none; /* some com a barra */
+  }
+
+  .titulo-results {
+    margin-top: 40px;
+    padding: 0 15px;
+    font-size: 22px;
+  }
+
+  .plan-descricao {
+    font-size: 15px;
+  }
+
+  .plan-link h2 {
+    font-size: 20px;
+  }
+
+  .card {
+    margin: 10px 0;
+    padding: 15px;
+  }
+
+  .plan-img {
+    gap: 15px;
+  }
+
+  .minha-area-botao {
+    font-size: 9px;
+    padding: 4px 10px;
+  }
+
+  .search-mobile-icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .right-group {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .user-actions {
+    flex-direction: row;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  #login-nao-logado a {
+    font-size: 13px; /* Reforça o tamanho já usado */
+  }
+
+  .user-area {
+    margin-left: 5px;
+  }
+
+  .user-actions .barra {
+    font-size: 18px;
+    padding: 0px;
+  }
+  
+  .user-actions i {
+    font-size: 29px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container.search-desktop {
+    display: none; /* some com a barra */
+  }
+
+  .search-bar {
+    font-size: 16px;
+    padding: 10px 30px;
+  }
+
+  .search-icon {
+    right: 30px;
+  }
+
+  .plan-descricao {
+    font-size: 14px;
+  }
+
+  .plan-link h2 {
+    font-size: 18px;
+  }
+
+  .titulo-results {
+    font-size: 20px;
+  }
+  .card {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0; /* remove margem lateral que estava estourando */
+    box-sizing: border-box;
+  }
+
+  .plan-img {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .container-results {
+    padding: 10px;
+  }
+
+  .search-mobile-icon {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .left-group {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+
+  .center-group {
+    display: none; /* escondemos a barra de pesquisa nesse tamanho */
+  }
+
+  .right-group {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-mobile-icon,
+  .minha-area-botao,
+  #perfil-logado {
+    display: flex;
+    align-items: center;
+  }
+
+  .minha-area-botao {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  .user-actions {
+    font-size: 22px;
+    margin-left: 0;
+  }
+
+  .header-item .logo {
+    height: 40px;
+  }
+
+  .header-icon {
+    font-size: 28px;
+  }
+
+  .user-actios .barra {
+    font-size: 16px;
+    padding: 0px;
+  }
+
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 15px;
+    gap: 10px;
+  }
+
+  .left-group {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+  }
+
+  .center-group {
+    display: none; /* escondemos a barra de pesquisa nesse tamanho */
+  }
+
+  .right-group {
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-mobile-icon,
+  .minha-area-botao,
+  #perfil-logado {
+    display: flex;
+    align-items: center;
+  }
+
+  .minha-area-botao {
+    font-size: 10px;
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+
+  .header-item .logo {
+    height: 40px;
+  }
+
+  .header-icon {
+    font-size: 28px;
+  }
+}
+
+@media (max-width:480px) and (min-width:375px) {
+  
+  .user-actions .barra {
+    font-size: 14px;
+    padding: 0px;
+  }
+
+  
+  .user-actions i {
+    font-size: 29px;
+    padding-right: 0px;
+  }
+}
