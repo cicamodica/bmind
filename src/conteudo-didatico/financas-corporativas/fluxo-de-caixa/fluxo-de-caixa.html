@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <link
+      rel="stylesheet"
+      href="fluxo-de-caixa.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+ <body>
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i></div>
+          <div class="header-item">
+            <img src="../../../imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
+        </div>
+        <div class="center-group">
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            /><a class="search-button" id="search-button" href="#"
+              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="right-group">
+
+            <button class="mobile-search-trigger" id="mobileSearchTrigger" aria-label="Abrir pesquisa">
+               <i class="fa-solid fa-magnifying-glass"></i>  <!--mover para a o grupo da direita-->
+             </button>
+
+
+            <div class="user-actions" id="login-nao-logado">
+               <a href="../../../login/login.html">Fazer login</a>
+               <span>|</span>
+               <a href="../../../cadastro/cadastro.html">Cadastrar-se</a>
+              </div>
+ 
+              <div class="user-area"> <a href="../../../main/Main.html" class="minha-area-botao">Minha Área</a>
+                  </div>
+ 
+ 
+            <div class="user-actions" id="perfil-logado">
+               <a href="../../../perfil/perfil.html">
+                 <i class="fa-regular fa-circle-user"></i>
+               </a>
+              </div>
+               
+           
+        </div>
+      </header> 
+    </div>  
+      <nav class="dropdown-menu" id="dropdownMenu">
+        <ul id="menu">
+          <li class="item-logged">
+            <a class="perfil" href="../../../perfil/perfil.html">Perfil</a>
+          </li>
+          <li class="item-logged">
+            <a href="../../../main/Main.html">Minha Área</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" onclick="redirecionarCadastro()">Meu Dashboard</a>
+          </li>
+          <li class="has-submenu">
+            <a href="#">Conteúdo Didático</a>
+            <ul class="submenu">
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Finanças Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                      onclick="registrarConteudoVisto('Planejamento Financeiro',
+                      '../../financas-pessoais/planejamento-financeiro/planejamento-financeiro.html',
+                      '../../../imagens/PlanejamentoFinanceiro.jpg')">
+                      Planejamento Financeiro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                      onclick="registrarConteudoVisto('Orçamento Doméstico',
+                      '../../financas-pessoais/orcamento-domestico/orcamento-domestico.html',
+                      '../../../imagens/OrcamentoDomestico.jpg')">
+                      Orçamento Doméstico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                      onclick="registrarConteudoVisto('Controle de Dívidas',
+                      '../../financas-pessoais/controle-de-dividas/controle-de-dividas.html',
+                      '../../../imagens/ControleDividas.jpg')">
+                      Controle de Dívidas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Finanças Corporativas</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../analise-de-balanco/analise-de-balanco.html"
+                      onclick="registrarConteudoVisto('Análise de Balanço',
+                      '../analise-de-balanco/analise-de-balanco.html',
+                      '../../../imagens/AnaliseDeBalancos.jpg')">
+                      Análise de Balanços
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./fluxo-de-caixa.html"
+                      onclick="registrarConteudoVisto('Fluxo de Caixa',
+                      './fluxo-de-caixa.html',
+                      '../../../imagens/FluxoDeCaixa.jpg')">
+                      Fluxo de Caixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../captacao-de-recursos/captacao-de-recursos.html"
+                      onclick="registrarConteudoVisto('Captação de Recursos',
+                      '../captacao-de-recursos/captacao-de-recursos.html',
+                      '../../../imagens/CaptacaoDeRecursos.jpg')">
+                      Captação de Recursos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../dre/dre.html"
+                      onclick="registrarConteudoVisto('D.R.E.',
+                      '../dre/dre.html',
+                      '../../../imagens/DRE.jpg')">
+                      D.R.E
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu">
+                <a href="#">Operações Bancárias</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../operacoes-bancarias/cartao-de-debito/cartao-de-debito.html"
+                      onclick="registrarConteudoVisto('Cartão de Débito',
+                      '../../operacoes-bancarias/cartao-de-debito/cartao-de-debito.html',
+                      '../../../imagens/CartaoDeDebito.jpg')">
+                      Cartão de Débito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/cartao-de-credito/cartao-de-credito.html"
+                      onclick="registrarConteudoVisto('Cartão de Crédito',
+                      '../../operacoes-bancarias/cartao-de-credito/cartao-de-credito.html',
+                      '../../../imagens/CartaodeCredito.png')">
+                      Cartão de Crédito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/emprestimo/emprestimo.html"
+                      onclick="registrarConteudoVisto('Empréstimo',
+                      '../../operacoes-bancarias/emprestimo/emprestimo.html',
+                      '../../../imagens/Emprestimos.jpg')">
+                      Empréstimos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/financiamento/financiamento.html"
+                      onclick="registrarConteudoVisto('Financiamento',
+                      '../../operacoes-bancarias/financiamento/financiamento.html',
+                      '../../../imagens/Financiamento.webp')">
+                      Financiamento
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+                      onclick="registrarConteudoVisto('Taxas e Tarifas',
+                      '../../operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html',
+                      '../../../imagens/TaxasTarifas.jpg')">
+                      Taxas e Tarifas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Investimentos Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html',
+                      '../../../imagens/RendaFixaPF.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html',
+                      '../../../imagens/RendaVariavelPFmenor.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html',
+                      '../../../imagens/FundoInvestimentosPF.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Investimentos Corporativos</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html',
+                      '../../../imagens/RendaFixaPJ.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html',
+                      '../../../imagens/RendaVariavelPFsub.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html',
+                      '../../../imagens/FundosDeInvestimentoPJ.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+ 
+          <li class="item-logged">
+            <a href="../../../Feedback/feedback.html">FAQ</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" id="botao-sair">Sair</a>
+          </li>
+        </ul>
+      </nav>
+                  <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+              <button type="button" onclick="buscarMobile()" class="mobile-buscar-btn-estilizado">
+              Buscar
+             </button>
+</div>
+    </div>
+
+    <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a id="botao-voltar" onclick="botaoVoltar()" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
+          </a>
+          <h1>Fluxo de Caixa</h1>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <section class="conteudo-didatico">
+        <div class="imagem-fluxo">
+          <img src="../../../imagens/FluxoDeCaixa.jpg" alt="Imagem" />
+        </div>
+        <div class="texto-conteudo-didatico">
+          <p class="introducao">
+            Você já teve a sensação de que vendeu bem, mas o dinheiro sumiu? Ou
+            que sua empresa está sempre no vermelho, mesmo com clientes
+            entrando? Isso provavelmente tem a ver com falta de controle do
+            fluxo de caixa. Neste artigo, vamos te explicar de forma simples e
+            prática o que é fluxo de caixa, por que ele é fundamental e como
+            você pode começar a controlar melhor o dinheiro que entra e sai do
+            seu negócio.
+          </p>
+
+          <h2>O que é Fluxo de Caixa?</h2>
+
+          <p class="topico-1">
+            Fluxo de caixa é o controle de todo o dinheiro que entra e sai da
+            empresa em um determinado período de tempo.
+          </p>
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span
+              ><strong>Entradas (Receitas):</strong> tudo que a empresa recebe
+              (vendas, pagamentos de clientes, investimentos)
+            </li>
+            <li>
+              <span class="list-icon"></span
+              ><strong>Saídas (Despesas):</strong> tudo que a empresa gasta
+              (contas, salários, impostos, fornecedores)
+            </li>
+          </ul>
+          <p class="topico-1">
+            O saldo entre essas duas movimentações mostra se a empresa está com
+            dinheiro sobrando (superavit) ou faltando (déficit) naquele período.
+          </p>
+
+          <h2>Para que serve o Fluxo de Caixa?</h2>
+          <p class="topico-2">
+            Manter um fluxo de caixa bem organizado ajuda você a:
+          </p>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> Saber se a empresa pode pagar suas
+              contas no mês
+            </li>
+            <li>
+              <span class="list-icon"></span> Prever momentos de aperto
+              financeiro
+            </li>
+            <li>
+              <span class="list-icon"></span> Planejar investimentos com mais
+              segurança
+            </li>
+            <li>
+              <span class="list-icon"></span> Evitar atrasos e juros
+              desnecessários
+            </li>
+            <li>
+              <span class="list-icon"></span> Negociar melhor com fornecedores e
+              clientes
+            </li>
+            <li>
+              <span class="list-icon"></span> Tomar decisões com base em dados
+              reais
+            </li>
+          </ul>
+
+          <h2>Tipos de Fluxo de Caixa</h2>
+
+          <h3>1. Fluxo de Caixa Operacional</h3>
+          <p class="topico-3">
+            Foca nas entradas e saídas do dia a dia da empresa: vendas, despesas
+            fixas, fornecedores, etc. Ideal para entender a saúde financeira das
+            operações do negócio.
+          </p>
+
+          <h3>2. Fluxo de Caixa Projetado</h3>
+          <p class="topico-3">
+            É uma previsão do que vai acontecer no futuro, com base em datas de
+            recebimento e pagamentos programados. Ajuda a planejar o caixa com
+            antecedência, evitando surpresas.
+          </p>
+
+          <h3>3. Fluxo de Caixa Livre</h3>
+          <p class="topico-3">
+            Mostra quanto dinheiro sobra de fato depois de todos os compromissos
+            pagos. Usado para saber se é possível distribuir lucros, investir ou
+            expandir.
+          </p>
+
+          <h2>Como montar um Fluxo de Caixa?</h2>
+
+          <p class="topico-4">
+            Você pode usar uma planilha, aplicativo ou sistema, mas os passos
+            são basicamente os mesmos:
+          </p>
+
+          <h3>Passo 1: Liste todas as entradas</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Vendas à vista e a prazo
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Recebimento de parcelas
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Investimentos recebidos
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Empréstimos
+            </li>
+          </ul>
+
+          <h3>Passo 2: Liste todas as saídas</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Aluguel, energia, água, internet
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Compras de mercadoria
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Salários e encargos
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Tributos e taxas
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Empréstimos a pagar
+            </li>
+          </ul>
+
+          <h3>Passo 3: Defina o período de análise</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Pode ser diário, semanal ou mensal
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Quanto menor o período, maior o controle
+            </li>
+          </ul>
+
+          <h3>Passo 4: Calcule o saldo</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              <strong>Fórmula para calcular o saldo:</strong> Saldo = Entradas -
+              Saídas
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Se o saldo for positivo a empresa gerou caixa e se for negativo
+              pode faltar dinheiro!
+            </li>
+          </ul>
+
+          <h2>Exemplos simples</h2>
+
+          <h3>Exemplo 1: Supermercado</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Entradas: R$ 80.000 em vendas
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Saídas: R$ 60.000 em despesas
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Saldo: R$ 20.000 de caixa positivo
+            </li>
+          </ul>
+
+          <h3>Exemplo 2: Loja de roupas</h3>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Entradas: R$ 40.000
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Saídas: R$ 42.000
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Saldo: R$ 2.000 negativo = precisa de atenção!
+            </li>
+          </ul>
+
+          <h2>Dicas práticas para organizar seu fluxo de caixa</h2>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Separe contas pessoais das contas da empresa
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Anote tudo: mesmo pequenos gastos contam
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Cuidado com vendas a prazo — só entre no fluxo quando receber
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Antecipe despesas fixas e variáveis
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Revise o fluxo de caixa com frequência
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Use ferramentas: planilhas, apps, ou ERPs financeiros. Aqui no
+              nosso site disponibilizamos uma Dashboard personalizado para você
+              acompanhar a sua vida financeira! É só fazer o cadastro!
+            </li>
+            <a class="signup" href="../../../cadastro/cadastro.html">
+              Clique aqui para fazer seu cadastro!
+            </a>
+          </ul>
+
+          <h2>Erros comuns que você pode evitar</h2>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              Contar com dinheiro que ainda não entrou
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Ignorar parcelamentos e datas de vencimento
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Esquecer de registrar pequenos valores
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Deixar para conferir o caixa apenas no final do mês
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              Não atualizar os dados com frequência
+            </li>
+          </ul>
+
+          <h2>Conclusão</h2>
+
+          <p class="topico-8">
+            Ter controle do fluxo de caixa é essencial para manter a empresa
+            viva e saudável. Ele mostra muito mais do que quanto você vendeu —
+            revela se o dinheiro está sendo bem administrado. Seja um pequeno
+            empreendedor, um profissional liberal ou gestor de uma empresa
+            maior, manter o fluxo de caixa em dia é o primeiro passo para
+            crescer com segurança e tranquilidade.
+          </p>
+
+          <h2>Outras Demonstrações Importantes</h2>
+          <p class="topico-9">
+            Além do fluxo de caixa, existem outras demonstrações financeiras
+            que ajudam a entender melhor a saúde financeira da empresa.
+          </p>
+          <h3>Demonstrativo de Resultado do Exercício (DRE)</h3>
+
+          <p class="topico-9">
+            Mostra quanto a empresa vendeu, gastou e lucrou em um período. É
+            como ver um "filme" das finanças.
+            <a
+              class="signup"
+              href="../../financas-corporativas/dre/dre.html"
+            >
+              Clique aqui para saber mais!
+            </a>
+          </p>
+
+          <h3>Analise de Balanço</h3>
+
+          <p class="topico-9">
+            A Análise de Balanço permite avaliar a saúde financeira da empresa 
+            por meio de demonstrativos contábeis, como o Balanço Patrimonial e a Demonstração de Resultados, identificando pontos fortes e riscos.
+            <a
+              class="signup"
+              href="../../financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+            >
+              Clique aqui para saber mais!
+            </a>
+          </p>
+
+          <h3>Captação de Recursos</h3>
+
+          <p class="topico-9">
+            Trata das formas que a empresa pode utilizar para obter recursos financeiros,
+            como empréstimos, emissão de ações ou debêntures, para financiar suas atividades e projetos.
+            <a
+              class="signup"
+              href="../../financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+            >
+              Clique aqui para saber mais!
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="fluxo-de-caixa.js"></script>
+  </body>
+</html>
