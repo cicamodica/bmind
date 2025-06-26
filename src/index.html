@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <!--Nome que vai aparecer na aba superior-->
+    <!-- Link do CSS -->
+    <link rel="stylesheet" href="Homepage.css" />
+    <script
+      src="https://kit.fontawesome.com/1691cc7750.js"
+      crossorigin="anonymous">
+   </script>
+ </head>
+
+ <body>
+   <div class="header">
+     <header>
+       <div class="left-group">
+         <div class="menu-icon" onclick="toggleMenu()">
+           <i class="fa-solid fa-bars menu-button"></i>
+         </div>
+         <div class="header-item">
+           <img src="./imagens/Logo site.png" alt="Logo" class="logo" />
+         </div>
+       </div>
+       <div class="center-group">
+         <div class="search-container">
+           <input
+             type="text"
+             id="search-bar"
+             placeholder="Pesquisar..."
+             class="search-bar"
+           />
+           <a class="search-button" id="search-button" href="#">
+             <i class="fa-solid fa-magnifying-glass search-icon"></i>
+           </a>
+         </div>
+       </div>
+       <!-- Ícone da lupa mobile -->
+       <div class="search-mobile-icon" onclick="toggleMobileSearch()">
+         <i class="fa-solid fa-magnifying-glass"></i>
+       </div>
+       <div class="right-group">
+         <div class="user-actions" id="login-nao-logado">
+           <a href="./login/login.html">Fazer login</a>
+           <span>|</span>
+           <a href="./cadastro/cadastro.html">Cadastrar-se</a>
+         </div>
+
+         <div class="user-area">
+           <a href="./main/Main.html" class="minha-area-botao">Minha Área</a>
+         </div>
+
+         <div class="user-actions" id="perfil-logado">
+           <a href="./perfil/perfil.html">
+             <i class="fa-regular fa-circle-user"></i>
+           </a>
+         </div>
+       </div>
+     </header>
+
+     <!-- Barra de busca mobile (abaixo do header) -->
+     <div id="mobileSearchBar" class="mobile-search-bar" style="display: none;">
+       <input
+         type="text"
+         id="mobileSearchInput"
+         class="mobile-search-input"
+         placeholder="Pesquisar..."
+       />
+       <button class="mobile-search-button" onclick="buscarMobile()">Buscar</button>
+     </div>
+   </div>
+   
+     <nav class="dropdown-menu" id="dropdownMenu">
+        <ul id="menu">
+          <li class="item-logged">
+            <a class="perfil" href="./perfil/perfil.html">Perfil</a>
+          </li>
+          <li class="item-logged">
+            <a href="./main/Main.html">Minha Área</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" onclick="redirecionarCadastro()">Meu Dashboard</a>
+          </li>
+          <li class="has-submenu">
+            <a href="#" aria-expanded="false">Conteúdo Didático</a>
+            <ul class="submenu">
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#" aria-expanded="false">Finanças Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="./conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                      onclick="registrarConteudoVisto('Planejamento Financeiro',
+                      './conteudo-didatico/financas-pessoais/planejamento-financeiro/planejamento-financeiro.html',
+                      './imagens/PlanejamentoFinanceiro.jpg')">
+                      Planejamento Financeiro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                      onclick="registrarConteudoVisto('Orçamento Doméstico',
+                      './conteudo-didatico/financas-pessoais/orcamento-domestico/orcamento-domestico.html',
+                      './imagens/OrcamentoDomestico.jpg')">
+                      Orçamento Doméstico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                      onclick="registrarConteudoVisto('Controle de Dívidas',
+                      './conteudo-didatico/financas-pessoais/controle-de-dividas/controle-de-dividas.html',
+                      './imagens/ControleDividas.jpg')">
+                      Controle de Dívidas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#" aria-expanded="false">Finanças Corporativas</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="./conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                      onclick="registrarConteudoVisto('Análise de Balanço',
+                      './conteudo-didatico/financas-corporativas/analise-de-balanco/analise-de-balanco.html',
+                      './imagens/AnaliseDeBalancos.jpg')">
+                      Análise de Balanços
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                      onclick="registrarConteudoVisto('Fluxo de Caixa',
+                      './conteudo-didatico/financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html',
+                      './imagens/FluxoDeCaixa.jpg')">
+                      Fluxo de Caixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                      onclick="registrarConteudoVisto('Captação de Recursos',
+                      './conteudo-didatico/financas-corporativas/captacao-de-recursos/captacao-de-recursos.html',
+                      './imagens/CaptacaoDeRecursos.jpg')">
+                      Captação de Recursos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/financas-corporativas/dre/dre.html"
+                      onclick="registrarConteudoVisto('D.R.E.',
+                      './conteudo-didatico/financas-corporativas/dre/dre.html',
+                      './imagens/DRE.jpg')">
+                      D.R.E
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu">
+                <a href="#" aria-expanded="false">Operações Bancárias</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="./conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html"
+                      onclick="registrarConteudoVisto('Cartão de Débito',
+                      './conteudo-didatico/operacoes-bancarias/cartao-de-debito/cartao-de-debito.html',
+                      './imagens/CartaoDeDebito.jpg')">
+                      Cartão de Débito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html"
+                      onclick="registrarConteudoVisto('Cartão de Crédito',
+                      './conteudo-didatico/operacoes-bancarias/cartao-de-credito/cartao-de-credito.html',
+                      './imagens/CartaodeCredito.png')">
+                      Cartão de Crédito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html"
+                      onclick="registrarConteudoVisto('Empréstimo',
+                      './conteudo-didatico/operacoes-bancarias/emprestimo/emprestimo.html',
+                      './imagens/Emprestimos.jpg')">
+                      Empréstimos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html"
+                      onclick="registrarConteudoVisto('Financiamento',
+                      './conteudo-didatico/operacoes-bancarias/financiamento/financiamento.html',
+                      './imagens/Financiamento.webp')">
+                      Financiamento
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+                      onclick="registrarConteudoVisto('Taxas e Tarifas',
+                      './conteudo-didatico/operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html',
+                      './imagens/TaxasTarifas.jpg')">
+                      Taxas e Tarifas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#" aria-expanded="false">Investimentos Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="./conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      './conteudo-didatico/investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html',
+                      './imagens/RendaFixaPF.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      './conteudo-didatico/investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html',
+                      './imagens/RendaVariavelPFmenor.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      './conteudo-didatico/investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html',
+                      './imagens/FundoInvestimentosPF.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#" aria-expanded="false">Investimentos Corporativos</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="./conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      './conteudo-didatico/investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html',
+                      './imagens/RendaFixaPJ.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      './conteudo-didatico/investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html',
+                      './imagens/RendaVariavelPFsub.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      './conteudo-didatico/investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html',
+                      './imagens/FundosDeInvestimentoPJ.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+ 
+          <li class="item-logged">
+            <a href="./Feedback/feedback.html">FAQ</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" id="botao-sair">Sair</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+
+    <section class="hero">
+      <!-- Botões de navegação -->
+      <button class="nav-left">
+        <i class="fa-regular fa-circle-left"></i>
+      </button>
+
+      <!-- Slides do carrossel -->
+      <div class="carousel-wrapper">
+        <div class="carousel-track">
+        <!-- Slide 1 -->
+        <div class="hero-slide">
+          <div class="hero-content">
+            <h1>Transforme números em decisões inteligentes.</h1>
+            <p>
+              Tomar decisões financeiras pode parecer complicado, mas com as
+              informações certas, tudo fica mais simples. Aqui, você visualiza
+              seus gastos, investimentos e ganhos de forma clara e intuitiva.
+            </p>
+          </div>
+          <img
+            src="./imagens/HomepageCarrossel1.png"
+            alt="Tela"
+            class="hero-image"
+          />
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="hero-slide">
+          <div class="hero-content">
+            <h1>Controle seu orçamento com facilidade.</h1>
+            <p>
+              Com uma visão detalhada das suas receitas e despesas, você entende
+              exatamente para onde vai seu dinheiro. Comparamos seus hábitos de
+              consumo e sugerimos melhorias práticas para o seu dia a dia.
+            </p>
+          </div>
+          <img
+            src="./imagens/HomepageCarrosel2.jpg"
+            alt="Orçamento"
+            class="hero-image"
+          />
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="hero-slide">
+          <div class="hero-content">
+            <h1>Acompanhe seus investimentos em tempo real.</h1>
+            <p>
+              Veja o desempenho dos seus ativos com gráficos claros e alertas
+              personalizados. Tenha total controle sobre sua carteira e tome
+              decisões mais seguras com base em dados atualizados.
+            </p>
+          </div>
+          <img
+            src="./imagens/HomepageCarrossel3.jpg"
+            alt="Investimentos"
+            class="hero-image"
+          />
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="hero-slide">
+          <div class="hero-content">
+            <h1>Planeje o futuro com projeções inteligentes.</h1>
+            <p>
+              Simule cenários, defina metas e acompanhe seu progresso com
+              ferramentas visuais e intuitivas. Nossa plataforma ajuda você a se
+              preparar para o amanhã, com passos sólidos hoje.
+            </p>
+          </div>
+          <img
+            src="./imagens/HomepageCarrossel4.jpg"
+            alt="Planejamento"
+            class="hero-image"
+          />
+        </div>
+      </div>
+      </div>
+
+      <!-- Botão direito -->
+      <button class="nav-right">
+        <i class="fa-regular fa-circle-right"></i>
+      </button>
+    </section>
+
+    <!-- Menu de Abas -->
+    <nav class="tabs">
+      <a href="#" class="tab-link active" data-tab="financasPessoais"
+        >Finanças Pessoais</a
+      >
+      <a href="#" class="tab-link" data-tab="financasCorporativas"
+        >Finanças Corporativas</a
+      >
+      <a href="#" class="tab-link" data-tab="operacoesBancarias"
+        >Operações Bancárias</a
+      >
+      <a href="#" class="tab-link" data-tab="investimentos">Investimentos</a>
+    </nav>
+
+    <!-- Seções de Conteúdo -->
+    <div id="financasPessoais" class="tab-content active">
+      <button id="btnPlanejamento">Planejamento financeiro</button>
+      <button id="btnOrcamento">Orçamento doméstico</button>
+      <button id="btnControle">Controle de dívidas</button>
+
+      <!-- Área escondida que vai aparecer ao clicar -->
+      <div
+        id="planejamentoConteudo"
+        style="
+          display: block;
+          margin-top: 20px;
+          max-width: 1000px;
+          margin-inline: auto;
+        "
+      >
+        <!-- Seção 1: Introdução -->
+        <div
+          style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px"
+        >
+          <div style="flex: 1 1 500px">
+            <h2>Planejamento Financeiro</h2>
+            <p>
+              Em um mundo em que o tempo parece correr cada vez mais rápido e os
+              compromissos financeiros se acumulam com facilidade, o
+              planejamento financeiro pessoal se torna uma ferramenta essencial
+              para quem busca viver com mais tranquilidade e autonomia. Muito
+              além de controlar gastos, planejar as finanças é um ato de
+              autocuidado, de responsabilidade e, acima de tudo, de liberdade.
+            </p>
+            <p>
+              Imagine ter clareza sobre para onde vai cada centavo que entra na
+              sua conta. Saber exatamente o quanto pode gastar, quanto pode
+              guardar e, principalmente, entender que o seu dinheiro está a
+              serviço dos seus sonhos — não o contrário.
+            </p>
+          </div>
+          <div style="flex: 1 1 400px; text-align: center">
+            <img
+              src="./imagens/HomepageFP1.png"
+              alt="Planejamento Financeiro"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+
+        <!-- Seção 2: Controle financeiro -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>O que significa ter controle financeiro?</h3>
+            <p>
+              Ter controle financeiro não é viver contando moedas ou abrir mão
+              de tudo que dá prazer. Pelo contrário: é ter consciência do que é
+              prioridade em sua vida e tomar decisões alinhadas com isso.
+            </p>
+            <p>
+              O controle financeiro passa pela organização e pela mudança de
+              mentalidade. Com planejamento, escolhas se tornam mais conscientes
+              e os resultados mais positivos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Seção 3: Qualidade de vida -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>O impacto do planejamento na qualidade de vida</h3>
+            <p>
+              A falta de organização financeira é uma das maiores fontes de
+              estresse atualmente. Dívidas, contas atrasadas e falta de
+              perspectiva podem gerar ansiedade e até prejudicar a saúde.
+            </p>
+            <p>
+              Por outro lado, quem se organiza sente-se mais confiante,
+              preparado para imprevistos e motivado a alcançar objetivos.
+            </p>
+          </div>
+          <div style="flex: 1 1 400px; text-align: center">
+            <img
+              src="./imagens/HomePageFP2.png"
+              alt="Caminho de Liberdade"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+
+        <!-- Seção 4: Pequenas atitudes -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>Pequenas atitudes, grandes transformações</h3>
+            <p>
+              Muitas pessoas acreditam que só é possível fazer planejamento
+              financeiro se tiverem muito dinheiro. Mas a verdade é o oposto: é
+              o planejamento que permite fazer mais com menos.
+            </p>
+            <p>
+              Rever hábitos de consumo, traçar objetivos claros e conversar
+              sobre dinheiro com a família são ações simples, mas
+              transformadoras.
+            </p>
+          </div>
+        </div>
+
+        <!-- Seção 5: Educação financeira -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>Educação financeira: o pilar da liberdade</h3>
+            <p>
+              A educação financeira ainda é pouco ensinada nas escolas, o que
+              dificulta a vida adulta. Mas nunca é tarde para aprender.
+            </p>
+            <p>
+              Hoje, é possível acessar conteúdos gratuitos sobre finanças e
+              investimentos. Aprender a lidar com dinheiro é um dos maiores
+              investimentos que se pode fazer.
+            </p>
+          </div>
+          <div style="flex: 1 1 400px; text-align: center">
+            <img
+              src="./imagens/HomepageFP3.png"
+              alt="Pessoa Estudando Finanças"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="orcamentoDomestico"
+        style="
+          display: none;
+          margin-top: 20px;
+          max-width: 1000px;
+          margin-inline: auto;
+          text-align: left;
+        "
+      >
+        <!-- Seção 1: Introdução -->
+        <div
+          style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px"
+        >
+          <div style="flex: 1 1 500px">
+            <h2>
+              Orçamento Doméstico: A Base para uma Vida Financeira Saudável
+            </h2>
+            <p>
+              Manter um orçamento doméstico eficiente é essencial para garantir
+              estabilidade, segurança e qualidade de vida. Mais do que apenas
+              anotar despesas, o orçamento é uma ferramenta estratégica para
+              transformar sonhos em realidade e enfrentar imprevistos sem
+              desespero.
+            </p>
+            <p>
+              O orçamento doméstico representa o equilíbrio entre o que se ganha
+              e o que se gasta. É a fotografia real das finanças de uma família
+              ou de um indivíduo.
+            </p>
+          </div>
+          <div style="flex: 1 1 400px; text-align: center">
+            <img
+              src="./imagens/HomepageFP4.png"
+              alt="Organizando Finanças em Casa"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+
+        <!-- Seção 2: Importância do Planejamento -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>A Importância do Planejamento Financeiro no Dia a Dia</h3>
+            <p>
+              Sem um orçamento, fica fácil perder a noção dos pequenos gastos
+              que, somados, podem comprometer boa parte da renda. A ausência de
+              organização pode levar ao endividamento, à incapacidade de poupar
+              e à dificuldade em realizar projetos como viagens ou a compra de
+              um imóvel.
+            </p>
+            <p>Com um orçamento bem estruturado, é possível:</p>
+            <ul>
+              <li>Visualizar e controlar gastos fixos e variáveis;</li>
+              <li>
+                Priorizar necessidades básicas e planejar despesas de lazer de
+                forma equilibrada;
+              </li>
+              <li>
+                Construir uma reserva de emergência para momentos imprevistos;
+              </li>
+              <li>Traçar metas financeiras de curto, médio e longo prazo;</li>
+              <li>
+                Melhorar a relação com o dinheiro, criando hábitos mais
+                saudáveis.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Seção 3: Educação Financeira em Família -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>Educação Financeira Começa em Casa</h3>
+            <p>
+              O orçamento doméstico também é uma oportunidade de ensinar
+              educação financeira dentro da família.
+            </p>
+            <p>
+              Conversar sobre dinheiro, envolver todos no planejamento e nas
+              decisões financeiras cria uma cultura de responsabilidade e
+              cooperação. Isso prepara crianças e adolescentes para o consumo
+              consciente e a construção de um futuro financeiro mais seguro.
+            </p>
+          </div>
+          <div style="flex: 1 1 400px; text-align: center">
+            <img
+              src="./imagens/HomepageFP5.png"
+              alt="Família Conversando sobre Finanças"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+
+        <!-- Seção 4: Qualidade de vida com equilíbrio -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap-reverse;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>Viver Melhor com o que se Tem</h3>
+            <p>
+              Manter um orçamento não significa abrir mão da qualidade de vida,
+              mas sim fazer escolhas mais inteligentes. Controlar os gastos
+              permite usufruir dos recursos de maneira plena, sem comprometer a
+              estabilidade financeira.
+            </p>
+            <p>
+              O segredo está no equilíbrio: gastar com sabedoria, economizar com
+              propósito e investir no futuro.
+            </p>
+          </div>
+        </div>
+
+        <!-- Seção 5: Conclusão -->
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1 1 500px">
+            <h3>Educação financeira: o pilar da liberdade</h3>
+            <p>
+              Criar e manter um orçamento doméstico é um dos passos mais
+              poderosos para conquistar autonomia e realizar objetivos. Ao
+              transformar o controle financeiro em hábito, é possível ter uma
+              vida mais tranquila, segura e cheia de realizações.
+            </p>
+            <p>
+              Mais do que números, o orçamento é um instrumento de liberdade.
+            </p>
+          </div>
+          <div style="flex: 1 1 400px; text-align: center">
+            <img
+              src="./imagens/HomepageFP6.png"
+              alt="Liberdade com Planejamento"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="controleDividas"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 1000px;
+          margin-inline: auto;
+        "
+      >
+        <h2>Controle de Dívidas: Como Retomar o Equilíbrio Financeiro</h2>
+
+        <!-- Introdução -->
+        <div
+          style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center"
+        >
+          <div style="flex: 1 1 600px">
+            <p>
+              As dívidas fazem parte da vida de muitas pessoas e empresas, e não
+              necessariamente são um sinal de má administração. Em muitos casos,
+              contrair uma dívida pode ser estratégico, como no financiamento de
+              um imóvel ou na realização de um investimento.
+            </p>
+            <p>
+              O problema surge quando as dívidas deixam de ser ferramentas e se
+              tornam obstáculos, comprometendo a renda e prejudicando a saúde
+              financeira.
+            </p>
+            <p>
+              Controlar as dívidas é essencial para evitar que pequenas
+              pendências se transformem em grandes problemas. O controle
+              consciente permite reorganizar a vida financeira, reduzir o
+              estresse, recuperar o crédito e criar uma base sólida para novos
+              projetos.
+            </p>
+          </div>
+          <div style="flex: 1 1 300px">
+            <img
+              src="./imagens/HomepageFP8.png"
+              alt="Pessoa organizando contas"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+
+        <!-- Impacto das Dívidas -->
+        <h3>Entendendo o Impacto das Dívidas</h3>
+        <div
+          style="
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+          "
+        >
+          <div style="flex: 1 1 600px">
+            <p>
+              Dívidas em excesso afetam não apenas o orçamento, mas também o
+              bem-estar emocional. As consequências de não controlar dívidas
+              incluem:
+            </p>
+            <ul style="padding-left: 20px">
+              <li>
+                Juros compostos que fazem o valor da dívida crescer rapidamente;
+              </li>
+              <li>Nome negativado em serviços de proteção ao crédito;</li>
+              <li>Restrição de acesso a financiamentos e cartões;</li>
+              <li>Estresse e ansiedade constantes;</li>
+              <li>
+                Prejuízo ao planejamento de longo prazo, como aposentadoria e
+                investimentos.
+              </li>
+            </ul>
+            <p>
+              Ter consciência dos impactos é o primeiro passo para agir de forma
+              estratégica.
+            </p>
+          </div>
+          <div style="flex: 1 1 300px">
+            <img
+              src="./imagens/HomepageFP9.png"
+              alt="Gráfico ilustrando crescimento dos juros"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+        </div>
+
+        <!-- Causas do Endividamento -->
+        <h3>As Principais Causas do Endividamento</h3>
+        <div
+          style="
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+          "
+        >
+          <div style="flex: 1 1 300px">
+            <img
+              src="./imagens/HomepageFP10.png"
+              alt="Cartões e contas desorganizadas"
+              style="width: 100%; border-radius: 10px"
+            />
+          </div>
+          <div style="flex: 1 1 600px">
+            <p>
+              Conhecer as origens mais comuns do endividamento ajuda a
+              identificar comportamentos e padrões que precisam ser corrigidos:
+            </p>
+            <ul style="padding-left: 20px">
+              <li>Uso excessivo e descontrolado de cartões de crédito;</li>
+              <li>Empréstimos feitos sem planejamento;</li>
+              <li>Financiamentos com parcelas incompatíveis com a renda;</li>
+              <li>Consumo impulsivo e compras parceladas em excesso;</li>
+              <li>Emergências médicas ou familiares sem fundo de reserva.</li>
+            </ul>
+            <p>
+              Entender o que levou ao acúmulo de dívidas é fundamental para não
+              repetir os mesmos erros no futuro.
+            </p>
+          </div>
+        </div>
+
+        <!-- Estratégias para o Controle -->
+        <h3>Estratégias Inteligentes para o Controle de Dívidas</h3>
+        <div
+          style="
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+          "
+        >
+          <div style="flex: 1 1 600px">
+            <p>
+              Adotar uma visão estratégica sobre as dívidas permite recuperar o
+              equilíbrio de maneira eficiente:
+            </p>
+            <ul style="padding-left: 20px">
+              <li>
+                Mapear todas as dívidas existentes, listando valores, juros e
+                prazos;
+              </li>
+              <li>
+                Priorizar o pagamento das dívidas com juros mais altos, como
+                cartões de crédito e cheque especial;
+              </li>
+              <li>
+                Negociar prazos e condições com credores para obter melhores
+                taxas;
+              </li>
+              <li>
+                Concentrar esforços em quitar dívidas pequenas primeiro,
+                liberando espaço no orçamento;
+              </li>
+              <li>
+                Evitar novas dívidas enquanto estiver em processo de
+                reorganização.
+              </li>
+            </ul>
+            <p>
+              A disciplina financeira é tão importante quanto a renda para sair
+              do ciclo do endividamento.
+            </p>
+          </div>
+        </div>
+
+        <!-- Reserva de Emergência -->
+        <h3>A Importância da Reserva de Emergência</h3>
+        <div
+          style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center"
+        >
+          <div style="flex: 1 1 600px">
+            <p>
+              Uma reserva de emergência é essencial para evitar o endividamento
+              futuro. Ter um valor guardado equivalente a pelo menos três a seis
+              meses de despesas básicas permite enfrentar imprevistos — como
+              desemprego, doenças ou gastos inesperados — sem precisar recorrer
+              a empréstimos caros.
+            </p>
+            <p>
+              A construção dessa reserva deve ser tratada como uma prioridade,
+              mesmo durante o processo de quitação de dívidas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Conclusão -->
+        <h3>Controle de Dívidas é Liberdade</h3>
+        <div
+          style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center"
+        >
+          <div style="flex: 1 1 600px">
+            <p>
+              Controlar as dívidas não é apenas pagar boletos: é resgatar o
+              poder sobre o próprio dinheiro, reconstruir a estabilidade e criar
+              novas possibilidades para o futuro.
+            </p>
+            <p>
+              Ao adotar um comportamento financeiro mais consciente, é possível
+              transformar a relação com o crédito, voltar a sonhar e conquistar
+              metas com segurança.
+            </p>
+            <p>
+              <strong
+                >Dívidas controladas são sinônimo de liberdade
+                financeira.</strong
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="financasCorporativas" class="tab-content">
+      <button id="btnAnaliseBalanco">Análise de balanço</button>
+      <button id="btnFluxoCaixa">Fluxo de caixa</button>
+      <button id="btnCaptaçãoRecursos">Captação de Recursos</button>
+
+      <div
+        id="analiseBalanco"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>Entendendo a Saúde Financeira Corporativa</h2>
+        <p>
+          A análise de balanço é uma ferramenta essencial para avaliar a
+          estabilidade financeira, a eficiência operacional e o potencial de
+          crescimento de uma empresa. A partir dela, investidores, gestores e
+          stakeholders obtêm uma visão clara sobre o desempenho passado e as
+          perspectivas futuras da organização.
+        </p>
+        <p>
+          O balanço patrimonial apresenta, em uma fotografia contábil, ativos,
+          passivos e patrimônio líquido. Entender a relação entre essas três
+          categorias é o primeiro passo para interpretar se uma empresa está
+          saudável ou exposta a riscos.
+        </p>
+        <p>
+          Ativos são os recursos controlados pela empresa — como caixa, estoques
+          e imóveis. Passivos representam as obrigações — dívidas, fornecedores,
+          tributos a pagar. Já o patrimônio líquido reflete o valor residual dos
+          ativos após a dedução dos passivos, funcionando como o "capital
+          próprio" dos acionistas.
+        </p>
+       
+
+        <h3>Principais Indicadores</h3>
+        <p>
+          Durante a análise de balanço, alguns indicadores são fundamentais:
+        </p>
+        <ul>
+          <li>
+            Liquidez Corrente: mede a capacidade de pagar dívidas de curto
+            prazo.
+          </li>
+          <li>
+            Endividamento: avalia o quanto da estrutura da empresa é financiada
+            por terceiros.;
+          </li>
+          <li>
+            Rentabilidade: indica a eficiência em gerar lucros a partir dos
+            investimentos.
+          </li>
+          <li>
+            Giro de Ativos: mostra a capacidade da empresa em gerar receita com
+            seus ativos.
+          </li>
+        </ul>
+        <p>
+          Esses índices, interpretados em conjunto, revelam se a companhia está
+          segura financeiramente ou se há sinais de alerta que precisam de ação.
+        </p>
+        
+
+        <h3>A Importância Estratégica da Análise</h3>
+        <p>
+          Mais do que uma prática contábil, a análise de balanço é estratégica
+          para decisões como captação de investimentos, renegociação de dívidas
+          ou expansão de negócios. Um bom diagnóstico permite antever problemas,
+          ajustar rotas e aumentar a confiança do mercado na gestão da empresa.
+        </p>
+        <p>
+          Num ambiente corporativo cada vez mais dinâmico e competitivo, a
+          capacidade de interpretar corretamente os números do balanço
+          diferencia organizações resilientes daquelas vulneráveis a crises.
+        </p>
+      </div>
+
+      <div
+        id="fluxoCaixa"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O que é o Fluxo de Caixa?</h2>
+        <p>
+          O fluxo de caixa é o coração financeiro de uma empresa. Ele mostra
+          todas as entradas e saídas de dinheiro em um determinado período,
+          permitindo o controle da liquidez e o planejamento estratégico dos
+          recursos.
+        </p>
+        
+
+        <h3>Por que o Fluxo de Caixa é essencial?</h3>
+        <ul>
+          <li>
+            Previsibilidade: Permite planejar pagamentos e investimentos,
+            evitando surpresas desagradáveis.
+          </li>
+          <li>
+            Tomada de decisões: Ajuda na escolha entre expandir, cortar custos
+            ou buscar crédito.
+          </li>
+          <li>
+            Saúde financeira: Identifica gargalos, períodos de aperto e
+            oportunidades de crescimento.
+          </li>
+        </ul>
+        
+
+        <h3>Tipos de Fluxo de Caixa</h3>
+        <ul>
+          <li>
+            Operacional: Movimentações do dia a dia: vendas, pagamentos de
+            fornecedores, salários.
+          </li>
+          <li>Investimentos: Compra de ativos, aquisições ou venda de bens.</li>
+          <li>
+            Financiamento: Empréstimos, emissão de ações ou pagamento de
+            dividendos.
+          </li>
+        </ul>
+        
+
+        <h3>Como analisar o Fluxo de Caixa?</h3>
+        <ul>
+          <li>Saldo positivo: Mais dinheiro entra do que sai. Ótimo!</li>
+          <li>Saldo negativo: Gastos superam receitas. É hora de agir!</li>
+          <li>
+            FPonto de equilíbrio: Quando entradas = saídas. Alerta ligado.
+          </li>
+        </ul>
+        
+      </div>
+
+      <div
+        id="captacaoRecursos"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>A importância de captar recursos</h2>
+        <p>
+          Toda empresa, em algum momento, precisa buscar capital para financiar
+          seu crescimento, manter a operação saudável ou se proteger de
+          imprevistos. A captação de recursos, portanto, não deve ser vista
+          apenas como uma solução emergencial, mas como uma ferramenta
+          estratégica que sustenta a expansão e fortalece a competitividade.
+          Quando feita de forma planejada, permite que o negócio atue com mais
+          liberdade, aproveite oportunidades de mercado e mantenha sua estrutura
+          financeira equilibrada.
+        </p>
+        
+
+        <h3>Motivações por trás da captação</h3>
+        <p>
+          Capitar recursos pode atender a diversas finalidades. Em momentos de
+          crescimento, a empresa pode precisar de capital para expandir sua
+          estrutura, lançar novos produtos ou entrar em novos mercados. Já em
+          fases de instabilidade, os recursos podem ser destinados a cobrir
+          déficits operacionais, renegociar dívidas ou reestruturar a gestão
+          financeira.
+        </p>
+        <p>
+          Em ambos os cenários, o ponto central é garantir que a empresa
+          mantenha sua capacidade de operar sem comprometer o caixa ou perder
+          autonomia sobre suas decisões.
+        </p>
+        
+
+        <h3>Fontes de financiamento</h3>
+        <p>
+          Nem todo recurso vem do mesmo lugar. A escolha da fonte ideal depende
+          do momento da empresa, do volume necessário, do nível de risco e da
+          estrutura de capital já existente. Há três grandes categorias de
+          fontes:
+        </p>
+        <ul>
+          <li>
+            Capital Próprio: Esse tipo de recurso vem de dentro da própria
+            empresa — seja via lucros acumulados ou venda de ativos. Ele garante
+            total controle sobre as decisões e não gera obrigações futuras, mas
+            pode limitar a velocidade de expansão caso o capital interno seja
+            insuficiente.
+          </li>
+          <li>
+            Capital de Terceiros: Envolve dinheiro captado junto a instituições
+            financeiras, como bancos, agências de fomento ou investidores
+            privados. Apesar de ampliar rapidamente o poder de investimento,
+            traz custos atrelados — como juros e exigência de garantias — e
+            precisa ser gerido com atenção para evitar desequilíbrios.
+          </li>
+          <li>
+            Mercado de Capitais: Mais acessível a empresas maduras e bem
+            estruturadas, o mercado permite a emissão de ações ou títulos de
+            dívida, como debêntures. Essa alternativa oferece grandes volumes de
+            capital e visibilidade, mas exige transparência, governança e
+            preparação técnica para atender às exigências do mercado e dos
+            investidores.
+          </li>
+        </ul>
+        
+
+        <h3>Equilíbrio entre risco, custo e controle</h3>
+        <p>
+          A boa gestão da captação está em encontrar o ponto de equilíbrio entre
+          três fatores: risco, custo e controle. Quanto menor o custo do
+          capital, melhor o retorno sobre o investimento; porém, fontes mais
+          baratas nem sempre estão disponíveis para todos os perfis de empresa.
+          Da mesma forma, quanto mais terceiros estão envolvidos, maior pode ser
+          a perda de autonomia sobre decisões estratégicas. O segredo está em
+          combinar diferentes fontes e prazos de forma inteligente, de acordo
+          com os objetivos da empresa.
+        </p>
+        
+      </div>
+    </div>
+
+    <div id="operacoesBancarias" class="tab-content">
+      <button id="btnCartaoDebito">Cartão de Débito</button>
+      <button id="btnCartaoCredito">Cartão de Crédito</button>
+      <button id="btnEmprestimo">Empréstimo</button>
+      <button id="btnFinanciamento">Financiamento</button>
+      <button id="btnTaxasTarifas">Taxas e Tarifas</button>
+
+      <div
+        id="cartaoDebito"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O Que é um Cartão de Débito?</h2>
+        <p>
+          O cartão de débito é uma ferramenta de pagamento ligada diretamente à
+          conta bancária do titular. Sempre que usado, o valor é debitado
+          automaticamente do saldo disponível, sem gerar faturas ou compromissos
+          futuros como ocorre com o cartão de crédito.
+        </p>
+        
+
+        <h3>Como Funciona?</h3>
+        <p>
+          Ao realizar uma compra com o cartão de débito, o valor da transação é
+          transferido imediatamente da conta bancária para o estabelecimento
+          comercial. Por isso, ele só pode ser utilizado se houver saldo
+          suficiente na conta. É um método rápido, seguro e amplamente aceito,
+          ideal para quem quer controlar melhor seus gastos.
+        </p>
+        
+
+        <h3>Vantagens do Cartão de Débito</h3>
+        <ul>
+          <li>
+            Controle financeiro: como os gastos são feitos com o saldo
+            disponível, evita-se o endividamento.
+          </li>
+          <li>
+            Praticidade: elimina a necessidade de carregar dinheiro em espécie.
+          </li>
+          <li>
+            Segurança: em caso de perda ou roubo, é possível bloquear o cartão
+            rapidamente.
+          </li>
+          <li>
+            Ampla aceitação: pode ser usado em lojas físicas, online e para
+            saques em caixas eletrônicos.
+          </li>
+        </ul>
+        
+
+        <h3>Cuidados ao Usar o Cartão de Débito</h3>
+        <p>Apesar da praticidade, é importante ficar atento:</p>
+        <ul>
+          <li>
+            Sempre confira o valor na maquininha antes de digitar a senha.
+          </li>
+          <li>Evite emprestar seu cartão.</li>
+          <li>
+            Fique de olho no extrato da conta para monitorar movimentações.
+          </li>
+          <li>Em caso de perda ou roubo, comunique imediatamente o banco.</li>
+        </ul>
+        
+      </div>
+
+      <div
+        id="cartaoCredito"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O Que é um Cartão de Crédito?</h2>
+        <p>
+          O cartão de crédito é uma forma de pagamento que permite ao usuário
+          realizar compras e efetuar o pagamento posteriormente, geralmente em
+          uma data fixa por meio de uma fatura mensal. Ele funciona como uma
+          espécie de empréstimo temporário concedido pelo banco ou
+          administradora do cartão.
+        </p>
+        
+
+        <h3>Como Funciona?</h3>
+        <p>
+          Ao usar o cartão de crédito, o valor da compra é lançado em uma fatura
+          que será paga no futuro, em uma data determinada. O cliente pode optar
+          por pagar o valor integral ou parcelar o total, com incidência de
+          juros no caso do pagamento mínimo ou parcial.
+        </p>
+        
+
+        <h3>Vantagens do Cartão de Crédito</h3>
+        <ul>
+          <li>
+            Flexibilidade de pagamento: permite comprar mesmo sem saldo
+            imediato, pagando no vencimento da fatura.
+          </li>
+          <li>
+            Parcelamento: muitos estabelecimentos oferecem a opção de parcelar
+            compras sem juros.
+          </li>
+          <li>
+            Acúmulo de pontos e benefícios: programas de recompensas, milhas
+            aéreas, cashback, entre outros.
+          </li>
+          <li>
+            Segurança: ideal para compras online, com opções de bloqueio, cartão
+            virtual e monitoramento em tempo real.
+          </li>
+        </ul>
+        
+
+        <h3>Cuidados ao Usar o Cartão de Crédito?</h3>
+        <p>
+          O cartão de crédito é uma ferramenta poderosa, mas exige
+          responsabilidade. Entre os cuidados essenciais:
+        </p>
+        <ul>
+          <li>Não ultrapassar o limite pessoal de gastos.!</li>
+          <li>Evitar o pagamento mínimo da fatura.</li>
+          <li>Controlar as parcelas acumuladas.</li>
+          <li>Ficar atento a golpes e fraudes, principalmente online.</li>
+          <li>Monitorar os lançamentos por meio do app do banco.</li>
+        </ul>
+        
+      </div>
+
+      <div
+        id="emprestimos"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O que é um Empréstimo?</h2>
+        <p>
+          O empréstimo é uma operação financeira em que uma instituição (como um
+          banco, fintech ou cooperativa de crédito) cede um valor em dinheiro a
+          um cliente, com o compromisso de devolução desse montante acrescido de
+          juros em um prazo determinado.
+        </p>
+        
+
+        <h3>Como Funciona?</h3>
+        <p>
+          Quando alguém solicita um empréstimo, o valor é liberado mediante
+          aprovação e análise de crédito. O pagamento é feito em parcelas
+          mensais, que incluem o valor principal mais os juros acordados. O
+          contrato define as condições, como prazo, taxa de juros, valor das
+          parcelas e possíveis encargos.
+        </p>
+        
+
+        <h3>Tipos de Empréstimos</h3>
+        <p>
+          Existem várias modalidades de empréstimo, cada uma indicada para
+          situações diferentes:
+        </p>
+        <ul>
+          <li>
+            Empréstimo Pessoal: sem garantia, com contratação simples e rápida.
+          </li>
+          <li>
+            Empréstimo Consignado: descontado diretamente da folha de pagamento,
+            com juros mais baixos.
+          </li>
+          <li>
+            Crédito com Garantia: exige um bem como garantia, como imóvel ou
+            veículo.
+          </li>
+          <li>
+            Empréstimo Empresarial: destinado a pessoas jurídicas, para capital
+            de giro ou investimentos.
+          </li>
+          <li>
+            Crédito Rotativo: usado quando o cliente não paga o total da fatura
+            do cartão; tem altos juros.
+          </li>
+        </ul>
+        
+
+        <h3>Vantagens do Empréstimo</h3>
+        <ul>
+          <li>Acesso rápido a dinheiro em momentos de necessidade</li>
+          <li>Parcelamento facilitado, com prazos variados</li>
+          <li>
+            Possibilidade de taxas menores em modalidades com garantia ou
+            consignado
+          </li>
+          <li>
+            Flexibilidade de uso: desde emergências até investimentos pessoais
+            ou empresariais
+          </li>
+        </ul>
+        
+
+        <h3>Riscos e Cuidados</h3>
+        <p>
+          Embora o empréstimo possa ser uma solução útil, é importante
+          considerar:
+        </p>
+        <ul>
+          <li>Juros altos: especialmente em modalidades sem garantia.</li>
+          <li>
+            Endividamento: tomar mais crédito do que se pode pagar compromete o
+            orçamento.
+          </li>
+          <li>
+            Multas e encargos: o atraso no pagamento gera encargos adicionais.
+          </li>
+          <li>
+            Golpes e fraudes: desconfie de promessas de crédito fácil, sem
+            análise, ou exigência de pagamentos antecipados.
+          </li>
+        </ul>
+       
+      </div>
+
+      <div
+        id="financiamento"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O que é um Financiamento?</h2>
+        <p>
+          O financiamento é uma modalidade de crédito voltada para a aquisição
+          de bens ou serviços de alto valor, como imóveis, veículos ou cursos
+          universitários. Diferente do empréstimo, no financiamento o dinheiro é
+          liberado diretamente para a compra do bem, e o bem financiado
+          geralmente é usado como garantia até a quitação total.
+        </p>
+        
+
+        <h3>Como Funciona?</h3>
+        <p>
+          No financiamento, o cliente paga uma entrada (em alguns casos) e o
+          restante do valor é dividido em parcelas com juros. A instituição
+          financeira adquire o bem e o "cede" ao cliente, que o usa, mas só se
+          torna o proprietário definitivo após quitar todas as prestações.
+        </p>
+        
+
+        <h3>Tipos de Financiamento</h3>
+        <p>Existem várias categorias, conforme o objetivo do cliente:</p>
+        <ul>
+          <li>
+            Financiamento Imobiliário: para compra de casas, apartamentos ou
+            terrenos.
+          </li>
+          <li>
+            Financiamento de Veículos: usado para adquirir carros, motos,
+            caminhões, novos ou usados.
+          </li>
+          <li>
+            Financiamento Estudantil: permite pagar cursos superiores ou
+            técnicos com prazos estendidos.
+          </li>
+          <li>
+            Financiamento Empresarial: voltado a empresas que precisam adquirir
+            máquinas, equipamentos ou expandir o negócio.
+          </li>
+        </ul>
+        
+
+        <h3>Vantagens do Financiamento</h3>
+        <ul>
+          <li>
+            Facilita a conquista de bens de alto valor, sem necessidade de
+            pagamento à vista.
+          </li>
+          <li>
+            Prazo estendido para pagamento, com parcelas que cabem no orçamento.
+          </li>
+          <li>
+            Acesso a taxas menores, principalmente em financiamentos com
+            garantia.
+          </li>
+          <li>
+            Possibilidade de usar recursos do FGTS (no caso de imóveis, por
+            exemplo).
+          </li>
+        </ul>
+        
+
+        <h3>Cuidados Antes de Financiar</h3>
+        <p>Antes de contratar um financiamento, é fundamental:</p>
+        <ul>
+          <li>Avaliar a capacidade de pagamento a longo prazo.</li>
+          <li>
+            Ler o contrato com atenção, verificando prazos, taxas, seguros e
+            cláusulas de inadimplência.
+          </li>
+          <li>Comparar propostas de diferentes instituições financeiras.</li>
+          <li>Evitar comprometer mais que 30% da renda com as parcelas.</li>
+        </ul>
+        
+      </div>
+
+      <div
+        id="taxasTarifas"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O Que São Tarifas e Taxas Bancárias?</h2>
+        <p>
+          Tarifas e taxas bancárias são valores cobrados pelas instituições
+          financeiras pela prestação de serviços aos seus clientes. Elas podem
+          incidir sobre transações, manutenção de contas, emissão de boletos,
+          entre outras operações. Entender essas cobranças é essencial para
+          manter a saúde financeira e evitar surpresas no extrato.
+        </p>
+        
+
+        <h3>Diferença Entre Tarifa e Taxa</h3>
+        <p>
+          Embora muitas vezes usadas como sinônimos, tarifa e taxa têm
+          significados distintos no universo bancário:
+        </p>
+        <ul>
+          <li>
+            Tarifa: cobrada por um serviço bancário específico, como
+            transferência via TED ou manutenção da conta.
+          </li>
+          <li>
+            Taxa: normalmente relacionada a produtos financeiros, como juros de
+            empréstimos ou financiamentos.
+          </li>
+        </ul>
+        
+
+        <h3>Principais Tarifas Bancárias</h3>
+        <p>Algumas das tarifas mais comuns são:</p>
+        <ul>
+          <li>
+            Tarifa de manutenção de conta: cobrada mensalmente para custear os
+            serviços da conta corrente.
+          </li>
+          <li>
+            Tarifa de saque: pode ser aplicada em contas digitais ou pacotes
+            mais básicos.
+          </li>
+          <li>
+            Emissão de segunda via de cartão: cobrada quando há solicitação fora
+            de prazo.
+          </li>
+          <li>
+            Tarifa de transferências (TED, DOC): cobrança por envio de dinheiro
+            entre bancos.
+          </li>
+          <li>
+            Tarifa de extrato impresso ou atendimento presencial: comum em
+            pacotes mais antigos.
+          </li>
+        </ul>
+        
+
+        <h3>Principais Taxas em Produtos Bancários</h3>
+        <ul>
+          <li>
+            Taxa de juros do cheque especial: uma das mais altas do mercado.
+          </li>
+          <li>
+            Taxa de juros do cartão de crédito rotativo: incide quando o
+            pagamento da fatura é parcial.
+          </li>
+          <li>
+            Taxa de financiamento ou empréstimo: percentual aplicado sobre o
+            valor emprestado.
+          </li>
+          <li>Taxa de administração: presente em fundos de investimento.</li>
+          <li>
+            Taxa de corretagem: comum em operações de compra e venda de ações.
+          </li>
+        </ul>
+        
+
+        <h3>Como Reduzir ou Evitar Tarifas Bancárias?</h3>
+        <p>
+          Embora muitas tarifas sejam padronizadas, é possível evitá-las ou
+          reduzi-las:
+        </p>
+        <ul>
+          <li>Optar por contas digitais ou serviços essenciais gratuitos.</li>
+          <li>Negociar pacotes de serviços com o banco.</li>
+          <li>Evitar uso excessivo de serviços que geram cobrança avulsa.</li>
+          <li>
+            Ficar atento aos pacotes contratados e aos serviços efetivamente
+            usados.
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+
+    <div id="investimentos" class="tab-content">
+      <button id="btnRendaFixa">Renda Fixa</button>
+      <button id="btnRendaVariavel">Renda Variável</button>
+      <button id="btnFundoInvestimento">Fundo de Investimentos</button>
+
+      <div
+        id="rendaFixa"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O Que é Renda Fixa?</h2>
+        <p>
+          Renda fixa é uma modalidade de investimento em que as regras de
+          remuneração são definidas no momento da aplicação. Ou seja, o
+          investidor sabe desde o início como e quando receberá seus rendimentos
+          — seja por uma taxa fixa, percentual do CDI, inflação (IPCA) ou uma
+          combinação.
+        </p>
+        
+
+        <h3>Como Funciona a Renda Fixa?</h3>
+        <p>
+          Na renda fixa, o investidor "empresta" dinheiro a uma instituição
+          (como bancos, empresas ou o governo) e, em troca, recebe juros como
+          forma de remuneração. Ao final do prazo estipulado, o valor investido
+          é devolvido com acréscimos dos rendimentos, podendo ou não haver
+          liquidez antes do vencimento.
+        </p>
+        
+
+        <h3>Principais Tipos de Investimentos em Renda Fixa</h3>
+        <ul>
+          <li>
+            Tesouro Direto:Títulos públicos emitidos pelo Governo Federal. É
+            considerado o investimento mais seguro do país.
+          </li>
+          <li>
+            CDB (Certificado de Depósito Bancário): Emitido por bancos para
+            captar recursos. Pode ter rendimento prefixado, atrelado ao CDI ou à
+            inflação.
+          </li>
+          <li>
+            LCI e LCA (Letras de Crédito Imobiliário e do Agronegócio): Isentas
+            de IR para pessoas físicas. Investimentos vinculados aos setores
+            imobiliário e do agronegócio.
+          </li>
+          <li>
+            Debêntures: Títulos emitidos por empresas privadas para financiar
+            seus projetos. Têm maior risco, mas podem oferecer rentabilidade
+            superior.
+          </li>
+        </ul>
+        
+
+        <h2>Vantagens da Renda Fixa</h2>
+        <ul>
+          <li>
+            Previsibilidade: ideal para quem busca segurança e planejamento.
+          </li>
+          <li>
+            Baixo risco: especialmente nos títulos públicos e bancários com
+            garantia do FGC.
+          </li>
+          <li>
+            Rentabilidade superior à poupança: mesmo em aplicações mais
+            conservadoras.
+          </li>
+          <li>
+            iversidade de prazos e emissores: para diferentes perfis de
+            investidores.
+          </li>
+        </ul>
+        
+      </div>
+
+      <div
+        id="rendaVariavel"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h2>O Que é Renda Variável?</h2>
+        <p>
+          Renda variável é uma categoria de investimento em que não é possível
+          prever com exatidão os ganhos no momento da aplicação, pois os
+          rendimentos dependem das condições do mercado. Os ativos oscilam
+          conforme fatores como economia, política, comportamento do setor e
+          expectativas futuras.
+        </p>
+        
+
+        <h2>Como Funciona?</h2>
+        <p>
+          Ao investir em renda variável, o investidor se torna sócio ou
+          participa do desempenho de um ativo que pode valorizar ou desvalorizar
+          com o tempo. Ao contrário da renda fixa, não há uma taxa de retorno
+          previamente definida — o lucro ou prejuízo depende do comportamento do
+          mercado.
+        </p>
+        
+
+        <h2>Principais Tipos de Investimentos em Renda Variável</h2>
+        <ul>
+          <li>
+            Ações:São frações do capital de uma empresa. Ao comprar ações, o
+            investidor se torna sócio e pode ganhar com: Valorização dos papéis
+            Distribuição de dividendos
+          </li>
+          <li>
+            Fundos Imobiliários (FIIs):Permitem investir em imóveis de forma
+            indireta. Pagam rendimentos mensais e têm cotas negociadas na bolsa.
+          </li>
+          <li>
+            ETFs (Fundos de Índice):Fundos que replicam índices como o Ibovespa.
+            São uma forma diversificada e prática de investir em várias empresas
+            ao mesmo tempo.
+          </li>
+          <li>
+            BDRs: Títulos que representam ações de empresas estrangeiras, como
+            Google, Apple, Amazon, negociados na B3.
+          </li>
+          <li>
+            Criptomoedas: Ativos digitais descentralizados, como Bitcoin e
+            Ethereum, com alta volatilidade e liquidez.
+          </li>
+        </ul>
+        
+
+        <h2>Vantagens da Renda Varivel</h2>
+        <ul>
+          <li>Maior potencial de rentabilidade a longo prazo</li>
+          <li>Possibilidade de participar do crescimento de empresas</li>
+          <li>Diversificação da carteira de investimentos</li>
+          <li>
+            Liquidez — muitos ativos podem ser vendidos a qualquer momento
+          </li>
+        </ul>
+        
+
+        <h2>Desvantagens e Riscos</h2>
+        <ul>
+          <li>Alta volatilidade: o valor pode subir ou cair rapidamente.</li>
+          <li>Possibilidade de perdas: inclusive do valor investido.</li>
+          <li>Exige mais conhecimento e acompanhamento constante</li>
+          <li>
+            Influência direta de eventos externos (crises, decisões políticas,
+            inflação)
+          </li>
+        </ul>
+        
+      </div>
+
+      <div
+        id="fundoInvestimentos"
+        style="
+          display: none;
+          margin-top: 20px;
+          text-align: left;
+          max-width: 800px;
+          margin-inline: auto;
+        "
+      >
+        <h3>O Que São Fundos de Investimento</h3>
+        <p>
+          Fundos de investimento são uma forma de aplicação coletiva, em que
+          diversos investidores reúnem recursos para serem geridos por um
+          profissional especializado, o gestor. Esse gestor toma decisões com
+          base em uma estratégia definida, buscando rentabilidade para todos os
+          cotistas.
+        </p>
+        
+
+        <h2>Como Funcionam?</h2>
+        <p>Cada fundo possui um regulamento com regras claras sobre:</p>
+        <ul>
+          <li>
+            Tipo de ativos que serão comprados (ações, renda fixa, câmbio, etc.)
+          </li>
+          <li>Objetivo do fundo (crescimento, proteção, renda passiva...)</li>
+          <li>Público-alvo e grau de risco</li>
+          <li>Cobranças de taxas (administração e performance)</li>
+        </ul>
+        <p>
+          Ao aplicar em um fundo, o investidor adquire cotas, cujo valor varia
+          conforme o desempenho dos ativos que o compõem.
+        </p>
+        
+      </div>
+    </div>
+
+    <!-- Importa o JavaScript -->
+    <script src="Homepage.js"></script>
+  </body>
+</html>
