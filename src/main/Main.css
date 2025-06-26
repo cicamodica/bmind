@@ -1,0 +1,1230 @@
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+
+/* Estilo base */
+body {
+  margin: 0;
+  font-family: "Poppins";
+  background-color: #fff;
+  color: #000;
+  overflow-x: hidden;
+}
+
+header {
+  /*Estilização da classe pai .NAV (barra superior)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+}
+
+.left-group {
+  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-group {
+  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-group {
+  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo do icone de perfil */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+  font-size: 29px;
+  color: white;
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+#login-nao-logado a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: bold; /* Deixa o texto mais forte */
+  font-size: 15px; /* Tamanho da fonte */
+}
+
+.search-container {
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  display: flex;
+  width: 900px;
+  align-items: center;
+  z-index: 1;
+}
+
+.search-bar {
+  /*Estilização da barra de pesquisa*/
+  font-family: "Poppins";
+  border-radius: 40px;
+  outline: none;
+  padding: 12px 40px;
+  font-weight: 100;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+}
+
+.search-icon {
+  /*Estilização do ícone de pesquisa */
+  position: absolute;
+  right: 20px;
+  color: black;
+  bottom: 16px;
+}
+
+.menu-button {
+  /*Estilização do ícone de menu ☰*/
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: white;
+}
+
+.header-item .logo {
+  /*Estilização do logo*/
+  height: 55px;
+  margin-right: auto;
+}
+.chart-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  min-height: 250px;
+
+}
+/*Menu dropdown:*/
+
+/* Reset */
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dropdown principal */
+.dropdown-menu {
+  width: 250px; /* AUMENTADO de 220 para 250 */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  display: none;
+  z-index: 1000;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: flex; /* FLEX para alinhar texto e seta */
+  justify-content: space-between; /* espaço entre texto e seta */
+  align-items: center; /* centraliza verticalmente */
+
+  padding: 10px 20px; /* MAIS espaço */
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 6px;
+  position: relative;
+}
+
+.dropdown-menu a:hover {
+  background-color: #024dae;
+  color: #fff;
+}
+
+/* Submenu */
+.has-submenu {
+  position: relative;
+}
+
+/* SETA via pseudo-elemento */
+.has-submenu > a::after {
+  content: "▶";
+  margin-left: 10px; /* separação do texto */
+  font-size: 0.8em;
+}
+
+/* Submenu oculto */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 250px; /* AUMENTADO igual ao principal */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+/* Mostrar submenu ao hover */
+.has-submenu:hover > .submenu {
+  display: block;
+}
+
+/* Submenu itens */
+.submenu a {
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.submenu a:hover {
+  background-color: #024dae;
+  color: #fff;
+}
+
+/* Perfil, FAQ e Sair - estilo específico */
+.item-logged > a {
+  font-weight: 500;
+}
+
+.item-logged > a:hover {
+  background-color: #024dae;
+  color: white;
+}
+
+.escrita {
+  /* Estilo do texto do menu */
+  font-size: 40px;
+  font-weight: 500;
+  margin-right: auto;
+  color: white;
+}
+
+/* Boas-vindas */
+.boas-vindas {
+  margin-bottom: 15px;
+  color: #024dae;
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+/* Conteúdo principal */
+.conteudo-principal {
+  padding: 2rem;
+  font-family: Poppins;
+  background-color: #f0f2f5;
+}
+
+/* Título principal */
+.titulo-dashboard {
+  font-size: 1.75rem;
+  color: #024dae;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+/* Layout do dashboard */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* Cartões padrão */
+.chart-container,
+#resumo-financeiro,
+#historico-mensal,
+#area-metas {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+  box-sizing: border-box;
+}
+
+/* Gráfico */
+.chart-container {
+  width: 100%;
+}
+
+/* Resumo financeiro */
+#resumo-financeiro h3,
+#historico-mensal h3,
+#area-metas h3 {
+  font-size: 1.25rem;
+  color: #024dae;
+  margin-bottom: 16px;
+}
+
+#resumo-financeiro p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+#resumo-financeiro strong {
+  display: inline-block;
+  width: 90px;
+}
+
+#resumo-financeiro span {
+  font-weight: bold;
+  color: #222;
+}
+
+/* Histórico mensal */
+.historico-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#lista-historico {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.transacao-item {
+  font-size: 0.95rem;
+  padding: 10px;
+  border-left: 4px solid;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+}
+
+.transacao-entrada {
+  border-color: #4caf50;
+  color: #2e7d32;
+}
+
+.transacao-saida {
+  border-color: #f44336;
+  color: #c62828;
+}
+
+/* Botões padronizados */
+button,
+.btn-atualizar,
+.confirmar-atualizacao,
+.btn-excluir,.btn-dashboard,
+#btn-cadastrar {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  background-color: #00b894;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  font-weight: 500;
+}
+
+button:hover,
+.btn-atualizar:hover,
+.confirmar-atualizacao:hover,
+.btn-excluir:hover,
+#btn-cadastrar:hover {
+  background-color: #019170;
+}
+
+/* Área de cadastro de metas */
+#area-metas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#form-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#form-meta input {
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: #444;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#form-meta input:focus {
+  border-color: #024dae;
+  box-shadow: 0 0 0 3px rgba(2, 77, 174, 0.2);
+}
+
+#form-meta button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Seção de metas listadas */
+.secao-metas {
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.secao-metas h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.lista-metas-horizontal {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+/* Card de metas */
+.card-meta {
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 250px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+/* Barra de progresso */
+.barra-progresso {
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 18px;
+  margin: 8px 0;
+}
+
+.barra-preenchida {
+  background: linear-gradient(to right, #00b894, #0984e3);
+  height: 100%;
+  width: 0;
+  transition: width 0.4s ease-in-out;
+  border-radius: 20px 0 0 20px;
+}
+
+.porcentagem-meta {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Botões das metas */
+.botoes-metas {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.botoes-metas button {
+  flex: 1;
+}
+
+/* Campo novo valor */
+.novo-valor {
+  width: 100%;
+  padding: 6px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.form-atualizacao button.confirmar-atualizacao {
+  margin-top: 6px; /* Ajuste conforme necessário */
+}
+
+
+.mobile-search-bar {
+  display: none;
+  /*margin: 10px;
+
+padding: 10px;*/
+  background-color: #ffffff;
+  /*border-radius: 30px;
+
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+display: flex;
+
+align-items: center;
+justify-content:
+space-between;*/
+  padding: 15px;
+  text-align: center;
+}
+
+.mobile-search-input {
+  /*flex: 1;*/
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  /*outline: none;*/
+  width: 80%;
+  font-family: "Poppins";
+}
+
+.mobile-search-button {
+  margin-left: 10px;
+  padding: 10px 16px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  /*font-size: 14px;*/
+  font-family: "Poppins";
+  /*transition:
+background-color 0.3s;*/
+  margin-top: 10px;
+}
+
+.mobile-search-button:hover {
+  background-color: #003080;
+}
+
+/* Vistos recentemente e recomendados - sem alterações nestes blocos */
+.vistos-recentemente {
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vistos-recentemente h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+/* Container da lista */
+.vistos-recentemente ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin-left: 30px;
+  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
+}
+
+/* Cada item da lista */
+.item-visto {
+  width: 120px;
+  text-align: center;
+}
+
+/* Link que envolve a imagem e o texto */
+.link-visto {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estiliza a imagem */
+.link-visto img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.link-visto img:hover {
+  transform: scale(1.05);
+}
+
+/* Texto abaixo da imagem */
+.link-visto p {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+/* Container da lista */
+.vistos-recentemente ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin-left: 30px;
+  flex-wrap: wrap; /* Caso haja quebra de linha em telas menores */
+}
+
+/* Cada item da lista */
+.item-visto {
+  width: 120px;
+  text-align: center;
+}
+
+/* Link que envolve a imagem e o texto */
+.link-visto {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estiliza a imagem */
+.link-visto img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.link-visto img:hover {
+  transform: scale(1.05);
+}
+
+/* Texto abaixo da imagem */
+.link-visto p {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Container dos cards */
+.conteudo-recomendados {
+  margin-top: 40px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.conteudo-recomendados h3 {
+  margin-bottom: 16px;
+  font-size: 1.25rem;
+  color: #333;
+}
+#lista-conteudos-recomendados {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-top: 16px;
+  margin-left: 30px;
+}
+
+/* Card individual */
+.card-conteudo {
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  padding: 16px;
+  width: 220px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card-conteudo:hover {
+  transform: translateY(-4px);
+}
+
+/* Título do card */
+.card-conteudo h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Descrição do card */
+.card-conteudo p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Ícone da lupa no mobile */
+.search-mobile-icon {
+  display: none;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+/* Esconde o menu e mostra o botão em telas pequenas */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1120px) {
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(to right, #00bcd4, #1976d2);
+    color: white;
+    justify-content: space-between;
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .submenu {
+    display: none;
+    background: #f9f9f9;
+  }
+
+  .has-submenu > a::after {
+    content: " ▼";
+    float: right;
+    font-size: 0.9rem;
+  }
+
+  .has-submenu.open > .submenu {
+    display: block;
+  }
+}
+
+@media (max-width: 1120px) and (min-width: 768px) {
+  #login-nao-logado a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-container {
+    display: none;
+  }
+
+  .search-mobile-icon {
+    display: flex;
+    color: #ffff;
+    font-size: 24px;
+    padding: 20px;
+  }
+
+  /*ADICIONANDO MEDIA QUERIES PARA O MENU NO MOBILE*/
+
+  .header.fixo-quando-menu-aberto {
+    /*Mantém o header fixo quando abre o menu*/
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  /* Adiciona margem para não sobrepor conteúdo */
+  body.menu-aberto-margin {
+    margin-top: 70px !important; /* Ajuste da margem superior do menu mobile para mostrar o header (mesmo tamanho do header > 70px) */
+  }
+
+  /*Responsividade do submenu*/
+  .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+  }
+
+  .submenu.show {
+    display: flex;
+  }
+
+  .has-submenu.open > a {
+    background-color: #024dae;
+    color: white;
+    font-weight: bold;
+  }
+
+  /*Responsividade do dropdown menu*/
+  .dropdown-menu {
+    position: fixed;
+    top: 70px; /* altura exata do header */
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-sizing: border-box;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 5px;
+    position: static; /* <<< ESSENCIAL: evita flutuação lateral */
+    background: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .dropdown-menu .submenu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .has-submenu > a::after {
+    content: "▼";
+    font-size: 0.8em;
+    margin-left: auto;
+  }
+
+  .dropdown-menu .has-submenu.open > a::after {
+    content: "▲";
+  }
+}
+
+@media (min-width: 768px) {
+  .search-mobile-icon {
+    display: none;
+  }
+
+  #mobileSearchBar {
+    display: none !important;
+  }
+
+  .mobile-search-bar {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar {
+    margin: 10px; /* reduz o espaço */
+    padding: 10px 20px; /* mais compacto */
+    font-size: 16px;
+  }
+
+  .search-icon {
+    right: 20px;
+  }
+
+  .header-item .logo {
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) and (min-width: 375px) {
+  .search-bar {
+    margin: 10px; /* reduz o espaço */
+    padding: 10px 20px; /* mais compacto */
+    font-size: 16px;
+  }
+
+  .search-icon {
+    right: 20px;
+  }
+
+  .header-item .logo {
+    height: 45px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1120px) {
+  /* Centraliza e reduz a largura da barra de pesquisa */
+  .search-container {
+    width: 100%;
+    max-width: 700px;
+    padding: 0 10px;
+  }
+
+  /* Reduz o tamanho do texto no menu */
+  .escrita {
+    font-size: 32px;
+  }
+
+  /* Adapta layout dos cards do dashboard */
+  .dashboard-layout {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Reduz padding dos containers */
+  .chart-container,
+  #resumo-financeiro,
+  #historico-mensal,
+  #area-metas,
+  .secao-metas,
+  .vistos-recentemente,
+  .conteudo-recomendados {
+    padding: 16px;
+  }
+
+  /* Cards de metas e recomendados mais compactos */
+  .card-meta,
+  .card-conteudo {
+    min-width: 200px;
+    width: auto;
+    padding: 12px;
+  }
+
+  /* Barra de progresso menor */
+  .barra-progresso {
+    height: 14px;
+  }
+
+  /* Itens da lista vistos recentemente se adaptam melhor */
+  .item-visto {
+    width: 100px;
+  }
+
+  .link-visto img {
+    width: 90px;
+    height: 90px;
+  }
+
+  /* Ajusta o tamanho do ícone de perfil e menu */
+  .user-actions {
+    font-size: 24px;
+  }
+
+  .menu-button {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+
+  /* Botões menores */
+  button,
+  .btn-atualizar,
+  .confirmar-atualizacao,
+  .btn-excluir,
+  #btn-cadastrar {
+    font-size: 0.85rem;
+    padding: 8px 14px;
+  }
+}
+
+/* A partir de 1120px (desktop) */
+@media (min-width: 1120px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    flex-wrap: nowrap;
+  }
+
+  .left-group,
+  .center-group,
+  .right-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .center-group {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .search-container {
+    width: 800px;
+  }
+
+  .search-bar {
+    font-size: 18px;
+    padding: 12px 40px;
+  }
+
+  .search-icon {
+    right: 20px;
+    bottom: 16px;
+  }
+
+  .menu-button {
+    font-size: 24px;
+    margin-right: 15px;
+  }
+
+  .user-actions {
+    font-size: 29px;
+    gap: 10px;
+  }
+
+  #login-nao-logado a {
+    font-size: 15px;
+  }
+}
+
+
+/* Telas entre 768px e 1119px */
+@media (min-width: 768px) and (max-width: 1119px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    flex-wrap: nowrap;
+  }
+
+  .left-group,
+  .center-group,
+  .right-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .center-group {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .search-container {
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .search-bar {
+    font-size: 16px;
+    padding: 10px 36px;
+  }
+
+  .search-icon {
+    right: 16px;
+    bottom: 14px;
+  }
+
+  .menu-button {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+
+  .user-actions {
+    font-size: 26px;
+    gap: 8px;
+  }
+
+  #login-nao-logado a {
+    font-size: 14px;
+  }
+}
+
+
+/* Telas até 767px (mobile e tablets pequenos) */
+@media (max-width: 767px) {
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 10px;
+  }
+
+  .left-group,
+  .center-group,
+  .right-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0; /* Impede que o grupo encolha e suma */
+  }
+
+
+  .center-group {
+  flex: 1;
+  justify-content: center;
+  min-width: 0; /* evita expansão forçada */
+ }
+
+ .search-container {
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
+ }
+  .search-bar {
+    font-size: 15px;
+    padding: 10px 36px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .search-icon {
+    right: 18px;
+    bottom: 14px;
+  }
+
+  .menu-button {
+    font-size: 20px;
+    margin-right: 0;
+  }
+
+  .user-actions {
+    font-size: 22px;
+    gap: 6px;
+    margin-left: 0;
+  }
+
+  #login-nao-logado a {
+    font-size: 13px;
+  }
+
+  .header-item .logo {
+    height: 48px;
+  }
+}
+
+
+/* Telas muito pequenas (até 375px) */
+@media (max-width: 375px) {
+  header {
+    padding: 8px;
+  }
+
+ .center-group {
+  flex: 1;
+  justify-content: center;
+  min-width: 0; /* evita expansão forçada */
+ }
+ .right-group {
+  flex-shrink: 0; /* Impede que o grupo encolha e suma */
+ }
+
+
+ .search-container {
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  min-width: 0;
+ }
+
+  .search-bar {
+    font-size: 14px;
+    padding: 8px 32px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .search-icon {
+    right: 14px;
+    bottom: 12px;
+  }
+
+  .menu-button {
+    font-size: 18px;
+  }
+
+  .user-actions {
+    font-size: 20px;
+    gap: 4px;
+  }
+
+  #login-nao-logado a {
+    font-size: 12px;
+  }
+
+  .header-item .logo {
+    height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .boas-vindas {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 690px) {
+  .secao-metas .lista-metas-horizontal {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .secao-metas .card-meta {
+    max-width: 100%;
+    width: 100%;
+    min-width: unset;
+    box-sizing: border-box;
+  }
+}
+
+
+
