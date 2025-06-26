@@ -1,0 +1,635 @@
+/*Download da fonte: https://fontmeme.com/fontes/fonte-poppins/#previewtool + Importação: https://cursos.alura.com.br/forum/topico-importacao-de-fontes-409962*/
+
+/*Adicionar fontes na font family = Poppins Thin*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100; /*Tamanho (grossura) ideal da fonte > Thin = 100*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Extra Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200; /*Tamanho (grossura) ideal da fonte > ExtraLight = 200*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Light*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300; /*Tamanho (grossura) ideal da fonte > Light = 300*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Regular*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400; /*Tamanho (grossura) ideal da fonte > Regular = 400*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Medium*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500; /*Tamanho (grossura) ideal da fonte > Medium = 500*/
+  font-style: normal;
+}
+
+/*Adicionar fontes na font family = Poppins Bold*/
+@font-face {
+  font-family: "Poppins";
+  src: url("../poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700; /*Tamanho (grossura) ideal da fonte > Bold = 700*/
+  font-style: normal;
+}
+
+body {
+  /*Estilização geral do corpo da página */
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
+}
+
+header {
+  /*Estilização da classe pai .NAV (barra superior)*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  height: 50px;
+  background: linear-gradient(to right, #5bc5cc 0%, #024dae 100%);
+}
+
+.left-group {
+  /*Estilização do grupo de itens que fica á esquerda do header (ícone de menu e logo)*/
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.center-group {
+  /*Estilização do grupo de itens que fica no centro do header (barra de pesquisa e ícone de pesquisa)*/
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-group {
+  /*Estilização do grupo de itens que fica á direita do header (ícone de perfil)*/
+  display: flex;
+  align-items: center;
+}
+
+/* Login / Cadastro */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+  font-size: 29px;
+  color: white;
+ 
+}
+
+.user-actions a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
+}
+.minha-area-botao {
+  
+ display: inline-block;           /* Para permitir padding e margin corretamente */
+  margin: 4px;                    /* Espaço externo ao redor do botão */
+  padding: 6px 12px;               /* Espaço interno (em cima/baixo e lados) */
+  background-color: #ffffff22;     /* Cor de fundo (semi-transparente aqui) */
+  color: white;                    /* Cor do texto */
+  border: 1px solid white;        /* Borda branca */
+  border-radius: 6px;             /* Cantos arredondados */
+  text-decoration: none;          /* Tira o sublinhado */
+  font-weight: bold;              /* Deixa o texto mais forte */
+  font-size: 10px;
+}
+#login-nao-logado a {
+  color: white;
+  text-decoration: none;
+  margin: 0 5px;
+  font-weight: bold; /* Deixa o texto mais forte */
+ font-size: 15px; /* Tamanho da fonte */
+
+}
+
+.search-container {
+  /*Estilização da barra de pesquisa*/
+  position: relative;
+  display: flex;
+  width: 900px;
+  align-items: center;
+  z-index: 1;
+}
+
+.search-bar {
+  /*Estilização da barra de pesquisa*/
+  font-family: "Poppins";
+  border-radius: 40px;
+  outline: none;
+  padding: 12px 40px;
+  font-weight: 100;
+  border: none;
+  width: 100%;
+  font-size: 18px;
+}
+
+.search-icon {
+  /*Estilização do ícone de pesquisa */
+  position: absolute;
+  right: 20px;
+  color: black;
+  bottom: 16px;
+}
+
+.menu-button {
+  /*Estilização do ícone de menu ☰*/
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 15px;
+  color: white;
+}
+
+.header-item .logo {
+  /*Estilização do logo*/
+  height: 55px;
+  margin-right: auto;
+}
+
+/* Reset */
+ul, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dropdown principal */
+.dropdown-menu {
+  width: 250px; /* AUMENTADO de 220 para 250 */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  top:70px;
+  
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  color: #333;
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: 6px;
+  position: relative;
+}
+
+.dropdown-menu a:hover {
+  background-color: #024dae;
+  color: #fff;
+}
+
+/* Seta para submenu */
+.has-submenu > a::after {
+  content: "▶";
+  margin-left: 8px;
+  font-size: 0.75em;
+  
+}
+
+/* Submenu */
+.has-submenu {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 220px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.has-submenu:hover > .submenu {
+  display: block;
+}
+
+/* Submenu links */
+.submenu a {
+  padding: 12px 16px;
+  border-radius: 6px;
+  
+}
+
+.submenu a:hover {
+  background-color: #024dae;
+  color: #fff;
+}
+
+
+.FAQ{
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.Sair{
+    display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.perfil {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.editar-dashboard {
+  display: block;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  padding: 8px 12px;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.feedback-container {
+  max-width: 600px; /* Largura máxima da caixa de feedback */
+  margin: 60px auto;
+  padding: 65px; /* Espaçamento interno */
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.logo-central {
+  width: 250px; /* Largura do logo */
+  margin: 0 auto 20px; /* Margem inferior */
+  display: block;
+}
+
+p {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #333;
+  margin: 15px 0;
+}
+
+.stars {
+  margin: 15px 0;
+}
+
+.star {
+  font-size: 55px;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+textarea {
+  /*Estilização da caixa de texto*/
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+  resize: none;
+}
+
+.buttons button {
+  width: 115px; /* Largura fixa */
+  height: 40px; /* Altura fixa */
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+.mensagem-sucesso {
+  color: green;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  display: none; /* começa escondida */
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.mensagem-erro {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  display: none; /* começa escondida */
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.cancel {
+  background-color: white;
+  border: 2px solid black;
+  cursor: pointer
+}
+
+.submit {
+  background-color: #024dae;
+  color: white;
+  border: 2px solid #024dae;
+  cursor: pointer;
+}
+
+/* Oculta o ícone do mobile por padrão */
+.search-mobile-icon {
+  display: none;
+  font-size: 22px;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.search-mobile-icon i {
+  color: white;
+}
+
+.mobile-search-bar {
+  display: none;
+  padding: 15px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.mobile-search-bar input {
+  width: 80%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Poppins";
+  border-radius: 25px;
+  border: 1px solid #ccc;
+}
+
+.mobile-search-bar button {
+  padding: 10px 16px;
+  margin-left: 10px;
+  background-color: #024dae;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-family: "Poppins";
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.mobile-search-bar button:hover {
+  background-color: #02327e;
+}
+
+
+/* -------------------- TABLETS E CELULARES MAIORES (300px a 768px) -------------------- */
+@media (min-width: 300px) and (max-width: 768px) {
+  header {
+    flex-direction: row;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .left-group, .right-group {
+    width: auto;
+    justify-content: space-between;
+  }
+
+  .center-group { 
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .search-container { 
+    width: 80%; 
+    margin: 0 auto;
+  }
+
+  .feedback-container {
+    max-width: 90%;
+    padding: 20px;
+    margin: 20px auto;
+  } 
+
+  .search-bar {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .search-icon {
+    right: 20px;
+  }
+
+  .perfil-container {
+    width: 90%;
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .save-btn, .cancel-btn {
+    width: auto;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  textarea {
+    width: auto;
+    font-size: 16px;
+    height: 120px;
+  }
+
+  .upload-label {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .imagem-perfil img {
+    width: 120px;
+    height: 120px;
+  }
+
+}
+
+/* -------------------- TELAS MAIORES QUE 769px -------------------- */
+
+@media (min-width: 769px) {
+  /* Estilos para telas maiores que 769px */
+  header {
+    padding: 10px 40px; 
+  }
+
+  .search-container {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .search-bar {
+    font-size: 18px;
+    padding: 12px 30px;
+  }
+
+  .perfil-container {
+    width: 60%;
+    padding: 30px;
+    margin: 30px auto;
+  }
+
+  .save-btn, .cancel-btn {
+    width: auto;
+    padding: 12px 20px;
+  }
+
+    #mobileSearchBar {
+    display: none !important;
+  }
+}
+
+/*ADICIONANDO MEDIA QUERIES PARA O MENU NO MOBILE*/
+@media (max-width: 768px) {
+
+   .header.fixo-quando-menu-aberto { /*Mantém o header fixo quando abre o menu*/
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  /* Adiciona margem para não sobrepor conteúdo */
+  body.menu-aberto-margin {
+    margin-top: 70px !important; /* Ajuste da margem superior do menu mobile para mostrar o header (mesmo tamanho do header > 70px) */
+  }
+
+  /*Responsividade do submenu*/
+  .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 15px;
+  }
+
+  .submenu.show {
+    display: flex;
+  }
+
+  .has-submenu.open > a {
+    background-color: #024dae;
+    color: white;
+    font-weight: bold;
+  }
+
+  /*Responsividade do dropdown menu*/
+  .dropdown-menu {
+    position: fixed;
+    top: 70px; /* altura exata do header */
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #ffffff;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-sizing: border-box;
+  }
+
+  .dropdown-menu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .submenu {
+    display: none;
+    flex-direction: column;
+    padding-left: 20px;
+    margin-top: 5px;
+    position: static; /* <<< ESSENCIAL: evita flutuação lateral */
+    background: none;
+    width: 100%;
+    box-shadow: none;
+  }
+
+  .dropdown-menu .submenu.show {
+    display: flex;
+  }
+
+  .dropdown-menu .has-submenu > a::after {
+    content: "▼";
+    font-size: 0.8em;
+    margin-left: auto;
+  }
+
+  .dropdown-menu .has-submenu.open > a::after {
+    content: "▲";
+  }
+
+   .search-container.search-desktop {
+    display: none !important;/* some com a barra */
+  }
+
+  .search-mobile-icon {
+    display: flex; /* mostra o ícone */
+  }
+
+  .header-item .logo {
+  /*Estilização do logo*/
+  height: 40px;
+  margin-right: auto;
+}
+}
