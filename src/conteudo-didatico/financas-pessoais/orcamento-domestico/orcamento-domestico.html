@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <link
+      rel="stylesheet"
+      href="orcamento-domestico.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+ <body>
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i></div>
+          <div class="header-item">
+            <img src="../../../imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
+        </div>
+        <div class="center-group">
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            /><a class="search-button" id="search-button" href="#"
+              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="right-group">
+
+           <button class="mobile-search-trigger" id="mobileSearchTrigger" aria-label="Abrir pesquisa">
+               <i class="fa-solid fa-magnifying-glass"></i>  <!--mover para a o grupo da direita-->
+             </button>
+
+            <div class="user-actions" id="login-nao-logado">
+               <a href="../../../login/login.html">Fazer login</a>
+               <span>|</span>
+               <a href="../../../cadastro/cadastro.html">Cadastrar-se</a>
+              </div>
+ 
+              <div class="user-area"> <a href="../../../main/Main.html" class="minha-area-botao">Minha Área</a>
+                  </div>
+ 
+ 
+            <div class="user-actions" id="perfil-logado">
+               <a href="../../../perfil/perfil.html">
+                 <i class="fa-regular fa-circle-user"></i>
+               </a>
+              </div>
+               
+           
+        </div>
+      </header> 
+    </div>  
+      <nav class="dropdown-menu" id="dropdownMenu">
+        <ul id="menu">
+          <li class="item-logged">
+            <a class="perfil" href="../../../perfil/perfil.html">Perfil</a>
+          </li>
+          <li class="item-logged">
+            <a href="../../../main/Main.html">Minha Área</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" onclick="redirecionarCadastro()">Meu Dashboard</a>
+          </li>
+          <li class="has-submenu">
+            <a href="#">Conteúdo Didático</a>
+            <ul class="submenu">
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Finanças Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../planejamento-financeiro/planejamento-financeiro.html"
+                      onclick="registrarConteudoVisto('Planejamento Financeiro',
+                      '../planejamento-financeiro/planejamento-financeiro.html',
+                      '../../../imagens/PlanejamentoFinanceiro.jpg')">
+                      Planejamento Financeiro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./orcamento-domestico.html"
+                      onclick="registrarConteudoVisto('Orçamento Doméstico',
+                      './orcamento-domestico.html',
+                      '../../../imagens/OrcamentoDomestico.jpg')">
+                      Orçamento Doméstico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../controle-de-dividas/controle-de-dividas.html"
+                      onclick="registrarConteudoVisto('Controle de Dívidas',
+                      '../controle-de-dividas/controle-de-dividas.html',
+                      '../../../imagens/ControleDividas.jpg')">
+                      Controle de Dívidas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Finanças Corporativas</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                      onclick="registrarConteudoVisto('Análise de Balanço',
+                      '../../financas-corporativas/analise-de-balanco/analise-de-balanco.html',
+                      '../../../imagens/AnaliseDeBalancos.jpg')">
+                      Análise de Balanços
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                      onclick="registrarConteudoVisto('Fluxo de Caixa',
+                      '../../financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html',
+                      '../../../imagens/FluxoDeCaixa.jpg')">
+                      Fluxo de Caixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                      onclick="registrarConteudoVisto('Captação de Recursos',
+                      '../../financas-corporativas/captacao-de-recursos/captacao-de-recursos.html',
+                      '../../../imagens/CaptacaoDeRecursos.jpg')">
+                      Captação de Recursos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/dre/dre.html"
+                      onclick="registrarConteudoVisto('D.R.E.',
+                      '../../financas-corporativas/dre/dre.html',
+                      '../../../imagens/DRE.jpg')">
+                      D.R.E
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu">
+                <a href="#">Operações Bancárias</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../operacoes-bancarias/cartao-de-debito/cartao-de-debito.html"
+                      onclick="registrarConteudoVisto('Cartão de Débito',
+                      '../../operacoes-bancarias/cartao-de-debito/cartao-de-debito.html',
+                      '../../../imagens/CartaoDeDebito.jpg')">
+                      Cartão de Débito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/cartao-de-credito/cartao-de-credito.html"
+                      onclick="registrarConteudoVisto('Cartão de Crédito',
+                      '../../operacoes-bancarias/cartao-de-credito/cartao-de-credito.html',
+                      '../../../imagens/CartaodeCredito.png')">
+                      Cartão de Crédito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/emprestimo/emprestimo.html"
+                      onclick="registrarConteudoVisto('Empréstimo',
+                      '../../operacoes-bancarias/emprestimo/emprestimo.html',
+                      '../../../imagens/Emprestimos.jpg')">
+                      Empréstimos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/financiamento/financiamento.html"
+                      onclick="registrarConteudoVisto('Financiamento',
+                      '../../operacoes-bancarias/financiamento/financiamento.html',
+                      '../../../imagens/Financiamento.webp')">
+                      Financiamento
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html"
+                      onclick="registrarConteudoVisto('Taxas e Tarifas',
+                      '../../operacoes-bancarias/taxas-e-tarifas/taxas-e-tarifas.html',
+                      '../../../imagens/TaxasTarifas.jpg')">
+                      Taxas e Tarifas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Investimentos Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html',
+                      '../../../imagens/RendaFixaPF.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html',
+                      '../../../imagens/RendaVariavelPFmenor.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html',
+                      '../../../imagens/FundoInvestimentosPF.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Investimentos Corporativos</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html',
+                      '../../../imagens/RendaFixaPJ.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html',
+                      '../../../imagens/RendaVariavelPFsub.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html',
+                      '../../../imagens/FundosDeInvestimentoPJ.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+ 
+          <li class="item-logged">
+            <a href="../../../Feedback/feedback.html">FAQ</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" id="botao-sair">Sair</a>
+          </li>
+        </ul>
+      </nav>
+          <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+              <button type="button" onclick="buscarMobile()" class="mobile-buscar-btn-estilizado">
+              Buscar
+             </button>
+</div>
+
+    </div>
+
+       <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a id="botao-voltar" onclick="botaoVoltar()" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
+          </a>
+          <h1>Orçamento Doméstico </h1>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <section class="conteudo-didatico">
+        <div class="imagem-orcamento">
+          <img src="../../../imagens/OrcamentoDomestico.jpg" alt="Imagem" />
+        </div>
+        <div class="texto-conteudo-didatico">
+          <p class="introducao">
+            Manter a saúde financeira da família é um desafio para muitas
+            pessoas. Entre contas fixas, imprevistos, desejos e compromissos,
+            fica fácil se perder e acabar gastando mais do que deveria. É aí que
+            entra o orçamento doméstico, uma ferramenta fundamental para ter
+            controle, segurança e planejamento no dia a dia.
+          </p>
+          <p class="inicio-artigo">
+            Neste artigo, você vai entender como montar um orçamento doméstico
+            eficiente, evitar dívidas e ainda encontrar espaço para economizar e
+            realizar sonhos.
+          </p>
+
+          <h2>O que é orçamento doméstico?</h2>
+
+          <p class="topico-1">
+            O orçamento doméstico é um planejamento que reúne todas as receitas
+            e despesas da casa em um único lugar. Ele mostra com clareza quanto
+            entra, quanto sai e para onde vai o dinheiro da família, permitindo
+            uma gestão mais consciente e estratégica das finanças.
+          </p>
+
+          <h2>Por que fazer um orçamento doméstico?</h2>
+
+          <p class="topico-2">
+            Controlar o dinheiro da casa vai muito além de pagar as contas em
+            dia. Um bom orçamento doméstico permite:
+          </p>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Evitar o endividamento</li>
+            <li><span class="list-icon"></span> Reduzir desperdícios</li>
+            <li>
+              <span class="list-icon"></span> Planejar compras e metas
+              familiares
+            </li>
+            <li>
+              <span class="list-icon"></span> Criar uma reserva de emergência
+            </li>
+            <li>
+              <span class="list-icon"></span> Investir no bem-estar da família
+            </li>
+          </ul>
+
+          <p class="topico-2">
+            Com ele, é possível tomar decisões com base em dados reais, e não em
+            suposições.
+          </p>
+
+          <h2>Como montar um orçamento doméstico na prática</h2>
+
+          <h3>1. Levante toda a renda da família</h3>
+
+          <p class="topico-3">
+            Some todas as fontes de entrada de dinheiro: salários, pensões,
+            aluguéis, bicos e qualquer outra receita.
+          </p>
+
+          <h3>2. Liste todos os gastos fixos e variáveis</h3>
+
+          <p class="topico-3">
+            Classifique os gastos mensais em categorias como:
+          </p>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span> <strong>Fixos:</strong> aluguel,
+              condomínio, energia, escola, internet, financiamentos
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Variáveis:</strong> mercado, transporte, farmácia, lazer,
+              delivery
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Ocasionais:</strong> presentes, manutenção, impostos,
+              viagens
+            </li>
+          </ul>
+
+          <p class="topico-3">
+            É importante ser <strong>honesto e detalhado</strong> — anote até os
+            pequenos gastos do dia a dia, como o cafezinho ou a água na rua.
+          </p>
+
+          <h3>3. Use uma planilha ou aplicativo</h3>
+
+          <p class="topico-3">
+            Ao se cadastrar aqui em nosso site você tem acesso a um dashboard
+            especial para você, onde é possível adicionar esses gastos e
+            acompanhar sua evolução mês a mês.
+          </p>
+
+          <h3>4. Estabeleça limites de gasto por categoria</h3>
+
+          <p class="topico-3">
+            Com base na média dos meses anteriores, defina quanto pode ser gasto
+            em cada área. Exemplo: R$ 1.500 para alimentação, R$ 400 para
+            transporte, R$ 200 para lazer, e assim por diante.
+          </p>
+
+          <h2>Dicas para reduzir despesas no dia a dia</h2>
+
+          <ul class="lista-topico">
+            <li>
+              <span class="list-icon"></span>
+              <strong>Revise assinaturas e serviços:</strong> Streaming,
+              academia e planos de celular podem estar pesando sem necessidade.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Economize energia e água:</strong> Pequenas atitudes viram
+              grandes economias.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Planeje as compras:</strong> Evite ir ao mercado sem lista
+              e nunca compre por impulso.
+            </li>
+            <li>
+              <span class="list-icon"></span>
+              <strong>Negocie dívidas e contas fixas:</strong> Muitas empresas
+              oferecem descontos para pagamento à vista ou renegociação.
+            </li>
+          </ul>
+
+          <h2>Inclua toda a família no planejamento</h2>
+
+          <p class="topico-5">
+            O orçamento doméstico deve ser uma responsabilidade coletiva.
+            Envolver os membros da família — inclusive crianças e adolescentes —
+            ajuda a criar uma cultura de educação financeira e responsabilidade
+            compartilhada.
+          </p>
+
+          <h2>Crie uma reserva de emergência familiar</h2>
+
+          <p class="topico-6">
+            Uma parte do orçamento deve ser destinada à formação de uma
+            <strong>reserva para imprevistos</strong>, como manutenção do carro,
+            problemas de saúde ou perda de emprego. O ideal é reservar
+            <strong>pelo menos 10% da renda mensal</strong>, se possível, e
+            manter esse valor aplicado em investimentos de alta liquidez.
+          </p>
+
+          <h2>Acompanhe e revise o orçamento com frequência</h2>
+
+          <p class="topico-7">
+            A vida muda, e o orçamento também deve mudar. Revise mensalmente os
+            gastos, analise desvios e atualize os valores conforme novos
+            compromissos ou receitas surjam. A constância é mais importante do
+            que a perfeição.
+          </p>
+
+          <h2>Conclusão</h2>
+
+          <p class="topico-7">
+            Fazer um orçamento doméstico é um ato de cuidado com sua família e
+            seu futuro. Mais do que números, ele representa escolhas
+            conscientes, liberdade e tranquilidade. Com organização, disciplina
+            e diálogo, é possível viver melhor hoje e ainda se preparar para o
+            amanhã.
+          </p>
+        </div>
+      </section>
+    </main>
+    <script src="orcamento-domestico.js"></script>
+  </body>
+</html>
