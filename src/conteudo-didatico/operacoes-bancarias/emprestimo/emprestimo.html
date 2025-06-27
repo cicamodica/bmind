@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <link
+      rel="stylesheet"
+      href="emprestimo.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i></div>
+          <div class="header-item">
+            <img src="../../../imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
+        </div>
+        <div class="center-group">
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            /><a class="search-button" id="search-button" href="#"
+              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="right-group">
+
+
+             <button class="mobile-search-trigger" id="mobileSearchTrigger" aria-label="Abrir pesquisa">
+               <i class="fa-solid fa-magnifying-glass"></i>  <!--mover para a o grupo da direita-->
+             </button>
+
+            <div class="user-actions" id="login-nao-logado">
+               <a href="../../../login/login.html">Fazer login</a>
+               <span>|</span>
+               <a href="../../../cadastro/cadastro.html">Cadastrar-se</a>
+              </div>
+ 
+              <div class="user-area"> <a href="../../../main/Main.html" class="minha-area-botao">Minha Área</a>
+                  </div>
+ 
+ 
+            <div class="user-actions" id="perfil-logado">
+               <a href="../../../perfil/perfil.html">
+                 <i class="fa-regular fa-circle-user"></i>
+               </a>
+              </div>
+               
+           
+        </div>
+      </header> 
+    </div>  
+      <nav class="dropdown-menu" id="dropdownMenu">
+        <ul id="menu">
+          <li class="item-logged">
+            <a class="perfil" href="../../../perfil/perfil.html">Perfil</a>
+          </li>
+          <li class="item-logged">
+            <a href="../../../main/Main.html">Minha Área</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" onclick="redirecionarCadastro()">Meu Dashboard</a>
+          </li>
+          <li class="has-submenu">
+            <a href="#">Conteúdo Didático</a>
+            <ul class="submenu">
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Finanças Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                      onclick="registrarConteudoVisto('Planejamento Financeiro',
+                      '../../financas-pessoais/planejamento-financeiro/planejamento-financeiro.html',
+                      '../../../imagens/PlanejamentoFinanceiro.jpg')">
+                      Planejamento Financeiro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                      onclick="registrarConteudoVisto('Orçamento Doméstico',
+                      '../../financas-pessoais/orcamento-domestico/orcamento-domestico.html',
+                      '../../../imagens/OrcamentoDomestico.jpg')">
+                      Orçamento Doméstico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                      onclick="registrarConteudoVisto('Controle de Dívidas',
+                      '../../financas-pessoais/controle-de-dividas/controle-de-dividas.html',
+                      '../../../imagens/ControleDividas.jpg')">
+                      Controle de Dívidas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Finanças Corporativas</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                      onclick="registrarConteudoVisto('Análise de Balanço',
+                      '../../financas-corporativas/analise-de-balanco/analise-de-balanco.html',
+                      '../../../imagens/AnaliseDeBalancos.jpg')">
+                      Análise de Balanços
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                      onclick="registrarConteudoVisto('Fluxo de Caixa',
+                      '../../financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html',
+                      '../../../imagens/FluxoDeCaixa.jpg')">
+                      Fluxo de Caixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                      onclick="registrarConteudoVisto('Captação de Recursos',
+                      '../../financas-corporativas/captacao-de-recursos/captacao-de-recursos.html',
+                      '../../../imagens/CaptacaoDeRecursos.jpg')">
+                      Captação de Recursos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/dre/dre.html"
+                      onclick="registrarConteudoVisto('D.R.E.',
+                      '../../financas-corporativas/dre/dre.html',
+                      '../../../imagens/DRE.jpg')">
+                      D.R.E
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu">
+                <a href="#">Operações Bancárias</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../cartao-de-debito/cartao-de-debito.html"
+                      onclick="registrarConteudoVisto('Cartão de Débito',
+                      '../cartao-de-debito/cartao-de-debito.html',
+                      '../../../imagens/CartaoDeDebito.jpg')">
+                      Cartão de Débito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../cartao-de-credito/cartao-de-credito.html"
+                      onclick="registrarConteudoVisto('Cartão de Crédito',
+                      '../cartao-de-credito/cartao-de-credito.html',
+                      '../../../imagens/CartaodeCredito.png')">
+                      Cartão de Crédito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./emprestimo.html"
+                      onclick="registrarConteudoVisto('Empréstimo',
+                      './emprestimo.html',
+                      '../../../imagens/Emprestimos.jpg')">
+                      Empréstimos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../financiamento/financiamento.html"
+                      onclick="registrarConteudoVisto('Financiamento',
+                      '../financiamento/financiamento.html',
+                      '../../../imagens/Financiamento.webp')">
+                      Financiamento
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../taxas-e-tarifas/taxas-e-tarifas.html"
+                      onclick="registrarConteudoVisto('Taxas e Tarifas',
+                      '../taxas-e-tarifas/taxas-e-tarifas.html',
+                      '../../../imagens/TaxasTarifas.jpg')">
+                      Taxas e Tarifas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Investimentos Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html',
+                      '../../../imagens/RendaFixaPF.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html',
+                      '../../../imagens/RendaVariavelPFmenor.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html',
+                      '../../../imagens/FundoInvestimentosPF.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Investimentos Corporativos</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html',
+                      '../../../imagens/RendaFixaPJ.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html',
+                      '../../../imagens/RendaVariavelPFsub.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html',
+                      '../../../imagens/FundosDeInvestimentoPJ.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+ 
+          <li class="item-logged">
+            <a href="../../../Feedback/feedback.html">FAQ</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" id="botao-sair">Sair</a>
+          </li>
+        </ul>
+      </nav>
+           <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+              <button type="button" onclick="buscarMobile()" class="mobile-buscar-btn-estilizado">
+              Buscar
+             </button>
+</div>
+    </div> 
+
+    <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a id="botao-voltar" onclick="botaoVoltar()" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
+          </a>
+          <h1>Empréstimo</h1>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <section class="conteudo-didatico">
+        <div class="imagem-controle">
+          <img src="../../../imagens/Emprestimos.jpg" alt="Imagem" />
+        </div>
+        <div class="texto-conteudo-didatico">
+
+         
+            <h1>O que é Empréstimo?</h1>
+          <p class="introducao">
+           
+
+           O empréstimo é uma operação financeira onde uma instituição (como um banco ou financeira)
+            disponibiliza uma quantia em dinheiro para uma pessoa física ou jurídica, mediante o compromisso 
+            de devolução desse valor acrescido de juros, dentro de um prazo estipulado em contrato. 
+            É uma forma de antecipar recursos para necessidades imediatas, investimentos ou pagamento de dívidas.
+          </p>
+
+          <p class="inicio-artigo">
+           No entanto, é essencial compreender como ele funciona, quais são os tipos existentes e como usá-lo de forma 
+            consciente para evitar o endividamento excessivo.
+          </p>
+
+
+          <h2>Tipos de Empréstimo</h2>
+
+
+       
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Feito diretamente com o banco ou instituição financeira</li>
+            <li><span class="list-icon"></span> Pode ser com garantia ou sem garantia </li>
+            <li><span class="list-icon"></span> Juros variáveis conforme perfil e instituição</li>
+          </ul>
+
+            <h3>2. Empréstimo Consignado</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Descontado diretamente da folha de pagamento</li>
+            <li><span class="list-icon"></span> Juros mais baixos </li>
+            <li><span class="list-icon"></span> Reservado para aposentados, pensionistas, servidores públicos
+            e alguns trabalhadores CLT</li>
+          </ul>
+
+           <h3>3. Crédito Rotavivo do Cartão</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Utilizado quando o valor da farura não é pago integralmente</li>
+            <li><span class="list-icon"></span> Juros altos </li>
+            <li><span class="list-icon"></span> Recomendado evitar sempre que possível</li>
+          </ul>
+
+          <h3>4. Cheque Especial</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Limite pré-aprovado atrelado á conta corrente </li>
+            <li><span class="list-icon"></span> Fácil acesso, mas com juros muito elevados</li>
+           </ul>
+             
+           <h3>5. Empréstimo com Garantia</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Pode ser com imóvel, veículo ou investimentos como garantia </li>
+            <li><span class="list-icon"></span> Taxas mais baixas devido ao menor risco para o credor</li>
+           </ul>
+
+          <h2> Quando Vale a Pena Fazer um Empréstimo ?</h2>
+            <p> <strong> Vale a pena considerar um empréstimo quando</strong> :</p>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> É usado para quitar dívidas com juros maiores (ex: cartão de crédito) </li>
+            <li><span class="list-icon"></span> Serve para investir em algo que trará retorno (ex:negócio próprio ou educação)</li>
+            <li><span class="list-icon"></span> Há um planejamento para pagamentos das parcelas dentro do orçamento</li>
+           </ul>
+
+         <h2> Risco e Cuidados </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cuidado com juros abusivos </li>
+            <li><span class="list-icon"></span> Leioa sempre o contrato completo</li>
+            <li><span class="list-icon"></span> Evite parcelar por muitos anos </li>
+            <li><span class="list-icon"></span> Faça simulações antes de contratar</li>
+            <li><span class="list-icon"></span> Prefira empréstimos com garantia apenas se tiver total segurança de pagamento </li>
+           </ul>
+        
+         <h2> Como Saber  se Você Pode fazer um Emprestimo </h2>
+          <ul class="lista-topico">
+            <li><span class="#"></span> 1. Avalie sua renda mensal líquida  </li>
+            <li><span class="#"></span> 2. Calcule suas despesas fixas </li>
+            <li><span class="#"></span> 3. Veja se aparcela do empréstimo comprometerá mais de 30% da renda </li>
+            <li><span class="#"></span> 4.Considere se realmente é necessário </li>
+            <li><span class="#"></span> 5.Faça uma simulação online em diferentes instituições </li>
+           </ul>
+
+         <h2> Dicas para Controlar Dívidas   </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Monte um orçamento mensal </li>
+            <li><span class="list-icon"></span> Anote todos os gastos </li>
+            <li><span class="list-icon"></span> Crie um fundo de emergência </li>
+            <li><span class="list-icon"></span> Negocie dívidas antigas </li>
+            <li><span class="list-icon"></span> Ultilize o crédito de forma planejada </li>
+           </ul>
+
+          <h2> Ferramentas Úteis   </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Calculadoras de empréstimo online </li>
+            <li><span class="list-icon"></span> Aplicativos de controle financeiro </li>
+            <li><span class="list-icon"></span> Planilhas de orçamento ( Google Sheets, Excell) </li>
+            <li><span class="list-icon"></span> Simuladores de crédito de bancos confiáveis </li>
+           </ul>
+          
+          
+        </div>
+      </section>
+    </main>
+    <script src="emprestimo.js"></script>
+  </body>
+</html>
