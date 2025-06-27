@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bmind</title>
+    <link
+      rel="stylesheet"
+      href="taxas-e-tarifas.css"
+    />
+    <!-- Link para o arquivo CSS externo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <header>
+        <div class="left-group">
+          <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars menu-button"></i></div>
+          <div class="header-item">
+            <img src="../../../imagens/Logo site.png" alt="Logo" class="logo" />
+          </div>
+        </div>
+        <div class="center-group">
+          <div class="search-container">
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquisar..."
+              class="search-bar"
+            /><a class="search-button" id="search-button" href="#"
+              ><i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </a>
+          </div>
+        </div>
+        <div class="right-group">
+
+            <button class="mobile-search-trigger" id="mobileSearchTrigger" aria-label="Abrir pesquisa">
+               <i class="fa-solid fa-magnifying-glass"></i>  <!--mover para a o grupo da direita-->
+             </button>
+
+            <div class="user-actions" id="login-nao-logado">
+               <a href="../../../login/login.html">Fazer login</a>
+               <span>|</span>
+               <a href="../../../cadastro/cadastro.html">Cadastrar-se</a>
+              </div>
+ 
+              <div class="user-area"> <a href="../../../main/Main.html" class="minha-area-botao">Minha Área</a>
+                  </div>
+ 
+ 
+            <div class="user-actions" id="perfil-logado">
+               <a href="../../../perfil/perfil.html">
+                 <i class="fa-regular fa-circle-user"></i>
+               </a>
+              </div>
+               
+           
+        </div>
+      </header> 
+    </div>  
+      <nav class="dropdown-menu" id="dropdownMenu">
+        <ul id="menu">
+          <li class="item-logged">
+            <a class="perfil" href="../../../perfil/perfil.html">Perfil</a>
+          </li>
+          <li class="item-logged">
+            <a href="../../../main/Main.html">Minha Área</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" onclick="redirecionarCadastro()">Meu Dashboard</a>
+          </li>
+          <li class="has-submenu">
+            <a href="#">Conteúdo Didático</a>
+            <ul class="submenu">
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Finanças Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../financas-pessoais/planejamento-financeiro/planejamento-financeiro.html"
+                      onclick="registrarConteudoVisto('Planejamento Financeiro',
+                      '../../financas-pessoais/planejamento-financeiro/planejamento-financeiro.html',
+                      '../../../imagens/PlanejamentoFinanceiro.jpg')">
+                      Planejamento Financeiro
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-pessoais/orcamento-domestico/orcamento-domestico.html"
+                      onclick="registrarConteudoVisto('Orçamento Doméstico',
+                      '../../financas-pessoais/orcamento-domestico/orcamento-domestico.html',
+                      '../../../imagens/OrcamentoDomestico.jpg')">
+                      Orçamento Doméstico
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-pessoais/controle-de-dividas/controle-de-dividas.html"
+                      onclick="registrarConteudoVisto('Controle de Dívidas',
+                      '../../financas-pessoais/controle-de-dividas/controle-de-dividas.html',
+                      '../../../imagens/ControleDividas.jpg')">
+                      Controle de Dívidas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Finanças Corporativas</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../financas-corporativas/analise-de-balanco/analise-de-balanco.html"
+                      onclick="registrarConteudoVisto('Análise de Balanço',
+                      '../../financas-corporativas/analise-de-balanco/analise-de-balanco.html',
+                      '../../../imagens/AnaliseDeBalancos.jpg')">
+                      Análise de Balanços
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html"
+                      onclick="registrarConteudoVisto('Fluxo de Caixa',
+                      '../../financas-corporativas/fluxo-de-caixa/fluxo-de-caixa.html',
+                      '../../../imagens/FluxoDeCaixa.jpg')">
+                      Fluxo de Caixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/captacao-de-recursos/captacao-de-recursos.html"
+                      onclick="registrarConteudoVisto('Captação de Recursos',
+                      '../../financas-corporativas/captacao-de-recursos/captacao-de-recursos.html',
+                      '../../../imagens/CaptacaoDeRecursos.jpg')">
+                      Captação de Recursos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../financas-corporativas/dre/dre.html"
+                      onclick="registrarConteudoVisto('D.R.E.',
+                      '../../financas-corporativas/dre/dre.html',
+                      '../../../imagens/DRE.jpg')">
+                      D.R.E
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu">
+                <a href="#">Operações Bancárias</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../cartao-de-debito/cartao-de-debito.html"
+                      onclick="registrarConteudoVisto('Cartão de Débito',
+                      '../cartao-de-debito/cartao-de-debito.html',
+                      '../../../imagens/CartaoDeDebito.jpg')">
+                      Cartão de Débito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../cartao-de-credito/cartao-de-credito.html"
+                      onclick="registrarConteudoVisto('Cartão de Crédito',
+                      '../../cartao-de-credito/cartao-de-credito.html',
+                      '../../../imagens/CartaodeCredito.png')">
+                      Cartão de Crédito
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../emprestimo/emprestimo.html"
+                      onclick="registrarConteudoVisto('Empréstimo',
+                      '../emprestimo/emprestimo.html',
+                      '../../../imagens/Emprestimos.jpg')">
+                      Empréstimos
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../financiamento/financiamento.html"
+                      onclick="registrarConteudoVisto('Financiamento',
+                      '../financiamento/financiamento.html',
+                      '../../../imagens/Financiamento.webp')">
+                      Financiamento
+                    </a>
+                  </li>
+                  <li>
+                    <a href="./taxas-e-tarifas.html"
+                      onclick="registrarConteudoVisto('Taxas e Tarifas',
+                      './taxas-e-tarifas.html',
+                      '../../../imagens/Tarifasetaxas.webp')">
+                      Taxas e Tarifas
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pf item-nao-logado">
+                <a href="#">Investimentos Pessoais</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-pessoais/renda-fixa-pf/renda-fixa-pf.html',
+                      '../../../imagens/RendaFixaPF.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-pessoais/renda-variavel-pf/renda-variavel-pf.html',
+                      '../../../imagens/RendaVariavelPFmenor.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-pessoais/fundo-de-investimentos-pf/fundo-de-investimentos-pf.html',
+                      '../../../imagens/FundoInvestimentosPF.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+ 
+              <li class="has-submenu item-pj item-nao-logado">
+                <a href="#">Investimentos Corporativos</a>
+                <ul class="submenu">
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html"
+                      onclick="registrarConteudoVisto('Renda Fixa',
+                      '../../investimentos-corporativos/renda-fixa-pj/renda-fixa-pj.html',
+                      '../../../imagens/RendaFixaPJ.jpg')">
+                      Renda Fixa
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html"
+                      onclick="registrarConteudoVisto('Renda Variável',
+                      '../../investimentos-corporativos/renda-variavel-pj/renda-variavel-pj.html',
+                      '../../../imagens/RendaVariavelPFsub.jpg')">
+                      Renda Variável
+                    </a>
+                  </li>
+                  <li>
+                    <a href="../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html"
+                      onclick="registrarConteudoVisto('Fundo de Investimentos',
+                      '../../investimentos-corporativos/fundo-de-investimentos-pj/fundo-de-investimentos-pj.html',
+                      '../../../imagens/FundosDeInvestimentoPJ.jpg')">
+                      Fundo de Investimentos
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+ 
+          <li class="item-logged">
+            <a href="../../../Feedback/feedback.html">FAQ</a>
+          </li>
+          <li class="item-logged">
+            <a href="#" id="botao-sair">Sair</a>
+          </li>
+        </ul>
+      </nav>
+        <div class="mobile-search-bar" id="mobileSearchBar">
+            <input type="text" placeholder="Pesquisar..." id="mobileSearchInput" />
+              <button type="button" onclick="buscarMobile()" class="mobile-buscar-btn-estilizado">
+              Buscar
+             </button>
+</div>
+    </div>
+
+       <div class="nav">
+      <nav>
+        <div class="titulo-nav">
+          <a id="botao-voltar" onclick="botaoVoltar()" class="nav-icon">
+            <i class="fa-regular fa-circle-left"></i>
+          </a>
+          <h1>Taxas e Tarifas</h1>
+        </div>
+      </nav>
+    </div>
+
+    <main>
+      <section class="conteudo-didatico">
+        <div class="imagem-controle">
+          <img src="../../../imagens/Tarifasetaxas.webp" alt="Imagem" />
+        </div>
+        <div class="texto-conteudo-didatico">
+
+         
+           <h1>O que são Taxas e Tarifas?</h1>
+          <p class="introducao">
+            
+
+           Taxas e tarifas são valores cobrados por instituições financeiras como contrapartida por produtos ou serviços prestados.
+          Elas estão presentes em quase todas as operações bancárias e financeiras: contas, empréstimos, financiamentos, cartões,
+          consórcios, investimentos e muito mais.
+          </p>
+
+          <p class="inicio-artigo">
+          Entender o que são, como funcionam, e onde estão aplicadas é essencial para evitar cobranças abusivas,
+          planejar melhor suas finanças e escolher produtos mais vantajosos.
+          </p>
+         
+
+
+           <h2>Diferença entre Taxas e Tarifas</h2>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Taxas → Estão associadas ao uso de recursos financeiros (ex: juros, IOF, taxas administrativas).</li>
+            <li><span class="list-icon"></span> Tarifas → Referem-se a serviços prestados (ex: emissão de extrato, manutenção de conta, transferência bancária). </li>
+          </ul>
+
+            <h2> Principais Taxas em Operações Financeiras</h2>
+            <h3>1. Taxa de Juros</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança pelo uso de um valor emprestado ou financiado</li>
+            <li><span class="list-icon"></span> Pode ser mensal ou anual, fixa ou variável</li>
+            <li><span class="list-icon"></span> Quanto maior o prazo ou risco, maiores os juros</li>
+            <li><span class="list-icon"></span> Afeta diretamente o valor final da operação</li>
+          </ul>
+
+           <h3>2. IOF – Imposto sobre Operações Financeiras</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Imposto federal aplicado em empréstimos, financiamentos, câmbio e seguros</li>
+            <li><span class="list-icon"></span> Pode variar dependendo do tipo da operação </li>
+            <li><span class="list-icon"></span> Crédito pessoal ou financiamento: até 3% ao ano + 0,0082% ao dia</li>
+            <li><span class="list-icon"></span> Câmbio: 0,38% sobre o valor da operação</li>
+            <li><span class="list-icon"></span> É descontado automaticamente na contratação</li>
+            <li><span class="list-icon"></span> Não é possível evitar, mas é importante saber o valor</li>
+
+
+          </ul>
+
+          <h3>3. CET – Custo Efetivo Total</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Indica o custo real da operação de crédito ou financiamento</li>
+            <li><span class="list-icon"></span> Inclui: juros + IOF + taxas administrativas + seguros + tarifas bancárias</li>
+            <li><span class="list-icon"></span>  Deve ser obrigatoriamente informado pelas instituições antes da contratação</li>
+           </ul>
+
+                       <p><strong>Atenção:</strong> Sempre peça o detalhamento do <strong>CET (Custo Efetivo Total)</strong> antes de contratar qualquer serviço financeiro. É seu direito!</p>
+             
+           <h3>4. Taxa de Abertura de Crédito (TAC)</h3>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança pela “avaliação” de crédito ou abertura de contrato </li>
+            <li><span class="list-icon"></span> Prática antiga, mas regulamentada: muitas vezes já está embutida no CET</li>
+            <li><span class="list-icon"></span> Atenção: algumas instituições disfarçam essa taxa com outro nome</li>
+            
+           </ul>
+
+          <h3> 5. Taxa de Administração</h3>
+          
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span>Usada em produtos como consórcios, fundos de investimento ou previdência </li>
+            <li><span class="list-icon"></span> Cobre os custos operacionais da instituição</li>
+            <li><span class="list-icon"></span> Pode impactar o rendimento líquido de investimentos de longo prazo</li>
+           </ul>
+
+          <h3>6. Taxa de Manutenção de Conta</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança mensal ou anual para manter a conta ativa</li>
+            <li><span class="list-icon"></span> Pode variar de acordo com o tipo de conta (corrente, poupança, etc.)</li>
+            <li><span class="list-icon"></span> Algumas contas digitais oferecem isenção dessa taxa</li>
+           </ul>
+
+
+          <h3>7. Taxa de Transferência</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança por transferências entre contas (DOC, TED, PIX)</li>
+            <li><span class="list-icon"></span> Pode ser fixa ou percentual sobre o valor transferido</li>
+            <li><span class="list-icon"></span> Algumas contas digitais oferecem transferências gratuitas</li>
+           </ul>
+
+          <h3>8. Taxa de Emissão de Cartão</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança pela emissão de cartões de crédito ou débito</li>
+            <li><span class="list-icon"></span> Pode ser anual ou única</li>
+            <li><span class="list-icon"></span> Algumas instituições oferecem cartões sem essa taxa</li>
+           </ul>
+          <h3>9. Taxa de Saque</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança por saques em caixas eletrônicos ou correspondentes</li>
+            <li><span class="list-icon"></span> Pode ser fixa ou percentual sobre o valor sacado</li>
+            <li><span class="list-icon"></span> Algumas contas digitais oferecem saques gratuitos</li>
+           </ul>
+          <h3>10. Taxa de Cancelamento</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança pelo cancelamento de produtos ou serviços financeiros</li>
+            <li><span class="list-icon"></span> Pode ser aplicada em contas, cartões, empréstimos, etc.</li>
+            <li><span class="list-icon"></span> Importante verificar as condições antes de cancelar</li>
+           </ul>
+          <h3>11. Taxa de Inatividade</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança por não utilização de produtos ou serviços financeiros</li>
+            <li><span class="list-icon"></span> Pode ser aplicada em contas, cartões, investimentos, etc.</li>
+            <li><span class="list-icon"></span> Importante verificar as condições antes de deixar de usar</li>
+           </ul>
+          <h3>12. Juros por Atraso no Pagamento</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança de juros adicionais em caso de atraso no pagamento</li>
+            <li><span class="list-icon"></span> Pode ser diária ou mensal</li>
+            <li><span class="list-icon"></span> Importante evitar atrasos para não incorrer nessa taxa</li>
+           </ul>
+          <h3>13. Juros Contratuais (Remuneração do Crédito)</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança de juros sobre o valor principal da dívida</li>
+            <li><span class="list-icon"></span> Pode ser fixa ou variável</li>
+            <li><span class="list-icon"></span> Importante verificar as condições antes de contratar</li>
+           </ul>
+          <h3>14. Taxa de Juros de Abertura de Crédito (JAC)</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança de juros pela abertura de crédito</li>
+            <li><span class="list-icon"></span> Pode ser fixa ou variável</li>
+            <li><span class="list-icon"></span> Importante verificar as condições antes de contratar</li>
+           </ul>
+          <h3>15. Taxa de Juros de Adiantamento de Recebíveis (JAR)</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança de juros pelo adiantamento de recebíveis</li>
+            <li><span class="list-icon"></span> Pode ser fixa ou variável</li>
+            <li><span class="list-icon"></span> Importante verificar as condições antes de contratar</li>
+           </ul>
+          <h3>16. Taxa de Juros de Financiamento (JAF)</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança de juros pelo financiamento de bens ou serviços</li>
+            <li><span class="list-icon"></span> Pode ser fixa ou variável</li>
+            <li><span class="list-icon"></span> Importante verificar as condições antes de contratar</li>
+           </ul>
+          <h3>17. Taxa de Juros de Empréstimo (JAE)</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Cobrança de juros pelo empréstimo de bens ou serviços</li>
+            <li><span class="list-icon"></span> Pode ser fixa ou variável</li>
+            <li><span class="list-icon"></span> Importante verificar as condições antes de contratar</li>
+           </ul>
+          <h3>18. Taxa de Seguros Embutidos</h3>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span>  Comum em empréstimos e financiamentos</li>
+            <li><span class="list-icon"></span>  Refere-se a seguros obrigatórios ou opcionais (ex: seguro prestamista)</li>
+            <li><span class="list-icon"></span>  Muitas vezes são adicionados automaticamente: fique atento!</li>
+           </ul>
+
+
+           
+
+
+
+
+
+         <h2> Tarifas Bancárias Mais Comuns </h2>
+           <h4>Contas e Serviços Bancários</h4>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Tarifa de manutenção de conta corrente ou poupança </li>
+            <li><span class="list-icon"></span> Tarifa para transferências (TED, DOC, PIX PJ)/li>
+            <li><span class="list-icon"></span> Tarifa por emissão de extrato ou talão de cheque </li>
+            <li><span class="list-icon"></span> Cobrança por 2ª via de cartão, saque em caixa eletrônico de outro banco</li>
+           </ul>
+           <h4>ou rede</h4>
+
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Anuidade ou taxa de manutenção mensal</li>
+            <li><span class="list-icon"></span> Juros do crédito rotativo (quando não paga o valor total da fatura) </li>
+            <li><span class="list-icon"></span>  Multa por atraso ou pagamento mínimo</li>
+            <li><span class="list-icon"></span> Taxas por saque em dinheiro, emissão de segunda via, conversão de moedao</li>
+
+
+         <h2> Tarifas Ocultas que Devem Ser Observadas</h2>
+          <ul class="lista-topico">
+            <li><span class="#"></span> 📌 Tarifa de avaliação de bens em financiamentos </li>
+            <li><span class="#"></span> 📌 Tarifa por envio de boleto ou carnê impresso </li>
+            <li><span class="#"></span> 📌 Taxa de liquidação antecipada (em alguns contratos de crédito) </li>
+            <li><span class="#"></span> 📌   Tarifa por inatividade da conta </li>
+            <li><span class="#"></span> 📌 Cobranças automáticas de pacotes que você não contratou</li>
+           </ul>
+
+         <h2> Como Reduzir ou Evitar Taxas e Tarifas?  </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Use bancos digitais (geralmente isentos de tarifas) </li>
+            <li><span class="list-icon"></span> Negocie isenção de anuidade no cartão de crédito</li>
+            <li><span class="list-icon"></span>  Solicite cancelamento de pacotes pagos que você não utiliza </li>
+            <li><span class="list-icon"></span> Priorize PIX, que é gratuito para pessoas físicas</li>
+            <li><span class="list-icon"></span>  Use caixas eletrônicos do próprio banco</li>
+            <li><span class="list-icon"></span>  Leia todos os contratos antes de assinar qualquer serviço</li>
+           </ul>
+
+          <h2> Dicas para Ficar no Controle  </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Verifique frequentemente seu extrato bancário e da fatura do cartão </li>
+            <li><span class="list-icon"></span> Utilize o site do Banco Central (BCB) para comparar taxas </li>
+            <li><span class="list-icon"></span> Faça simulações antes de contratar qualquer crédito ou financiamento </li>
+            <li><span class="list-icon"></span>  Evite financiar ou parcelar por longos prazos sem planejamento </li>
+            <li><span class="list-icon"></span> Cobre da instituição transparência total sobre o CET </li>
+            
+           </ul>
+          
+            <h2>Ferramentas Úteis </h2>
+          <ul class="lista-topico">
+            <li><span class="list-icon"></span> Calculadoras de crédito (CET, IOF, juros compostos)</li>
+            <li><span class="list-icon"></span> Planilhas de controle de tarifas bancárias</li>
+            <li><span class="list-icon"></span> Aplicativos de finanças pessoais com alertas de cobranças (ex: Mobills, Organizze) </li>
+            <li><span class="list-icon"></span> Portais comparadores de produtos financeiros (Reclame Aqui Financeiro, MelhorPlano, Yubb) </li>
+            <li><span class="list-icon"></span> Consulta gratuita ao sistema Registrato do Banco Central para ver seus contratos de crédito </li>
+            
+           </ul>
+          
+          
+        </div>
+      </section>
+    </main>
+    <script src="taxas-e-tarifas.js"></script>
+  </body>
+</html>
